@@ -1,0 +1,13 @@
+build/
+*.nes
+*.bin
+*.sav
+*.log
+*.zip
+.mcp.json
+debug.ini
+*.cdl
+*.mlbl
+*.cht
+disasm_ref/
+tmp_*.py
