@@ -89,7 +89,21 @@ uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
 
 const char *game_get_name(void) { return "Metroid"; }
 
+static void bp_1d_callback(uint16_t addr, uint8_t old_val, uint8_t new_val) {
+    (void)addr;
+    static int s_log_count = 0;
+    if (s_log_count < 50 && old_val != new_val) {
+        printf("[BP] $%04X: %02X -> %02X (frame=%llu)\n",
+               addr, old_val, new_val, (unsigned long long)g_frame_count);
+        s_log_count++;
+    }
+}
+
 void game_on_init(void) {
+    /* Track writes to $1D (game enable flag) */
+    g_write_bp_addr = 0x1D;
+    g_write_bp_callback = bp_1d_callback;
+
     /* Load battery-backed SRAM from disk */
     get_exe_relative_path("metroid.srm", s_sram_path, sizeof(s_sram_path));
     sram_load();
@@ -120,8 +134,8 @@ void game_on_frame(uint64_t frame_count) {
             g_controller1_buttons = (uint8_t)ovr;
     }
 
-    /* Persist SRAM to disk every second */
-    if ((frame_count % 60) == 0) sram_save();
+    /* Persist SRAM to disk every 5 seconds */
+    if ((frame_count % 300) == 0) sram_save();
 }
 
 void game_post_nmi(uint64_t frame_count) {

@@ -13039,6 +13039,8 @@ void call_by_address(uint16_t addr) {
             func_B5C8_b1(); break;
         case 0xB733:
             func_B733_b1(); break;
+        case 0x9A4C:
+            func_9A4C_b1(); break;
         case 0xB568:
             switch (g_current_bank) {
                 case 0: func_B568_b0(); break;
@@ -13089,6 +13091,10 @@ void call_by_address(uint16_t addr) {
             func_FE21(); break;
         case 0xB5C7:
             func_B5C7_b1(); break;
+        case 0x9A44:
+            func_9A44_b1(); break;
+        case 0x9A49:
+            func_9A49_b1(); break;
         default:
             nes_log_dispatch_miss(addr);
             break;
