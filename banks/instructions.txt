@@ -1,0 +1,124 @@
+Metroid — Ghidra Import Instructions
+======================================
+
+ROM: Metroid (NES), Mapper 1 (MMC1)
+PRG: 8 x 16KB banks, CHR: 0 (CHR RAM)
+Vectors: NMI=$C0D9  RESET=$FFB0  IRQ=$FFB0
+
+Bank Layout:
+  bank00.bin — PRG Bank 0 (switchable, mapped at $8000-$BFFF) — Title screen
+  bank01.bin — PRG Bank 1 (switchable) — Brinstar
+  bank02.bin — PRG Bank 2 (switchable) — Norfair
+  bank03.bin — PRG Bank 3 (switchable) — Kraid's Lair
+  bank04.bin — PRG Bank 4 (switchable) — Ridley's Lair
+  bank05.bin — PRG Bank 5 (switchable) — Tourian
+  bank06.bin — PRG Bank 6 (switchable) — Graphics data (Suited Samus)
+  bank07.bin — PRG Bank 7 (FIXED, always at $C000-$FFFF)
+
+  MMC1 maps one switchable 16KB bank at $8000-$BFFF.
+  Bank 7 is always present at $C000-$FFFF (fixed bank).
+
+=====================
+STEP 1: Create Project
+=====================
+  File > New Project > Non-Shared Project > name it "MetroidNES"
+
+=====================
+STEP 2: Import Fixed Bank (bank07.bin) — DO THIS FIRST
+=====================
+  File > Import File > browse to bank07.bin
+  In the import dialog:
+    - Language: click "..." > search "6502" > pick "6502:LE:16:default"
+    - Format: Raw Binary
+    - Click "Options..." > Set "Base Address" to: C000
+    - Click OK, then OK
+  Double-click to open in CodeBrowser.
+  When asked "Analyze now?" click YES, accept defaults, Analyze.
+
+=====================
+STEP 3: Import Switchable Banks (as needed)
+=====================
+  File > Import File > browse to bank00.bin (or whichever)
+  Same settings EXCEPT:
+    - Base Address: 8000
+  Start with bank00.bin (title screen) and bank01.bin (Brinstar gameplay).
+
+=====================
+STEP 4: Define Entry Points (in bank07.bin)
+=====================
+  G > FFB0 > Enter > F          (RESET vector)
+  G > C0D9 > Enter > F          (NMI vector)
+
+=====================
+KEY ADDRESSES IN FIXED BANK (bank07.bin)
+=====================
+  $C0D9 — NMI handler. Saves regs, does OAM DMA, VRAM transfers,
+           game logic dispatch, bank switching.
+  $FFB0 — RESET vector. Init hardware, clear RAM, start title.
+
+  $C27C — ChooseRoutine: PLA-based inline dispatch (like SMB's $8E04).
+           JSR $C27C followed by a pointer table; A selects entry.
+           Uses PLA to get return address, reads table, JMP (CodePtr).
+           Already configured as inline_dispatch in game.cfg.
+
+  $C4DE — CheckSwitch: bank switch handler called during NMI.
+           Checks SwitchPending ($14), calls SwitchOK ($C4E8) to do
+           MMC1 serial write, then JMP GoBankInit ($C510).
+
+  $C4E8 — SwitchOK: resets SwitchPending, stores bank# in CurrentBank ($2C)
+           and $00, calls MMCWriteReg3 ($C4FA) for MMC1 serial write.
+
+  $C4FA — MMCWriteReg3: MMC1 serial register 3 write (5 sequential
+           STA $E000 with LSR between each). Loads lower PRG bank.
+
+  $C510 — GoBankInit: ASL A, TAY, loads from BankInitTable ($C51F),
+           stores to $0A/$0B, then JMP ($000A).
+           >>> THIS IS CURRENTLY BROKEN — dispatches to garbage RAM
+           addresses ($005C, $004C) at gameplay entry. <<<
+
+  $C51F — BankInitTable: .word entries for bank init routines:
+           Bank 0: $C531 (InitBank0)
+           Bank 1: $C552 (InitBank1)
+           Bank 2: $C583 (InitBank2)
+           Bank 3: $C590 (InitBank3)
+           Bank 4: $C5B6 (InitBank4)
+           Bank 5: $C5C3 (InitBank5)
+           Banks 6-8: $C45C (ExitSub/RTS)
+
+  $C30C — ProcessPPUStr: VRAM string writer (writes data to PPU $2006/$2007).
+
+=====================
+DEBUGGING PRIORITIES
+=====================
+  1. GoBankInit JMP ($000A) dispatching to RAM addresses.
+     Trace func_C510 in the generated code. Verify that $0A/$0B
+     get correct BankInitTable values. The issue may be that
+     A doesn't contain the correct bank number when GoBankInit runs.
+
+  2. Title screen bottom-half garbage — nametable not fully initialized.
+     May be caused by #1 (bank init not running) or missing VRAM
+     transfer data.
+
+  3. Remaining dispatch misses during gameplay — add as extra_func
+     entries as they appear.
+
+=====================
+REFERENCE
+=====================
+  Full disassembly: https://github.com/nmikstas/metroid-disassembly
+  Source files: Source_Files/Bank00.asm through Bank07.asm
+  Function extraction scripts in project root:
+    extract_funcs.py — extracts JSR targets as extra_func entries
+    extract_data_regions.py — extracts .byte/.word regions as data_region entries
+    extract_dispatch_targets.py — extracts ChooseRoutine pointer table targets
+
+=====================
+HOTKEYS
+=====================
+  G — Go to address
+  F — Create function
+  D — Disassemble bytes
+  L — Rename/label address
+  ; — Add comment
+  X — Show cross-references
+  Space — Toggle listing/decompiler view
