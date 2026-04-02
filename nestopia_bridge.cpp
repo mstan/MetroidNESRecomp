@@ -188,6 +188,13 @@ void nestopia_bridge_shutdown(void) {
     retro_deinit();
 }
 
+uint8_t nestopia_bridge_cpu_read(uint16_t addr) {
+    if (!s_loaded) return 0xFF;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    return (uint8_t)mach.cpu.Peek(addr);
+}
+
 void nestopia_bridge_get_ppu_regs(NestopiaPpuRegs *out) {
     if (!out || !s_loaded) return;
     Nes::Api::Emulator &emu = nestopia_get_emulator_instance();

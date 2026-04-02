@@ -61,12 +61,11 @@ uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
 const char *game_get_name(void) { return "Metroid"; }
 
 void game_on_init(void) {
-    /* TODO: Metroid's scroll boundary check at $E720 reads SRAM at $71C3
-     * expecting 0xFF (uninitialized).  The RESET code clears all SRAM to
-     * 0x00, so the check reads 0x00 and produces wrong carry flag.
-     * Setting g_sram_enabled=0 fixes scroll but breaks level rendering
-     * (game uses $6000-$6FFF as decompression work RAM).
-     * Proper fix: per-page SRAM enable, or open-bus simulation. */
+    /* NOTE: Metroid DOES have volatile WRAM at $6000-$7FFF (MMC1 standard).
+     * Both native and emulated have the same level data at $71C3 eventually.
+     * The scroll bug is from NMI TIMING: native's scroll check runs before
+     * the level loader has written data, reading 0x00 (cleared SRAM) instead
+     * of the expected value.  Keep SRAM enabled. */
 
     /* Tag screenshots by run mode so native/emulated don't overwrite each other */
     if (g_run_mode == RUN_MODE_EMULATED)
@@ -206,6 +205,10 @@ void game_run_main(void) {
 
             nestopia_bridge_get_ram(g_ram);
             nestopia_bridge_get_sram(g_sram);
+            /* Copy volatile WRAM via CPU bus — RETRO_MEMORY_SAVE_RAM
+             * doesn't include non-battery WRAM on MMC1 */
+            for (int _i = 0; _i < 0x2000; _i++)
+                g_sram[_i] = nestopia_bridge_cpu_read(0x6000 + _i);
 
             /* Copy Nestopia PPU state to runner globals for ring buffer */
             {

@@ -16,6 +16,9 @@ void nestopia_bridge_get_framebuf_argb(uint32_t *out);  /* 256x240 ARGB */
 void nestopia_bridge_write_ram(uint16_t addr, uint8_t val);
 void nestopia_bridge_shutdown(void);
 
+/* Read a byte from Nestopia's CPU address space (any address $0000-$FFFF) */
+uint8_t nestopia_bridge_cpu_read(uint16_t addr);
+
 /* PPU register extraction — reads Nestopia's internal PPU state */
 typedef struct {
     uint8_t ctrl;       /* $2000 PPUCTRL */
