@@ -4,7 +4,7 @@
 
 **Status:** Root cause identified, fix pending
 
-**Symptom:** When starting a new game, the camera spawns ~4 pixels too far left (near the morph ball area) instead of at Samus's spawn position. Scroll X register ($FD) wraps from 0x00 to 0xFF/0xFC. PPUCTRL nametable select bits also diverge (native 0x93 vs emulated 0x90).
+**Symptom:** When starting a new game, the camera spawns roughly one full screen to the left of Samus's spawn position (near the morph ball area). Scroll X ($FD) wraps from 0x00 to 0xFC (252) and the PPUCTRL nametable select bits flip (native 0x93 vs emulated 0x90), shifting the view by ~260 pixels — nearly a full nametable width.
 
 **Root cause:** NMI timing discrepancy. The native build completes mode 1 initialization ~3 frames earlier than the real NES (Nestopia emulated). This causes the scroll stepper to run before the level loader has written data to SRAM, producing incorrect results.
 
