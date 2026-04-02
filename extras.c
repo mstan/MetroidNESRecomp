@@ -61,6 +61,13 @@ uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
 const char *game_get_name(void) { return "Metroid"; }
 
 void game_on_init(void) {
+    /* TODO: Metroid's scroll boundary check at $E720 reads SRAM at $71C3
+     * expecting 0xFF (uninitialized).  The RESET code clears all SRAM to
+     * 0x00, so the check reads 0x00 and produces wrong carry flag.
+     * Setting g_sram_enabled=0 fixes scroll but breaks level rendering
+     * (game uses $6000-$6FFF as decompression work RAM).
+     * Proper fix: per-page SRAM enable, or open-bus simulation. */
+
     /* Tag screenshots by run mode so native/emulated don't overwrite each other */
     if (g_run_mode == RUN_MODE_EMULATED)
         script_set_screenshot_prefix("emu_");
