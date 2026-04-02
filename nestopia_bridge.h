@@ -16,6 +16,16 @@ void nestopia_bridge_get_framebuf_argb(uint32_t *out);  /* 256x240 ARGB */
 void nestopia_bridge_write_ram(uint16_t addr, uint8_t val);
 void nestopia_bridge_shutdown(void);
 
+/* PPU register extraction — reads Nestopia's internal PPU state */
+typedef struct {
+    uint8_t ctrl;       /* $2000 PPUCTRL */
+    uint8_t mask;       /* $2001 PPUMASK */
+    uint8_t scroll_x;   /* Coarse X + fine X combined */
+    uint8_t scroll_y;   /* Coarse Y + fine Y combined */
+} NestopiaPpuRegs;
+
+void nestopia_bridge_get_ppu_regs(NestopiaPpuRegs *out);
+
 #ifdef __cplusplus
 }
 #endif

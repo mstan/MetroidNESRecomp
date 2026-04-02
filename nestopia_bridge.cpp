@@ -7,9 +7,18 @@
 #include "nestopia_bridge.h"
 #include "libretro.h"
 
+/* Nestopia core internals for PPU register access */
+#include "source/core/api/NstApiEmulator.hpp"
+#include "source/core/NstMachine.hpp"
+#include "source/core/NstPpu.hpp"
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+
+/* Exposed by libretro.cpp */
+namespace Nes { namespace Api { class Emulator; } }
+extern Nes::Api::Emulator& nestopia_get_emulator_instance(void);
 
 /* ---- Libretro callbacks ---- */
 static uint32_t s_framebuf_xrgb8888[256 * 240];
@@ -177,6 +186,32 @@ void nestopia_bridge_shutdown(void) {
         s_loaded = false;
     }
     retro_deinit();
+}
+
+void nestopia_bridge_get_ppu_regs(NestopiaPpuRegs *out) {
+    if (!out || !s_loaded) return;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    const Nes::Core::Ppu &ppu = mach.ppu;
+
+    /* ctrl[0] = PPUCTRL ($2000), ctrl[1] = PPUMASK ($2001) */
+    out->ctrl = (uint8_t)(ppu.GetCtrl(0) & 0xFF);
+    out->mask = (uint8_t)(ppu.GetCtrl(1) & 0xFF);
+
+    /* Scroll: reconstruct pixel-level X and Y from PPU internals.
+     * scroll.address holds current VRAM address:
+     *   bits 0-4:  coarse X (tile column)
+     *   bits 5-9:  coarse Y (tile row)
+     *   bits 12-14: fine Y scroll
+     * scroll.xFine holds fine X (0-7) */
+    unsigned addr = ppu.GetScrollAddress();
+    unsigned xFine = ppu.GetScrollXFine();
+    unsigned coarseX = addr & 0x1F;
+    unsigned coarseY = (addr >> 5) & 0x1F;
+    unsigned fineY = (addr >> 12) & 0x07;
+
+    out->scroll_x = (uint8_t)((coarseX << 3) | (xFine & 7));
+    out->scroll_y = (uint8_t)((coarseY << 3) | fineY);
 }
 
 } /* extern "C" */

@@ -23,35 +23,6 @@
 #  include <windows.h>
 #endif
 
-/* ---- SRAM persistence ---- */
-static char s_sram_path[512] = "";
-static uint8_t s_sram_snapshot[0x2000];
-static int s_sram_dirty = 0;
-
-static void sram_load(void) {
-    FILE *f = fopen(s_sram_path, "rb");
-    if (f) {
-        size_t n = fread(g_sram, 1, 0x2000, f);
-        fclose(f);
-        memcpy(s_sram_snapshot, g_sram, 0x2000);
-        printf("[SRAM] Loaded %zu bytes from %s\n", n, s_sram_path);
-    } else {
-        printf("[SRAM] No save file found, starting fresh\n");
-        memcpy(s_sram_snapshot, g_sram, 0x2000);
-    }
-}
-
-static void sram_save(void) {
-    if (memcmp(g_sram, s_sram_snapshot, 0x2000) == 0) return;
-    FILE *f = fopen(s_sram_path, "wb");
-    if (f) {
-        fwrite(g_sram, 1, 0x2000, f);
-        fclose(f);
-        memcpy(s_sram_snapshot, g_sram, 0x2000);
-        printf("[SRAM] Saved to %s\n", s_sram_path);
-    }
-}
-
 /* ---- Debug mode ---- */
 static int s_debug_enabled = 0;
 static void get_exe_relative_path(const char *filename, char *out, int max_len);
@@ -89,24 +60,14 @@ uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
 
 const char *game_get_name(void) { return "Metroid"; }
 
-static void bp_1d_callback(uint16_t addr, uint8_t old_val, uint8_t new_val) {
-    (void)addr;
-    static int s_log_count = 0;
-    if (s_log_count < 50 && old_val != new_val) {
-        printf("[BP] $%04X: %02X -> %02X (frame=%llu)\n",
-               addr, old_val, new_val, (unsigned long long)g_frame_count);
-        s_log_count++;
-    }
-}
-
 void game_on_init(void) {
-    /* Track writes to $1D (game enable flag) */
-    g_write_bp_addr = 0x1D;
-    g_write_bp_callback = bp_1d_callback;
-
-    /* Load battery-backed SRAM from disk */
-    get_exe_relative_path("metroid.srm", s_sram_path, sizeof(s_sram_path));
-    sram_load();
+    /* Tag screenshots by run mode so native/emulated don't overwrite each other */
+    if (g_run_mode == RUN_MODE_EMULATED)
+        script_set_screenshot_prefix("emu_");
+    else if (g_run_mode == RUN_MODE_VERIFY)
+        script_set_screenshot_prefix("verify_");
+    else
+        script_set_screenshot_prefix("native_");
 
     s_debug_enabled = check_debug_ini();
 
@@ -134,8 +95,6 @@ void game_on_frame(uint64_t frame_count) {
             g_controller1_buttons = (uint8_t)ovr;
     }
 
-    /* Persist SRAM to disk every 5 seconds */
-    if ((frame_count % 300) == 0) sram_save();
 }
 
 void game_post_nmi(uint64_t frame_count) {
@@ -208,6 +167,17 @@ void game_run_main(void) {
                 g_controller1_buttons = btn;
             }
 
+            /* Apply input script (deterministic replay for comparison) */
+            script_tick(g_frame_count, g_ram);
+            {
+                int script_btn = script_get_buttons();
+                if (script_btn >= 0) g_controller1_buttons = (uint8_t)script_btn;
+            }
+            {
+                int ecode = script_check_exit();
+                if (ecode >= 0) exit(ecode);
+            }
+
             debug_server_poll();
             debug_server_wait_if_paused();
 
@@ -215,8 +185,31 @@ void game_run_main(void) {
             nestopia_bridge_get_framebuf_argb(nestopia_argb);
             runner_present_framebuf(nestopia_argb);
 
+            /* Script-triggered screenshot (emulated path) */
+            {
+                char shot_path[256];
+                if (script_wants_screenshot(shot_path, sizeof(shot_path))) {
+                    extern void runner_save_argb_png(const char *path,
+                                                     const uint32_t *argb,
+                                                     int w, int h);
+                    runner_save_argb_png(shot_path, nestopia_argb, 256, 240);
+                    printf("[Shot] %s\n", shot_path);
+                }
+            }
+
             nestopia_bridge_get_ram(g_ram);
             nestopia_bridge_get_sram(g_sram);
+
+            /* Copy Nestopia PPU state to runner globals for ring buffer */
+            {
+                NestopiaPpuRegs ppu_regs;
+                nestopia_bridge_get_ppu_regs(&ppu_regs);
+                g_ppuctrl    = ppu_regs.ctrl;
+                g_ppumask    = ppu_regs.mask;
+                g_ppuscroll_x = ppu_regs.scroll_x;
+                g_ppuscroll_y = ppu_regs.scroll_y;
+            }
+
             g_frame_count++;
 
             debug_server_record_frame();
@@ -247,7 +240,39 @@ uint8_t game_ram_read_hook(uint16_t pc, uint16_t addr, uint8_t val) {
 
 void game_fill_frame_record(void *record) {
     NESFrameRecord *r = (NESFrameRecord *)record;
-    memset(r->game_data, 0, sizeof(r->game_data));
+    /* Capture key Metroid state into the 16-byte game_data field:
+     * [0] $1D  GameEnable (1=gameplay, 0=init/transition)
+     * [1] $1E  GameMode (ChooseRoutine index when $1D=0)
+     * [2] $1F  MainRoutine (ChooseRoutine index when $1D=1)
+     * [3] $24  BankInitRequest (non-zero triggers BankInit)
+     * [4] $56  GameEngineSubroutine (0=skip, >=5=run object processing)
+     * [5] $2C  DelayTimer (for $1E=9 delayed transitions)
+     * [6] $0300 lo  FrameProgressCounter
+     * [7] $0680     Slot0 dispatch flag
+     * [8] $0685     Slot5 dispatch flag
+     * [9] $1A  NMI flag
+     * [10] OAM[0] Y (sprite 0 — $F0=hidden)
+     * [11] OAM[4] Y (sprite 1)
+     * [12] $C8  AnimationFlag
+     * [13] $0108  TransitionFlag lo
+     * [14] $0109  TransitionFlag hi
+     * [15] bank   current PRG bank */
+    r->game_data[0]  = g_ram[0x1D];
+    r->game_data[1]  = g_ram[0x1E];
+    r->game_data[2]  = g_ram[0x1F];
+    r->game_data[3]  = g_ram[0x24];
+    r->game_data[4]  = g_ram[0x56];
+    r->game_data[5]  = g_ram[0x2C];
+    r->game_data[6]  = g_ram[0x300 & 0x7FF];
+    r->game_data[7]  = g_ram[0x680 & 0x7FF];
+    r->game_data[8]  = g_ram[0x685 & 0x7FF];
+    r->game_data[9]  = g_ram[0x1A];
+    r->game_data[10] = g_ppu_oam[0];
+    r->game_data[11] = g_ppu_oam[4];
+    r->game_data[12] = g_ram[0xC8];
+    r->game_data[13] = g_ram[0x108 & 0x7FF];
+    r->game_data[14] = g_ram[0x109 & 0x7FF];
+    r->game_data[15] = (uint8_t)g_current_bank;
 }
 
 int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
