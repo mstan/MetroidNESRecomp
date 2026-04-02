@@ -27,7 +27,7 @@ void watchdog_check(void) {
     /* Call maybe_trigger_vblank() on every backward branch so that tight
      * loops without memory access still get VBlank callbacks. This is the
      * primary mechanism for preventing stuck frames. */
-    maybe_trigger_vblank();
+    maybe_trigger_vblank(2);
 
     clock_t now = clock();
     double elapsed = (double)(now - s_frame_start) / CLOCKS_PER_SEC;
