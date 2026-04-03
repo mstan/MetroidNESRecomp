@@ -20,6 +20,19 @@ addr = 0xC27C
 [[stack_bail_func]]
 addr = 0xC376
 
+# ── Push-JMP targets ───────────────────────────────────────────────────────
+# Bail-containing functions reached via JMP need a dummy push so the bail's
+# RTS has a safe pop target.  `source` restricts the push to a specific JMP
+# site — omit to match all JMP sites targeting that address.
+#
+# $C328 is only JMP'd from $945C (no JSR return above → needs dummy).
+# $C37E is NOT listed: its only JMP site ($8AFC) is always inside a JSR chain
+# (JSR $C1E0 → JMP $8AC7 → JMP $C37E), so the bail's RTS correctly pops
+# the outer JSR's return address without a dummy push.
+[[push_jmp]]
+addr = 0xC328
+source = 0x945C
+
 # ── Merge functions ─────────────────────────────────────────────────────────
 # EF13, EF78, and EF8C form a single function with an outer loop
 # (JMP $EF13 at $EF96).  Without merge, the JMP becomes a tail-call
