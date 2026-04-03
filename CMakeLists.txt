@@ -29,7 +29,7 @@ add_executable(MetroidNESRecomp
     generated/metroid_dispatch.c
 )
 
-target_compile_definitions(MetroidNESRecomp PRIVATE RECOMP_STACK_TRACKING WATCHDOG_ENABLED)
+target_compile_definitions(MetroidNESRecomp PRIVATE RECOMP_STACK_TRACKING WATCHDOG_ENABLED RECOMP_S_TRACE)
 
 target_include_directories(MetroidNESRecomp PRIVATE
     ${NESRECOMP_RUNNER_INCLUDE_DIRS}

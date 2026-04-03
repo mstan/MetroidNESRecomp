@@ -89,39 +89,57 @@ S, P). It always showed the runner's init values (S=0xFD). Added
 
 ---
 
-## ACTIVE: S register drift during title screen
+## RESOLVED: S register drift during title screen
 
-**Priority:** High — root cause of gameplay divergence
+**Status:** Fixed (code_generator.c — unsuppressed bail func RTS)
 
-**Symptom:** Native S starts at 0xFB after boot (should be 0xFF) and drifts by
--4 every ~16 frames during the title screen ($1D=01). By frame 116, S=0xDF.
-This offset persists into gameplay, causing wrong game sub-states and cascading
-divergence.
+**Root cause:** The `stack_bail_func` RTS suppression was over-correcting.
+func_C376 (PLA PLA RTS) is a 2-level bail: PLA PLA consumes its own JSR's
+return address, then RTS pops the CALLER's return address. The suppressed
+RTS meant the caller's return bytes stayed on the stack (-2 per bail invocation).
+
+The bail func's callers (func_C37E, func_C328) are PPU buffer terminators
+called every ~16 frames when the palette animation cycles ($1C set for ROM
+PPU buffer transfer). Each invocation leaked -2 in the NMI handler and -2
+in the main loop path = -4 total every 16 frames.
+
+**Fix:** Unsuppressed the bail func's RTS in the codegen. All functions now
+pop their JSR return address on RTS, including bail funcs. The `return;`
+after JSR $C376 at the call site exits the caller before its own RTS,
+preventing double-pop. S-trace confirmed: S=0xFF stable throughout title screen.
+
+**Measured data (after fix):**
+```
+Frame   6: S=0xFF  (matches emulator oracle)
+Frame  20: S=0xFF  (no drift)
+Frame 116: S=0xFF  (stable)
+```
+
+---
+
+## ACTIVE: S divergence during gameplay transition ($1E=01 to 02)
+
+**Priority:** High — prevents correct gameplay
+
+**Symptom:** During the title-to-gameplay transition, native S diverges from
+emulator at the $1E=01→02 boundary (level loading). Native S drops to 0x03
+while emulator shows 0xFD. This ~250-byte offset persists into gameplay ($1E=08):
+native S=0x05 vs emulated S=0xFF.
 
 **Measured data:**
 ```
-Frame   6: S=0xFB  (first stable frame after boot)
-Frame  20: S=0xF7  (-4)
-Frame  36: S=0xF3  (-4)
-Frame  52: S=0xEF  (-4)
-...
-Frame 116: S=0xDF  (stable until gameplay transition)
+                Native  Emulated
+$1E=00 (title): 0xFF    0xFF     (matched after bail RTS fix)
+$1E=01 (init):  varies  varies
+$1E=02 (load):  0x03    0xFD     ← 250-byte divergence
+$1E=08 (game):  0x05    0xFF
 ```
 
-Emulator oracle shows S=0xFF throughout.
-
-**Investigation so far:**
-- The initial 0xFB (not 0xFF) at frame 6: the stack has 2 return addresses —
-  $C0B9 (from JSR C4DE at C0B7) and $C53A (from JSR C45D at C538). These are
-  from VBlank waits inside the boot init sequence. The question is why these
-  2 pushes remain when the init completes.
-- The -4 drift every ~16 frames during title screen: likely another cross-function
-  JMP pattern (same class of bug as the EF13/EF78 fix) or the stack_bail_func
-  being called periodically during title animation.
-- NOT caused by dispatch misses (zero misses logged).
-
-**Next steps:** Re-enable the S-wrap detector (`g_ram[0x7F0-0x7F2]` trick) during
-the title screen to identify which RTS causes the periodic over-pop.
+**Investigation needed:** The level loading path ($1E=02) involves the
+column renderer (EF13/EF78/EF8C merged functions) and PPU buffer processing.
+The bail func RTS change may have introduced an over-pop in the JMP case
+(func_C328 is reached via both JSR and JMP $C328). Need to trace S through
+the $1E=01→02 transition to find the specific divergence point.
 
 ---
 

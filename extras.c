@@ -53,6 +53,21 @@ static int check_debug_ini(void) {
     return 1;
 }
 
+/* ---- S-leak detector state ---- */
+static uint8_t s_last_post_nmi_S = 0xFF;  /* S after last NMI completed */
+static uint8_t s_pre_nmi_S = 0xFF;        /* S at start of current NMI */
+static int s_leak_tracking_active = 0;     /* set after first frame */
+
+/* g_ram layout for S-leak detector (TCP readable):
+ * 0x7F0: pre-NMI S snapshot
+ * 0x7F1: post-NMI S snapshot
+ * 0x7F2: leak count (total NMI leaks detected)
+ * 0x7F3: last NMI delta (signed: post - pre, excluding NMI push/pop)
+ * 0x7F4: main-loop leak count (S changed between post-NMI and next pre-NMI)
+ * 0x7F5: last main-loop delta (signed)
+ * 0x7F6: frame lo when last NMI leak detected
+ * 0x7F7: frame hi when last NMI leak detected */
+
 /* ---- Debug server state ---- */
 
 /* ROM path exposed by runner for verify mode init */
@@ -150,14 +165,39 @@ void game_on_frame(uint64_t frame_count) {
             g_controller1_buttons = (uint8_t)ovr;
     }
 
+    /* S-leak detector: snapshot S before NMI fires */
+    s_pre_nmi_S = g_cpu.S;
+    g_ram[0x7E0] = s_pre_nmi_S;
+
+    /* Check for main-loop leak: S changed between last post-NMI and this pre-NMI */
+    if (s_leak_tracking_active && s_pre_nmi_S != s_last_post_nmi_S) {
+        int8_t delta = (int8_t)(s_pre_nmi_S - s_last_post_nmi_S);
+        g_ram[0x7E4]++;  /* main-loop leak count */
+        g_ram[0x7E5] = (uint8_t)delta;
+    }
 }
 
 void game_post_nmi(uint64_t frame_count) {
-    (void)frame_count;
     if (s_debug_enabled) {
         debug_server_record_frame();
         debug_server_check_watchpoints();
     }
+
+    /* S-leak detector: snapshot S after NMI completed.
+     * NMI push (3 bytes: PCH, PCL, P) and RTI pop (3 bytes) should balance.
+     * If S here != S at game_on_frame, the NMI handler leaked stack. */
+    s_last_post_nmi_S = g_cpu.S;
+    g_ram[0x7E1] = s_last_post_nmi_S;
+
+    if (s_leak_tracking_active && s_last_post_nmi_S != s_pre_nmi_S) {
+        int8_t delta = (int8_t)(s_last_post_nmi_S - s_pre_nmi_S);
+        g_ram[0x7E2]++;  /* NMI leak count */
+        g_ram[0x7E3] = (uint8_t)delta;
+        g_ram[0x7E6] = (uint8_t)(frame_count & 0xFF);
+        g_ram[0x7E7] = (uint8_t)((frame_count >> 8) & 0xFF);
+    }
+
+    s_leak_tracking_active = 1;
 }
 
 int game_handle_arg(const char *key, const char *val) {
