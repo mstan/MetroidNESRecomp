@@ -5,7 +5,8 @@
 **Status:** Fixed (commit e6c07c3)
 
 Fixed by blocking $FD wrap during init via scroll_guard_callback in extras.c.
-See git history for the full investigation trail.
+
+---
 
 ## RESOLVED: Tile garbling at gameplay load-in
 
@@ -13,121 +14,172 @@ See git history for the full investigation trail.
 
 **Root cause:** func_C376 uses `PLA PLA + RTS` — a 6502 non-local return pattern
 that bails out two call levels. The recompiler treated PLA as a simple stack memory
-operation and `return` only went back one C function level. The caller continued
-executing past the PPU command buffer's `$00` terminator, writing garbage PPU
-addresses ($FFFF) that wrapped into CHR RAM space.
+operation and `return` only went back one C function level.
 
-**Fix:** Added `stack_bail_func C376` to game.cfg. The recompiler emits `return;`
-after every JSR $C376 call site, matching the real 6502 behavior.
-
-**Also fixed in this session:**
-- Deferred NMI model: NMI at depth > 0 defers to backward branch points (loop
-  boundaries) instead of firing inline mid-instruction. Prevents NMI from firing
-  during bank switches where $9560 table reads would hit wrong ROM data.
-- Merged $2005/$2006 write toggle into single latch matching real NES "w" register.
-- Nestopia VRAM bridge: CHR RAM, nametable, palette, OAM now synced from Nestopia
-  internals for oracle comparison in emulated mode.
+**Fix:** Added `stack_bail_func C376` to game config. The recompiler emits `return;`
+after every JSR $C376 call site.
 
 ---
 
-## ACTIVE: Dispatch misses ($B809, $B5BA in bank 1)
+## RESOLVED: Dispatch misses ($B809, $B5BA and cascading)
 
-**Priority:** High — quick fix, likely unblocks enemies and other gameplay
+**Status:** Fixed
 
-**Symptom:** Repeated dispatch miss log spam starting around frame 559:
-```
-[Dispatch] MISS: no func for $B809 bank=1
-[Dispatch] MISS: no func for $B5BA bank=1
-```
+**Root cause:** Multiple functions in bank 1 not discoverable via static analysis.
 
-These are functions in bank 1 that the recompiler's static analysis didn't discover.
-They're called via computed dispatch (likely the inline_dispatch pattern) during
-gameplay.
-
-**Fix:** Add `extra_func 1 B809` and `extra_func 1 B5BA` to game.cfg, regenerate,
-rebuild. May need Ghidra to verify these are real function entry points.
-
-**Likely downstream effects:** Enemy AI, object spawning, gameplay logic not running.
+**Fix:** Added extra_func entries for all missing dispatch targets. Zero dispatch
+misses during gameplay.
 
 ---
 
-## ACTIVE: Stack pointer leak
+## RESOLVED: Stack pointer leak (progressive S drift from dispatch misses)
 
-**Priority:** High — causes progressive corruption
+**Status:** Fixed (code_generator.c)
 
-**Symptom:** The 6502 stack pointer (g_cpu.S) drifts upward each frame:
-```
-Frame 200: S=$02
-Frame 322: S=$02
-Frame 688: S=$3B
-Frame 809: S=$47
-Frame 930: S=$51
-Frame 1052: S=$5F
-```
+**Root cause:** With `push_all_jsr`, missed dispatch targets left orphaned return
+addresses on the 6502 stack.
 
-Something is pushing bytes onto the stack without popping them, or a JSR/RTS
-mismatch is leaking stack entries. After enough frames, S wraps and corrupts
-game state stored in the stack page ($0100-$01FF).
-
-**Investigation needed:** Compare 6502 stack depth per frame between native and
-emulated. Use TCP follow on S or track stack depth at NMI entry/exit.
+**Fix:** `call_by_address()` returns int; JSR-context dispatch emits
+`if (!call_by_address(addr)) g_cpu.S += 2;` to compensate.
 
 ---
 
-## ACTIVE: Samus head missing
+## RESOLVED: EF13/EF78/EF8C outer loop cross-function JMP
 
-**Priority:** Medium
+**Status:** Fixed (commit 8f06e6e, game.toml merge_func)
 
-**Symptom:** Samus's body and legs render correctly but her head/helmet is missing.
-Could be a sprite rendering issue (wrong CHR offset for sprite pattern table), an
-OAM issue, or downstream of the dispatch misses preventing full sprite setup.
+**Root cause:** The tile writer at $EF13-$EF99 was split into three separate
+functions by the function finder. `JMP $EF13` at $EF96 became a tail-call
+(`func_EF13(); return;`) instead of a loop-back goto. Each outer loop iteration
+over-popped S by 2 (the target's RTS popped bytes never pushed by the JMP).
+During level loading ($1E=01→02), 5 iterations caused S to wrap from 0xF9 to 0x03.
 
-**Investigation needed:** Compare OAM data between native and emulated. Check if
-the sprite pattern table base (PPUCTRL bit 3) is correct.
+**Fix:** Added `merge_func 7 EF13 EF78` and `merge_func 7 EF13 EF8C` to game.toml.
+The JMP at EF96 now generates `goto label_EF13` within a single merged function body.
 
 ---
 
-## ACTIVE: Enemies missing / flicker for one frame
+## RESOLVED: stack_bail_func C376 double-pop
 
-**Priority:** Medium — likely caused by dispatch misses
+**Status:** Fixed (code_generator.c, commit 8f06e6e)
 
-**Symptom:** Enemies don't appear or flash briefly for a single frame then vanish.
-This is consistent with enemy AI functions ($B809, $B5BA) not being compiled —
-enemies spawn but their update code is a no-op, so they disappear on the next frame.
+**Root cause:** With `push_all_jsr`, the bail function's RTS did `g_cpu.S += 2`
+(popping the outer function's return address). But the C return chain also reached
+the outer function, whose own RTS popped again — double-popping the outer return.
 
-**Fix:** Likely resolves when dispatch misses are fixed.
+**Fix:** Suppressed `g_cpu.S += 2` in the RTS codegen for functions listed as
+`stack_bail_func`. The bail func's PLA PLA handles the inner pop; the outer
+function's own RTS handles the outer pop.
+
+---
+
+## RESOLVED: Nestopia CPU bridge gap
+
+**Status:** Fixed (commit 8f06e6e)
+
+The emulated oracle's ring buffer wasn't copying Nestopia's CPU registers (A, X, Y,
+S, P). It always showed the runner's init values (S=0xFD). Added
+`nestopia_bridge_get_cpu_regs()` and CPU state sync in the emulated frame loop.
+
+---
+
+## RESOLVED: Enemies missing / flicker for one frame
+
+**Status:** Fixed (consequence of dispatch miss fix)
+
+---
+
+## ACTIVE: S register drift during title screen
+
+**Priority:** High — root cause of gameplay divergence
+
+**Symptom:** Native S starts at 0xFB after boot (should be 0xFF) and drifts by
+-4 every ~16 frames during the title screen ($1D=01). By frame 116, S=0xDF.
+This offset persists into gameplay, causing wrong game sub-states and cascading
+divergence.
+
+**Measured data:**
+```
+Frame   6: S=0xFB  (first stable frame after boot)
+Frame  20: S=0xF7  (-4)
+Frame  36: S=0xF3  (-4)
+Frame  52: S=0xEF  (-4)
+...
+Frame 116: S=0xDF  (stable until gameplay transition)
+```
+
+Emulator oracle shows S=0xFF throughout.
+
+**Investigation so far:**
+- The initial 0xFB (not 0xFF) at frame 6: the stack has 2 return addresses —
+  $C0B9 (from JSR C4DE at C0B7) and $C53A (from JSR C45D at C538). These are
+  from VBlank waits inside the boot init sequence. The question is why these
+  2 pushes remain when the init completes.
+- The -4 drift every ~16 frames during title screen: likely another cross-function
+  JMP pattern (same class of bug as the EF13/EF78 fix) or the stack_bail_func
+  being called periodically during title animation.
+- NOT caused by dispatch misses (zero misses logged).
+
+**Next steps:** Re-enable the S-wrap detector (`g_ram[0x7F0-0x7F2]` trick) during
+the title screen to identify which RTS causes the periodic over-pop.
+
+---
+
+## ACTIVE: Crash when scrolling right
+
+**Priority:** High
+
+**Symptom:** Walking Samus to the right (scrolling the screen) causes a crash
+or hang. The entropy test script reproduces this — the `HOLD RIGHT / WAIT 300`
+section triggers it.
+
+**Investigation needed:** Likely related to the S drift — by the time gameplay
+starts, S is offset by ~32 bytes from expected, which corrupts stack-relative
+reads in the scroll/column loading code. May also be a separate codegen issue
+in the scrolling path. Need to trace via TCP comparison at the point of crash.
+
+---
+
+## ACTIVE: Enemies not spawning correctly
+
+**Priority:** Medium — may cascade from S drift
+
+**Symptom:** Enemy spawning behavior diverges from emulator oracle. Enemies may
+not appear or appear incorrectly during gameplay.
+
+**Investigation needed:** Compare enemy-related RAM ($0300+ OAM, enemy state
+tables) between native and emulated at equivalent game states. The S drift
+causes different sub-state paths which likely affect enemy spawn logic.
+
+---
+
+## ACTIVE: Samus head missing/wrong
+
+**Priority:** Medium — caused by S drift → wrong PPUCTRL
+
+**Symptom:** Samus's body renders but head/helmet uses wrong tiles. PPUCTRL=0x90
+(8x8 sprites) instead of 0x94 (8x16). In 8x16 mode the head tiles render correctly.
+
+**Root cause:** PPUCTRL shadow ($FF) diverges because game sub-state ($1E) takes
+a different path due to the S offset. Will likely resolve when S drift is fixed.
 
 ---
 
 ## ACTIVE: TIME label on HUD
 
-**Priority:** Low
+**Priority:** Low — may already be resolved
 
-**Symptom:** "TIME" text appears on the HUD where it shouldn't. Metroid doesn't
-have a timer display in normal gameplay. This may be a nametable corruption issue
-or a PPU transfer writing HUD data to the wrong location.
-
-**Not investigated.**
+Needs re-verification after S drift fix. Not visible in recent screenshots.
 
 ---
 
-## ACTIVE: Watchdog stuck in func_EF8C
+## ACTIVE: Watchdog fires in func_EF8C
 
-**Priority:** Medium
+**Priority:** Low — may be changed by merge_func fix
 
-**Symptom:** Watchdog fires every ~120 frames, always stuck in the same call stack:
-```
-func_EF8C < func_C43D < func_C45D < func_C531 < func_C510 < func_C4DE
-```
-
-func_EF8C is in the column/nametable rendering path. It calls func_C43D (wait for
-NMI) and the wait takes longer than the 2-second watchdog timeout. The forced VBlank
-trigger recovers, but this indicates the NMI timing is still not fully correct for
-nested NMI scenarios.
-
-**Investigation needed:** Check why the deferred NMI takes so long to fire during
-func_EF8C's wait. May be related to the cycle counting or the pending flag not
-being checked frequently enough.
+**Symptom:** Watchdog fires every ~120 frames in the column renderer call stack.
+The merge_func fix for EF8C/EF13/EF78 changed the function boundaries here —
+behavior needs re-verification.
 
 ---
 
@@ -154,5 +206,5 @@ being checked frequently enough.
 | `func_C376` | Buffer terminator + bail-out (PLA PLA + RTS) |
 | `func_C43D` | Wait for NMI (spin on $1A) |
 | `func_EA2B` | Column loader |
-| `func_EF8C` | Nametable renderer |
+| `func_EF8C` | Nametable renderer (merged with EF13/EF78) |
 | `func_8AC7` | Palette update (bank 0 only) |
