@@ -28,6 +28,7 @@ static int s_debug_enabled = 0;
 static void get_exe_relative_path(const char *filename, char *out, int max_len);
 
 static int s_tcp_port = 5370;
+static int s_tcp_port_from_cli = 0;
 
 static int check_debug_ini(void) {
     char path[512];
@@ -44,7 +45,7 @@ static int check_debug_ini(void) {
         /* Trim whitespace/newline from val */
         char *end = val + strlen(val) - 1;
         while (end > val && (*end == '\n' || *end == '\r' || *end == ' ')) *end-- = '\0';
-        if (strcmp(key, "port") == 0) {
+        if (strcmp(key, "port") == 0 && !s_tcp_port_from_cli) {
             s_tcp_port = atoi(val);
         }
     }
@@ -160,7 +161,11 @@ void game_post_nmi(uint64_t frame_count) {
 }
 
 int game_handle_arg(const char *key, const char *val) {
-    /* TCP port is set exclusively via debug.ini (port=XXXX) */
+    if (strcmp(key, "--tcp-port") == 0 && val) {
+        s_tcp_port = atoi(val);
+        s_tcp_port_from_cli = 1;
+        return 1;
+    }
     if (strcmp(key, "--verify") == 0) {
         g_run_mode = RUN_MODE_VERIFY;
         printf("[Verify] Dual-execution verify mode enabled\n");
@@ -253,6 +258,23 @@ void game_run_main(void) {
              * doesn't include non-battery WRAM on MMC1 */
             for (int _i = 0; _i < 0x2000; _i++)
                 g_sram[_i] = nestopia_bridge_cpu_read(0x6000 + _i);
+
+            /* Copy Nestopia CPU state to runner globals for ring buffer */
+            {
+                NestopiaCpuRegs cpu_regs;
+                nestopia_bridge_get_cpu_regs(&cpu_regs);
+                g_cpu.A = cpu_regs.a;
+                g_cpu.X = cpu_regs.x;
+                g_cpu.Y = cpu_regs.y;
+                g_cpu.S = cpu_regs.sp;
+                /* Unpack P flags */
+                g_cpu.C = (cpu_regs.p >> 0) & 1;
+                g_cpu.Z = (cpu_regs.p >> 1) & 1;
+                g_cpu.I = (cpu_regs.p >> 2) & 1;
+                g_cpu.D = (cpu_regs.p >> 3) & 1;
+                g_cpu.V = (cpu_regs.p >> 6) & 1;
+                g_cpu.N = (cpu_regs.p >> 7) & 1;
+            }
 
             /* Copy Nestopia PPU state to runner globals for ring buffer */
             {

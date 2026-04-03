@@ -35,6 +35,14 @@ void nestopia_bridge_get_nametable(uint8_t *out, int len);  /* Nametable (up to 
 void nestopia_bridge_get_palette(uint8_t *out);             /* Palette RAM (32 bytes) */
 void nestopia_bridge_get_oam(uint8_t *out);                 /* OAM (256 bytes) */
 
+/* CPU register extraction — reads Nestopia's internal CPU state */
+typedef struct {
+    uint8_t a, x, y, sp, p;
+    uint16_t pc;
+} NestopiaCpuRegs;
+
+void nestopia_bridge_get_cpu_regs(NestopiaCpuRegs *out);
+
 #ifdef __cplusplus
 }
 #endif

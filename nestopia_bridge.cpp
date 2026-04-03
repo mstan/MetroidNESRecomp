@@ -257,4 +257,16 @@ void nestopia_bridge_get_oam(uint8_t *out) {
     memcpy(out, oam.ram, 0x100);
 }
 
+void nestopia_bridge_get_cpu_regs(NestopiaCpuRegs *out) {
+    if (!out || !s_loaded) return;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    out->a  = (uint8_t)mach.cpu.GetA();
+    out->x  = (uint8_t)mach.cpu.GetX();
+    out->y  = (uint8_t)mach.cpu.GetY();
+    out->sp = (uint8_t)mach.cpu.GetSP();
+    out->p  = (uint8_t)mach.cpu.GetFlags();
+    out->pc = (uint16_t)mach.cpu.GetPC();
+}
+
 } /* extern "C" */
