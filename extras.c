@@ -27,16 +27,32 @@
 static int s_debug_enabled = 0;
 static void get_exe_relative_path(const char *filename, char *out, int max_len);
 
+static int s_tcp_port = 5370;
+
 static int check_debug_ini(void) {
     char path[512];
     get_exe_relative_path("debug.ini", path, sizeof(path));
     FILE *f = fopen(path, "r");
-    if (f) { fclose(f); return 1; }
-    return 0;
+    if (!f) return 0;
+    /* Parse key=value lines */
+    char line[256];
+    while (fgets(line, sizeof(line), f)) {
+        char *eq = strchr(line, '=');
+        if (!eq) continue;
+        *eq = '\0';
+        char *key = line, *val = eq + 1;
+        /* Trim whitespace/newline from val */
+        char *end = val + strlen(val) - 1;
+        while (end > val && (*end == '\n' || *end == '\r' || *end == ' ')) *end-- = '\0';
+        if (strcmp(key, "port") == 0) {
+            s_tcp_port = atoi(val);
+        }
+    }
+    fclose(f);
+    return 1;
 }
 
 /* ---- Debug server state ---- */
-static int s_tcp_port = 4370;
 
 /* ROM path exposed by runner for verify mode init */
 const char *g_rom_path_for_extras = NULL;
@@ -56,11 +72,35 @@ static void get_exe_relative_path(const char *filename, char *out, int max_len) 
 
 /* ---- game_extras.h implementation ---- */
 
+/* ---- Scroll corruption fix ----
+ * During the title-to-gameplay init, the column loader (EA2B) calls
+ * the scroll stepper (E6A7) which does DEC $FD when $FD=0, wrapping
+ * it to 0xFF.  On real NES this doesn't happen because NMI is disabled
+ * for 3 frames during the transition, preventing E6A7 from running.
+ * On native recomp, the NMI disable/re-enable cycle completes within
+ * one frame, so E6A7 runs and corrupts $FD.
+ *
+ * Fix: block the 0→0xFF write to $FD while the init is in progress
+ * ($1E < 2 = transition not complete). */
+static void scroll_guard_callback(uint16_t addr, uint8_t old_val, uint8_t new_val) {
+    (void)addr;
+    g_write_bp_block = 0;  /* default: allow */
+    /* Block $FD wrapping from 0 to 0xFF during init transition */
+    if (old_val == 0x00 && new_val == 0xFF && g_ram[0x1E] < 2) {
+        g_write_bp_block = 1;  /* block this write */
+    }
+}
+
 uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
 
 const char *game_get_name(void) { return "Metroid"; }
 
 void game_on_init(void) {
+    /* Scroll corruption guard: block $FD 0→0xFF wrap during init */
+    g_write_bp_addr = 0xFD;
+    g_write_bp_match_val = 0xFF;  /* only trigger when writing 0xFF */
+    g_write_bp_callback = scroll_guard_callback;
+
     /* NOTE: Metroid DOES have volatile WRAM at $6000-$7FFF (MMC1 standard).
      * Both native and emulated have the same level data at $71C3 eventually.
      * The scroll bug is from NMI TIMING: native's scroll check runs before
@@ -80,6 +120,14 @@ void game_on_init(void) {
     if (s_debug_enabled) {
         printf("[Debug] debug.ini found -- TCP server and verify mode enabled\n");
         debug_server_init(s_tcp_port);
+
+        /* Auto-register followers for scroll bug investigation */
+        debug_server_add_follower(0xFF, -1);
+        debug_server_add_follower(0xFD, -1);
+        debug_server_add_follower(0x50, -1);
+        debug_server_add_follower(0x5A, -1);
+        debug_server_add_follower(0x49, -1);
+        printf("[Debug] Auto-registered 5 followers for scroll investigation\n");
 
         if (g_run_mode != RUN_MODE_NATIVE && g_rom_path_for_extras) {
             verify_mode_init(g_rom_path_for_extras);
@@ -112,11 +160,7 @@ void game_post_nmi(uint64_t frame_count) {
 }
 
 int game_handle_arg(const char *key, const char *val) {
-    if (strcmp(key, "--tcp-port") == 0 && val) {
-        s_tcp_port = atoi(val);
-        printf("[Debug] TCP port set to %d\n", s_tcp_port);
-        return 1;
-    }
+    /* TCP port is set exclusively via debug.ini (port=XXXX) */
     if (strcmp(key, "--verify") == 0) {
         g_run_mode = RUN_MODE_VERIFY;
         printf("[Verify] Dual-execution verify mode enabled\n");
@@ -132,9 +176,9 @@ int game_handle_arg(const char *key, const char *val) {
 }
 
 const char *game_arg_usage(void) {
-    return "  --tcp-port PORT     TCP debug server port (default 4370)\n"
-           "  --verify            Enable dual-execution verify mode (Nestopia oracle)\n"
-           "  --emulated          Run purely via Nestopia emulator (no recompiled code)\n";
+    return "  --verify            Enable dual-execution verify mode (Nestopia oracle)\n"
+           "  --emulated          Run purely via Nestopia emulator (no recompiled code)\n"
+           "  TCP port set via debug.ini (port=XXXX) in the exe directory\n";
 }
 
 void game_run_nmi(void) {
