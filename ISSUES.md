@@ -131,15 +131,53 @@ native S=0x05 vs emulated S=0xFF.
                 Native  Emulated
 $1E=00 (title): 0xFF    0xFF     (matched after bail RTS fix)
 $1E=01 (init):  varies  varies
-$1E=02 (load):  0x03    0xFD     ← 250-byte divergence
+$1E=02 (load):  0x03    0xFD     ← divergence
 $1E=08 (game):  0x05    0xFF
 ```
 
-**Investigation needed:** The level loading path ($1E=02) involves the
-column renderer (EF13/EF78/EF8C merged functions) and PPU buffer processing.
-The bail func RTS change may have introduced an over-pop in the JMP case
-(func_C328 is reached via both JSR and JMP $C328). Need to trace S through
-the $1E=01→02 transition to find the specific divergence point.
+**Root cause:** The unsuppressed bail func RTS over-pops by 2 when the bail's
+caller (func_C37E or func_C328) is reached via JMP instead of JSR. JMP doesn't
+push a return address, so the bail's RTS pops the *grandparent's* return addr.
+
+**Specific JMP-to-bail sites:**
+- `$8AFC`: JMP func_C37E (inside func_8AC7_b0, palette update — bank 0)
+- `$945C`: JMP func_C328 (inside func_9449_b0, PPU setup — bank 0)
+
+Both func_C37E and func_C328 are ALSO called via JSR from other sites:
+- `$8AED`: JSR func_C37E (same func_8AC7_b0 — calls it twice, JSR then JMP)
+- `$FF37`: JSR func_C328 (from multiple banks)
+
+**Approaches tried and failed:**
+1. **Suppress RTS + bail-site S+=2 compensation** — Works for JSR callers
+   (pops the right bytes) but over-pops for JMP callers (pops grandparent's
+   bytes, then grandparent's own RTS double-pops).
+2. **g_bail_active runtime flag** — Set flag at bail site, check at JSR call
+   sites to propagate the bail. WRONG: exits 2 C function levels instead of 1.
+   On real 6502, the bail returns to the caller's caller which *continues
+   executing*. The flag makes the caller's caller also exit early.
+3. **push_jmp dummy return addr at JMP sites** — Push a dummy before calling
+   bail-containing functions via JMP. Bail's RTS pops the dummy. WRONG: when
+   the bail does NOT fire (normal return), the function's own RTS pops the
+   dummy instead of the real return addr, leaving the real addr on the stack.
+
+**The fundamental problem:** The bail's behavior depends on runtime context
+(was the caller JSR'd or JMP'd?). No single compile-time RTS policy works
+for both cases. The current unsuppressed RTS is correct for JSR callers
+(the common case, fixing the title screen) but over-pops for JMP callers.
+
+**Possible next steps:**
+- **Runtime JSR/JMP detection**: At function entry, save whether the function
+  was entered with a valid JSR push on the stack (compare top-of-stack with
+  the expected return addr). At the bail's RTS, pop conditionally.
+- **Restructure bail callers**: Use merge_func or inline the bail-containing
+  code into the JMP callers so the JMP becomes a goto.  $8AFC → C37E and
+  $945C → C328 are the only two JMP-to-bail sites.
+- **Selective RTS suppression**: Suppress the bail's RTS only when the
+  enclosing function was entered from a known JMP site.  This could use a
+  per-function flag set by the JMP codegen.
+- **Accept and compensate**: Keep unsuppressed RTS, add S-=2 at the specific
+  JMP sites ($8AFC, $945C) after the call returns to undo the over-pop. This
+  is fragile but targeted.
 
 ---
 
