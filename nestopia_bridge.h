@@ -29,6 +29,12 @@ typedef struct {
 
 void nestopia_bridge_get_ppu_regs(NestopiaPpuRegs *out);
 
+/* PPU VRAM extraction — reads Nestopia's internal PPU memory for oracle comparison */
+void nestopia_bridge_get_chr_ram(uint8_t *out, int len);    /* CHR pattern tables (up to 8KB) */
+void nestopia_bridge_get_nametable(uint8_t *out, int len);  /* Nametable (up to 4KB, mirrored) */
+void nestopia_bridge_get_palette(uint8_t *out);             /* Palette RAM (32 bytes) */
+void nestopia_bridge_get_oam(uint8_t *out);                 /* OAM (256 bytes) */
+
 #ifdef __cplusplus
 }
 #endif

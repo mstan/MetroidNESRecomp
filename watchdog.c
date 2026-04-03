@@ -24,10 +24,12 @@ void watchdog_frame_start(void) {
 }
 
 void watchdog_check(void) {
-    /* Call maybe_trigger_vblank() on every backward branch so that tight
-     * loops without memory access still get VBlank callbacks. This is the
-     * primary mechanism for preventing stuck frames. */
-    maybe_trigger_vblank(2);
+    /* Fire any pending VBlank at backward branch points (loop boundaries).
+     * This is the ONLY place NMI fires — at safe points where the game's
+     * state is consistent (correct bank mapped, ZP pointers set up).
+     * maybe_trigger_vblank() only counts cycles and sets a pending flag;
+     * the actual NMI handler runs here. */
+    maybe_fire_pending_vblank();
 
     clock_t now = clock();
     double elapsed = (double)(now - s_frame_start) / CLOCKS_PER_SEC;

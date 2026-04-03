@@ -221,4 +221,40 @@ void nestopia_bridge_get_ppu_regs(NestopiaPpuRegs *out) {
     out->scroll_y = (uint8_t)((coarseY << 3) | fineY);
 }
 
+void nestopia_bridge_get_chr_ram(uint8_t *out, int len) {
+    if (!out || !s_loaded) return;
+    if (len > 0x2000) len = 0x2000;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    Nes::Core::Ppu::ChrMem &chr = mach.ppu.GetChrMem();
+    for (int i = 0; i < len; i++)
+        out[i] = chr.Peek(i);
+}
+
+void nestopia_bridge_get_nametable(uint8_t *out, int len) {
+    if (!out || !s_loaded) return;
+    if (len > 0x1000) len = 0x1000;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    Nes::Core::Ppu::NmtMem &nmt = mach.ppu.GetNmtMem();
+    for (int i = 0; i < len; i++)
+        out[i] = nmt.Peek(i);
+}
+
+void nestopia_bridge_get_palette(uint8_t *out) {
+    if (!out || !s_loaded) return;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    const Nes::Core::Ppu::Palette &pal = mach.ppu.GetPalette();
+    memcpy(out, pal.ram, 0x20);
+}
+
+void nestopia_bridge_get_oam(uint8_t *out) {
+    if (!out || !s_loaded) return;
+    Nes::Api::Emulator &emu = nestopia_get_emulator_instance();
+    Nes::Core::Machine &mach = emu.GetMachine();
+    const Nes::Core::Ppu::Oam &oam = mach.ppu.GetOam();
+    memcpy(out, oam.ram, 0x100);
+}
+
 } /* extern "C" */

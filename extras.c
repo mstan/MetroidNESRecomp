@@ -264,6 +264,12 @@ void game_run_main(void) {
                 g_ppuscroll_y = ppu_regs.scroll_y;
             }
 
+            /* Copy Nestopia VRAM to runner globals for ring buffer oracle comparison */
+            nestopia_bridge_get_chr_ram(g_chr_ram, 0x2000);
+            nestopia_bridge_get_nametable(g_ppu_nt, 0x1000);
+            nestopia_bridge_get_palette(g_ppu_pal);
+            nestopia_bridge_get_oam(g_ppu_oam);
+
             g_frame_count++;
 
             debug_server_record_frame();
