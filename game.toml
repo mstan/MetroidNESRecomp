@@ -192,3 +192,708 @@ bank5 = [
     0xC3D4, 0xCB73, 0xCBDA, 0xCC03, 0xCC07, 0xD2FD, 0xDC1E, 0xE449,
     0xE770, 0xE77B, 0xE8F1, 0xE8FC, 0xE96A, 0xF744, 0xF74B,
 ]
+
+# ── Data regions ──────────────────────────────────────────────────────────
+# Auto-extracted from metroidret/m1disasm WLA-DX disassembly.
+# Excludes regions < 8 bytes. Used by table-run scanner to avoid
+# misidentifying structured data as function pointer tables.
+[[data_region]]
+bank = 0
+start = 0x802A
+end = 0x8068
+
+[[data_region]]
+bank = 0
+start = 0x80C8
+end = 0x80D0
+
+[[data_region]]
+bank = 0
+start = 0x82F4
+end = 0x87AB
+
+[[data_region]]
+bank = 0
+start = 0x87C4
+end = 0x87CF
+
+[[data_region]]
+bank = 0
+start = 0x88BE
+end = 0x88FE
+
+[[data_region]]
+bank = 0
+start = 0x89AA
+end = 0x8A8C
+
+[[data_region]]
+bank = 0
+start = 0x8A9A
+end = 0x8AA7
+
+[[data_region]]
+bank = 0
+start = 0x8ABD
+end = 0x8AC7
+
+[[data_region]]
+bank = 0
+start = 0x8AFF
+end = 0x8B5F
+
+[[data_region]]
+bank = 0
+start = 0x8B6D
+end = 0x8B79
+
+[[data_region]]
+bank = 0
+start = 0x8E07
+end = 0x8E17
+
+[[data_region]]
+bank = 0
+start = 0x9021
+end = 0x909F
+
+[[data_region]]
+bank = 0
+start = 0x92B4
+end = 0x92D4
+
+[[data_region]]
+bank = 0
+start = 0x937F
+end = 0x9394
+
+[[data_region]]
+bank = 0
+start = 0x93B9
+end = 0x93C6
+
+[[data_region]]
+bank = 0
+start = 0x943F
+end = 0x9449
+
+[[data_region]]
+bank = 0
+start = 0x952C
+end = 0x981E
+
+[[data_region]]
+bank = 0
+start = 0x98C0
+end = 0x9A07
+
+[[data_region]]
+bank = 0
+start = 0x9AC5
+end = 0x9AD5
+
+[[data_region]]
+bank = 0
+start = 0x9B83
+end = 0x9B93
+
+[[data_region]]
+bank = 0
+start = 0x9CFA
+end = 0x9EAA
+
+[[data_region]]
+bank = 0
+start = 0x9EB8
+end = 0x9F54
+
+[[data_region]]
+bank = 0
+start = 0x9F81
+end = 0xA93E
+
+[[data_region]]
+bank = 0
+start = 0xA961
+end = 0xB31B
+
+[[data_region]]
+bank = 0
+start = 0xB4FA
+end = 0xB50E
+
+[[data_region]]
+bank = 0
+start = 0xB63B
+end = 0xB64F
+
+[[data_region]]
+bank = 0
+start = 0xBBF9
+end = 0xBC35
+
+[[data_region]]
+bank = 0
+start = 0xBCAF
+end = 0xBF3C
+
+[[data_region]]
+bank = 0
+start = 0xBF79
+end = 0xBFD3
+
+[[data_region]]
+bank = 0
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 1
+start = 0x8048
+end = 0x8058
+
+[[data_region]]
+bank = 1
+start = 0x8572
+end = 0x8B13
+
+[[data_region]]
+bank = 1
+start = 0x8B8F
+end = 0x8B9D
+
+[[data_region]]
+bank = 1
+start = 0x8D38
+end = 0x95C1
+
+[[data_region]]
+bank = 1
+start = 0x95CA
+end = 0x95E3
+
+[[data_region]]
+bank = 1
+start = 0x95E9
+end = 0x999F
+
+[[data_region]]
+bank = 1
+start = 0x9A9E
+end = 0x9AA6
+
+[[data_region]]
+bank = 1
+start = 0x9CBF
+end = 0x9CD3
+
+[[data_region]]
+bank = 1
+start = 0x9D3D
+end = 0xB31B
+
+[[data_region]]
+bank = 1
+start = 0xB4FA
+end = 0xB50E
+
+[[data_region]]
+bank = 1
+start = 0xB63B
+end = 0xB64F
+
+[[data_region]]
+bank = 1
+start = 0xBBF9
+end = 0xBC35
+
+[[data_region]]
+bank = 1
+start = 0xBCAF
+end = 0xBF3C
+
+[[data_region]]
+bank = 1
+start = 0xBF79
+end = 0xBFD3
+
+[[data_region]]
+bank = 1
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 2
+start = 0x8048
+end = 0x8058
+
+[[data_region]]
+bank = 2
+start = 0x8572
+end = 0x8B13
+
+[[data_region]]
+bank = 2
+start = 0x8B8F
+end = 0x8B9D
+
+[[data_region]]
+bank = 2
+start = 0x8D38
+end = 0x95C1
+
+[[data_region]]
+bank = 2
+start = 0x95CA
+end = 0x95E3
+
+[[data_region]]
+bank = 2
+start = 0x95E9
+end = 0x9831
+
+[[data_region]]
+bank = 2
+start = 0x99E9
+end = 0x99F1
+
+[[data_region]]
+bank = 2
+start = 0x9BA1
+end = 0xB31B
+
+[[data_region]]
+bank = 2
+start = 0xB4FA
+end = 0xB50E
+
+[[data_region]]
+bank = 2
+start = 0xB63B
+end = 0xB64F
+
+[[data_region]]
+bank = 2
+start = 0xBBF9
+end = 0xBC35
+
+[[data_region]]
+bank = 2
+start = 0xBCAF
+end = 0xBF3C
+
+[[data_region]]
+bank = 2
+start = 0xBF79
+end = 0xBFD3
+
+[[data_region]]
+bank = 2
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 3
+start = 0x8048
+end = 0x8058
+
+[[data_region]]
+bank = 3
+start = 0x8572
+end = 0x8B13
+
+[[data_region]]
+bank = 3
+start = 0x8B8F
+end = 0x8B9D
+
+[[data_region]]
+bank = 3
+start = 0x8D38
+end = 0x95A6
+
+[[data_region]]
+bank = 3
+start = 0x95CA
+end = 0x95E3
+
+[[data_region]]
+bank = 3
+start = 0x95E9
+end = 0x97DA
+
+[[data_region]]
+bank = 3
+start = 0x99D6
+end = 0x99E2
+
+[[data_region]]
+bank = 3
+start = 0x9A17
+end = 0x9A25
+
+[[data_region]]
+bank = 3
+start = 0x9D93
+end = 0x9DD8
+
+[[data_region]]
+bank = 3
+start = 0x9DDF
+end = 0x9DF5
+
+[[data_region]]
+bank = 3
+start = 0x9F39
+end = 0x9F49
+
+[[data_region]]
+bank = 3
+start = 0xA0A3
+end = 0xA0C6
+
+[[data_region]]
+bank = 3
+start = 0xA1DE
+end = 0xA1EA
+
+[[data_region]]
+bank = 3
+start = 0xA32E
+end = 0xB31B
+
+[[data_region]]
+bank = 3
+start = 0xB4FA
+end = 0xB50E
+
+[[data_region]]
+bank = 3
+start = 0xB63B
+end = 0xB64F
+
+[[data_region]]
+bank = 3
+start = 0xBBF9
+end = 0xBC35
+
+[[data_region]]
+bank = 3
+start = 0xBCAF
+end = 0xBF3C
+
+[[data_region]]
+bank = 3
+start = 0xBF79
+end = 0xBFD3
+
+[[data_region]]
+bank = 3
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 4
+start = 0x8048
+end = 0x8058
+
+[[data_region]]
+bank = 4
+start = 0x8572
+end = 0x8B13
+
+[[data_region]]
+bank = 4
+start = 0x8B8F
+end = 0x8B9D
+
+[[data_region]]
+bank = 4
+start = 0x8D38
+end = 0x95C1
+
+[[data_region]]
+bank = 4
+start = 0x95CA
+end = 0x95E3
+
+[[data_region]]
+bank = 4
+start = 0x95E9
+end = 0x9903
+
+[[data_region]]
+bank = 4
+start = 0x99DC
+end = 0x99E4
+
+[[data_region]]
+bank = 4
+start = 0x9BBA
+end = 0x9BCE
+
+[[data_region]]
+bank = 4
+start = 0x9C38
+end = 0xB1EE
+
+[[data_region]]
+bank = 4
+start = 0xB200
+end = 0xB31B
+
+[[data_region]]
+bank = 4
+start = 0xB4FA
+end = 0xB50E
+
+[[data_region]]
+bank = 4
+start = 0xB63B
+end = 0xB64F
+
+[[data_region]]
+bank = 4
+start = 0xBBF9
+end = 0xBC35
+
+[[data_region]]
+bank = 4
+start = 0xBCAF
+end = 0xBF3C
+
+[[data_region]]
+bank = 4
+start = 0xBF79
+end = 0xBFD3
+
+[[data_region]]
+bank = 4
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 5
+start = 0x8048
+end = 0x8058
+
+[[data_region]]
+bank = 5
+start = 0x8572
+end = 0x8B13
+
+[[data_region]]
+bank = 5
+start = 0x8B8F
+end = 0x8B9D
+
+[[data_region]]
+bank = 5
+start = 0x8D38
+end = 0x95C1
+
+[[data_region]]
+bank = 5
+start = 0x95CA
+end = 0x95E3
+
+[[data_region]]
+bank = 5
+start = 0x95E9
+end = 0x9828
+
+[[data_region]]
+bank = 5
+start = 0x99AD
+end = 0x99B5
+
+[[data_region]]
+bank = 5
+start = 0x9B3F
+end = 0xB1F6
+
+[[data_region]]
+bank = 5
+start = 0xB200
+end = 0xB31B
+
+[[data_region]]
+bank = 5
+start = 0xB4FA
+end = 0xB50E
+
+[[data_region]]
+bank = 5
+start = 0xB63B
+end = 0xB64F
+
+[[data_region]]
+bank = 5
+start = 0xBBF9
+end = 0xBC35
+
+[[data_region]]
+bank = 5
+start = 0xBCAF
+end = 0xBF3C
+
+[[data_region]]
+bank = 5
+start = 0xBF79
+end = 0xBFD3
+
+[[data_region]]
+bank = 5
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 6
+start = 0x8000
+end = 0xBFB0
+
+[[data_region]]
+bank = 6
+start = 0xBFD5
+end = 0xBFFA
+
+[[data_region]]
+bank = 7
+start = 0xC141
+end = 0xC155
+
+[[data_region]]
+bank = 7
+start = 0xC51F
+end = 0xC531
+
+[[data_region]]
+bank = 7
+start = 0xC5A8
+end = 0xC5B6
+
+[[data_region]]
+bank = 7
+start = 0xC6E0
+end = 0xC7AB
+
+[[data_region]]
+bank = 7
+start = 0xCC22
+end = 0xCC36
+
+[[data_region]]
+bank = 7
+start = 0xCC7D
+end = 0xCC8B
+
+[[data_region]]
+bank = 7
+start = 0xD1D7
+end = 0xD1EE
+
+[[data_region]]
+bank = 7
+start = 0xD2E3
+end = 0xD2EB
+
+[[data_region]]
+bank = 7
+start = 0xD4D3
+end = 0xD4EB
+
+[[data_region]]
+bank = 7
+start = 0xD58B
+end = 0xD5C1
+
+[[data_region]]
+bank = 7
+start = 0xD7BD
+end = 0xD7D1
+
+[[data_region]]
+bank = 7
+start = 0xDAD2
+end = 0xDADA
+
+[[data_region]]
+bank = 7
+start = 0xDE35
+end = 0xDE3D
+
+[[data_region]]
+bank = 7
+start = 0xE049
+end = 0xE094
+
+[[data_region]]
+bank = 7
+start = 0xE1B9
+end = 0xE1E1
+
+[[data_region]]
+bank = 7
+start = 0xEA1B
+end = 0xEA25
+
+[[data_region]]
+bank = 7
+start = 0xEAE3
+end = 0xEAF3
+
+[[data_region]]
+bank = 7
+start = 0xEBFC
+end = 0xEC04
+
+[[data_region]]
+bank = 7
+start = 0xEDE2
+end = 0xEDF8
+
+[[data_region]]
+bank = 7
+start = 0xF36E
+end = 0xF37C
+
+[[data_region]]
+bank = 7
+start = 0xF95E
+end = 0xF96A
+
+[[data_region]]
+bank = 7
+start = 0xFAEA
+end = 0xFAF2
+
+[[data_region]]
+bank = 7
+start = 0xFC67
+end = 0xFC6F
+
+[[data_region]]
+bank = 7
+start = 0xFCAA
+end = 0xFCB2
+
+[[data_region]]
+bank = 7
+start = 0xFE31
+end = 0xFE3D
+
+[[data_region]]
+bank = 7
+start = 0xFE79
+end = 0xFE83
+
+[[data_region]]
+bank = 7
+start = 0xFF86
+end = 0xFFB0
+
+[[data_region]]
+bank = 7
+start = 0xFFD5
+end = 0xFFFA
+
