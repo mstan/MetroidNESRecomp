@@ -157,7 +157,6 @@ void game_post_nmi(uint64_t frame_count) {
         debug_server_record_frame();
         debug_server_check_watchpoints();
     }
-
 }
 
 int game_handle_arg(const char *key, const char *val) {
@@ -308,7 +307,9 @@ void game_run_main(void) {
     }
 }
 
-/* No dispatch override needed for Metroid (no SRAM code execution) */
+/* Dispatch override: intercept specific calls to track S balance.
+ * call_by_address calls this when no match is found in the dispatch table.
+ * We can also use it to PRE-HOOK known addresses by declaring externs. */
 int game_dispatch_override(uint16_t addr) {
     (void)addr;
     return 0;

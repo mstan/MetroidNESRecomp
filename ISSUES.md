@@ -117,11 +117,81 @@ Frame 116: S=0xFF  (stable)
 
 ---
 
-## ACTIVE: S divergence during gameplay transition ($1E=01 to 02)
+## RESOLVED: S divergence during gameplay transition ($1E=01 to 02)
 
-**Priority:** High — prevents correct gameplay
+**Status:** Fixed (recompiler: cond_bail_func + merge_range)
 
-**Symptom:** During the title-to-gameplay transition, native S diverges from
+### April 3, 2026 session findings
+
+**NMI is confirmed balanced.** PRE-NMI S == POST-NMI S every frame during transition.
+The S leak is in the MAIN LOOP code between VBlanks, not in the NMI handler.
+
+**New recompiler feature: `merge_range`** — Added `[[merge_range]]` to game.toml
+and recompiler (game_config.h/c, code_generator.c). Automatically merges ALL
+discovered entry points within an address range. Replaces 13 individual `merge_func`
+entries with one `merge_range bank=7 addr_lo=0xEF11 addr_hi=0xEF8D`.
+
+The EF13 merge was INCOMPLETE — function finder discovered 14+ entry points but only
+2 were merged. merge_range fixes all instruction-boundary entries. 3 overlapping
+mid-instruction entries (EF2A, EF4C, EF8D) remain as separate functions that call the
+merged wrapper.
+
+**Result: S leak PERSISTS despite comprehensive merge.** The EF13 JMP loop was
+NOT the root cause (or not the only one).
+
+**func_EA2B wrapper results (definitive):**
+Wrapping func_EA2B with entry/exit S check revealed each call returns with S
+2 bytes HIGHER than entry (bail/RTS pops JSR $EA2B return). This is expected
+per-call, but iteration n=4 ($5A=0xF4) produces a catastrophic -248 drop.
+The $5A=0xF4 path goes through func_EA13 inline_dispatch case 4 (func_EA26).
+This function just sets $5A=0xFF and does RTS (S+=2). The -248 drop is unexplained.
+
+**ROOT CAUSE FOUND (April 3 session, final):**
+
+func_C36B contains bail function code (PLA PLA at $C37B-$C37C) INLINE within
+its body. When the PPU buffer overflows (X >= 0x4F), the function takes the
+bail path: PLA PLA RTS = S+=4, but only 2 bytes were pushed (JSR $C36B). The
+extra 2 bytes over-pop the stack.
+
+func_C36B is called 4 times per iteration of func_E5E2 (inline_dispatch case 3
+from func_EA13 during the $5A >= 0xF0 cleanup phase). Each overflow bail pops
+2 extra bytes. Over ~125 iterations of the column loading loop, this accumulates
+~250 bytes of stack corruption.
+
+func_C376 is listed as `stack_bail_func` in game.toml, but func_C36B is NOT
+listed — the function finder merged $C36B through $C37D into one function that
+CONTAINS the bail code. The recompiler doesn't know that the PLA PLA at
+$C37B-$C37C is a bail — it treats them as normal stack operations.
+
+**Fix needed in recompiler:** Detect when a function body CONTAINS a known
+stack_bail_func's code (the PLA PLA sequence at the bail address). Either:
+1. Emit `return;` after the bail path within the containing function
+2. Split the function so the bail is a separate callable
+3. Add func_C36B to stack_bail_func as an additional bail entry
+
+**Fix:** Two recompiler changes:
+1. `cond_bail_func` — new config/codegen concept for functions that CONTAIN
+   inline bail code (PLA PLA + RTS) that fires conditionally. At JSR call sites,
+   emits `{ uint8_t _cbs = S; push; func(); if (S != _cbs) return; }` to detect
+   and propagate the bail. game.toml: `[[cond_bail_func]] addr = 0xC36B`.
+2. `merge_range` — auto-merges all function entry points in an address range.
+   Replaces 13 individual merge_func entries. game.toml:
+   `[[merge_range]] bank=7 addr_lo=0xEF11 addr_hi=0xEF8D`.
+
+**Verified:** Native S=0xFF at gameplay, matching emulator oracle.
+
+**Debug note:** stderr logging is unreliable on Windows (buffering). Always use
+`printf` + `fflush(stdout)` for debug output in the runner.
+
+**Measured data (after fix):**
+```
+Frame 188: S=0xFD ($1E=02, transition complete)
+Frame 189: S=0xFF ($1E=08, gameplay — matches emulator oracle)
+```
+
+---
+
+## HISTORICAL: Earlier S divergence analysis (superseded by above)
 emulator at the $1E=01→02 boundary (level loading). Native S drops to 0x03
 while emulator shows 0xFD. This ~250-byte offset persists into gameplay ($1E=08):
 native S=0x05 vs emulated S=0xFF.

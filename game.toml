@@ -20,6 +20,15 @@ addr = 0xC27C
 [[stack_bail_func]]
 addr = 0xC376
 
+# ── Conditional bail functions ─────────────────────────────────────────────
+# func_C36B writes to the PPU command buffer. When the buffer is full
+# (X >= $4F), it falls through to the $C376 bail code (PLA PLA + RTS),
+# bailing two levels up. On normal return (buffer not full), it does a
+# regular RTS. The codegen emits an S check at call sites to detect
+# which path was taken and propagate the bail.
+[[cond_bail_func]]
+addr = 0xC36B
+
 # ── Push-JMP targets ───────────────────────────────────────────────────────
 # Bail-containing functions reached via JMP need a dummy push so the bail's
 # RTS has a safe pop target.  `source` restricts the push to a specific JMP
@@ -33,19 +42,15 @@ addr = 0xC376
 addr = 0xC328
 source = 0x945C
 
-# ── Merge functions ─────────────────────────────────────────────────────────
-# EF13, EF78, and EF8C form a single function with an outer loop
-# (JMP $EF13 at $EF96).  Without merge, the JMP becomes a tail-call
-# whose RTS over-pops by 2 per iteration.
-[[merge_func]]
+# ── Merge ranges ────────────────────────────────────────────────────────────
+# EF00-EF8D contains a tile writer with an outer loop (JMP $EF13 at $EF96).
+# The function finder discovers many mid-function entry points from dispatch
+# tables in various banks.  merge_range automatically merges ALL of them so
+# the JMP generates `goto label_EF13` instead of a tail-call that over-pops S.
+[[merge_range]]
 bank = 7
-addr_lo = 0xEF13
-addr_hi = 0xEF78
-
-[[merge_func]]
-bank = 7
-addr_lo = 0xEF13
-addr_hi = 0xEF8C
+addr_lo = 0xEF11
+addr_hi = 0xEF8D
 
 # ── Extra function seeds ───────────────────────────────────────────────────
 # Dynamically dispatched functions not discoverable via static analysis.
