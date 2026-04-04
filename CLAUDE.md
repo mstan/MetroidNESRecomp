@@ -17,6 +17,8 @@ We are achieving **byte-level equivalence with an emulator oracle**.
 
 When something is wrong, the fix belongs in the recompiler or runner (nesrecomp), or in the game's configuration (`game.toml`). Never hand-edit generated output.
 
+**Per-function overrides in game.toml are discouraged.** They are not outright banned, but always favor a universal fix in the recompiler over adding per-function entries (like `cond_bail_func`, `stack_bail_func`, `push_jmp`) to game.toml. Per-function entries are a sign that the recompiler doesn't handle a 6502 pattern generically — fix the pattern recognition instead.
+
 ---
 
 # 🔴 HARD RULES (NON-NEGOTIABLE)
@@ -370,6 +372,7 @@ Before investigating ANY unknown 6502 address or function:
 - **Kill all game instances** before launching new ones — never leave orphans
 - **No indiscriminate screenshots** — don't auto-screenshot every N frames from the runner. Script-triggered screenshots for targeted visual comparison are encouraged.
 - **TCP commands use JSON**: `{"cmd":"read_ppu","addr":"3F00","len":32}` — see `reference_debug_tools.md` in memory for the full command reference
+- **stderr is unreliable on Windows** — `fprintf(stderr, ...)` output may be lost due to buffering when the process exits or when captured via `subprocess.PIPE`. Always use `printf(...)` + `fflush(stdout)` for debug output in the runner and extras.c. Capture stdout to a file for reliable results.
 
 ---
 

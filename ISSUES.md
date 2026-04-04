@@ -251,18 +251,107 @@ for both cases. The current unsuppressed RTS is correct for JSR callers
 
 ---
 
+## ACTIVE: S corruption during $1E=0x03 gameplay transition (frame 565→566)
+
+**Priority:** Critical — blocks all downstream gameplay verification
+
+**Symptom:** Native S drops from 0xFF to 0x01 in a single frame (frame 565→566)
+when $1E transitions from 0x08 to 0x03. Emulator S stays at 0xFF. S stabilizes
+at 0x08-0x0C during $1E=0x09 (active gameplay) — permanently corrupted.
+last_func=func_C0CB throughout the transition.
+
+**Measured data:**
+```
+Frame 564: S=0xFF, $1E=0x08  (last good frame)
+Frame 565: S=0xFF, $1E=0x03  (transition, S still OK)
+Frame 566: S=0x01, $1E=0x03  (S drops 254 bytes in ONE frame)
+Frame 567+: S=0x08-0x0C      (permanently corrupted)
+Emulator:  S=0xFF throughout  (always correct)
+```
+
+**Key finding: S set directly, NOT by pushes.** Stack page ($0100-$01FF) is
+mostly zeros at S=0x01 — normal push operations would leave data. This means
+S was set via TXS (opcode 0x9A) with X holding a small value.
+
+**Lead: func_D076 — misaligned function (UNVERIFIED)**
+The previous session found that $D076 is a function created by the recompiler
+starting ONE BYTE into a BNE instruction at $D075. The real 6502 code is:
+```
+D075: D0 11      BNE +17 → $D088
+D077: B9 9A D0   LDA $D09A,Y
+D07A: 4C 88 D0   JMP $D088
+```
+But the recompiler's func_D076 starts at $D076 and decodes:
+```
+D076: 11 B9      ORA ($B9),Y     ← actually BNE offset + LDA opcode
+D078: 9A         TXS             ← actually low byte of LDA $D09A,Y address
+```
+This phantom TXS would set S=X, explaining the corruption. func_D076 IS in the
+dispatch table, but no static call_by_address(0xD076) was found. Need to verify
+whether it's reached dynamically during $1E=0x03.
+
+**$1E=0x03 dispatch path:** $C114 reads $1E, uses inline dispatch table at $C141.
+$1E=0x03 dispatches to $C92B. The code at $C92B calls $E1F1, $CB29, $C4AA, and
+loops back to $C92A (which is just RTS).
+
+**Protocol status:**
+- [x] Step 1: Sync state — used $1E transitions + S values
+- [x] Step 2: State dump — CPU, ZP, stack page from both sides
+- [x] Step 3: Diff — S=0x01 vs S=0xFF, mapper ctrl also diverged
+- [x] Step 4: First divergence — frame 566, during $1E=0x03
+- [x] Step 5: Write trace — S tracking tooling built, per-instruction tracking done
+- [ ] Step 6: Classify — accumulated drift, not single TXS; nested NMI involvement
+- [ ] Step 7: Fix — blocked on step 6
+
+**S tracking results (measured, April 3 session 2):**
+- Built `watch_s` / `watch_s_history` TCP commands in debug_server.c
+- Added `debug_server_check_s()` to `maybe_trigger_vblank()` for per-instruction tracking
+- Added explicit check after runner NMI push in main_runner.c
+- 730 S changes tracked in frame 566
+- All individual changes are small (+/-1 to +/-3), no single large TXS jump
+- **func_D076 (misaligned function) is NOT the cause** — never called
+- S starts at 0xFF, drifts through operations, ends at 0x01 (+3 wrapping via entry 729)
+- Entry 729 stack: `func_C0CB<func_EB0C<func_EB06<...<func_C0D9<func_EF13<func_EF8C`
+  — inside the NMI handler chain, suggesting nested VBlank involvement
+- The $1E=0x03 dispatch path is: func_C114 → func_C92B (loop) → calls func_E1F1,
+  func_CB29, func_F59A, func_F351, func_F282, func_DE4A, func_B36D_b1, etc.
+- NMI handler (func_C0D9) RTI at $C113 correctly pops 3+4=7 bytes (balanced)
+- Cumulative drift of +13 across 730 changes indicates systematic small leaks
+
+**Disproved leads:**
+- func_D076 misaligned TXS — never called during $1E=0x03 transition
+- func_F282 BCS $F281 "branch to RTS" — individually balanced (+2/-2)
+- Single large TXS instruction — none fired; corruption is accumulated drift
+
+**Active investigation:**
+- The call chain func_C92B → func_E1F1 → various subfunctions contains
+  multiple JSR/RTS pairs that should each be balanced. Something is leaking
+  +2 per iteration of the C92B loop. Need to identify which specific
+  function leaks S by +2 (RTS pops without matching push).
+- Nested NMI behavior may also contribute — the NMI handler chain runs
+  long enough to trigger additional VBlanks, which push/pop the interrupt frame.
+
+**Previous fix attempt (FAILED):** Adding `g_cpu.S = _cbs` to cond_bail_func
+codegen in code_generator.c line 685. Made S oscillate wildly. Reverted.
+
+**Tooling added to runner:**
+- `watch_s` TCP command: enables per-instruction S tracking with frame range filter
+- `watch_s_history` TCP command: retrieves S change log with call stacks and offset paging
+- `debug_server_check_s()`: lightweight S change detector callable from any context
+
+---
+
 ## ACTIVE: Crash when scrolling right
 
-**Priority:** High
+**Priority:** High — likely cascade from S corruption above
 
 **Symptom:** Walking Samus to the right (scrolling the screen) causes a crash
 or hang. The entropy test script reproduces this — the `HOLD RIGHT / WAIT 300`
 section triggers it.
 
-**Investigation needed:** Likely related to the S drift — by the time gameplay
-starts, S is offset by ~32 bytes from expected, which corrupts stack-relative
-reads in the scroll/column loading code. May also be a separate codegen issue
-in the scrolling path. Need to trace via TCP comparison at the point of crash.
+**Investigation needed:** S is corrupted by ~254 bytes when gameplay starts.
+This corrupts stack-relative reads in scroll/column loading code. Will likely
+resolve when the $1E=0x03 S corruption is fixed.
 
 ---
 

@@ -29,6 +29,12 @@ addr = 0xC376
 [[cond_bail_func]]
 addr = 0xC36B
 
+# func_EF00 reads (0x00),Y and bails (PLA PLA RTS) when the value is 0xFF.
+# Called from func_ED98 (JSR $EF00 at $EDCE) during nametable data parsing.
+# Without the S check, the bail over-pops by +2 per invocation.
+[[cond_bail_func]]
+addr = 0xEF00
+
 # ── Push-JMP targets ───────────────────────────────────────────────────────
 # Bail-containing functions reached via JMP need a dummy push so the bail's
 # RTS has a safe pop target.  `source` restricts the push to a specific JMP
