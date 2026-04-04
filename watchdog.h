@@ -9,7 +9,7 @@
 
 #include <setjmp.h>
 
-#define WATCHDOG_TIMEOUT_SECS 2.0
+#define WATCHDOG_TIMEOUT_SECS 10.0
 
 /* Jump buffer for watchdog abort. Set before calling game code. */
 extern jmp_buf g_watchdog_jmp;
