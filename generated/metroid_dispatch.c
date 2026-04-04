@@ -13216,6 +13216,8 @@ int call_by_address(uint16_t addr) {
             func_8AF3_b1(); break;
         case 0x8B03:
             func_8B03_b1(); break;
+        case 0x99B8:
+            func_99B8_b1(); break;
         case 0x99FA:
             func_99FA_b1(); break;
         case 0x9A44:
