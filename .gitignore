@@ -18,6 +18,7 @@ tmp_*.py
 tcp_*.py
 DEBUG.md
 ISSUES.md
+CLAUDE.md
 *.bat
 
 # Generated files from old ROM name (with # in filename)
