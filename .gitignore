@@ -4,10 +4,30 @@ build/
 *.sav
 *.log
 *.zip
+*.obj
 .mcp.json
 debug.ini
 *.cdl
 *.mlbl
 *.cht
 disasm_ref/
+ghdira/
+banks/
+nestopia-core/
 tmp_*.py
+tcp_*.py
+DEBUG.md
+ISSUES.md
+*.bat
+
+# Generated files from old ROM name (with # in filename)
+generated/Metroid_#_NES_*
+
+# Debug tools (not part of release)
+tools/__pycache__/
+tools/_*
+tools/*.py
+!tools/multi_death.py
+!tools/nes_compare.py
+tools/*.txt
+!tools/test_entropy.txt

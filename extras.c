@@ -10,6 +10,7 @@
 #include "verify_mode.h"
 #include "input_script.h"
 #include "recomp_stack.h"
+#include "watchdog.h"
 #ifdef ENABLE_NESTOPIA_ORACLE
 #include "nestopia_bridge.h"
 #endif
@@ -142,6 +143,9 @@ void game_on_init(void) {
 }
 
 void game_on_frame(uint64_t frame_count) {
+#ifdef WATCHDOG_ENABLED
+    watchdog_frame_start();
+#endif
     if (s_debug_enabled) {
         debug_server_poll();
         debug_server_wait_if_paused();
