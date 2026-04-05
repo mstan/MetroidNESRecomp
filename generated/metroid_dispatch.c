@@ -8255,20 +8255,8 @@ int call_by_address(uint16_t addr) {
             func_EAF4(); break;
         case 0x8180:
             func_8180_b0(); break;
-        case 0x8382:
-            func_8382_b0(); break;
-        case 0x8584:
-            func_8584_b0(); break;
-        case 0x8786:
-            func_8786_b0(); break;
         case 0x8988:
             func_8988_b0(); break;
-        case 0x9380:
-            func_9380_b0(); break;
-        case 0xA080:
-            func_A080_b0(); break;
-        case 0xA370:
-            func_A370_b0(); break;
         case 0xB31B:
             func_B31B_b0(); break;
         case 0xB329:
