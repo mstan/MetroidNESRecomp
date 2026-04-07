@@ -6,6 +6,12 @@ build/
 *.zip
 *.obj
 .mcp.json
+
+# nesrecomp/ is a Windows directory junction → F:/Projects/nesrecomp.
+# Not tracked in this repo. Pinned SHA recorded in nesrecomp.pin and
+# enforced at CMake configure time.
+nesrecomp
+
 debug.ini
 *.cdl
 *.mlbl

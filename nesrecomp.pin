@@ -1,0 +1,25 @@
+# nesrecomp.pin — pins this game's expected nesrecomp version.
+#
+# Two optional fields:
+#   branch = <ref>   ref to resolve when `sha` is unset.
+#                    Default: origin/master
+#   sha    = <sha>   exact commit to pin to. Takes precedence over branch.
+#                    Most explicit / reproducible.
+#
+# Resolution at CMake configure time:
+#   - If `sha` is set (non-empty): expected SHA = that literal value.
+#   - Else: expected SHA = `git rev-parse <branch>` (defaulting to
+#     origin/master if branch is also unset).
+#
+# The configure step then compares the resolved expected SHA against
+# `git rev-parse HEAD` of the nesrecomp checkout (the directory junction
+# at ./nesrecomp → F:/Projects/nesrecomp). Build fails on mismatch with
+# clear instructions on how to align.
+#
+# To roll this game forward to a new nesrecomp commit:
+#   1. update `sha` here (or clear it to track a branch tip)
+#   2. ensure F:/Projects/nesrecomp has fetched/checked out that commit
+#   3. commit this file change
+
+branch = origin/master
+sha    = f3d8bd5b09631121e644ab0129eceed1676063eb
