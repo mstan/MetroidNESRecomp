@@ -3,7 +3,7 @@
 # Two optional fields:
 #   branch = <ref>   ref to resolve when `sha` is unset.
 #                    Default: origin/master
-#   sha    = <sha>   exact commit to pin to. Takes precedence over branch.
+#   sha    = d91232200810f568246907ffc4b420c66fddd652
 #                    Most explicit / reproducible.
 #
 # Resolution at CMake configure time:
@@ -22,4 +22,4 @@
 #   3. commit this file change
 
 branch = origin/master
-sha    = 6cdfb7dddb9005de8be54b96fb6061b64912cca0
+sha    = d91232200810f568246907ffc4b420c66fddd652
