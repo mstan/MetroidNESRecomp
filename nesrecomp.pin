@@ -12,13 +12,15 @@
 #     origin/master if branch is also unset).
 #
 # The configure step then compares the resolved expected SHA against
-# `git rev-parse HEAD` of the nesrecomp checkout (the directory junction
-# at ./nesrecomp → F:/Projects/nesrecomp). Build fails on mismatch with
-# clear instructions on how to align.
+# `git rev-parse HEAD` of the nesrecomp checkout. Build fails on mismatch
+# with clear instructions on how to align.
+#
+# First-time setup: run setup.sh (Linux/macOS) or setup.bat (Windows).
+# This clones nesrecomp into ./nesrecomp at the pinned SHA.
 #
 # To roll this game forward to a new nesrecomp commit:
 #   1. update `sha` here (or clear it to track a branch tip)
-#   2. ensure F:/Projects/nesrecomp has fetched/checked out that commit
+#   2. re-run the setup script (or manually: git -C nesrecomp checkout <sha>)
 #   3. commit this file change
 
 branch = origin/master

@@ -40,10 +40,30 @@ This is a foundation for future work. The recompiler and runner are under active
 ### Steps
 
 ```bash
-# Clone with submodule
-git clone --recursive https://github.com/mstan/MetroidNESRecomp.git
+git clone https://github.com/mstan/MetroidNESRecomp.git
 cd MetroidNESRecomp
 
+# Windows
+setup.bat
+
+# Linux / macOS
+chmod +x setup.sh && ./setup.sh
+```
+
+This clones [nesrecomp](https://github.com/mstan/nesrecomp) at the exact
+version pinned in `nesrecomp.pin` and links the Nestopia oracle core.
+
+The generated C files in `generated/` are checked into the repo, so you can
+go straight to building the game:
+
+```bash
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
+```
+
+To regenerate from ROM (optional):
+
+```bash
 # Build the recompiler (only needed once, or when nesrecomp changes)
 cmake -S nesrecomp/recompiler -B nesrecomp/build/recompiler -G "Visual Studio 17 2022" -A x64
 cmake --build nesrecomp/build/recompiler --config Release
@@ -51,19 +71,9 @@ cmake --build nesrecomp/build/recompiler --config Release
 # Generate recompiled C code from your ROM
 nesrecomp/build/recompiler/Release/NESRecomp.exe "path/to/Metroid.nes" --game game.toml
 
-# Build the game
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+# Rebuild the game
 cmake --build build --config Release
-
-# Copy your ROM and SDL2.dll to the output directory
-copy "path\to\Metroid.nes" build\Release\metroid.nes
-copy nesrecomp\runner\external\SDL2\lib\x64\SDL2.dll build\Release\
-
-# Run
-build\Release\MetroidNESRecomp.exe "metroid.nes"
 ```
-
-The generated C files in `generated/` are checked into the repo, so you can skip the recompiler step and go straight to building the game if you just want to run it.
 
 ## Project Structure
 

@@ -7,9 +7,8 @@ build/
 *.obj
 .mcp.json
 
-# nesrecomp/ is a Windows directory junction → F:/Projects/nesrecomp.
-# Not tracked in this repo. Pinned SHA recorded in nesrecomp.pin and
-# enforced at CMake configure time.
+# nesrecomp is cloned by setup.sh / setup.bat into this directory.
+# Pinned SHA recorded in nesrecomp.pin and enforced at CMake configure time.
 nesrecomp
 
 debug.ini
@@ -26,6 +25,7 @@ DEBUG.md
 ISSUES.md
 CLAUDE.md
 *.bat
+!setup.bat
 
 # Generated files from old ROM name (with # in filename)
 generated/Metroid_#_NES_*
