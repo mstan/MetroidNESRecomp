@@ -3,7 +3,7 @@
 # Two optional fields:
 #   branch = <ref>   ref to resolve when `sha` is unset.
 #                    Default: origin/master
-#   sha    = 2b9d0dccb65b7298922d02d6474bdec0e582f911
+#   sha    = 56d85de0895deee300ef4c06817aad7d5abb3ca1
 #                    Most explicit / reproducible.
 #
 # Resolution at CMake configure time:
@@ -24,4 +24,4 @@
 #   3. commit this file change
 
 branch = origin/master
-sha    = 2b9d0dccb65b7298922d02d6474bdec0e582f911
+sha    = ef48c05c3f5f543b99ceff72c5c07279210f771c
