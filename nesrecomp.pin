@@ -23,5 +23,5 @@
 #   2. re-run the setup script (or manually: git -C nesrecomp checkout <sha>)
 #   3. commit this file change
 
-branch = origin/master
-sha    = 204740f8f0949cba906bf5f14e7a1ebe23026ca6
+branch = audit/cpu-coverage-2026-05
+sha    = 7d394316ba6f74d2ea005f76bc2b9d91cfe77dee

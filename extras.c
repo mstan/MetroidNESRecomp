@@ -84,6 +84,11 @@ static void get_exe_relative_path(const char *filename, char *out, int max_len) 
  *
  * Fix: block the 0→0xFF write to $FD while the init is in progress
  * ($1E < 2 = transition not complete). */
+#if 0  /* Legacy write_bp callback API removed at nesrecomp commit 69ecd30
+        * (refactor(rdb): retire legacy write_bp + follower + watch_s).
+        * The Tier 2.5 replacement is rdb_watch_add. Migrating the scroll
+        * guard requires reimplementing the per-write callback through
+        * the RDB hook — not done yet. Left here as a porting reference. */
 static void scroll_guard_callback(uint16_t addr, uint8_t old_val, uint8_t new_val) {
     (void)addr;
     g_write_bp_block = 0;  /* default: allow */
@@ -92,16 +97,19 @@ static void scroll_guard_callback(uint16_t addr, uint8_t old_val, uint8_t new_va
         g_write_bp_block = 1;  /* block this write */
     }
 }
+#endif
 
 uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
 
 const char *game_get_name(void) { return "Metroid"; }
 
 void game_on_init(void) {
-    /* Scroll corruption guard: block $FD 0→0xFF wrap during init */
+#if 0  /* Scroll corruption guard disabled: depends on legacy write_bp API.
+        * See note above scroll_guard_callback. */
     g_write_bp_addr = 0xFD;
     g_write_bp_match_val = 0xFF;  /* only trigger when writing 0xFF */
     g_write_bp_callback = scroll_guard_callback;
+#endif
 
     /* NOTE: Metroid DOES have volatile WRAM at $6000-$7FFF (MMC1 standard).
      * Both native and emulated have the same level data at $71C3 eventually.
@@ -123,13 +131,17 @@ void game_on_init(void) {
         printf("[Debug] debug.ini found -- TCP server and verify mode enabled\n");
         debug_server_init(s_tcp_port);
 
-        /* Auto-register followers for scroll bug investigation */
+        /* Auto-register followers for scroll bug investigation — disabled:
+         * legacy debug_server_add_follower API removed (see scroll_guard
+         * note above). Use rdb_watch_add via TCP when needed. */
+#if 0
         debug_server_add_follower(0xFF, -1);
         debug_server_add_follower(0xFD, -1);
         debug_server_add_follower(0x50, -1);
         debug_server_add_follower(0x5A, -1);
         debug_server_add_follower(0x49, -1);
         printf("[Debug] Auto-registered 5 followers for scroll investigation\n");
+#endif
 
         if (g_run_mode != RUN_MODE_NATIVE && g_rom_path_for_extras) {
             verify_mode_init(g_rom_path_for_extras);
