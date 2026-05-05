@@ -1,9 +1,9 @@
-# nesrecomp.pin — pins this game's expected nesrecomp version.
+# nesrecomp.pin ??? pins this game's expected nesrecomp version.
 #
 # Two optional fields:
 #   branch = <ref>   ref to resolve when `sha` is unset.
 #                    Default: origin/master
-#   sha    = 56d85de0895deee300ef4c06817aad7d5abb3ca1
+#   sha    = 51bbed9900d15a5154686db667e96aecb6fdd000
 #                    Most explicit / reproducible.
 #
 # Resolution at CMake configure time:
@@ -24,4 +24,4 @@
 #   3. commit this file change
 
 branch = audit/cpu-coverage-2026-05
-sha    = 7d394316ba6f74d2ea005f76bc2b9d91cfe77dee
+sha    = 51bbed9900d15a5154686db667e96aecb6fdd000
