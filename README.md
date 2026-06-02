@@ -13,8 +13,8 @@ A static recompilation of Metroid (NES) using [nesrecomp](https://github.com/mst
 ### What works
 
 - Boot to title screen, start game
-- Spawn in Brinstar starting area
-- Walk, jump, shoot, crouch
+- Spawn into the starting area
+- Walk, jump, shoot
 - Pick up Morph Ball power-up
 - Enemy spawning and combat
 - Death, Game Over, password screen, and restart cycle (stable across unlimited cycles)
