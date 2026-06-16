@@ -3,7 +3,7 @@
 # Two optional fields:
 #   branch = <ref>   ref to resolve when `sha` is unset.
 #                    Default: origin/master
-#   sha    = fd9894a6adf4b1cce7d25112ab0035eca52fd225
+#   sha    = 07d1130df5366b0f68721e5c8d19c04bddc0e118
 #                    Most explicit / reproducible.
 #
 # Resolution at CMake configure time:
@@ -24,4 +24,4 @@
 #   3. commit this file change
 
 branch = audit/cpu-coverage-2026-05
-sha    = fd9894a6adf4b1cce7d25112ab0035eca52fd225
+sha    = a29337e4f4fc673944c720741b6411758a753f61

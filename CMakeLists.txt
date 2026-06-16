@@ -130,3 +130,7 @@ if(MSVC)
     target_compile_options(MetroidNESRecomp PRIVATE /W3 /WX-)
     target_compile_options(MetroidNESRecomp PRIVATE /wd4102)
 endif()
+
+# ---- Pre-boot GUI launcher (RmlUi) ----
+include(${NESRECOMP_ROOT}/runner/launcher.cmake)
+nesrecomp_add_launcher(MetroidNESRecomp)
