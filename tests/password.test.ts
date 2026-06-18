@@ -181,10 +181,16 @@ describe("Metroid password capture", () => {
 
     // Stack pointer must be unchanged (the original drift was S +2 per call).
     expect(r2.S, `S drifted ${r1.S} -> ${r2.S} — capture not stack-balanced`).toBe(r1.S);
-    // Work RAM (incl. zero page + stack page $0100-$01FF) must be byte-identical.
+    // The 6502 stack ($0100-$01FF) grows down from S. Bytes at/below the entry
+    // pointer ($0100..$0100+S) are FREE space a capture may use as scratch during
+    // its call (harmless — never read as live data). Exclude that region; the rest
+    // (zero page, the LIVE stack above S, $0200-$07FF) must be byte-identical.
+    const freeStackEnd = 0x100 + parseInt(r1.S, 16);
     const changed: string[] = [];
-    for (let i = 0; i < 0x800; i++)
+    for (let i = 0; i < 0x800; i++) {
+      if (i >= 0x100 && i <= freeStackEnd) continue; // free stack scratch — harmless
       if (before[i] !== after[i]) changed.push(`$${i.toString(16).padStart(3, "0")}`);
+    }
     expect(changed, `capture mutated live RAM at: ${changed.slice(0, 16).join(",")}`).toEqual([]);
   });
 
