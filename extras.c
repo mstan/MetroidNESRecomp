@@ -135,16 +135,26 @@ static int  s_pw_session_logged = 0;            /* lazy session header in the lo
 static int metroid_generate_password(char *out, int out_sz) {
     if (out_sz < MET_PW_LEN + 1) return 0;
 
-    uint8_t save_zp[0x100];
-    uint8_t save_scratch[MET_SCRATCH_HI - MET_SCRATCH_LO];
-    memcpy(save_zp, &g_ram[0x0000], sizeof(save_zp));
+    /* The encoder is NOT stack-balanced when called out-of-band: its internal
+     * RTS pops a return address we never pushed (g_cpu.S drifts +2) and its deep
+     * call chain dirties the live 6502 stack page. Left unrestored this leaks
+     * stack corruption every capture -> garbled state -> lockup. So snapshot and
+     * restore ALL volatile state the call can touch: full work RAM (zero page +
+     * stack $0100-$01FF + the rest), the CPU registers (esp. S), the bail flag,
+     * the recomp shadow-stack depth, and the $6886-$69B1 WRAM scratch. This makes
+     * the out-of-band call fully side-effect-free. */
+    uint8_t      save_ram[0x800];
+    uint8_t      save_scratch[MET_SCRATCH_HI - MET_SCRATCH_LO];
+    CPU6502State save_cpu         = g_cpu;
+    int          save_bail        = g_bail_active;
+    int          save_rstack_top  = g_recomp_stack_top;
+    memcpy(save_ram, g_ram, sizeof(save_ram));
     memcpy(save_scratch, &g_sram[MET_SCRATCH_LO], sizeof(save_scratch));
 
     /* Force a deterministic obfuscation shift so identical progress always yields
      * the identical password (the encoder picks the shift from RNG $002E via
-     * func_c000: $2E=0 -> +0x19 -> shift 9). We restore $00-$FF afterward, so the
-     * live game RNG is untouched; this just stabilises capture/dedup (and means a
-     * given save state has one canonical password). Any shift 1-15 is valid. */
+     * func_c000: $2E=0 -> +0x19 -> shift 9). Restored with work RAM below; the
+     * live game RNG is untouched. Any shift 1-15 is valid. */
     g_ram[0x002E] = 0;
 
     runtime_begin_post_nmi();   /* neutralise maybe_trigger_vblank during the call */
@@ -155,8 +165,11 @@ static int metroid_generate_password(char *out, int out_sz) {
         out[i] = metroid_index_to_char(g_sram[MET_CODES_OFF + i]);
     out[MET_PW_LEN] = '\0';
 
-    memcpy(&g_ram[0x0000], save_zp, sizeof(save_zp));
+    memcpy(g_ram, save_ram, sizeof(save_ram));
     memcpy(&g_sram[MET_SCRATCH_LO], save_scratch, sizeof(save_scratch));
+    g_cpu              = save_cpu;
+    g_bail_active      = save_bail;
+    g_recomp_stack_top = save_rstack_top;
     return MET_PW_LEN;
 }
 
