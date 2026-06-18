@@ -24,4 +24,6 @@
 #   3. commit this file change
 
 branch = audit/cpu-coverage-2026-05
-sha    = a29337e4f4fc673944c720741b6411758a753f61
+# Rolled forward 2026-06-17 from a29337e -> current HEAD to pick up the
+# save_ram backend + launcher password-save UI (password save system).
+sha    = 068cfcff48ecc218eb7d04bba548c50d30aa09c1

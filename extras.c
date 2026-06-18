@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #ifdef _WIN32
 #  define WIN32_LEAN_AND_MEAN
@@ -70,6 +71,227 @@ static void get_exe_relative_path(const char *filename, char *out, int max_len) 
 #else
     snprintf(out, max_len, "%s", filename);
 #endif
+}
+
+/* ============================================================================
+ * Synthetic SRAM: password save system  (see ENHANCEMENTS.md for the full RE).
+ *
+ * Metroid has no battery — progress is a 24-char password. We give it the same
+ * UX as a battery game: every ~15 s of real gameplay we run the game's OWN
+ * password encoder (func_8C7A_b0, bank 0) out-of-band on the current progress,
+ * read back the 24 codes it writes to $699A, and persist the resulting password
+ * to a sidecar file (metroid.srm) + a timestamped history (metroid_password_log
+ * .txt). On the entry screen the saved password is auto-prefilled.
+ *
+ * Calling the recompiled encoder out-of-band is made side-effect-free by:
+ *   - bracketing in runtime_begin/end_post_nmi() (neutralises maybe_trigger_vblank
+ *     -> no NMI re-entrancy), and
+ *   - snapshotting/restoring everything it touches: zero page ($0000-$00FF) and
+ *     the $6886-$69B1 WRAM scratch (payload/codes/list). The encoder also bumps
+ *     the RNG ($002E/$002F via func_c000) — covered by the zero-page snapshot.
+ * ==========================================================================*/
+
+extern uint8_t g_ram[];     /* 2KB work RAM ($0000-$07FF)  */
+extern uint8_t g_sram[];    /* 8KB WRAM     ($6000-$7FFF)  */
+void func_8C7A_b0(void);    /* bank-0 password encoder: live progress -> 24 codes @ $699A */
+
+#define MET_PW_LEN        24
+#define MET_CODES_OFF     0x099A          /* $699A - $6000 (codes buffer in g_sram) */
+#define MET_SCRATCH_LO    0x0886          /* $6886 - $6000 */
+#define MET_SCRATCH_HI    0x09B2          /* $69B1 + 1 - $6000 (exclusive) */
+
+/* Metroid password char code (0-63) -> ASCII glyph.  Linear alphabet index:
+ * 0-9, A-Z, a-z, then '?' (62) and '-' (63). */
+static char metroid_index_to_char(int idx) {
+    idx &= 0x3F;
+    if (idx < 10) return (char)('0' + idx);
+    if (idx < 36) return (char)('A' + (idx - 10));
+    if (idx < 62) return (char)('a' + (idx - 36));
+    return (idx == 62) ? '?' : '-';
+}
+
+/* Inverse: ASCII glyph -> code (0-63), or -1 if not a valid password char. */
+static int metroid_char_to_index(char ch) {
+    if (ch >= '0' && ch <= '9') return ch - '0';
+    if (ch >= 'A' && ch <= 'Z') return 10 + (ch - 'A');
+    if (ch >= 'a' && ch <= 'z') return 36 + (ch - 'a');
+    if (ch == '?') return 62;
+    if (ch == '-') return 63;
+    return -1;
+}
+
+/* ---- Password state ---- */
+static char s_loaded_password[MET_PW_LEN + 1];  /* current saved password (prefill source) */
+static char s_saved_password[MET_PW_LEN + 1];   /* last password written to disk (dirty check) */
+static const char *s_password = NULL;           /* active prefill string (loaded or --password) */
+static int  s_password_from_cli = 0;            /* 1 if --password given (dev override) */
+static int  s_capture_enabled = 1;              /* save-anywhere auto-capture on/off */
+static int  s_pw_session_logged = 0;            /* lazy session header in the log */
+
+/* Generate the password for the CURRENT progress by running the game's own
+ * encoder out-of-band, then reading the 24 codes it writes to $699A. Writes a
+ * NUL-terminated ASCII password to `out`. Returns its length (0 on failure).
+ * Leaves live game state untouched (snapshot/restore). */
+static int metroid_generate_password(char *out, int out_sz) {
+    if (out_sz < MET_PW_LEN + 1) return 0;
+
+    uint8_t save_zp[0x100];
+    uint8_t save_scratch[MET_SCRATCH_HI - MET_SCRATCH_LO];
+    memcpy(save_zp, &g_ram[0x0000], sizeof(save_zp));
+    memcpy(save_scratch, &g_sram[MET_SCRATCH_LO], sizeof(save_scratch));
+
+    /* Force a deterministic obfuscation shift so identical progress always yields
+     * the identical password (the encoder picks the shift from RNG $002E via
+     * func_c000: $2E=0 -> +0x19 -> shift 9). We restore $00-$FF afterward, so the
+     * live game RNG is untouched; this just stabilises capture/dedup (and means a
+     * given save state has one canonical password). Any shift 1-15 is valid. */
+    g_ram[0x002E] = 0;
+
+    runtime_begin_post_nmi();   /* neutralise maybe_trigger_vblank during the call */
+    func_8C7A_b0();             /* serialise progress -> obfuscate -> checksum -> pack -> $699A */
+    runtime_end_post_nmi();
+
+    for (int i = 0; i < MET_PW_LEN; i++)
+        out[i] = metroid_index_to_char(g_sram[MET_CODES_OFF + i]);
+    out[MET_PW_LEN] = '\0';
+
+    memcpy(&g_ram[0x0000], save_zp, sizeof(save_zp));
+    memcpy(&g_sram[MET_SCRATCH_LO], save_scratch, sizeof(save_scratch));
+    return MET_PW_LEN;
+}
+
+/* ---- metroid.srm sidecar (the launcher reads/writes this same file) ---- */
+
+static void password_save_path(char *out, int max_len) {
+    get_exe_relative_path("metroid.srm", out, max_len);
+}
+
+static void password_save_write(const char *pw) {
+    char path[512];
+    password_save_path(path, sizeof(path));
+    FILE *f = fopen(path, "w");
+    if (!f) return;
+    fprintf(f, "%s\n", pw);
+    fclose(f);
+    snprintf(s_saved_password, sizeof(s_saved_password), "%s", pw);
+    printf("[Password] Saved \"%s\"\n", pw);
+}
+
+/* Load the persisted password (fills s_loaded_password). Returns 1 on success. */
+static int password_save_read(void) {
+    char path[512];
+    password_save_path(path, sizeof(path));
+    FILE *f = fopen(path, "r");
+    if (!f) return 0;
+    char line[64];
+    int ok = fgets(line, sizeof(line), f) != NULL;
+    fclose(f);
+    if (!ok) return 0;
+    int len = (int)strlen(line);
+    while (len > 0 && (line[len-1] == '\n' || line[len-1] == '\r')) line[--len] = '\0';
+    if (len == 0 || len > MET_PW_LEN) return 0;
+    for (int i = 0; i < len; i++) if (metroid_char_to_index(line[i]) < 0) return 0;
+    memcpy(s_loaded_password, line, len + 1);
+    snprintf(s_saved_password, sizeof(s_saved_password), "%s", line);
+    return 1;
+}
+
+/* Append every distinct captured password to a timestamped history next to the
+ * exe, so the player can "go back in time" by re-entering an older password. */
+static void password_log_append(const char *pw) {
+    char path[512];
+    get_exe_relative_path("metroid_password_log.txt", path, sizeof(path));
+    FILE *f = fopen(path, "a");
+    if (!f) return;
+    time_t now = time(NULL);
+    struct tm *lt = localtime(&now);
+    char ts[32] = "????-??-?? ??:??:??";
+    if (lt) strftime(ts, sizeof(ts), "%Y-%m-%d %H:%M:%S", lt);
+    if (!s_pw_session_logged) {
+        fprintf(f, "# --- session %s ---\n", ts);
+        s_pw_session_logged = 1;
+    }
+    fprintf(f, "%s  %s\n", ts, pw);
+    fclose(f);
+}
+
+/* A blank password (all '0' codes) means no progress yet — don't persist it. */
+static int password_is_blank(const char *pw) {
+    for (int i = 0; pw[i]; i++) if (pw[i] != '0') return 0;
+    return 1;
+}
+
+/* Per-frame save-anywhere capture (called from game_post_nmi). Gated to real
+ * gameplay: $1D is 0 in active play, 1 on the title/menu screens (so we never
+ * capture the empty title-screen state). Skips the blank/no-progress password
+ * and persists only on change. */
+static void password_capture_tick(uint64_t frame_count) {
+    if (!s_capture_enabled || s_password_from_cli) return;
+    if ((frame_count % 300) != 0) return;        /* ~every 5 s */
+    if (g_ram[0x1D] != 0) return;                /* 0 = in gameplay; 1 = title/menu */
+
+    char pw[MET_PW_LEN + 1];
+    if (metroid_generate_password(pw, sizeof(pw)) <= 0) return;
+    if (password_is_blank(pw)) return;               /* no progress yet */
+    if (strcmp(pw, s_saved_password) == 0) return;   /* unchanged */
+
+    password_save_write(pw);
+    password_log_append(pw);
+    /* Keep it ready for the prefill path on the next password screen. */
+    snprintf(s_loaded_password, sizeof(s_loaded_password), "%s", pw);
+    s_password = s_loaded_password;
+}
+
+/* ---- Auto-prefill the password entry screen (Faxanadu-style) ----
+ * On the "PASS WORD PLEASE" screen we "type" the saved password for the player
+ * by driving the game's OWN entry path: set the grid cursor ($0321 row,$0322 col)
+ * to each glyph (code = row*13+col) and press A for one frame. The game enters and
+ * RENDERS each char exactly as if typed, so the password appears on screen; the
+ * player just presses START to confirm (or backspaces to edit). Reuses the proven
+ * entry logic — no buffer pokes, no rendering to replicate.
+ *
+ * Entry screen is identified by $1D==1 (menu/entry, not gameplay) && $1F==0x18. */
+extern uint8_t g_controller1_buttons;
+
+static int s_prefill_idx   = -1;   /* next char to type; -1 = idle/done */
+static int s_prefill_press = 0;    /* 0 = press A this frame, 1 = release */
+static int s_prefill_armed = 0;    /* armed once per entry-screen visit */
+
+static void password_prefill_tick(void) {
+    int on_entry = (g_ram[0x1D] == 1 && g_ram[0x1F] == 0x18);
+    if (!on_entry) { s_prefill_armed = 0; s_prefill_idx = -1; return; }
+    if (!s_password || !s_password[0]) return;
+
+    /* Arm once on arrival, only if the player hasn't started typing ($0320==0). */
+    if (!s_prefill_armed) {
+        s_prefill_armed = 1;
+        s_prefill_idx = (g_ram[0x0320] == 0) ? 0 : -1;
+        s_prefill_press = 0;
+    }
+    int len = (int)strlen(s_password);
+    if (s_prefill_idx < 0 || s_prefill_idx >= len || s_prefill_idx >= MET_PW_LEN) {
+        s_prefill_idx = -1;
+        return;
+    }
+
+    /* Drive the game's own entry, synced to the display position $0320 so a
+     * dropped/early press self-corrects (the first frames on the screen may not
+     * accept input yet). Press A only when $0320 matches our index; advance only
+     * once the entry actually registered ($0320 moved off our index). */
+    if (s_prefill_press == 0) {
+        if (g_ram[0x0320] != (uint8_t)s_prefill_idx) return;   /* wait for the buffer to catch up */
+        int code = metroid_char_to_index(s_password[s_prefill_idx]);
+        if (code < 0) { s_prefill_idx = -1; return; }
+        g_ram[0x0321] = (uint8_t)(code / 13);   /* cursor row */
+        g_ram[0x0322] = (uint8_t)(code % 13);   /* cursor col */
+        g_controller1_buttons = 0x80;           /* press A (edge) */
+        s_prefill_press = 1;
+    } else {
+        g_controller1_buttons = 0x00;           /* release so the next A is a fresh edge */
+        s_prefill_press = 0;
+        if (g_ram[0x0320] != (uint8_t)s_prefill_idx)   /* entry registered */
+            s_prefill_idx++;
+    }
 }
 
 /* ---- game_extras.h implementation ---- */
@@ -152,6 +374,14 @@ void game_on_init(void) {
         if (g_rom_path_for_extras)
             verify_mode_init(g_rom_path_for_extras);
     }
+
+    /* Auto-prefill source (unless --password overrides): load our persisted
+     * password (metroid.srm, auto-captured during play). */
+    if (!s_password_from_cli && password_save_read()) {
+        s_password = s_loaded_password;
+        printf("[Password] Loaded saved password \"%s\" (auto-prefill)\n",
+               s_loaded_password);
+    }
 }
 
 void game_on_frame(uint64_t frame_count) {
@@ -166,9 +396,15 @@ void game_on_frame(uint64_t frame_count) {
             g_controller1_buttons = (uint8_t)ovr;
     }
 
+    /* Auto-prefill the saved password on the entry screen (after any debug
+     * override, so it drives the entry screen). */
+    password_prefill_tick();
 }
 
 void game_post_nmi(uint64_t frame_count) {
+    /* Save-anywhere: capture the current-progress password into metroid.srm. */
+    password_capture_tick(frame_count);
+
     if (s_debug_enabled) {
         debug_server_record_frame();
     }
@@ -178,6 +414,17 @@ int game_handle_arg(const char *key, const char *val) {
     if (strcmp(key, "--tcp-port") == 0 && val) {
         s_tcp_port = atoi(val);
         s_tcp_port_from_cli = 1;
+        return 1;
+    }
+    if (strcmp(key, "--password") == 0 && val) {
+        s_password = val;
+        s_password_from_cli = 1;
+        printf("[Password] Will auto-fill password: \"%s\"\n", val);
+        return 1;
+    }
+    if (strcmp(key, "--no-password-capture") == 0) {
+        s_capture_enabled = 0;
+        printf("[Password] Save-anywhere auto-capture disabled\n");
         return 1;
     }
     if (strcmp(key, "--verify") == 0) {
@@ -195,7 +442,9 @@ int game_handle_arg(const char *key, const char *val) {
 }
 
 const char *game_arg_usage(void) {
-    return "  --verify            Enable dual-execution verify mode (Nestopia oracle)\n"
+    return "  --password STRING       Auto-fill this password on the entry screen (dev override)\n"
+           "  --no-password-capture   Disable save-anywhere password auto-capture\n"
+           "  --verify            Enable dual-execution verify mode (Nestopia oracle)\n"
            "  --emulated          Run purely via Nestopia emulator (no recompiled code)\n"
            "  TCP port set via debug.ini (port=XXXX) in the exe directory\n";
 }
@@ -378,6 +627,16 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
     (void)json;
     if (strcmp(cmd, "echo_cmd") == 0) {
         debug_server_send_fmt("{\"id\":%d,\"echo\":\"%s\"}\n", id, cmd);
+        return 1;
+    }
+    /* Diagnostic: run the game's encoder out-of-band on the current progress and
+     * return the password (mirrors what save-anywhere persists). Ignores the gate. */
+    if (strcmp(cmd, "pw_now") == 0) {
+        char pw[MET_PW_LEN + 1];
+        int n = metroid_generate_password(pw, sizeof(pw));
+        debug_server_send_fmt(
+            "{\"id\":%d,\"ok\":true,\"len\":%d,\"d1d\":%d,\"password\":\"%s\"}",
+            id, n, g_ram[0x1D], pw);
         return 1;
     }
     return 0;

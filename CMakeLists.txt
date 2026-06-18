@@ -134,3 +134,10 @@ endif()
 # ---- Pre-boot GUI launcher (RmlUi) ----
 include(${NESRECOMP_ROOT}/runner/launcher.cmake)
 nesrecomp_add_launcher(MetroidNESRecomp)
+
+# Metroid saves via a 24-char password, not battery SRAM. Drive the launcher's
+# SAVES panel to show/edit that password (the metroid.srm sidecar next to the exe
+# that extras.c's save-anywhere capture reads/writes) instead of the binary SRAM UI.
+target_compile_definitions(MetroidNESRecomp PRIVATE
+    NESRECOMP_GAME_PASSWORD_SAVE="metroid.srm"
+    NESRECOMP_GAME_PASSWORD_SAVE_LABEL="Password")
