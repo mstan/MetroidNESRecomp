@@ -38,3 +38,7 @@ tools/*.py
 !tools/nes_compare.py
 tools/*.txt
 !tools/test_entropy.txt
+
+# recomp-ui launcher is a junction to the shared checkout (submodule later).
+recomp-ui
+build_ui/

@@ -26,4 +26,4 @@
 branch = audit/cpu-coverage-2026-05
 # Rolled forward 2026-06-17 from a29337e -> current HEAD to pick up the
 # save_ram backend + launcher password-save UI (password save system).
-sha    = 068cfcff48ecc218eb7d04bba548c50d30aa09c1
+sha    = b018c86d85fc4653fc7596d9748d36aea2e49f36

@@ -89,7 +89,6 @@ find_package(SDL2 REQUIRED)
 add_executable(MetroidNESRecomp
     ${NESRECOMP_RUNNER_SOURCES}
     extras.c
-    recomp_stack.c
     nes_snapshot.c
     verify_mode.c
     watchdog.c
@@ -131,9 +130,13 @@ if(MSVC)
     target_compile_options(MetroidNESRecomp PRIVATE /wd4102)
 endif()
 
-# ---- Pre-boot GUI launcher (RmlUi) ----
-include(${NESRECOMP_ROOT}/runner/launcher.cmake)
-nesrecomp_add_launcher(MetroidNESRecomp)
+# ---- Pre-boot GUI launcher (recomp-ui / Dear ImGui) ----
+include(${CMAKE_SOURCE_DIR}/recomp-ui/recomp_ui.cmake)
+recomp_target_launcher_ui(MetroidNESRecomp BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)
+if(WIN32)
+    # OpenGL for the ImGui GL3 backend (previously via the RmlUi launcher.cmake).
+    target_link_libraries(MetroidNESRecomp PRIVATE opengl32)
+endif()
 
 # Metroid saves via a 24-char password, not battery SRAM. Drive the launcher's
 # SAVES panel to show/edit that password (the metroid.srm sidecar next to the exe
@@ -141,3 +144,6 @@ nesrecomp_add_launcher(MetroidNESRecomp)
 target_compile_definitions(MetroidNESRecomp PRIVATE
     NESRECOMP_GAME_PASSWORD_SAVE="metroid.srm"
     NESRECOMP_GAME_PASSWORD_SAVE_LABEL="Password")
+
+# Single-player (one controller) — hide the launcher's Player 2 card.
+target_compile_definitions(MetroidNESRecomp PRIVATE NESRECOMP_GAME_PLAYERS=1)
