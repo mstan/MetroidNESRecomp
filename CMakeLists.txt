@@ -67,10 +67,6 @@ endif()
 # ---- Pre-boot GUI launcher (recomp-ui / Dear ImGui) ----
 include(${CMAKE_SOURCE_DIR}/recomp-ui/recomp_ui.cmake)
 recomp_target_launcher_ui(MetroidNESRecomp BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)
-if(WIN32)
-    # OpenGL for the ImGui GL3 backend (previously via the RmlUi launcher.cmake).
-    target_link_libraries(MetroidNESRecomp PRIVATE opengl32)
-endif()
 
 # Metroid saves via a 24-char password, not battery SRAM. Drive the launcher's
 # SAVES panel to show/edit that password (the metroid.srm sidecar next to the exe

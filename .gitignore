@@ -7,9 +7,6 @@ build/
 *.obj
 .mcp.json
 
-# nesrecomp is cloned by setup.sh / setup.bat into this directory.
-# Pinned SHA recorded in nesrecomp.pin and enforced at CMake configure time.
-
 debug.ini
 *.cdl
 *.mlbl
@@ -38,5 +35,4 @@ tools/*.py
 tools/*.txt
 !tools/test_entropy.txt
 
-# recomp-ui launcher is a junction to the shared checkout (submodule later).
 build_ui/
