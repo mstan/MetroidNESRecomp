@@ -23,7 +23,10 @@
 #   2. re-run the setup script (or manually: git -C nesrecomp checkout <sha>)
 #   3. commit this file change
 
-branch = audit/cpu-coverage-2026-05
-# Rolled forward 2026-06-17 from a29337e -> current HEAD to pick up the
-# save_ram backend + launcher password-save UI (password save system).
-sha    = 068cfcff48ecc218eb7d04bba548c50d30aa09c1
+branch = feat/split-gen-tu
+# Rolled forward 2026-07-17: bumped to framework worktree _wt-splitgen HEAD
+# (feat/split-gen-tu) to pick up the per-bank umbrella->standalone-TU split
+# (split-TU parallel-compile build restructuring; see nesrecomp CLAUDE.md /
+# code_generator.c FullPart comments). Build-output-only change, no codegen
+# semantics changed.
+sha    = 015f9c2fab703a9465c9431d2d89a5712c5cc85e

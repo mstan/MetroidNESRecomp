@@ -38,3 +38,6 @@ tools/*.py
 !tools/nes_compare.py
 tools/*.txt
 !tools/test_entropy.txt
+
+build-splitgen/
+build-baseline/

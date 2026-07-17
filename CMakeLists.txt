@@ -85,16 +85,41 @@ include(${NESRECOMP_ROOT}/runner/runner.cmake)
 list(APPEND CMAKE_PREFIX_PATH "${NESRECOMP_ROOT}/runner/external/SDL2/cmake")
 find_package(SDL2 REQUIRED)
 
+# ---- Generated sources ----
+# metroid_full.c (small umbrella: entry points + g_rti_target) and the
+# metroid_full_bankNN.c parts are now independent translation units (each
+# #includes generated/metroid_full_decls.h) that compile in parallel instead
+# of being textually #included into one giant single-TU umbrella. The glob
+# picks up both the umbrella and every bank part; metroid_full_decls.h is a
+# header, not a TU, so it isn't matched/compiled directly. CONFIGURE_DEPENDS
+# re-globs on reconfigure so a regen that changes the bank count (add/remove
+# banks) doesn't require manually editing this list.
+file(GLOB METROID_GEN CONFIGURE_DEPENDS
+    "${CMAKE_SOURCE_DIR}/generated/metroid_full*.c"
+    "${CMAKE_SOURCE_DIR}/generated/metroid_dispatch.c"
+)
+
 # ---- Main executable ----
+# NOTE: recomp_stack.c is intentionally NOT listed here — it was promoted to
+# a SHARED runner source (nesrecomp/runner/src/recomp_stack.c, "one source of
+# truth", see its header comment) and is already pulled in via
+# NESRECOMP_RUNNER_SOURCES. This game repo's top-level recomp_stack.c/.h are
+# stale pre-promotion copies (RECOMP_STACK_DEPTH=16 vs the shared 512, no
+# bail_trace doc) left over from before the framework consolidated three
+# divergent per-game variants; compiling both produced duplicate-symbol
+# LNK2005 errors once the nesrecomp pin rolled forward past the promotion.
+# extras.c/watchdog.c's quoted #include "recomp_stack.h" now falls through to
+# the shared nesrecomp/runner/include/recomp_stack.h (declarations are a
+# strict superset/ABI-compatible with the stale local one). Pre-existing
+# framework/game drift, unrelated to the split-TU change; surfaced by the
+# pin bump this task required to build against the split-TU emitter.
 add_executable(MetroidNESRecomp
     ${NESRECOMP_RUNNER_SOURCES}
     extras.c
-    recomp_stack.c
     nes_snapshot.c
     verify_mode.c
     watchdog.c
-    generated/metroid_full.c
-    generated/metroid_dispatch.c
+    ${METROID_GEN}
 )
 
 target_compile_definitions(MetroidNESRecomp PRIVATE RECOMP_STACK_TRACKING WATCHDOG_ENABLED)
