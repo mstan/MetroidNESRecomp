@@ -50,8 +50,8 @@ setup.bat
 chmod +x setup.sh && ./setup.sh
 ```
 
-This clones [nesrecomp](https://github.com/mstan/nesrecomp) at the exact
-version pinned in `nesrecomp.pin` and links the Nestopia oracle core.
+This initializes the pinned [nesrecomp](https://github.com/mstan/nesrecomp)
+submodule and links the Nestopia oracle core.
 
 The generated C files in `generated/` are checked into the repo, so you can
 go straight to building the game:
