@@ -32,6 +32,7 @@ file(GLOB METROID_GEN CONFIGURE_DEPENDS
     "${CMAKE_SOURCE_DIR}/generated/metroid_full*.c"
     "${CMAKE_SOURCE_DIR}/generated/metroid_dispatch.c"
 )
+list(FILTER METROID_GEN EXCLUDE REGEX "generated/metroid_full_bank(01|07)\\.c$")
 
 # ---- Main executable ----
 # NOTE: recomp_stack.c is intentionally NOT listed here — it was promoted to
