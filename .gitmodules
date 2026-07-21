@@ -1,3 +1,6 @@
 [submodule "nesrecomp"]
 	path = nesrecomp
 	url = https://github.com/mstan/nesrecomp.git
+[submodule "recomp-ui"]
+	path = recomp-ui
+	url = https://github.com/mstan/recomp-ui.git

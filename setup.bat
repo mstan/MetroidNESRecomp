@@ -1,14 +1,15 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
-:: Initialize the framework and nested dependencies at the gitlink commit.
-git submodule update --init --recursive
-if errorlevel 1 exit /b %errorlevel%
+:: nesrecomp/ and recomp-ui/ are git submodules; fetch them at the commits this
+:: repo pins (the gitlinks recorded in the index; see .gitmodules).
+git submodule update --init --recursive nesrecomp recomp-ui
+if errorlevel 1 ( echo Error: submodule update failed & exit /b 1 )
 
-:: Junction nestopia-core into project root (no admin required)
+:: Junction nestopia-core from nesrecomp's copy (no admin required).
 if not exist "nestopia-core" (
     mklink /J nestopia-core nesrecomp\runner\nestopia-core
     echo Created junction: nestopia-core -^> nesrecomp\runner\nestopia-core
 )
 
-echo Ready — framework submodules initialized
+echo Ready - nesrecomp + recomp-ui checked out at their pinned commits.

@@ -7,7 +7,6 @@ build/
 *.obj
 .mcp.json
 
-
 debug.ini
 *.cdl
 *.mlbl
@@ -38,3 +37,4 @@ tools/*.txt
 
 build-splitgen/
 build-baseline/
+build_ui/
