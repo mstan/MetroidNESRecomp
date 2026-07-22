@@ -39,9 +39,9 @@ REGEN_CMD=""                               # generated C is committed; regen is 
 PREBUILD_CMD=""
 POSTBUILD_CMD=""
 # prod/debug -> framework cmake flags. NESRECOMP_ENABLE_TRACE OFF strips the TCP
-# server; the Nestopia emulator oracle is debug-only verify tooling, OFF in both.
-PROD_CMAKE_FLAGS=( -DNESRECOMP_ENABLE_TRACE=OFF -DENABLE_NESTOPIA_ORACLE=OFF )
-DEBUG_CMAKE_FLAGS=( -DNESRECOMP_ENABLE_TRACE=ON -DENABLE_NESTOPIA_ORACLE=OFF )
+# server from production builds.
+PROD_CMAKE_FLAGS=( -DNESRECOMP_ENABLE_TRACE=OFF )
+DEBUG_CMAKE_FLAGS=( -DNESRECOMP_ENABLE_TRACE=ON )
 # ============================================================================
 
 CONFIG="prod"
