@@ -57,7 +57,11 @@ add_executable(MetroidNESRecomp
     ${METROID_GEN}
 )
 
-target_compile_definitions(MetroidNESRecomp PRIVATE RECOMP_STACK_TRACKING WATCHDOG_ENABLED)
+target_compile_definitions(MetroidNESRecomp PRIVATE
+    NESRECOMP_SPLIT_PARTS_EXTERNAL
+    RECOMP_STACK_TRACKING
+    WATCHDOG_ENABLED
+)
 
 target_include_directories(MetroidNESRecomp PRIVATE
     ${NESRECOMP_RUNNER_INCLUDE_DIRS}
@@ -89,6 +93,9 @@ endif()
 if(MSVC)
     target_compile_options(MetroidNESRecomp PRIVATE /W3 /WX-)
     target_compile_options(MetroidNESRecomp PRIVATE /wd4102)
+    # A few cross-part generated helpers overlap at split boundaries.
+    # Match the validated split-TU probe target until the generator deduplicates them.
+    target_link_options(MetroidNESRecomp PRIVATE /FORCE:MULTIPLE)
 endif()
 
 # ---- Pre-boot GUI launcher (recomp-ui / Dear ImGui) ----
