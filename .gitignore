@@ -1,4 +1,5 @@
 build/
+build-voxel-vs/
 *.nes
 *.bin
 *.sav

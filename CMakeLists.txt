@@ -10,6 +10,8 @@ set(NESRECOMP_ROOT ${CMAKE_SOURCE_DIR}/nesrecomp)
 # commit is the gitlink recorded in this repo. After cloning run setup.sh/.bat
 # (git submodule update --init) to fetch them at the recorded commits.
 
+set(NESRECOMP_ENABLE_MODS ON CACHE BOOL
+    "Enable package mods for Metroid" FORCE)
 include(${NESRECOMP_ROOT}/runner/runner.cmake)
 
 list(APPEND CMAKE_PREFIX_PATH "${NESRECOMP_ROOT}/runner/external/SDL2/cmake")
@@ -47,6 +49,8 @@ list(FILTER METROID_GEN EXCLUDE REGEX "generated/metroid_full_bank(01|07)\\.c$")
 add_executable(MetroidNESRecomp
     ${NESRECOMP_RUNNER_SOURCES}
     extras.c
+    game_voxel.c
+    mods/voxel_plugin.c
     nes_snapshot.c
     verify_mode.c
     watchdog.c
@@ -57,6 +61,9 @@ target_compile_definitions(MetroidNESRecomp PRIVATE
     NESRECOMP_SPLIT_PARTS_EXTERNAL
     RECOMP_STACK_TRACKING
     WATCHDOG_ENABLED
+    NESRECOMP_GAME_ID="metroid-us"
+    NESRECOMP_GAME_ROM_CRC32="7751588d"
+    NESRECOMP_GAME_SDL_EVENT_HOOK=game_voxel_handle_event
 )
 
 target_include_directories(MetroidNESRecomp PRIVATE
@@ -90,7 +97,15 @@ endif()
 
 # ---- Pre-boot GUI launcher (recomp-ui / Dear ImGui) ----
 include(${CMAKE_SOURCE_DIR}/recomp-ui/recomp_ui.cmake)
-recomp_target_launcher_ui(MetroidNESRecomp BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)
+recomp_target_launcher_ui(MetroidNESRecomp
+    CONSOLE nes
+    BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)
+
+add_custom_command(TARGET MetroidNESRecomp POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/mods/preloaded"
+        "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods"
+    COMMENT "Staging Metroid's preloaded NES mod packages")
 
 # Metroid saves via a 24-char password, not battery SRAM. Drive the launcher's
 # SAVES panel to show/edit that password (the metroid.srm sidecar next to the exe

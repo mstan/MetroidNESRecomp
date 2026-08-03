@@ -37,6 +37,17 @@ A static recompilation of Metroid (NES) using [nesrecomp](https://github.com/mst
 
 This is a foundation for future work. The recompiler and runner are under active development. Each new area explored may require additional `extra_func` entries in `game.toml` or fixes in nesrecomp itself.
 
+## Experimental 3D Voxel Diorama
+
+Open **Mods** in the launcher and enable **3D Voxel Diorama**. The bundled
+feature is disabled by default and targets the verified US ROM. Metroid's room
+architecture becomes depth geometry, sparse pipe and door detail receives
+shallow relief, and Samus, enemies, and pickups remain oriented sprite cards
+with contact shadows. Title and password screens stay native.
+
+Numpad 8/2 adjusts pitch, 4/6 yaw, 7/9 roll, +/- zoom, and 1/3 sprite scale.
+Numpad 0 toggles the live view and Numpad 5 restores package defaults.
+
 ## Building
 
 ### Prerequisites
