@@ -1,4 +1,5 @@
 format_version = 1
+# Parked experiment: retained in source, intentionally not staged by CMake.
 id = "metroid.enhancement.voxel-diorama"
 version = "1.0.0"
 name = "3D Voxel Diorama"
@@ -18,6 +19,7 @@ name = "3D Voxel Diorama"
 description = "Raises room architecture as geometry and reconstructs actors as oriented sprite cards."
 group = "Display"
 default_enabled = false
+exclusive_group = "display-mode"
 
 [[plugin]]
 feature = "voxel-diorama"

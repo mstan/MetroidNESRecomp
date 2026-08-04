@@ -1,0 +1,84 @@
+format_version = 1
+id = "metroid.enhancement.voxel-first-person"
+version = "1.0.0"
+name = "Voxel 3D (first person)"
+author = "NESRecomp"
+description = "Places the camera at Samus's live screen position and faces it along her current travel direction without modifying the stock ROM or password data."
+license = "MIT"
+resolver = "declarative"
+save_compatibility = "stock"
+
+[[target]]
+game_id = "metroid-us"
+rom_crc32 = "7751588d"
+
+[[feature]]
+id = "voxel-first-person"
+name = "Voxel 3D (first person)"
+camera_controls = true
+description = "Reconstructs room architecture upright and tracks Samus with a forward-facing camera."
+group = "Display"
+default_enabled = false
+exclusive_group = "display-mode"
+
+[[plugin]]
+feature = "voxel-first-person"
+id = "metroid.voxel-first-person"
+
+[[option]]
+feature = "voxel-first-person"
+id = "pitch"
+label = "Look pitch"
+description = "Vertical look angle; 15 degrees is level."
+group = "Camera"
+type = "integer"
+default = 15
+min = 5
+max = 85
+step = 5
+
+[[option]]
+feature = "voxel-first-person"
+id = "yaw"
+label = "Look yaw"
+description = "Horizontal look offset from Samus's facing direction."
+group = "Camera"
+type = "integer"
+default = 0
+min = -180
+max = 180
+step = 5
+
+[[option]]
+feature = "voxel-first-person"
+id = "roll"
+label = "Camera roll"
+group = "Camera"
+type = "integer"
+default = 0
+min = -45
+max = 45
+step = 5
+
+[[option]]
+feature = "voxel-first-person"
+id = "zoom"
+label = "Field of view"
+group = "Camera"
+type = "integer"
+default = 100
+min = 50
+max = 175
+step = 5
+
+[[option]]
+feature = "voxel-first-person"
+id = "sprite-scale"
+label = "Sprite scale"
+description = "World scale of enemy, projectile, door, and pickup cards."
+group = "Sprites"
+type = "integer"
+default = 115
+min = 75
+max = 200
+step = 5

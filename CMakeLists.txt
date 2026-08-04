@@ -102,6 +102,10 @@ recomp_target_launcher_ui(MetroidNESRecomp
     BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)
 
 add_custom_command(TARGET MetroidNESRecomp POST_BUILD
+    # copy_directory is additive. Explicitly remove the formerly preloaded
+    # diorama package so an incremental build hides the parked experiment too.
+    COMMAND ${CMAKE_COMMAND} -E remove_directory
+        "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods/packages/metroid.enhancement.voxel-diorama"
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/mods/preloaded"
         "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods"

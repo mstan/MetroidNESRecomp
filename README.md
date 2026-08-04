@@ -37,16 +37,30 @@ A static recompilation of Metroid (NES) using [nesrecomp](https://github.com/mst
 
 This is a foundation for future work. The recompiler and runner are under active development. Each new area explored may require additional `extra_func` entries in `game.toml` or fixes in nesrecomp itself.
 
-## Experimental 3D Voxel Diorama
+## Experimental Voxel 3D (first person)
 
-Open **Mods** in the launcher and enable **3D Voxel Diorama**. The bundled
-feature is disabled by default and targets the verified US ROM. Metroid's room
-architecture becomes depth geometry, sparse pipe and door detail receives
-shallow relief, and Samus, enemies, and pickups remain oriented sprite cards
-with contact shadows. Title and password screens stay native.
+Open **Mods** in the launcher and enable **Voxel 3D (first person)**. The
+bundled feature is disabled by default and targets the verified US ROM. It
+does not patch the ROM or alter password data.
 
-Numpad 8/2 adjusts pitch, 4/6 yaw, 7/9 roll, +/- zoom, and 1/3 sprite scale.
+The camera follows Samus's live screen position; Right and Left directly own
+its horizontal heading, and holding Up smoothly raises the view toward the
+near-vertical shot path. The lens opens during that upward aim so overhead
+enemies and Samus's pellets remain visible. The room plane is reconstructed
+upright so horizontal movement remains forward/back instead of looking
+sideways. Only Samus's reserved OAM card is hidden; projectiles, enemies,
+doors, pickups, architecture, and shadows remain visible. The full room is
+voxelized behind a HUD-only overlay. The fixed Energy OAM band is excluded
+from world geometry and only the `EN-##` glyph footprint is restored in
+screen space, so no flat top strip or room pixels leak into the HUD.
+
+Numpad 8/2 adjusts look pitch, 4/6 offsets yaw from Samus's facing direction,
+7/9 rolls the camera, numpad or regular +/- adjusts field of view, and 1/3
+changes sprite scale.
 Numpad 0 toggles the live view and Numpad 5 restores package defaults.
+
+The earlier room-diorama package remains archived under `mods/hidden` for
+development reference but is intentionally not shown in release launchers.
 
 ## Building
 
