@@ -6,10 +6,10 @@ extern int g_current_bank;
 int g_recomp_push_all_jsr = 1;
 
 /* Forward declarations */
-void func_FFB0(void);
+void func_FFB0(void); /* ROMFIXED_RESET */
 void func_C0D9(void);
 void func_C0DA(void);
-void func_C01A(void);
+void func_C01A(void); /* Startup */
 void func_C0CC(void);
 void func_C0D0(void);
 void func_C01F(void);
@@ -21,48 +21,48 @@ void func_C0AA(void);
 void func_C0A8(void);
 void func_C081(void);
 void func_C06B(void);
-void func_C057(void);
+void func_C057(void); /* Startup_exitLoop_A */
 void func_C0A3(void);
 void func_C095(void);
 void func_C0A1(void);
 void func_C04D(void);
 void func_C037(void);
-void func_C060(void);
-void func_C048(void);
+void func_C060(void); /* Startup_loop_C */
+void func_C048(void); /* Startup_loop_A */
 void func_C08A(void);
 void func_C01C(void);
-void func_9A07_b0(void);
+void func_9A07_b0(void); /* NMIScreenWrite */
 void func_9A07_b4(void);
 void func_9A07_b6(void);
-void func_C1E0(void);
-void func_C20E(void);
+void func_C1E0(void); /* CheckPaletteWrite */
+void func_C20E(void); /* PreparePPUProcess */
 void func_C200(void);
 void func_C1E6(void);
-void func_C2CA(void);
+void func_C2CA(void); /* CheckVRAMStructBufferWrite */
 void func_C2D0(void);
-void func_C29A(void);
+void func_C29A(void); /* WriteScroll */
 void func_C2A4(void);
-void func_C215(void);
-void func_C21F(void);
-void func_C24D(void);
+void func_C215(void); /* ReadJoyPads */
+void func_C21F(void); /* ReadOnePad */
+void func_C24D(void); /* ReadOnePad_endIf_A */
 void func_C221(void);
-void func_FFD8(void);
-void func_C158(void);
-void func_C175(void);
+void func_FFD8(void); /* GotoSoundEngine */
+void func_C158(void); /* ClearNameTables */
+void func_C175(void); /* ClearNameTable */
 void func_C184(void);
-void func_C1A3(void);
-void func_C1BB(void);
+void func_C1A3(void); /* EraseAllSprites */
+void func_C1BB(void); /* Exit101 */
 void func_C1A5(void);
-void func_C4DE(void);
+void func_C4DE(void); /* CheckBankSwitch */
 void func_C50F(void);
-void func_C266(void);
-void func_C114(void);
-void func_C155(void);
+void func_C266(void); /* UpdateTimer */
+void func_C114(void); /* GoMainRoutine */
+void func_C155(void); /* IncrementRoutine */
 void func_C121(void);
-void func_C0CB(void);
-void func_C000(void);
+void func_C0CB(void); /* WaitNMIEnd */
+void func_C000(void); /* RandomNumbers */
 void func_C001(void);
-void func_C004(void);
+void func_C004(void); /* RandomNumbers_loop */
 void func_C00B(void);
 void func_C002(void);
 void func_C013(void);
@@ -72,51 +72,51 @@ void func_C009(void);
 void func_C007(void);
 void func_C00D(void);
 void func_C006(void);
-void func_C0BC(void);
-void func_9C45_b0(void);
-void func_8000_b1(void);
-void func_99DC_b2(void);
-void func_9F54_b0(void);
+void func_C0BC(void); /* MainLoop */
+void func_9C45_b0(void); /* LoadCredits */
+void func_8000_b1(void); /* CommonJump_UpdateEnemyCommon */
+void func_99DC_b2(void); /* CrawlerReorientSprite_BANK2 */
+void func_9F54_b0(void); /* EndGamePaletteWrite */
 void func_9F54_b2(void);
 void func_9F54_b3(void);
 void func_9F54_b4(void);
 void func_9F54_b5(void);
 void func_9F54_b6(void);
-void func_8AC7_b0(void);
+void func_8AC7_b0(void); /* StarPaletteSwitch */
 void func_8AC7_b2(void);
 void func_8AC7_b3(void);
 void func_8AC7_b4(void);
 void func_8AC7_b5(void);
 void func_8AC7_b6(void);
-void func_C4D9(void);
-void func_B3E4_b0(void);
-void func_B3E4_b1(void);
-void func_B3E4_b2(void);
-void func_B3E4_b3(void);
-void func_B3E4_b4(void);
-void func_B3E4_b5(void);
+void func_C4D9(void); /* PrepPPUMirror */
+void func_B3E4_b0(void); /* SoundEngine */
+void func_B3E4_b1(void); /* SoundEngine */
+void func_B3E4_b2(void); /* SoundEngine */
+void func_B3E4_b3(void); /* SoundEngine */
+void func_B3E4_b4(void); /* SoundEngine */
+void func_B3E4_b5(void); /* SoundEngine */
 void func_B3E4_b6(void);
-void func_988A_b0(void);
+void func_988A_b0(void); /* DecSpriteYCoord */
 void func_988A_b1(void);
 void func_988A_b2(void);
 void func_988A_b3(void);
 void func_988A_b4(void);
-void func_988A_b5(void);
+void func_988A_b5(void); /* PipeBugAIRoutine_BANK5_checkIfGoForwards */
 void func_988A_b6(void);
-void func_C510(void);
+void func_C510(void); /* GoBankInit */
 void func_C515(void);
 void func_C511(void);
 void func_C512(void);
-void func_8000_b0(void);
-void func_806E_b0(void);
-void func_8068_b0(void);
-void func_8000_b2(void);
-void func_8000_b3(void);
-void func_8000_b4(void);
-void func_8000_b5(void);
-void func_8000_b6(void);
-void func_CB92(void);
-void func_C801(void);
+void func_8000_b0(void); /* MainTitleRoutine */
+void func_806E_b0(void); /* IncTitleRoutine0A */
+void func_8068_b0(void); /* ClearSpareMem */
+void func_8000_b2(void); /* CommonJump_UpdateEnemyCommon */
+void func_8000_b3(void); /* CommonJump_UpdateEnemyCommon */
+void func_8000_b4(void); /* CommonJump_UpdateEnemyCommon */
+void func_8000_b5(void); /* CommonJump_UpdateEnemyCommon */
+void func_8000_b6(void); /* GFX_Samus */
+void func_CB92(void); /* PauseMusic */
+void func_C801(void); /* AreaInit */
 void func_C821(void);
 void func_C82F(void);
 void func_C830(void);
@@ -143,7 +143,7 @@ void func_C892(void);
 void func_C885(void);
 void func_C8A2(void);
 void func_C897(void);
-void func_C8D1(void);
+void func_C8D1(void); /* SamusInit */
 void func_C908(void);
 void func_C920(void);
 void func_C8F5(void);
@@ -166,138 +166,138 @@ void func_C90E(void);
 void func_C91D(void);
 void func_C8D7(void);
 void func_C8FA(void);
-void func_F410(void);
-void func_800F_b2(void);
-void func_C37E(void);
-void func_C2B3(void);
-void func_C2E4(void);
-void func_C30C(void);
+void func_F410(void); /* UpdateEnemyCommon */
+void func_800F_b2(void); /* CommonJump_InitEnAnimIndex */
+void func_C37E(void); /* PrepPPUPaletteString */
+void func_C2B3(void); /* AddYToPtr02 */
+void func_C2E4(void); /* VRAMStructWriteData */
+void func_C30C(void); /* VRAMStructWrite */
 void func_C2FF(void);
-void func_C2FD(void);
+void func_C2FD(void); /* VRAMStructWriteData_endIf_A */
 void func_C2F0(void);
-void func_C4B6(void);
-void func_B3C9_b0(void);
-void func_B34B_b0(void);
-void func_B352_b0(void);
-void func_B37B_b0(void);
-void func_B36D_b0(void);
-void func_B374_b0(void);
-void func_BC66_b0(void);
-void func_BC6D_b0(void);
-void func_B434_b0(void);
-void func_B44D_b0(void);
+void func_C4B6(void); /* SetPPUMirror */
+void func_B3C9_b0(void); /* SoundEngine_GameIsPaused */
+void func_B34B_b0(void); /* RunSFXNoiseInitRoutine */
+void func_B352_b0(void); /* RunSFXNoiseContRoutine */
+void func_B37B_b0(void); /* RunSFXMultiInitRoutine */
+void func_B36D_b0(void); /* RunSFXTriInitRoutine */
+void func_B374_b0(void); /* RunSFXTriContRoutine */
+void func_BC66_b0(void); /* RunMusicLoopRoutine */
+void func_BC6D_b0(void); /* RunMusicInitRoutine */
+void func_B434_b0(void); /* InitializeSoundAddresses */
+void func_B44D_b0(void); /* ClearMusicAndSFXAddresses */
 void func_B452_b0(void);
-void func_B46E_b0(void);
-void func_B43E_b0(void);
-void func_B3C9_b1(void);
-void func_B34B_b1(void);
-void func_B37B_b1(void);
-void func_B36D_b1(void);
-void func_BC66_b1(void);
-void func_B434_b1(void);
-void func_B44D_b1(void);
+void func_B46E_b0(void); /* ClearSounds */
+void func_B43E_b0(void); /* ClearSpecialAddresses */
+void func_B3C9_b1(void); /* SoundEngine_GameIsPaused */
+void func_B34B_b1(void); /* RunSFXNoiseInitRoutine */
+void func_B37B_b1(void); /* RunSFXMultiInitRoutine */
+void func_B36D_b1(void); /* RunSFXTriInitRoutine */
+void func_BC66_b1(void); /* RunMusicLoopRoutine */
+void func_B434_b1(void); /* InitializeSoundAddresses */
+void func_B44D_b1(void); /* ClearMusicAndSFXAddresses */
 void func_B452_b1(void);
-void func_B46E_b1(void);
-void func_B43E_b1(void);
-void func_B3C9_b2(void);
-void func_B34B_b2(void);
-void func_B359_b2(void);
-void func_B37B_b2(void);
-void func_B36D_b2(void);
-void func_BC66_b2(void);
-void func_B434_b2(void);
-void func_B44D_b2(void);
+void func_B46E_b1(void); /* ClearSounds */
+void func_B43E_b1(void); /* ClearSpecialAddresses */
+void func_B3C9_b2(void); /* SoundEngine_GameIsPaused */
+void func_B34B_b2(void); /* RunSFXNoiseInitRoutine */
+void func_B359_b2(void); /* RunSFXSQ1InitRoutine */
+void func_B37B_b2(void); /* RunSFXMultiInitRoutine */
+void func_B36D_b2(void); /* RunSFXTriInitRoutine */
+void func_BC66_b2(void); /* RunMusicLoopRoutine */
+void func_B434_b2(void); /* InitializeSoundAddresses */
+void func_B44D_b2(void); /* ClearMusicAndSFXAddresses */
 void func_B452_b2(void);
-void func_B46E_b2(void);
-void func_B43E_b2(void);
-void func_B3C9_b3(void);
-void func_B34B_b3(void);
-void func_B359_b3(void);
-void func_B37B_b3(void);
-void func_B36D_b3(void);
-void func_BC66_b3(void);
-void func_B434_b3(void);
-void func_B44D_b3(void);
+void func_B46E_b2(void); /* ClearSounds */
+void func_B43E_b2(void); /* ClearSpecialAddresses */
+void func_B3C9_b3(void); /* SoundEngine_GameIsPaused */
+void func_B34B_b3(void); /* RunSFXNoiseInitRoutine */
+void func_B359_b3(void); /* RunSFXSQ1InitRoutine */
+void func_B37B_b3(void); /* RunSFXMultiInitRoutine */
+void func_B36D_b3(void); /* RunSFXTriInitRoutine */
+void func_BC66_b3(void); /* RunMusicLoopRoutine */
+void func_B434_b3(void); /* InitializeSoundAddresses */
+void func_B44D_b3(void); /* ClearMusicAndSFXAddresses */
 void func_B452_b3(void);
-void func_B46E_b3(void);
-void func_B43E_b3(void);
-void func_B3C9_b4(void);
-void func_B34B_b4(void);
-void func_B359_b4(void);
-void func_B37B_b4(void);
-void func_B36D_b4(void);
-void func_BC66_b4(void);
-void func_B434_b4(void);
-void func_B44D_b4(void);
+void func_B46E_b3(void); /* ClearSounds */
+void func_B43E_b3(void); /* ClearSpecialAddresses */
+void func_B3C9_b4(void); /* SoundEngine_GameIsPaused */
+void func_B34B_b4(void); /* RunSFXNoiseInitRoutine */
+void func_B359_b4(void); /* RunSFXSQ1InitRoutine */
+void func_B37B_b4(void); /* RunSFXMultiInitRoutine */
+void func_B36D_b4(void); /* RunSFXTriInitRoutine */
+void func_BC66_b4(void); /* RunMusicLoopRoutine */
+void func_B434_b4(void); /* InitializeSoundAddresses */
+void func_B44D_b4(void); /* ClearMusicAndSFXAddresses */
 void func_B452_b4(void);
-void func_B46E_b4(void);
-void func_B43E_b4(void);
-void func_B3C9_b5(void);
-void func_B34B_b5(void);
-void func_B359_b5(void);
-void func_B37B_b5(void);
-void func_B36D_b5(void);
-void func_BC66_b5(void);
-void func_B434_b5(void);
-void func_B44D_b5(void);
+void func_B46E_b4(void); /* ClearSounds */
+void func_B43E_b4(void); /* ClearSpecialAddresses */
+void func_B3C9_b5(void); /* SoundEngine_GameIsPaused */
+void func_B34B_b5(void); /* RunSFXNoiseInitRoutine */
+void func_B359_b5(void); /* RunSFXSQ1InitRoutine */
+void func_B37B_b5(void); /* RunSFXMultiInitRoutine */
+void func_B36D_b5(void); /* RunSFXTriInitRoutine */
+void func_BC66_b5(void); /* RunMusicLoopRoutine */
+void func_B434_b5(void); /* InitializeSoundAddresses */
+void func_B44D_b5(void); /* ClearMusicAndSFXAddresses */
 void func_B452_b5(void);
-void func_B46E_b5(void);
-void func_B43E_b5(void);
-void func_8036_b2(void);
-void func_8039_b2(void);
-void func_9A42_b2(void);
-void func_8027_b2(void);
-void func_9A52_b2(void);
-void func_8003_b2(void);
-void func_99B7_b3(void);
-void func_9A10_b3(void);
-void func_99C3_b3(void);
-void func_99D1_b3(void);
-void func_99BD_b3(void);
-void func_95C6_b3(void);
-void func_99E4_b3(void);
-void func_8027_b3(void);
-void func_99F4_b3(void);
-void func_9967_b3(void);
-void func_99AE_b3(void);
-void func_99B1_b3(void);
-void func_8042_b3(void);
-void func_97E2_b3(void);
+void func_B46E_b5(void); /* ClearSounds */
+void func_B43E_b5(void); /* ClearSpecialAddresses */
+void func_8036_b2(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
+void func_8039_b2(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
+void func_9A42_b2(void); /* StoreEnemyPositionToTemp__BANK2 */
+void func_8027_b2(void); /* CommonJump_ApplySpeedToPosition */
+void func_9A52_b2(void); /* LoadEnemyPositionFromTemp__BANK2 */
+void func_8003_b2(void); /* CommonJump_UpdateEnemyCommon_noMove */
+void func_99B7_b3(void); /* LoadEnemySlotIDIntoY */
+void func_9A10_b3(void); /* GetMetroidRepelSpeed */
+void func_99C3_b3(void); /* ClearMetroidSpeed */
+void func_99D1_b3(void); /* ClearRinkaAcceleration */
+void func_99BD_b3(void); /* LoadEnemySlotIDIntoX */
+void func_95C6_b3(void); /* TwosComplement_ */
+void func_99E4_b3(void); /* StoreSamusPositionToTemp */
+void func_8027_b3(void); /* CommonJump_ApplySpeedToPosition */
+void func_99F4_b3(void); /* LoadEnemyPositionFromTemp_ */
+void func_9967_b3(void); /* MetroidAIRoutine_BANK3_metroidOnSamus */
+void func_99AE_b3(void); /* ClearCurrentMetroidLatch */
+void func_99B1_b3(void); /* ClearMetroidLatch */
+void func_8042_b3(void); /* CommonJump_SubtractHealth */
+void func_97E2_b3(void); /* UpdateEnemyCommon_Decide_BANK3 */
 void func_9923_b4(void);
 void func_9942_b4(void);
 void func_990A_b4(void);
 void func_9967_b4(void);
-void func_8003_b4(void);
-void func_8006_b4(void);
-void func_801B_b4(void);
-void func_9905_b4(void);
-void func_991E_b4(void);
-void func_801E_b4(void);
-void func_992C_b4(void);
-void func_8009_b4(void);
-void func_9A31_b4(void);
-void func_99F7_b4(void);
-void func_9A0C_b4(void);
-void func_9A15_b4(void);
-void func_800C_b4(void);
-void func_800F_b4(void);
-void func_99DE_b4(void);
-void func_9A29_b4(void);
-void func_8036_b4(void);
-void func_8039_b4(void);
-void func_9BBC_b4(void);
-void func_8027_b4(void);
-void func_9B2F_b4(void);
-void func_9BE0_b4(void);
-void func_9C19_b4(void);
-void func_9930_b4(void);
-void func_802D_b4(void);
-void func_8030_b4(void);
-void func_8033_b4(void);
-void func_9AE4_b4(void);
-void func_9B3C_b4(void);
-void func_9BAA_b4(void);
-void func_802A_b4(void);
+void func_8003_b4(void); /* CommonJump_UpdateEnemyCommon_noMove */
+void func_8006_b4(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_801B_b4(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_9905_b4(void); /* UpdateEnemyCommon_Decide_BANK4 */
+void func_991E_b4(void); /* Sidehopper_Common_BANK4 */
+void func_801E_b4(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_992C_b4(void); /* CommonEnemyStub2_BANK4 */
+void func_8009_b4(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
+void func_9A31_b4(void); /* JumpByRTSToMovementRoutine_BANK4 */
+void func_99F7_b4(void); /* CrawlerInsideCornerCheck_BANK4 */
+void func_9A0C_b4(void); /* CrawlerFlipDirection_BANK4 */
+void func_9A15_b4(void); /* CrawlerOutsideCornerCheck_BANK4 */
+void func_800C_b4(void); /* CommonJump_UpdateEnemyAnim */
+void func_800F_b4(void); /* CommonJump_InitEnAnimIndex */
+void func_99DE_b4(void); /* CrawlerReorientSprite_BANK4 */
+void func_9A29_b4(void); /* CrawlerOutsideCornerGetNextOrientation_BANK4 */
+void func_8036_b4(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
+void func_8039_b4(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
+void func_9BBC_b4(void); /* StoreEnemyPositionToTemp__BANK4 */
+void func_8027_b4(void); /* CommonJump_ApplySpeedToPosition */
+void func_9B2F_b4(void); /* KraidUpdateAllProjectiles_BANK4 */
+void func_9BE0_b4(void); /* KraidTryToLaunchLint_BANK4 */
+void func_9C19_b4(void); /* KraidTryToLaunchNail_BANK4 */
+void func_9930_b4(void); /* CommonEnemyStub_BANK4 */
+void func_802D_b4(void); /* CommonJump_EnemyGetDeltaY */
+void func_8030_b4(void); /* CommonJump_EnemyGetDeltaX */
+void func_8033_b4(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
+void func_9AE4_b4(void); /* KraidLintAIRoutine_BANK4 */
+void func_9B3C_b4(void); /* KraidUpdateProjectile_BANK4 */
+void func_9BAA_b4(void); /* LoadEnemyPositionFromTemp__BANK4 */
+void func_802A_b4(void); /* CommonJump_0E */
 void func_9CEB_b4(void);
 void func_FF03(void);
 void func_9E69_b4(void);
@@ -314,46 +314,46 @@ void func_A7B0_b4(void);
 void func_A818_b4(void);
 void func_A814_b4(void);
 void func_A85A_b4(void);
-void func_A8C7_b4(void);
+void func_A8C7_b4(void); /* Room1D_BANK4 */
 void func_A8C4_b4(void);
-void func_8036_b5(void);
-void func_8039_b5(void);
-void func_9AE1_b5(void);
-void func_8027_b5(void);
-void func_9AF1_b5(void);
-void func_8003_b5(void);
-void func_C1BC(void);
-void func_8071_b0(void);
-void func_80AC_b0(void);
-void func_809E_b0(void);
-void func_80D0_b0(void);
-void func_80F9_b0(void);
-void func_812C_b0(void);
+void func_8036_b5(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
+void func_8039_b5(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
+void func_9AE1_b5(void); /* StoreEnemyPositionToTemp__BANK5 */
+void func_8027_b5(void); /* CommonJump_ApplySpeedToPosition */
+void func_9AF1_b5(void); /* LoadEnemyPositionFromTemp__BANK5 */
+void func_8003_b5(void); /* CommonJump_UpdateEnemyCommon_noMove */
+void func_C1BC(void); /* RemoveIntroSprites */
+void func_8071_b0(void); /* InitializeAfterReset */
+void func_80AC_b0(void); /* InitializeAfterReset_loop_B */
+void func_809E_b0(void); /* InitializeAfterReset_loop_A */
+void func_80D0_b0(void); /* DrawIntroBackground */
+void func_80F9_b0(void); /* FadeInDelay */
+void func_812C_b0(void); /* METROIDFadeIn */
 void func_8141_b0(void);
-void func_8142_b0(void);
-void func_8109_b0(void);
-void func_814D_b0(void);
-void func_8163_b0(void);
-void func_81D1_b0(void);
-void func_822E_b0(void);
-void func_8243_b0(void);
-void func_8263_b0(void);
-void func_8283_b0(void);
-void func_82A3_b0(void);
-void func_82ED_b0(void);
-void func_82F3_b0(void);
-void func_90BA_b0(void);
-void func_90D7_b0(void);
-void func_911A_b0(void);
-void func_9147_b0(void);
-void func_9180_b0(void);
-void func_91FB_b0(void);
-void func_91BF_b0(void);
-void func_9359_b0(void);
-void func_9394_b0(void);
-void func_939E_b0(void);
-void func_9AA7_b0(void);
-void func_C4AA(void);
+void func_8142_b0(void); /* LoadFlashTimer */
+void func_8109_b0(void); /* FlashEffect */
+void func_814D_b0(void); /* METROIDSparkle */
+void func_8163_b0(void); /* METROIDFadeOut */
+void func_81D1_b0(void); /* MoreCrosshairs */
+void func_822E_b0(void); /* ChangeIntroNameTable */
+void func_8243_b0(void); /* MessageFadeIn */
+void func_8263_b0(void); /* MessageFadeOut */
+void func_8283_b0(void); /* DelayIntroReplay */
+void func_82A3_b0(void); /* PrepIntroRestart */
+void func_82ED_b0(void); /* TitleScreenOff */
+void func_82F3_b0(void); /* TitleRoutineReturn13 */
+void func_90BA_b0(void); /* StartContinueScreen15 */
+void func_90D7_b0(void); /* ChooseStartContinue */
+void func_911A_b0(void); /* LoadPasswordScreen */
+void func_9147_b0(void); /* EnterPassword */
+void func_9180_b0(void); /* EnterPassword_endIf_B */
+void func_91FB_b0(void); /* CheckBackspace */
+void func_91BF_b0(void); /* LoadRowAndColumn */
+void func_9359_b0(void); /* DisplayPassword */
+void func_9394_b0(void); /* WaitForSTART */
+void func_939E_b0(void); /* GameOver */
+void func_9AA7_b0(void); /* EndGame */
+void func_C4AA(void); /* SetTimer */
 void func_C4B3(void);
 void func_C4B7(void);
 void func_C4D0(void);
@@ -361,45 +361,45 @@ void func_C4D1(void);
 void func_C4C8(void);
 void func_C4C9(void);
 void func_C4BD(void);
-void func_CA18(void);
+void func_CA18(void); /* IsEngineRunning */
 void func_CA20(void);
 void func_CA2B(void);
 void func_CA2D(void);
-void func_C439(void);
-void func_C8BB(void);
-void func_C8C4(void);
+void func_C439(void); /* ScreenOff */
+void func_C8BB(void); /* DestroyEnemies */
+void func_C8C4(void); /* DestroyEnemies_endIf_A */
 void func_C8CA(void);
 void func_C8C8(void);
 void func_C8C9(void);
-void func_C8BE(void);
+void func_C8BE(void); /* DestroyEnemies_loop */
 void func_C8CE(void);
 void func_C8BD(void);
-void func_C8B0(void);
-void func_E720(void);
+void func_C8B0(void); /* CopyAreaPointers */
+void func_E720(void); /* GetRoomNum */
 void func_E730(void);
 void func_E731(void);
 void func_E74C(void);
-void func_EA2B(void);
+void func_EA2B(void); /* SetupRoom */
 void func_EA2D(void);
-void func_C447(void);
-void func_CBFD(void);
-void func_E1F1(void);
+void func_C447(void); /* ScreenOn */
+void func_CBFD(void); /* IntroMusic */
+void func_E1F1(void); /* ScrollDoor */
 void func_E221(void);
-void func_CB29(void);
-void func_CB6A(void);
+void func_CB29(void); /* UpdateWorld */
+void func_CB6A(void); /* UpdateWorld_loop */
 void func_C92A(void);
-void func_CB8E(void);
-void func_CBE2(void);
+void func_CB8E(void); /* SilenceMusic */
+void func_CBE2(void); /* SFX_SamusDie */
 void func_CBBA(void);
-void func_CC09(void);
+void func_CC09(void); /* SetMusicInitFlag */
 void func_CBD0(void);
-void func_CB73(void);
+void func_CB73(void); /* SelectSamusPalette */
 void func_CB74(void);
 void func_CB87(void);
 void func_CB84(void);
-void func_C9C3(void);
-void func_DE47(void);
-void func_DE4A(void);
+void func_C9C3(void); /* PauseMode_RTS */
+void func_DE47(void); /* AnimDrawObject */
+void func_DE4A(void); /* ObjDrawFrame */
 void func_DE4C(void);
 void func_DEA9(void);
 void func_DE99(void);
@@ -408,7 +408,7 @@ void func_DE51(void);
 void func_DE6A(void);
 void func_DE9F(void);
 void func_DED5(void);
-void func_E094(void);
+void func_E094(void); /* UpdateEnemyAnim */
 void func_E0E8(void);
 void func_E0AA(void);
 void func_E0A2(void);
@@ -417,105 +417,105 @@ void func_E0D1(void);
 void func_E0CA(void);
 void func_E0B1(void);
 void func_E0AD(void);
-void func_E0C7(void);
+void func_E0C7(void); /* DisplayBar_loop */
 void func_E09D(void);
 void func_8058_b0(void);
-void func_8058_b1(void);
-void func_8058_b2(void);
-void func_8058_b3(void);
-void func_8058_b4(void);
-void func_8058_b5(void);
+void func_8058_b1(void); /* EnemyMove */
+void func_8058_b2(void); /* EnemyMove */
+void func_8058_b3(void); /* EnemyMove */
+void func_8058_b4(void); /* EnemyMove */
+void func_8058_b5(void); /* EnemyMove */
 void func_8058_b6(void);
-void func_DD8B(void);
-void func_C2A8(void);
+void func_DD8B(void); /* DrawEnemy */
+void func_C2A8(void); /* AddYToPtr00 */
 void func_C2A9(void);
-void func_C318(void);
+void func_C318(void); /* SetPPUInc */
 void func_C319(void);
-void func_C321(void);
-void func_B3BF_b0(void);
-void func_B398_b0(void);
-void func_B4ED_b0(void);
-void func_B51E_b0(void);
-void func_B51A_b0(void);
+void func_C321(void); /* SetPPUInc_endIf_A */
+void func_B3BF_b0(void); /* PauseSFX */
+void func_B398_b0(void); /* LoadSFXData */
+void func_B4ED_b0(void); /* GetSoundRoutine */
+void func_B51E_b0(void); /* GetSoundRoutine_RTS */
+void func_B51A_b0(void); /* GetSoundRoutine_RestoreSFXFlags */
 void func_B503_b0(void);
-void func_BC83_b0(void);
-void func_BC94_b0(void);
-void func_B367_b0(void);
-void func_B3BF_b1(void);
-void func_B398_b1(void);
-void func_B4ED_b1(void);
-void func_BC83_b1(void);
-void func_BC94_b1(void);
-void func_B367_b1(void);
-void func_B3BF_b2(void);
-void func_B398_b2(void);
-void func_B4ED_b2(void);
-void func_B51A_b2(void);
+void func_BC83_b0(void); /* FindMusicInitIndex */
+void func_BC94_b0(void); /* MusicInitIndexAdd8 */
+void func_B367_b0(void); /* RunSoundRoutine */
+void func_B3BF_b1(void); /* PauseSFX */
+void func_B398_b1(void); /* LoadSFXData */
+void func_B4ED_b1(void); /* GetSoundRoutine */
+void func_BC83_b1(void); /* FindMusicInitIndex */
+void func_BC94_b1(void); /* MusicInitIndexAdd8 */
+void func_B367_b1(void); /* RunSoundRoutine */
+void func_B3BF_b2(void); /* PauseSFX */
+void func_B398_b2(void); /* LoadSFXData */
+void func_B4ED_b2(void); /* GetSoundRoutine */
+void func_B51A_b2(void); /* GetSoundRoutine_RestoreSFXFlags */
 void func_B503_b2(void);
-void func_B51E_b2(void);
-void func_BC83_b2(void);
-void func_BC94_b2(void);
-void func_B367_b2(void);
-void func_B3BF_b3(void);
-void func_B398_b3(void);
-void func_B4ED_b3(void);
-void func_B51A_b3(void);
+void func_B51E_b2(void); /* GetSoundRoutine_RTS */
+void func_BC83_b2(void); /* FindMusicInitIndex */
+void func_BC94_b2(void); /* MusicInitIndexAdd8 */
+void func_B367_b2(void); /* RunSoundRoutine */
+void func_B3BF_b3(void); /* PauseSFX */
+void func_B398_b3(void); /* LoadSFXData */
+void func_B4ED_b3(void); /* GetSoundRoutine */
+void func_B51A_b3(void); /* GetSoundRoutine_RestoreSFXFlags */
 void func_B503_b3(void);
-void func_B51E_b3(void);
-void func_BC83_b3(void);
-void func_BC94_b3(void);
-void func_B367_b3(void);
-void func_B3BF_b4(void);
-void func_B398_b4(void);
-void func_B4ED_b4(void);
-void func_B51A_b4(void);
+void func_B51E_b3(void); /* GetSoundRoutine_RTS */
+void func_BC83_b3(void); /* FindMusicInitIndex */
+void func_BC94_b3(void); /* MusicInitIndexAdd8 */
+void func_B367_b3(void); /* RunSoundRoutine */
+void func_B3BF_b4(void); /* PauseSFX */
+void func_B398_b4(void); /* LoadSFXData */
+void func_B4ED_b4(void); /* GetSoundRoutine */
+void func_B51A_b4(void); /* GetSoundRoutine_RestoreSFXFlags */
 void func_B503_b4(void);
-void func_B51E_b4(void);
-void func_BC83_b4(void);
-void func_BC94_b4(void);
-void func_B367_b4(void);
-void func_B3BF_b5(void);
-void func_B398_b5(void);
-void func_B4ED_b5(void);
-void func_B51A_b5(void);
+void func_B51E_b4(void); /* GetSoundRoutine_RTS */
+void func_BC83_b4(void); /* FindMusicInitIndex */
+void func_BC94_b4(void); /* MusicInitIndexAdd8 */
+void func_B367_b4(void); /* RunSoundRoutine */
+void func_B3BF_b5(void); /* PauseSFX */
+void func_B398_b5(void); /* LoadSFXData */
+void func_B4ED_b5(void); /* GetSoundRoutine */
+void func_B51A_b5(void); /* GetSoundRoutine_RestoreSFXFlags */
 void func_B503_b5(void);
-void func_B51E_b5(void);
-void func_BC83_b5(void);
-void func_BC94_b5(void);
-void func_B367_b5(void);
-void func_833F_b2(void);
-void func_8395_b2(void);
-void func_FD8F(void);
-void func_FDBF(void);
-void func_FDDD(void);
+void func_B51E_b5(void); /* GetSoundRoutine_RTS */
+void func_BC83_b5(void); /* FindMusicInitIndex */
+void func_BC94_b5(void); /* MusicInitIndexAdd8 */
+void func_B367_b5(void); /* RunSoundRoutine */
+void func_833F_b2(void); /* EnemyGetDeltaY_UsingAcceleration */
+void func_8395_b2(void); /* EnemyGetDeltaX_UsingAcceleration */
+void func_FD8F(void); /* ApplySpeedToPosition */
+void func_FDBF(void); /* ApplySpeedToPosition_endIf_A */
+void func_FDDD(void); /* ApplySpeedToPosition_endIf_F */
 void func_FDA6(void);
 void func_FDAA(void);
 void func_FDCA(void);
-void func_FDB1(void);
+void func_FDB1(void); /* ApplySpeedToPosition_else_A */
 void func_FDC6(void);
 void func_FDA0(void);
-void func_FDBD(void);
-void func_F438(void);
-void func_9B1B_b3(void);
-void func_CE92(void);
+void func_FDBD(void); /* ApplySpeedToPosition_endIf_C */
+void func_F438(void); /* UpdateEnemyCommon_noMove */
+void func_9B1B_b3(void); /* Adiv16_ */
+void func_CE92(void); /* SubtractHealth */
 void func_CED0(void);
 void func_CEE2(void);
 void func_CECD(void);
-void func_8003_b3(void);
-void func_8006_b3(void);
-void func_F416(void);
-void func_833F_b4(void);
-void func_8395_b4(void);
-void func_8244_b4(void);
-void func_82C3_b4(void);
-void func_825B_b4(void);
-void func_82F4_b4(void);
-void func_8258_b4(void);
-void func_82A2_b4(void);
-void func_8296_b4(void);
-void func_8318_b4(void);
-void func_832F_b4(void);
-void func_FA1E(void);
+void func_8003_b3(void); /* CommonJump_UpdateEnemyCommon_noMove */
+void func_8006_b3(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_F416(void); /* UpdateEnemyCommon_noMoveNoAnim */
+void func_833F_b4(void); /* EnemyGetDeltaY_UsingAcceleration */
+void func_8395_b4(void); /* EnemyGetDeltaX_UsingAcceleration */
+void func_8244_b4(void); /* EnemyGetDeltaY */
+void func_82C3_b4(void); /* EnemyGetDeltaY_RepeatPreviousUntilFailure_endIf_A */
+void func_825B_b4(void); /* EnemyGetDeltaY_ReadByte */
+void func_82F4_b4(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_A */
+void func_8258_b4(void); /* EnemyGetDeltaY_ReadByteAtIndex */
+void func_82A2_b4(void); /* EnemyGetDeltaY_SignMagSpeed_endIf_B */
+void func_8296_b4(void); /* EnemyGetDeltaY_SignMagSpeed_fromByte */
+void func_8318_b4(void); /* EnemyGetDeltaX */
+void func_832F_b4(void); /* EnemyGetDeltaX_SignMagSpeed_fromByte */
+void func_FA1E(void); /* EnemyBGCollideOrApplySpeed */
 void func_FA20(void);
 void func_FA2D(void);
 void func_9CD0_b4(void);
@@ -526,21 +526,21 @@ void func_AB69_b4(void);
 void func_AB6B_b4(void);
 void func_AB6D_b4(void);
 void func_AB73_b4(void);
-void func_AB75_b4(void);
+void func_AB75_b4(void); /* Structure17_BANK4 */
 void func_AB7E_b4(void);
 void func_AB81_b4(void);
 void func_AB84_b4(void);
 void func_AD21_b4(void);
 void func_AD04_b4(void);
-void func_C328(void);
-void func_C36E(void);
+void func_C328(void); /* WriteVRAMString */
+void func_C36E(void); /* NextPPUByte */
 void func_C36F(void);
 void func_AD95_b4(void);
 void func_FF11(void);
 void func_ADFC_b4(void);
 void func_AE0D_b4(void);
 void func_AEE7_b4(void);
-void func_B03F_b4(void);
+void func_B03F_b4(void); /* SongKraidSQ1 */
 void func_B037_b4(void);
 void func_B084_b4(void);
 void func_B0D1_b4(void);
@@ -550,87 +550,87 @@ void func_B1AE_b4(void);
 void func_B1B2_b4(void);
 void func_B226_b4(void);
 void func_B2F5_b4(void);
-void func_B3A4_b4(void);
-void func_B39C_b4(void);
-void func_B3A0_b4(void);
-void func_B4C3_b4(void);
-void func_B482_b4(void);
+void func_B3A4_b4(void); /* LoadSFXData_SQ2 */
+void func_B39C_b4(void); /* LoadSFXData_Tri */
+void func_B3A0_b4(void); /* LoadSFXData_Noise */
+void func_B4C3_b4(void); /* UpdateContFlags */
+void func_B482_b4(void); /* InitSFXData */
 void func_B493_b4(void);
-void func_B4A2_b4(void);
-void func_B4D9_b4(void);
-void func_B5BF_b4(void);
-void func_B5B7_b4(void);
-void func_B4D2_b4(void);
-void func_B5D5_b4(void);
-void func_B65C_b4(void);
-void func_B5FD_b4(void);
-void func_B722_b4(void);
-void func_B8C6_b4(void);
-void func_B8D6_b4(void);
-void func_B9BC_b4(void);
-void func_B899_b4(void);
-void func_B9A8_b4(void);
-void func_B9D0_b4(void);
-void func_B8F3_b4(void);
-void func_833F_b5(void);
-void func_8395_b5(void);
-void func_98AE_b0(void);
-void func_8A8C_b0(void);
-void func_87AB_b0(void);
-void func_87CF_b0(void);
-void func_87D6_b0(void);
-void func_87D9_b0(void);
-void func_8897_b0(void);
-void func_8B5F_b0(void);
-void func_8AA7_b0(void);
-void func_88FE_b0(void);
-void func_8963_b0(void);
-void func_8976_b0(void);
-void func_909F_b0(void);
-void func_9449_b0(void);
-void func_C487(void);
-void func_C494(void);
+void func_B4A2_b4(void); /* InitSFXData_Tri */
+void func_B4D9_b4(void); /* IncrementSFXFrame */
+void func_B5BF_b4(void); /* EndNoiseSFX */
+void func_B5B7_b4(void); /* GotoInitSFXData */
+void func_B4D2_b4(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5D5_b4(void); /* MultiSFXInit */
+void func_B65C_b4(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5FD_b4(void); /* EndMultiSFX */
+void func_B722_b4(void); /* EndSQ1SFX */
+void func_B8C6_b4(void); /* EndTriSFX */
+void func_B8D6_b4(void); /* EndTriSFX_RTS */
+void func_B9BC_b4(void); /* DecreaseSFXTriPeriod */
+void func_B899_b4(void); /* WriteSFXTriPeriod */
+void func_B9A8_b4(void); /* IncreaseSFXTriPeriod */
+void func_B9D0_b4(void); /* DivideSFXTriPeriod */
+void func_B8F3_b4(void); /* RndTriPeriods */
+void func_833F_b5(void); /* EnemyGetDeltaY_UsingAcceleration */
+void func_8395_b5(void); /* EnemyGetDeltaX_UsingAcceleration */
+void func_98AE_b0(void); /* LoadStarSprites */
+void func_8A8C_b0(void); /* CrossExplodeDataTbl_end_2 */
+void func_87AB_b0(void); /* LoadSparkleData */
+void func_87CF_b0(void); /* UpdateSparkleSprites */
+void func_87D6_b0(void); /* DoTwoSparkleUpdates */
+void func_87D9_b0(void); /* SparkleUpdate */
+void func_8897_b0(void); /* InitCrossMissiles */
+void func_8B5F_b0(void); /* DoFadeOut */
+void func_8AA7_b0(void); /* FlashIntroScreen */
+void func_88FE_b0(void); /* UpdateCrossMissiles */
+void func_8963_b0(void); /* UpdateCrossMissile */
+void func_8976_b0(void); /* UpdateCrossExplode */
+void func_909F_b0(void); /* ClearAll */
+void func_9449_b0(void); /* PreparePPUProcess_ */
+void func_C487(void); /* NMIOn */
+void func_C494(void); /* WaitTimer */
 void func_C4A5(void);
-void func_932B_b0(void);
-void func_C6D6(void);
-void func_940B_b0(void);
-void func_90D1_b0(void);
-void func_8C5E_b0(void);
-void func_9450_b0(void);
+void func_932B_b0(void); /* InitializeStats */
+void func_C6D6(void); /* InitPasswordFontGFX */
+void func_940B_b0(void); /* DisplayInputCharacters */
+void func_90D1_b0(void); /* TurnOnDisplay */
+void func_8C5E_b0(void); /* CheckPassword */
+void func_9450_b0(void); /* PrepareWriteVRAMStringRAM */
 void func_9324_b0(void);
-void func_8C7A_b0(void);
-void func_93C6_b0(void);
-void func_C42C(void);
-void func_9EAA_b0(void);
-void func_9AD5_b0(void);
-void func_9B1C_b0(void);
-void func_9B34_b0(void);
-void func_9B93_b0(void);
-void func_9BCD_b0(void);
-void func_9BFC_b0(void);
-void func_9A39_b0(void);
+void func_8C7A_b0(void); /* CalculatePassword */
+void func_93C6_b0(void); /* PasswordToScreen */
+void func_C42C(void); /* WaitNMIPass */
+void func_9EAA_b0(void); /* LoadEndStarSprites */
+void func_9AD5_b0(void); /* LoadEndGFX */
+void func_9B1C_b0(void); /* ShowEndSamus */
+void func_9B34_b0(void); /* EndSamusFlash */
+void func_9B93_b0(void); /* SamusWave */
+void func_9BCD_b0(void); /* EndFadeOut */
+void func_9BFC_b0(void); /* RollCredits */
+void func_9A39_b0(void); /* Restart */
 void func_9F20_b0(void);
 void func_9AA0_b0(void);
-void func_C4A7(void);
-void func_D1EE(void);
+void func_C4A7(void); /* SetMainRoutine */
+void func_D1EE(void); /* FireWeaponProjectile */
 void func_D1F0(void);
-void func_C434(void);
+void func_C434(void); /* ClearNMIStat */
 void func_95AB_b0(void);
 void func_95AB_b2(void);
-void func_95AB_b3(void);
+void func_95AB_b3(void); /* GotoClearAllMetroidLatches */
 void func_95AB_b4(void);
 void func_95AB_b5(void);
 void func_95AB_b6(void);
-void func_EC93(void);
+void func_EC93(void); /* OnNameTable0 */
 void func_EA2A(void);
-void func_EA13(void);
-void func_EC9B(void);
-void func_ED98(void);
-void func_EAC0(void);
-void func_EA05(void);
+void func_EA13(void); /* AttribTableWrite */
+void func_EC9B(void); /* DeleteOffscreenRoomSprites */
+void func_ED98(void); /* ScanForItems */
+void func_EAC0(void); /* AddToRoomPtr */
+void func_EA05(void); /* SelectRoomRAM */
 void func_EA10(void);
-void func_EFF8(void);
-void func_EAAA(void);
+void func_EFF8(void); /* InitTables */
+void func_EAAA(void); /* DrawRoom */
 void func_FCAA(void);
 void func_FCE5(void);
 void func_FCCA(void);
@@ -640,213 +640,213 @@ void func_FCA7(void);
 void func_FCB9(void);
 void func_FC92(void);
 void func_FC8C(void);
-void func_CBE8(void);
+void func_CBE8(void); /* SetSoundInitFlag */
 void func_E1F0(void);
-void func_E6D2(void);
+void func_E6D2(void); /* ScrollRight */
 void func_E6E8(void);
-void func_E6EF(void);
+void func_E6EF(void); /* ScrollRight_noNewRoom */
 void func_E6F9(void);
 void func_E6E6(void);
-void func_E6FD(void);
-void func_E6E4(void);
+void func_E6FD(void); /* ScrollRight_cantScroll */
+void func_E6E4(void); /* ScrollRight_currentlyScrollingRight */
 void func_E6ED(void);
 void func_E204(void);
-void func_E6A7(void);
+void func_E6A7(void); /* ScrollLeft */
 void func_E6C2(void);
-void func_E6D0(void);
+void func_E6D0(void); /* ScrollLeft_cantScroll */
 void func_E6B1(void);
-void func_E519(void);
+void func_E519(void); /* ScrollDown */
 void func_E520(void);
-void func_E21B(void);
-void func_E4F1(void);
-void func_E501(void);
+void func_E21B(void); /* VerticalRoomCentered */
+void func_E4F1(void); /* ScrollUp */
+void func_E501(void); /* ScrollUp_currentlyScrollingUp */
 void func_E518(void);
-void func_C2C6(void);
-void func_E252(void);
-void func_F345(void);
-void func_D4BF(void);
-void func_CC0D(void);
+void func_C2C6(void); /* Amul8 */
+void func_E252(void); /* ToggleScroll */
+void func_F345(void); /* UpdateAllEnemies */
+void func_D4BF(void); /* UpdateWeaponProjectiles */
+void func_CC0D(void); /* UpdateSamus */
 void func_95C3_b0(void);
-void func_95C3_b2(void);
-void func_95C3_b3(void);
-void func_95C3_b4(void);
-void func_95C3_b5(void);
+void func_95C3_b2(void); /* AreaRoutine */
+void func_95C3_b3(void); /* AreaRoutine */
+void func_95C3_b4(void); /* AreaRoutine */
+void func_95C3_b5(void); /* AreaRoutine */
 void func_95C3_b6(void);
-void func_D7B3(void);
-void func_D9D4(void);
-void func_FA9D(void);
-void func_FC65(void);
-void func_F93B(void);
-void func_FBDD(void);
+void func_D7B3(void); /* UpdateElevator */
+void func_D9D4(void); /* UpdateAllStatues */
+void func_FA9D(void); /* UpdateAllEnemyExplosions */
+void func_FC65(void); /* UpdateAllMellows */
+void func_F93B(void); /* UpdateAllEnProjectiles */
+void func_FBDD(void); /* UpdateAllSkreeProjectiles */
 void func_8B13_b0(void);
-void func_8B13_b1(void);
-void func_8B74_b1(void);
-void func_8B53_b1(void);
-void func_8B13_b2(void);
-void func_8B74_b2(void);
-void func_8B53_b2(void);
-void func_8B13_b3(void);
-void func_8B74_b3(void);
-void func_8B53_b3(void);
-void func_8B13_b4(void);
-void func_8B74_b4(void);
-void func_8B53_b4(void);
-void func_8B13_b5(void);
-void func_8B74_b5(void);
-void func_8B53_b5(void);
+void func_8B13_b1(void); /* SamusEnterDoor */
+void func_8B74_b1(void); /* SamusInDoor */
+void func_8B53_b1(void); /* SamusEnterDoor_endIf_A_noDex */
+void func_8B13_b2(void); /* SamusEnterDoor */
+void func_8B74_b2(void); /* SamusInDoor */
+void func_8B53_b2(void); /* SamusEnterDoor_endIf_A_noDex */
+void func_8B13_b3(void); /* SamusEnterDoor */
+void func_8B74_b3(void); /* SamusInDoor */
+void func_8B53_b3(void); /* SamusEnterDoor_endIf_A_noDex */
+void func_8B13_b4(void); /* SamusEnterDoor */
+void func_8B74_b4(void); /* SamusInDoor */
+void func_8B53_b4(void); /* SamusEnterDoor_endIf_A_noDex */
+void func_8B13_b5(void); /* SamusEnterDoor */
+void func_8B74_b5(void); /* SamusInDoor */
+void func_8B53_b5(void); /* SamusEnterDoor_endIf_A_noDex */
 void func_8B13_b6(void);
-void func_8B79_b0(void);
-void func_8B79_b2(void);
-void func_8B79_b3(void);
-void func_8B79_b4(void);
-void func_8B79_b5(void);
+void func_8B79_b0(void); /* ProcessUniqueItems */
+void func_8B79_b2(void); /* UpdateAllDoors */
+void func_8B79_b3(void); /* UpdateAllDoors */
+void func_8B79_b4(void); /* UpdateAllDoors */
+void func_8B79_b5(void); /* UpdateAllDoors */
 void func_8B79_b6(void);
-void func_FE1B(void);
+void func_FE1B(void); /* UpdateAllTileBlasts */
 void func_FE29(void);
 void func_FE4A(void);
 void func_FE4D(void);
 void func_FE20(void);
-void func_F034(void);
-void func_E0C1(void);
-void func_FAF2(void);
-void func_DB17(void);
+void func_F034(void); /* CollisionDetection */
+void func_E0C1(void); /* DisplayBar */
+void func_FAF2(void); /* UpdateAllPipeBugHoles */
+void func_DB17(void); /* CheckMissileToggle */
 void func_DB20(void);
-void func_DB37(void);
-void func_DB42(void);
+void func_DB37(void); /* UpdateAllPowerUps */
+void func_DB42(void); /* UpdateOnePowerUp */
 void func_DB4D(void);
 void func_DBD0(void);
 void func_DC20(void);
 void func_DBB9(void);
 void func_DB8D(void);
 void func_DBE3(void);
-void func_FDE3(void);
+void func_FDE3(void); /* UpdateTourianItems */
 void func_FE03(void);
 void func_FDE6(void);
 void func_FE02(void);
 void func_FE14(void);
 void func_FE00(void);
-void func_E193(void);
-void func_DE3D(void);
+void func_E193(void); /* Xplus4 */
+void func_DE3D(void); /* ReduceYRadius */
 void func_DE3E(void);
-void func_DF19(void);
-void func_E173(void);
-void func_E198(void);
-void func_E17B(void);
+void func_DF19(void); /* DrawSpriteObject */
+void func_E173(void); /* SPRWriteDigit */
+void func_E198(void); /* HexToDec */
+void func_E17B(void); /* AddOneTank */
 void func_E194(void);
 void func_8001_b0(void);
-void func_8244_b1(void);
-void func_8296_b1(void);
-void func_82C3_b1(void);
-void func_825B_b1(void);
-void func_82F4_b1(void);
-void func_8258_b1(void);
-void func_82A2_b1(void);
-void func_C3D4(void);
-void func_83F5_b1(void);
+void func_8244_b1(void); /* EnemyGetDeltaY */
+void func_8296_b1(void); /* EnemyGetDeltaY_SignMagSpeed_fromByte */
+void func_82C3_b1(void); /* EnemyGetDeltaY_RepeatPreviousUntilFailure_endIf_A */
+void func_825B_b1(void); /* EnemyGetDeltaY_ReadByte */
+void func_82F4_b1(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_A */
+void func_8258_b1(void); /* EnemyGetDeltaY_ReadByteAtIndex */
+void func_82A2_b1(void); /* EnemyGetDeltaY_SignMagSpeed_endIf_B */
+void func_C3D4(void); /* TwosComplement */
+void func_83F5_b1(void); /* EnemyMoveOnePixelUp */
 void func_8400_b1(void);
-void func_80B8_b1(void);
-void func_80F6_b1(void);
-void func_844B_b1(void);
-void func_80FB_b1(void);
-void func_812F_b1(void);
-void func_8318_b1(void);
-void func_832F_b1(void);
-void func_84A7_b1(void);
-void func_84FD_b1(void);
-void func_816E_b1(void);
-void func_81AC_b1(void);
-void func_84FE_b1(void);
+void func_80B8_b1(void); /* EnemyIfMoveFailedUp */
+void func_80F6_b1(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_844B_b1(void); /* EnemyMoveOnePixelDown */
+void func_80FB_b1(void); /* EnemyIfMoveFailedDown */
+void func_812F_b1(void); /* EnemyIfMoveFailedDown_abortLoop */
+void func_8318_b1(void); /* EnemyGetDeltaX */
+void func_832F_b1(void); /* EnemyGetDeltaX_SignMagSpeed_fromByte */
+void func_84A7_b1(void); /* EnemyMoveOnePixelLeft */
+void func_84FD_b1(void); /* EnemyMoveOnePixelLeft_RTS */
+void func_816E_b1(void); /* EnemyIfMoveFailedLeft */
+void func_81AC_b1(void); /* EnemyIfMoveFailedLeft_abortLoop */
+void func_84FE_b1(void); /* EnemyMoveOnePixelRight */
 void func_8500_b1(void);
-void func_8134_b1(void);
-void func_8169_b1(void);
-void func_8244_b2(void);
-void func_8296_b2(void);
-void func_82C3_b2(void);
-void func_825B_b2(void);
-void func_82F4_b2(void);
-void func_8258_b2(void);
-void func_82A2_b2(void);
-void func_83F5_b2(void);
+void func_8134_b1(void); /* EnemyIfMoveFailedRight */
+void func_8169_b1(void); /* EnemyIfMoveFailedRight_abortLoop */
+void func_8244_b2(void); /* EnemyGetDeltaY */
+void func_8296_b2(void); /* EnemyGetDeltaY_SignMagSpeed_fromByte */
+void func_82C3_b2(void); /* EnemyGetDeltaY_RepeatPreviousUntilFailure_endIf_A */
+void func_825B_b2(void); /* EnemyGetDeltaY_ReadByte */
+void func_82F4_b2(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_A */
+void func_8258_b2(void); /* EnemyGetDeltaY_ReadByteAtIndex */
+void func_82A2_b2(void); /* EnemyGetDeltaY_SignMagSpeed_endIf_B */
+void func_83F5_b2(void); /* EnemyMoveOnePixelUp */
 void func_8400_b2(void);
-void func_80B8_b2(void);
-void func_80F6_b2(void);
-void func_844B_b2(void);
-void func_80FB_b2(void);
-void func_812F_b2(void);
-void func_8318_b2(void);
-void func_832F_b2(void);
-void func_84A7_b2(void);
-void func_84FD_b2(void);
-void func_816E_b2(void);
-void func_81AC_b2(void);
-void func_84FE_b2(void);
+void func_80B8_b2(void); /* EnemyIfMoveFailedUp */
+void func_80F6_b2(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_844B_b2(void); /* EnemyMoveOnePixelDown */
+void func_80FB_b2(void); /* EnemyIfMoveFailedDown */
+void func_812F_b2(void); /* EnemyIfMoveFailedDown_abortLoop */
+void func_8318_b2(void); /* EnemyGetDeltaX */
+void func_832F_b2(void); /* EnemyGetDeltaX_SignMagSpeed_fromByte */
+void func_84A7_b2(void); /* EnemyMoveOnePixelLeft */
+void func_84FD_b2(void); /* EnemyMoveOnePixelLeft_RTS */
+void func_816E_b2(void); /* EnemyIfMoveFailedLeft */
+void func_81AC_b2(void); /* EnemyIfMoveFailedLeft_abortLoop */
+void func_84FE_b2(void); /* EnemyMoveOnePixelRight */
 void func_8500_b2(void);
-void func_8134_b2(void);
-void func_8169_b2(void);
-void func_8244_b3(void);
-void func_8296_b3(void);
-void func_82C3_b3(void);
-void func_825B_b3(void);
-void func_82F4_b3(void);
-void func_8258_b3(void);
-void func_82A2_b3(void);
-void func_83F5_b3(void);
+void func_8134_b2(void); /* EnemyIfMoveFailedRight */
+void func_8169_b2(void); /* EnemyIfMoveFailedRight_abortLoop */
+void func_8244_b3(void); /* EnemyGetDeltaY */
+void func_8296_b3(void); /* EnemyGetDeltaY_SignMagSpeed_fromByte */
+void func_82C3_b3(void); /* EnemyGetDeltaY_RepeatPreviousUntilFailure_endIf_A */
+void func_825B_b3(void); /* EnemyGetDeltaY_ReadByte */
+void func_82F4_b3(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_A */
+void func_8258_b3(void); /* EnemyGetDeltaY_ReadByteAtIndex */
+void func_82A2_b3(void); /* EnemyGetDeltaY_SignMagSpeed_endIf_B */
+void func_83F5_b3(void); /* EnemyMoveOnePixelUp */
 void func_8400_b3(void);
-void func_80B8_b3(void);
-void func_80F6_b3(void);
-void func_844B_b3(void);
-void func_80FB_b3(void);
-void func_812F_b3(void);
-void func_8318_b3(void);
-void func_832F_b3(void);
-void func_84A7_b3(void);
-void func_84FD_b3(void);
-void func_816E_b3(void);
-void func_81AC_b3(void);
-void func_84FE_b3(void);
+void func_80B8_b3(void); /* EnemyIfMoveFailedUp */
+void func_80F6_b3(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_844B_b3(void); /* EnemyMoveOnePixelDown */
+void func_80FB_b3(void); /* EnemyIfMoveFailedDown */
+void func_812F_b3(void); /* EnemyIfMoveFailedDown_abortLoop */
+void func_8318_b3(void); /* EnemyGetDeltaX */
+void func_832F_b3(void); /* EnemyGetDeltaX_SignMagSpeed_fromByte */
+void func_84A7_b3(void); /* EnemyMoveOnePixelLeft */
+void func_84FD_b3(void); /* EnemyMoveOnePixelLeft_RTS */
+void func_816E_b3(void); /* EnemyIfMoveFailedLeft */
+void func_81AC_b3(void); /* EnemyIfMoveFailedLeft_abortLoop */
+void func_84FE_b3(void); /* EnemyMoveOnePixelRight */
 void func_8500_b3(void);
-void func_8134_b3(void);
-void func_8169_b3(void);
-void func_83F5_b4(void);
+void func_8134_b3(void); /* EnemyIfMoveFailedRight */
+void func_8169_b3(void); /* EnemyIfMoveFailedRight_abortLoop */
+void func_83F5_b4(void); /* EnemyMoveOnePixelUp */
 void func_8400_b4(void);
-void func_80B8_b4(void);
-void func_80F6_b4(void);
-void func_844B_b4(void);
-void func_80FB_b4(void);
-void func_812F_b4(void);
-void func_84A7_b4(void);
-void func_84FD_b4(void);
-void func_816E_b4(void);
-void func_81AC_b4(void);
-void func_84FE_b4(void);
+void func_80B8_b4(void); /* EnemyIfMoveFailedUp */
+void func_80F6_b4(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_844B_b4(void); /* EnemyMoveOnePixelDown */
+void func_80FB_b4(void); /* EnemyIfMoveFailedDown */
+void func_812F_b4(void); /* EnemyIfMoveFailedDown_abortLoop */
+void func_84A7_b4(void); /* EnemyMoveOnePixelLeft */
+void func_84FD_b4(void); /* EnemyMoveOnePixelLeft_RTS */
+void func_816E_b4(void); /* EnemyIfMoveFailedLeft */
+void func_81AC_b4(void); /* EnemyIfMoveFailedLeft_abortLoop */
+void func_84FE_b4(void); /* EnemyMoveOnePixelRight */
 void func_8500_b4(void);
-void func_8134_b4(void);
-void func_8169_b4(void);
-void func_8244_b5(void);
-void func_8296_b5(void);
-void func_82C3_b5(void);
-void func_825B_b5(void);
-void func_82F4_b5(void);
-void func_8258_b5(void);
-void func_82A2_b5(void);
-void func_83F5_b5(void);
+void func_8134_b4(void); /* EnemyIfMoveFailedRight */
+void func_8169_b4(void); /* EnemyIfMoveFailedRight_abortLoop */
+void func_8244_b5(void); /* EnemyGetDeltaY */
+void func_8296_b5(void); /* EnemyGetDeltaY_SignMagSpeed_fromByte */
+void func_82C3_b5(void); /* EnemyGetDeltaY_RepeatPreviousUntilFailure_endIf_A */
+void func_825B_b5(void); /* EnemyGetDeltaY_ReadByte */
+void func_82F4_b5(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_A */
+void func_8258_b5(void); /* EnemyGetDeltaY_ReadByteAtIndex */
+void func_82A2_b5(void); /* EnemyGetDeltaY_SignMagSpeed_endIf_B */
+void func_83F5_b5(void); /* EnemyMoveOnePixelUp */
 void func_8400_b5(void);
-void func_80B8_b5(void);
-void func_80F6_b5(void);
-void func_844B_b5(void);
-void func_80FB_b5(void);
-void func_812F_b5(void);
-void func_8318_b5(void);
-void func_832F_b5(void);
-void func_84A7_b5(void);
-void func_84FD_b5(void);
-void func_816E_b5(void);
-void func_81AC_b5(void);
-void func_84FE_b5(void);
+void func_80B8_b5(void); /* EnemyIfMoveFailedUp */
+void func_80F6_b5(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_844B_b5(void); /* EnemyMoveOnePixelDown */
+void func_80FB_b5(void); /* EnemyIfMoveFailedDown */
+void func_812F_b5(void); /* EnemyIfMoveFailedDown_abortLoop */
+void func_8318_b5(void); /* EnemyGetDeltaX */
+void func_832F_b5(void); /* EnemyGetDeltaX_SignMagSpeed_fromByte */
+void func_84A7_b5(void); /* EnemyMoveOnePixelLeft */
+void func_84FD_b5(void); /* EnemyMoveOnePixelLeft_RTS */
+void func_816E_b5(void); /* EnemyIfMoveFailedLeft */
+void func_81AC_b5(void); /* EnemyIfMoveFailedLeft_abortLoop */
+void func_84FE_b5(void); /* EnemyMoveOnePixelRight */
 void func_8500_b5(void);
-void func_8134_b5(void);
-void func_8169_b5(void);
-void func_DCF5(void);
+void func_8134_b5(void); /* EnemyIfMoveFailedRight */
+void func_8169_b5(void); /* EnemyIfMoveFailedRight_abortLoop */
+void func_DCF5(void); /* EnemyCompleteDeath */
 void func_DE20(void);
 void func_DD20(void);
 void func_DE19(void);
@@ -861,66 +861,66 @@ void func_DE0A(void);
 void func_DE00(void);
 void func_DD00(void);
 void func_DD4D(void);
-void func_DD4A(void);
+void func_DD4A(void); /* RTS_X137 */
 void func_DD30(void);
 void func_DD10(void);
-void func_DDB0(void);
+void func_DDB0(void); /* DrawEnemy_NotBlank */
 void func_DE07(void);
 void func_DE13(void);
 void func_DEDE(void);
-void func_B51A_b1(void);
-void func_B51E_b1(void);
-void func_E449(void);
+void func_B51A_b1(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_B51E_b1(void); /* GetSoundRoutine_RTS */
+void func_E449(void); /* NegateTemp00Temp01 */
 void func_E44C(void);
-void func_CE84(void);
-void func_CE91(void);
-void func_F323(void);
-void func_C3FB(void);
-void func_C3DA(void);
+void func_CE84(void); /* IsSamusDead */
+void func_CE91(void); /* Exit3 */
+void func_F323(void); /* ClearHealthChange */
+void func_C3FB(void); /* Base10Subtract */
+void func_C3DA(void); /* Base10Add */
 void func_C3E6(void);
-void func_F844(void);
-void func_F693(void);
-void func_F690(void);
-void func_80B0_b4(void);
-void func_822B_b4(void);
-void func_8312_b4(void);
-void func_C2BE(void);
-void func_C2BF(void);
+void func_F844(void); /* GetEnemyTypeTimes2PlusFacingDirection */
+void func_F693(void); /* ClearEnAnimDelay */
+void func_F690(void); /* SetEnAnimIndex */
+void func_80B0_b4(void); /* LoadTableAt977B */
+void func_822B_b4(void); /* LoadEnemyMovementPtr */
+void func_8312_b4(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_B */
+void func_C2BE(void); /* Adiv32 */
+void func_C2BF(void); /* Adiv16 */
 void func_C2C1(void);
-void func_E770(void);
-void func_E77B(void);
-void func_81B1_b4(void);
-void func_FA7D(void);
-void func_E792(void);
-void func_FA18(void);
-void func_FB7B(void);
-void func_F85A(void);
+void func_E770(void); /* EnemyCheckMoveUp */
+void func_E77B(void); /* EnemyCheckMoveDown */
+void func_81B1_b4(void); /* EnemyTriggerResting_AndClearEnAccelY */
+void func_FA7D(void); /* GetEnemyRoomRAMPtr */
+void func_E792(void); /* StoreEnemyPositionToTemp */
+void func_FA18(void); /* RemoveEnemy */
+void func_FB7B(void); /* InitEnemyFacingDirectionAxisAndDelay */
+void func_F85A(void); /* InitEnemyForceSpeedTowardsSamusDelayAndHealth */
 void func_AB7B_b4(void);
-void func_BA71_b4(void);
-void func_BA38_b4(void);
-void func_B420_b4(void);
-void func_BA67_b4(void);
-void func_BA23_b4(void);
-void func_BB4C_b4(void);
-void func_BB0C_b4(void);
-void func_BC0E_b4(void);
-void func_BBE7_b4(void);
-void func_BAE3_b4(void);
-void func_BBD8_b4(void);
-void func_BBFD_b4(void);
-void func_BB67_b4(void);
-void func_BAD5_b4(void);
-void func_BCDA_b4(void);
-void func_BCD4_b4(void);
-void func_BCCA_b4(void);
-void func_BCC6_b4(void);
-void func_BCB9_b4(void);
-void func_BCCE_b4(void);
-void func_BA14_b4(void);
-void func_BF62_b4(void);
+void func_BA71_b4(void); /* UpdateVolumeEnvelope */
+void func_BA38_b4(void); /* LoadMusicSQ1SQ2Periods */
+void func_B420_b4(void); /* EndOrLoopMusic */
+void func_BA67_b4(void); /* UpdateAllVolumeEnvelopes */
+void func_BA23_b4(void); /* ResetVolumeIndex */
+void func_BB4C_b4(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BB0C_b4(void); /* LoadNextMusicChannelInstr */
+void func_BC0E_b4(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBE7_b4(void); /* UpdateMusicTriLinearCount */
+void func_BAE3_b4(void); /* IncrementToNextMusicChannel */
+void func_BBD8_b4(void); /* SetMusicInstrDelayToLength */
+void func_BBFD_b4(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB67_b4(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAD5_b4(void); /* UpdateAllMusicChannels */
+void func_BCDA_b4(void); /* Music00Init */
+void func_BCD4_b4(void); /* Music01Init */
+void func_BCCA_b4(void); /* Music02Init */
+void func_BCC6_b4(void); /* Music03Init */
+void func_BCB9_b4(void); /* Music04Init */
+void func_BCCE_b4(void); /* Music05Init */
+void func_BA14_b4(void); /* SetVolumeAndDisableSweep */
+void func_BF62_b4(void); /* InitializeMusic */
 void func_BDCF_b4(void);
-void func_BE38_b4(void);
-void func_BE6E_b4(void);
+void func_BE38_b4(void); /* SongPowerUpTri */
+void func_BE6E_b4(void); /* SongFadeInSQ1 */
 void func_E0FF(void);
 void func_BEE0_b4(void);
 void func_AEAC_b4(void);
@@ -928,132 +928,132 @@ void func_AEAE_b4(void);
 void func_BF47_b4(void);
 void func_B0CE_b4(void);
 void func_BDBB_b4(void);
-void func_B91C_b4(void);
+void func_B91C_b4(void); /* SamusDieSFXInit_RTS */
 void func_B194_b4(void);
-void func_881A_b0(void);
-void func_887B_b0(void);
-void func_981E_b0(void);
-void func_C47D(void);
+void func_881A_b0(void); /* DoSparkleSpriteCoord */
+void func_887B_b0(void); /* WriteIntroSprite */
+void func_981E_b0(void); /* UpdateCrossMissileCoords */
+void func_C47D(void); /* VBOffAndHorzWrite */
 void func_C481(void);
-void func_C7AB(void);
-void func_8F60_b0(void);
-void func_8DDE_b0(void);
-void func_92D4_b0(void);
-void func_8E17_b0(void);
-void func_8E6C_b0(void);
-void func_93F9_b0(void);
-void func_C5D0(void);
-void func_9C9A_b0(void);
-void func_CAF5(void);
-void func_9C7F_b0(void);
-void func_C43F(void);
-void func_9A38_b0(void);
-void func_CF88(void);
-void func_CFB7(void);
+void func_C7AB(void); /* LoadGFX */
+void func_8F60_b0(void); /* ConsolidatePassword */
+void func_8DDE_b0(void); /* ValidatePassword */
+void func_92D4_b0(void); /* InitializeGame */
+void func_8E17_b0(void); /* PasswordChecksumAndScramble */
+void func_8E6C_b0(void); /* LoadPasswordChar */
+void func_93F9_b0(void); /* LoadPasswordCharToVRAMStringRAM */
+void func_C5D0(void); /* InitEndGFX */
+void func_9C9A_b0(void); /* LoadEndSamusSprites */
+void func_CAF5(void); /* ChooseEnding */
+void func_9C7F_b0(void); /* LoadWaveSprites */
+void func_C43F(void); /* WaitNMIPass_ */
+void func_9A38_b0(void); /* Exit100 */
+void func_CF88(void); /* SamusRun_CheckHorzMovementMidair */
+void func_CFB7(void); /* StopHorzMovement */
 void func_CFAE(void);
 void func_CF91(void);
-void func_CFBD(void);
-void func_CDBF(void);
+void func_CFBD(void); /* StopHorzMovement_RTS */
+void func_CDBF(void); /* SamusRun_SetAnim */
 void func_CDCD(void);
-void func_CB96(void);
-void func_CD6B(void);
-void func_CD6D(void);
-void func_CDD7(void);
-void func_CDFA(void);
+void func_CB96(void); /* SFX_SamusWalk */
+void func_CD6B(void); /* SetSamusData_3FrameAnimDelay */
+void func_CD6D(void); /* SetSamusData */
+void func_CDD7(void); /* SamusRun_Fire */
+void func_CDFA(void); /* CheckHealthStatus */
 void func_CE03(void);
 void func_CE20(void);
 void func_CDFF(void);
 void func_CE19(void);
-void func_E269(void);
+void func_E269(void); /* LavaAndMoveCheck */
 void func_E320(void);
 void func_E321(void);
 void func_E26C(void);
 void func_E284(void);
 void func_E2D0(void);
-void func_E7A2(void);
+void func_E7A2(void); /* ObjectCheckMoveUp */
 void func_E7AA(void);
-void func_E8BE(void);
+void func_E8BE(void); /* StoreObjectPositionToTemp */
 void func_E8C3(void);
 void func_E8C8(void);
-void func_D638(void);
+void func_D638(void); /* LoadObjectPositionFromTemp */
 void func_D144(void);
-void func_D150(void);
+void func_D150(void); /* CheckBombLaunch */
 void func_D16A(void);
-void func_CFBE(void);
-void func_D275(void);
+void func_CFBE(void); /* SetSamusJumpPntUp */
+void func_D275(void); /* FireWeaponProjectileUpwards */
 void func_D2D1(void);
 void func_D2B9(void);
 void func_D2BA(void);
-void func_F1EE(void);
-void func_D1F7(void);
-void func_D2EB(void);
+void func_F1EE(void); /* Yplus16 */
+void func_D1F7(void); /* SearchOpenWeaponProjectileSlot */
+void func_D2EB(void); /* InitBullet */
 void func_D2EC(void);
-void func_D359(void);
-void func_D38E(void);
-void func_D315(void);
-void func_D306(void);
-void func_CBB4(void);
-void func_CF6E(void);
-void func_D48C(void);
+void func_D359(void); /* CheckHorizontalWaveBulletFire */
+void func_D38E(void); /* CheckIceBulletFire */
+void func_D315(void); /* CheckHorizontalMissileLaunch */
+void func_D306(void); /* PlaceBulletAtArmCannon */
+void func_CBB4(void); /* SFX_BulletFire */
+void func_CF6E(void); /* SetSamusNextAnim */
+void func_D48C(void); /* Door_DeleteOffscreenEnemies */
 void func_D4A9(void);
-void func_ED65(void);
-void func_CC07(void);
-void func_E249(void);
+void func_ED65(void); /* Doors_RemoveIfOffScreen */
+void func_CC07(void); /* TourianMusic */
+void func_E249(void); /* ToggleSamusHi */
 void func_E24C(void);
 void func_D411(void);
 void func_D47E(void);
-void func_CBCA(void);
-void func_CBAC(void);
-void func_CBEF(void);
-void func_A315_b3(void);
-void func_E5E2(void);
-void func_EA26(void);
+void func_CBCA(void); /* SFX_ScrewAttack */
+void func_CBAC(void); /* SFX_SamusJump */
+void func_CBEF(void); /* SFX_SamusBall */
+void func_A315_b3(void); /* ClearAllMetroidLatches */
+void func_E5E2(void); /* WritePPUAttribTbl */
+void func_EA26(void); /* RoomFinished */
 void func_FFA9(void);
 void func_FFC9(void);
 void func_FFB1(void);
 void func_FFBD(void);
-void func_FFBA(void);
-void func_ED51(void);
-void func_EB85(void);
-void func_F1F4(void);
-void func_ED5B(void);
-void func_ED7A(void);
-void func_ED8C(void);
+void func_FFBA(void); /* ROMFIXED_RESET_WaitForVBlank1 */
+void func_ED51(void); /* UpdateDoorData */
+void func_EB85(void); /* GetNameTableAtScrollDir */
+void func_F1F4(void); /* Xminus16 */
+void func_ED5B(void); /* EraseScrollBlockOnNameTableAtScrollDir */
+void func_ED7A(void); /* WeaponProjectile_RemoveIfOffScreen */
+void func_ED8C(void); /* PowerUp_RemoveIfOffScreen */
 void func_95AE_b0(void);
 void func_95AE_b2(void);
-void func_95AE_b3(void);
+void func_95AE_b3(void); /* GotoDeleteOffscreenRoomSprites_Tourian */
 void func_95AE_b4(void);
 void func_95AE_b5(void);
 void func_95AE_b6(void);
-void func_ED97(void);
-void func_EDA0(void);
-void func_EF09(void);
-void func_EF00(void);
-void func_EDC3(void);
-void func_EDF8(void);
-void func_EDFE(void);
-void func_EE63(void);
-void func_EEA1(void);
-void func_EEA6(void);
-void func_EEAE(void);
-void func_EECA(void);
-void func_EEEE(void);
-void func_EEF4(void);
-void func_EEFA(void);
-void func_EB0C(void);
-void func_EDD6(void);
-void func_F01C(void);
+void func_ED97(void); /* Exit11 */
+void func_EDA0(void); /* ScanForItems_loop_scanItemY */
+void func_EF09(void); /* AddToPtr00 */
+void func_EF00(void); /* ScanForItems_AnotherItem */
+void func_EDC3(void); /* ScanForItems_loop_scanItemX */
+void func_EDF8(void); /* SpawnMapEnemy */
+void func_EDFE(void); /* SpawnPowerUp */
+void func_EE63(void); /* SpawnMellows */
+void func_EEA1(void); /* SpawnElevator */
+void func_EEA6(void); /* SpawnCannon */
+void func_EEAE(void); /* SpawnMotherBrain */
+void func_EECA(void); /* SpawnZebetite */
+void func_EEEE(void); /* SpawnRinkaSpawner */
+void func_EEF4(void); /* SpawnDoor */
+void func_EEFA(void); /* SpawnPalette */
+void func_EB0C(void); /* GetEnemyData */
+void func_EDD6(void); /* ChooseSpawningRoutine */
+void func_F01C(void); /* FillRoomRAM */
 void func_F01D(void);
-void func_EAF4(void);
-void func_EA60(void);
-void func_FB88(void);
-void func_FBCA(void);
-void func_F852(void);
+void func_EAF4(void); /* EndOfRoom */
+void func_EA60(void); /* DrawObject */
+void func_FB88(void); /* EnemyFlipAfterDisplacement */
+void func_FBCA(void); /* InitEnActiveAnimIndex_NoInitOffset */
+void func_F852(void); /* CrawlerAIRoutine_ShouldCrawlerMove */
 void func_EB6E(void);
-void func_FB87(void);
-void func_F870(void);
+void func_FB87(void); /* Exit13 */
+void func_F870(void); /* SpawnEnProjectile */
 void func_F03D(void);
-void func_F86F(void);
+void func_F86F(void); /* InitEnemyForceSpeedTowardsSamusDelayAndHealth_RTS */
 void func_EFD0(void);
 void func_F1D1(void);
 void func_F3B0(void);
@@ -1065,7 +1065,7 @@ void func_F02B(void);
 void func_F5D1(void);
 void func_F6D1(void);
 void func_F089(void);
-void func_F029(void);
+void func_F029(void); /* FillRoomRAM_loop_inner */
 void func_F8B0(void);
 void func_F9D0(void);
 void func_F9D1(void);
@@ -1093,7 +1093,7 @@ void func_EFBE(void);
 void func_F0BD(void);
 void func_F0AB(void);
 void func_FC66(void);
-void func_F221(void);
+void func_F221(void); /* CheckCollisionOfXSlotAndYSlot_endIf_A */
 void func_F009(void);
 void func_EE20(void);
 void func_F027(void);
@@ -1114,7 +1114,7 @@ void func_F5AA(void);
 void func_EBBE(void);
 void func_F1EF(void);
 void func_F720(void);
-void func_FAA9(void);
+void func_FAA9(void); /* UpdateAllEnemyExplosions_endIf */
 void func_F809(void);
 void func_FC05(void);
 void func_F079(void);
@@ -1137,13 +1137,13 @@ void func_FC10(void);
 void func_F05B(void);
 void func_F060(void);
 void func_F0FD(void);
-void func_F018(void);
+void func_F018(void); /* ATDataTable */
 void func_F019(void);
 void func_F0FF(void);
 void func_EFB0(void);
 void func_F7BD(void);
-void func_F7C9(void);
-void func_F7CA(void);
+void func_F7C9(void); /* UpdateEnemy_Resting_TryBecomingActive_RTS */
+void func_F7CA(void); /* UpdateEnemy_Resting_TryBecomingActive_becomeActive */
 void func_F0C5(void);
 void func_F080(void);
 void func_F869(void);
@@ -1163,7 +1163,7 @@ void func_EFE0(void);
 void func_FC87(void);
 void func_F829(void);
 void func_F82A(void);
-void func_F2C9(void);
+void func_F2C9(void); /* RTS_X290 */
 void func_F0F2(void);
 void func_EE51(void);
 void func_ECD0(void);
@@ -1185,17 +1185,17 @@ void func_EF10(void);
 void func_ED8D(void);
 void func_EE30(void);
 void func_F051(void);
-void func_F611(void);
+void func_F611(void); /* ExplodeEnemy */
 void func_EA8D(void);
 void func_EA8E(void);
-void func_EF9A(void);
-void func_EFF4(void);
+void func_EF9A(void); /* TilePosTable */
+void func_EFF4(void); /* AttribMaskTable */
 void func_F3FC(void);
 void func_F0B0(void);
 void func_F4B9(void);
 void func_ED20(void);
 void func_ED21(void);
-void func_FBB9(void);
+void func_FBB9(void); /* InitEnResetAnimIndex */
 void func_F1E1(void);
 void func_F1DA(void);
 void func_F1E8(void);
@@ -1205,7 +1205,7 @@ void func_F67A(void);
 void func_F579(void);
 void func_F22C(void);
 void func_F257(void);
-void func_EBD0(void);
+void func_EBD0(void); /* SpawnDoorRoutine_if_B */
 void func_F06C(void);
 void func_ECC9(void);
 void func_F00D(void);
@@ -1225,7 +1225,7 @@ void func_F0F7(void);
 void func_EABA(void);
 void func_EBBA(void);
 void func_EC21(void);
-void func_FC5D(void);
+void func_FC5D(void); /* SkreeProjectileSpeedTable */
 void func_FB01(void);
 void func_FBFF(void);
 void func_ED10(void);
@@ -1234,22 +1234,22 @@ void func_F18E(void);
 void func_F017(void);
 void func_ED18(void);
 void func_FB75(void);
-void func_FC81(void);
+void func_FC81(void); /* UpdateAllMellows_loop */
 void func_EFAB(void);
 void func_F084(void);
-void func_FA9F(void);
+void func_FA9F(void); /* UpdateAllEnemyExplosions_loop */
 void func_EA7D(void);
 void func_F0B4(void);
-void func_ED32(void);
-void func_F012(void);
-void func_ECE4(void);
-void func_ECC5(void);
+void func_ED32(void); /* DeleteOffscreenRoomSprites_loop_pipeBugHoles */
+void func_F012(void); /* InitTables_loop */
+void func_ECE4(void); /* DeleteOffscreenRoomSprites_loop_tileBlasts */
+void func_ECC5(void); /* DeleteOffscreenRoomSprites_loop_mellows */
 void func_F0F4(void);
-void func_F56B(void);
-void func_ECAD(void);
-void func_EE4F(void);
+void func_F56B(void); /* EnemyReactToSamusWeaponProjectile_RTS */
+void func_ECAD(void); /* DeleteOffscreenRoomSprites_loop_enemies */
+void func_EE4F(void); /* CheckForItem_loop */
 void func_EDC7(void);
-void func_ED15(void);
+void func_ED15(void); /* DeleteOffscreenRoomSprites_loop_Mem0700 */
 void func_F5F9(void);
 void func_EA72(void);
 void func_F4A2(void);
@@ -1260,7 +1260,7 @@ void func_ED0E(void);
 void func_FC0E(void);
 void func_F0C7(void);
 void func_EA90(void);
-void func_F510(void);
+void func_F510(void); /* UpdateEnemy_Hurt_exit */
 void func_F02C(void);
 void func_F520(void);
 void func_FAB9(void);
@@ -1273,7 +1273,7 @@ void func_EBC6(void);
 void func_ED85(void);
 void func_EA85(void);
 void func_EAA5(void);
-void func_F83E(void);
+void func_F83E(void); /* GetEnemyTypeTimes2PlusFacingDirectionBit0 */
 void func_F64C(void);
 void func_F5F0(void);
 void func_F0FB(void);
@@ -1291,279 +1291,279 @@ void func_F0B9(void);
 void func_FC7D(void);
 void func_FB99(void);
 void func_F999(void);
-void func_F7B9(void);
+void func_F7B9(void); /* AndEnData05_RTS */
 void func_EFB9(void);
 void func_F8A9(void);
-void func_EB06(void);
-void func_EB8C(void);
-void func_EC04(void);
-void func_EC2F(void);
-void func_EC57(void);
+void func_EB06(void); /* LoadEnemy */
+void func_EB8C(void); /* LoadDoor */
+void func_EC04(void); /* LoadElevator */
+void func_EC2F(void); /* LoadStatues */
+void func_EC57(void); /* LoadPipeBugHole */
 void func_F0A2(void);
-void func_E57C(void);
-void func_E70C(void);
-void func_EAD4(void);
+void func_E57C(void); /* EndOfRoomVertical */
+void func_E70C(void); /* EndOfRoomHorizontal */
+void func_EAD4(void); /* EnemyLoop */
 void func_FCF0(void);
 void func_FD0D(void);
-void func_EB7A(void);
-void func_EB28(void);
+void func_EB7A(void); /* IsSlotTaken */
+void func_EB28(void); /* GetEnemyType */
 void func_EB4D(void);
 void func_EB24(void);
-void func_EB92(void);
+void func_EB92(void); /* SpawnDoorRoutine */
 void func_EE41(void);
-void func_EE4A(void);
+void func_EE4A(void); /* CheckForItem */
 void func_EC25(void);
-void func_EE3D(void);
-void func_EE86(void);
-void func_EC09(void);
+void func_EE3D(void); /* PrepareItemID */
+void func_EE86(void); /* SpawnMellow */
+void func_EC09(void); /* SpawnElevatorRoutine */
 void func_95B1_b0(void);
 void func_95B1_b2(void);
-void func_95B1_b3(void);
+void func_95B1_b3(void); /* GotoSpawnCannonRoutine */
 void func_95B1_b4(void);
 void func_95B1_b5(void);
 void func_95B1_b6(void);
 void func_95B4_b0(void);
 void func_95B4_b2(void);
-void func_95B4_b3(void);
+void func_95B4_b3(void); /* GotoSpawnMotherBrainRoutine */
 void func_95B4_b4(void);
 void func_95B4_b5(void);
 void func_95B4_b6(void);
 void func_95B7_b0(void);
 void func_95B7_b2(void);
-void func_95B7_b3(void);
+void func_95B7_b3(void); /* GotoSpawnZebetiteRoutine */
 void func_95B7_b4(void);
 void func_95B7_b5(void);
 void func_95B7_b6(void);
-void func_EEC6(void);
+void func_EEC6(void); /* SpawnMotherBrain_exit */
 void func_95BA_b0(void);
 void func_95BA_b2(void);
-void func_95BA_b3(void);
+void func_95BA_b3(void); /* GotoSpawnRinkaSpawnerRoutine */
 void func_95BA_b4(void);
 void func_95BA_b5(void);
 void func_95BA_b6(void);
-void func_EF9E(void);
-void func_F19A(void);
-void func_F149(void);
-void func_F2B4(void);
-void func_F32A(void);
-void func_F277(void);
-void func_F152(void);
-void func_F140(void);
-void func_F2CA(void);
-void func_F282(void);
+void func_EF9E(void); /* UpdateAttrib */
+void func_F19A(void); /* GetMellowXSlotPosition */
+void func_F149(void); /* CollisionDetectionMellow_CheckWithObjectYSlot */
+void func_F2B4(void); /* CollisionDetectionMellow_ReactToCollisionWithSamus */
+void func_F32A(void); /* CollisionDetectionMellow_ReactToCollisionWithWeaponProjectile */
+void func_F277(void); /* CollisionDetectionDoor_F277 */
+void func_F152(void); /* GetEnemyXSlotPosition */
+void func_F140(void); /* CollisionDetectionEnemy_CheckWithObjectYSlot */
+void func_F2CA(void); /* CollisionDetectionEnemy_ReactToCollisionWithWeaponProjectile */
+void func_F282(void); /* CollisionDetectionEnemy_ReactToCollisionWithSamus */
 void func_F09F(void);
-void func_F1B3(void);
-void func_F162(void);
-void func_F1FA(void);
-void func_F2ED(void);
+void func_F1B3(void); /* GetRadiusSumsOfObjXSlotAndEnYSlot */
+void func_F162(void); /* GetEnemyYSlotPosition */
+void func_F1FA(void); /* CheckCollisionOfXSlotAndYSlot */
+void func_F2ED(void); /* CollisionDetectionEnProjectile_ReactToCollisionWithSamus */
 void func_DC82(void);
-void func_F311(void);
-void func_F1BF(void);
-void func_F1D2(void);
-void func_F17F(void);
-void func_F193(void);
-void func_F1E0(void);
-void func_F1D9(void);
-void func_F1E7(void);
-void func_F1CB(void);
-void func_F262(void);
-void func_F22B(void);
-void func_F266(void);
-void func_F256(void);
-void func_F2E8(void);
-void func_F338(void);
+void func_F311(void); /* SamusHurt_F311 */
+void func_F1BF(void); /* GetRadiusSumsOfEnXSlotAndObjYSlot */
+void func_F1D2(void); /* AddObjectYSlotRadiusYOf4AndRadiusXOf8 */
+void func_F17F(void); /* GetXSlotPosition_Common */
+void func_F193(void); /* GetYSlotPosition_Common */
+void func_F1E0(void); /* AddObjectYSlotRadiusY */
+void func_F1D9(void); /* AddObjectYSlotRadiusX */
+void func_F1E7(void); /* AddEnemyYSlotRadiusY */
+void func_F1CB(void); /* AddEnemyYSlotRadiusX */
+void func_F262(void); /* CheckCollisionOfXSlotAndYSlot_positionHi_notEqual */
+void func_F22B(void); /* CheckCollisionOfXSlotAndYSlot_endIf_sameHiY */
+void func_F266(void); /* CheckCollisionOfXSlotAndYSlot_positionHi_equal */
+void func_F256(void); /* CheckCollisionOfXSlotAndYSlot_endIf_sameHiX */
+void func_F2E8(void); /* SetEnemyTouchingSamusFlags */
+void func_F338(void); /* SetSamusIsHitByEnemy */
 void func_F306(void);
-void func_F279(void);
-void func_F332(void);
+void func_F279(void); /* SetWeaponProjectileIsHit */
+void func_F332(void); /* GetEnemyIsHitFlags */
 void func_F340(void);
-void func_F2DF(void);
+void func_F2DF(void); /* CollisionDetectionEnProjectile_ReactToCollisionWithSamus_F2DF */
 void func_F270(void);
-void func_F2BF(void);
-void func_F27B(void);
-void func_F351(void);
-void func_F37F(void);
-void func_F3AA(void);
-void func_F37C(void);
-void func_F3BE(void);
-void func_F3E6(void);
-void func_F40D(void);
-void func_F43E(void);
-void func_F483(void);
-void func_F4EE(void);
-void func_F6B9(void);
-void func_F75B(void);
-void func_F682(void);
-void func_F676(void);
-void func_F7BA(void);
-void func_F40A(void);
-void func_F51E(void);
-void func_F536(void);
+void func_F2BF(void); /* CollisionDetectionMellow_Hit */
+void func_F27B(void); /* SetSamusIsHitFlags */
+void func_F351(void); /* UpdateEnemy */
+void func_F37F(void); /* UpdateEnemy_CheckIfVisible */
+void func_F3AA(void); /* UpdateEnemy_UpdateEnData05Bit6 */
+void func_F37C(void); /* UpdateEnemy_invalidStatus */
+void func_F3BE(void); /* UpdateEnemy_Resting */
+void func_F3E6(void); /* UpdateEnemy_Active */
+void func_F40D(void); /* UpdateEnemy_Explode */
+void func_F43E(void); /* UpdateEnemy_Frozen */
+void func_F483(void); /* UpdateEnemy_Pickup */
+void func_F4EE(void); /* UpdateEnemy_Hurt */
+void func_F6B9(void); /* UpdateEnemy_ForceSpeedTowardsSamus */
+void func_F75B(void); /* UpdateEnemy_EnData05DistanceToSamusThreshold */
+void func_F682(void); /* InitEnRestingAnimIndex */
+void func_F676(void); /* UpdateEnemy_Resting_UpdateEnData1F */
+void func_F7BA(void); /* UpdateEnemy_Resting_TryBecomingActive */
+void func_F40A(void); /* UpdateEnemy_Active_BranchB */
+void func_F51E(void); /* RemoveEnemyIfItIsInLava */
+void func_F536(void); /* EnemyReactToSamusWeaponProjectile */
 void func_F550(void);
 void func_F54D(void);
 void func_F539(void);
 void func_95E5_b0(void);
-void func_95E5_b1(void);
-void func_95E5_b2(void);
-void func_95E5_b3(void);
-void func_95E5_b4(void);
-void func_95E5_b5(void);
+void func_95E5_b1(void); /* ChooseEnemyAIRoutine */
+void func_95E5_b2(void); /* ChooseEnemyAIRoutine */
+void func_95E5_b3(void); /* ChooseEnemyAIRoutine */
+void func_95E5_b4(void); /* ChooseEnemyAIRoutine */
+void func_95E5_b5(void); /* ChooseEnemyAIRoutine */
 void func_95E5_b6(void);
-void func_CEF9(void);
-void func_CBBC(void);
-void func_CBC0(void);
+void func_CEF9(void); /* AddHealth */
+void func_CBBC(void); /* SFX_EnergyPickup */
+void func_CBC0(void); /* SFX_MissilePickup */
 void func_80B0_b0(void);
-void func_80B0_b1(void);
-void func_80B0_b2(void);
-void func_80B0_b3(void);
-void func_80B0_b5(void);
+void func_80B0_b1(void); /* LoadTableAt977B */
+void func_80B0_b2(void); /* LoadTableAt977B */
+void func_80B0_b3(void); /* LoadTableAt977B */
+void func_80B0_b5(void); /* LoadTableAt977B */
 void func_80B0_b6(void);
 void func_F515(void);
 void func_F518(void);
-void func_F423(void);
-void func_CBD2(void);
-void func_F673(void);
+void func_F423(void); /* UpdateEnemyCommon_setHurtPalette */
+void func_CBD2(void); /* SFX_MetroidHit */
+void func_F673(void); /* ExplodeEnemy_exit */
 void func_95A8_b0(void);
 void func_95A8_b1(void);
 void func_95A8_b2(void);
-void func_95A8_b3(void);
+void func_95A8_b3(void); /* GotoClearCurrentMetroidLatchAndMetroidOnSamus */
 void func_95A8_b4(void);
 void func_95A8_b5(void);
 void func_95A8_b6(void);
-void func_CBB8(void);
-void func_F42D(void);
-void func_CBD6(void);
-void func_CBB0(void);
-void func_CBCE(void);
-void func_DCFC(void);
-void func_F7B3(void);
-void func_F752(void);
-void func_F744(void);
+void func_CBB8(void); /* SFX_Metal */
+void func_F42D(void); /* UpdateEnemyCommon_clearIsHitFlags */
+void func_CBD6(void); /* SFX_BossHit */
+void func_CBB0(void); /* SFX_EnemyHit */
+void func_CBCE(void); /* SFX_BigEnemyHit */
+void func_DCFC(void); /* EnemyCompleteDeath_SkipChunkyExplosion */
+void func_F7B3(void); /* AndEnData05 */
+void func_F752(void); /* LoadEnHiToYAndLoadEorHiToCarry */
+void func_F744(void); /* OrEnData05 */
 void func_81DA_b0(void);
-void func_81DA_b1(void);
-void func_81DA_b2(void);
-void func_81DA_b3(void);
-void func_81DA_b4(void);
-void func_81DA_b5(void);
+void func_81DA_b1(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeed */
+void func_81DA_b2(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeed */
+void func_81DA_b3(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeed */
+void func_81DA_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeed */
+void func_81DA_b5(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeed */
 void func_81DA_b6(void);
 void func_820F_b0(void);
-void func_820F_b1(void);
-void func_820F_b2(void);
-void func_820F_b3(void);
-void func_820F_b4(void);
-void func_820F_b5(void);
+void func_820F_b1(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeed */
+void func_820F_b2(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeed */
+void func_820F_b3(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeed */
+void func_820F_b4(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeed */
+void func_820F_b5(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeed */
 void func_820F_b6(void);
-void func_CBA4(void);
-void func_F699(void);
+void func_CBA4(void); /* SFX_OutOfPipe */
+void func_F699(void); /* InitEnActiveAnimIndex */
 void func_81D1_b6(void);
-void func_F839(void);
-void func_8206_b0(void);
+void func_F839(void); /* UpdateEnemy_Resting_TryBecomingActive_endIf_B */
+void func_8206_b0(void); /* UnusedIntroRoutine2 */
 void func_8206_b6(void);
-void func_F84B(void);
-void func_F8E8(void);
-void func_F8EB(void);
-void func_F92C(void);
-void func_F8F8(void);
-void func_F91D(void);
-void func_FA49(void);
-void func_F949(void);
-void func_F96A(void);
-void func_F991(void);
-void func_FA6B(void);
-void func_FA91(void);
-void func_FA5B(void);
-void func_FA60(void);
+void func_F84B(void); /* GetEnemyTypeTimes2PlusFacingDirection_common */
+void func_F8E8(void); /* SpawnEnProjectile_FindSlot */
+void func_F8EB(void); /* SpawnEnProjectile_FindSlot_loop */
+void func_F92C(void); /* SpawnEnProjectile_F92C */
+void func_F8F8(void); /* SpawnEnProjectile_F8F8 */
+void func_F91D(void); /* SpawnEnProjectile_SetEnProjectilePosition */
+void func_FA49(void); /* LoadEnemyPositionFromTemp */
+void func_F949(void); /* UpdateEnProjectile */
+void func_F96A(void); /* UpdateEnProjectile_Resting */
+void func_F991(void); /* UpdateEnProjectile_Active */
+void func_FA6B(void); /* UpdateEnProjectile_Frozen */
+void func_FA91(void); /* UpdateEnProjectile_Pickup */
+void func_FA5B(void); /* EnemyBecomePickupIfHit */
+void func_FA60(void); /* EnemyBecomePickup */
 void func_F987(void);
 void func_8296_b0(void);
 void func_8296_b6(void);
 void func_832F_b0(void);
 void func_832F_b6(void);
 void func_F97C(void);
-void func_E96A(void);
+void func_E96A(void); /* MakeRoomRAMPtr */
 void func_E98B(void);
 void func_E98D(void);
-void func_FAB4(void);
-void func_FA41(void);
-void func_F97E(void);
-void func_FAFF(void);
-void func_FBEC(void);
-void func_E9B7(void);
+void func_FAB4(void); /* UpdateEnemyExplosion */
+void func_FA41(void); /* EnemyBGCollideOrApplySpeed_applySpeed */
+void func_F97E(void); /* AnimDrawEnemy */
+void func_FAFF(void); /* UpdatePipeBugHole */
+void func_FBEC(void); /* UpdateSkreeProjectile */
+void func_E9B7(void); /* ToggleNameTable */
 void func_E9BD(void);
-void func_E54A(void);
+void func_E54A(void); /* CheckUpdateNameTable */
 void func_E54D(void);
-void func_E53F(void);
-void func_D4CB(void);
-void func_D4EB(void);
-void func_D52C(void);
-void func_D5C1(void);
-void func_D5C8(void);
+void func_E53F(void); /* ScrollVertically_Merge */
+void func_D4CB(void); /* DoOneWeaponProjectile */
+void func_D4EB(void); /* UpdateBullet */
+void func_D52C(void); /* UpdateWaveBullet */
+void func_D5C1(void); /* UpdateIceBullet */
+void func_D5C8(void); /* UpdateBulletExplode */
 void func_D5D0(void);
-void func_D65E(void);
+void func_D65E(void); /* BombInit */
 void func_D668(void);
-void func_D670(void);
-void func_D691(void);
-void func_D5FC(void);
-void func_D5DA(void);
-void func_D609(void);
+void func_D670(void); /* BombCountdown */
+void func_D691(void); /* BombExplode */
+void func_D5FC(void); /* UpdateBullet_DeleteIfOffScreen */
+void func_D5DA(void); /* UpdateBullet_ExplodeIfHitSprite */
+void func_D609(void); /* UpdateBullet_CollisionWithBG */
 void func_D619(void);
 void func_D64D(void);
 void func_D620(void);
 void func_D621(void);
 void func_D646(void);
-void func_D5E4(void);
-void func_9D35_b1(void);
-void func_9B9D_b2(void);
-void func_9B25_b3(void);
-void func_9C49_b4(void);
-void func_9B48_b5(void);
-void func_D7D1(void);
-void func_D80E(void);
+void func_D5E4(void); /* BulletExplode */
+void func_9D35_b1(void); /* AreaRoutineStub_BANK1 */
+void func_9B9D_b2(void); /* RTS_Polyp_BANK2 */
+void func_9B25_b3(void); /* AreaRoutine_Tourian */
+void func_9C49_b4(void); /* AreaRoutineStub_BANK4 */
+void func_9B48_b5(void); /* RTS_Polyp_BANK5 */
+void func_D7D1(void); /* ElevatorIdle */
+void func_D80E(void); /* ElevatorScrollXToCenter */
 void func_D821(void);
-void func_D83D(void);
-void func_D84C(void);
-void func_D870(void);
+void func_D83D(void); /* ElevatorMove */
+void func_D84C(void); /* ElevatorMove_endIf_B */
+void func_D870(void); /* ElevatorScrollY */
 void func_D879(void);
 void func_D885(void);
-void func_D8A3(void);
+void func_D8A3(void); /* ElevatorFade */
 void func_D8AD(void);
 void func_D8A9(void);
-void func_D8BF(void);
+void func_D8BF(void); /* ElevatorD8BF */
 void func_D921(void);
-void func_D94E(void);
+void func_D94E(void); /* ElevatorStop */
 void func_D969(void);
 void func_D95A(void);
-void func_D79E(void);
-void func_D9D3(void);
-void func_DAB0(void);
+void func_D79E(void); /* RTS_X098 */
+void func_D9D3(void); /* Exit8 */
+void func_DAB0(void); /* UpdateStatueBGTiles */
 void func_DAD1(void);
 void func_DAB9(void);
-void func_DA1A(void);
+void func_DA1A(void); /* UpdateStatue */
 void func_DA20(void);
 void func_DA21(void);
 void func_DA2D(void);
-void func_DADA(void);
-void func_FC98(void);
+void func_DADA(void); /* UpdateAllStatues_Bridge */
+void func_FC98(void); /* UpdateMellow */
 void func_8B74_b6(void);
 void func_8B53_b6(void);
-void func_8B9C_b0(void);
-void func_8B87_b2(void);
-void func_8B9D_b2(void);
-void func_8BB1_b2(void);
-void func_8B87_b3(void);
-void func_8B9D_b3(void);
-void func_8BB1_b3(void);
-void func_8B87_b4(void);
-void func_8B9D_b4(void);
-void func_8BB1_b4(void);
-void func_8B87_b5(void);
-void func_8B9D_b5(void);
-void func_8BB1_b5(void);
+void func_8B9C_b0(void); /* UniqueItemSearch */
+void func_8B87_b2(void); /* UpdateDoor */
+void func_8B9D_b2(void); /* UpdateDoor_Init */
+void func_8BB1_b2(void); /* DrawDoor */
+void func_8B87_b3(void); /* UpdateDoor */
+void func_8B9D_b3(void); /* UpdateDoor_Init */
+void func_8BB1_b3(void); /* DrawDoor */
+void func_8B87_b4(void); /* UpdateDoor */
+void func_8B9D_b4(void); /* UpdateDoor_Init */
+void func_8BB1_b4(void); /* DrawDoor */
+void func_8B87_b5(void); /* UpdateDoor */
+void func_8B9D_b5(void); /* UpdateDoor_Init */
+void func_8BB1_b5(void); /* DrawDoor */
 void func_8B87_b6(void);
-void func_FE27(void);
-void func_FE3D(void);
-void func_FE54(void);
-void func_FE59(void);
+void func_FE27(void); /* UpdateTileBlast */
+void func_FE3D(void); /* UpdateTileBlast_Init */
+void func_FE54(void); /* UpdateTileBlast_Animating */
+void func_FE59(void); /* UpdateTileBlast_WaitToRespawn */
 void func_FE70(void);
-void func_FE83(void);
+void func_FE83(void); /* UpdateTileBlast_Respawned */
 void func_FE85(void);
 void func_FEA6(void);
 void func_FE9A(void);
@@ -1572,169 +1572,169 @@ void func_FEC9(void);
 void func_FE9E(void);
 void func_FEAD(void);
 void func_FEA8(void);
-void func_FE6D(void);
-void func_FF54(void);
+void func_FE6D(void); /* SetTileAnim */
+void func_FF54(void); /* UpdateTileBlastAnim */
 void func_FF85(void);
 void func_FF69(void);
 void func_FF72(void);
-void func_FAB3(void);
-void func_DB16(void);
+void func_FAB3(void); /* UpdateAllEnemyExplosions_RTS */
+void func_DB16(void); /* Exit0 */
 void func_DB36(void);
-void func_CBF9(void);
-void func_DB2F(void);
+void func_CBF9(void); /* PowerUpMusic */
+void func_DB2F(void); /* MakeBitMask */
 void func_DB30(void);
-void func_DD97(void);
+void func_DD97(void); /* AddToMaxMissiles */
 void func_DD98(void);
 void func_DD99(void);
-void func_DC51(void);
-void func_DC54(void);
-void func_FE05(void);
-void func_FDE2(void);
+void func_DC51(void); /* MapScrollRoutine_endIf_B */
+void func_DC54(void); /* AddItemToHistory */
+void func_FE05(void); /* CheckZebetite */
+void func_FDE2(void); /* RTS_X410 */
 void func_DCA1(void);
-void func_DEE6(void);
+void func_DEE6(void); /* WriteSpriteRAM */
 void func_DF21(void);
 void func_DEF5(void);
-void func_DF1B(void);
-void func_E1AD(void);
-void func_833F_b1(void);
-void func_822B_b1(void);
-void func_8312_b1(void);
-void func_81B1_b1(void);
-void func_8563_b1(void);
-void func_855A_b1(void);
-void func_81FC_b1(void);
-void func_8206_b1(void);
-void func_856B_b1(void);
-void func_8395_b1(void);
-void func_E8F1(void);
-void func_81C7_b1(void);
-void func_81D1_b1(void);
-void func_81F5_b1(void);
-void func_81C0_b1(void);
-void func_E8FC(void);
-void func_822B_b2(void);
-void func_8312_b2(void);
-void func_81B1_b2(void);
-void func_8563_b2(void);
-void func_855A_b2(void);
-void func_81FC_b2(void);
-void func_8206_b2(void);
-void func_856B_b2(void);
-void func_81C7_b2(void);
-void func_81D1_b2(void);
-void func_81F5_b2(void);
-void func_81C0_b2(void);
-void func_833F_b3(void);
-void func_822B_b3(void);
-void func_8312_b3(void);
-void func_81B1_b3(void);
-void func_8563_b3(void);
-void func_855A_b3(void);
-void func_81FC_b3(void);
-void func_8206_b3(void);
-void func_856B_b3(void);
-void func_8395_b3(void);
-void func_81C7_b3(void);
-void func_81D1_b3(void);
-void func_81F5_b3(void);
-void func_81C0_b3(void);
-void func_8563_b4(void);
-void func_855A_b4(void);
-void func_81FC_b4(void);
-void func_8206_b4(void);
-void func_856B_b4(void);
-void func_81C7_b4(void);
-void func_81D1_b4(void);
-void func_81F5_b4(void);
-void func_81C0_b4(void);
-void func_822B_b5(void);
-void func_8312_b5(void);
-void func_81B1_b5(void);
-void func_8563_b5(void);
-void func_855A_b5(void);
-void func_81FC_b5(void);
-void func_8206_b5(void);
-void func_856B_b5(void);
-void func_81C7_b5(void);
-void func_81D1_b5(void);
-void func_81F5_b5(void);
-void func_81C0_b5(void);
-void func_C41D(void);
+void func_DF1B(void); /* GetNextFrameByte */
+void func_E1AD(void); /* DivideByRepeatedSubtraction */
+void func_833F_b1(void); /* EnemyGetDeltaY_UsingAcceleration */
+void func_822B_b1(void); /* LoadEnemyMovementPtr */
+void func_8312_b1(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_B */
+void func_81B1_b1(void); /* EnemyTriggerResting_AndClearEnAccelY */
+void func_8563_b1(void); /* GetOtherNameTableIndex */
+void func_855A_b1(void); /* SwitchEnemyNameTable */
+void func_81FC_b1(void); /* EnemyIfMoveFailedVertical_Bounce */
+void func_8206_b1(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
+void func_856B_b1(void); /* XorEnData05 */
+void func_8395_b1(void); /* EnemyGetDeltaX_UsingAcceleration */
+void func_E8F1(void); /* EnemyCheckMoveLeft */
+void func_81C7_b1(void); /* EnemyIfMoveFailedHorizontal_Bounce */
+void func_81D1_b1(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
+void func_81F5_b1(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
+void func_81C0_b1(void); /* EnemyTriggerResting_AndClearEnAccelX */
+void func_E8FC(void); /* EnemyCheckMoveRight */
+void func_822B_b2(void); /* LoadEnemyMovementPtr */
+void func_8312_b2(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_B */
+void func_81B1_b2(void); /* EnemyTriggerResting_AndClearEnAccelY */
+void func_8563_b2(void); /* GetOtherNameTableIndex */
+void func_855A_b2(void); /* SwitchEnemyNameTable */
+void func_81FC_b2(void); /* EnemyIfMoveFailedVertical_Bounce */
+void func_8206_b2(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
+void func_856B_b2(void); /* XorEnData05 */
+void func_81C7_b2(void); /* EnemyIfMoveFailedHorizontal_Bounce */
+void func_81D1_b2(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
+void func_81F5_b2(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
+void func_81C0_b2(void); /* EnemyTriggerResting_AndClearEnAccelX */
+void func_833F_b3(void); /* EnemyGetDeltaY_UsingAcceleration */
+void func_822B_b3(void); /* LoadEnemyMovementPtr */
+void func_8312_b3(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_B */
+void func_81B1_b3(void); /* EnemyTriggerResting_AndClearEnAccelY */
+void func_8563_b3(void); /* GetOtherNameTableIndex */
+void func_855A_b3(void); /* SwitchEnemyNameTable */
+void func_81FC_b3(void); /* EnemyIfMoveFailedVertical_Bounce */
+void func_8206_b3(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
+void func_856B_b3(void); /* XorEnData05 */
+void func_8395_b3(void); /* EnemyGetDeltaX_UsingAcceleration */
+void func_81C7_b3(void); /* EnemyIfMoveFailedHorizontal_Bounce */
+void func_81D1_b3(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
+void func_81F5_b3(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
+void func_81C0_b3(void); /* EnemyTriggerResting_AndClearEnAccelX */
+void func_8563_b4(void); /* GetOtherNameTableIndex */
+void func_855A_b4(void); /* SwitchEnemyNameTable */
+void func_81FC_b4(void); /* EnemyIfMoveFailedVertical_Bounce */
+void func_8206_b4(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
+void func_856B_b4(void); /* XorEnData05 */
+void func_81C7_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce */
+void func_81D1_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
+void func_81F5_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
+void func_81C0_b4(void); /* EnemyTriggerResting_AndClearEnAccelX */
+void func_822B_b5(void); /* LoadEnemyMovementPtr */
+void func_8312_b5(void); /* EnemyGetDeltaY_RepeatPreviousUntilNoDeltaYThenTriggerResting_endIf_B */
+void func_81B1_b5(void); /* EnemyTriggerResting_AndClearEnAccelY */
+void func_8563_b5(void); /* GetOtherNameTableIndex */
+void func_855A_b5(void); /* SwitchEnemyNameTable */
+void func_81FC_b5(void); /* EnemyIfMoveFailedVertical_Bounce */
+void func_8206_b5(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
+void func_856B_b5(void); /* XorEnData05 */
+void func_81C7_b5(void); /* EnemyIfMoveFailedHorizontal_Bounce */
+void func_81D1_b5(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
+void func_81F5_b5(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
+void func_81C0_b5(void); /* EnemyTriggerResting_AndClearEnAccelX */
+void func_C41D(void); /* ExtractNibbles */
 void func_C41E(void);
 void func_C420(void);
 void func_C427(void);
-void func_E783(void);
+void func_E783(void); /* EnemyCheckMoveVertical */
 void func_E785(void);
-void func_E7BD(void);
-void func_81B8_b4(void);
-void func_BB49_b4(void);
-void func_BB46_b4(void);
-void func_BACD_b4(void);
-void func_BAD1_b4(void);
-void func_BAE0_b4(void);
+void func_E7BD(void); /* CheckMoveVertical */
+void func_81B8_b4(void); /* EnemyTriggerResting */
+void func_BB49_b4(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB46_b4(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BACD_b4(void); /* GotoEndOrLoopMusic */
+void func_BAD1_b4(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAE0_b4(void); /* MusicChannelBaseEmpty */
 void func_BCBD_b4(void);
-void func_BCBB_b4(void);
-void func_B42C_b4(void);
-void func_C45D(void);
+void func_BCBB_b4(void); /* XYMusicInit */
+void func_B42C_b4(void); /* CheckMusicFlags */
+void func_C45D(void); /* ScreenNmiOff */
 void func_A93E_b4(void);
-void func_C5D7(void);
-void func_C5DC(void);
+void func_C5D7(void); /* InitTitleGFX */
+void func_C5DC(void); /* LoadSamusGFX */
 void func_C601(void);
 void func_C5E1(void);
 void func_C5F0(void);
-void func_C1D4(void);
-void func_C578(void);
-void func_C645(void);
+void func_C1D4(void); /* ClearRAM_33_DF */
+void func_C578(void); /* ClearSamusStats */
+void func_C645(void); /* InitTourianGFX */
 void func_C663(void);
-void func_C677(void);
+void func_C677(void); /* InitKraidGFX */
 void func_C681(void);
-void func_C69F(void);
+void func_C69F(void); /* InitRidleyGFX */
 void func_C6A4(void);
-void func_C6C2(void);
+void func_C6C2(void); /* InitGFX6 */
 void func_C707(void);
-void func_C7D5(void);
-void func_C7DB(void);
-void func_CBDE(void);
-void func_CE66(void);
+void func_C7D5(void); /* CopyGFXBlock */
+void func_C7DB(void); /* CopyGFXBlock_loop */
+void func_CBDE(void); /* SFX_SamusHit */
+void func_CE66(void); /* CheckHealthBeep */
 void func_CF4E(void);
-void func_CBF3(void);
-void func_C2C0(void);
-void func_8871_b0(void);
-void func_9871_b0(void);
-void func_8FF1_b0(void);
-void func_9001_b0(void);
-void func_9011_b0(void);
-void func_8E4E_b0(void);
-void func_8E21_b0(void);
-void func_8D12_b0(void);
-void func_8E2D_b0(void);
-void func_8F2D_b0(void);
-void func_8F33_b0(void);
-void func_8F46_b0(void);
-void func_8F5A_b0(void);
-void func_D095(void);
-void func_D210(void);
+void func_CBF3(void); /* SFX_Beep */
+void func_C2C0(void); /* Adiv8 */
+void func_8871_b0(void); /* DoSparkleSpriteCoord_NibbleSubtract */
+void func_9871_b0(void); /* UpdateCrossMissileCoords_CalcDisplacement */
+void func_8FF1_b0(void); /* SixLowerAndTwoUpper */
+void func_9001_b0(void); /* FourLowerAndFiveThruTwo */
+void func_9011_b0(void); /* TwoLowerAndSixLower */
+void func_8E4E_b0(void); /* UnscramblePassword */
+void func_8E21_b0(void); /* PasswordChecksum */
+void func_8D12_b0(void); /* LoadPasswordData */
+void func_8E2D_b0(void); /* PasswordScramble */
+void func_8F2D_b0(void); /* SixUpperBits */
+void func_8F33_b0(void); /* TwoLowerAndFourUpper */
+void func_8F46_b0(void); /* FourLowerAndTwoUpper */
+void func_8F5A_b0(void); /* SixLowerBits */
+void func_D095(void); /* RTS_X028 */
+void func_D210(void); /* FireWeaponProjectileForwards */
 void func_CDBE(void);
 void func_E268(void);
-void func_E25D(void);
-void func_E37A(void);
+void func_E25D(void); /* IsSamusInLava */
+void func_E37A(void); /* VertAccelerate */
 void func_E3D0(void);
 void func_E3BD(void);
 void func_E3A2(void);
-void func_E457(void);
+void func_E457(void); /* MoveSamusUp */
 void func_E48D(void);
 void func_E486(void);
-void func_E31A(void);
-void func_E4A3(void);
+void func_E31A(void); /* SamusMoveHorizontally */
+void func_E4A3(void); /* MoveSamusDown */
 void func_E4E4(void);
 void func_E4B1(void);
 void func_E4D0(void);
 void func_E4C0(void);
-void func_E3E5(void);
+void func_E3E5(void); /* HorzAccelerate */
 void func_E409(void);
-void func_E626(void);
-void func_E365(void);
-void func_E668(void);
+void func_E626(void); /* MoveSamusLeft */
+void func_E365(void); /* CheckStopHorzMvmt */
+void func_E668(void); /* MoveSamusRight */
 void func_E682(void);
 void func_E683(void);
 void func_E690(void);
@@ -1744,103 +1744,103 @@ void func_E6A2(void);
 void func_E6A0(void);
 void func_E699(void);
 void func_D088(void);
-void func_E7B5(void);
-void func_CBA8(void);
+void func_E7B5(void); /* ObjectCheckMoveVertical */
+void func_CBA8(void); /* SFX_BombLaunch */
 void func_CFC5(void);
-void func_D38A(void);
-void func_D340(void);
+void func_D38A(void); /* CheckVerticalWaveBulletFire */
+void func_D340(void); /* CheckVerticalMissileLaunch */
 void func_D26B(void);
-void func_D358(void);
-void func_D34D(void);
-void func_CBC6(void);
-void func_CB9E(void);
-void func_CBA0(void);
-void func_D4B4(void);
-void func_D4A8(void);
-void func_E564(void);
-void func_E880(void);
-void func_D976(void);
-void func_D9B9(void);
-void func_D983(void);
+void func_D358(void); /* SetBulletAnim_RTS */
+void func_D34D(void); /* SetBulletAnim */
+void func_CBC6(void); /* SFX_WaveFire */
+void func_CB9E(void); /* SFX_MissileLaunch */
+void func_CBA0(void); /* SetSFXNoiseInitFlag */
+void func_D4B4(void); /* Door_DeleteOffscreenEnemies_deleteEnemy */
+void func_D4A8(void); /* Door_DeleteOffscreenEnemies_deletePipeBugHole */
+void func_E564(void); /* GetNameAddrs */
+void func_E880(void); /* ObjectCheckMoveLeft */
+void func_D976(void); /* SamusCollisionWithSolidEntities */
+void func_D9B9(void); /* SamusCollisionWithSolidEntities_RTS */
+void func_D983(void); /* SamusCollisionWithSolidEntities_loop */
 void func_ED57(void);
-void func_9C6F_b3(void);
-void func_EDFB(void);
-void func_EE83(void);
-void func_EEAB(void);
+void func_9C6F_b3(void); /* DeleteOffscreenRoomSprites_Tourian */
+void func_EDFB(void); /* SpawnMapEnemy_exit */
+void func_EE83(void); /* SpawnMellows_exit */
+void func_EEAB(void); /* SpawnCannon_exit */
 void func_EB8F(void);
 void func_EC54(void);
-void func_E549(void);
+void func_E549(void); /* RTS_X173 */
 void func_A29E_b0(void);
 void func_A29E_b2(void);
-void func_A29E_b4(void);
-void func_A29E_b5(void);
+void func_A29E_b4(void); /* SpecItmsTbl_BANK4_y1B */
+void func_A29E_b5(void); /* Room04_BANK5 */
 void func_A29E_b6(void);
-void func_E6FE(void);
-void func_E590(void);
-void func_C2C4(void);
-void func_C2C5(void);
+void func_E6FE(void); /* RTS_X196 */
+void func_E590(void); /* UpdateNameTable */
+void func_C2C4(void); /* Amul32 */
+void func_C2C5(void); /* Amul16 */
 void func_C2C7(void);
-void func_9CE6_b3(void);
-void func_9D21_b3(void);
-void func_9D3D_b3(void);
-void func_9D6C_b3(void);
-void func_9D75_b3(void);
+void func_9CE6_b3(void); /* SpawnCannonRoutine */
+void func_9D21_b3(void); /* SpawnMotherBrainRoutine */
+void func_9D3D_b3(void); /* SpawnZebetiteRoutine */
+void func_9D6C_b3(void); /* SpawnRinkaSpawnerRoutine */
+void func_9D75_b3(void); /* SpawnRinkaSpawnerRoutine_endIf_A */
 void func_F298(void);
-void func_F329(void);
-void func_F281(void);
+void func_F329(void); /* ClearHealthChange_RTS */
+void func_F281(void); /* Exit17 */
 void func_F2D8(void);
-void func_F6B8(void);
+void func_F6B8(void); /* InitEnActiveAnimIndex_RTS */
 void func_F530(void);
-void func_8024_b1(void);
+void func_8024_b1(void); /* CommonJump_JumpEngine */
 void func_F59A(void);
-void func_8024_b2(void);
+void func_8024_b2(void); /* CommonJump_JumpEngine */
 void func_9593_b2(void);
 void func_9641_b2(void);
 void func_FFFF(void);
 void func_96BE_b2(void);
 void func_98A4_b2(void);
-void func_8006_b2(void);
-void func_801E_b2(void);
-void func_9839_b2(void);
-void func_9954_b2(void);
-void func_98F4_b2(void);
-void func_95C6_b2(void);
-void func_802A_b2(void);
-void func_801B_b2(void);
-void func_8009_b2(void);
-void func_984D_b2(void);
-void func_9A2F_b2(void);
-void func_99F5_b2(void);
-void func_9A0A_b2(void);
+void func_8006_b2(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_801E_b2(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_9839_b2(void); /* UpdateEnemyCommon_Decide_BANK2 */
+void func_9954_b2(void); /* SwooperChangeEnemyType_BANK2 */
+void func_98F4_b2(void); /* UpdateSwooperAnim_BANK2 */
+void func_95C6_b2(void); /* TwosComplement_ */
+void func_802A_b2(void); /* CommonJump_0E */
+void func_801B_b2(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_8009_b2(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
+void func_984D_b2(void); /* UpdateEnemyCommon_Decide_BANK2_explode */
+void func_9A2F_b2(void); /* JumpByRTSToMovementRoutine_BANK2 */
+void func_99F5_b2(void); /* CrawlerInsideCornerCheck_BANK2 */
+void func_9A0A_b2(void); /* CrawlerFlipDirection_BANK2 */
 void func_9A07_b2(void);
-void func_9A13_b2(void);
-void func_800C_b2(void);
+void func_9A13_b2(void); /* CrawlerOutsideCornerCheck_BANK2 */
+void func_800C_b2(void); /* CommonJump_UpdateEnemyAnim */
 void func_B102_b2(void);
-void func_9A27_b2(void);
-void func_8021_b2(void);
-void func_9B59_b2(void);
+void func_9A27_b2(void); /* CrawlerOutsideCornerGetNextOrientation_BANK2 */
+void func_8021_b2(void); /* CommonJump_SpawnEnProjectile */
+void func_9B59_b2(void); /* DragonAIRoutine_BANK2_endIf_C */
 void func_9DEC_b2(void);
 void func_A40A_b2(void);
 void func_A46A_b2(void);
 void func_A471_b2(void);
 void func_A4E9_b2(void);
-void func_A4F5_b2(void);
-void func_A527_b2(void);
+void func_A4F5_b2(void); /* Room07_BANK2 */
+void func_A527_b2(void); /* Room08_BANK2 */
 void func_A540_b2(void);
 void func_A54D_b2(void);
 void func_A57E_b2(void);
-void func_8024_b3(void);
-void func_8024_b4(void);
-void func_8024_b5(void);
-void func_A320_b3(void);
-void func_81F6_b1(void);
-void func_81F6_b2(void);
-void func_81F6_b3(void);
-void func_81F6_b4(void);
-void func_81F6_b5(void);
-void func_F969(void);
+void func_8024_b3(void); /* CommonJump_JumpEngine */
+void func_8024_b4(void); /* CommonJump_JumpEngine */
+void func_8024_b5(void); /* CommonJump_JumpEngine */
+void func_A320_b3(void); /* ClearCurrentMetroidLatchAndMetroidOnSamus */
+void func_81F6_b1(void); /* LoadBit5ofTableAt968B */
+void func_81F6_b2(void); /* LoadBit5ofTableAt968B */
+void func_81F6_b3(void); /* LoadBit5ofTableAt968B */
+void func_81F6_b4(void); /* LoadBit5ofTableAt968B */
+void func_81F6_b5(void); /* LoadBit5ofTableAt968B */
+void func_F969(void); /* UpdateEnProjectile_RTS */
 void func_F984(void);
-void func_E571(void);
+void func_E571(void); /* CheckUpdateNameTableVertical */
 void func_E603(void);
 void func_E5BD(void);
 void func_E614(void);
@@ -1855,71 +1855,71 @@ void func_E60D(void);
 void func_E659(void);
 void func_E640(void);
 void func_E600(void);
-void func_E5C2(void);
+void func_E5C2(void); /* UpdateNameTable_loop_data */
 void func_E61C(void);
 void func_E62F(void);
 void func_E584(void);
 void func_E63C(void);
 void func_E616(void);
-void func_E701(void);
+void func_E701(void); /* CheckUpdateNameTableHorizontal */
 void func_D522(void);
-void func_D51F(void);
-void func_D624(void);
-void func_D4F8(void);
-void func_D517(void);
-void func_D2FA(void);
-void func_CB9A(void);
-void func_D66B(void);
-void func_D6A7(void);
+void func_D51F(void); /* MoveToNextWeaponWaveInstr */
+void func_D624(void); /* UpdateBullet_Move */
+void func_D4F8(void); /* CheckBulletStat */
+void func_D517(void); /* DrawBullet */
+void func_D2FA(void); /* InitObjAnimIndex */
+void func_CB9A(void); /* SFX_BombExplode */
+void func_D66B(void); /* DrawBomb */
+void func_D6A7(void); /* BombExplosion_CollisionWithBG */
 void func_D720(void);
 void func_D6D1(void);
 void func_D76B(void);
-void func_D5FB(void);
+void func_D5FB(void); /* Exit5 */
 void func_D5F8(void);
-void func_E81E(void);
+void func_E81E(void); /* WeaponProjectileHitDoorOrStatue */
 void func_95C0_b0(void);
 void func_95C0_b2(void);
-void func_95C0_b3(void);
+void func_95C0_b3(void); /* GotoUpdateBullet_CollisionWithMotherBrain */
 void func_95C0_b4(void);
 void func_95C0_b5(void);
 void func_95C0_b6(void);
-void func_D606(void);
-void func_D651(void);
-void func_E9BE(void);
+void func_D606(void); /* GotoWeaponProjectileHitDoorOrStatue */
+void func_D651(void); /* CheckBlastTile */
+void func_E9BE(void); /* IsBlastTile */
 void func_E9F2(void);
 void func_D602(void);
-void func_9B37_b3(void);
-void func_9B44_b3(void);
-void func_9DD4_b3(void);
-void func_A1E7_b3(void);
-void func_A238_b3(void);
-void func_A28A_b3(void);
-void func_A28B_b3(void);
-void func_A29B_b3(void);
+void func_9B37_b3(void); /* UpdateAllCannons */
+void func_9B44_b3(void); /* UpdateAllCannons_updateIfPossible */
+void func_9DD4_b3(void); /* MotherBrainStatusHandler */
+void func_A1E7_b3(void); /* UpdateEndTimer */
+void func_A238_b3(void); /* DrawEndTimerEnemy */
+void func_A28A_b3(void); /* DrawEndTimerEnemy_RTS */
+void func_A28B_b3(void); /* UpdateAllZebetites */
+void func_A29B_b3(void); /* UpdateZebetite */
 void func_A29E_b3(void);
-void func_A15E_b3(void);
-void func_A16B_b3(void);
-void func_D806(void);
-void func_D648(void);
-void func_D866(void);
-void func_D892(void);
-void func_FEDC(void);
+void func_A15E_b3(void); /* UpdateAllRinkaSpawners */
+void func_A16B_b3(void); /* UpdateAllRinkaSpawners_subroutine */
+void func_D806(void); /* DrawElevator */
+void func_D648(void); /* ToggleObjHi */
+void func_D866(void); /* ElevatorMove_endIf_A */
+void func_D892(void); /* ElevScrollRoom */
+void func_FEDC(void); /* DrawTileBlast */
 void func_FEE8(void);
 void func_FF04(void);
 void func_FF21(void);
 void func_FEFC(void);
 void func_FF01(void);
 void func_FF0A(void);
-void func_FF06(void);
-void func_FF08(void);
+void func_FF06(void); /* DrawTileBlast_loop_rows */
+void func_FF08(void); /* DrawTileBlast_loop_columns */
 void func_FEF6(void);
 void func_FEE5(void);
-void func_DA3D(void);
+void func_DA3D(void); /* UpdateStatue_Raise */
 void func_DA4C(void);
-void func_DA7C(void);
-void func_FCA5(void);
-void func_FCB1(void);
-void func_FCBA(void);
+void func_DA7C(void); /* UpdateStatue_StartRaising */
+void func_FCA5(void); /* UpdateMellow_Resting */
+void func_FCB1(void); /* UpdateMellow_Active */
+void func_FCBA(void); /* UpdateMellow_Explode */
 void func_8420_b0(void);
 void func_8420_b1(void);
 void func_8420_b2(void);
@@ -1927,43 +1927,43 @@ void func_8420_b3(void);
 void func_8420_b4(void);
 void func_8420_b5(void);
 void func_8420_b6(void);
-void func_8BD5_b1(void);
-void func_8BD5_b2(void);
-void func_8C01_b2(void);
-void func_8C71_b2(void);
-void func_8C61_b2(void);
-void func_8C84_b2(void);
-void func_8CC6_b2(void);
-void func_8CED_b2(void);
+void func_8BD5_b1(void); /* UpdateDoor_Closed */
+void func_8BD5_b2(void); /* UpdateDoor_Closed */
+void func_8C01_b2(void); /* UpdateDoor_Open */
+void func_8C71_b2(void); /* DoorSubRoutine8C71 */
+void func_8C61_b2(void); /* DoorSubRoutine8C61 */
+void func_8C84_b2(void); /* UpdateDoor_LetSamusIn */
+void func_8CC6_b2(void); /* UpdateDoor_Scroll */
+void func_8CED_b2(void); /* Goto2DrawDoor */
 void func_8CCF_b2(void);
-void func_8CF0_b2(void);
-void func_8BD5_b3(void);
-void func_8C01_b3(void);
-void func_8C71_b3(void);
-void func_8C61_b3(void);
-void func_8C84_b3(void);
-void func_8CC6_b3(void);
-void func_8CED_b3(void);
+void func_8CF0_b2(void); /* UpdateDoor_LetSamusOut */
+void func_8BD5_b3(void); /* UpdateDoor_Closed */
+void func_8C01_b3(void); /* UpdateDoor_Open */
+void func_8C71_b3(void); /* DoorSubRoutine8C71 */
+void func_8C61_b3(void); /* DoorSubRoutine8C61 */
+void func_8C84_b3(void); /* UpdateDoor_LetSamusIn */
+void func_8CC6_b3(void); /* UpdateDoor_Scroll */
+void func_8CED_b3(void); /* Goto2DrawDoor */
 void func_8CCF_b3(void);
-void func_8CF0_b3(void);
-void func_8BD5_b4(void);
-void func_8C01_b4(void);
-void func_8C71_b4(void);
-void func_8C61_b4(void);
-void func_8C84_b4(void);
-void func_8CC6_b4(void);
-void func_8CED_b4(void);
+void func_8CF0_b3(void); /* UpdateDoor_LetSamusOut */
+void func_8BD5_b4(void); /* UpdateDoor_Closed */
+void func_8C01_b4(void); /* UpdateDoor_Open */
+void func_8C71_b4(void); /* DoorSubRoutine8C71 */
+void func_8C61_b4(void); /* DoorSubRoutine8C61 */
+void func_8C84_b4(void); /* UpdateDoor_LetSamusIn */
+void func_8CC6_b4(void); /* UpdateDoor_Scroll */
+void func_8CED_b4(void); /* Goto2DrawDoor */
 void func_8CCF_b4(void);
-void func_8CF0_b4(void);
-void func_8BD5_b5(void);
-void func_8C01_b5(void);
-void func_8C71_b5(void);
-void func_8C61_b5(void);
-void func_8C84_b5(void);
-void func_8CC6_b5(void);
-void func_8CED_b5(void);
+void func_8CF0_b4(void); /* UpdateDoor_LetSamusOut */
+void func_8BD5_b5(void); /* UpdateDoor_Closed */
+void func_8C01_b5(void); /* UpdateDoor_Open */
+void func_8C71_b5(void); /* DoorSubRoutine8C71 */
+void func_8C61_b5(void); /* DoorSubRoutine8C61 */
+void func_8C84_b5(void); /* UpdateDoor_LetSamusIn */
+void func_8CC6_b5(void); /* UpdateDoor_Scroll */
+void func_8CED_b5(void); /* Goto2DrawDoor */
 void func_8CCF_b5(void);
-void func_8CF0_b5(void);
+void func_8CF0_b5(void); /* UpdateDoor_LetSamusOut */
 void func_8B9D_b6(void);
 void func_8BD5_b6(void);
 void func_8C01_b6(void);
@@ -1971,41 +1971,41 @@ void func_8C84_b6(void);
 void func_8CC6_b6(void);
 void func_8CF0_b6(void);
 void func_8CFB_b6(void);
-void func_FF3C(void);
+void func_FF3C(void); /* GetPosAtNameTableAddr */
 void func_FF48(void);
 void func_FF49(void);
 void func_FF45(void);
 void func_FF46(void);
-void func_DF6B(void);
+void func_DF6B(void); /* YDisplacement */
 void func_DF92(void);
-void func_DFA3(void);
+void func_DFA3(void); /* XDisplacement */
 void func_DFBD(void);
 void func_DFAA(void);
-void func_81B8_b1(void);
-void func_E904(void);
+void func_81B8_b1(void); /* EnemyTriggerResting */
+void func_E904(void); /* EnemyCheckMoveHorizontalBranch */
 void func_E90C(void);
 void func_E909(void);
-void func_E89B(void);
-void func_81B8_b2(void);
-void func_81B8_b3(void);
-void func_81B8_b5(void);
-void func_E8CE(void);
+void func_E89B(void); /* CheckMoveHorizontal */
+void func_81B8_b2(void); /* EnemyTriggerResting */
+void func_81B8_b3(void); /* EnemyTriggerResting */
+void func_81B8_b5(void); /* EnemyTriggerResting */
+void func_E8CE(void); /* GetNumBlocksToCheck */
 void func_E8E9(void);
 void func_E8D0(void);
 void func_E8D1(void);
 void func_E8EE(void);
 void func_E8F0(void);
-void func_E90F(void);
+void func_E90F(void); /* CalculateFirstBGCollisionPoint */
 void func_E939(void);
 void func_E911(void);
 void func_E935(void);
-void func_E98E(void);
+void func_E98E(void); /* CalculateNextBGCollisionPoint */
 void func_E9A8(void);
 void func_E7E6(void);
-void func_8BD4_b0(void);
-void func_8D3D_b0(void);
-void func_E7AD(void);
-void func_E800(void);
+void func_8BD4_b0(void); /* LoadUniqueItems */
+void func_8D3D_b0(void); /* LoadTanksAndMissiles */
+void func_E7AD(void); /* ObjectCheckMoveDown */
+void func_E800(void); /* IsWalkableTile */
 void func_E807(void);
 void func_E820(void);
 void func_E875(void);
@@ -2020,20 +2020,20 @@ void func_E802(void);
 void func_E805(void);
 void func_E819(void);
 void func_E85B(void);
-void func_E824(void);
-void func_E364(void);
-void func_E88B(void);
+void func_E824(void); /* WeaponProjectileHitDoorOrStatue_loop */
+void func_E364(void); /* Exit10 */
+void func_E88B(void); /* ObjectCheckMoveRight */
 void func_E8AA(void);
 void func_D35B(void);
-void func_D323(void);
-void func_CBC2(void);
-void func_E893(void);
-void func_D9BA(void);
+void func_D323(void); /* CheckMissileLaunchCommon */
+void func_CBC2(void); /* SetSFXSQ1InitFlag */
+void func_E893(void); /* ObjectCheckMoveHorizontalBranch */
+void func_D9BA(void); /* SamusCollisionWithSolidEntities_isSamusOnTop */
 void func_D9CE(void);
 void func_D9C2(void);
-void func_9D64_b3(void);
-void func_9CD6_b3(void);
-void func_803F_b3(void);
+void func_9D64_b3(void); /* GetRoomRAMPtrHi */
+void func_9CD6_b3(void); /* DeleteOffscreenRoomSprites_Tourian_rinkaSpawner */
+void func_803F_b3(void); /* CommonJump_DrawTileBlast */
 void func_A2AE_b5(void);
 void func_A3D1_b5(void);
 void func_A439_b5(void);
@@ -2060,7 +2060,7 @@ void func_AD95_b5(void);
 void func_ADFC_b5(void);
 void func_AE0D_b5(void);
 void func_AEE7_b5(void);
-void func_B03F_b5(void);
+void func_B03F_b5(void); /* SongKraidSQ1 */
 void func_B037_b5(void);
 void func_B084_b5(void);
 void func_B0D1_b5(void);
@@ -2069,9 +2069,9 @@ void func_B920_b5(void);
 void func_B1AE_b5(void);
 void func_B1B2_b5(void);
 void func_B226_b5(void);
-void func_9B20_b3(void);
-void func_9D88_b3(void);
-void func_C27C(void);
+void func_9B20_b3(void); /* Amul16_ */
+void func_9D88_b3(void); /* GetNameTableAtScrollDir_ */
+void func_C27C(void); /* JumpEngine */
 void func_C27D(void);
 void func_C284(void);
 void func_F56C(void);
@@ -2091,7 +2091,7 @@ void func_A984_b2(void);
 void func_A9AA_b2(void);
 void func_AA06_b2(void);
 void func_ABAD_b2(void);
-void func_ABDA_b2(void);
+void func_ABDA_b2(void); /* Room29_BANK2 */
 void func_ABDF_b2(void);
 void func_ABE5_b2(void);
 void func_AC15_b2(void);
@@ -2100,61 +2100,61 @@ void func_AC7A_b2(void);
 void func_AF01_b2(void);
 void func_AC89_b2(void);
 void func_AD3F_b2(void);
-void func_AE2F_b2(void);
+void func_AE2F_b2(void); /* Structure20_BANK2 */
 void func_AE36_b2(void);
-void func_AE3A_b2(void);
+void func_AE3A_b2(void); /* Structure21_BANK2 */
 void func_AE3B_b2(void);
 void func_AEE0_b2(void);
 void func_AF59_b2(void);
 void func_AF2B_b2(void);
 void func_B03F_b2(void);
-void func_B61C_b2(void);
+void func_B61C_b2(void); /* BossHitSFXInit */
 void func_B06C_b2(void);
 void func_B2F5_b2(void);
-void func_B3A4_b2(void);
-void func_B39C_b2(void);
-void func_B3A0_b2(void);
-void func_B4C3_b2(void);
-void func_B482_b2(void);
+void func_B3A4_b2(void); /* LoadSFXData_SQ2 */
+void func_B39C_b2(void); /* LoadSFXData_Tri */
+void func_B3A0_b2(void); /* LoadSFXData_Noise */
+void func_B4C3_b2(void); /* UpdateContFlags */
+void func_B482_b2(void); /* InitSFXData */
 void func_B493_b2(void);
-void func_B4A2_b2(void);
-void func_B4D9_b2(void);
-void func_B5BF_b2(void);
+void func_B4A2_b2(void); /* InitSFXData_Tri */
+void func_B4D9_b2(void); /* IncrementSFXFrame */
+void func_B5BF_b2(void); /* EndNoiseSFX */
 void func_D78B(void);
 void func_D78D(void);
-void func_D76A(void);
+void func_D76A(void); /* BombCurrentTile */
 void func_D77F(void);
 void func_D780(void);
 void func_D784(void);
-void func_E9C2(void);
-void func_A142_b3(void);
+void func_E9C2(void); /* IsBlastTile_SkipCheckUpdatingWeaponProjectile */
+void func_A142_b3(void); /* UpdateBullet_CollisionWithMotherBrain */
 void func_95BD_b0(void);
 void func_95BD_b2(void);
-void func_95BD_b3(void);
+void func_95BD_b3(void); /* GotoUpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
 void func_95BD_b4(void);
 void func_95BD_b5(void);
 void func_95BD_b6(void);
-void func_9C4D_b3(void);
-void func_9B70_b3(void);
-void func_9B84_b3(void);
-void func_9C2B_b3(void);
-void func_9C31_b3(void);
-void func_8045_b3(void);
-void func_803C_b3(void);
+void func_9C4D_b3(void); /* UpdateCannon_CheckIfOnScreen */
+void func_9B70_b3(void); /* UpdateCannon_RunInstructions */
+void func_9B84_b3(void); /* UpdateCannon_RunInstructions_getInstruction */
+void func_9C2B_b3(void); /* DrawCannon_Normal */
+void func_9C31_b3(void); /* DrawCannon_Escape */
+void func_8045_b3(void); /* CommonJump_Base10Subtract */
+void func_803C_b3(void); /* CommonJump_DrawEnemy */
 void func_A15D_b3(void);
-void func_802A_b3(void);
-void func_9EE7_b3(void);
-void func_FEDB(void);
-void func_FECC(void);
+void func_802A_b3(void); /* CommonJump_0E */
+void func_9EE7_b3(void); /* SpawnRinka_InitPositionXY */
+void func_FEDB(void); /* GetVRAMStringPtr_RTS */
+void func_FECC(void); /* GetVRAMStringPtr */
 void func_FED6(void);
 void func_FED9(void);
-void func_FD84(void);
+void func_FD84(void); /* UpdateMellow_FD84 */
 void func_FD86(void);
-void func_FD08(void);
+void func_FD08(void); /* UpdateMellow_FD08 */
 void func_FD20(void);
-void func_FD25(void);
+void func_FD25(void); /* UpdateMellow_FD25 */
 void func_FD29(void);
-void func_FCC1(void);
+void func_FCC1(void); /* UpdateMellow_RunAI */
 void func_848B_b6(void);
 void func_8631_b6(void);
 void func_8778_b6(void);
@@ -2170,7 +2170,7 @@ void func_C0C0(void);
 void func_C0E0(void);
 void func_8E25_b6(void);
 void func_DF20(void);
-void func_DF2D(void);
+void func_DF2D(void); /* ClearObjectCntrl */
 void func_90C4_b6(void);
 void func_90CA_b6(void);
 void func_90EE_b6(void);
@@ -2180,30 +2180,30 @@ void func_914D_b6(void);
 void func_91C0_b6(void);
 void func_9278_b6(void);
 void func_92FC_b6(void);
-void func_8BB1_b1(void);
-void func_8C7E_b1(void);
-void func_DC1E(void);
-void func_CC03(void);
-void func_8C71_b1(void);
-void func_D2FD(void);
-void func_CBDA(void);
-void func_8C61_b1(void);
-void func_8C7E_b2(void);
-void func_8CF7_b2(void);
-void func_8CFB_b2(void);
-void func_8C76_b2(void);
-void func_8C7E_b3(void);
-void func_8CF7_b3(void);
-void func_8CFB_b3(void);
-void func_8C76_b3(void);
-void func_8C7E_b4(void);
-void func_8CF7_b4(void);
-void func_8CFB_b4(void);
-void func_8C76_b4(void);
-void func_8C7E_b5(void);
-void func_8CF7_b5(void);
-void func_8CFB_b5(void);
-void func_8C76_b5(void);
+void func_8BB1_b1(void); /* DrawDoor */
+void func_8C7E_b1(void); /* DoorSubRoutine8C7E */
+void func_DC1E(void); /* MapScrollRoutine */
+void func_CC03(void); /* MotherBrainMusic */
+void func_8C71_b1(void); /* DoorSubRoutine8C71 */
+void func_D2FD(void); /* SetObjAnimIndex */
+void func_CBDA(void); /* SFX_Door */
+void func_8C61_b1(void); /* DoorSubRoutine8C61 */
+void func_8C7E_b2(void); /* DoorSubRoutine8C7E */
+void func_8CF7_b2(void); /* WriteDoorBGTiles_Air */
+void func_8CFB_b2(void); /* WriteDoorBGTiles_Solid */
+void func_8C76_b2(void); /* DoorSubRoutine8C76 */
+void func_8C7E_b3(void); /* DoorSubRoutine8C7E */
+void func_8CF7_b3(void); /* WriteDoorBGTiles_Air */
+void func_8CFB_b3(void); /* WriteDoorBGTiles_Solid */
+void func_8C76_b3(void); /* DoorSubRoutine8C76 */
+void func_8C7E_b4(void); /* DoorSubRoutine8C7E */
+void func_8CF7_b4(void); /* WriteDoorBGTiles_Air */
+void func_8CFB_b4(void); /* WriteDoorBGTiles_Solid */
+void func_8C76_b4(void); /* DoorSubRoutine8C76 */
+void func_8C7E_b5(void); /* DoorSubRoutine8C7E */
+void func_8CF7_b5(void); /* WriteDoorBGTiles_Air */
+void func_8CFB_b5(void); /* WriteDoorBGTiles_Solid */
+void func_8C76_b5(void); /* DoorSubRoutine8C76 */
 void func_8BB1_b6(void);
 void func_8C60_b6(void);
 void func_9339_b6(void);
@@ -2238,122 +2238,122 @@ void func_DFAD(void);
 void func_E7DE(void);
 void func_E95F(void);
 void func_E934(void);
-void func_8BF5_b0(void);
-void func_8C39_b0(void);
-void func_8C0A_b0(void);
-void func_8C03_b0(void);
-void func_8DA9_b0(void);
+void func_8BF5_b0(void); /* LoadUniqueItems_loop_unused */
+void func_8C39_b0(void); /* SamusHasItem */
+void func_8C0A_b0(void); /* LoadUniqueItems_processItemBit */
+void func_8C03_b0(void); /* LoadUniqueItems_processItemByte */
+void func_8DA9_b0(void); /* LoadTanksAndMissiles_IncrementToNextItem */
 void func_D318(void);
 void func_B2F5_b5(void);
-void func_B3A4_b5(void);
-void func_B39C_b5(void);
-void func_B3A0_b5(void);
-void func_B4C3_b5(void);
-void func_B482_b5(void);
+void func_B3A4_b5(void); /* LoadSFXData_SQ2 */
+void func_B39C_b5(void); /* LoadSFXData_Tri */
+void func_B3A0_b5(void); /* LoadSFXData_Noise */
+void func_B4C3_b5(void); /* UpdateContFlags */
+void func_B482_b5(void); /* InitSFXData */
 void func_B493_b5(void);
-void func_B4A2_b5(void);
-void func_B4D9_b5(void);
-void func_B5BF_b5(void);
-void func_B5B7_b5(void);
-void func_B4D2_b5(void);
-void func_B5D5_b5(void);
-void func_B65C_b5(void);
-void func_B5FD_b5(void);
-void func_B722_b5(void);
-void func_B8C6_b5(void);
-void func_B8D6_b5(void);
-void func_B9BC_b5(void);
-void func_B899_b5(void);
-void func_B9A8_b5(void);
-void func_B9D0_b5(void);
-void func_B8F3_b5(void);
-void func_BA71_b5(void);
-void func_BA38_b5(void);
-void func_B420_b5(void);
-void func_BA67_b5(void);
-void func_BA23_b5(void);
-void func_BB4C_b5(void);
-void func_BB0C_b5(void);
-void func_BC0E_b5(void);
-void func_BBE7_b5(void);
-void func_BAE3_b5(void);
-void func_BBD8_b5(void);
-void func_BBFD_b5(void);
-void func_BB67_b5(void);
+void func_B4A2_b5(void); /* InitSFXData_Tri */
+void func_B4D9_b5(void); /* IncrementSFXFrame */
+void func_B5BF_b5(void); /* EndNoiseSFX */
+void func_B5B7_b5(void); /* GotoInitSFXData */
+void func_B4D2_b5(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5D5_b5(void); /* MultiSFXInit */
+void func_B65C_b5(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5FD_b5(void); /* EndMultiSFX */
+void func_B722_b5(void); /* EndSQ1SFX */
+void func_B8C6_b5(void); /* EndTriSFX */
+void func_B8D6_b5(void); /* EndTriSFX_RTS */
+void func_B9BC_b5(void); /* DecreaseSFXTriPeriod */
+void func_B899_b5(void); /* WriteSFXTriPeriod */
+void func_B9A8_b5(void); /* IncreaseSFXTriPeriod */
+void func_B9D0_b5(void); /* DivideSFXTriPeriod */
+void func_B8F3_b5(void); /* RndTriPeriods */
+void func_BA71_b5(void); /* UpdateVolumeEnvelope */
+void func_BA38_b5(void); /* LoadMusicSQ1SQ2Periods */
+void func_B420_b5(void); /* EndOrLoopMusic */
+void func_BA67_b5(void); /* UpdateAllVolumeEnvelopes */
+void func_BA23_b5(void); /* ResetVolumeIndex */
+void func_BB4C_b5(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BB0C_b5(void); /* LoadNextMusicChannelInstr */
+void func_BC0E_b5(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBE7_b5(void); /* UpdateMusicTriLinearCount */
+void func_BAE3_b5(void); /* IncrementToNextMusicChannel */
+void func_BBD8_b5(void); /* SetMusicInstrDelayToLength */
+void func_BBFD_b5(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB67_b5(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
 void func_AB32_b5(void);
-void func_BAD5_b5(void);
-void func_BCDA_b5(void);
-void func_BCD4_b5(void);
-void func_BCCA_b5(void);
-void func_BCC6_b5(void);
-void func_BCB9_b5(void);
-void func_BCCE_b5(void);
-void func_BA14_b5(void);
-void func_BF62_b5(void);
+void func_BAD5_b5(void); /* UpdateAllMusicChannels */
+void func_BCDA_b5(void); /* Music00Init */
+void func_BCD4_b5(void); /* Music01Init */
+void func_BCCA_b5(void); /* Music02Init */
+void func_BCC6_b5(void); /* Music03Init */
+void func_BCB9_b5(void); /* Music04Init */
+void func_BCCE_b5(void); /* Music05Init */
+void func_BA14_b5(void); /* SetVolumeAndDisableSweep */
+void func_BF62_b5(void); /* InitializeMusic */
 void func_BDCF_b5(void);
-void func_BE38_b5(void);
-void func_BE6E_b5(void);
+void func_BE38_b5(void); /* SongPowerUpTri */
+void func_BE6E_b5(void); /* SongFadeInSQ1 */
 void func_BEE0_b5(void);
 void func_AEAC_b5(void);
 void func_AEAE_b5(void);
 void func_BF47_b5(void);
 void func_B0CE_b5(void);
 void func_BDBB_b5(void);
-void func_B91C_b5(void);
+void func_B91C_b5(void); /* SamusDieSFXInit_RTS */
 void func_B194_b5(void);
-void func_B5B7_b2(void);
-void func_B4D2_b2(void);
-void func_B5D5_b2(void);
-void func_B65C_b2(void);
-void func_B5FD_b2(void);
-void func_B722_b2(void);
+void func_B5B7_b2(void); /* GotoInitSFXData */
+void func_B4D2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5D5_b2(void); /* MultiSFXInit */
+void func_B65C_b2(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5FD_b2(void); /* EndMultiSFX */
+void func_B722_b2(void); /* EndSQ1SFX */
 void func_9416_b2(void);
 void func_9431_b2(void);
 void func_94EE_b2(void);
 void func_9526_b2(void);
 void func_94E2_b2(void);
 void func_9564_b2(void);
-void func_B8C6_b2(void);
-void func_B8D6_b2(void);
-void func_B9BC_b2(void);
-void func_B899_b2(void);
-void func_B9A8_b2(void);
-void func_B9D0_b2(void);
-void func_B8F3_b2(void);
-void func_BA71_b2(void);
-void func_BA38_b2(void);
-void func_B420_b2(void);
-void func_BA67_b2(void);
-void func_BA23_b2(void);
-void func_BB4C_b2(void);
-void func_BB0C_b2(void);
-void func_BC0E_b2(void);
-void func_BBE7_b2(void);
-void func_BAE3_b2(void);
-void func_BBD8_b2(void);
-void func_BBFD_b2(void);
-void func_BB67_b2(void);
-void func_BAD5_b2(void);
-void func_BCDA_b2(void);
-void func_BCD4_b2(void);
-void func_BCCA_b2(void);
-void func_BCC6_b2(void);
-void func_BCB9_b2(void);
-void func_BCCE_b2(void);
-void func_BA14_b2(void);
-void func_BF62_b2(void);
+void func_B8C6_b2(void); /* EndTriSFX */
+void func_B8D6_b2(void); /* EndTriSFX_RTS */
+void func_B9BC_b2(void); /* DecreaseSFXTriPeriod */
+void func_B899_b2(void); /* WriteSFXTriPeriod */
+void func_B9A8_b2(void); /* IncreaseSFXTriPeriod */
+void func_B9D0_b2(void); /* DivideSFXTriPeriod */
+void func_B8F3_b2(void); /* RndTriPeriods */
+void func_BA71_b2(void); /* UpdateVolumeEnvelope */
+void func_BA38_b2(void); /* LoadMusicSQ1SQ2Periods */
+void func_B420_b2(void); /* EndOrLoopMusic */
+void func_BA67_b2(void); /* UpdateAllVolumeEnvelopes */
+void func_BA23_b2(void); /* ResetVolumeIndex */
+void func_BB4C_b2(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BB0C_b2(void); /* LoadNextMusicChannelInstr */
+void func_BC0E_b2(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBE7_b2(void); /* UpdateMusicTriLinearCount */
+void func_BAE3_b2(void); /* IncrementToNextMusicChannel */
+void func_BBD8_b2(void); /* SetMusicInstrDelayToLength */
+void func_BBFD_b2(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB67_b2(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAD5_b2(void); /* UpdateAllMusicChannels */
+void func_BCDA_b2(void); /* Music00Init */
+void func_BCD4_b2(void); /* Music01Init */
+void func_BCCA_b2(void); /* Music02Init */
+void func_BCC6_b2(void); /* Music03Init */
+void func_BCB9_b2(void); /* Music04Init */
+void func_BCCE_b2(void); /* Music05Init */
+void func_BA14_b2(void); /* SetVolumeAndDisableSweep */
+void func_BF62_b2(void); /* InitializeMusic */
 void func_BDDC_b2(void);
 void func_BDCF_b2(void);
-void func_BE38_b2(void);
-void func_BE6E_b2(void);
+void func_BE38_b2(void); /* SongPowerUpTri */
+void func_BE6E_b2(void); /* SongFadeInSQ1 */
 void func_BEE0_b2(void);
 void func_BF47_b2(void);
 void func_AF53_b2(void);
 void func_D798(void);
-void func_A0C6_b3(void);
-void func_9BAF_b3(void);
-void func_FD5F(void);
-void func_FD6C(void);
+void func_A0C6_b3(void); /* UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
+void func_9BAF_b3(void); /* Cannon_ShootEnProjectile */
+void func_FD5F(void); /* UpdateMellow_StorePositionToTemp */
+void func_FD6C(void); /* UpdateMellow_LoadPositionFromTemp */
 void func_8DF7_b6(void);
 void func_90BF_b6(void);
 void func_90BC_b6(void);
@@ -2388,26 +2388,26 @@ void func_A462_b6(void);
 void func_A44C_b6(void);
 void func_A655_b6(void);
 void func_A657_b6(void);
-void func_8D95_b0(void);
-void func_BB49_b5(void);
-void func_BB46_b5(void);
-void func_BACD_b5(void);
-void func_BAD1_b5(void);
-void func_BAE0_b5(void);
+void func_8D95_b0(void); /* LoadTanksAndMissiles_loop_tanks */
+void func_BB49_b5(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB46_b5(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BACD_b5(void); /* GotoEndOrLoopMusic */
+void func_BAD1_b5(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAE0_b5(void); /* MusicChannelBaseEmpty */
 void func_BCBD_b5(void);
-void func_BCBB_b5(void);
-void func_B42C_b5(void);
+void func_BCBB_b5(void); /* XYMusicInit */
+void func_B42C_b5(void); /* CheckMusicFlags */
 void func_A93E_b5(void);
-void func_BB49_b2(void);
-void func_BB46_b2(void);
-void func_BACD_b2(void);
-void func_BAD1_b2(void);
-void func_BAE0_b2(void);
+void func_BB49_b2(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB46_b2(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BACD_b2(void); /* GotoEndOrLoopMusic */
+void func_BAD1_b2(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAE0_b2(void); /* MusicChannelBaseEmpty */
 void func_BCBD_b2(void);
-void func_BCBB_b2(void);
-void func_B42C_b2(void);
+void func_BCBB_b2(void); /* XYMusicInit */
+void func_B42C_b2(void); /* CheckMusicFlags */
 void func_A93E_b2(void);
-void func_9EF9_b3(void);
+void func_9EF9_b3(void); /* Xplus16 */
 void func_915E_b6(void);
 void func_A76F_b6(void);
 void func_A508_b6(void);
@@ -2524,7 +2524,7 @@ void func_CA2F(void);
 void func_D0CB(void);
 void func_FA21(void);
 void func_C4FB(void);
-void func_C800(void);
+void func_C800(void); /* CopyGFXBlock_RTS */
 void func_FBD1(void);
 void func_E001(void);
 void func_F1D0(void);
@@ -2534,8 +2534,8 @@ void func_FC84(void);
 void func_FC85(void);
 void func_C820(void);
 void func_C159(void);
-void func_C16D(void);
-void func_FF86(void);
+void func_C16D(void); /* ClearNameTables_nameTable0 */
+void func_FF86(void); /* TileBlastAnim */
 void func_FE86(void);
 void func_FA85(void);
 void func_FA86(void);
@@ -2559,7 +2559,7 @@ void func_C16E(void);
 void func_FB29(void);
 void func_FB2A(void);
 void func_CA01(void);
-void func_C19F(void);
+void func_C19F(void); /* HiPPUTable */
 void func_C1A0(void);
 void func_FAD1(void);
 void func_CAFA(void);
@@ -2581,7 +2581,7 @@ void func_D608(void);
 void func_D018(void);
 void func_D019(void);
 void func_C602(void);
-void func_C604(void);
+void func_C604(void); /* InitBrinstarGFX */
 void func_C61F(void);
 void func_F02A(void);
 void func_D603(void);
@@ -2593,7 +2593,7 @@ void func_FCA6(void);
 void func_C802(void);
 void func_F5D0(void);
 void func_C36C(void);
-void func_C376(void);
+void func_C376(void); /* EndVRAMStruct */
 void func_C8C3(void);
 void func_C6C3(void);
 void func_C6C4(void);
@@ -2603,7 +2603,7 @@ void func_C607(void);
 void func_C377(void);
 void func_E808(void);
 void func_C620(void);
-void func_C622(void);
+void func_C622(void); /* InitNorfairGFX */
 void func_C3C7(void);
 void func_E3D1(void);
 void func_C2D1(void);
@@ -2656,9 +2656,9 @@ void func_D520(void);
 void func_D521(void);
 void func_C7D6(void);
 void func_EF4C(void);
-void func_EF78(void);
+void func_EF78(void); /* AdvanceRow */
 void func_EF79(void);
-void func_EF8C(void);
+void func_EF8C(void); /* AdvanceRow_endIf_B */
 void func_C60C(void);
 void func_C806(void);
 void func_EED0(void);
@@ -2672,7 +2672,7 @@ void func_F085(void);
 void func_CA19(void);
 void func_E876(void);
 void func_C43A(void);
-void func_C43D(void);
+void func_C43D(void); /* WriteAndWait */
 void func_C8BC(void);
 void func_DAAD(void);
 void func_C8B1(void);
@@ -2686,8 +2686,8 @@ void func_F3D1(void);
 void func_E630(void);
 void func_E631(void);
 void func_C448(void);
-void func_C44D(void);
-void func_C45C(void);
+void func_C44D(void); /* WritePPUCtrl */
+void func_C45C(void); /* ExitSub */
 void func_CA3B(void);
 void func_CA3C(void);
 void func_F810(void);
@@ -2737,18 +2737,18 @@ void func_C868(void);
 void func_C869(void);
 void func_E6CA(void);
 void func_E6CB(void);
-void func_CAEF(void);
+void func_CAEF(void); /* SavedDataTable */
 void func_CAF0(void);
 void func_CAF1(void);
 void func_D069(void);
 void func_CB17(void);
-void func_CB18(void);
+void func_CB18(void); /* AgeTable */
 void func_C0C8(void);
 void func_F346(void);
-void func_F74B(void);
+void func_F74B(void); /* ReadTableAt968B */
 void func_D4C0(void);
-void func_D92C(void);
-void func_D79F(void);
+void func_D92C(void); /* StartMusic */
+void func_D79F(void); /* GetObjRoomRAMPtr */
 void func_D7AE(void);
 void func_D94D(void);
 void func_CC0E(void);
@@ -2766,7 +2766,7 @@ void func_DB18(void);
 void func_DB38(void);
 void func_D020(void);
 void func_E5D0(void);
-void func_E5D1(void);
+void func_E5D1(void); /* UpdateNameTable_inc1 */
 void func_DBD1(void);
 void func_CC1B(void);
 void func_C6CC(void);
@@ -2776,9 +2776,9 @@ void func_CF2A(void);
 void func_CF2E(void);
 void func_F0CF(void);
 void func_CF5E(void);
-void func_CF6B(void);
-void func_CF77(void);
-void func_CF81(void);
+void func_CF6B(void); /* SetSamusAnim */
+void func_CF77(void); /* SetSamusPntUp */
+void func_CF81(void); /* NoHorzMoveNoDelay */
 void func_E120(void);
 void func_E121(void);
 void func_E1E2(void);
@@ -2790,16 +2790,16 @@ void func_C9E8(void);
 void func_C9E9(void);
 void func_F028(void);
 void func_CF6F(void);
-void func_CCBE(void);
+void func_CCBE(void); /* RunAnimationTbl */
 void func_C0BE(void);
-void func_CCC0(void);
-void func_CCC2(void);
+void func_CCC0(void); /* RunAccelerationTbl */
+void func_CCC2(void); /* SamusRun */
 void func_CD04(void);
 void func_CD10(void);
 void func_CCF0(void);
 void func_CD09(void);
 void func_CD84(void);
-void func_CD0E(void);
+void func_CD0E(void); /* samL05 */
 void func_CCC1(void);
 void func_D031(void);
 void func_C026(void);
@@ -2809,7 +2809,7 @@ void func_D148(void);
 void func_CD01(void);
 void func_CF89(void);
 void func_CF2F(void);
-void func_CF4C(void);
+void func_CF4C(void); /* ClearHorzMvmntData */
 void func_CCB8(void);
 void func_CDC0(void);
 void func_D053(void);
@@ -2818,7 +2818,7 @@ void func_CB97(void);
 void func_CFC4(void);
 void func_CDD8(void);
 void func_CF56(void);
-void func_CF5D(void);
+void func_CF5D(void); /* SetSamusStand_NoFootstep */
 void func_C5E2(void);
 void func_F04E(void);
 void func_CC99(void);
@@ -2826,7 +2826,7 @@ void func_CDFB(void);
 void func_E26A(void);
 void func_F092(void);
 void func_CD93(void);
-void func_CD9C(void);
+void func_CD9C(void); /* IsScrewAttackActive */
 void func_CDB1(void);
 void func_CD9D(void);
 void func_CDAD(void);
@@ -2883,9 +2883,9 @@ void func_CF78(void);
 void func_CA06(void);
 void func_CA07(void);
 void func_D903(void);
-void func_D099(void);
+void func_D099(void); /* Table04 */
 void func_D09A(void);
-void func_D09C(void);
+void func_D09C(void); /* SamusJump_CheckFire */
 void func_D0A3(void);
 void func_D0A0(void);
 void func_D0A1(void);
@@ -2894,7 +2894,7 @@ void func_D0B0(void);
 void func_D0A8(void);
 void func_D0D1(void);
 void func_D09B(void);
-void func_D096(void);
+void func_D096(void); /* Table06 */
 void func_F210(void);
 void func_D035(void);
 void func_D036(void);
@@ -2916,10 +2916,10 @@ void func_EB20(void);
 void func_EB21(void);
 void func_D35A(void);
 void func_D38F(void);
-void func_D273(void);
+void func_D273(void); /* BulletSpeedXTable */
 void func_D274(void);
 void func_D316(void);
-void func_D26F(void);
+void func_D26F(void); /* BulletForwardsOffsetXTable */
 void func_D270(void);
 void func_D307(void);
 void func_CBB5(void);
@@ -2930,7 +2930,7 @@ void func_D341(void);
 void func_E3BC(void);
 void func_FEAA(void);
 void func_FEAB(void);
-void func_D33E(void);
+void func_D33E(void); /* HorizontalMissileAnims */
 void func_D34E(void);
 void func_CB9F(void);
 void func_CE04(void);
@@ -3023,13 +3023,13 @@ void func_C96B(void);
 void func_F153(void);
 void func_F1C0(void);
 void func_D9BB(void);
-void func_E1E1(void);
-void func_DC8F(void);
-void func_DCC3(void);
-void func_DFDF(void);
-void func_DC67(void);
-void func_DC7F(void);
-void func_E038(void);
+void func_E1E1(void); /* BitScan */
+void func_DC8F(void); /* UpdateObjAnim */
+void func_DCC3(void); /* GetSpriteCntrlData */
+void func_DFDF(void); /* IsObjectVisible */
+void func_DC67(void); /* CreateItemID */
+void func_DC7F(void); /* AreObjectsTouching */
+void func_E038(void); /* SpriteAttrsOverride */
 void func_E002(void);
 void func_E020(void);
 void func_E000(void);
@@ -3052,7 +3052,7 @@ void func_DA1B(void);
 void func_DA4D(void);
 void func_DADB(void);
 void func_DA3E(void);
-void func_DA3B(void);
+void func_DA3B(void); /* StatueAnimFrameTable */
 void func_DA3C(void);
 void func_FE2D(void);
 void func_FE2E(void);
@@ -3060,7 +3060,7 @@ void func_DE03(void);
 void func_DE04(void);
 void func_FE68(void);
 void func_FE69(void);
-void func_DA39(void);
+void func_DA39(void); /* StatueXTable */
 void func_DA3A(void);
 void func_DE0B(void);
 void func_DE0C(void);
@@ -3117,12 +3117,12 @@ void func_FBBE(void);
 void func_DCC4(void);
 void func_FE4B(void);
 void func_FE4C(void);
-void func_DC8B(void);
+void func_DC8B(void); /* ExplodeRotationTbl */
 void func_DC8C(void);
 void func_F54C(void);
 void func_DCF6(void);
 void func_C84B(void);
-void func_F59D(void);
+void func_F59D(void); /* PlaySnd1 */
 void func_F59E(void);
 void func_C8DF(void);
 void func_F69E(void);
@@ -3131,7 +3131,7 @@ void func_DFE0(void);
 void func_FD2A(void);
 void func_C9E0(void);
 void func_EF2A(void);
-void func_EF4B(void);
+void func_EF4B(void); /* DrawMetatile_loop */
 void func_EF4D(void);
 void func_DFBE(void);
 void func_E0BD(void);
@@ -3141,7 +3141,7 @@ void func_F056(void);
 void func_E64B(void);
 void func_DF1A(void);
 void func_E810(void);
-void func_C590(void);
+void func_C590(void); /* InitBank3 */
 void func_C591(void);
 void func_FDC9(void);
 void func_C915(void);
@@ -3235,15 +3235,15 @@ void func_C661(void);
 void func_E85A(void);
 void func_E572(void);
 void func_E702(void);
-void func_E560(void);
+void func_E560(void); /* PPUAddrs */
 void func_E561(void);
-void func_E562(void);
+void func_E562(void); /* RoomRAMAddrs */
 void func_E563(void);
 void func_DD08(void);
 void func_E55F(void);
 void func_D0E6(void);
 void func_E565(void);
-void func_E5E0(void);
+void func_E5E0(void); /* UpdateNameTable_controlBitsTable */
 void func_F0F3(void);
 void func_C6C9(void);
 void func_C941(void);
@@ -3281,7 +3281,7 @@ void func_C008(void);
 void func_D076(void);
 void func_C9FA(void);
 void func_C929(void);
-void func_C92B(void);
+void func_C92B(void); /* GameEngine */
 void func_C969(void);
 void func_C974(void);
 void func_C95A(void);
@@ -3311,41 +3311,41 @@ void func_E57D(void);
 void func_E70D(void);
 void func_EB0D(void);
 void func_EAD5(void);
-void func_F172(void);
-void func_F186(void);
-void func_F1A7(void);
+void func_F172(void); /* GetObjectXSlotPosition */
+void func_F186(void); /* GetObjectYSlotPosition */
+void func_F1A7(void); /* GetRadiusSumsOfObjXSlotAndObjYSlot */
 void func_EB7B(void);
 void func_D0EC(void);
 void func_C810(void);
 void func_FB9D(void);
 void func_FB7C(void);
 void func_C8EA(void);
-void func_C97E(void);
-void func_C9A6(void);
-void func_C9B1(void);
-void func_C9C4(void);
-void func_C9D7(void);
-void func_CC1A(void);
-void func_CC36(void);
-void func_D002(void);
-void func_D0E1(void);
-void func_D198(void);
-void func_D3A8(void);
-void func_D41A(void);
-void func_D41F(void);
-void func_D423(void);
-void func_CC98(void);
-void func_CFC3(void);
-void func_D0B5(void);
-void func_D147(void);
-void func_CCB7(void);
-void func_CF55(void);
-void func_CD92(void);
-void func_D055(void);
-void func_CA96(void);
-void func_CAA1(void);
-void func_CAC6(void);
-void func_CC8B(void);
+void func_C97E(void); /* UpdateAge */
+void func_C9A6(void); /* PrepareGameOver */
+void func_C9B1(void); /* PauseMode */
+void func_C9C4(void); /* GoPassword */
+void func_C9D7(void); /* SamusIntro */
+void func_CC1A(void); /* GoSamusHandler */
+void func_CC36(void); /* SamusStand */
+void func_D002(void); /* SamusJump */
+void func_D0E1(void); /* SamusRoll */
+void func_D198(void); /* SamusPntUp */
+void func_D3A8(void); /* SamusDoor */
+void func_D41A(void); /* SamusDead */
+void func_D41F(void); /* SamusDead2 */
+void func_D423(void); /* SamusElevator */
+void func_CC98(void); /* SetSamusRun */
+void func_CFC3(void); /* SetSamusJump */
+void func_D0B5(void); /* SetSamusRoll */
+void func_D147(void); /* StopVertMovement */
+void func_CCB7(void); /* SetSamusRunAccel */
+void func_CF55(void); /* SetSamusStand */
+void func_CD92(void); /* SetMirrorCntrlBit */
+void func_D055(void); /* SamusJump_CheckHorzMovement */
+void func_CA96(void); /* GetGameDataIndex */
+void func_CAA1(void); /* EraseAllGameData */
+void func_CAC6(void); /* SavedDataBaseAddr */
+void func_CC8B(void); /* SetSamusExplode */
 void func_D001(void);
 void func_D0CA(void);
 void func_CAC5(void);
@@ -3447,12 +3447,12 @@ void func_D0CD(void);
 void func_D034(void);
 void func_D06D(void);
 void func_D1B6(void);
-void func_D1B9(void);
+void func_D1B9(void); /* SamusPntUp_endIf_B */
 void func_D050(void);
 void func_D24C(void);
 void func_CCBD(void);
 void func_C9A0(void);
-void func_C99B(void);
+void func_C99B(void); /* UpdateAge_loop */
 void func_EE4B(void);
 void func_EC0A(void);
 void func_C81E(void);
@@ -3461,11 +3461,11 @@ void func_C1D1(void);
 void func_FB5D(void);
 void func_EA11(void);
 void func_EF11(void);
-void func_EF13(void);
+void func_EF13(void); /* DrawStructRow */
 void func_EF20(void);
 void func_EF21(void);
 void func_EF29(void);
-void func_EF2B(void);
+void func_EF2B(void); /* DrawMetatile */
 void func_ED5C(void);
 void func_ED7B(void);
 void func_EE10(void);
@@ -3543,7 +3543,7 @@ void func_F380(void);
 void func_F3AB(void);
 void func_F6BA(void);
 void func_F683(void);
-void func_F68D(void);
+void func_F68D(void); /* InitEnAnimIndex */
 void func_F677(void);
 void func_F7BB(void);
 void func_F40B(void);
@@ -3678,8 +3678,8 @@ void func_FF09(void);
 void func_C01B(void);
 void func_FDEF(void);
 void func_C4AD(void);
-void func_C4B2(void);
-void func_CAF7(void);
+void func_C4B2(void); /* PrepVertMirror */
+void func_CAF7(void); /* ChooseEnding_loop */
 void func_F4F4(void);
 void func_E70B(void);
 void func_B0E7_b0(void);
@@ -3717,7 +3717,7 @@ void func_ED25(void);
 void func_B503_b6(void);
 void func_D60A(void);
 void func_CA63(void);
-void func_FDFB(void);
+void func_FDFB(void); /* UpdateTourianItems_loop */
 void func_CB6D(void);
 void func_D9E6(void);
 void func_C385(void);
@@ -3738,7 +3738,7 @@ void func_D8D1(void);
 void func_EE59(void);
 void func_F38C(void);
 void func_A203_b0(void);
-void func_A203_b2(void);
+void func_A203_b2(void); /* Palette19_BANK2 */
 void func_A203_b3(void);
 void func_A203_b4(void);
 void func_A203_b5(void);
@@ -3755,53 +3755,53 @@ void func_B1AE_b3(void);
 void func_B1B2_b3(void);
 void func_B226_b3(void);
 void func_B2F5_b3(void);
-void func_B3A4_b3(void);
-void func_B39C_b3(void);
-void func_B3A0_b3(void);
-void func_B4C3_b3(void);
-void func_B482_b3(void);
+void func_B3A4_b3(void); /* LoadSFXData_SQ2 */
+void func_B39C_b3(void); /* LoadSFXData_Tri */
+void func_B3A0_b3(void); /* LoadSFXData_Noise */
+void func_B4C3_b3(void); /* UpdateContFlags */
+void func_B482_b3(void); /* InitSFXData */
 void func_B493_b3(void);
-void func_B4A2_b3(void);
-void func_B4D9_b3(void);
-void func_B5BF_b3(void);
-void func_B5B7_b3(void);
-void func_B4D2_b3(void);
-void func_B5D5_b3(void);
-void func_B65C_b3(void);
-void func_B5FD_b3(void);
-void func_B722_b3(void);
-void func_B8C6_b3(void);
-void func_B8D6_b3(void);
-void func_B9BC_b3(void);
-void func_B899_b3(void);
-void func_B9A8_b3(void);
-void func_B9D0_b3(void);
-void func_B8F3_b3(void);
-void func_BA71_b3(void);
-void func_BA38_b3(void);
-void func_B420_b3(void);
-void func_BA67_b3(void);
-void func_BA23_b3(void);
-void func_BB4C_b3(void);
-void func_BB0C_b3(void);
-void func_BC0E_b3(void);
-void func_BBE7_b3(void);
-void func_BAE3_b3(void);
-void func_BBD8_b3(void);
-void func_BBFD_b3(void);
-void func_BB67_b3(void);
-void func_BAD5_b3(void);
-void func_BCDA_b3(void);
-void func_BCD4_b3(void);
-void func_BCCA_b3(void);
-void func_BCC6_b3(void);
-void func_BCB9_b3(void);
-void func_BCCE_b3(void);
-void func_BA14_b3(void);
-void func_BF62_b3(void);
+void func_B4A2_b3(void); /* InitSFXData_Tri */
+void func_B4D9_b3(void); /* IncrementSFXFrame */
+void func_B5BF_b3(void); /* EndNoiseSFX */
+void func_B5B7_b3(void); /* GotoInitSFXData */
+void func_B4D2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5D5_b3(void); /* MultiSFXInit */
+void func_B65C_b3(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5FD_b3(void); /* EndMultiSFX */
+void func_B722_b3(void); /* EndSQ1SFX */
+void func_B8C6_b3(void); /* EndTriSFX */
+void func_B8D6_b3(void); /* EndTriSFX_RTS */
+void func_B9BC_b3(void); /* DecreaseSFXTriPeriod */
+void func_B899_b3(void); /* WriteSFXTriPeriod */
+void func_B9A8_b3(void); /* IncreaseSFXTriPeriod */
+void func_B9D0_b3(void); /* DivideSFXTriPeriod */
+void func_B8F3_b3(void); /* RndTriPeriods */
+void func_BA71_b3(void); /* UpdateVolumeEnvelope */
+void func_BA38_b3(void); /* LoadMusicSQ1SQ2Periods */
+void func_B420_b3(void); /* EndOrLoopMusic */
+void func_BA67_b3(void); /* UpdateAllVolumeEnvelopes */
+void func_BA23_b3(void); /* ResetVolumeIndex */
+void func_BB4C_b3(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BB0C_b3(void); /* LoadNextMusicChannelInstr */
+void func_BC0E_b3(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBE7_b3(void); /* UpdateMusicTriLinearCount */
+void func_BAE3_b3(void); /* IncrementToNextMusicChannel */
+void func_BBD8_b3(void); /* SetMusicInstrDelayToLength */
+void func_BBFD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB67_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAD5_b3(void); /* UpdateAllMusicChannels */
+void func_BCDA_b3(void); /* Music00Init */
+void func_BCD4_b3(void); /* Music01Init */
+void func_BCCA_b3(void); /* Music02Init */
+void func_BCC6_b3(void); /* Music03Init */
+void func_BCB9_b3(void); /* Music04Init */
+void func_BCCE_b3(void); /* Music05Init */
+void func_BA14_b3(void); /* SetVolumeAndDisableSweep */
+void func_BF62_b3(void); /* InitializeMusic */
 void func_BDCF_b3(void);
-void func_BE38_b3(void);
-void func_BE6E_b3(void);
+void func_BE38_b3(void); /* SongPowerUpTri */
+void func_BE6E_b3(void); /* SongFadeInSQ1 */
 void func_BEE0_b3(void);
 void func_BF47_b3(void);
 void func_E3E0(void);
@@ -3814,30 +3814,30 @@ void func_A8D0_b1(void);
 void func_A8AC_b1(void);
 void func_A998_b1(void);
 void func_A9FC_b1(void);
-void func_BA71_b1(void);
-void func_BA38_b1(void);
-void func_BA67_b1(void);
-void func_BA23_b1(void);
-void func_BAE3_b1(void);
-void func_BB67_b1(void);
-void func_BA14_b1(void);
-void func_BB49_b1(void);
-void func_BB46_b1(void);
-void func_BAE0_b1(void);
+void func_BA71_b1(void); /* UpdateVolumeEnvelope */
+void func_BA38_b1(void); /* LoadMusicSQ1SQ2Periods */
+void func_BA67_b1(void); /* UpdateAllVolumeEnvelopes */
+void func_BA23_b1(void); /* ResetVolumeIndex */
+void func_BAE3_b1(void); /* IncrementToNextMusicChannel */
+void func_BB67_b1(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BA14_b1(void); /* SetVolumeAndDisableSweep */
+void func_BB49_b1(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB46_b1(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BAE0_b1(void); /* MusicChannelBaseEmpty */
 void func_AA49_b1(void);
-void func_BC0E_b1(void);
-void func_BBE7_b1(void);
-void func_BBFD_b1(void);
+void func_BC0E_b1(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBE7_b1(void); /* UpdateMusicTriLinearCount */
+void func_BBFD_b1(void); /* UpdateMusicTriLinearCount_setToNoteLength */
 void func_AA9E_b1(void);
 void func_AAE2_b1(void);
 void func_AB00_b1(void);
 void func_AC72_b1(void);
-void func_BCD4_b1(void);
-void func_BCCE_b1(void);
-void func_BE38_b1(void);
+void func_BCD4_b1(void); /* Music01Init */
+void func_BCCE_b1(void); /* Music05Init */
+void func_BE38_b1(void); /* SongPowerUpTri */
 void func_BCBD_b1(void);
-void func_BCBB_b1(void);
-void func_BCAA_b1(void);
+void func_BCBB_b1(void); /* XYMusicInit */
+void func_BCAA_b1(void); /* GotoMusic01Init */
 void func_BDBB_b1(void);
 void func_AC76_b1(void);
 void func_AC8A_b1(void);
@@ -3845,72 +3845,72 @@ void func_AF5D_b1(void);
 void func_B04F_b1(void);
 void func_B0DE_b1(void);
 void func_B2F5_b1(void);
-void func_B359_b1(void);
-void func_B3A4_b1(void);
-void func_B39C_b1(void);
-void func_B3A0_b1(void);
-void func_B4C3_b1(void);
-void func_B482_b1(void);
+void func_B359_b1(void); /* RunSFXSQ1InitRoutine */
+void func_B3A4_b1(void); /* LoadSFXData_SQ2 */
+void func_B39C_b1(void); /* LoadSFXData_Tri */
+void func_B3A0_b1(void); /* LoadSFXData_Noise */
+void func_B4C3_b1(void); /* UpdateContFlags */
+void func_B482_b1(void); /* InitSFXData */
 void func_B493_b1(void);
-void func_B4A2_b1(void);
-void func_B4D9_b1(void);
-void func_B5BF_b1(void);
-void func_B5C7_b1(void);
-void func_B5B7_b1(void);
-void func_B4D2_b1(void);
-void func_B5D5_b1(void);
-void func_B65C_b1(void);
-void func_B5FD_b1(void);
-void func_B722_b1(void);
-void func_B8C6_b1(void);
-void func_B9BC_b1(void);
-void func_B899_b1(void);
-void func_B9A8_b1(void);
-void func_B9D0_b1(void);
-void func_B8F3_b1(void);
+void func_B4A2_b1(void); /* InitSFXData_Tri */
+void func_B4D9_b1(void); /* IncrementSFXFrame */
+void func_B5BF_b1(void); /* EndNoiseSFX */
+void func_B5C7_b1(void); /* EndNoiseSFX_RTS */
+void func_B5B7_b1(void); /* GotoInitSFXData */
+void func_B4D2_b1(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5D5_b1(void); /* MultiSFXInit */
+void func_B65C_b1(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5FD_b1(void); /* EndMultiSFX */
+void func_B722_b1(void); /* EndSQ1SFX */
+void func_B8C6_b1(void); /* EndTriSFX */
+void func_B9BC_b1(void); /* DecreaseSFXTriPeriod */
+void func_B899_b1(void); /* WriteSFXTriPeriod */
+void func_B9A8_b1(void); /* IncreaseSFXTriPeriod */
+void func_B9D0_b1(void); /* DivideSFXTriPeriod */
+void func_B8F3_b1(void); /* RndTriPeriods */
 void func_A1D1_b4(void);
 void func_BDBB_b3(void);
-void func_B91C_b3(void);
+void func_B91C_b3(void); /* SamusDieSFXInit_RTS */
 void func_B194_b3(void);
-void func_BB49_b3(void);
-void func_BB46_b3(void);
-void func_BACD_b3(void);
-void func_BAD1_b3(void);
-void func_BAE0_b3(void);
+void func_BB49_b3(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB46_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BACD_b3(void); /* GotoEndOrLoopMusic */
+void func_BAD1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAE0_b3(void); /* MusicChannelBaseEmpty */
 void func_BCBD_b3(void);
-void func_BCBB_b3(void);
-void func_B42C_b3(void);
+void func_BCBB_b3(void); /* XYMusicInit */
+void func_B42C_b3(void); /* CheckMusicFlags */
 void func_A93E_b3(void);
 void func_AFD4_b1(void);
-void func_B420_b1(void);
-void func_BB4C_b1(void);
-void func_BB0C_b1(void);
-void func_BBD8_b1(void);
-void func_BAD5_b1(void);
+void func_B420_b1(void); /* EndOrLoopMusic */
+void func_BB4C_b1(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BB0C_b1(void); /* LoadNextMusicChannelInstr */
+void func_BBD8_b1(void); /* SetMusicInstrDelayToLength */
+void func_BAD5_b1(void); /* UpdateAllMusicChannels */
 void func_BAD8_b1(void);
-void func_BCDA_b1(void);
-void func_BCCA_b1(void);
-void func_BCC6_b1(void);
-void func_BCB9_b1(void);
-void func_BF62_b1(void);
+void func_BCDA_b1(void); /* Music00Init */
+void func_BCCA_b1(void); /* Music02Init */
+void func_BCC6_b1(void); /* Music03Init */
+void func_BCB9_b1(void); /* Music04Init */
+void func_BF62_b1(void); /* InitializeMusic */
 void func_BDCF_b1(void);
 void func_BE4E_b1(void);
 void func_BF19_b1(void);
-void func_C2BF_b1(void);
-void func_C2C0_b1(void);
-void func_C2C5_b1(void);
-void func_C3D4_b1(void);
-void func_CB73_b1(void);
-void func_CBDA_b1(void);
-void func_CC03_b1(void);
-void func_CC07_b1(void);
-void func_BE66_b1(void);
-void func_BE6E_b1(void);
+void func_C2BF_b1(void); /* Adiv16 */
+void func_C2C0_b1(void); /* Adiv8 */
+void func_C2C5_b1(void); /* Amul16 */
+void func_C3D4_b1(void); /* TwosComplement */
+void func_CB73_b1(void); /* SelectSamusPalette */
+void func_CBDA_b1(void); /* SFX_Door */
+void func_CC03_b1(void); /* MotherBrainMusic */
+void func_CC07_b1(void); /* TourianMusic */
+void func_BE66_b1(void); /* SongFadeInTri */
+void func_BE6E_b1(void); /* SongFadeInSQ1 */
 void func_BEE0_b1(void);
 void func_BF47_b1(void);
-void func_BACD_b1(void);
-void func_BAD1_b1(void);
-void func_B42C_b1(void);
+void func_BACD_b1(void); /* GotoEndOrLoopMusic */
+void func_BAD1_b1(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_B42C_b1(void); /* CheckMusicFlags */
 void func_BE8E_b1(void);
 void func_A93E_b1(void);
 void func_D184(void);
@@ -3931,24 +3931,24 @@ void func_DE33(void);
 void func_F0BC(void);
 void func_C634(void);
 void func_DC0E(void);
-void func_DC1C(void);
+void func_DC1C(void); /* GetItemXYPos */
 void func_DD0E(void);
 void func_FD0E(void);
 void func_D0BD(void);
 void func_C0C6(void);
 void func_C88A(void);
 void func_C4F3(void);
-void func_C4FA(void);
+void func_C4FA(void); /* MMCWritePrgBank */
 void func_C285(void);
 void func_C2E6(void);
 void func_C3A5(void);
-void func_C3C6(void);
+void func_C3C6(void); /* SeparateControlBits */
 void func_FFB9(void);
 void func_C4A4(void);
 void func_C98B(void);
 void func_C4E6(void);
-void func_C4E8(void);
-void func_C4EF(void);
+void func_C4E8(void); /* CheckBankSwitch_OK */
+void func_C4EF(void); /* BankSwitch */
 void func_C4F0(void);
 void func_C509(void);
 void func_C50A(void);
@@ -3967,7 +3967,7 @@ void func_FB4C(void);
 void func_C991(void);
 void func_E902(void);
 void func_C814(void);
-void func_C81D(void);
+void func_C81D(void); /* MoreInit */
 void func_E80C(void);
 void func_E90A(void);
 void func_FAB0(void);
@@ -3999,7 +3999,7 @@ void func_E7D0(void);
 void func_F0E6(void);
 void func_C9C0(void);
 void func_C9B0(void);
-void func_C5B6(void);
+void func_C5B6(void); /* InitBank4 */
 void func_E1A2(void);
 void func_FA90(void);
 void func_CA4C(void);
@@ -4054,7 +4054,7 @@ void func_C99E(void);
 void func_C099(void);
 void func_C92D(void);
 void func_F09E(void);
-void func_D99E(void);
+void func_D99E(void); /* SamusCollisionWithSolidEntities_notOnEnemy */
 void func_D905(void);
 void func_F0E2(void);
 void func_EB30(void);
@@ -4063,7 +4063,7 @@ void func_F64B(void);
 void func_F8F2(void);
 void func_F408(void);
 void func_DF90(void);
-void func_FE1D(void);
+void func_FE1D(void); /* UpdateAllTileBlasts_loop */
 void func_B1C8_b0(void);
 void func_B1C8_b1(void);
 void func_B1C8_b2(void);
@@ -4071,271 +4071,271 @@ void func_B1C8_b3(void);
 void func_B1C8_b4(void);
 void func_B1C8_b5(void);
 void func_B1C8_b6(void);
-void func_C39B(void);
-void func_F347(void);
+void func_C39B(void); /* WritePaletteStringByte */
+void func_F347(void); /* UpdateAllEnemies_loop */
 void func_FD68(void);
 void func_F274(void);
 void func_FD0B(void);
-void func_E2E3(void);
-void func_FAF4(void);
+void func_E2E3(void); /* SamusMoveVertically_loop_down */
+void func_FAF4(void); /* UpdateAllPipeBugHoles_loop */
 void func_B17F_b3(void);
 void func_B17F_b4(void);
 void func_B17F_b5(void);
-void func_B6E0_b0(void);
-void func_B703_b0(void);
-void func_B71D_b0(void);
-void func_B77F_b0(void);
-void func_B7B1_b0(void);
-void func_B902_b0(void);
-void func_B7DC_b0(void);
-void func_B8D7_b0(void);
-void func_B951_b0(void);
-void func_B809_b0(void);
-void func_B81F_b0(void);
-void func_B864_b0(void);
-void func_B8A8_b0(void);
-void func_B91D_b0(void);
-void func_B7FB_b0(void);
-void func_B8E1_b0(void);
-void func_B970_b0(void);
+void func_B6E0_b0(void); /* MissilePickupSFXCont */
+void func_B703_b0(void); /* EnergyPickupSFXCont */
+void func_B71D_b0(void); /* SQ1SFXCont */
+void func_B77F_b0(void); /* BulletFireSFXCont */
+void func_B7B1_b0(void); /* WaveBeamSFXCont */
+void func_B902_b0(void); /* SamusDieSFXInit */
+void func_B7DC_b0(void); /* DoorOpenCloseSFXInit */
+void func_B8D7_b0(void); /* MetroidHitSFXInit */
+void func_B951_b0(void); /* StatueRaiseSFXInit */
+void func_B809_b0(void); /* BeepSFXInit */
+void func_B81F_b0(void); /* BigEnemyHitSFXInit */
+void func_B864_b0(void); /* SamusToBallSFXInit */
+void func_B8A8_b0(void); /* BombLaunchSFXInit */
+void func_B91D_b0(void); /* SamusDieSFXCont */
+void func_B7FB_b0(void); /* DoorOpenCloseSFXCont */
+void func_B8E1_b0(void); /* MetroidHitSFXCont */
+void func_B970_b0(void); /* StatueRaiseSFXCont */
 void func_B978_b0(void);
-void func_B817_b0(void);
-void func_B83E_b0(void);
-void func_B87F_b0(void);
-void func_B8AF_b0(void);
-void func_BCAA_b0(void);
-void func_B6A3_b0(void);
-void func_B61C_b0(void);
-void func_B6C5_b0(void);
-void func_B680_b0(void);
-void func_B626_b0(void);
-void func_B6D1_b0(void);
-void func_B6E0_b1(void);
-void func_B7B1_b1(void);
-void func_B7D6_b1(void);
-void func_B902_b1(void);
-void func_B7DC_b1(void);
-void func_B8D7_b1(void);
-void func_B951_b1(void);
-void func_B809_b1(void);
-void func_B81F_b1(void);
-void func_B864_b1(void);
-void func_B8A8_b1(void);
-void func_B91D_b1(void);
-void func_B7FB_b1(void);
-void func_B8E1_b1(void);
-void func_B970_b1(void);
+void func_B817_b0(void); /* BeepSFXCont */
+void func_B83E_b0(void); /* BigEnemyHitSFXCont */
+void func_B87F_b0(void); /* SamusToBallSFXCont */
+void func_B8AF_b0(void); /* BombLaunchSFXCont */
+void func_BCAA_b0(void); /* GotoMusic01Init */
+void func_B6A3_b0(void); /* SamusHitSFXInit */
+void func_B61C_b0(void); /* BossHitSFXInit */
+void func_B6C5_b0(void); /* IncorrectPasswordSFXInit */
+void func_B680_b0(void); /* SamusHitSFXCont */
+void func_B626_b0(void); /* BossHitSFXCont */
+void func_B6D1_b0(void); /* IncorrectPasswordSFXCont */
+void func_B6E0_b1(void); /* MissilePickupSFXCont */
+void func_B7B1_b1(void); /* WaveBeamSFXCont */
+void func_B7D6_b1(void); /* LoadSQ1PeriodLow_RTS */
+void func_B902_b1(void); /* SamusDieSFXInit */
+void func_B7DC_b1(void); /* DoorOpenCloseSFXInit */
+void func_B8D7_b1(void); /* MetroidHitSFXInit */
+void func_B951_b1(void); /* StatueRaiseSFXInit */
+void func_B809_b1(void); /* BeepSFXInit */
+void func_B81F_b1(void); /* BigEnemyHitSFXInit */
+void func_B864_b1(void); /* SamusToBallSFXInit */
+void func_B8A8_b1(void); /* BombLaunchSFXInit */
+void func_B91D_b1(void); /* SamusDieSFXCont */
+void func_B7FB_b1(void); /* DoorOpenCloseSFXCont */
+void func_B8E1_b1(void); /* MetroidHitSFXCont */
+void func_B970_b1(void); /* StatueRaiseSFXCont */
 void func_B978_b1(void);
-void func_B817_b1(void);
-void func_B83E_b1(void);
-void func_B87F_b1(void);
-void func_B8AF_b1(void);
+void func_B817_b1(void); /* BeepSFXCont */
+void func_B83E_b1(void); /* BigEnemyHitSFXCont */
+void func_B87F_b1(void); /* SamusToBallSFXCont */
+void func_B8AF_b1(void); /* BombLaunchSFXCont */
 void func_80AD_b1(void);
-void func_B6A3_b1(void);
-void func_B61C_b1(void);
-void func_B6C5_b1(void);
-void func_B680_b1(void);
-void func_B626_b1(void);
-void func_B6D1_b1(void);
-void func_B6E0_b2(void);
-void func_B703_b2(void);
-void func_B71D_b2(void);
-void func_B77F_b2(void);
-void func_B7B1_b2(void);
-void func_B902_b2(void);
-void func_B7DC_b2(void);
-void func_B8D7_b2(void);
-void func_B951_b2(void);
-void func_B809_b2(void);
-void func_B81F_b2(void);
-void func_B864_b2(void);
-void func_B8A8_b2(void);
-void func_B91D_b2(void);
-void func_B7FB_b2(void);
-void func_B8E1_b2(void);
-void func_B970_b2(void);
+void func_B6A3_b1(void); /* SamusHitSFXInit */
+void func_B61C_b1(void); /* BossHitSFXInit */
+void func_B6C5_b1(void); /* IncorrectPasswordSFXInit */
+void func_B680_b1(void); /* SamusHitSFXCont */
+void func_B626_b1(void); /* BossHitSFXCont */
+void func_B6D1_b1(void); /* IncorrectPasswordSFXCont */
+void func_B6E0_b2(void); /* MissilePickupSFXCont */
+void func_B703_b2(void); /* EnergyPickupSFXCont */
+void func_B71D_b2(void); /* SQ1SFXCont */
+void func_B77F_b2(void); /* BulletFireSFXCont */
+void func_B7B1_b2(void); /* WaveBeamSFXCont */
+void func_B902_b2(void); /* SamusDieSFXInit */
+void func_B7DC_b2(void); /* DoorOpenCloseSFXInit */
+void func_B8D7_b2(void); /* MetroidHitSFXInit */
+void func_B951_b2(void); /* StatueRaiseSFXInit */
+void func_B809_b2(void); /* BeepSFXInit */
+void func_B81F_b2(void); /* BigEnemyHitSFXInit */
+void func_B864_b2(void); /* SamusToBallSFXInit */
+void func_B8A8_b2(void); /* BombLaunchSFXInit */
+void func_B91D_b2(void); /* SamusDieSFXCont */
+void func_B7FB_b2(void); /* DoorOpenCloseSFXCont */
+void func_B8E1_b2(void); /* MetroidHitSFXCont */
+void func_B970_b2(void); /* StatueRaiseSFXCont */
 void func_B978_b2(void);
-void func_B817_b2(void);
-void func_B83E_b2(void);
-void func_B87F_b2(void);
-void func_B8AF_b2(void);
+void func_B817_b2(void); /* BeepSFXCont */
+void func_B83E_b2(void); /* BigEnemyHitSFXCont */
+void func_B87F_b2(void); /* SamusToBallSFXCont */
+void func_B8AF_b2(void); /* BombLaunchSFXCont */
 void func_80AD_b2(void);
-void func_BCAA_b2(void);
-void func_B6A3_b2(void);
-void func_B6C5_b2(void);
-void func_B680_b2(void);
-void func_B626_b2(void);
-void func_B6D1_b2(void);
+void func_BCAA_b2(void); /* GotoMusic01Init */
+void func_B6A3_b2(void); /* SamusHitSFXInit */
+void func_B6C5_b2(void); /* IncorrectPasswordSFXInit */
+void func_B680_b2(void); /* SamusHitSFXCont */
+void func_B626_b2(void); /* BossHitSFXCont */
+void func_B6D1_b2(void); /* IncorrectPasswordSFXCont */
 void func_99E5_b3(void);
-void func_8009_b3(void);
+void func_8009_b3(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
 void func_9B45_b3(void);
 void func_9B85_b3(void);
-void func_B6E0_b3(void);
-void func_B703_b3(void);
-void func_B71D_b3(void);
-void func_B77F_b3(void);
-void func_B7B1_b3(void);
-void func_B902_b3(void);
-void func_B7DC_b3(void);
-void func_B8D7_b3(void);
-void func_B951_b3(void);
-void func_B809_b3(void);
-void func_B81F_b3(void);
-void func_B864_b3(void);
-void func_B8A8_b3(void);
-void func_B91D_b3(void);
-void func_B7FB_b3(void);
-void func_B8E1_b3(void);
-void func_B970_b3(void);
+void func_B6E0_b3(void); /* MissilePickupSFXCont */
+void func_B703_b3(void); /* EnergyPickupSFXCont */
+void func_B71D_b3(void); /* SQ1SFXCont */
+void func_B77F_b3(void); /* BulletFireSFXCont */
+void func_B7B1_b3(void); /* WaveBeamSFXCont */
+void func_B902_b3(void); /* SamusDieSFXInit */
+void func_B7DC_b3(void); /* DoorOpenCloseSFXInit */
+void func_B8D7_b3(void); /* MetroidHitSFXInit */
+void func_B951_b3(void); /* StatueRaiseSFXInit */
+void func_B809_b3(void); /* BeepSFXInit */
+void func_B81F_b3(void); /* BigEnemyHitSFXInit */
+void func_B864_b3(void); /* SamusToBallSFXInit */
+void func_B8A8_b3(void); /* BombLaunchSFXInit */
+void func_B91D_b3(void); /* SamusDieSFXCont */
+void func_B7FB_b3(void); /* DoorOpenCloseSFXCont */
+void func_B8E1_b3(void); /* MetroidHitSFXCont */
+void func_B970_b3(void); /* StatueRaiseSFXCont */
 void func_B978_b3(void);
-void func_B817_b3(void);
-void func_B83E_b3(void);
-void func_B87F_b3(void);
-void func_B8AF_b3(void);
+void func_B817_b3(void); /* BeepSFXCont */
+void func_B83E_b3(void); /* BigEnemyHitSFXCont */
+void func_B87F_b3(void); /* SamusToBallSFXCont */
+void func_B8AF_b3(void); /* BombLaunchSFXCont */
 void func_80AD_b3(void);
-void func_BCAA_b3(void);
-void func_B6A3_b3(void);
-void func_B61C_b3(void);
-void func_B6C5_b3(void);
-void func_B680_b3(void);
-void func_B626_b3(void);
-void func_B6D1_b3(void);
+void func_BCAA_b3(void); /* GotoMusic01Init */
+void func_B6A3_b3(void); /* SamusHitSFXInit */
+void func_B61C_b3(void); /* BossHitSFXInit */
+void func_B6C5_b3(void); /* IncorrectPasswordSFXInit */
+void func_B680_b3(void); /* SamusHitSFXCont */
+void func_B626_b3(void); /* BossHitSFXCont */
+void func_B6D1_b3(void); /* IncorrectPasswordSFXCont */
 void func_A0F1_b3(void);
 void func_847F_b3(void);
-void func_B6E0_b4(void);
-void func_B703_b4(void);
-void func_B71D_b4(void);
-void func_B77F_b4(void);
-void func_B7B1_b4(void);
-void func_B902_b4(void);
-void func_B7DC_b4(void);
-void func_B8D7_b4(void);
-void func_B951_b4(void);
-void func_B809_b4(void);
-void func_B81F_b4(void);
-void func_B864_b4(void);
-void func_B8A8_b4(void);
-void func_B91D_b4(void);
-void func_B7FB_b4(void);
-void func_B8E1_b4(void);
-void func_B970_b4(void);
+void func_B6E0_b4(void); /* MissilePickupSFXCont */
+void func_B703_b4(void); /* EnergyPickupSFXCont */
+void func_B71D_b4(void); /* SQ1SFXCont */
+void func_B77F_b4(void); /* BulletFireSFXCont */
+void func_B7B1_b4(void); /* WaveBeamSFXCont */
+void func_B902_b4(void); /* SamusDieSFXInit */
+void func_B7DC_b4(void); /* DoorOpenCloseSFXInit */
+void func_B8D7_b4(void); /* MetroidHitSFXInit */
+void func_B951_b4(void); /* StatueRaiseSFXInit */
+void func_B809_b4(void); /* BeepSFXInit */
+void func_B81F_b4(void); /* BigEnemyHitSFXInit */
+void func_B864_b4(void); /* SamusToBallSFXInit */
+void func_B8A8_b4(void); /* BombLaunchSFXInit */
+void func_B91D_b4(void); /* SamusDieSFXCont */
+void func_B7FB_b4(void); /* DoorOpenCloseSFXCont */
+void func_B8E1_b4(void); /* MetroidHitSFXCont */
+void func_B970_b4(void); /* StatueRaiseSFXCont */
 void func_B978_b4(void);
-void func_B817_b4(void);
-void func_B83E_b4(void);
-void func_B87F_b4(void);
-void func_B8AF_b4(void);
+void func_B817_b4(void); /* BeepSFXCont */
+void func_B83E_b4(void); /* BigEnemyHitSFXCont */
+void func_B87F_b4(void); /* SamusToBallSFXCont */
+void func_B8AF_b4(void); /* BombLaunchSFXCont */
 void func_80AD_b4(void);
-void func_BCAA_b4(void);
-void func_B6A3_b4(void);
-void func_B61C_b4(void);
-void func_B6C5_b4(void);
-void func_B680_b4(void);
-void func_B626_b4(void);
-void func_B6D1_b4(void);
-void func_B6E0_b5(void);
-void func_B703_b5(void);
-void func_B71D_b5(void);
-void func_B77F_b5(void);
-void func_B7B1_b5(void);
-void func_B902_b5(void);
-void func_B7DC_b5(void);
-void func_B8D7_b5(void);
-void func_B951_b5(void);
-void func_B809_b5(void);
-void func_B81F_b5(void);
-void func_B864_b5(void);
-void func_B8A8_b5(void);
-void func_B91D_b5(void);
-void func_B7FB_b5(void);
-void func_B8E1_b5(void);
-void func_B970_b5(void);
+void func_BCAA_b4(void); /* GotoMusic01Init */
+void func_B6A3_b4(void); /* SamusHitSFXInit */
+void func_B61C_b4(void); /* BossHitSFXInit */
+void func_B6C5_b4(void); /* IncorrectPasswordSFXInit */
+void func_B680_b4(void); /* SamusHitSFXCont */
+void func_B626_b4(void); /* BossHitSFXCont */
+void func_B6D1_b4(void); /* IncorrectPasswordSFXCont */
+void func_B6E0_b5(void); /* MissilePickupSFXCont */
+void func_B703_b5(void); /* EnergyPickupSFXCont */
+void func_B71D_b5(void); /* SQ1SFXCont */
+void func_B77F_b5(void); /* BulletFireSFXCont */
+void func_B7B1_b5(void); /* WaveBeamSFXCont */
+void func_B902_b5(void); /* SamusDieSFXInit */
+void func_B7DC_b5(void); /* DoorOpenCloseSFXInit */
+void func_B8D7_b5(void); /* MetroidHitSFXInit */
+void func_B951_b5(void); /* StatueRaiseSFXInit */
+void func_B809_b5(void); /* BeepSFXInit */
+void func_B81F_b5(void); /* BigEnemyHitSFXInit */
+void func_B864_b5(void); /* SamusToBallSFXInit */
+void func_B8A8_b5(void); /* BombLaunchSFXInit */
+void func_B91D_b5(void); /* SamusDieSFXCont */
+void func_B7FB_b5(void); /* DoorOpenCloseSFXCont */
+void func_B8E1_b5(void); /* MetroidHitSFXCont */
+void func_B970_b5(void); /* StatueRaiseSFXCont */
 void func_B978_b5(void);
-void func_B817_b5(void);
-void func_B83E_b5(void);
-void func_B87F_b5(void);
-void func_B8AF_b5(void);
+void func_B817_b5(void); /* BeepSFXCont */
+void func_B83E_b5(void); /* BigEnemyHitSFXCont */
+void func_B87F_b5(void); /* SamusToBallSFXCont */
+void func_B8AF_b5(void); /* BombLaunchSFXCont */
 void func_80AD_b5(void);
-void func_BCAA_b5(void);
-void func_B6A3_b5(void);
-void func_B61C_b5(void);
-void func_B6C5_b5(void);
-void func_B680_b5(void);
-void func_B626_b5(void);
-void func_B6D1_b5(void);
-void func_B4D9_b0(void);
-void func_B722_b0(void);
-void func_B6FC_b0(void);
-void func_B4D2_b0(void);
-void func_B482_b0(void);
+void func_BCAA_b5(void); /* GotoMusic01Init */
+void func_B6A3_b5(void); /* SamusHitSFXInit */
+void func_B61C_b5(void); /* BossHitSFXInit */
+void func_B6C5_b5(void); /* IncorrectPasswordSFXInit */
+void func_B680_b5(void); /* SamusHitSFXCont */
+void func_B626_b5(void); /* BossHitSFXCont */
+void func_B6D1_b5(void); /* IncorrectPasswordSFXCont */
+void func_B4D9_b0(void); /* IncrementSFXFrame */
+void func_B722_b0(void); /* EndSQ1SFX */
+void func_B6FC_b0(void); /* MissilePickupSFXCont_RTS */
+void func_B4D2_b0(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B482_b0(void); /* InitSFXData */
 void func_B493_b0(void);
-void func_B4A2_b0(void);
-void func_B8F3_b0(void);
-void func_B7D6_b0(void);
-void func_B9BC_b0(void);
-void func_B91C_b0(void);
-void func_B8C6_b0(void);
-void func_B8D6_b0(void);
-void func_B9D0_b0(void);
-void func_B9A8_b0(void);
-void func_B899_b0(void);
-void func_B39C_b0(void);
-void func_BCD4_b0(void);
-void func_B5D5_b0(void);
-void func_B5FD_b0(void);
-void func_B3A4_b0(void);
-void func_B65C_b0(void);
-void func_B6C4_b0(void);
-void func_B6FC_b1(void);
-void func_80A5_b1(void);
-void func_B6FC_b2(void);
-void func_B7D6_b2(void);
-void func_B91C_b2(void);
-void func_80A5_b2(void);
-void func_B6C4_b2(void);
-void func_B6FC_b3(void);
-void func_B7D6_b3(void);
-void func_80A5_b3(void);
-void func_B6C4_b3(void);
-void func_B6FC_b4(void);
-void func_B7D6_b4(void);
-void func_80A5_b4(void);
-void func_B6C4_b4(void);
-void func_B6FC_b5(void);
-void func_B7D6_b5(void);
-void func_80A5_b5(void);
-void func_B6C4_b5(void);
-void func_B4C3_b0(void);
-void func_B3A0_b0(void);
+void func_B4A2_b0(void); /* InitSFXData_Tri */
+void func_B8F3_b0(void); /* RndTriPeriods */
+void func_B7D6_b0(void); /* LoadSQ1PeriodLow_RTS */
+void func_B9BC_b0(void); /* DecreaseSFXTriPeriod */
+void func_B91C_b0(void); /* SamusDieSFXInit_RTS */
+void func_B8C6_b0(void); /* EndTriSFX */
+void func_B8D6_b0(void); /* EndTriSFX_RTS */
+void func_B9D0_b0(void); /* DivideSFXTriPeriod */
+void func_B9A8_b0(void); /* IncreaseSFXTriPeriod */
+void func_B899_b0(void); /* WriteSFXTriPeriod */
+void func_B39C_b0(void); /* LoadSFXData_Tri */
+void func_BCD4_b0(void); /* Music01Init */
+void func_B5D5_b0(void); /* MultiSFXInit */
+void func_B5FD_b0(void); /* EndMultiSFX */
+void func_B3A4_b0(void); /* LoadSFXData_SQ2 */
+void func_B65C_b0(void); /* WriteSQ1SQ2PeriodLow */
+void func_B6C4_b0(void); /* SamusHitSFXInit_RTS */
+void func_B6FC_b1(void); /* MissilePickupSFXCont_RTS */
+void func_80A5_b1(void); /* EnemyMove_loop_Right */
+void func_B6FC_b2(void); /* MissilePickupSFXCont_RTS */
+void func_B7D6_b2(void); /* LoadSQ1PeriodLow_RTS */
+void func_B91C_b2(void); /* SamusDieSFXInit_RTS */
+void func_80A5_b2(void); /* EnemyMove_loop_Right */
+void func_B6C4_b2(void); /* SamusHitSFXInit_RTS */
+void func_B6FC_b3(void); /* MissilePickupSFXCont_RTS */
+void func_B7D6_b3(void); /* LoadSQ1PeriodLow_RTS */
+void func_80A5_b3(void); /* EnemyMove_loop_Right */
+void func_B6C4_b3(void); /* SamusHitSFXInit_RTS */
+void func_B6FC_b4(void); /* MissilePickupSFXCont_RTS */
+void func_B7D6_b4(void); /* LoadSQ1PeriodLow_RTS */
+void func_80A5_b4(void); /* EnemyMove_loop_Right */
+void func_B6C4_b4(void); /* SamusHitSFXInit_RTS */
+void func_B6FC_b5(void); /* MissilePickupSFXCont_RTS */
+void func_B7D6_b5(void); /* LoadSQ1PeriodLow_RTS */
+void func_80A5_b5(void); /* EnemyMove_loop_Right */
+void func_B6C4_b5(void); /* SamusHitSFXInit_RTS */
+void func_B4C3_b0(void); /* UpdateContFlags */
+void func_B3A0_b0(void); /* LoadSFXData_Noise */
 void func_BCBD_b0(void);
-void func_BA14_b0(void);
-void func_BF62_b0(void);
-void func_BAD5_b0(void);
-void func_BB0C_b0(void);
-void func_BAE3_b0(void);
-void func_BAE0_b0(void);
-void func_B42C_b0(void);
-void func_BA23_b0(void);
-void func_BAD1_b0(void);
-void func_BACD_b0(void);
-void func_BB4C_b0(void);
-void func_BA67_b0(void);
-void func_B420_b0(void);
-void func_BB49_b0(void);
-void func_BB46_b0(void);
-void func_BBD8_b0(void);
-void func_BA71_b0(void);
-void func_BBE7_b0(void);
-void func_BC0E_b0(void);
-void func_BA38_b0(void);
-void func_BBFD_b0(void);
-void func_BB67_b0(void);
-void func_C531(void);
+void func_BA14_b0(void); /* SetVolumeAndDisableSweep */
+void func_BF62_b0(void); /* InitializeMusic */
+void func_BAD5_b0(void); /* UpdateAllMusicChannels */
+void func_BB0C_b0(void); /* LoadNextMusicChannelInstr */
+void func_BAE3_b0(void); /* IncrementToNextMusicChannel */
+void func_BAE0_b0(void); /* MusicChannelBaseEmpty */
+void func_B42C_b0(void); /* CheckMusicFlags */
+void func_BA23_b0(void); /* ResetVolumeIndex */
+void func_BAD1_b0(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BACD_b0(void); /* GotoEndOrLoopMusic */
+void func_BB4C_b0(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BA67_b0(void); /* UpdateAllVolumeEnvelopes */
+void func_B420_b0(void); /* EndOrLoopMusic */
+void func_BB49_b0(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB46_b0(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BBD8_b0(void); /* SetMusicInstrDelayToLength */
+void func_BA71_b0(void); /* UpdateVolumeEnvelope */
+void func_BBE7_b0(void); /* UpdateMusicTriLinearCount */
+void func_BC0E_b0(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BA38_b0(void); /* LoadMusicSQ1SQ2Periods */
+void func_BBFD_b0(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB67_b0(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_C531(void); /* InitBank0 */
 void func_C54A(void);
 void func_C543(void);
-void func_C552(void);
-void func_C583(void);
+void func_C552(void); /* InitBank1 */
+void func_C583(void); /* InitBank2 */
 void func_C585(void);
-void func_C5C3(void);
+void func_C5C3(void); /* InitBank5 */
 void func_84C8_b7(void);
 void func_A0A0_b7(void);
 void func_BFB9_b7(void);
@@ -4357,74 +4357,74 @@ void func_8D60_b7(void);
 void func_A006_b7(void);
 void func_9160_b7(void);
 void func_A950_b7(void);
-void func_A93E_b0(void);
+void func_A93E_b0(void); /* CopyMap */
 void func_9983_b7(void);
-void func_800F_b1(void);
-void func_800F_b3(void);
-void func_800F_b5(void);
-void func_8036_b1(void);
-void func_8036_b3(void);
-void func_8039_b1(void);
-void func_8039_b3(void);
-void func_8027_b1(void);
-void func_8003_b1(void);
-void func_8042_b1(void);
-void func_8042_b2(void);
-void func_8042_b4(void);
-void func_8042_b5(void);
-void func_8006_b1(void);
-void func_8006_b5(void);
-void func_801B_b1(void);
-void func_801B_b3(void);
-void func_801B_b5(void);
-void func_801E_b1(void);
-void func_801E_b3(void);
-void func_801E_b5(void);
-void func_8009_b1(void);
-void func_8009_b5(void);
-void func_800C_b1(void);
-void func_800C_b3(void);
-void func_800C_b5(void);
-void func_802D_b1(void);
-void func_802D_b2(void);
-void func_802D_b3(void);
-void func_802D_b5(void);
-void func_8030_b1(void);
-void func_8030_b2(void);
-void func_8030_b3(void);
-void func_8030_b5(void);
-void func_8033_b1(void);
-void func_8033_b2(void);
-void func_8033_b3(void);
-void func_8033_b5(void);
-void func_802A_b1(void);
-void func_802A_b5(void);
+void func_800F_b1(void); /* CommonJump_InitEnAnimIndex */
+void func_800F_b3(void); /* CommonJump_InitEnAnimIndex */
+void func_800F_b5(void); /* CommonJump_InitEnAnimIndex */
+void func_8036_b1(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
+void func_8036_b3(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
+void func_8039_b1(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
+void func_8039_b3(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
+void func_8027_b1(void); /* CommonJump_ApplySpeedToPosition */
+void func_8003_b1(void); /* CommonJump_UpdateEnemyCommon_noMove */
+void func_8042_b1(void); /* CommonJump_SubtractHealth */
+void func_8042_b2(void); /* CommonJump_SubtractHealth */
+void func_8042_b4(void); /* CommonJump_SubtractHealth */
+void func_8042_b5(void); /* CommonJump_SubtractHealth */
+void func_8006_b1(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_801B_b1(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_801B_b3(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_801B_b5(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_801E_b1(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_801E_b3(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_801E_b5(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_8009_b1(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
+void func_8009_b5(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
+void func_800C_b1(void); /* CommonJump_UpdateEnemyAnim */
+void func_800C_b3(void); /* CommonJump_UpdateEnemyAnim */
+void func_800C_b5(void); /* CommonJump_UpdateEnemyAnim */
+void func_802D_b1(void); /* CommonJump_EnemyGetDeltaY */
+void func_802D_b2(void); /* CommonJump_EnemyGetDeltaY */
+void func_802D_b3(void); /* CommonJump_EnemyGetDeltaY */
+void func_802D_b5(void); /* CommonJump_EnemyGetDeltaY */
+void func_8030_b1(void); /* CommonJump_EnemyGetDeltaX */
+void func_8030_b2(void); /* CommonJump_EnemyGetDeltaX */
+void func_8030_b3(void); /* CommonJump_EnemyGetDeltaX */
+void func_8030_b5(void); /* CommonJump_EnemyGetDeltaX */
+void func_8033_b1(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
+void func_8033_b2(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
+void func_8033_b3(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
+void func_8033_b5(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
+void func_802A_b1(void); /* CommonJump_0E */
+void func_802A_b5(void); /* CommonJump_0E */
 void func_BB22_b0(void);
 void func_BB22_b1(void);
 void func_BB22_b2(void);
 void func_B920_b0(void);
 void func_B920_b2(void);
-void func_B359_b0(void);
-void func_B360_b0(void);
-void func_B5BF_b0(void);
-void func_B5B7_b0(void);
+void func_B359_b0(void); /* RunSFXSQ1InitRoutine */
+void func_B360_b0(void); /* RunSFXSQ1ContRoutine */
+void func_B5BF_b0(void); /* EndNoiseSFX */
+void func_B5B7_b0(void); /* GotoInitSFXData */
 void func_BF47_b0(void);
-void func_8021_b1(void);
-void func_8021_b3(void);
-void func_8021_b4(void);
-void func_8021_b5(void);
-void func_803F_b1(void);
-void func_803F_b2(void);
-void func_803F_b4(void);
-void func_803F_b5(void);
-void func_8045_b1(void);
-void func_8045_b2(void);
-void func_8045_b4(void);
-void func_8045_b5(void);
-void func_803C_b1(void);
-void func_803C_b2(void);
-void func_803C_b4(void);
-void func_803C_b5(void);
+void func_8021_b1(void); /* CommonJump_SpawnEnProjectile */
+void func_8021_b3(void); /* CommonJump_SpawnEnProjectile */
+void func_8021_b4(void); /* CommonJump_SpawnEnProjectile */
+void func_8021_b5(void); /* CommonJump_SpawnEnProjectile */
+void func_803F_b1(void); /* CommonJump_DrawTileBlast */
+void func_803F_b2(void); /* CommonJump_DrawTileBlast */
+void func_803F_b4(void); /* CommonJump_DrawTileBlast */
+void func_803F_b5(void); /* CommonJump_DrawTileBlast */
+void func_8045_b1(void); /* CommonJump_Base10Subtract */
+void func_8045_b2(void); /* CommonJump_Base10Subtract */
+void func_8045_b4(void); /* CommonJump_Base10Subtract */
+void func_8045_b5(void); /* CommonJump_Base10Subtract */
+void func_803C_b1(void); /* CommonJump_DrawEnemy */
+void func_803C_b2(void); /* CommonJump_DrawEnemy */
+void func_803C_b4(void); /* CommonJump_DrawEnemy */
+void func_803C_b5(void); /* CommonJump_DrawEnemy */
 void func_8001_b2(void);
 void func_8001_b3(void);
 void func_8001_b4(void);
@@ -4435,23 +4435,23 @@ void func_847F_b4(void);
 void func_847F_b5(void);
 void func_BDBB_b0(void);
 void func_BF19_b0(void);
-void func_C000_b0(void);
+void func_C000_b0(void); /* RandomNumbers */
 void func_BDBB_b2(void);
 void func_BDCF_b0(void);
-void func_BE38_b0(void);
-void func_BE6E_b0(void);
+void func_BE38_b0(void); /* SongPowerUpTri */
+void func_BE6E_b0(void); /* SongFadeInSQ1 */
 void func_BEE0_b0(void);
 void func_80B0_b7(void);
 void func_8296_b7(void);
 void func_832F_b7(void);
 void func_8180_b0(void);
-void func_8182_b0(void);
+void func_8182_b0(void); /* Crosshairs */
 void func_8988_b0(void);
-void func_B31B_b0(void);
+void func_B31B_b0(void); /* SFXSQ1ContRoutineTbl */
 void func_B329_b0(void);
 void func_B33D_b0(void);
-void func_B38C_b0(void);
-void func_B394_b0(void);
+void func_B38C_b0(void); /* RunSFXMultiContRoutine */
+void func_B394_b0(void); /* GotoRunSFXSQ1InitRoutine */
 void func_B3F0_b0(void);
 void func_B3FC_b0(void);
 void func_B40E_b0(void);
@@ -4462,171 +4462,171 @@ void func_B5A5_b0(void);
 void func_B98C_b0(void);
 void func_B9A0_b0(void);
 void func_B9E4_b0(void);
-void func_B9E5_b0(void);
+void func_B9E5_b0(void); /* DivideSFXTriPeriod_loop */
 void func_B9F3_b0(void);
 void func_BA41_b0(void);
 void func_BC1C_b0(void);
 void func_BC53_b0(void);
 void func_BC64_b0(void);
-void func_BC7B_b0(void);
+void func_BC7B_b0(void); /* ContinueMusic */
 void func_BA70_b1(void);
 void func_BA7B_b1(void);
-void func_871F_b1(void);
-void func_872B_b1(void);
-void func_8737_b1(void);
-void func_8747_b1(void);
-void func_8749_b1(void);
-void func_8751_b1(void);
-void func_875D_b1(void);
-void func_8775_b1(void);
-void func_878D_b1(void);
-void func_8791_b1(void);
-void func_87CB_b1(void);
-void func_87DD_b1(void);
-void func_8802_b1(void);
-void func_883E_b1(void);
-void func_8863_b1(void);
+void func_871F_b1(void); /* ObjPlace1 */
+void func_872B_b1(void); /* ObjPlace2 */
+void func_8737_b1(void); /* ObjPlace3 */
+void func_8747_b1(void); /* ObjPlace4 */
+void func_8749_b1(void); /* ObjPlaceD */
+void func_8751_b1(void); /* ObjPlace5 */
+void func_875D_b1(void); /* ObjPlace7 */
+void func_8775_b1(void); /* ObjPlace8 */
+void func_878D_b1(void); /* ObjPlace9 */
+void func_8791_b1(void); /* ObjPlaceA */
+void func_87CB_b1(void); /* ObjFrame00 */
+void func_87DD_b1(void); /* ObjFrame_SamusRun1 */
+void func_8802_b1(void); /* ObjFrame06 */
+void func_883E_b1(void); /* ObjFrame_SamusRunFire1 */
+void func_8863_b1(void); /* ObjFrame0F */
 void func_8AC7_b1(void);
-void func_8B79_b1(void);
-void func_87F0_b1(void);
-void func_8818_b1(void);
-void func_882C_b1(void);
-void func_8851_b1(void);
-void func_8874_b1(void);
-void func_8885_b1(void);
-void func_888F_b1(void);
-void func_8899_b1(void);
-void func_88A3_b1(void);
-void func_88AD_b1(void);
-void func_88B8_b1(void);
-void func_88C3_b1(void);
-void func_88CE_b1(void);
-void func_88D9_b1(void);
-void func_88EE_b1(void);
-void func_88F8_b1(void);
-void func_88FE_b1(void);
-void func_8904_b1(void);
-void func_890A_b1(void);
-void func_890F_b1(void);
-void func_8914_b1(void);
-void func_8928_b1(void);
-void func_89A9_b1(void);
-void func_89D2_b1(void);
-void func_89E6_b1(void);
-void func_893C_b1(void);
-void func_8948_b1(void);
-void func_8954_b1(void);
-void func_8961_b1(void);
-void func_8974_b1(void);
-void func_8987_b1(void);
-void func_8995_b1(void);
-void func_89BE_b1(void);
-void func_8A0F_b1(void);
-void func_8A1D_b1(void);
-void func_8A21_b1(void);
-void func_8B87_b1(void);
-void func_8B9D_b1(void);
-void func_8C01_b1(void);
-void func_8C84_b1(void);
-void func_8CC6_b1(void);
-void func_8CF0_b1(void);
-void func_8CFB_b1(void);
-void func_8CF7_b1(void);
-void func_8C76_b1(void);
-void func_8AAE_b1(void);
-void func_8ABA_b1(void);
-void func_8CED_b1(void);
+void func_8B79_b1(void); /* UpdateAllDoors */
+void func_87F0_b1(void); /* ObjFrame_SamusRun2 */
+void func_8818_b1(void); /* ObjFrame_SamusStand */
+void func_882C_b1(void); /* ObjFrame09 */
+void func_8851_b1(void); /* ObjFrame_SamusRunFire2 */
+void func_8874_b1(void); /* ObjFrame11 */
+void func_8885_b1(void); /* ObjFrame13 */
+void func_888F_b1(void); /* ObjFrame_SamusSalto1 */
+void func_8899_b1(void); /* ObjFrame_SamusSalto2 */
+void func_88A3_b1(void); /* ObjFrame_SamusSalto3 */
+void func_88AD_b1(void); /* ObjFrame_SamusRoll3 */
+void func_88B8_b1(void); /* ObjFrame_SamusRoll2 */
+void func_88C3_b1(void); /* ObjFrame_SamusRoll1 */
+void func_88CE_b1(void); /* ObjFrame_SamusRoll0 */
+void func_88D9_b1(void); /* ObjFrame1F */
+void func_88EE_b1(void); /* ObjFrame_Elevator */
+void func_88F8_b1(void); /* ObjFrame24 */
+void func_88FE_b1(void); /* ObjFrame_MissileLeft */
+void func_8904_b1(void); /* ObjFrame_MissileUp */
+void func_890A_b1(void); /* ObjFrame_RegularBullet */
+void func_890F_b1(void); /* ObjFrame29 */
+void func_8914_b1(void); /* ObjFrame_SamusPntUp */
+void func_8928_b1(void); /* ObjFrame2C */
+void func_89A9_b1(void); /* ObjFrame_SamusRunPntUp1 */
+void func_89D2_b1(void); /* ObjFrame43 */
+void func_89E6_b1(void); /* ObjFrame_SamusRunPntUpFire1 */
+void func_893C_b1(void); /* ObjFrame_DoorClosed */
+void func_8948_b1(void); /* ObjFrame32 */
+void func_8954_b1(void); /* ObjFrame34 */
+void func_8961_b1(void); /* ObjFrame36 */
+void func_8974_b1(void); /* ObjFrame_SamusJumpPntUpFire */
+void func_8987_b1(void); /* ObjFrame3A */
+void func_8995_b1(void); /* ObjFrame3D */
+void func_89BE_b1(void); /* ObjFrame_SamusRunPntUp2 */
+void func_8A0F_b1(void); /* ObjFrame_BombExplode1 */
+void func_8A1D_b1(void); /* ObjFrame_BombExplodeBlank */
+void func_8A21_b1(void); /* ObjFrame_WaveBeam */
+void func_8B87_b1(void); /* UpdateDoor */
+void func_8B9D_b1(void); /* UpdateDoor_Init */
+void func_8C01_b1(void); /* UpdateDoor_Open */
+void func_8C84_b1(void); /* UpdateDoor_LetSamusIn */
+void func_8CC6_b1(void); /* UpdateDoor_Scroll */
+void func_8CF0_b1(void); /* UpdateDoor_LetSamusOut */
+void func_8CFB_b1(void); /* WriteDoorBGTiles_Solid */
+void func_8CF7_b1(void); /* WriteDoorBGTiles_Air */
+void func_8C76_b1(void); /* DoorSubRoutine8C76 */
+void func_8AAE_b1(void); /* ObjFrame5D */
+void func_8ABA_b1(void); /* ObjFrame5E */
+void func_8CED_b1(void); /* Goto2DrawDoor */
 void func_8CCF_b1(void);
-void func_8A26_b1(void);
-void func_8A3C_b1(void);
-void func_8A41_b1(void);
-void func_8A4E_b1(void);
-void func_8A46_b1(void);
-void func_8A56_b1(void);
-void func_8A5E_b1(void);
-void func_8A66_b1(void);
-void func_8A6E_b1(void);
-void func_8A76_b1(void);
-void func_8A7E_b1(void);
-void func_8A86_b1(void);
-void func_8A8E_b1(void);
-void func_8A9C_b1(void);
-void func_8AA1_b1(void);
-void func_8AA6_b1(void);
-void func_8AC4_b1(void);
-void func_8AD8_b1(void);
-void func_8AE9_b1(void);
-void func_8AF3_b1(void);
-void func_8B03_b1(void);
-void func_95C6_b1(void);
-void func_99B8_b1(void);
-void func_99FA_b1(void);
-void func_9A44_b1(void);
-void func_9A49_b1(void);
-void func_9A4C_b1(void);
-void func_9A8F_b1(void);
-void func_9AA8_b1(void);
-void func_9ABD_b1(void);
-void func_9AC6_b1(void);
-void func_9ADA_b1(void);
-void func_9AE2_b1(void);
-void func_9C1D_b1(void);
-void func_9C2A_b1(void);
-void func_9C96_b1(void);
-void func_9CA8_b1(void);
-void func_9CCC_b1(void);
-void func_9D05_b1(void);
+void func_8A26_b1(void); /* ObjFrame4C */
+void func_8A3C_b1(void); /* ObjFrame_Bomb0 */
+void func_8A41_b1(void); /* ObjFrame_Bomb1 */
+void func_8A4E_b1(void); /* ObjFrame_HighJumpItem */
+void func_8A46_b1(void); /* ObjFrame_BombItem */
+void func_8A56_b1(void); /* ObjFrame_LongBeamItem */
+void func_8A5E_b1(void); /* ObjFrame_ScrewAttackItem */
+void func_8A66_b1(void); /* ObjFrame_MaruMariItem */
+void func_8A6E_b1(void); /* ObjFrame_VariaSuitItem */
+void func_8A76_b1(void); /* ObjFrame_WaveBeamItem */
+void func_8A7E_b1(void); /* ObjFrame_IceBeamItem */
+void func_8A86_b1(void); /* ObjFrame_EnergyTankItem */
+void func_8A8E_b1(void); /* ObjFrame_MissileItem */
+void func_8A9C_b1(void); /* ObjFrame_SkreeProjectile */
+void func_8AA1_b1(void); /* ObjFrame5B */
+void func_8AA6_b1(void); /* ObjFrame5C */
+void func_8AC4_b1(void); /* ObjFrame5F */
+void func_8AD8_b1(void); /* ObjFrame_RidleyStatue */
+void func_8AE9_b1(void); /* ObjFrame_MissileExplode0 */
+void func_8AF3_b1(void); /* ObjFrame_MissileExplode1 */
+void func_8B03_b1(void); /* ObjFrame_MissileExplode2 */
+void func_95C6_b1(void); /* TwosComplement_ */
+void func_99B8_b1(void); /* SidehopperFloorAIRoutine_BANK1 */
+void func_99FA_b1(void); /* SkreeAIRoutine_BANK1 */
+void func_9A44_b1(void); /* SkreeExit_Resting_BANK1 */
+void func_9A49_b1(void); /* SkreeExit_Explode_BANK1 */
+void func_9A4C_b1(void); /* CrawlerAIRoutine_BANK1 */
+void func_9A8F_b1(void); /* CrawlerReorientSprite_BANK1 */
+void func_9AA8_b1(void); /* CrawlerInsideCornerCheck_BANK1 */
+void func_9ABD_b1(void); /* CrawlerFlipDirection_BANK1 */
+void func_9AC6_b1(void); /* CrawlerOutsideCornerCheck_BANK1 */
+void func_9ADA_b1(void); /* CrawlerOutsideCornerGetNextOrientation_BANK1 */
+void func_9AE2_b1(void); /* JumpByRTSToMovementRoutine_BANK1 */
+void func_9C1D_b1(void); /* KraidUpdateAllProjectiles_BANK1 */
+void func_9C2A_b1(void); /* KraidUpdateProjectile_BANK1 */
+void func_9C96_b1(void); /* LoadEnemyPositionFromTemp__BANK1 */
+void func_9CA8_b1(void); /* StoreEnemyPositionToTemp__BANK1 */
+void func_9CCC_b1(void); /* KraidTryToLaunchLint_BANK1 */
+void func_9D05_b1(void); /* KraidTryToLaunchNail_BANK1 */
 void func_B3F0_b1(void);
 void func_B3FC_b1(void);
 void func_B40E_b1(void);
 void func_B4A9_b1(void);
 void func_B4BD_b1(void);
-void func_B53F_b1(void);
-void func_B546_b1(void);
-void func_B55B_b1(void);
-void func_B569_b1(void);
+void func_B53F_b1(void); /* SpitFlameSFXInit */
+void func_B546_b1(void); /* SpitFlameSFXCont */
+void func_B55B_b1(void); /* ScrewAttackSFXInit */
+void func_B569_b1(void); /* ScrewAttackSFXCont */
 void func_B587_b1(void);
-void func_B59E_b1(void);
+void func_B59E_b1(void); /* MissileLaunchSFXInit */
 void func_B5A5_b1(void);
-void func_B5AB_b1(void);
-void func_B5B3_b1(void);
-void func_B5BA_b1(void);
-void func_B5C8_b1(void);
-void func_B6FD_b1(void);
-void func_B703_b1(void);
-void func_B717_b1(void);
-void func_B71D_b1(void);
-void func_B733_b1(void);
-void func_B740_b1(void);
-void func_B746_b1(void);
-void func_B765_b1(void);
-void func_B76C_b1(void);
-void func_B77F_b1(void);
-void func_B7AA_b1(void);
+void func_B5AB_b1(void); /* MissileLaunchSFXCont */
+void func_B5B3_b1(void); /* BombExplodeSFXInit */
+void func_B5BA_b1(void); /* NoiseSFXCont */
+void func_B5C8_b1(void); /* SamusWalkSFXInit */
+void func_B6FD_b1(void); /* MissilePickupSFXInit */
+void func_B703_b1(void); /* EnergyPickupSFXCont */
+void func_B717_b1(void); /* EnergyPickupSFXInit */
+void func_B71D_b1(void); /* SQ1SFXCont */
+void func_B733_b1(void); /* SamusJumpSFXInit */
+void func_B740_b1(void); /* EnemyHitSFXInit */
+void func_B746_b1(void); /* BulletFireSFXInit */
+void func_B765_b1(void); /* MetalSFXInit */
+void func_B76C_b1(void); /* OutOfPipeSFXInit */
+void func_B77F_b1(void); /* BulletFireSFXCont */
+void func_B7AA_b1(void); /* WaveBeamSFXInit */
 void func_B98C_b1(void);
 void func_B9A0_b1(void);
 void func_B9E4_b1(void);
-void func_B9E5_b1(void);
+void func_B9E5_b1(void); /* DivideSFXTriPeriod_loop */
 void func_B9F3_b1(void);
 void func_BA41_b1(void);
-void func_BCA7_b1(void);
-void func_BCAD_b1(void);
-void func_BCB0_b1(void);
-void func_BCB3_b1(void);
+void func_BCA7_b1(void); /* GotoMusic00Init */
+void func_BCAD_b1(void); /* GotoMusic02Init */
+void func_BCB0_b1(void); /* GotoMusic03Init */
+void func_BCB3_b1(void); /* GotoMusic04Init */
 void func_BC1C_b1(void);
-void func_BC27_b1(void);
+void func_BC27_b1(void); /* MusicChannelInstr_SongNoteNoise_endIf_A */
 void func_BC53_b1(void);
 void func_BC64_b1(void);
-void func_D2FD_b1(void);
-void func_DC1E_b1(void);
-void func_E449_b1(void);
-void func_E770_b1(void);
-void func_E77B_b1(void);
-void func_E8F1_b1(void);
-void func_E8FC_b1(void);
-void func_E96A_b1(void);
-void func_F744_b1(void);
-void func_F74B_b1(void);
+void func_D2FD_b1(void); /* SetObjAnimIndex */
+void func_DC1E_b1(void); /* MapScrollRoutine */
+void func_E449_b1(void); /* NegateTemp00Temp01 */
+void func_E770_b1(void); /* EnemyCheckMoveUp */
+void func_E77B_b1(void); /* EnemyCheckMoveDown */
+void func_E8F1_b1(void); /* EnemyCheckMoveLeft */
+void func_E8FC_b1(void); /* EnemyCheckMoveRight */
+void func_E96A_b1(void); /* MakeRoomRAMPtr */
+void func_F744_b1(void); /* OrEnData05 */
+void func_F74B_b1(void); /* ReadTableAt968B */
 void func_B3F0_b2(void);
 void func_B3FC_b2(void);
 void func_B40E_b2(void);
@@ -4637,44 +4637,44 @@ void func_B5A5_b2(void);
 void func_B98C_b2(void);
 void func_B9A0_b2(void);
 void func_B9E4_b2(void);
-void func_B9E5_b2(void);
+void func_B9E5_b2(void); /* DivideSFXTriPeriod_loop */
 void func_B9F3_b2(void);
 void func_BA41_b2(void);
 void func_BC1C_b2(void);
 void func_BC53_b2(void);
 void func_BC64_b2(void);
 void func_BF19_b2(void);
-void func_C2BF_b2(void);
-void func_C2C0_b2(void);
-void func_C2C5_b2(void);
-void func_C3D4_b2(void);
-void func_CB73_b2(void);
-void func_CBDA_b2(void);
-void func_CC03_b2(void);
-void func_CC07_b2(void);
-void func_D2FD_b2(void);
-void func_DC1E_b2(void);
-void func_E449_b2(void);
-void func_E770_b2(void);
-void func_E77B_b2(void);
-void func_E8F1_b2(void);
-void func_E8FC_b2(void);
-void func_E96A_b2(void);
-void func_F744_b2(void);
-void func_F74B_b2(void);
-void func_9A06_b3(void);
+void func_C2BF_b2(void); /* Adiv16 */
+void func_C2C0_b2(void); /* Adiv8 */
+void func_C2C5_b2(void); /* Amul16 */
+void func_C3D4_b2(void); /* TwosComplement */
+void func_CB73_b2(void); /* SelectSamusPalette */
+void func_CBDA_b2(void); /* SFX_Door */
+void func_CC03_b2(void); /* MotherBrainMusic */
+void func_CC07_b2(void); /* TourianMusic */
+void func_D2FD_b2(void); /* SetObjAnimIndex */
+void func_DC1E_b2(void); /* MapScrollRoutine */
+void func_E449_b2(void); /* NegateTemp00Temp01 */
+void func_E770_b2(void); /* EnemyCheckMoveUp */
+void func_E77B_b2(void); /* EnemyCheckMoveDown */
+void func_E8F1_b2(void); /* EnemyCheckMoveLeft */
+void func_E8FC_b2(void); /* EnemyCheckMoveRight */
+void func_E96A_b2(void); /* MakeRoomRAMPtr */
+void func_F744_b2(void); /* OrEnData05 */
+void func_F74B_b2(void); /* ReadTableAt968B */
+void func_9A06_b3(void); /* GetMetroidAccel */
 void func_9A07_b3(void);
-void func_9AF9_b3(void);
-void func_9DF2_b3(void);
-void func_9E43_b3(void);
-void func_9F69_b3(void);
-void func_9FED_b3(void);
+void func_9AF9_b3(void); /* SetRinkaSpeed_BANK3 */
+void func_9DF2_b3(void); /* MotherBrain_Idle_CollideWithSamus */
+void func_9E43_b3(void); /* UpdateMotherBrainFlashDelay */
+void func_9F69_b3(void); /* MotherBrain_SpawnDoor */
+void func_9FED_b3(void); /* MotherBrain_Idle_HandleBeingHit */
 void func_A001_b3(void);
-void func_A01B_b3(void);
+void func_A01B_b3(void); /* MotherBrain_Idle_UpdateAnimBrain */
 void func_A028_b3(void);
-void func_A02E_b3(void);
-void func_A041_b3(void);
-void func_A072_b3(void);
+void func_A02E_b3(void); /* MotherBrain_Idle_UpdateAnimEye */
+void func_A041_b3(void); /* MotherBrain_DrawSprites */
+void func_A072_b3(void); /* MotherBrain_Disappear_Disintegrate */
 void func_B3F0_b3(void);
 void func_B3FC_b3(void);
 void func_B40E_b3(void);
@@ -4685,31 +4685,31 @@ void func_B5A5_b3(void);
 void func_B98C_b3(void);
 void func_B9A0_b3(void);
 void func_B9E4_b3(void);
-void func_B9E5_b3(void);
+void func_B9E5_b3(void); /* DivideSFXTriPeriod_loop */
 void func_B9F3_b3(void);
 void func_BA41_b3(void);
 void func_BC1C_b3(void);
 void func_BC53_b3(void);
 void func_BC64_b3(void);
 void func_BF19_b3(void);
-void func_C2BF_b3(void);
-void func_C2C0_b3(void);
-void func_C2C5_b3(void);
-void func_C3D4_b3(void);
-void func_CB73_b3(void);
-void func_CBDA_b3(void);
-void func_CC03_b3(void);
-void func_CC07_b3(void);
-void func_D2FD_b3(void);
-void func_DC1E_b3(void);
-void func_E449_b3(void);
-void func_E770_b3(void);
-void func_E77B_b3(void);
-void func_E8F1_b3(void);
-void func_E8FC_b3(void);
-void func_E96A_b3(void);
-void func_F744_b3(void);
-void func_F74B_b3(void);
+void func_C2BF_b3(void); /* Adiv16 */
+void func_C2C0_b3(void); /* Adiv8 */
+void func_C2C5_b3(void); /* Amul16 */
+void func_C3D4_b3(void); /* TwosComplement */
+void func_CB73_b3(void); /* SelectSamusPalette */
+void func_CBDA_b3(void); /* SFX_Door */
+void func_CC03_b3(void); /* MotherBrainMusic */
+void func_CC07_b3(void); /* TourianMusic */
+void func_D2FD_b3(void); /* SetObjAnimIndex */
+void func_DC1E_b3(void); /* MapScrollRoutine */
+void func_E449_b3(void); /* NegateTemp00Temp01 */
+void func_E770_b3(void); /* EnemyCheckMoveUp */
+void func_E77B_b3(void); /* EnemyCheckMoveDown */
+void func_E8F1_b3(void); /* EnemyCheckMoveLeft */
+void func_E8FC_b3(void); /* EnemyCheckMoveRight */
+void func_E96A_b3(void); /* MakeRoomRAMPtr */
+void func_F744_b3(void); /* OrEnData05 */
+void func_F74B_b3(void); /* ReadTableAt968B */
 void func_B3F0_b4(void);
 void func_B3FC_b4(void);
 void func_B40E_b4(void);
@@ -4720,44 +4720,44 @@ void func_B5A5_b4(void);
 void func_B98C_b4(void);
 void func_B9A0_b4(void);
 void func_B9E4_b4(void);
-void func_B9E5_b4(void);
+void func_B9E5_b4(void); /* DivideSFXTriPeriod_loop */
 void func_B9F3_b4(void);
 void func_BA41_b4(void);
 void func_BC1C_b4(void);
 void func_BC53_b4(void);
 void func_BC64_b4(void);
 void func_BF19_b4(void);
-void func_C2BF_b4(void);
-void func_C2C0_b4(void);
-void func_C2C5_b4(void);
-void func_C3D4_b4(void);
-void func_CB73_b4(void);
-void func_CBDA_b4(void);
-void func_CC03_b4(void);
-void func_CC07_b4(void);
-void func_D2FD_b4(void);
-void func_DC1E_b4(void);
-void func_E449_b4(void);
-void func_E770_b4(void);
-void func_E77B_b4(void);
-void func_E8F1_b4(void);
-void func_E8FC_b4(void);
-void func_E96A_b4(void);
-void func_F744_b4(void);
-void func_F74B_b4(void);
+void func_C2BF_b4(void); /* Adiv16 */
+void func_C2C0_b4(void); /* Adiv8 */
+void func_C2C5_b4(void); /* Amul16 */
+void func_C3D4_b4(void); /* TwosComplement */
+void func_CB73_b4(void); /* SelectSamusPalette */
+void func_CBDA_b4(void); /* SFX_Door */
+void func_CC03_b4(void); /* MotherBrainMusic */
+void func_CC07_b4(void); /* TourianMusic */
+void func_D2FD_b4(void); /* SetObjAnimIndex */
+void func_DC1E_b4(void); /* MapScrollRoutine */
+void func_E449_b4(void); /* NegateTemp00Temp01 */
+void func_E770_b4(void); /* EnemyCheckMoveUp */
+void func_E77B_b4(void); /* EnemyCheckMoveDown */
+void func_E8F1_b4(void); /* EnemyCheckMoveLeft */
+void func_E8FC_b4(void); /* EnemyCheckMoveRight */
+void func_E96A_b4(void); /* MakeRoomRAMPtr */
+void func_F744_b4(void); /* OrEnData05 */
+void func_F74B_b4(void); /* ReadTableAt968B */
 void func_871C_b5(void);
-void func_95C6_b5(void);
-void func_9830_b5(void);
-void func_98F8_b5(void);
-void func_9958_b5(void);
-void func_99AD_b5(void);
-void func_99C6_b5(void);
-void func_99DB_b5(void);
-void func_99E4_b5(void);
-void func_99F8_b5(void);
-void func_9A00_b5(void);
+void func_95C6_b5(void); /* TwosComplement_ */
+void func_9830_b5(void); /* UpdateEnemyCommon_Decide_BANK5 */
+void func_98F8_b5(void); /* UpdateSwooperAnim_BANK5 */
+void func_9958_b5(void); /* SwooperChangeEnemyType_BANK5 */
+void func_99AD_b5(void); /* CrawlerReorientSprite_BANK5 */
+void func_99C6_b5(void); /* CrawlerInsideCornerCheck_BANK5 */
+void func_99DB_b5(void); /* CrawlerFlipDirection_BANK5 */
+void func_99E4_b5(void); /* CrawlerOutsideCornerCheck_BANK5 */
+void func_99F8_b5(void); /* CrawlerOutsideCornerGetNextOrientation_BANK5 */
+void func_9A00_b5(void); /* JumpByRTSToMovementRoutine_BANK5 */
 void func_9A07_b5(void);
-void func_9A79_b5(void);
+void func_9A79_b5(void); /* RidleyTryToLaunchFireball_BANK5 */
 void func_B3F0_b5(void);
 void func_B3FC_b5(void);
 void func_B40E_b5(void);
@@ -4768,37 +4768,37 @@ void func_B5A5_b5(void);
 void func_B98C_b5(void);
 void func_B9A0_b5(void);
 void func_B9E4_b5(void);
-void func_B9E5_b5(void);
+void func_B9E5_b5(void); /* DivideSFXTriPeriod_loop */
 void func_B9F3_b5(void);
 void func_BA41_b5(void);
 void func_BC1C_b5(void);
 void func_BC53_b5(void);
 void func_BC64_b5(void);
 void func_BF19_b5(void);
-void func_C2BF_b5(void);
-void func_C2C0_b5(void);
-void func_C2C5_b5(void);
-void func_C3D4_b5(void);
-void func_CB73_b5(void);
-void func_CBDA_b5(void);
-void func_CC03_b5(void);
-void func_CC07_b5(void);
-void func_D2FD_b5(void);
-void func_DC1E_b5(void);
-void func_E449_b5(void);
-void func_E770_b5(void);
-void func_E77B_b5(void);
-void func_E8F1_b5(void);
-void func_E8FC_b5(void);
-void func_E96A_b5(void);
-void func_F744_b5(void);
-void func_F74B_b5(void);
+void func_C2BF_b5(void); /* Adiv16 */
+void func_C2C0_b5(void); /* Adiv8 */
+void func_C2C5_b5(void); /* Amul16 */
+void func_C3D4_b5(void); /* TwosComplement */
+void func_CB73_b5(void); /* SelectSamusPalette */
+void func_CBDA_b5(void); /* SFX_Door */
+void func_CC03_b5(void); /* MotherBrainMusic */
+void func_CC07_b5(void); /* TourianMusic */
+void func_D2FD_b5(void); /* SetObjAnimIndex */
+void func_DC1E_b5(void); /* MapScrollRoutine */
+void func_E449_b5(void); /* NegateTemp00Temp01 */
+void func_E770_b5(void); /* EnemyCheckMoveUp */
+void func_E77B_b5(void); /* EnemyCheckMoveDown */
+void func_E8F1_b5(void); /* EnemyCheckMoveLeft */
+void func_E8FC_b5(void); /* EnemyCheckMoveRight */
+void func_E96A_b5(void); /* MakeRoomRAMPtr */
+void func_F744_b5(void); /* OrEnData05 */
+void func_F74B_b5(void); /* ReadTableAt968B */
 void func_B2FC_b0(void);
-void func_B568_b0(void);
+void func_B568_b0(void); /* ScrewAttackSFXInit_RTS */
 void func_BC22_b0(void);
 void func_86FB_b1(void);
-void func_86FD_b1(void);
-void func_8701_b1(void);
+void func_86FD_b1(void); /* ObjPlace6 */
+void func_8701_b1(void); /* ObjPlace0 */
 void func_8700_b1(void);
 void func_876D_b1(void);
 void func_FE21(void);
@@ -4819,7 +4819,7 @@ void func_9210_b1(void);
 void func_9266_b1(void);
 void func_925D_b1(void);
 void func_C360(void);
-void func_C36B(void);
+void func_C36B(void); /* WritePPUByte */
 void func_9332_b1(void);
 void func_9303_b1(void);
 void func_92E1_b1(void);
@@ -4827,30 +4827,30 @@ void func_933F_b1(void);
 void func_DF73(void);
 void func_9460_b1(void);
 void func_8796_b1(void);
-void func_8799_b1(void);
-void func_87A5_b1(void);
-void func_87B1_b1(void);
+void func_8799_b1(void); /* ObjPlaceB */
+void func_87A5_b1(void); /* ObjPlaceC */
+void func_87B1_b1(void); /* ObjPlaceE */
 void func_89F6_b1(void);
-void func_89FB_b1(void);
-void func_99A1_b1(void);
-void func_B568_b1(void);
-void func_B594_b1(void);
-void func_B769_b1(void);
+void func_89FB_b1(void); /* ObjFrame_SamusRunPntUpFire2 */
+void func_99A1_b1(void); /* UpdateEnemyCommon_Decide_BANK1 */
+void func_B568_b1(void); /* ScrewAttackSFXInit_RTS */
+void func_B594_b1(void); /* IncrementNoisePeriod */
+void func_B769_b1(void); /* GotoInitSFXData2 */
 void func_BC22_b1(void);
-void func_B568_b2(void);
+void func_B568_b2(void); /* ScrewAttackSFXInit_RTS */
 void func_BC22_b2(void);
 void func_9DF1_b3(void);
-void func_B568_b3(void);
+void func_B568_b3(void); /* ScrewAttackSFXInit_RTS */
 void func_BC22_b3(void);
-void func_B568_b4(void);
+void func_B568_b4(void); /* ScrewAttackSFXInit_RTS */
 void func_BC22_b4(void);
-void func_B568_b5(void);
+void func_B568_b5(void); /* ScrewAttackSFXInit_RTS */
 void func_BC22_b5(void);
 void func_913F_b1(void);
 void func_9A07_b1(void);
 void func_9F54_b1(void);
 void func_95AB_b1(void);
-void func_95C3_b1(void);
+void func_95C3_b1(void); /* AreaRoutine */
 void func_95AE_b1(void);
 void func_95B1_b1(void);
 void func_95B4_b1(void);
@@ -4858,21 +4858,21 @@ void func_95B7_b1(void);
 void func_95BA_b1(void);
 void func_95C0_b1(void);
 void func_95BD_b1(void);
-void func_98DB_b1(void);
-void func_A29E_b1(void);
+void func_98DB_b1(void); /* EnemyMovement0F_R_BANK1 */
+void func_A29E_b1(void); /* Palette03_BANK1_VRAMStructData2_start */
 void func_A903_b1(void);
 void func_A203_b1(void);
-void func_9983_b1(void);
+void func_9983_b1(void); /* EnProjectileMovement2_BANK1 */
 void func_9993_b1(void);
 void func_99BF_b1(void);
 void func_99DE_b1(void);
 void func_99A6_b1(void);
 void func_9A03_b1(void);
 void func_9A12_b1(void);
-void func_99BA_b1(void);
-void func_99C8_b1(void);
-void func_99CC_b1(void);
-void func_9BD2_b1(void);
+void func_99BA_b1(void); /* Sidehopper_Common_BANK1 */
+void func_99C8_b1(void); /* CommonEnemyStub2_BANK1 */
+void func_99CC_b1(void); /* CommonEnemyStub_BANK1 */
+void func_9BD2_b1(void); /* KraidLintAIRoutine_BANK1 */
 void func_9F52_b1(void);
 void func_9FA4_b1(void);
 void func_9161_b1(void);
@@ -4885,9 +4885,9 @@ void func_A6FB_b1(void);
 void func_A6ED_b1(void);
 void func_A7AD_b1(void);
 void func_B503_b1(void);
-void func_B91C_b1(void);
-void func_B8D6_b1(void);
-void func_B6C4_b1(void);
+void func_B91C_b1(void); /* SamusDieSFXInit_RTS */
+void func_B8D6_b1(void); /* EndTriSFX_RTS */
+void func_B6C4_b1(void); /* SamusHitSFXInit_RTS */
 void func_B920_b1(void);
 void func_A7BC_b1(void);
 void func_A7FB_b1(void);

@@ -4,3 +4,6 @@
 [submodule "recomp-ui"]
 	path = recomp-ui
 	url = https://github.com/mstan/recomp-ui.git
+[submodule "disasm/m1disasm"]
+	path = disasm/m1disasm
+	url = https://github.com/metroidret/m1disasm.git
