@@ -129,7 +129,12 @@ Metroid uses the MMC1 mapper with 8 PRG banks. Bank 7 is fixed (always mapped at
 
 ## License
 
-The recompiler framework (nesrecomp submodule) and all game-specific code in this repository are provided as-is for educational and research purposes. No game ROM data is included. You must supply your own legally obtained copy of Metroid (NES).
+PolyForm Noncommercial 1.0.0 — see [`LICENSE`](LICENSE). The `nesrecomp`
+framework submodule and any other third-party components are licensed
+separately in their own repositories.
+
+No game ROM data is included. You must supply your own legally obtained copy of
+Metroid (NES).
 
 ---
 
