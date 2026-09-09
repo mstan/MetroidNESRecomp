@@ -899,3 +899,29 @@ end = 0xFFB0
 bank = 7
 start = 0xFFD5
 end = 0xFFFA
+
+# ---- Trusted mod hooks (metroid.enhancement.widescreen) ----
+#
+# Codegen emits `if (nes_mod_function_entry(0xADDR)) return;` as the first
+# statement of these entries. With no plugin enabled the check returns 0 and
+# the original body runs unchanged, so a stock build is byte-identical.
+# All three routines live in the fixed bank 7, so no `bank` key is needed
+# (mirrors SuperMarioBrosRecomp/game.toml).
+#
+# The widescreen mod enables/disables these by id in metroid_ws_enable/disable.
+
+# IsObjectVisible — replaced while widescreen is on so the horizontal
+# visibility window matches the widened viewport (and the 16-bit OAM X
+# sidecar context gets published for the sprite writes that follow).
+[[mod_function_hook]]
+addr = 0xDFDF           # IsObjectVisible
+
+# DisplayBar — observed (returns 0) to learn which 10 OAM slots hold the
+# status bar, so the compositor can anchor them.
+[[mod_function_hook]]
+addr = 0xE0C1           # DisplayBar
+
+# RoomFinished — observed (returns 0) to snapshot the finished RoomRAM image
+# for the current map cell into the widescreen screen cache.
+[[mod_function_hook]]
+addr = 0xEA26           # RoomFinished

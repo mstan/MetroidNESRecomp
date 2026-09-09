@@ -1,0 +1,65 @@
+format_version = 1
+id = "metroid.enhancement.widescreen"
+version = "1.0.0"
+name = "Metroid Widescreen"
+author = "NESRecomp"
+description = "Renders Metroid at a widescreen aspect by re-compositing the world from the live nametables, a per-screen room cache, and a native port of the game's own room decoder. The stock ROM is not modified."
+license = "MIT"
+resolver = "declarative"
+save_compatibility = "stock"
+
+[[target]]
+game_id = "metroid-nes"
+rom_crc32 = "7751588d"
+
+[[feature]]
+id = "widescreen"
+name = "Widescreen"
+description = "Composites the adjacent map screens into the side margins, widens the game's own object-visibility test so enemies do not pop in at the 4:3 edge, and anchors the status bar."
+group = "Display"
+exclusive_group = "display-mode"
+default_enabled = false
+
+[[option]]
+feature = "widescreen"
+id = "aspect"
+label = "Aspect"
+description = "Output aspect ratio. Fit follows the window, clamped between 4:3 and 32:9."
+type = "choice"
+default = "fit"
+
+[[option.choice]]
+value = "fit"
+label = "Fit window (adaptive)"
+
+[[option.choice]]
+value = "16-9"
+label = "16:9"
+
+[[option.choice]]
+value = "21-9"
+label = "21:9"
+
+[[option.choice]]
+value = "32-9"
+label = "32:9"
+
+[[option]]
+feature = "widescreen"
+id = "hud"
+label = "Status bar"
+description = "Where the energy and missile display sits in the widened picture."
+type = "choice"
+default = "edges"
+
+[[option.choice]]
+value = "edges"
+label = "Pinned to the screen edge"
+
+[[option.choice]]
+value = "center"
+label = "Centered (stock position)"
+
+[[plugin]]
+feature = "widescreen"
+id = "metroid.widescreen"

@@ -49,6 +49,9 @@ list(FILTER METROID_GEN EXCLUDE REGEX "generated/metroid_full_bank(01|07)\\.c$")
 add_executable(MetroidNESRecomp
     ${NESRECOMP_RUNNER_SOURCES}
     extras.c
+    metroid_ws.c
+    metroid_ws_render.c
+    mods/widescreen_plugin.c
     nes_snapshot.c
     verify_mode.c
     watchdog.c
@@ -97,6 +100,13 @@ include(${CMAKE_SOURCE_DIR}/recomp-ui/recomp_ui.cmake)
 recomp_target_launcher_ui(MetroidNESRecomp
     CONSOLE nes
     BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)
+
+# Declarative mod packages shipped with the build (mirrors SMB's staging step).
+add_custom_command(TARGET MetroidNESRecomp POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/mods/preloaded"
+        "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods"
+    COMMENT "Staging Metroid's preloaded NES mod packages")
 
 # Metroid saves via a 24-char password, not battery SRAM. Drive the launcher's
 # SAVES panel to show/edit that password (the metroid.srm sidecar next to the exe

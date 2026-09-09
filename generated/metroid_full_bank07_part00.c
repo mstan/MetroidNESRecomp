@@ -16114,6 +16114,7 @@ label_F13D:; /* GotoSubtractHealth */
 }
 
 void func_E0C1(void) { /* DisplayBar */
+    if (nes_mod_function_entry(0xE0C1u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_E0C1");
 #endif
@@ -25800,6 +25801,7 @@ label_E667:;
 }
 
 void func_EA26(void) { /* RoomFinished */
+    if (nes_mod_function_entry(0xEA26u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EA26");
 #endif

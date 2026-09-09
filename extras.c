@@ -11,6 +11,7 @@
 #include "input_script.h"
 #include "recomp_stack.h"
 #include "watchdog.h"
+#include "metroid_ws.h"
 #ifdef ENABLE_NESTOPIA_ORACLE
 #include "nestopia_bridge.h"
 #endif
@@ -398,6 +399,11 @@ void game_on_init(void) {
         printf("[Password] Loaded saved password \"%s\" (auto-prefill)\n",
                s_loaded_password);
     }
+
+    /* Widescreen: one-time renderer/sidecar setup. Inert until the mod
+     * package activates it (or --widescreen is passed). Must be here and not
+     * in game_on_frame -- met_render_reset() drops the world model. */
+    metroid_ws_init();
 }
 
 void game_on_frame(uint64_t frame_count) {
@@ -420,6 +426,9 @@ void game_on_frame(uint64_t frame_count) {
 void game_post_nmi(uint64_t frame_count) {
     /* Save-anywhere: capture the current-progress password into metroid.srm. */
     password_capture_tick(frame_count);
+
+    /* Widescreen gating must be decided before the frame is composited. */
+    metroid_ws_post_nmi(frame_count);
 
     if (s_debug_enabled) {
         debug_server_record_frame();
@@ -453,6 +462,19 @@ int game_handle_arg(const char *key, const char *val) {
         printf("[Verify] Nestopia emulated mode enabled\n");
         return 1;
     }
+    if (strcmp(key, "--widescreen") == 0 && val) {
+        /* Dev bypass for the mod package: "fit", "16:9", "21:9", "32:9" or
+         * "off", each optionally followed by ",edges" or ",center". */
+        NesAspectMode aspect;
+        MetWsHud hud;
+        if (!metroid_ws_parse_spec(val, &aspect, &hud)) {
+            fprintf(stderr, "[Widescreen] bad --widescreen spec \"%s\"\n", val);
+            return 1;
+        }
+        if (aspect == NES_ASPECT_STOCK) metroid_ws_disable();
+        else                            metroid_ws_enable(aspect, hud);
+        return 1;
+    }
     (void)val;
     return 0;
 }
@@ -462,6 +484,8 @@ const char *game_arg_usage(void) {
            "  --no-password-capture   Disable save-anywhere password auto-capture\n"
            "  --verify            Enable dual-execution verify mode (Nestopia oracle)\n"
            "  --emulated          Run purely via Nestopia emulator (no recompiled code)\n"
+           "  --widescreen SPEC   Widescreen: \"fit\", \"16:9\", \"21:9\", \"32:9\" or \"off\",\n"
+           "                      optionally \",edges\" or \",center\" for the status bar\n"
            "  TCP port set via debug.ini (port=XXXX) in the exe directory\n";
 }
 
@@ -635,6 +659,9 @@ void game_fill_frame_record(void *record) {
     r->game_data[13] = g_ram[0x108 & 0x7FF];
     r->game_data[14] = g_ram[0x109 & 0x7FF];
     r->game_data[15] = (uint8_t)g_current_bank;
+
+    /* [16..31] widescreen stats; see metroid_ws_fill_stats() for the layout. */
+    metroid_ws_fill_stats(r->game_data);
 }
 
 void game_post_render(uint32_t *framebuf) { (void)framebuf; }

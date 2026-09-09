@@ -3712,6 +3712,7 @@ void func_DCC3(void) { /* GetSpriteCntrlData */
 }
 
 void func_DFDF(void) { /* IsObjectVisible */
+    if (nes_mod_function_entry(0xDFDFu)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_DFDF");
 #endif
