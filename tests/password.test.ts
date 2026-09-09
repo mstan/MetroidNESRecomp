@@ -37,6 +37,16 @@ const BTN = { A: 0x80, B: 0x40, SELECT: 0x20, START: 0x10, UP: 8, DOWN: 4, LEFT:
 
 // ── locate exe + ROM ─────────────────────────────────────────────────────────
 function findExe(): string | null {
+  // These tests drive the TCP debug server, which only exists in a build
+  // configured with -DNESRECOMP_ENABLE_TRACE=ON. build_release/ is the RELEASE
+  // tree (tools/make_release.ps1 ships it) and is deliberately production, so
+  // point the tests at a trace build with NESRECOMP_TEST_EXE. See tests/README.md.
+  const override = process.env.NESRECOMP_TEST_EXE;
+  if (override) {
+    const p = resolve(GAME_ROOT, override);
+    if (!existsSync(p)) throw new Error(`NESRECOMP_TEST_EXE does not exist: ${p}`);
+    return p;
+  }
   // Prefer the Ninja build (build_release/), fall back to the VS build (build/Release).
   for (const rel of ["build_release", "build/Release"]) {
     const dir = join(GAME_ROOT, rel);

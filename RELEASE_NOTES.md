@@ -2,7 +2,11 @@
 
 A native PC build of Metroid, statically recompiled from the NES ROM's 6502 code
 to C with the [NESRecomp](https://github.com/mstan/nesrecomp) framework. No ROM is
-included — select your own legally-obtained Metroid (USA) ROM on first launch.
+included — select your own legally-obtained **Metroid (USA)** ROM on first launch
+(file CRC32 `A2C89CB9`, headerless PRG+CHR CRC32 `70080810`). The build checks the
+ROM and will refuse anything else, including **Metroid (Europe)** (`7751588D`),
+which is a different program: it differs from the USA ROM in every PRG bank, so
+the recompiled code in this build does not describe it.
 
 ## Headline: password save system (synthetic SRAM)
 
@@ -31,6 +35,12 @@ round-trips through the game's own decode.
   side-effect-free and deterministic.
 - Rolled the `nesrecomp` framework pin forward to pick up the shared `save_ram`
   backend + launcher password panel.
+- **Re-targeted at Metroid (USA).** Earlier in-development builds were recompiled
+  from the European ROM while claiming to be USA. The symbol table, `game.toml`
+  hints and CRC gate are now all derived from the USA ROM (m1disasm's `NES_NTSC`
+  target); a European ROM is rejected up front instead of silently mismatching.
+  A copy of the EU ROM is kept in the source tree as `metroid-eu.nes` so an EU
+  variant of the port can be generated later with `tools/migrate_hints.py`.
 
 ## Controls
 

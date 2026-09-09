@@ -693,7 +693,45 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
         int n = metroid_generate_password(pw, sizeof(pw));
         debug_server_send_fmt(
             "{\"id\":%d,\"ok\":true,\"len\":%d,\"d1d\":%d,\"password\":\"%s\"}",
-            id, n, g_ram[0x1D], pw);
+            id, n, g_ram[MET_GameMode], pw);
+        return 1;
+    }
+    /* Widescreen compositor stats.
+     *
+     * metroid_ws_fill_stats() publishes these into the frame record's
+     * game_data[16..31] (see its comment for the byte layout), but the engine's
+     * debug server only serialises game_data[0..15] over `get_frame` /
+     * `frame_range`, so the widescreen half never leaves the process. Rather
+     * than lose the observability, expose the same block directly here --
+     * process_command() tries the game handler before its own table.
+     *
+     * decoder_verified / decoder_mismatch are the automated correctness check:
+     * every cell this build decoded itself is compared against the game's own
+     * RoomRAM image once the game finally draws that cell, so a non-zero
+     * decoder_mismatch means the native room decoder disagrees with the ROM.
+     * cache_mismatch is the same check for cells taken from the screen cache. */
+    if (strcmp(cmd, "ws_stats") == 0) {
+        uint8_t d[32];
+        memset(d, 0, sizeof(d));
+        metroid_ws_fill_stats(d);
+        /* Width and margins come from the live globals, not from d[16..19]:
+         * the byte-packed block clamps the margins to 255, and at 32:9 they are
+         * (854-256)/2 = 299 each, so the packed value would under-report. */
+        debug_server_send_fmt(
+            "{\"id\":%d,\"ok\":true,\"enabled\":%d,\"gated_wide\":%d,"
+            "\"render_width\":%d,\"left\":%d,\"right\":%d,"
+            "\"nt0_cell_known\":%d,\"nt1_cell_known\":%d,"
+            "\"cells_cached\":%d,\"decoded_cells\":%d,"
+            "\"decoder_verified\":%d,\"decoder_mismatch\":%d,"
+            "\"cache_mismatch\":%d,"
+            "\"frames_wide\":%d,\"frames_fallback\":%d}",
+            id,
+            (d[20] & 0x08) ? 1 : 0, (d[20] & 0x04) ? 1 : 0,
+            g_render_width, g_widescreen_left, g_widescreen_right,
+            (d[20] & 0x01) ? 1 : 0, (d[20] & 0x02) ? 1 : 0,
+            d[21] | (d[22] << 8), d[23] | (d[24] << 8),
+            d[25], d[26], d[27],
+            d[28] | (d[29] << 8), d[30] | (d[31] << 8));
         return 1;
     }
     return 0;

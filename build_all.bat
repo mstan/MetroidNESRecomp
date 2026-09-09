@@ -36,7 +36,9 @@ if !ERRORLEVEL! NEQ 0 ( echo RECOMPILER BUILD FAILED & exit /b 1 )
 
 echo === STEP 2: Regen game code (plain, from game.toml) ===
 cd /d %~dp0
-nesrecomp\build_recomp\NESRecomp.exe "Metroid # NES.NES" --game game.toml
+rem metroid.nes = Metroid (USA), headerless CRC32 70080810 (metroid-eu.nes is the
+rem EU reference copy and is NOT what this build recompiles).
+nesrecomp\build_recomp\NESRecomp.exe metroid.nes --game game.toml
 if !ERRORLEVEL! NEQ 0 ( echo REGEN FAILED & exit /b 2 )
 
 echo === STEP 3: Configure + build release ===

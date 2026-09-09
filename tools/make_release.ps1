@@ -11,6 +11,14 @@ Builds build_release\ via build_all.bat (regen, oracle OFF), then stages and
 zips. The zip lands in release\ (gitignored) and never contains debug.ini,
 config.ini, a ROM, the player's password save (metroid.srm) / logs, or shots.
 
+The build targets Metroid (USA) -- headerless PRG+CHR CRC32 70080810, whole-file
+CRC32 A2C89CB9 -- and the runner rejects any other ROM. Metroid (Europe)
+(7751588D) is NOT supported by this build; the repo keeps it as metroid-eu.nes
+only as the reference for a future EU variant (see README, "Retargeting to
+another ROM revision"). build_release\ must stay a production build
+(NESRECOMP_ENABLE_TRACE=OFF, no TCP debug server) -- that is what ships here; use
+a separate build_trace\ tree for the debug-server tests (see tests\README.md).
+
 Publish AFTER smoke-testing the zip from a scratch directory:
 
   gh release create vX.Y.Z release\MetroidNESRecomp-windows-x64.zip `
@@ -43,7 +51,9 @@ A native PC build of Metroid, produced by statically recompiling the NES
 ROM's 6502 code to C with the NESRecomp framework (github.com/mstan/nesrecomp).
 
 No ROM is included. On first launch, select your legally-obtained Metroid
-(USA) ROM. The path is remembered for future launches.
+(USA) ROM -- CRC32 A2C89CB9 (70080810 without the iNES header). The path is
+remembered for future launches. Other revisions are rejected: the European
+ROM in particular is a different program and will not run in this build.
 
 PASSWORD SAVE
 -------------
