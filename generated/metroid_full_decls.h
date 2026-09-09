@@ -43,7 +43,13 @@ extern uint16_t g_rts_target;
 #define ReadJoyPads func_C215
 #define ReadOnePad func_C21F
 #define ReadOnePad_endIf_A func_C24D
-#define GotoSoundEngine func_FFD8
+/* SoundEngine: 0xB3B4 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SoundEngine__bN explicitly */
+#define SoundEngine__b0 func_B3B4_b0
+#define SoundEngine__b1 func_B3B4_b1
+#define SoundEngine__b2 func_B3B4_b2
+#define SoundEngine__b3 func_B3B4_b3
+#define SoundEngine__b4 func_B3B4_b4
+#define SoundEngine__b5 func_B3B4_b5
 #define ClearNameTables func_C158
 #define ClearNameTable func_C175
 #define EraseAllSprites func_C1A3
@@ -71,13 +77,79 @@ extern uint16_t g_rts_target;
 #define EndGamePaletteWrite func_9F54_b0
 #define StarPaletteSwitch func_8AC7_b0
 #define PrepPPUMirror func_C4D9
-/* SoundEngine: 0xB3E4 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SoundEngine__bN explicitly */
-#define SoundEngine__b0 func_B3E4_b0
-#define SoundEngine__b1 func_B3E4_b1
-#define SoundEngine__b2 func_B3E4_b2
-#define SoundEngine__b3 func_B3E4_b3
-#define SoundEngine__b4 func_B3E4_b4
-#define SoundEngine__b5 func_B3E4_b5
+/* SoundEngine_GameIsPaused: 0xB399 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SoundEngine_GameIsPaused__bN explicitly */
+#define SoundEngine_GameIsPaused__b0 func_B399_b0
+#define SoundEngine_GameIsPaused__b1 func_B399_b1
+#define SoundEngine_GameIsPaused__b2 func_B399_b2
+#define SoundEngine_GameIsPaused__b3 func_B399_b3
+#define SoundEngine_GameIsPaused__b4 func_B399_b4
+#define SoundEngine_GameIsPaused__b5 func_B399_b5
+/* RunSFXNoiseInitRoutine: 0xB31B is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSFXNoiseInitRoutine__bN explicitly */
+#define RunSFXNoiseInitRoutine__b0 func_B31B_b0
+#define RunSFXNoiseInitRoutine__b1 func_B31B_b1
+#define RunSFXNoiseInitRoutine__b2 func_B31B_b2
+#define RunSFXNoiseInitRoutine__b3 func_B31B_b3
+#define RunSFXNoiseInitRoutine__b4 func_B31B_b4
+#define RunSFXNoiseInitRoutine__b5 func_B31B_b5
+#define RunSFXNoiseContRoutine func_B322_b0
+/* RunSFXMultiInitRoutine: 0xB34B is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSFXMultiInitRoutine__bN explicitly */
+#define RunSFXMultiInitRoutine__b0 func_B34B_b0
+#define RunSFXMultiInitRoutine__b1 func_B34B_b1
+#define RunSFXMultiInitRoutine__b2 func_B34B_b2
+#define RunSFXMultiInitRoutine__b3 func_B34B_b3
+#define RunSFXMultiInitRoutine__b4 func_B34B_b4
+#define RunSFXMultiInitRoutine__b5 func_B34B_b5
+/* RunSFXTriInitRoutine: 0xB33D is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSFXTriInitRoutine__bN explicitly */
+#define RunSFXTriInitRoutine__b0 func_B33D_b0
+#define RunSFXTriInitRoutine__b1 func_B33D_b1
+#define RunSFXTriInitRoutine__b2 func_B33D_b2
+#define RunSFXTriInitRoutine__b3 func_B33D_b3
+#define RunSFXTriInitRoutine__b4 func_B33D_b4
+#define RunSFXTriInitRoutine__b5 func_B33D_b5
+#define RunSFXTriContRoutine func_B344_b0
+/* RunMusicLoopRoutine: 0xBC36 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunMusicLoopRoutine__bN explicitly */
+#define RunMusicLoopRoutine__b0 func_BC36_b0
+#define RunMusicLoopRoutine__b1 func_BC36_b1
+#define RunMusicLoopRoutine__b2 func_BC36_b2
+#define RunMusicLoopRoutine__b3 func_BC36_b3
+#define RunMusicLoopRoutine__b4 func_BC36_b4
+#define RunMusicLoopRoutine__b5 func_BC36_b5
+#define RunMusicInitRoutine func_BC3D_b0
+/* InitializeSoundAddresses: 0xB404 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use InitializeSoundAddresses__bN explicitly */
+#define InitializeSoundAddresses__b0 func_B404_b0
+#define InitializeSoundAddresses__b1 func_B404_b1
+#define InitializeSoundAddresses__b2 func_B404_b2
+#define InitializeSoundAddresses__b3 func_B404_b3
+#define InitializeSoundAddresses__b4 func_B404_b4
+#define InitializeSoundAddresses__b5 func_B404_b5
+/* ClearMusicAndSFXAddresses: 0xB41D is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ClearMusicAndSFXAddresses__bN explicitly */
+#define ClearMusicAndSFXAddresses__b0 func_B41D_b0
+#define ClearMusicAndSFXAddresses__b1 func_B41D_b1
+#define ClearMusicAndSFXAddresses__b2 func_B41D_b2
+#define ClearMusicAndSFXAddresses__b3 func_B41D_b3
+#define ClearMusicAndSFXAddresses__b4 func_B41D_b4
+#define ClearMusicAndSFXAddresses__b5 func_B41D_b5
+/* ClearSounds: 0xB43E is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ClearSounds__bN explicitly */
+#define ClearSounds__b0 func_B43E_b0
+#define ClearSounds__b1 func_B43E_b1
+#define ClearSounds__b2 func_B43E_b2
+#define ClearSounds__b3 func_B43E_b3
+#define ClearSounds__b4 func_B43E_b4
+#define ClearSounds__b5 func_B43E_b5
+/* ClearSpecialAddresses: 0xB40E is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ClearSpecialAddresses__bN explicitly */
+#define ClearSpecialAddresses__b0 func_B40E_b0
+#define ClearSpecialAddresses__b1 func_B40E_b1
+#define ClearSpecialAddresses__b2 func_B40E_b2
+#define ClearSpecialAddresses__b3 func_B40E_b3
+#define ClearSpecialAddresses__b4 func_B40E_b4
+#define ClearSpecialAddresses__b5 func_B40E_b5
+/* RunSFXSQ1InitRoutine: 0xB329 is standalone-emitted in 6 banks (b2,b3,b4,b5,b1,b0) -- no unsuffixed alias emitted; use RunSFXSQ1InitRoutine__bN explicitly */
+#define RunSFXSQ1InitRoutine__b2 func_B329_b2
+#define RunSFXSQ1InitRoutine__b3 func_B329_b3
+#define RunSFXSQ1InitRoutine__b4 func_B329_b4
+#define RunSFXSQ1InitRoutine__b5 func_B329_b5
+#define RunSFXSQ1InitRoutine__b1 func_B329_b1
+#define RunSFXSQ1InitRoutine__b0 func_B329_b0
 #define DecSpriteYCoord func_988A_b0
 #define PipeBugAIRoutine_BANK5_checkIfGoForwards func_988A_b5
 #define GoBankInit func_C510
@@ -99,79 +171,58 @@ extern uint16_t g_rts_target;
 #define VRAMStructWrite func_C30C
 #define VRAMStructWriteData_endIf_A func_C2FD
 #define SetPPUMirror func_C4B6
-/* SoundEngine_GameIsPaused: 0xB3C9 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SoundEngine_GameIsPaused__bN explicitly */
-#define SoundEngine_GameIsPaused__b0 func_B3C9_b0
-#define SoundEngine_GameIsPaused__b1 func_B3C9_b1
-#define SoundEngine_GameIsPaused__b2 func_B3C9_b2
-#define SoundEngine_GameIsPaused__b3 func_B3C9_b3
-#define SoundEngine_GameIsPaused__b4 func_B3C9_b4
-#define SoundEngine_GameIsPaused__b5 func_B3C9_b5
-/* RunSFXNoiseInitRoutine: 0xB34B is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSFXNoiseInitRoutine__bN explicitly */
-#define RunSFXNoiseInitRoutine__b0 func_B34B_b0
-#define RunSFXNoiseInitRoutine__b1 func_B34B_b1
-#define RunSFXNoiseInitRoutine__b2 func_B34B_b2
-#define RunSFXNoiseInitRoutine__b3 func_B34B_b3
-#define RunSFXNoiseInitRoutine__b4 func_B34B_b4
-#define RunSFXNoiseInitRoutine__b5 func_B34B_b5
-#define RunSFXNoiseContRoutine func_B352_b0
-/* RunSFXMultiInitRoutine: 0xB37B is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSFXMultiInitRoutine__bN explicitly */
-#define RunSFXMultiInitRoutine__b0 func_B37B_b0
-#define RunSFXMultiInitRoutine__b1 func_B37B_b1
-#define RunSFXMultiInitRoutine__b2 func_B37B_b2
-#define RunSFXMultiInitRoutine__b3 func_B37B_b3
-#define RunSFXMultiInitRoutine__b4 func_B37B_b4
-#define RunSFXMultiInitRoutine__b5 func_B37B_b5
-/* RunSFXTriInitRoutine: 0xB36D is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSFXTriInitRoutine__bN explicitly */
-#define RunSFXTriInitRoutine__b0 func_B36D_b0
-#define RunSFXTriInitRoutine__b1 func_B36D_b1
-#define RunSFXTriInitRoutine__b2 func_B36D_b2
-#define RunSFXTriInitRoutine__b3 func_B36D_b3
-#define RunSFXTriInitRoutine__b4 func_B36D_b4
-#define RunSFXTriInitRoutine__b5 func_B36D_b5
-#define RunSFXTriContRoutine func_B374_b0
-/* RunMusicLoopRoutine: 0xBC66 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunMusicLoopRoutine__bN explicitly */
-#define RunMusicLoopRoutine__b0 func_BC66_b0
-#define RunMusicLoopRoutine__b1 func_BC66_b1
-#define RunMusicLoopRoutine__b2 func_BC66_b2
-#define RunMusicLoopRoutine__b3 func_BC66_b3
-#define RunMusicLoopRoutine__b4 func_BC66_b4
-#define RunMusicLoopRoutine__b5 func_BC66_b5
-#define RunMusicInitRoutine func_BC6D_b0
-/* InitializeSoundAddresses: 0xB434 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use InitializeSoundAddresses__bN explicitly */
-#define InitializeSoundAddresses__b0 func_B434_b0
-#define InitializeSoundAddresses__b1 func_B434_b1
-#define InitializeSoundAddresses__b2 func_B434_b2
-#define InitializeSoundAddresses__b3 func_B434_b3
-#define InitializeSoundAddresses__b4 func_B434_b4
-#define InitializeSoundAddresses__b5 func_B434_b5
-/* ClearMusicAndSFXAddresses: 0xB44D is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ClearMusicAndSFXAddresses__bN explicitly */
-#define ClearMusicAndSFXAddresses__b0 func_B44D_b0
-#define ClearMusicAndSFXAddresses__b1 func_B44D_b1
-#define ClearMusicAndSFXAddresses__b2 func_B44D_b2
-#define ClearMusicAndSFXAddresses__b3 func_B44D_b3
-#define ClearMusicAndSFXAddresses__b4 func_B44D_b4
-#define ClearMusicAndSFXAddresses__b5 func_B44D_b5
-/* ClearSounds: 0xB46E is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ClearSounds__bN explicitly */
-#define ClearSounds__b0 func_B46E_b0
-#define ClearSounds__b1 func_B46E_b1
-#define ClearSounds__b2 func_B46E_b2
-#define ClearSounds__b3 func_B46E_b3
-#define ClearSounds__b4 func_B46E_b4
-#define ClearSounds__b5 func_B46E_b5
-/* ClearSpecialAddresses: 0xB43E is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ClearSpecialAddresses__bN explicitly */
-#define ClearSpecialAddresses__b0 func_B43E_b0
-#define ClearSpecialAddresses__b1 func_B43E_b1
-#define ClearSpecialAddresses__b2 func_B43E_b2
-#define ClearSpecialAddresses__b3 func_B43E_b3
-#define ClearSpecialAddresses__b4 func_B43E_b4
-#define ClearSpecialAddresses__b5 func_B43E_b5
-/* RunSFXSQ1InitRoutine: 0xB359 is standalone-emitted in 6 banks (b2,b3,b4,b5,b1,b0) -- no unsuffixed alias emitted; use RunSFXSQ1InitRoutine__bN explicitly */
-#define RunSFXSQ1InitRoutine__b2 func_B359_b2
-#define RunSFXSQ1InitRoutine__b3 func_B359_b3
-#define RunSFXSQ1InitRoutine__b4 func_B359_b4
-#define RunSFXSQ1InitRoutine__b5 func_B359_b5
-#define RunSFXSQ1InitRoutine__b1 func_B359_b1
-#define RunSFXSQ1InitRoutine__b0 func_B359_b0
+/* PauseSFX: 0xB38F is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use PauseSFX__bN explicitly */
+#define PauseSFX__b0 func_B38F_b0
+#define PauseSFX__b1 func_B38F_b1
+#define PauseSFX__b2 func_B38F_b2
+#define PauseSFX__b3 func_B38F_b3
+#define PauseSFX__b4 func_B38F_b4
+#define PauseSFX__b5 func_B38F_b5
+/* LoadSFXData: 0xB368 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use LoadSFXData__bN explicitly */
+#define LoadSFXData__b0 func_B368_b0
+#define LoadSFXData__b1 func_B368_b1
+#define LoadSFXData__b2 func_B368_b2
+#define LoadSFXData__b3 func_B368_b3
+#define LoadSFXData__b4 func_B368_b4
+#define LoadSFXData__b5 func_B368_b5
+/* GetSoundRoutine: 0xB4BD is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use GetSoundRoutine__bN explicitly */
+#define GetSoundRoutine__b0 func_B4BD_b0
+#define GetSoundRoutine__b1 func_B4BD_b1
+#define GetSoundRoutine__b2 func_B4BD_b2
+#define GetSoundRoutine__b3 func_B4BD_b3
+#define GetSoundRoutine__b4 func_B4BD_b4
+#define GetSoundRoutine__b5 func_B4BD_b5
+/* GetSoundRoutine_RTS: 0xB4EE is standalone-emitted in 2 banks (b0,b1) -- no unsuffixed alias emitted; use GetSoundRoutine_RTS__bN explicitly */
+#define GetSoundRoutine_RTS__b0 func_B4EE_b0
+#define GetSoundRoutine_RTS__b1 func_B4EE_b1
+/* GetSoundRoutine_RestoreSFXFlags: 0xB4EA is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use GetSoundRoutine_RestoreSFXFlags__bN explicitly */
+#define GetSoundRoutine_RestoreSFXFlags__b0 func_B4EA_b0
+#define GetSoundRoutine_RestoreSFXFlags__b2 func_B4EA_b2
+#define GetSoundRoutine_RestoreSFXFlags__b3 func_B4EA_b3
+#define GetSoundRoutine_RestoreSFXFlags__b4 func_B4EA_b4
+#define GetSoundRoutine_RestoreSFXFlags__b5 func_B4EA_b5
+#define GetSoundRoutine_RestoreSFXFlags__b1 func_B4EA_b1
+/* FindMusicInitIndex: 0xBC53 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use FindMusicInitIndex__bN explicitly */
+#define FindMusicInitIndex__b0 func_BC53_b0
+#define FindMusicInitIndex__b1 func_BC53_b1
+#define FindMusicInitIndex__b2 func_BC53_b2
+#define FindMusicInitIndex__b3 func_BC53_b3
+#define FindMusicInitIndex__b4 func_BC53_b4
+#define FindMusicInitIndex__b5 func_BC53_b5
+/* MusicInitIndexAdd8: 0xBC64 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use MusicInitIndexAdd8__bN explicitly */
+#define MusicInitIndexAdd8__b0 func_BC64_b0
+#define MusicInitIndexAdd8__b1 func_BC64_b1
+#define MusicInitIndexAdd8__b2 func_BC64_b2
+#define MusicInitIndexAdd8__b3 func_BC64_b3
+#define MusicInitIndexAdd8__b4 func_BC64_b4
+#define MusicInitIndexAdd8__b5 func_BC64_b5
+/* RunSoundRoutine: 0xB337 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSoundRoutine__bN explicitly */
+#define RunSoundRoutine__b0 func_B337_b0
+#define RunSoundRoutine__b1 func_B337_b1
+#define RunSoundRoutine__b2 func_B337_b2
+#define RunSoundRoutine__b3 func_B337_b3
+#define RunSoundRoutine__b4 func_B337_b4
+#define RunSoundRoutine__b5 func_B337_b5
 /* CommonJump_EnemyGetDeltaY_UsingAcceleration: 0x8036 is standalone-emitted in 5 banks (b2,b4,b5,b1,b3) -- no unsuffixed alias emitted; use CommonJump_EnemyGetDeltaY_UsingAcceleration__bN explicitly */
 #define CommonJump_EnemyGetDeltaY_UsingAcceleration__b2 func_8036_b2
 #define CommonJump_EnemyGetDeltaY_UsingAcceleration__b4 func_8036_b4
@@ -221,12 +272,12 @@ extern uint16_t g_rts_target;
 #define CommonJump_SubtractHealth__b4 func_8042_b4
 #define CommonJump_SubtractHealth__b5 func_8042_b5
 #define UpdateEnemyCommon_Decide_BANK3 func_97E2_b3
-/* CommonJump_UpdateEnemyCommon_noMoveNoAnim: 0x8006 is standalone-emitted in 5 banks (b4,b3,b2,b1,b5) -- no unsuffixed alias emitted; use CommonJump_UpdateEnemyCommon_noMoveNoAnim__bN explicitly */
+/* CommonJump_UpdateEnemyCommon_noMoveNoAnim: 0x8006 is standalone-emitted in 5 banks (b4,b3,b2,b5,b1) -- no unsuffixed alias emitted; use CommonJump_UpdateEnemyCommon_noMoveNoAnim__bN explicitly */
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b4 func_8006_b4
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b3 func_8006_b3
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b2 func_8006_b2
-#define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b1 func_8006_b1
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b5 func_8006_b5
+#define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b1 func_8006_b1
 /* CommonJump_EnemyFlipAfterDisplacement: 0x801B is standalone-emitted in 5 banks (b4,b2,b1,b3,b5) -- no unsuffixed alias emitted; use CommonJump_EnemyFlipAfterDisplacement__bN explicitly */
 #define CommonJump_EnemyFlipAfterDisplacement__b4 func_801B_b4
 #define CommonJump_EnemyFlipAfterDisplacement__b2 func_801B_b2
@@ -371,62 +422,6 @@ extern uint16_t g_rts_target;
 #define AddYToPtr00 func_C2A8
 #define SetPPUInc func_C318
 #define SetPPUInc_endIf_A func_C321
-/* PauseSFX: 0xB3BF is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use PauseSFX__bN explicitly */
-#define PauseSFX__b0 func_B3BF_b0
-#define PauseSFX__b1 func_B3BF_b1
-#define PauseSFX__b2 func_B3BF_b2
-#define PauseSFX__b3 func_B3BF_b3
-#define PauseSFX__b4 func_B3BF_b4
-#define PauseSFX__b5 func_B3BF_b5
-/* LoadSFXData: 0xB398 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use LoadSFXData__bN explicitly */
-#define LoadSFXData__b0 func_B398_b0
-#define LoadSFXData__b1 func_B398_b1
-#define LoadSFXData__b2 func_B398_b2
-#define LoadSFXData__b3 func_B398_b3
-#define LoadSFXData__b4 func_B398_b4
-#define LoadSFXData__b5 func_B398_b5
-/* GetSoundRoutine: 0xB4ED is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use GetSoundRoutine__bN explicitly */
-#define GetSoundRoutine__b0 func_B4ED_b0
-#define GetSoundRoutine__b1 func_B4ED_b1
-#define GetSoundRoutine__b2 func_B4ED_b2
-#define GetSoundRoutine__b3 func_B4ED_b3
-#define GetSoundRoutine__b4 func_B4ED_b4
-#define GetSoundRoutine__b5 func_B4ED_b5
-/* GetSoundRoutine_RTS: 0xB51E is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use GetSoundRoutine_RTS__bN explicitly */
-#define GetSoundRoutine_RTS__b0 func_B51E_b0
-#define GetSoundRoutine_RTS__b2 func_B51E_b2
-#define GetSoundRoutine_RTS__b3 func_B51E_b3
-#define GetSoundRoutine_RTS__b4 func_B51E_b4
-#define GetSoundRoutine_RTS__b5 func_B51E_b5
-#define GetSoundRoutine_RTS__b1 func_B51E_b1
-/* GetSoundRoutine_RestoreSFXFlags: 0xB51A is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use GetSoundRoutine_RestoreSFXFlags__bN explicitly */
-#define GetSoundRoutine_RestoreSFXFlags__b0 func_B51A_b0
-#define GetSoundRoutine_RestoreSFXFlags__b2 func_B51A_b2
-#define GetSoundRoutine_RestoreSFXFlags__b3 func_B51A_b3
-#define GetSoundRoutine_RestoreSFXFlags__b4 func_B51A_b4
-#define GetSoundRoutine_RestoreSFXFlags__b5 func_B51A_b5
-#define GetSoundRoutine_RestoreSFXFlags__b1 func_B51A_b1
-/* FindMusicInitIndex: 0xBC83 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use FindMusicInitIndex__bN explicitly */
-#define FindMusicInitIndex__b0 func_BC83_b0
-#define FindMusicInitIndex__b1 func_BC83_b1
-#define FindMusicInitIndex__b2 func_BC83_b2
-#define FindMusicInitIndex__b3 func_BC83_b3
-#define FindMusicInitIndex__b4 func_BC83_b4
-#define FindMusicInitIndex__b5 func_BC83_b5
-/* MusicInitIndexAdd8: 0xBC94 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use MusicInitIndexAdd8__bN explicitly */
-#define MusicInitIndexAdd8__b0 func_BC94_b0
-#define MusicInitIndexAdd8__b1 func_BC94_b1
-#define MusicInitIndexAdd8__b2 func_BC94_b2
-#define MusicInitIndexAdd8__b3 func_BC94_b3
-#define MusicInitIndexAdd8__b4 func_BC94_b4
-#define MusicInitIndexAdd8__b5 func_BC94_b5
-/* RunSoundRoutine: 0xB367 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use RunSoundRoutine__bN explicitly */
-#define RunSoundRoutine__b0 func_B367_b0
-#define RunSoundRoutine__b1 func_B367_b1
-#define RunSoundRoutine__b2 func_B367_b2
-#define RunSoundRoutine__b3 func_B367_b3
-#define RunSoundRoutine__b4 func_B367_b4
-#define RunSoundRoutine__b5 func_B367_b5
 /* EnemyGetDeltaY_UsingAcceleration: 0x833F is standalone-emitted in 5 banks (b2,b4,b5,b1,b3) -- no unsuffixed alias emitted; use EnemyGetDeltaY_UsingAcceleration__bN explicitly */
 #define EnemyGetDeltaY_UsingAcceleration__b2 func_833F_b2
 #define EnemyGetDeltaY_UsingAcceleration__b4 func_833F_b4
@@ -509,153 +504,153 @@ extern uint16_t g_rts_target;
 /* SongKraidSQ1: 0xB03F is standalone-emitted in 2 banks (b4,b5) -- no unsuffixed alias emitted; use SongKraidSQ1__bN explicitly */
 #define SongKraidSQ1__b4 func_B03F_b4
 #define SongKraidSQ1__b5 func_B03F_b5
-/* LoadSFXData_SQ2: 0xB3A4 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use LoadSFXData_SQ2__bN explicitly */
-#define LoadSFXData_SQ2__b4 func_B3A4_b4
-#define LoadSFXData_SQ2__b2 func_B3A4_b2
-#define LoadSFXData_SQ2__b5 func_B3A4_b5
-#define LoadSFXData_SQ2__b3 func_B3A4_b3
-#define LoadSFXData_SQ2__b1 func_B3A4_b1
-#define LoadSFXData_SQ2__b0 func_B3A4_b0
-/* LoadSFXData_Tri: 0xB39C is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use LoadSFXData_Tri__bN explicitly */
-#define LoadSFXData_Tri__b4 func_B39C_b4
-#define LoadSFXData_Tri__b2 func_B39C_b2
-#define LoadSFXData_Tri__b5 func_B39C_b5
-#define LoadSFXData_Tri__b3 func_B39C_b3
-#define LoadSFXData_Tri__b1 func_B39C_b1
-#define LoadSFXData_Tri__b0 func_B39C_b0
-/* LoadSFXData_Noise: 0xB3A0 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use LoadSFXData_Noise__bN explicitly */
-#define LoadSFXData_Noise__b4 func_B3A0_b4
-#define LoadSFXData_Noise__b2 func_B3A0_b2
-#define LoadSFXData_Noise__b5 func_B3A0_b5
-#define LoadSFXData_Noise__b3 func_B3A0_b3
-#define LoadSFXData_Noise__b1 func_B3A0_b1
-#define LoadSFXData_Noise__b0 func_B3A0_b0
-/* UpdateContFlags: 0xB4C3 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateContFlags__bN explicitly */
-#define UpdateContFlags__b4 func_B4C3_b4
-#define UpdateContFlags__b2 func_B4C3_b2
-#define UpdateContFlags__b5 func_B4C3_b5
-#define UpdateContFlags__b3 func_B4C3_b3
-#define UpdateContFlags__b1 func_B4C3_b1
-#define UpdateContFlags__b0 func_B4C3_b0
-/* InitSFXData: 0xB482 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use InitSFXData__bN explicitly */
-#define InitSFXData__b4 func_B482_b4
-#define InitSFXData__b2 func_B482_b2
-#define InitSFXData__b5 func_B482_b5
-#define InitSFXData__b3 func_B482_b3
-#define InitSFXData__b1 func_B482_b1
-#define InitSFXData__b0 func_B482_b0
-/* InitSFXData_Tri: 0xB4A2 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use InitSFXData_Tri__bN explicitly */
-#define InitSFXData_Tri__b4 func_B4A2_b4
-#define InitSFXData_Tri__b2 func_B4A2_b2
-#define InitSFXData_Tri__b5 func_B4A2_b5
-#define InitSFXData_Tri__b3 func_B4A2_b3
-#define InitSFXData_Tri__b1 func_B4A2_b1
-#define InitSFXData_Tri__b0 func_B4A2_b0
-/* IncrementSFXFrame: 0xB4D9 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use IncrementSFXFrame__bN explicitly */
-#define IncrementSFXFrame__b4 func_B4D9_b4
-#define IncrementSFXFrame__b2 func_B4D9_b2
-#define IncrementSFXFrame__b5 func_B4D9_b5
-#define IncrementSFXFrame__b3 func_B4D9_b3
-#define IncrementSFXFrame__b1 func_B4D9_b1
-#define IncrementSFXFrame__b0 func_B4D9_b0
-/* EndNoiseSFX: 0xB5BF is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use EndNoiseSFX__bN explicitly */
-#define EndNoiseSFX__b4 func_B5BF_b4
-#define EndNoiseSFX__b2 func_B5BF_b2
-#define EndNoiseSFX__b5 func_B5BF_b5
-#define EndNoiseSFX__b3 func_B5BF_b3
-#define EndNoiseSFX__b1 func_B5BF_b1
-#define EndNoiseSFX__b0 func_B5BF_b0
-/* GotoInitSFXData: 0xB5B7 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoInitSFXData__bN explicitly */
-#define GotoInitSFXData__b4 func_B5B7_b4
-#define GotoInitSFXData__b5 func_B5B7_b5
-#define GotoInitSFXData__b2 func_B5B7_b2
-#define GotoInitSFXData__b3 func_B5B7_b3
-#define GotoInitSFXData__b1 func_B5B7_b1
-#define GotoInitSFXData__b0 func_B5B7_b0
-/* ClearCurrentSoundFlagsAndContFlags: 0xB4D2 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use ClearCurrentSoundFlagsAndContFlags__bN explicitly */
-#define ClearCurrentSoundFlagsAndContFlags__b4 func_B4D2_b4
-#define ClearCurrentSoundFlagsAndContFlags__b5 func_B4D2_b5
-#define ClearCurrentSoundFlagsAndContFlags__b2 func_B4D2_b2
-#define ClearCurrentSoundFlagsAndContFlags__b3 func_B4D2_b3
-#define ClearCurrentSoundFlagsAndContFlags__b1 func_B4D2_b1
-#define ClearCurrentSoundFlagsAndContFlags__b0 func_B4D2_b0
-/* MultiSFXInit: 0xB5D5 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use MultiSFXInit__bN explicitly */
-#define MultiSFXInit__b4 func_B5D5_b4
-#define MultiSFXInit__b5 func_B5D5_b5
-#define MultiSFXInit__b2 func_B5D5_b2
-#define MultiSFXInit__b3 func_B5D5_b3
-#define MultiSFXInit__b1 func_B5D5_b1
-#define MultiSFXInit__b0 func_B5D5_b0
-/* WriteSQ1SQ2PeriodLow: 0xB65C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use WriteSQ1SQ2PeriodLow__bN explicitly */
-#define WriteSQ1SQ2PeriodLow__b4 func_B65C_b4
-#define WriteSQ1SQ2PeriodLow__b5 func_B65C_b5
-#define WriteSQ1SQ2PeriodLow__b2 func_B65C_b2
-#define WriteSQ1SQ2PeriodLow__b3 func_B65C_b3
-#define WriteSQ1SQ2PeriodLow__b1 func_B65C_b1
-#define WriteSQ1SQ2PeriodLow__b0 func_B65C_b0
-/* EndMultiSFX: 0xB5FD is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndMultiSFX__bN explicitly */
-#define EndMultiSFX__b4 func_B5FD_b4
-#define EndMultiSFX__b5 func_B5FD_b5
-#define EndMultiSFX__b2 func_B5FD_b2
-#define EndMultiSFX__b3 func_B5FD_b3
-#define EndMultiSFX__b1 func_B5FD_b1
-#define EndMultiSFX__b0 func_B5FD_b0
-/* EndSQ1SFX: 0xB722 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndSQ1SFX__bN explicitly */
-#define EndSQ1SFX__b4 func_B722_b4
-#define EndSQ1SFX__b5 func_B722_b5
-#define EndSQ1SFX__b2 func_B722_b2
-#define EndSQ1SFX__b3 func_B722_b3
-#define EndSQ1SFX__b1 func_B722_b1
-#define EndSQ1SFX__b0 func_B722_b0
-/* EndTriSFX: 0xB8C6 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndTriSFX__bN explicitly */
-#define EndTriSFX__b4 func_B8C6_b4
-#define EndTriSFX__b5 func_B8C6_b5
-#define EndTriSFX__b2 func_B8C6_b2
-#define EndTriSFX__b3 func_B8C6_b3
-#define EndTriSFX__b1 func_B8C6_b1
-#define EndTriSFX__b0 func_B8C6_b0
-/* EndTriSFX_RTS: 0xB8D6 is standalone-emitted in 6 banks (b4,b5,b2,b3,b0,b1) -- no unsuffixed alias emitted; use EndTriSFX_RTS__bN explicitly */
-#define EndTriSFX_RTS__b4 func_B8D6_b4
-#define EndTriSFX_RTS__b5 func_B8D6_b5
-#define EndTriSFX_RTS__b2 func_B8D6_b2
-#define EndTriSFX_RTS__b3 func_B8D6_b3
-#define EndTriSFX_RTS__b0 func_B8D6_b0
-#define EndTriSFX_RTS__b1 func_B8D6_b1
-/* DecreaseSFXTriPeriod: 0xB9BC is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use DecreaseSFXTriPeriod__bN explicitly */
-#define DecreaseSFXTriPeriod__b4 func_B9BC_b4
-#define DecreaseSFXTriPeriod__b5 func_B9BC_b5
-#define DecreaseSFXTriPeriod__b2 func_B9BC_b2
-#define DecreaseSFXTriPeriod__b3 func_B9BC_b3
-#define DecreaseSFXTriPeriod__b1 func_B9BC_b1
-#define DecreaseSFXTriPeriod__b0 func_B9BC_b0
-/* WriteSFXTriPeriod: 0xB899 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use WriteSFXTriPeriod__bN explicitly */
-#define WriteSFXTriPeriod__b4 func_B899_b4
-#define WriteSFXTriPeriod__b5 func_B899_b5
-#define WriteSFXTriPeriod__b2 func_B899_b2
-#define WriteSFXTriPeriod__b3 func_B899_b3
-#define WriteSFXTriPeriod__b1 func_B899_b1
-#define WriteSFXTriPeriod__b0 func_B899_b0
-/* IncreaseSFXTriPeriod: 0xB9A8 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use IncreaseSFXTriPeriod__bN explicitly */
-#define IncreaseSFXTriPeriod__b4 func_B9A8_b4
-#define IncreaseSFXTriPeriod__b5 func_B9A8_b5
-#define IncreaseSFXTriPeriod__b2 func_B9A8_b2
-#define IncreaseSFXTriPeriod__b3 func_B9A8_b3
-#define IncreaseSFXTriPeriod__b1 func_B9A8_b1
-#define IncreaseSFXTriPeriod__b0 func_B9A8_b0
-/* DivideSFXTriPeriod: 0xB9D0 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use DivideSFXTriPeriod__bN explicitly */
-#define DivideSFXTriPeriod__b4 func_B9D0_b4
-#define DivideSFXTriPeriod__b5 func_B9D0_b5
-#define DivideSFXTriPeriod__b2 func_B9D0_b2
-#define DivideSFXTriPeriod__b3 func_B9D0_b3
-#define DivideSFXTriPeriod__b1 func_B9D0_b1
-#define DivideSFXTriPeriod__b0 func_B9D0_b0
-/* RndTriPeriods: 0xB8F3 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use RndTriPeriods__bN explicitly */
-#define RndTriPeriods__b4 func_B8F3_b4
-#define RndTriPeriods__b5 func_B8F3_b5
-#define RndTriPeriods__b2 func_B8F3_b2
-#define RndTriPeriods__b3 func_B8F3_b3
-#define RndTriPeriods__b1 func_B8F3_b1
-#define RndTriPeriods__b0 func_B8F3_b0
+#define UpdateEnemyCommon_Decide_BANK5 func_9830_b5
+/* EnemyIfMoveFailedUp_facingHorizontal: 0x80C7 is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use EnemyIfMoveFailedUp_facingHorizontal__bN explicitly */
+#define EnemyIfMoveFailedUp_facingHorizontal__b4 func_80C7_b4
+#define EnemyIfMoveFailedUp_facingHorizontal__b5 func_80C7_b5
+#define EnemyIfMoveFailedUp_facingHorizontal__b2 func_80C7_b2
+#define EnemyIfMoveFailedUp_facingHorizontal__b3 func_80C7_b3
+#define EnemyIfMoveFailedUp_facingHorizontal__b1 func_80C7_b1
+/* LoadSFXData_SQ2: 0xB374 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use LoadSFXData_SQ2__bN explicitly */
+#define LoadSFXData_SQ2__b4 func_B374_b4
+#define LoadSFXData_SQ2__b2 func_B374_b2
+#define LoadSFXData_SQ2__b5 func_B374_b5
+#define LoadSFXData_SQ2__b3 func_B374_b3
+#define LoadSFXData_SQ2__b1 func_B374_b1
+#define LoadSFXData_SQ2__b0 func_B374_b0
+/* LoadSFXData_Tri: 0xB36C is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use LoadSFXData_Tri__bN explicitly */
+#define LoadSFXData_Tri__b4 func_B36C_b4
+#define LoadSFXData_Tri__b2 func_B36C_b2
+#define LoadSFXData_Tri__b5 func_B36C_b5
+#define LoadSFXData_Tri__b3 func_B36C_b3
+#define LoadSFXData_Tri__b1 func_B36C_b1
+#define LoadSFXData_Tri__b0 func_B36C_b0
+/* LoadSFXData_Noise: 0xB370 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use LoadSFXData_Noise__bN explicitly */
+#define LoadSFXData_Noise__b4 func_B370_b4
+#define LoadSFXData_Noise__b2 func_B370_b2
+#define LoadSFXData_Noise__b5 func_B370_b5
+#define LoadSFXData_Noise__b3 func_B370_b3
+#define LoadSFXData_Noise__b1 func_B370_b1
+#define LoadSFXData_Noise__b0 func_B370_b0
+/* UpdateContFlags: 0xB493 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateContFlags__bN explicitly */
+#define UpdateContFlags__b4 func_B493_b4
+#define UpdateContFlags__b2 func_B493_b2
+#define UpdateContFlags__b5 func_B493_b5
+#define UpdateContFlags__b3 func_B493_b3
+#define UpdateContFlags__b1 func_B493_b1
+#define UpdateContFlags__b0 func_B493_b0
+/* InitSFXData: 0xB452 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use InitSFXData__bN explicitly */
+#define InitSFXData__b4 func_B452_b4
+#define InitSFXData__b2 func_B452_b2
+#define InitSFXData__b5 func_B452_b5
+#define InitSFXData__b3 func_B452_b3
+#define InitSFXData__b1 func_B452_b1
+#define InitSFXData__b0 func_B452_b0
+/* InitSFXData_Tri: 0xB472 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use InitSFXData_Tri__bN explicitly */
+#define InitSFXData_Tri__b4 func_B472_b4
+#define InitSFXData_Tri__b2 func_B472_b2
+#define InitSFXData_Tri__b5 func_B472_b5
+#define InitSFXData_Tri__b3 func_B472_b3
+#define InitSFXData_Tri__b1 func_B472_b1
+#define InitSFXData_Tri__b0 func_B472_b0
+/* IncrementSFXFrame: 0xB4A9 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use IncrementSFXFrame__bN explicitly */
+#define IncrementSFXFrame__b4 func_B4A9_b4
+#define IncrementSFXFrame__b2 func_B4A9_b2
+#define IncrementSFXFrame__b5 func_B4A9_b5
+#define IncrementSFXFrame__b3 func_B4A9_b3
+#define IncrementSFXFrame__b1 func_B4A9_b1
+#define IncrementSFXFrame__b0 func_B4A9_b0
+/* EndNoiseSFX: 0xB58F is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use EndNoiseSFX__bN explicitly */
+#define EndNoiseSFX__b4 func_B58F_b4
+#define EndNoiseSFX__b2 func_B58F_b2
+#define EndNoiseSFX__b5 func_B58F_b5
+#define EndNoiseSFX__b3 func_B58F_b3
+#define EndNoiseSFX__b1 func_B58F_b1
+#define EndNoiseSFX__b0 func_B58F_b0
+/* GotoInitSFXData: 0xB587 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoInitSFXData__bN explicitly */
+#define GotoInitSFXData__b4 func_B587_b4
+#define GotoInitSFXData__b5 func_B587_b5
+#define GotoInitSFXData__b2 func_B587_b2
+#define GotoInitSFXData__b3 func_B587_b3
+#define GotoInitSFXData__b1 func_B587_b1
+#define GotoInitSFXData__b0 func_B587_b0
+/* ClearCurrentSoundFlagsAndContFlags: 0xB4A2 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use ClearCurrentSoundFlagsAndContFlags__bN explicitly */
+#define ClearCurrentSoundFlagsAndContFlags__b4 func_B4A2_b4
+#define ClearCurrentSoundFlagsAndContFlags__b5 func_B4A2_b5
+#define ClearCurrentSoundFlagsAndContFlags__b2 func_B4A2_b2
+#define ClearCurrentSoundFlagsAndContFlags__b3 func_B4A2_b3
+#define ClearCurrentSoundFlagsAndContFlags__b1 func_B4A2_b1
+#define ClearCurrentSoundFlagsAndContFlags__b0 func_B4A2_b0
+/* MultiSFXInit: 0xB5A5 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use MultiSFXInit__bN explicitly */
+#define MultiSFXInit__b4 func_B5A5_b4
+#define MultiSFXInit__b5 func_B5A5_b5
+#define MultiSFXInit__b2 func_B5A5_b2
+#define MultiSFXInit__b3 func_B5A5_b3
+#define MultiSFXInit__b1 func_B5A5_b1
+#define MultiSFXInit__b0 func_B5A5_b0
+/* WriteSQ1SQ2PeriodLow: 0xB62C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use WriteSQ1SQ2PeriodLow__bN explicitly */
+#define WriteSQ1SQ2PeriodLow__b4 func_B62C_b4
+#define WriteSQ1SQ2PeriodLow__b5 func_B62C_b5
+#define WriteSQ1SQ2PeriodLow__b2 func_B62C_b2
+#define WriteSQ1SQ2PeriodLow__b3 func_B62C_b3
+#define WriteSQ1SQ2PeriodLow__b1 func_B62C_b1
+#define WriteSQ1SQ2PeriodLow__b0 func_B62C_b0
+/* EndMultiSFX: 0xB5CD is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndMultiSFX__bN explicitly */
+#define EndMultiSFX__b4 func_B5CD_b4
+#define EndMultiSFX__b5 func_B5CD_b5
+#define EndMultiSFX__b2 func_B5CD_b2
+#define EndMultiSFX__b3 func_B5CD_b3
+#define EndMultiSFX__b1 func_B5CD_b1
+#define EndMultiSFX__b0 func_B5CD_b0
+/* EndSQ1SFX: 0xB6F2 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndSQ1SFX__bN explicitly */
+#define EndSQ1SFX__b4 func_B6F2_b4
+#define EndSQ1SFX__b5 func_B6F2_b5
+#define EndSQ1SFX__b2 func_B6F2_b2
+#define EndSQ1SFX__b3 func_B6F2_b3
+#define EndSQ1SFX__b1 func_B6F2_b1
+#define EndSQ1SFX__b0 func_B6F2_b0
+/* EndTriSFX: 0xB896 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndTriSFX__bN explicitly */
+#define EndTriSFX__b4 func_B896_b4
+#define EndTriSFX__b5 func_B896_b5
+#define EndTriSFX__b2 func_B896_b2
+#define EndTriSFX__b3 func_B896_b3
+#define EndTriSFX__b1 func_B896_b1
+#define EndTriSFX__b0 func_B896_b0
+/* DecreaseSFXTriPeriod: 0xB98C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use DecreaseSFXTriPeriod__bN explicitly */
+#define DecreaseSFXTriPeriod__b4 func_B98C_b4
+#define DecreaseSFXTriPeriod__b5 func_B98C_b5
+#define DecreaseSFXTriPeriod__b2 func_B98C_b2
+#define DecreaseSFXTriPeriod__b3 func_B98C_b3
+#define DecreaseSFXTriPeriod__b1 func_B98C_b1
+#define DecreaseSFXTriPeriod__b0 func_B98C_b0
+/* WriteSFXTriPeriod: 0xB869 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use WriteSFXTriPeriod__bN explicitly */
+#define WriteSFXTriPeriod__b4 func_B869_b4
+#define WriteSFXTriPeriod__b5 func_B869_b5
+#define WriteSFXTriPeriod__b2 func_B869_b2
+#define WriteSFXTriPeriod__b3 func_B869_b3
+#define WriteSFXTriPeriod__b1 func_B869_b1
+#define WriteSFXTriPeriod__b0 func_B869_b0
+/* IncreaseSFXTriPeriod: 0xB978 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use IncreaseSFXTriPeriod__bN explicitly */
+#define IncreaseSFXTriPeriod__b4 func_B978_b4
+#define IncreaseSFXTriPeriod__b5 func_B978_b5
+#define IncreaseSFXTriPeriod__b2 func_B978_b2
+#define IncreaseSFXTriPeriod__b3 func_B978_b3
+#define IncreaseSFXTriPeriod__b1 func_B978_b1
+#define IncreaseSFXTriPeriod__b0 func_B978_b0
+/* DivideSFXTriPeriod: 0xB9A0 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use DivideSFXTriPeriod__bN explicitly */
+#define DivideSFXTriPeriod__b4 func_B9A0_b4
+#define DivideSFXTriPeriod__b5 func_B9A0_b5
+#define DivideSFXTriPeriod__b2 func_B9A0_b2
+#define DivideSFXTriPeriod__b3 func_B9A0_b3
+#define DivideSFXTriPeriod__b1 func_B9A0_b1
+#define DivideSFXTriPeriod__b0 func_B9A0_b0
+/* RndTriPeriods: 0xB8C3 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use RndTriPeriods__bN explicitly */
+#define RndTriPeriods__b4 func_B8C3_b4
+#define RndTriPeriods__b5 func_B8C3_b5
+#define RndTriPeriods__b2 func_B8C3_b2
+#define RndTriPeriods__b3 func_B8C3_b3
+#define RndTriPeriods__b1 func_B8C3_b1
+#define RndTriPeriods__b0 func_B8C3_b0
 #define LoadStarSprites func_98AE_b0
 #define CrossExplodeDataTbl_end_2 func_8A8C_b0
 #define LoadSparkleData func_87AB_b0
@@ -788,12 +783,6 @@ extern uint16_t g_rts_target;
 #define EnemyIfMoveFailedUp__b3 func_80B8_b3
 #define EnemyIfMoveFailedUp__b4 func_80B8_b4
 #define EnemyIfMoveFailedUp__b5 func_80B8_b5
-/* EnemyIfMoveFailedUp_abortLoop: 0x80F6 is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use EnemyIfMoveFailedUp_abortLoop__bN explicitly */
-#define EnemyIfMoveFailedUp_abortLoop__b1 func_80F6_b1
-#define EnemyIfMoveFailedUp_abortLoop__b2 func_80F6_b2
-#define EnemyIfMoveFailedUp_abortLoop__b3 func_80F6_b3
-#define EnemyIfMoveFailedUp_abortLoop__b4 func_80F6_b4
-#define EnemyIfMoveFailedUp_abortLoop__b5 func_80F6_b5
 /* EnemyMoveOnePixelDown: 0x844B is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use EnemyMoveOnePixelDown__bN explicitly */
 #define EnemyMoveOnePixelDown__b1 func_844B_b1
 #define EnemyMoveOnePixelDown__b2 func_844B_b2
@@ -854,6 +843,12 @@ extern uint16_t g_rts_target;
 #define EnemyIfMoveFailedRight_abortLoop__b3 func_8169_b3
 #define EnemyIfMoveFailedRight_abortLoop__b4 func_8169_b4
 #define EnemyIfMoveFailedRight_abortLoop__b5 func_8169_b5
+/* EnemyIfMoveFailedUp_abortLoop: 0x80F6 is standalone-emitted in 5 banks (b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use EnemyIfMoveFailedUp_abortLoop__bN explicitly */
+#define EnemyIfMoveFailedUp_abortLoop__b2 func_80F6_b2
+#define EnemyIfMoveFailedUp_abortLoop__b3 func_80F6_b3
+#define EnemyIfMoveFailedUp_abortLoop__b4 func_80F6_b4
+#define EnemyIfMoveFailedUp_abortLoop__b5 func_80F6_b5
+#define EnemyIfMoveFailedUp_abortLoop__b1 func_80F6_b1
 #define EnemyCompleteDeath func_DCF5
 #define RTS_X137 func_DD4A
 #define DrawEnemy_NotBlank func_DDB0
@@ -923,176 +918,187 @@ extern uint16_t g_rts_target;
 #define RemoveEnemy func_FA18
 #define InitEnemyFacingDirectionAxisAndDelay func_FB7B
 #define InitEnemyForceSpeedTowardsSamusDelayAndHealth func_F85A
-/* UpdateVolumeEnvelope: 0xBA71 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateVolumeEnvelope__bN explicitly */
-#define UpdateVolumeEnvelope__b4 func_BA71_b4
-#define UpdateVolumeEnvelope__b5 func_BA71_b5
-#define UpdateVolumeEnvelope__b2 func_BA71_b2
-#define UpdateVolumeEnvelope__b3 func_BA71_b3
-#define UpdateVolumeEnvelope__b1 func_BA71_b1
-#define UpdateVolumeEnvelope__b0 func_BA71_b0
-/* LoadMusicSQ1SQ2Periods: 0xBA38 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadMusicSQ1SQ2Periods__bN explicitly */
-#define LoadMusicSQ1SQ2Periods__b4 func_BA38_b4
-#define LoadMusicSQ1SQ2Periods__b5 func_BA38_b5
-#define LoadMusicSQ1SQ2Periods__b2 func_BA38_b2
-#define LoadMusicSQ1SQ2Periods__b3 func_BA38_b3
-#define LoadMusicSQ1SQ2Periods__b1 func_BA38_b1
-#define LoadMusicSQ1SQ2Periods__b0 func_BA38_b0
-/* EndOrLoopMusic: 0xB420 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndOrLoopMusic__bN explicitly */
-#define EndOrLoopMusic__b4 func_B420_b4
-#define EndOrLoopMusic__b5 func_B420_b5
-#define EndOrLoopMusic__b2 func_B420_b2
-#define EndOrLoopMusic__b3 func_B420_b3
-#define EndOrLoopMusic__b1 func_B420_b1
-#define EndOrLoopMusic__b0 func_B420_b0
-/* UpdateAllVolumeEnvelopes: 0xBA67 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateAllVolumeEnvelopes__bN explicitly */
-#define UpdateAllVolumeEnvelopes__b4 func_BA67_b4
-#define UpdateAllVolumeEnvelopes__b5 func_BA67_b5
-#define UpdateAllVolumeEnvelopes__b2 func_BA67_b2
-#define UpdateAllVolumeEnvelopes__b3 func_BA67_b3
-#define UpdateAllVolumeEnvelopes__b1 func_BA67_b1
-#define UpdateAllVolumeEnvelopes__b0 func_BA67_b0
-/* ResetVolumeIndex: 0xBA23 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use ResetVolumeIndex__bN explicitly */
-#define ResetVolumeIndex__b4 func_BA23_b4
-#define ResetVolumeIndex__b5 func_BA23_b5
-#define ResetVolumeIndex__b2 func_BA23_b2
-#define ResetVolumeIndex__b3 func_BA23_b3
-#define ResetVolumeIndex__b1 func_BA23_b1
-#define ResetVolumeIndex__b0 func_BA23_b0
-/* LoadNextMusicChannelInstr_Continued: 0xBB4C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadNextMusicChannelInstr_Continued__bN explicitly */
-#define LoadNextMusicChannelInstr_Continued__b4 func_BB4C_b4
-#define LoadNextMusicChannelInstr_Continued__b5 func_BB4C_b5
-#define LoadNextMusicChannelInstr_Continued__b2 func_BB4C_b2
-#define LoadNextMusicChannelInstr_Continued__b3 func_BB4C_b3
-#define LoadNextMusicChannelInstr_Continued__b1 func_BB4C_b1
-#define LoadNextMusicChannelInstr_Continued__b0 func_BB4C_b0
-/* LoadNextMusicChannelInstr: 0xBB0C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadNextMusicChannelInstr__bN explicitly */
-#define LoadNextMusicChannelInstr__b4 func_BB0C_b4
-#define LoadNextMusicChannelInstr__b5 func_BB0C_b5
-#define LoadNextMusicChannelInstr__b2 func_BB0C_b2
-#define LoadNextMusicChannelInstr__b3 func_BB0C_b3
-#define LoadNextMusicChannelInstr__b1 func_BB0C_b1
-#define LoadNextMusicChannelInstr__b0 func_BB0C_b0
-/* MusicChannelInstr_SongNoteNoise: 0xBC0E is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use MusicChannelInstr_SongNoteNoise__bN explicitly */
-#define MusicChannelInstr_SongNoteNoise__b4 func_BC0E_b4
-#define MusicChannelInstr_SongNoteNoise__b5 func_BC0E_b5
-#define MusicChannelInstr_SongNoteNoise__b2 func_BC0E_b2
-#define MusicChannelInstr_SongNoteNoise__b3 func_BC0E_b3
-#define MusicChannelInstr_SongNoteNoise__b1 func_BC0E_b1
-#define MusicChannelInstr_SongNoteNoise__b0 func_BC0E_b0
-/* UpdateMusicTriLinearCount: 0xBBE7 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateMusicTriLinearCount__bN explicitly */
-#define UpdateMusicTriLinearCount__b4 func_BBE7_b4
-#define UpdateMusicTriLinearCount__b5 func_BBE7_b5
-#define UpdateMusicTriLinearCount__b2 func_BBE7_b2
-#define UpdateMusicTriLinearCount__b3 func_BBE7_b3
-#define UpdateMusicTriLinearCount__b1 func_BBE7_b1
-#define UpdateMusicTriLinearCount__b0 func_BBE7_b0
-/* IncrementToNextMusicChannel: 0xBAE3 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use IncrementToNextMusicChannel__bN explicitly */
-#define IncrementToNextMusicChannel__b4 func_BAE3_b4
-#define IncrementToNextMusicChannel__b5 func_BAE3_b5
-#define IncrementToNextMusicChannel__b2 func_BAE3_b2
-#define IncrementToNextMusicChannel__b3 func_BAE3_b3
-#define IncrementToNextMusicChannel__b1 func_BAE3_b1
-#define IncrementToNextMusicChannel__b0 func_BAE3_b0
-/* SetMusicInstrDelayToLength: 0xBBD8 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use SetMusicInstrDelayToLength__bN explicitly */
-#define SetMusicInstrDelayToLength__b4 func_BBD8_b4
-#define SetMusicInstrDelayToLength__b5 func_BBD8_b5
-#define SetMusicInstrDelayToLength__b2 func_BBD8_b2
-#define SetMusicInstrDelayToLength__b3 func_BBD8_b3
-#define SetMusicInstrDelayToLength__b1 func_BBD8_b1
-#define SetMusicInstrDelayToLength__b0 func_BBD8_b0
-/* UpdateMusicTriLinearCount_setToNoteLength: 0xBBFD is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateMusicTriLinearCount_setToNoteLength__bN explicitly */
-#define UpdateMusicTriLinearCount_setToNoteLength__b4 func_BBFD_b4
-#define UpdateMusicTriLinearCount_setToNoteLength__b5 func_BBFD_b5
-#define UpdateMusicTriLinearCount_setToNoteLength__b2 func_BBFD_b2
-#define UpdateMusicTriLinearCount_setToNoteLength__b3 func_BBFD_b3
-#define UpdateMusicTriLinearCount_setToNoteLength__b1 func_BBFD_b1
-#define UpdateMusicTriLinearCount_setToNoteLength__b0 func_BBFD_b0
-/* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount: 0xBB67 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__bN explicitly */
-#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b4 func_BB67_b4
-#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b5 func_BB67_b5
-#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b2 func_BB67_b2
-#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b3 func_BB67_b3
-#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b1 func_BB67_b1
-#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b0 func_BB67_b0
-/* UpdateAllMusicChannels: 0xBAD5 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateAllMusicChannels__bN explicitly */
-#define UpdateAllMusicChannels__b4 func_BAD5_b4
-#define UpdateAllMusicChannels__b5 func_BAD5_b5
-#define UpdateAllMusicChannels__b2 func_BAD5_b2
-#define UpdateAllMusicChannels__b3 func_BAD5_b3
-#define UpdateAllMusicChannels__b1 func_BAD5_b1
-#define UpdateAllMusicChannels__b0 func_BAD5_b0
-/* Music00Init: 0xBCDA is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use Music00Init__bN explicitly */
-#define Music00Init__b4 func_BCDA_b4
-#define Music00Init__b5 func_BCDA_b5
-#define Music00Init__b2 func_BCDA_b2
-#define Music00Init__b3 func_BCDA_b3
-#define Music00Init__b1 func_BCDA_b1
-/* Music01Init: 0xBCD4 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music01Init__bN explicitly */
-#define Music01Init__b4 func_BCD4_b4
-#define Music01Init__b5 func_BCD4_b5
-#define Music01Init__b2 func_BCD4_b2
-#define Music01Init__b3 func_BCD4_b3
-#define Music01Init__b1 func_BCD4_b1
-#define Music01Init__b0 func_BCD4_b0
-/* Music02Init: 0xBCCA is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use Music02Init__bN explicitly */
-#define Music02Init__b4 func_BCCA_b4
-#define Music02Init__b5 func_BCCA_b5
-#define Music02Init__b2 func_BCCA_b2
-#define Music02Init__b3 func_BCCA_b3
-#define Music02Init__b1 func_BCCA_b1
-/* Music03Init: 0xBCC6 is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use Music03Init__bN explicitly */
-#define Music03Init__b4 func_BCC6_b4
-#define Music03Init__b5 func_BCC6_b5
-#define Music03Init__b2 func_BCC6_b2
-#define Music03Init__b3 func_BCC6_b3
-#define Music03Init__b1 func_BCC6_b1
-/* Music04Init: 0xBCB9 is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use Music04Init__bN explicitly */
-#define Music04Init__b4 func_BCB9_b4
-#define Music04Init__b5 func_BCB9_b5
-#define Music04Init__b2 func_BCB9_b2
-#define Music04Init__b3 func_BCB9_b3
-#define Music04Init__b1 func_BCB9_b1
-/* Music05Init: 0xBCCE is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use Music05Init__bN explicitly */
-#define Music05Init__b4 func_BCCE_b4
-#define Music05Init__b5 func_BCCE_b5
-#define Music05Init__b2 func_BCCE_b2
-#define Music05Init__b3 func_BCCE_b3
-#define Music05Init__b1 func_BCCE_b1
-/* SetVolumeAndDisableSweep: 0xBA14 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use SetVolumeAndDisableSweep__bN explicitly */
-#define SetVolumeAndDisableSweep__b4 func_BA14_b4
-#define SetVolumeAndDisableSweep__b5 func_BA14_b5
-#define SetVolumeAndDisableSweep__b2 func_BA14_b2
-#define SetVolumeAndDisableSweep__b3 func_BA14_b3
-#define SetVolumeAndDisableSweep__b1 func_BA14_b1
-#define SetVolumeAndDisableSweep__b0 func_BA14_b0
-/* InitializeMusic: 0xBF62 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use InitializeMusic__bN explicitly */
-#define InitializeMusic__b4 func_BF62_b4
-#define InitializeMusic__b5 func_BF62_b5
-#define InitializeMusic__b2 func_BF62_b2
-#define InitializeMusic__b3 func_BF62_b3
-#define InitializeMusic__b1 func_BF62_b1
-#define InitializeMusic__b0 func_BF62_b0
-/* SongPowerUpTri: 0xBE38 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use SongPowerUpTri__bN explicitly */
-#define SongPowerUpTri__b4 func_BE38_b4
-#define SongPowerUpTri__b5 func_BE38_b5
-#define SongPowerUpTri__b2 func_BE38_b2
-#define SongPowerUpTri__b3 func_BE38_b3
-#define SongPowerUpTri__b1 func_BE38_b1
-#define SongPowerUpTri__b0 func_BE38_b0
-/* SongFadeInSQ1: 0xBE6E is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use SongFadeInSQ1__bN explicitly */
-#define SongFadeInSQ1__b4 func_BE6E_b4
-#define SongFadeInSQ1__b5 func_BE6E_b5
-#define SongFadeInSQ1__b2 func_BE6E_b2
-#define SongFadeInSQ1__b3 func_BE6E_b3
-#define SongFadeInSQ1__b1 func_BE6E_b1
-#define SongFadeInSQ1__b0 func_BE6E_b0
-/* SamusDieSFXInit_RTS: 0xB91C is standalone-emitted in 6 banks (b4,b5,b3,b0,b2,b1) -- no unsuffixed alias emitted; use SamusDieSFXInit_RTS__bN explicitly */
-#define SamusDieSFXInit_RTS__b4 func_B91C_b4
-#define SamusDieSFXInit_RTS__b5 func_B91C_b5
-#define SamusDieSFXInit_RTS__b3 func_B91C_b3
-#define SamusDieSFXInit_RTS__b0 func_B91C_b0
-#define SamusDieSFXInit_RTS__b2 func_B91C_b2
-#define SamusDieSFXInit_RTS__b1 func_B91C_b1
+/* UpdateVolumeEnvelope: 0xBA41 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateVolumeEnvelope__bN explicitly */
+#define UpdateVolumeEnvelope__b4 func_BA41_b4
+#define UpdateVolumeEnvelope__b5 func_BA41_b5
+#define UpdateVolumeEnvelope__b2 func_BA41_b2
+#define UpdateVolumeEnvelope__b3 func_BA41_b3
+#define UpdateVolumeEnvelope__b1 func_BA41_b1
+#define UpdateVolumeEnvelope__b0 func_BA41_b0
+/* LoadMusicSQ1SQ2Periods: 0xBA08 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadMusicSQ1SQ2Periods__bN explicitly */
+#define LoadMusicSQ1SQ2Periods__b4 func_BA08_b4
+#define LoadMusicSQ1SQ2Periods__b5 func_BA08_b5
+#define LoadMusicSQ1SQ2Periods__b2 func_BA08_b2
+#define LoadMusicSQ1SQ2Periods__b3 func_BA08_b3
+#define LoadMusicSQ1SQ2Periods__b1 func_BA08_b1
+#define LoadMusicSQ1SQ2Periods__b0 func_BA08_b0
+/* EndOrLoopMusic: 0xB3F0 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndOrLoopMusic__bN explicitly */
+#define EndOrLoopMusic__b4 func_B3F0_b4
+#define EndOrLoopMusic__b5 func_B3F0_b5
+#define EndOrLoopMusic__b2 func_B3F0_b2
+#define GFX_RidlBG func_B3F0_b6
+#define EndOrLoopMusic__b3 func_B3F0_b3
+#define EndOrLoopMusic__b1 func_B3F0_b1
+#define EndOrLoopMusic__b0 func_B3F0_b0
+/* UpdateAllVolumeEnvelopes: 0xBA37 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateAllVolumeEnvelopes__bN explicitly */
+#define UpdateAllVolumeEnvelopes__b4 func_BA37_b4
+#define UpdateAllVolumeEnvelopes__b5 func_BA37_b5
+#define UpdateAllVolumeEnvelopes__b2 func_BA37_b2
+#define UpdateAllVolumeEnvelopes__b3 func_BA37_b3
+#define UpdateAllVolumeEnvelopes__b1 func_BA37_b1
+#define UpdateAllVolumeEnvelopes__b0 func_BA37_b0
+/* ResetVolumeIndex: 0xB9F3 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use ResetVolumeIndex__bN explicitly */
+#define ResetVolumeIndex__b4 func_B9F3_b4
+#define ResetVolumeIndex__b5 func_B9F3_b5
+#define ResetVolumeIndex__b2 func_B9F3_b2
+#define ResetVolumeIndex__b3 func_B9F3_b3
+#define ResetVolumeIndex__b1 func_B9F3_b1
+#define ResetVolumeIndex__b0 func_B9F3_b0
+/* LoadNextMusicChannelInstr_Continued: 0xBB1C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadNextMusicChannelInstr_Continued__bN explicitly */
+#define LoadNextMusicChannelInstr_Continued__b4 func_BB1C_b4
+#define LoadNextMusicChannelInstr_Continued__b5 func_BB1C_b5
+#define LoadNextMusicChannelInstr_Continued__b2 func_BB1C_b2
+#define LoadNextMusicChannelInstr_Continued__b3 func_BB1C_b3
+#define LoadNextMusicChannelInstr_Continued__b1 func_BB1C_b1
+#define LoadNextMusicChannelInstr_Continued__b0 func_BB1C_b0
+/* LoadNextMusicChannelInstr: 0xBADC is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadNextMusicChannelInstr__bN explicitly */
+#define LoadNextMusicChannelInstr__b4 func_BADC_b4
+#define LoadNextMusicChannelInstr__b5 func_BADC_b5
+#define LoadNextMusicChannelInstr__b2 func_BADC_b2
+#define LoadNextMusicChannelInstr__b3 func_BADC_b3
+#define LoadNextMusicChannelInstr__b1 func_BADC_b1
+#define LoadNextMusicChannelInstr__b0 func_BADC_b0
+/* MusicChannelInstr_SongNoteNoise: 0xBBDE is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use MusicChannelInstr_SongNoteNoise__bN explicitly */
+#define MusicChannelInstr_SongNoteNoise__b4 func_BBDE_b4
+#define MusicChannelInstr_SongNoteNoise__b5 func_BBDE_b5
+#define MusicChannelInstr_SongNoteNoise__b2 func_BBDE_b2
+#define MusicChannelInstr_SongNoteNoise__b3 func_BBDE_b3
+#define MusicChannelInstr_SongNoteNoise__b1 func_BBDE_b1
+#define MusicChannelInstr_SongNoteNoise__b0 func_BBDE_b0
+/* UpdateMusicTriLinearCount: 0xBBB7 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateMusicTriLinearCount__bN explicitly */
+#define UpdateMusicTriLinearCount__b4 func_BBB7_b4
+#define UpdateMusicTriLinearCount__b5 func_BBB7_b5
+#define UpdateMusicTriLinearCount__b2 func_BBB7_b2
+#define UpdateMusicTriLinearCount__b3 func_BBB7_b3
+#define UpdateMusicTriLinearCount__b1 func_BBB7_b1
+#define UpdateMusicTriLinearCount__b0 func_BBB7_b0
+/* IncrementToNextMusicChannel: 0xBAB3 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use IncrementToNextMusicChannel__bN explicitly */
+#define IncrementToNextMusicChannel__b4 func_BAB3_b4
+#define IncrementToNextMusicChannel__b5 func_BAB3_b5
+#define IncrementToNextMusicChannel__b2 func_BAB3_b2
+#define IncrementToNextMusicChannel__b3 func_BAB3_b3
+#define IncrementToNextMusicChannel__b1 func_BAB3_b1
+#define IncrementToNextMusicChannel__b0 func_BAB3_b0
+/* SetMusicInstrDelayToLength: 0xBBA8 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use SetMusicInstrDelayToLength__bN explicitly */
+#define SetMusicInstrDelayToLength__b4 func_BBA8_b4
+#define SetMusicInstrDelayToLength__b5 func_BBA8_b5
+#define SetMusicInstrDelayToLength__b2 func_BBA8_b2
+#define SetMusicInstrDelayToLength__b3 func_BBA8_b3
+#define SetMusicInstrDelayToLength__b1 func_BBA8_b1
+#define SetMusicInstrDelayToLength__b0 func_BBA8_b0
+/* UpdateMusicTriLinearCount_setToNoteLength: 0xBBCD is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateMusicTriLinearCount_setToNoteLength__bN explicitly */
+#define UpdateMusicTriLinearCount_setToNoteLength__b4 func_BBCD_b4
+#define UpdateMusicTriLinearCount_setToNoteLength__b5 func_BBCD_b5
+#define UpdateMusicTriLinearCount_setToNoteLength__b2 func_BBCD_b2
+#define UpdateMusicTriLinearCount_setToNoteLength__b3 func_BBCD_b3
+#define UpdateMusicTriLinearCount_setToNoteLength__b1 func_BBCD_b1
+#define UpdateMusicTriLinearCount_setToNoteLength__b0 func_BBCD_b0
+/* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount: 0xBB37 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__bN explicitly */
+#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b4 func_BB37_b4
+#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b5 func_BB37_b5
+#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b2 func_BB37_b2
+#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b3 func_BB37_b3
+#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b1 func_BB37_b1
+#define LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount__b0 func_BB37_b0
+/* UpdateAllMusicChannels: 0xBAA5 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateAllMusicChannels__bN explicitly */
+#define UpdateAllMusicChannels__b4 func_BAA5_b4
+#define UpdateAllMusicChannels__b5 func_BAA5_b5
+#define UpdateAllMusicChannels__b2 func_BAA5_b2
+#define UpdateAllMusicChannels__b3 func_BAA5_b3
+#define UpdateAllMusicChannels__b1 func_BAA5_b1
+#define UpdateAllMusicChannels__b0 func_BAA5_b0
+/* Music00Init: 0xBCAA is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music00Init__bN explicitly */
+#define Music00Init__b4 func_BCAA_b4
+#define Music00Init__b5 func_BCAA_b5
+#define Music00Init__b2 func_BCAA_b2
+#define Music00Init__b3 func_BCAA_b3
+#define Music00Init__b1 func_BCAA_b1
+#define Music00Init__b0 func_BCAA_b0
+/* Music01Init: 0xBCA4 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music01Init__bN explicitly */
+#define Music01Init__b4 func_BCA4_b4
+#define Music01Init__b5 func_BCA4_b5
+#define Music01Init__b2 func_BCA4_b2
+#define Music01Init__b3 func_BCA4_b3
+#define Music01Init__b1 func_BCA4_b1
+#define Music01Init__b0 func_BCA4_b0
+/* Music02Init: 0xBC9A is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music02Init__bN explicitly */
+#define Music02Init__b4 func_BC9A_b4
+#define Music02Init__b5 func_BC9A_b5
+#define Music02Init__b2 func_BC9A_b2
+#define Music02Init__b3 func_BC9A_b3
+#define Music02Init__b1 func_BC9A_b1
+#define Music02Init__b0 func_BC9A_b0
+/* Music03Init: 0xBC96 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music03Init__bN explicitly */
+#define Music03Init__b4 func_BC96_b4
+#define Music03Init__b5 func_BC96_b5
+#define Music03Init__b2 func_BC96_b2
+#define Music03Init__b3 func_BC96_b3
+#define Music03Init__b1 func_BC96_b1
+#define Music03Init__b0 func_BC96_b0
+/* Music04Init: 0xBC89 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music04Init__bN explicitly */
+#define Music04Init__b4 func_BC89_b4
+#define Music04Init__b5 func_BC89_b5
+#define Music04Init__b2 func_BC89_b2
+#define Music04Init__b3 func_BC89_b3
+#define Music04Init__b1 func_BC89_b1
+#define Music04Init__b0 func_BC89_b0
+/* Music05Init: 0xBC9E is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use Music05Init__bN explicitly */
+#define Music05Init__b4 func_BC9E_b4
+#define Music05Init__b5 func_BC9E_b5
+#define Music05Init__b2 func_BC9E_b2
+#define Music05Init__b3 func_BC9E_b3
+#define Music05Init__b1 func_BC9E_b1
+#define Music05Init__b0 func_BC9E_b0
+/* SetVolumeAndDisableSweep: 0xB9E4 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use SetVolumeAndDisableSweep__bN explicitly */
+#define SetVolumeAndDisableSweep__b4 func_B9E4_b4
+#define SetVolumeAndDisableSweep__b5 func_B9E4_b5
+#define SetVolumeAndDisableSweep__b2 func_B9E4_b2
+#define SetVolumeAndDisableSweep__b3 func_B9E4_b3
+#define SetVolumeAndDisableSweep__b1 func_B9E4_b1
+#define SetVolumeAndDisableSweep__b0 func_B9E4_b0
+/* InitializeMusic: 0xBF19 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use InitializeMusic__bN explicitly */
+#define InitializeMusic__b4 func_BF19_b4
+#define InitializeMusic__b5 func_BF19_b5
+#define InitializeMusic__b2 func_BF19_b2
+#define InitializeMusic__b3 func_BF19_b3
+#define InitializeMusic__b1 func_BF19_b1
+#define InitializeMusic__b0 func_BF19_b0
+/* SongPowerUpTri: 0xBE08 is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use SongPowerUpTri__bN explicitly */
+#define SongPowerUpTri__b4 func_BE08_b4
+#define SongPowerUpTri__b5 func_BE08_b5
+#define SongPowerUpTri__b2 func_BE08_b2
+#define SongPowerUpTri__b3 func_BE08_b3
+#define SongPowerUpTri__b1 func_BE08_b1
+/* SongFadeInSQ1: 0xBE3E is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use SongFadeInSQ1__bN explicitly */
+#define SongFadeInSQ1__b4 func_BE3E_b4
+#define SongFadeInSQ1__b5 func_BE3E_b5
+#define SongFadeInSQ1__b2 func_BE3E_b2
+#define SongFadeInSQ1__b3 func_BE3E_b3
+#define SongFadeInSQ1__b1 func_BE3E_b1
+#define EnemyMovement0F_R_BANK4 func_983F_b4
+#define EnProjectileMovement2_BANK4 func_98E7_b4
+/* EnemyIfMoveFailedUp_bounce: 0x80C1 is standalone-emitted in 5 banks (b4,b5,b2,b3,b1) -- no unsuffixed alias emitted; use EnemyIfMoveFailedUp_bounce__bN explicitly */
+#define EnemyIfMoveFailedUp_bounce__b4 func_80C1_b4
+#define EnemyIfMoveFailedUp_bounce__b5 func_80C1_b5
+#define EnemyIfMoveFailedUp_bounce__b2 func_80C1_b2
+#define EnemyIfMoveFailedUp_bounce__b3 func_80C1_b3
+#define EnemyIfMoveFailedUp_bounce__b1 func_80C1_b1
+/* XorEnData05: 0x856B is standalone-emitted in 5 banks (b4,b1,b2,b3,b5) -- no unsuffixed alias emitted; use XorEnData05__bN explicitly */
+#define XorEnData05__b4 func_856B_b4
+#define XorEnData05__b1 func_856B_b1
+#define XorEnData05__b2 func_856B_b2
+#define XorEnData05__b3 func_856B_b3
+#define XorEnData05__b5 func_856B_b5
 #define DoSparkleSpriteCoord func_881A_b0
 #define WriteIntroSprite func_887B_b0
 #define UpdateCrossMissileCoords func_981E_b0
@@ -1209,8 +1215,8 @@ extern uint16_t g_rts_target;
 #define CheckForItem_loop func_EE4F
 #define DeleteOffscreenRoomSprites_loop_Mem0700 func_ED15
 #define UpdateEnemy_Hurt_exit func_F510
-#define GetEnemyTypeTimes2PlusFacingDirectionBit0 func_F83E
 #define AndEnData05_RTS func_F7B9
+#define GetEnemyTypeTimes2PlusFacingDirectionBit0 func_F83E
 #define LoadEnemy func_EB06
 #define LoadDoor func_EB8C
 #define LoadElevator func_EC04
@@ -1382,7 +1388,6 @@ extern uint16_t g_rts_target;
 #define ElevatorIdle func_D7D1
 #define ElevatorScrollXToCenter func_D80E
 #define ElevatorMove func_D83D
-#define ElevatorMove_endIf_B func_D84C
 #define ElevatorScrollY func_D870
 #define ElevatorFade func_D8A3
 #define ElevatorD8BF func_D8BF
@@ -1419,6 +1424,7 @@ extern uint16_t g_rts_target;
 #define UpdateTileBlast_Respawned func_FE83
 #define SetTileAnim func_FE6D
 #define UpdateTileBlastAnim func_FF54
+#define UpdateTileBlastAnim_update func_FF60
 #define UpdateAllEnemyExplosions_RTS func_FAB3
 #define Exit0 func_DB16
 #define PowerUpMusic func_CBF9
@@ -1449,12 +1455,6 @@ extern uint16_t g_rts_target;
 #define EnemyIfMoveFailedVertical_Bounce__b3 func_81FC_b3
 #define EnemyIfMoveFailedVertical_Bounce__b4 func_81FC_b4
 #define EnemyIfMoveFailedVertical_Bounce__b5 func_81FC_b5
-/* XorEnData05: 0x856B is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use XorEnData05__bN explicitly */
-#define XorEnData05__b1 func_856B_b1
-#define XorEnData05__b2 func_856B_b2
-#define XorEnData05__b3 func_856B_b3
-#define XorEnData05__b4 func_856B_b4
-#define XorEnData05__b5 func_856B_b5
 /* EnemyCheckMoveLeft: 0xE8F1 is standalone-emitted in 6 banks (b7,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use EnemyCheckMoveLeft__bN explicitly */
 #define EnemyCheckMoveLeft__b7 func_E8F1
 #define EnemyCheckMoveLeft__b1 func_E8F1_b1
@@ -1496,54 +1496,55 @@ extern uint16_t g_rts_target;
 #define EnemyTriggerResting__b2 func_81B8_b2
 #define EnemyTriggerResting__b3 func_81B8_b3
 #define EnemyTriggerResting__b5 func_81B8_b5
-/* GotoUpdateMusicTriLinearCount: 0xBB49 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use GotoUpdateMusicTriLinearCount__bN explicitly */
-#define GotoUpdateMusicTriLinearCount__b4 func_BB49_b4
-#define GotoUpdateMusicTriLinearCount__b5 func_BB49_b5
-#define GotoUpdateMusicTriLinearCount__b2 func_BB49_b2
-#define GotoUpdateMusicTriLinearCount__b1 func_BB49_b1
-#define GotoUpdateMusicTriLinearCount__b3 func_BB49_b3
-#define GotoUpdateMusicTriLinearCount__b0 func_BB49_b0
-/* GotoMusicChannelInstr_SongNoteNoise: 0xBB46 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use GotoMusicChannelInstr_SongNoteNoise__bN explicitly */
-#define GotoMusicChannelInstr_SongNoteNoise__b4 func_BB46_b4
-#define GotoMusicChannelInstr_SongNoteNoise__b5 func_BB46_b5
-#define GotoMusicChannelInstr_SongNoteNoise__b2 func_BB46_b2
-#define GotoMusicChannelInstr_SongNoteNoise__b1 func_BB46_b1
-#define GotoMusicChannelInstr_SongNoteNoise__b3 func_BB46_b3
-#define GotoMusicChannelInstr_SongNoteNoise__b0 func_BB46_b0
-/* GotoEndOrLoopMusic: 0xBACD is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoEndOrLoopMusic__bN explicitly */
-#define GotoEndOrLoopMusic__b4 func_BACD_b4
-#define GotoEndOrLoopMusic__b5 func_BACD_b5
-#define GotoEndOrLoopMusic__b2 func_BACD_b2
-#define GotoEndOrLoopMusic__b3 func_BACD_b3
-#define GotoEndOrLoopMusic__b1 func_BACD_b1
-#define GotoEndOrLoopMusic__b0 func_BACD_b0
-/* GotoUpdateAllVolumeEnvelopes: 0xBAD1 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoUpdateAllVolumeEnvelopes__bN explicitly */
-#define GotoUpdateAllVolumeEnvelopes__b4 func_BAD1_b4
-#define GotoUpdateAllVolumeEnvelopes__b5 func_BAD1_b5
-#define GotoUpdateAllVolumeEnvelopes__b2 func_BAD1_b2
-#define GotoUpdateAllVolumeEnvelopes__b3 func_BAD1_b3
-#define GotoUpdateAllVolumeEnvelopes__b1 func_BAD1_b1
-#define GotoUpdateAllVolumeEnvelopes__b0 func_BAD1_b0
-/* MusicChannelBaseEmpty: 0xBAE0 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use MusicChannelBaseEmpty__bN explicitly */
-#define MusicChannelBaseEmpty__b4 func_BAE0_b4
-#define MusicChannelBaseEmpty__b5 func_BAE0_b5
-#define MusicChannelBaseEmpty__b2 func_BAE0_b2
-#define MusicChannelBaseEmpty__b1 func_BAE0_b1
-#define MusicChannelBaseEmpty__b3 func_BAE0_b3
-#define MusicChannelBaseEmpty__b0 func_BAE0_b0
-/* XYMusicInit: 0xBCBB is standalone-emitted in 5 banks (b4,b5,b2,b1,b3) -- no unsuffixed alias emitted; use XYMusicInit__bN explicitly */
-#define XYMusicInit__b4 func_BCBB_b4
-#define XYMusicInit__b5 func_BCBB_b5
-#define XYMusicInit__b2 func_BCBB_b2
-#define XYMusicInit__b1 func_BCBB_b1
-#define XYMusicInit__b3 func_BCBB_b3
-/* CheckMusicFlags: 0xB42C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use CheckMusicFlags__bN explicitly */
-#define CheckMusicFlags__b4 func_B42C_b4
-#define CheckMusicFlags__b5 func_B42C_b5
-#define CheckMusicFlags__b2 func_B42C_b2
-#define CheckMusicFlags__b3 func_B42C_b3
-#define CheckMusicFlags__b1 func_B42C_b1
-#define CheckMusicFlags__b0 func_B42C_b0
+/* GotoUpdateMusicTriLinearCount: 0xBB19 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use GotoUpdateMusicTriLinearCount__bN explicitly */
+#define GotoUpdateMusicTriLinearCount__b4 func_BB19_b4
+#define GotoUpdateMusicTriLinearCount__b5 func_BB19_b5
+#define GotoUpdateMusicTriLinearCount__b2 func_BB19_b2
+#define GotoUpdateMusicTriLinearCount__b1 func_BB19_b1
+#define GotoUpdateMusicTriLinearCount__b3 func_BB19_b3
+#define GotoUpdateMusicTriLinearCount__b0 func_BB19_b0
+/* GotoMusicChannelInstr_SongNoteNoise: 0xBB16 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use GotoMusicChannelInstr_SongNoteNoise__bN explicitly */
+#define GotoMusicChannelInstr_SongNoteNoise__b4 func_BB16_b4
+#define GotoMusicChannelInstr_SongNoteNoise__b5 func_BB16_b5
+#define GotoMusicChannelInstr_SongNoteNoise__b2 func_BB16_b2
+#define GotoMusicChannelInstr_SongNoteNoise__b1 func_BB16_b1
+#define GotoMusicChannelInstr_SongNoteNoise__b3 func_BB16_b3
+#define GotoMusicChannelInstr_SongNoteNoise__b0 func_BB16_b0
+/* GotoEndOrLoopMusic: 0xBA9D is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoEndOrLoopMusic__bN explicitly */
+#define GotoEndOrLoopMusic__b4 func_BA9D_b4
+#define GotoEndOrLoopMusic__b5 func_BA9D_b5
+#define GotoEndOrLoopMusic__b2 func_BA9D_b2
+#define GotoEndOrLoopMusic__b3 func_BA9D_b3
+#define GotoEndOrLoopMusic__b1 func_BA9D_b1
+#define GotoEndOrLoopMusic__b0 func_BA9D_b0
+/* GotoUpdateAllVolumeEnvelopes: 0xBAA1 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoUpdateAllVolumeEnvelopes__bN explicitly */
+#define GotoUpdateAllVolumeEnvelopes__b4 func_BAA1_b4
+#define GotoUpdateAllVolumeEnvelopes__b5 func_BAA1_b5
+#define GotoUpdateAllVolumeEnvelopes__b2 func_BAA1_b2
+#define GotoUpdateAllVolumeEnvelopes__b3 func_BAA1_b3
+#define GotoUpdateAllVolumeEnvelopes__b1 func_BAA1_b1
+#define GotoUpdateAllVolumeEnvelopes__b0 func_BAA1_b0
+/* MusicChannelBaseEmpty: 0xBAB0 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use MusicChannelBaseEmpty__bN explicitly */
+#define MusicChannelBaseEmpty__b4 func_BAB0_b4
+#define MusicChannelBaseEmpty__b5 func_BAB0_b5
+#define MusicChannelBaseEmpty__b2 func_BAB0_b2
+#define MusicChannelBaseEmpty__b1 func_BAB0_b1
+#define MusicChannelBaseEmpty__b3 func_BAB0_b3
+#define MusicChannelBaseEmpty__b0 func_BAB0_b0
+/* XYMusicInit: 0xBC8B is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use XYMusicInit__bN explicitly */
+#define XYMusicInit__b4 func_BC8B_b4
+#define XYMusicInit__b5 func_BC8B_b5
+#define XYMusicInit__b2 func_BC8B_b2
+#define XYMusicInit__b1 func_BC8B_b1
+#define XYMusicInit__b3 func_BC8B_b3
+#define XYMusicInit__b0 func_BC8B_b0
+/* CheckMusicFlags: 0xB3FC is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use CheckMusicFlags__bN explicitly */
+#define CheckMusicFlags__b4 func_B3FC_b4
+#define CheckMusicFlags__b5 func_B3FC_b5
+#define CheckMusicFlags__b2 func_B3FC_b2
+#define CheckMusicFlags__b3 func_B3FC_b3
+#define CheckMusicFlags__b1 func_B3FC_b1
+#define CheckMusicFlags__b0 func_B3FC_b0
 #define ScreenNmiOff func_C45D
 #define CopyMap func_A93E_b0
 #define InitTitleGFX func_C5D7
@@ -1604,7 +1605,6 @@ extern uint16_t g_rts_target;
 #define GetNameAddrs func_E564
 #define ObjectCheckMoveLeft func_E880
 #define SamusCollisionWithSolidEntities func_D976
-#define SamusCollisionWithSolidEntities_RTS func_D9B9
 #define SamusCollisionWithSolidEntities_loop func_D983
 #define DeleteOffscreenRoomSprites_Tourian func_9C6F_b3
 #define SpawnMapEnemy_exit func_EDFB
@@ -1789,13 +1789,6 @@ extern uint16_t g_rts_target;
 #define Room29_BANK2 func_ABDA_b2
 #define Structure20_BANK2 func_AE2F_b2
 #define Structure21_BANK2 func_AE3A_b2
-/* BossHitSFXInit: 0xB61C is standalone-emitted in 6 banks (b2,b0,b1,b3,b4,b5) -- no unsuffixed alias emitted; use BossHitSFXInit__bN explicitly */
-#define BossHitSFXInit__b2 func_B61C_b2
-#define BossHitSFXInit__b0 func_B61C_b0
-#define BossHitSFXInit__b1 func_B61C_b1
-#define BossHitSFXInit__b3 func_B61C_b3
-#define BossHitSFXInit__b4 func_B61C_b4
-#define BossHitSFXInit__b5 func_B61C_b5
 #define BombCurrentTile func_D76A
 #define IsBlastTile_SkipCheckUpdatingWeaponProjectile func_E9C2
 #define UpdateBullet_CollisionWithMotherBrain func_A142_b3
@@ -1873,7 +1866,6 @@ extern uint16_t g_rts_target;
 #define DoorSubRoutine8C76__b1 func_8C76_b1
 #define SwooperChangeEnemyType_BANK5 func_9958_b5
 #define UpdateSwooperAnim_BANK5 func_98F8_b5
-#define UpdateEnemyCommon_Decide_BANK5 func_9830_b5
 #define LoadUniqueItems_loop_unused func_8BF5_b0
 #define SamusHasItem func_8C39_b0
 #define LoadUniqueItems_processItemBit func_8C0A_b0
@@ -1984,255 +1976,41 @@ extern uint16_t g_rts_target;
 #define ChooseEnding_loop func_CAF7
 #define UpdateTourianItems_loop func_FDFB
 #define Palette19_BANK2 func_A203_b2
-/* GotoMusic01Init: 0xBCAA is standalone-emitted in 6 banks (b1,b0,b2,b3,b4,b5) -- no unsuffixed alias emitted; use GotoMusic01Init__bN explicitly */
-#define GotoMusic01Init__b1 func_BCAA_b1
-#define GotoMusic01Init__b0 func_BCAA_b0
-#define GotoMusic01Init__b2 func_BCAA_b2
-#define GotoMusic01Init__b3 func_BCAA_b3
-#define GotoMusic01Init__b4 func_BCAA_b4
-#define GotoMusic01Init__b5 func_BCAA_b5
-#define EndNoiseSFX_RTS func_B5C7_b1
-#define SongFadeInTri func_BE66_b1
+#define EndNoiseSFX_RTS func_B597_b1
+#define GetMetroidAccel func_9A06_b3
 #define GetItemXYPos func_DC1C
 #define MMCWritePrgBank func_C4FA
 #define SeparateControlBits func_C3C6
 #define CheckBankSwitch_OK func_C4E8
 #define BankSwitch func_C4EF
 #define MoreInit func_C81D
-#define InitBank4 func_C5B6
+#define PlaySnd2 func_F5A2
 #define SamusCollisionWithSolidEntities_notOnEnemy func_D99E
 #define UpdateAllTileBlasts_loop func_FE1D
 #define WritePaletteStringByte func_C39B
-#define UpdateAllEnemies_loop func_F347
 #define SamusMoveVertically_loop_down func_E2E3
 #define UpdateAllPipeBugHoles_loop func_FAF4
-/* MissilePickupSFXCont: 0xB6E0 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use MissilePickupSFXCont__bN explicitly */
-#define MissilePickupSFXCont__b0 func_B6E0_b0
-#define MissilePickupSFXCont__b1 func_B6E0_b1
-#define MissilePickupSFXCont__b2 func_B6E0_b2
-#define MissilePickupSFXCont__b3 func_B6E0_b3
-#define MissilePickupSFXCont__b4 func_B6E0_b4
-#define MissilePickupSFXCont__b5 func_B6E0_b5
-/* EnergyPickupSFXCont: 0xB703 is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use EnergyPickupSFXCont__bN explicitly */
-#define EnergyPickupSFXCont__b0 func_B703_b0
-#define EnergyPickupSFXCont__b2 func_B703_b2
-#define EnergyPickupSFXCont__b3 func_B703_b3
-#define EnergyPickupSFXCont__b4 func_B703_b4
-#define EnergyPickupSFXCont__b5 func_B703_b5
-#define EnergyPickupSFXCont__b1 func_B703_b1
-/* SQ1SFXCont: 0xB71D is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use SQ1SFXCont__bN explicitly */
-#define SQ1SFXCont__b0 func_B71D_b0
-#define SQ1SFXCont__b2 func_B71D_b2
-#define SQ1SFXCont__b3 func_B71D_b3
-#define SQ1SFXCont__b4 func_B71D_b4
-#define SQ1SFXCont__b5 func_B71D_b5
-#define SQ1SFXCont__b1 func_B71D_b1
-/* BulletFireSFXCont: 0xB77F is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use BulletFireSFXCont__bN explicitly */
-#define BulletFireSFXCont__b0 func_B77F_b0
-#define BulletFireSFXCont__b2 func_B77F_b2
-#define BulletFireSFXCont__b3 func_B77F_b3
-#define BulletFireSFXCont__b4 func_B77F_b4
-#define BulletFireSFXCont__b5 func_B77F_b5
-#define BulletFireSFXCont__b1 func_B77F_b1
-/* WaveBeamSFXCont: 0xB7B1 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use WaveBeamSFXCont__bN explicitly */
-#define WaveBeamSFXCont__b0 func_B7B1_b0
-#define WaveBeamSFXCont__b1 func_B7B1_b1
-#define WaveBeamSFXCont__b2 func_B7B1_b2
-#define WaveBeamSFXCont__b3 func_B7B1_b3
-#define WaveBeamSFXCont__b4 func_B7B1_b4
-#define WaveBeamSFXCont__b5 func_B7B1_b5
-/* SamusDieSFXInit: 0xB902 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SamusDieSFXInit__bN explicitly */
-#define SamusDieSFXInit__b0 func_B902_b0
-#define SamusDieSFXInit__b1 func_B902_b1
-#define SamusDieSFXInit__b2 func_B902_b2
-#define SamusDieSFXInit__b3 func_B902_b3
-#define SamusDieSFXInit__b4 func_B902_b4
-#define SamusDieSFXInit__b5 func_B902_b5
-/* DoorOpenCloseSFXInit: 0xB7DC is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use DoorOpenCloseSFXInit__bN explicitly */
-#define DoorOpenCloseSFXInit__b0 func_B7DC_b0
-#define DoorOpenCloseSFXInit__b1 func_B7DC_b1
-#define DoorOpenCloseSFXInit__b2 func_B7DC_b2
-#define DoorOpenCloseSFXInit__b3 func_B7DC_b3
-#define DoorOpenCloseSFXInit__b4 func_B7DC_b4
-#define DoorOpenCloseSFXInit__b5 func_B7DC_b5
-/* MetroidHitSFXInit: 0xB8D7 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use MetroidHitSFXInit__bN explicitly */
-#define MetroidHitSFXInit__b0 func_B8D7_b0
-#define MetroidHitSFXInit__b1 func_B8D7_b1
-#define MetroidHitSFXInit__b2 func_B8D7_b2
-#define MetroidHitSFXInit__b3 func_B8D7_b3
-#define MetroidHitSFXInit__b4 func_B8D7_b4
-#define MetroidHitSFXInit__b5 func_B8D7_b5
-/* StatueRaiseSFXInit: 0xB951 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use StatueRaiseSFXInit__bN explicitly */
-#define StatueRaiseSFXInit__b0 func_B951_b0
-#define StatueRaiseSFXInit__b1 func_B951_b1
-#define StatueRaiseSFXInit__b2 func_B951_b2
-#define StatueRaiseSFXInit__b3 func_B951_b3
-#define StatueRaiseSFXInit__b4 func_B951_b4
-#define StatueRaiseSFXInit__b5 func_B951_b5
-/* BeepSFXInit: 0xB809 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BeepSFXInit__bN explicitly */
-#define BeepSFXInit__b0 func_B809_b0
-#define BeepSFXInit__b1 func_B809_b1
-#define BeepSFXInit__b2 func_B809_b2
-#define BeepSFXInit__b3 func_B809_b3
-#define BeepSFXInit__b4 func_B809_b4
-#define BeepSFXInit__b5 func_B809_b5
-/* BigEnemyHitSFXInit: 0xB81F is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BigEnemyHitSFXInit__bN explicitly */
-#define BigEnemyHitSFXInit__b0 func_B81F_b0
-#define BigEnemyHitSFXInit__b1 func_B81F_b1
-#define BigEnemyHitSFXInit__b2 func_B81F_b2
-#define BigEnemyHitSFXInit__b3 func_B81F_b3
-#define BigEnemyHitSFXInit__b4 func_B81F_b4
-#define BigEnemyHitSFXInit__b5 func_B81F_b5
-/* SamusToBallSFXInit: 0xB864 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SamusToBallSFXInit__bN explicitly */
-#define SamusToBallSFXInit__b0 func_B864_b0
-#define SamusToBallSFXInit__b1 func_B864_b1
-#define SamusToBallSFXInit__b2 func_B864_b2
-#define SamusToBallSFXInit__b3 func_B864_b3
-#define SamusToBallSFXInit__b4 func_B864_b4
-#define SamusToBallSFXInit__b5 func_B864_b5
-/* BombLaunchSFXInit: 0xB8A8 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BombLaunchSFXInit__bN explicitly */
-#define BombLaunchSFXInit__b0 func_B8A8_b0
-#define BombLaunchSFXInit__b1 func_B8A8_b1
-#define BombLaunchSFXInit__b2 func_B8A8_b2
-#define BombLaunchSFXInit__b3 func_B8A8_b3
-#define BombLaunchSFXInit__b4 func_B8A8_b4
-#define BombLaunchSFXInit__b5 func_B8A8_b5
-/* SamusDieSFXCont: 0xB91D is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SamusDieSFXCont__bN explicitly */
-#define SamusDieSFXCont__b0 func_B91D_b0
-#define SamusDieSFXCont__b1 func_B91D_b1
-#define SamusDieSFXCont__b2 func_B91D_b2
-#define SamusDieSFXCont__b3 func_B91D_b3
-#define SamusDieSFXCont__b4 func_B91D_b4
-#define SamusDieSFXCont__b5 func_B91D_b5
-/* DoorOpenCloseSFXCont: 0xB7FB is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use DoorOpenCloseSFXCont__bN explicitly */
-#define DoorOpenCloseSFXCont__b0 func_B7FB_b0
-#define DoorOpenCloseSFXCont__b1 func_B7FB_b1
-#define DoorOpenCloseSFXCont__b2 func_B7FB_b2
-#define DoorOpenCloseSFXCont__b3 func_B7FB_b3
-#define DoorOpenCloseSFXCont__b4 func_B7FB_b4
-#define DoorOpenCloseSFXCont__b5 func_B7FB_b5
-/* MetroidHitSFXCont: 0xB8E1 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use MetroidHitSFXCont__bN explicitly */
-#define MetroidHitSFXCont__b0 func_B8E1_b0
-#define MetroidHitSFXCont__b1 func_B8E1_b1
-#define MetroidHitSFXCont__b2 func_B8E1_b2
-#define MetroidHitSFXCont__b3 func_B8E1_b3
-#define MetroidHitSFXCont__b4 func_B8E1_b4
-#define MetroidHitSFXCont__b5 func_B8E1_b5
-/* StatueRaiseSFXCont: 0xB970 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use StatueRaiseSFXCont__bN explicitly */
-#define StatueRaiseSFXCont__b0 func_B970_b0
-#define StatueRaiseSFXCont__b1 func_B970_b1
-#define StatueRaiseSFXCont__b2 func_B970_b2
-#define StatueRaiseSFXCont__b3 func_B970_b3
-#define StatueRaiseSFXCont__b4 func_B970_b4
-#define StatueRaiseSFXCont__b5 func_B970_b5
-/* BeepSFXCont: 0xB817 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BeepSFXCont__bN explicitly */
-#define BeepSFXCont__b0 func_B817_b0
-#define BeepSFXCont__b1 func_B817_b1
-#define BeepSFXCont__b2 func_B817_b2
-#define BeepSFXCont__b3 func_B817_b3
-#define BeepSFXCont__b4 func_B817_b4
-#define BeepSFXCont__b5 func_B817_b5
-/* BigEnemyHitSFXCont: 0xB83E is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BigEnemyHitSFXCont__bN explicitly */
-#define BigEnemyHitSFXCont__b0 func_B83E_b0
-#define BigEnemyHitSFXCont__b1 func_B83E_b1
-#define BigEnemyHitSFXCont__b2 func_B83E_b2
-#define BigEnemyHitSFXCont__b3 func_B83E_b3
-#define BigEnemyHitSFXCont__b4 func_B83E_b4
-#define BigEnemyHitSFXCont__b5 func_B83E_b5
-/* SamusToBallSFXCont: 0xB87F is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SamusToBallSFXCont__bN explicitly */
-#define SamusToBallSFXCont__b0 func_B87F_b0
-#define SamusToBallSFXCont__b1 func_B87F_b1
-#define SamusToBallSFXCont__b2 func_B87F_b2
-#define SamusToBallSFXCont__b3 func_B87F_b3
-#define SamusToBallSFXCont__b4 func_B87F_b4
-#define SamusToBallSFXCont__b5 func_B87F_b5
-/* BombLaunchSFXCont: 0xB8AF is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BombLaunchSFXCont__bN explicitly */
-#define BombLaunchSFXCont__b0 func_B8AF_b0
-#define BombLaunchSFXCont__b1 func_B8AF_b1
-#define BombLaunchSFXCont__b2 func_B8AF_b2
-#define BombLaunchSFXCont__b3 func_B8AF_b3
-#define BombLaunchSFXCont__b4 func_B8AF_b4
-#define BombLaunchSFXCont__b5 func_B8AF_b5
-/* SamusHitSFXInit: 0xB6A3 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SamusHitSFXInit__bN explicitly */
-#define SamusHitSFXInit__b0 func_B6A3_b0
-#define SamusHitSFXInit__b1 func_B6A3_b1
-#define SamusHitSFXInit__b2 func_B6A3_b2
-#define SamusHitSFXInit__b3 func_B6A3_b3
-#define SamusHitSFXInit__b4 func_B6A3_b4
-#define SamusHitSFXInit__b5 func_B6A3_b5
-/* IncorrectPasswordSFXInit: 0xB6C5 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use IncorrectPasswordSFXInit__bN explicitly */
-#define IncorrectPasswordSFXInit__b0 func_B6C5_b0
-#define IncorrectPasswordSFXInit__b1 func_B6C5_b1
-#define IncorrectPasswordSFXInit__b2 func_B6C5_b2
-#define IncorrectPasswordSFXInit__b3 func_B6C5_b3
-#define IncorrectPasswordSFXInit__b4 func_B6C5_b4
-#define IncorrectPasswordSFXInit__b5 func_B6C5_b5
-/* SamusHitSFXCont: 0xB680 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use SamusHitSFXCont__bN explicitly */
-#define SamusHitSFXCont__b0 func_B680_b0
-#define SamusHitSFXCont__b1 func_B680_b1
-#define SamusHitSFXCont__b2 func_B680_b2
-#define SamusHitSFXCont__b3 func_B680_b3
-#define SamusHitSFXCont__b4 func_B680_b4
-#define SamusHitSFXCont__b5 func_B680_b5
-/* BossHitSFXCont: 0xB626 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use BossHitSFXCont__bN explicitly */
-#define BossHitSFXCont__b0 func_B626_b0
-#define BossHitSFXCont__b1 func_B626_b1
-#define BossHitSFXCont__b2 func_B626_b2
-#define BossHitSFXCont__b3 func_B626_b3
-#define BossHitSFXCont__b4 func_B626_b4
-#define BossHitSFXCont__b5 func_B626_b5
-/* IncorrectPasswordSFXCont: 0xB6D1 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use IncorrectPasswordSFXCont__bN explicitly */
-#define IncorrectPasswordSFXCont__b0 func_B6D1_b0
-#define IncorrectPasswordSFXCont__b1 func_B6D1_b1
-#define IncorrectPasswordSFXCont__b2 func_B6D1_b2
-#define IncorrectPasswordSFXCont__b3 func_B6D1_b3
-#define IncorrectPasswordSFXCont__b4 func_B6D1_b4
-#define IncorrectPasswordSFXCont__b5 func_B6D1_b5
-/* LoadSQ1PeriodLow_RTS: 0xB7D6 is standalone-emitted in 6 banks (b1,b0,b2,b3,b4,b5) -- no unsuffixed alias emitted; use LoadSQ1PeriodLow_RTS__bN explicitly */
-#define LoadSQ1PeriodLow_RTS__b1 func_B7D6_b1
-#define LoadSQ1PeriodLow_RTS__b0 func_B7D6_b0
-#define LoadSQ1PeriodLow_RTS__b2 func_B7D6_b2
-#define LoadSQ1PeriodLow_RTS__b3 func_B7D6_b3
-#define LoadSQ1PeriodLow_RTS__b4 func_B7D6_b4
-#define LoadSQ1PeriodLow_RTS__b5 func_B7D6_b5
-/* MissilePickupSFXCont_RTS: 0xB6FC is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use MissilePickupSFXCont_RTS__bN explicitly */
-#define MissilePickupSFXCont_RTS__b0 func_B6FC_b0
-#define MissilePickupSFXCont_RTS__b1 func_B6FC_b1
-#define MissilePickupSFXCont_RTS__b2 func_B6FC_b2
-#define MissilePickupSFXCont_RTS__b3 func_B6FC_b3
-#define MissilePickupSFXCont_RTS__b4 func_B6FC_b4
-#define MissilePickupSFXCont_RTS__b5 func_B6FC_b5
-/* SamusHitSFXInit_RTS: 0xB6C4 is standalone-emitted in 6 banks (b0,b2,b3,b4,b5,b1) -- no unsuffixed alias emitted; use SamusHitSFXInit_RTS__bN explicitly */
-#define SamusHitSFXInit_RTS__b0 func_B6C4_b0
-#define SamusHitSFXInit_RTS__b2 func_B6C4_b2
-#define SamusHitSFXInit_RTS__b3 func_B6C4_b3
-#define SamusHitSFXInit_RTS__b4 func_B6C4_b4
-#define SamusHitSFXInit_RTS__b5 func_B6C4_b5
-#define SamusHitSFXInit_RTS__b1 func_B6C4_b1
-/* EnemyMove_loop_Right: 0x80A5 is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use EnemyMove_loop_Right__bN explicitly */
-#define EnemyMove_loop_Right__b1 func_80A5_b1
-#define EnemyMove_loop_Right__b2 func_80A5_b2
-#define EnemyMove_loop_Right__b3 func_80A5_b3
-#define EnemyMove_loop_Right__b4 func_80A5_b4
-#define EnemyMove_loop_Right__b5 func_80A5_b5
 #define InitBank0 func_C531
 #define InitBank1 func_C552
 #define InitBank2 func_C583
+#define InitBank4 func_C5B6
 #define InitBank5 func_C5C3
 #define EnProjectileMovement2_BANK1 func_9983_b1
-#define RunSFXSQ1ContRoutine func_B360_b0
+#define StatueRaiseSFXInit func_B921_b1
+#define RunSFXSQ1ContRoutine func_B330_b0
 #define Crosshairs func_8182_b0
-#define SFXSQ1ContRoutineTbl func_B31B_b0
-#define RunSFXMultiContRoutine func_B38C_b0
-#define GotoRunSFXSQ1InitRoutine func_B394_b0
-/* DivideSFXTriPeriod_loop: 0xB9E5 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use DivideSFXTriPeriod_loop__bN explicitly */
-#define DivideSFXTriPeriod_loop__b0 func_B9E5_b0
-#define DivideSFXTriPeriod_loop__b1 func_B9E5_b1
-#define DivideSFXTriPeriod_loop__b2 func_B9E5_b2
-#define DivideSFXTriPeriod_loop__b3 func_B9E5_b3
-#define DivideSFXTriPeriod_loop__b4 func_B9E5_b4
-#define DivideSFXTriPeriod_loop__b5 func_B9E5_b5
-#define ContinueMusic func_BC7B_b0
+#define SFXSQ1ContRoutineTbl func_B2EB_b0
+#define RunSFXMultiContRoutine func_B35C_b0
+#define GotoRunSFXSQ1InitRoutine func_B364_b0
+/* DivideSFXTriPeriod_loop: 0xB9B5 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use DivideSFXTriPeriod_loop__bN explicitly */
+#define DivideSFXTriPeriod_loop__b0 func_B9B5_b0
+#define DivideSFXTriPeriod_loop__b1 func_B9B5_b1
+#define DivideSFXTriPeriod_loop__b2 func_B9B5_b2
+#define DivideSFXTriPeriod_loop__b3 func_B9B5_b3
+#define DivideSFXTriPeriod_loop__b4 func_B9B5_b4
+#define DivideSFXTriPeriod_loop__b5 func_B9B5_b5
+#define ContinueMusic func_BC4B_b0
+#define GotoMusic01Init func_BC7A_b0
 #define ObjPlace1 func_871F_b1
 #define ObjPlace2 func_872B_b1
 #define ObjPlace3 func_8737_b1
@@ -2323,29 +2101,55 @@ extern uint16_t g_rts_target;
 #define StoreEnemyPositionToTemp__BANK1 func_9CA8_b1
 #define KraidTryToLaunchLint_BANK1 func_9CCC_b1
 #define KraidTryToLaunchNail_BANK1 func_9D05_b1
-#define SpitFlameSFXInit func_B53F_b1
-#define SpitFlameSFXCont func_B546_b1
-#define ScrewAttackSFXInit func_B55B_b1
-#define ScrewAttackSFXCont func_B569_b1
-#define MissileLaunchSFXInit func_B59E_b1
-#define MissileLaunchSFXCont func_B5AB_b1
-#define BombExplodeSFXInit func_B5B3_b1
-#define NoiseSFXCont func_B5BA_b1
-#define SamusWalkSFXInit func_B5C8_b1
-#define MissilePickupSFXInit func_B6FD_b1
-#define EnergyPickupSFXInit func_B717_b1
-#define SamusJumpSFXInit func_B733_b1
-#define EnemyHitSFXInit func_B740_b1
-#define BulletFireSFXInit func_B746_b1
-#define MetalSFXInit func_B765_b1
-#define OutOfPipeSFXInit func_B76C_b1
-#define WaveBeamSFXInit func_B7AA_b1
-#define GotoMusic00Init func_BCA7_b1
-#define GotoMusic02Init func_BCAD_b1
-#define GotoMusic03Init func_BCB0_b1
-#define GotoMusic04Init func_BCB3_b1
-#define MusicChannelInstr_SongNoteNoise_endIf_A func_BC27_b1
-#define GetMetroidAccel func_9A06_b3
+#define SpitFlameSFXInit func_B50F_b1
+#define SpitFlameSFXCont func_B516_b1
+#define ScrewAttackSFXInit func_B52B_b1
+#define ScrewAttackSFXCont func_B539_b1
+#define MissileLaunchSFXInit func_B56E_b1
+#define MissileLaunchSFXCont func_B57B_b1
+#define BombExplodeSFXInit func_B583_b1
+#define NoiseSFXCont func_B58A_b1
+#define SamusWalkSFXInit func_B598_b1
+#define BossHitSFXInit func_B5EC_b1
+#define BossHitSFXCont func_B5F6_b1
+#define SamusHitSFXCont func_B650_b1
+#define SamusHitSFXInit func_B673_b1
+#define IncorrectPasswordSFXInit func_B695_b1
+#define IncorrectPasswordSFXCont func_B6A1_b1
+#define MissilePickupSFXCont func_B6B0_b1
+#define MissilePickupSFXInit func_B6CD_b1
+#define EnergyPickupSFXCont func_B6D3_b1
+#define EnergyPickupSFXInit func_B6E7_b1
+#define SQ1SFXCont func_B6ED_b1
+#define SamusJumpSFXInit func_B703_b1
+#define EnemyHitSFXInit func_B710_b1
+#define BulletFireSFXInit func_B716_b1
+#define MetalSFXInit func_B735_b1
+#define OutOfPipeSFXInit func_B73C_b1
+#define BulletFireSFXCont func_B74F_b1
+#define WaveBeamSFXInit func_B77A_b1
+#define WaveBeamSFXCont func_B781_b1
+#define LoadSQ1PeriodLow_RTS func_B7A6_b1
+#define DoorOpenCloseSFXInit func_B7AC_b1
+#define DoorOpenCloseSFXCont func_B7CB_b1
+#define BeepSFXInit func_B7D9_b1
+#define BeepSFXCont func_B7E7_b1
+#define BigEnemyHitSFXInit func_B7EF_b1
+#define BigEnemyHitSFXCont func_B80E_b1
+#define SamusToBallSFXInit func_B834_b1
+#define SamusToBallSFXCont func_B84F_b1
+#define BombLaunchSFXInit func_B878_b1
+#define BombLaunchSFXCont func_B87F_b1
+#define MetroidHitSFXInit func_B8A7_b1
+#define MetroidHitSFXCont func_B8B1_b1
+#define SamusDieSFXInit func_B8D2_b1
+#define SamusDieSFXCont func_B8ED_b1
+#define StatueRaiseSFXCont func_B940_b1
+#define GotoMusic00Init func_BC77_b1
+#define GotoMusic02Init func_BC7D_b1
+#define GotoMusic03Init func_BC80_b1
+#define GotoMusic04Init func_BC83_b1
+#define MusicChannelInstr_SongNoteNoise_endIf_A func_BBF7_b1
 #define SetRinkaSpeed_BANK3 func_9AF9_b3
 #define MotherBrain_Idle_CollideWithSamus func_9DF2_b3
 #define UpdateMotherBrainFlashDelay func_9E43_b3
@@ -2357,13 +2161,13 @@ extern uint16_t g_rts_target;
 #define MotherBrain_Disappear_Disintegrate func_A072_b3
 #define CrawlerInsideCornerCheck_BANK5 func_99C6_b5
 #define CrawlerFlipDirection_BANK5 func_99DB_b5
-/* ScrewAttackSFXInit_RTS: 0xB568 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ScrewAttackSFXInit_RTS__bN explicitly */
-#define ScrewAttackSFXInit_RTS__b0 func_B568_b0
-#define ScrewAttackSFXInit_RTS__b1 func_B568_b1
-#define ScrewAttackSFXInit_RTS__b2 func_B568_b2
-#define ScrewAttackSFXInit_RTS__b3 func_B568_b3
-#define ScrewAttackSFXInit_RTS__b4 func_B568_b4
-#define ScrewAttackSFXInit_RTS__b5 func_B568_b5
+/* ScrewAttackSFXInit_RTS: 0xB538 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ScrewAttackSFXInit_RTS__bN explicitly */
+#define ScrewAttackSFXInit_RTS__b0 func_B538_b0
+#define ScrewAttackSFXInit_RTS__b1 func_B538_b1
+#define ScrewAttackSFXInit_RTS__b2 func_B538_b2
+#define ScrewAttackSFXInit_RTS__b3 func_B538_b3
+#define ScrewAttackSFXInit_RTS__b4 func_B538_b4
+#define ScrewAttackSFXInit_RTS__b5 func_B538_b5
 #define ObjPlace6 func_86FD_b1
 #define ObjPlace0 func_8701_b1
 #define WritePPUByte func_C36B
@@ -2372,8 +2176,12 @@ extern uint16_t g_rts_target;
 #define ObjPlaceE func_87B1_b1
 #define ObjFrame_SamusRunPntUpFire2 func_89FB_b1
 #define UpdateEnemyCommon_Decide_BANK1 func_99A1_b1
-#define IncrementNoisePeriod func_B594_b1
-#define GotoInitSFXData2 func_B769_b1
+#define IncrementNoisePeriod func_B564_b1
+#define SamusHitSFXInit_RTS func_B694_b1
+#define MissilePickupSFXCont_RTS func_B6CC_b1
+#define GotoInitSFXData2 func_B739_b1
+#define EndTriSFX_RTS func_B8A6_b1
+#define SamusDieSFXInit_RTS func_B8EC_b1
 #define EnemyMovement0F_R_BANK1 func_98DB_b1
 #define Sidehopper_Common_BANK1 func_99BA_b1
 #define CommonEnemyStub2_BANK1 func_99C8_b1
@@ -9614,6 +9422,7 @@ extern uint16_t g_rts_target;
 #define _sizeof_ScrollVertically_Merge 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
 #define _sizeof_SetSamusRunAccel 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
 #define _sizeof_SetSoundInitFlag 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
+#define _sizeof_SongEscapeNoise 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
 #define _sizeof_SpareMem0618 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
 #define _sizeof_SpareMemB0 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
 #define _sizeof_SpareMemD9 0x0007  /* also: _id_EnFrame07_BANK1 _id_EnFrame07_BANK4 _id_EnFrame_CannonUpLeft_BANK3 _id_EnFrame_RidleyIdle0_L_BANK2 _id_EnFrame_RidleyIdle0_L_BANK5 _id_EnPlace7_BANK1 _id_EnPlace7_BANK2 _id_EnPlace7_BANK3 ... */
@@ -11263,7 +11072,6 @@ extern uint16_t g_rts_target;
 #define _sizeof_L9B69 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
 #define _sizeof_Room05_BANK3 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
 #define _sizeof_SetSamusRun 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
-#define _sizeof_SongMthrBrnRoomSQ2 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
 #define _sizeof_StartContinueScreen1B 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
 #define _sizeof_UpdateAllEnemyExplosions 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
 #define _sizeof_UpdateEnemyCommon_Decide_BANK1 0x0017  /* also: _id_EnFrame17_BANK1 _id_EnFrame17_BANK4 _id_EnFrame_GerutaIdle0_BANK2 _id_EnFrame_HoltzIdle0_BANK5 _id_EnFrame_MotherBrainEyes_BANK3 _id_GFX_Font_Complete _id_LoadPasswordScreen _id_ObjFrame_SamusSalto0 ... */
@@ -11580,7 +11388,6 @@ extern uint16_t g_rts_target;
 #define _sizeof_Room16_BANK1 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
 #define _sizeof_Room29_BANK1 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
 #define _sizeof_SamusRun_CheckHorzMovementMidair 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
-#define _sizeof_SongEscapeNoise 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
 #define _sizeof_Structure18_BANK3 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
 #define _sizeof_SwooperAIRoutine00_BANK2 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
 #define _sizeof_SwooperAIRoutine00_BANK5 0x0021  /* also: _id_EnFrame21_BANK3 _id_EnFrame_Mella0_BANK2 _id_EnFrame_Mella0_BANK5 _id_EnFrame_Waver0_R_BANK1 _id_EnFrame_Waver0_R_BANK4 _id_ObjFrame21 _sizeof_ClearMusicAndSFXAddresses _sizeof_LDBA5 ... */
@@ -11596,10 +11403,10 @@ extern uint16_t g_rts_target;
 #define _sizeof_ChooseSpawningRoutine 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ElevatorScrollY ... */
 #define _sizeof_ElevatorScrollY 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine ... */
 #define _sizeof_ElevatorStop 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
-#define _sizeof_GotoSoundEngine 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
 #define _sizeof_LDEBC 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
 #define _sizeof_Lx002 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
 #define _sizeof_MainTitleRoutine 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
+#define _sizeof_NoteLengthsTbl 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
 #define _sizeof_SamusHitSFXInit 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
 #define _sizeof_SetRinkaSpeed_BANK3 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
 #define _sizeof_SongRidleyTri 0x0022  /* also: _id_EnFrame22_BANK3 _id_EnFrame_Mella1_BANK2 _id_EnFrame_Mella1_BANK5 _id_EnFrame_Ripper_L_BANK1 _id_EnFrame_Ripper_L_BANK4 _id_ObjFrame_SamusStandFire _sizeof_ChooseSpawningRoutine _sizeof_ElevatorScrollY ... */
@@ -11741,7 +11548,6 @@ extern uint16_t g_rts_target;
 #define _sizeof_LoadSamusGFX 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
 #define _sizeof_Lx099 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
 #define _sizeof_MultiSFXInit 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
-#define _sizeof_ROMFIXED_RESET 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
 #define _sizeof_ScrollUp 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
 #define _sizeof_UpdateAge 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
 #define _sizeof_UpdateEnemy_Resting 0x0028  /* also: _id_EnFrame28_BANK3 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK2 _id_EnFrame_MultiviolaSpinningCounterclockwise1_BANK5 _id_EnFrame_Skree1_BANK1 _id_EnFrame_Skree1_BANK4 _id_ObjFrame_RegularBullet _sizeof_DataDisplayTbl _sizeof_GameOver ... */
@@ -12073,20 +11879,19 @@ extern uint16_t g_rts_target;
 #define _sizeof_Room10_BANK1 0x003A  /* also: _id_EnFrame3A_BANK2 _id_EnFrame3A_BANK3 _id_EnFrame3A_BANK5 _id_EnFrame_WaverExplode_R_BANK1 _id_EnFrame_WaverExplode_R_BANK4 _id_ObjFrame3A _sizeof_EnemyIfMoveFailedRight _sizeof_LoadCredits ... */
 #define _sizeof_Room15_BANK4 0x003A  /* also: _id_EnFrame3A_BANK2 _id_EnFrame3A_BANK3 _id_EnFrame3A_BANK5 _id_EnFrame_WaverExplode_R_BANK1 _id_EnFrame_WaverExplode_R_BANK4 _id_ObjFrame3A _sizeof_EnemyIfMoveFailedRight _sizeof_LoadCredits ... */
 #define _sizeof_StructPtrTable_BANK5 0x003A  /* also: _id_EnFrame3A_BANK2 _id_EnFrame3A_BANK3 _id_EnFrame3A_BANK5 _id_EnFrame_WaverExplode_R_BANK1 _id_EnFrame_WaverExplode_R_BANK4 _id_ObjFrame3A _sizeof_EnemyIfMoveFailedRight _sizeof_LoadCredits ... */
-#define _id_EnFrame3B_BANK3 0x003B  /* also: _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _id_EnFrame3B_BANK5 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _id_EnFrame_DragonEnProjectileUp_R_BANK2 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _id_EnFrame_RipperExplode_L_BANK1 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _id_EnFrame_RipperExplode_L_BANK4 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _id_ObjFrame3B 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _sizeof_DisplayPassword 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_NoteLengthsTbl ... */
-#define _sizeof_NoteLengthsTbl 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword ... */
-#define _sizeof_Room02_BANK4 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _sizeof_Room03_BANK1 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _sizeof_Room11_BANK2 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _sizeof_Room15_BANK5 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _sizeof_Room17_BANK4 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
-#define _sizeof_SpawnCannonRoutine 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_NoteLengthsTbl ... */
+#define _id_EnFrame3B_BANK3 0x003B  /* also: _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _id_EnFrame3B_BANK5 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _id_EnFrame_DragonEnProjectileUp_R_BANK2 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _id_EnFrame_RipperExplode_L_BANK1 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _id_EnFrame_RipperExplode_L_BANK4 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _id_ObjFrame3B 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _sizeof_DisplayPassword 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_Room02_BANK4 ... */
+#define _sizeof_Room02_BANK4 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword ... */
+#define _sizeof_Room03_BANK1 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _sizeof_Room11_BANK2 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _sizeof_Room15_BANK5 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _sizeof_Room17_BANK4 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
+#define _sizeof_SpawnCannonRoutine 0x003B  /* also: _id_EnFrame3B_BANK3 _id_EnFrame3B_BANK5 _id_EnFrame_DragonEnProjectileUp_R_BANK2 _id_EnFrame_RipperExplode_L_BANK1 _id_EnFrame_RipperExplode_L_BANK4 _id_ObjFrame3B _sizeof_DisplayPassword _sizeof_Room02_BANK4 ... */
 #define _id_EnFrame3C_BANK3 0x003C  /* also: _id_EnFrame3C_BANK5 _id_EnFrame_DragonEnProjectileDown_R_BANK2 _id_EnFrame_RipperExplode_R_BANK1 _id_EnFrame_RipperExplode_R_BANK4 _id_ObjFrame_BombExplode0 _sizeof_LoadPipeBugHole _sizeof_Room08_BANK4 ... */
 #define _id_EnFrame3C_BANK5 0x003C  /* also: _id_EnFrame3C_BANK3 _id_EnFrame_DragonEnProjectileDown_R_BANK2 _id_EnFrame_RipperExplode_R_BANK1 _id_EnFrame_RipperExplode_R_BANK4 _id_ObjFrame_BombExplode0 _sizeof_LoadPipeBugHole _sizeof_Room08_BANK4 ... */
 #define _id_EnFrame_DragonEnProjectileDown_R_BANK2 0x003C  /* also: _id_EnFrame3C_BANK3 _id_EnFrame3C_BANK5 _id_EnFrame_RipperExplode_R_BANK1 _id_EnFrame_RipperExplode_R_BANK4 _id_ObjFrame_BombExplode0 _sizeof_LoadPipeBugHole _sizeof_Room08_BANK4 ... */
@@ -12242,18 +12047,19 @@ extern uint16_t g_rts_target;
 #define _sizeof_Room06_BANK4 0x0049  /* also: _id_EnFrame49_BANK1 _id_EnFrame49_BANK2 _id_EnFrame49_BANK3 _id_EnFrame49_BANK4 _id_EnFrame49_BANK5 _id_ObjFrame_BombExplode1 _sizeof_DisplayBar _sizeof_RollCredits ... */
 #define _sizeof_Room1A_BANK4 0x0049  /* also: _id_EnFrame49_BANK1 _id_EnFrame49_BANK2 _id_EnFrame49_BANK3 _id_EnFrame49_BANK4 _id_EnFrame49_BANK5 _id_ObjFrame_BombExplode1 _sizeof_DisplayBar _sizeof_RollCredits ... */
 #define _sizeof_UpdateTileBlast_Respawned 0x0049  /* also: _id_EnFrame49_BANK1 _id_EnFrame49_BANK2 _id_EnFrame49_BANK3 _id_EnFrame49_BANK4 _id_EnFrame49_BANK5 _id_ObjFrame_BombExplode1 _sizeof_DisplayBar _sizeof_RollCredits ... */
-#define _id_EnFrame4A_BANK1 0x004A  /* also: _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _id_EnFrame4A_BANK2 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _id_EnFrame4A_BANK3 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _id_EnFrame4A_BANK4 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _id_EnFrame4A_BANK5 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _id_ObjFrame_BombExplodeBlank 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _sizeof_PrepIntroRestart 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_ROMSWITCH_RESET ... */
-#define _sizeof_ROMSWITCH_RESET 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart ... */
-#define _sizeof_Room06_BANK2 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _sizeof_RoomPtrTable_BANK4 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _sizeof_SpecItmsTbl_BANK4 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
-#define _sizeof_UpdateWorld 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMSWITCH_RESET ... */
+#define _id_EnFrame4A_BANK1 0x004A  /* also: _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _id_EnFrame4A_BANK2 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _id_EnFrame4A_BANK3 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _id_EnFrame4A_BANK4 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _id_EnFrame4A_BANK5 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _id_ObjFrame_BombExplodeBlank 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _sizeof_PrepIntroRestart 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_ROMFIXED_RESET ... */
+#define _sizeof_ROMFIXED_RESET 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart ... */
+#define _sizeof_ROMSWITCH_RESET 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _sizeof_Room06_BANK2 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _sizeof_RoomPtrTable_BANK4 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _sizeof_SpecItmsTbl_BANK4 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
+#define _sizeof_UpdateWorld 0x004A  /* also: _id_EnFrame4A_BANK1 _id_EnFrame4A_BANK2 _id_EnFrame4A_BANK3 _id_EnFrame4A_BANK4 _id_EnFrame4A_BANK5 _id_ObjFrame_BombExplodeBlank _sizeof_PrepIntroRestart _sizeof_ROMFIXED_RESET ... */
 #define _id_EnFrame4B_BANK1 0x004B  /* also: _id_EnFrame4B_BANK2 _id_EnFrame4B_BANK3 _id_EnFrame4B_BANK4 _id_EnFrame4B_BANK5 _id_ObjFrame_WaveBeam _sizeof_EnemyMovement05_L_BANK1 _sizeof_EnemyMovement05_R_BANK1 */
 #define _id_EnFrame4B_BANK2 0x004B  /* also: _id_EnFrame4B_BANK1 _id_EnFrame4B_BANK3 _id_EnFrame4B_BANK4 _id_EnFrame4B_BANK5 _id_ObjFrame_WaveBeam _sizeof_EnemyMovement05_L_BANK1 _sizeof_EnemyMovement05_R_BANK1 */
 #define _id_EnFrame4B_BANK3 0x004B  /* also: _id_EnFrame4B_BANK1 _id_EnFrame4B_BANK2 _id_EnFrame4B_BANK4 _id_EnFrame4B_BANK5 _id_ObjFrame_WaveBeam _sizeof_EnemyMovement05_L_BANK1 _sizeof_EnemyMovement05_R_BANK1 */
@@ -12269,21 +12075,21 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame4C_BANK5 0x004C  /* also: _id_EnFrame4C_BANK1 _id_EnFrame4C_BANK2 _id_EnFrame4C_BANK3 _id_EnFrame4C_BANK4 _id_ObjFrame4C _sizeof_Room12_BANK5 */
 #define _id_ObjFrame4C 0x004C  /* also: _id_EnFrame4C_BANK1 _id_EnFrame4C_BANK2 _id_EnFrame4C_BANK3 _id_EnFrame4C_BANK4 _id_EnFrame4C_BANK5 _sizeof_Room12_BANK5 */
 #define _sizeof_Room12_BANK5 0x004C  /* also: _id_EnFrame4C_BANK1 _id_EnFrame4C_BANK2 _id_EnFrame4C_BANK3 _id_EnFrame4C_BANK4 _id_EnFrame4C_BANK5 _id_ObjFrame4C */
-#define _id_EnFrame4D_BANK1 0x004D  /* also: _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 */
-#define _id_EnFrame4D_BANK2 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 */
-#define _id_EnFrame4D_BANK3 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 */
-#define _id_EnFrame4D_BANK4 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 */
-#define _id_EnFrame4D_BANK5 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_ObjFrame_BombExplode2 */
-#define _id_ObjFrame_BombExplode2 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 */
-#define _id_EnFrame4E_BANK1 0x004E  /* also: _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
-#define _id_EnFrame4E_BANK2 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
-#define _id_EnFrame4E_BANK3 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
-#define _id_EnFrame4E_BANK4 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
-#define _id_EnFrame4E_BANK5 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
-#define _id_ObjFrame_Bomb0 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
-#define _sizeof_InitializeMusic 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 ... */
-#define _sizeof_Room24_BANK1 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic ... */
-#define _sizeof_StructPtrTable_BANK4 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_InitializeMusic _sizeof_Room24_BANK1 ... */
+#define _id_EnFrame4D_BANK1 0x004D  /* also: _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 _sizeof_SongEscapeSQ2 */
+#define _id_EnFrame4D_BANK2 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 _sizeof_SongEscapeSQ2 */
+#define _id_EnFrame4D_BANK3 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 _sizeof_SongEscapeSQ2 */
+#define _id_EnFrame4D_BANK4 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 _sizeof_SongEscapeSQ2 */
+#define _id_EnFrame4D_BANK5 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_ObjFrame_BombExplode2 _sizeof_SongEscapeSQ2 */
+#define _id_ObjFrame_BombExplode2 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _sizeof_SongEscapeSQ2 */
+#define _sizeof_SongEscapeSQ2 0x004D  /* also: _id_EnFrame4D_BANK1 _id_EnFrame4D_BANK2 _id_EnFrame4D_BANK3 _id_EnFrame4D_BANK4 _id_EnFrame4D_BANK5 _id_ObjFrame_BombExplode2 */
+#define _id_EnFrame4E_BANK1 0x004E  /* also: _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 _sizeof_StructPtrTable_BANK4 */
+#define _id_EnFrame4E_BANK2 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 _sizeof_StructPtrTable_BANK4 */
+#define _id_EnFrame4E_BANK3 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 _sizeof_StructPtrTable_BANK4 */
+#define _id_EnFrame4E_BANK4 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 _sizeof_StructPtrTable_BANK4 */
+#define _id_EnFrame4E_BANK5 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 _sizeof_StructPtrTable_BANK4 */
+#define _id_ObjFrame_Bomb0 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _sizeof_Room24_BANK1 _sizeof_StructPtrTable_BANK4 */
+#define _sizeof_Room24_BANK1 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_StructPtrTable_BANK4 */
+#define _sizeof_StructPtrTable_BANK4 0x004E  /* also: _id_EnFrame4E_BANK1 _id_EnFrame4E_BANK2 _id_EnFrame4E_BANK3 _id_EnFrame4E_BANK4 _id_EnFrame4E_BANK5 _id_ObjFrame_Bomb0 _sizeof_Room24_BANK1 */
 #define _id_EnFrame4F_BANK1 0x004F  /* also: _id_EnFrame4F_BANK2 _id_EnFrame4F_BANK3 _id_EnFrame4F_BANK4 _id_EnFrame4F_BANK5 _id_ObjFrame_Bomb1 _sizeof_Crosshairs _sizeof_VRAMStructBuffer */
 #define _id_EnFrame4F_BANK2 0x004F  /* also: _id_EnFrame4F_BANK1 _id_EnFrame4F_BANK3 _id_EnFrame4F_BANK4 _id_EnFrame4F_BANK5 _id_ObjFrame_Bomb1 _sizeof_Crosshairs _sizeof_VRAMStructBuffer */
 #define _id_EnFrame4F_BANK3 0x004F  /* also: _id_EnFrame4F_BANK1 _id_EnFrame4F_BANK2 _id_EnFrame4F_BANK4 _id_EnFrame4F_BANK5 _id_ObjFrame_Bomb1 _sizeof_Crosshairs _sizeof_VRAMStructBuffer */
@@ -12354,6 +12160,7 @@ extern uint16_t g_rts_target;
 #define _sizeof_EnemyMoveOnePixelLeft 0x0057  /* also: _id_EnFrame57_BANK1 _id_EnFrame57_BANK2 _id_EnFrame57_BANK3 _id_EnFrame57_BANK4 _id_EnFrame57_BANK5 _id_ObjFrame_IceBeamItem _sizeof_InitializeAfterReset ... */
 #define _sizeof_InitializeAfterReset 0x0057  /* also: _id_EnFrame57_BANK1 _id_EnFrame57_BANK2 _id_EnFrame57_BANK3 _id_EnFrame57_BANK4 _id_EnFrame57_BANK5 _id_ObjFrame_IceBeamItem _sizeof_EnemyMoveOnePixelLeft ... */
 #define _sizeof_MotherBrain_SpawnDoor 0x0057  /* also: _id_EnFrame57_BANK1 _id_EnFrame57_BANK2 _id_EnFrame57_BANK3 _id_EnFrame57_BANK4 _id_EnFrame57_BANK5 _id_ObjFrame_IceBeamItem _sizeof_EnemyMoveOnePixelLeft _sizeof_InitializeAfterReset ... */
+#define _sizeof_SongBrinstarSQ1 0x0057  /* also: _id_EnFrame57_BANK1 _id_EnFrame57_BANK2 _id_EnFrame57_BANK3 _id_EnFrame57_BANK4 _id_EnFrame57_BANK5 _id_ObjFrame_IceBeamItem _sizeof_EnemyMoveOnePixelLeft _sizeof_InitializeAfterReset ... */
 #define _id_EnFrame58_BANK3 0x0058  /* also: _id_EnFrame_NovaOnFloor0_BANK2 _id_EnFrame_ViolaOnFloor0_BANK5 _id_EnFrame_ZeelaOnFloor0_BANK4 _id_EnFrame_ZoomerOnFloor0_BANK1 _id_ObjFrame_EnergyTankItem _sizeof_CreditsPtrTable _sizeof_EnemyMove */
 #define _id_EnFrame_NovaOnFloor0_BANK2 0x0058  /* also: _id_EnFrame58_BANK3 _id_EnFrame_ViolaOnFloor0_BANK5 _id_EnFrame_ZeelaOnFloor0_BANK4 _id_EnFrame_ZoomerOnFloor0_BANK1 _id_ObjFrame_EnergyTankItem _sizeof_CreditsPtrTable _sizeof_EnemyMove */
 #define _id_EnFrame_ViolaOnFloor0_BANK5 0x0058  /* also: _id_EnFrame58_BANK3 _id_EnFrame_NovaOnFloor0_BANK2 _id_EnFrame_ZeelaOnFloor0_BANK4 _id_EnFrame_ZoomerOnFloor0_BANK1 _id_ObjFrame_EnergyTankItem _sizeof_CreditsPtrTable _sizeof_EnemyMove */
@@ -12374,14 +12181,13 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame_ZeelaOnRightWall0_BANK4 0x005A  /* also: _id_EnFrame5A_BANK3 _id_EnFrame_NovaOnRightWall0_BANK2 _id_EnFrame_ViolaOnRightWall0_BANK5 _id_EnFrame_ZoomerOnRightWall0_BANK1 _id_ObjFrame_SkreeProjectile */
 #define _id_EnFrame_ZoomerOnRightWall0_BANK1 0x005A  /* also: _id_EnFrame5A_BANK3 _id_EnFrame_NovaOnRightWall0_BANK2 _id_EnFrame_ViolaOnRightWall0_BANK5 _id_EnFrame_ZeelaOnRightWall0_BANK4 _id_ObjFrame_SkreeProjectile */
 #define _id_ObjFrame_SkreeProjectile 0x005A  /* also: _id_EnFrame5A_BANK3 _id_EnFrame_NovaOnRightWall0_BANK2 _id_EnFrame_ViolaOnRightWall0_BANK5 _id_EnFrame_ZeelaOnRightWall0_BANK4 _id_EnFrame_ZoomerOnRightWall0_BANK1 */
-#define _id_EnFrame5B_BANK3 0x005B  /* also: _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards _sizeof_SongEscapeSQ2 */
-#define _id_EnFrame_NovaOnRightWall1_BANK2 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards _sizeof_SongEscapeSQ2 */
-#define _id_EnFrame_ViolaOnRightWall1_BANK5 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards _sizeof_SongEscapeSQ2 */
-#define _id_EnFrame_ZeelaOnRightWall1_BANK4 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards _sizeof_SongEscapeSQ2 */
-#define _id_EnFrame_ZoomerOnRightWall1_BANK1 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards _sizeof_SongEscapeSQ2 */
-#define _id_ObjFrame5B 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _sizeof_FireWeaponProjectileForwards _sizeof_SongEscapeSQ2 */
-#define _sizeof_FireWeaponProjectileForwards 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_SongEscapeSQ2 */
-#define _sizeof_SongEscapeSQ2 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards */
+#define _id_EnFrame5B_BANK3 0x005B  /* also: _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards */
+#define _id_EnFrame_NovaOnRightWall1_BANK2 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards */
+#define _id_EnFrame_ViolaOnRightWall1_BANK5 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards */
+#define _id_EnFrame_ZeelaOnRightWall1_BANK4 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards */
+#define _id_EnFrame_ZoomerOnRightWall1_BANK1 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_ObjFrame5B _sizeof_FireWeaponProjectileForwards */
+#define _id_ObjFrame5B 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _sizeof_FireWeaponProjectileForwards */
+#define _sizeof_FireWeaponProjectileForwards 0x005B  /* also: _id_EnFrame5B_BANK3 _id_EnFrame_NovaOnRightWall1_BANK2 _id_EnFrame_ViolaOnRightWall1_BANK5 _id_EnFrame_ZeelaOnRightWall1_BANK4 _id_EnFrame_ZoomerOnRightWall1_BANK1 _id_ObjFrame5B */
 #define _id_EnFrame5C_BANK3 0x005C  /* also: _id_EnFrame_NovaOnCeiling0_BANK2 _id_EnFrame_ViolaOnCeiling0_BANK5 _id_EnFrame_ZeelaOnCeiling0_BANK4 _id_EnFrame_ZoomerOnCeiling0_BANK1 _id_ObjFrame5C _sizeof_EnemyMoveOnePixelDown _sizeof_EnemyMoveOnePixelRight ... */
 #define _id_EnFrame_NovaOnCeiling0_BANK2 0x005C  /* also: _id_EnFrame5C_BANK3 _id_EnFrame_ViolaOnCeiling0_BANK5 _id_EnFrame_ZeelaOnCeiling0_BANK4 _id_EnFrame_ZoomerOnCeiling0_BANK1 _id_ObjFrame5C _sizeof_EnemyMoveOnePixelDown _sizeof_EnemyMoveOnePixelRight ... */
 #define _id_EnFrame_ViolaOnCeiling0_BANK5 0x005C  /* also: _id_EnFrame5C_BANK3 _id_EnFrame_NovaOnCeiling0_BANK2 _id_EnFrame_ZeelaOnCeiling0_BANK4 _id_EnFrame_ZoomerOnCeiling0_BANK1 _id_ObjFrame5C _sizeof_EnemyMoveOnePixelDown _sizeof_EnemyMoveOnePixelRight ... */
@@ -12447,13 +12253,12 @@ extern uint16_t g_rts_target;
 #define _id_ObjFrame62 0x0062  /* also: _id_EnFrame_Explosion1_BANK1 _id_EnFrame_Explosion1_BANK2 _id_EnFrame_Explosion1_BANK3 _id_EnFrame_Explosion1_BANK4 _id_EnFrame_Explosion1_BANK5 _sizeof_BottomSparkleDataTbl _sizeof_StructPtrTable_BANK2 */
 #define _sizeof_BottomSparkleDataTbl 0x0062  /* also: _id_EnFrame_Explosion1_BANK1 _id_EnFrame_Explosion1_BANK2 _id_EnFrame_Explosion1_BANK3 _id_EnFrame_Explosion1_BANK4 _id_EnFrame_Explosion1_BANK5 _id_ObjFrame62 _sizeof_StructPtrTable_BANK2 */
 #define _sizeof_StructPtrTable_BANK2 0x0062  /* also: _id_EnFrame_Explosion1_BANK1 _id_EnFrame_Explosion1_BANK2 _id_EnFrame_Explosion1_BANK3 _id_EnFrame_Explosion1_BANK4 _id_EnFrame_Explosion1_BANK5 _id_ObjFrame62 _sizeof_BottomSparkleDataTbl */
-#define _id_EnFrame63_BANK2 0x0063  /* also: _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 _sizeof_SongBrinstarSQ1 */
-#define _id_EnFrame63_BANK3 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 _sizeof_SongBrinstarSQ1 */
-#define _id_EnFrame63_BANK4 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 _sizeof_SongBrinstarSQ1 */
-#define _id_EnFrame63_BANK5 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 _sizeof_SongBrinstarSQ1 */
-#define _id_EnFrame_Rio0_BANK1 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_ObjFrame63 _sizeof_SongBrinstarSQ1 */
-#define _id_ObjFrame63 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _sizeof_SongBrinstarSQ1 */
-#define _sizeof_SongBrinstarSQ1 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 */
+#define _id_EnFrame63_BANK2 0x0063  /* also: _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 */
+#define _id_EnFrame63_BANK3 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 */
+#define _id_EnFrame63_BANK4 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 */
+#define _id_EnFrame63_BANK5 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame_Rio0_BANK1 _id_ObjFrame63 */
+#define _id_EnFrame_Rio0_BANK1 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_ObjFrame63 */
+#define _id_ObjFrame63 0x0063  /* also: _id_EnFrame63_BANK2 _id_EnFrame63_BANK3 _id_EnFrame63_BANK4 _id_EnFrame63_BANK5 _id_EnFrame_Rio0_BANK1 */
 #define _id_EnFrame64_BANK2 0x0064  /* also: _id_EnFrame64_BANK3 _id_EnFrame64_BANK4 _id_EnFrame64_BANK5 _id_EnFrame_Rio1_BANK1 _id_ObjFrame64 _sizeof_FireWeaponProjectileUpwards _sizeof_Room1B_BANK4 ... */
 #define _id_EnFrame64_BANK3 0x0064  /* also: _id_EnFrame64_BANK2 _id_EnFrame64_BANK4 _id_EnFrame64_BANK5 _id_EnFrame_Rio1_BANK1 _id_ObjFrame64 _sizeof_FireWeaponProjectileUpwards _sizeof_Room1B_BANK4 ... */
 #define _id_EnFrame64_BANK4 0x0064  /* also: _id_EnFrame64_BANK2 _id_EnFrame64_BANK3 _id_EnFrame64_BANK5 _id_EnFrame_Rio1_BANK1 _id_ObjFrame64 _sizeof_FireWeaponProjectileUpwards _sizeof_Room1B_BANK4 ... */
@@ -12498,12 +12303,14 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame_Zebbo0_R_BANK5 0x0069  /* also: _id_EnFrame69_BANK3 _id_EnFrame_Gamet0_R_BANK2 _id_EnFrame_Geega0_R_BANK4 _id_EnFrame_Zeb0_R_BANK1 _id_ObjFrame_MissileExplode2 _sizeof_SongKraidSQ2 */
 #define _id_ObjFrame_MissileExplode2 0x0069  /* also: _id_EnFrame69_BANK3 _id_EnFrame_Gamet0_R_BANK2 _id_EnFrame_Geega0_R_BANK4 _id_EnFrame_Zeb0_R_BANK1 _id_EnFrame_Zebbo0_R_BANK5 _sizeof_SongKraidSQ2 */
 #define _sizeof_SongKraidSQ2 0x0069  /* also: _id_EnFrame69_BANK3 _id_EnFrame_Gamet0_R_BANK2 _id_EnFrame_Geega0_R_BANK4 _id_EnFrame_Zeb0_R_BANK1 _id_EnFrame_Zebbo0_R_BANK5 _id_ObjFrame_MissileExplode2 */
-#define _id_EnFrame6A_BANK3 0x006A  /* also: _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SpawnDoorRoutine */
-#define _id_EnFrame_Gamet1_R_BANK2 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SpawnDoorRoutine */
-#define _id_EnFrame_Geega1_R_BANK4 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SpawnDoorRoutine */
-#define _id_EnFrame_Zeb1_R_BANK1 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SpawnDoorRoutine */
-#define _id_EnFrame_Zebbo1_R_BANK5 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _sizeof_SpawnDoorRoutine */
-#define _sizeof_SpawnDoorRoutine 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 */
+#define _id_EnFrame6A_BANK3 0x006A  /* also: _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarSQ2 _sizeof_SongBrinstarTri _sizeof_SpawnDoorRoutine */
+#define _id_EnFrame_Gamet1_R_BANK2 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarSQ2 _sizeof_SongBrinstarTri _sizeof_SpawnDoorRoutine */
+#define _id_EnFrame_Geega1_R_BANK4 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarSQ2 _sizeof_SongBrinstarTri _sizeof_SpawnDoorRoutine */
+#define _id_EnFrame_Zeb1_R_BANK1 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarSQ2 _sizeof_SongBrinstarTri _sizeof_SpawnDoorRoutine */
+#define _id_EnFrame_Zebbo1_R_BANK5 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _sizeof_SongBrinstarSQ2 _sizeof_SongBrinstarTri _sizeof_SpawnDoorRoutine */
+#define _sizeof_SongBrinstarSQ2 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarTri _sizeof_SpawnDoorRoutine */
+#define _sizeof_SongBrinstarTri 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarSQ2 _sizeof_SpawnDoorRoutine */
+#define _sizeof_SpawnDoorRoutine 0x006A  /* also: _id_EnFrame6A_BANK3 _id_EnFrame_Gamet1_R_BANK2 _id_EnFrame_Geega1_R_BANK4 _id_EnFrame_Zeb1_R_BANK1 _id_EnFrame_Zebbo1_R_BANK5 _sizeof_SongBrinstarSQ2 _sizeof_SongBrinstarTri */
 #define _id_EnFrame6B_BANK3 0x006B  /* also: _id_EnFrame_GametExplode_R_BANK2 _id_EnFrame_GeegaExplode_R_BANK4 _id_EnFrame_ZebExplode_R_BANK1 _id_EnFrame_ZebboExplode_R_BANK5 _sizeof_SpecItmsTbl_BANK1 _sizeof_UpdateEnemy_Pickup _sizeof_VertAccelerate */
 #define _id_EnFrame_GametExplode_R_BANK2 0x006B  /* also: _id_EnFrame6B_BANK3 _id_EnFrame_GeegaExplode_R_BANK4 _id_EnFrame_ZebExplode_R_BANK1 _id_EnFrame_ZebboExplode_R_BANK5 _sizeof_SpecItmsTbl_BANK1 _sizeof_UpdateEnemy_Pickup _sizeof_VertAccelerate */
 #define _id_EnFrame_GeegaExplode_R_BANK4 0x006B  /* also: _id_EnFrame6B_BANK3 _id_EnFrame_GametExplode_R_BANK2 _id_EnFrame_ZebExplode_R_BANK1 _id_EnFrame_ZebboExplode_R_BANK5 _sizeof_SpecItmsTbl_BANK1 _sizeof_UpdateEnemy_Pickup _sizeof_VertAccelerate */
@@ -12554,11 +12361,12 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame_KraidNail3_R_BANK1 0x0071  /* also: _id_EnFrame71_BANK2 _id_EnFrame71_BANK3 _id_EnFrame71_BANK5 _id_EnFrame_KraidNail3_R_BANK4 _sizeof_SamusMoveVertically */
 #define _id_EnFrame_KraidNail3_R_BANK4 0x0071  /* also: _id_EnFrame71_BANK2 _id_EnFrame71_BANK3 _id_EnFrame71_BANK5 _id_EnFrame_KraidNail3_R_BANK1 _sizeof_SamusMoveVertically */
 #define _sizeof_SamusMoveVertically 0x0071  /* also: _id_EnFrame71_BANK2 _id_EnFrame71_BANK3 _id_EnFrame71_BANK5 _id_EnFrame_KraidNail3_R_BANK1 _id_EnFrame_KraidNail3_R_BANK4 */
-#define _id_EnFrame72_BANK2 0x0072  /* also: _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 */
-#define _id_EnFrame72_BANK3 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 */
-#define _id_EnFrame72_BANK5 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 */
-#define _id_EnFrame_KraidNail0_L_BANK1 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK4 */
-#define _id_EnFrame_KraidNail0_L_BANK4 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 */
+#define _id_EnFrame72_BANK2 0x0072  /* also: _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 _sizeof_SongMthrBrnRoomSQ2 */
+#define _id_EnFrame72_BANK3 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 _sizeof_SongMthrBrnRoomSQ2 */
+#define _id_EnFrame72_BANK5 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 _sizeof_SongMthrBrnRoomSQ2 */
+#define _id_EnFrame_KraidNail0_L_BANK1 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK4 _sizeof_SongMthrBrnRoomSQ2 */
+#define _id_EnFrame_KraidNail0_L_BANK4 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 _sizeof_SongMthrBrnRoomSQ2 */
+#define _sizeof_SongMthrBrnRoomSQ2 0x0072  /* also: _id_EnFrame72_BANK2 _id_EnFrame72_BANK3 _id_EnFrame72_BANK5 _id_EnFrame_KraidNail0_L_BANK1 _id_EnFrame_KraidNail0_L_BANK4 */
 #define _id_EnFrame73_BANK2 0x0073  /* also: _id_EnFrame73_BANK3 _id_EnFrame73_BANK5 _id_EnFrame_KraidNail1_L_BANK1 _id_EnFrame_KraidNail1_L_BANK4 */
 #define _id_EnFrame73_BANK3 0x0073  /* also: _id_EnFrame73_BANK2 _id_EnFrame73_BANK5 _id_EnFrame_KraidNail1_L_BANK1 _id_EnFrame_KraidNail1_L_BANK4 */
 #define _id_EnFrame73_BANK5 0x0073  /* also: _id_EnFrame73_BANK2 _id_EnFrame73_BANK3 _id_EnFrame_KraidNail1_L_BANK1 _id_EnFrame_KraidNail1_L_BANK4 */
@@ -12625,12 +12433,11 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame7D_BANK3 0x007D  /* also: _id_EnFrame7D_BANK1 _id_EnFrame7D_BANK2 _id_EnFrame7D_BANK4 _id_EnFrame7D_BANK5 */
 #define _id_EnFrame7D_BANK4 0x007D  /* also: _id_EnFrame7D_BANK1 _id_EnFrame7D_BANK2 _id_EnFrame7D_BANK3 _id_EnFrame7D_BANK5 */
 #define _id_EnFrame7D_BANK5 0x007D  /* also: _id_EnFrame7D_BANK1 _id_EnFrame7D_BANK2 _id_EnFrame7D_BANK3 _id_EnFrame7D_BANK4 */
-#define _id_EnFrame7E_BANK1 0x007E  /* also: _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 _sizeof_SongBrinstarSQ2 */
-#define _id_EnFrame7E_BANK2 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 _sizeof_SongBrinstarSQ2 */
-#define _id_EnFrame7E_BANK3 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 _sizeof_SongBrinstarSQ2 */
-#define _id_EnFrame7E_BANK4 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK5 _sizeof_SongBrinstarSQ2 */
-#define _id_EnFrame7E_BANK5 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 _sizeof_SongBrinstarSQ2 */
-#define _sizeof_SongBrinstarSQ2 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 */
+#define _id_EnFrame7E_BANK1 0x007E  /* also: _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 */
+#define _id_EnFrame7E_BANK2 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 */
+#define _id_EnFrame7E_BANK3 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK4 _id_EnFrame7E_BANK5 */
+#define _id_EnFrame7E_BANK4 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK5 */
+#define _id_EnFrame7E_BANK5 0x007E  /* also: _id_EnFrame7E_BANK1 _id_EnFrame7E_BANK2 _id_EnFrame7E_BANK3 _id_EnFrame7E_BANK4 */
 #define _id_EnFrame7F_BANK1 0x007F  /* also: _id_EnFrame7F_BANK2 _id_EnFrame7F_BANK3 _id_EnFrame7F_BANK4 _id_EnFrame7F_BANK5 */
 #define _id_EnFrame7F_BANK2 0x007F  /* also: _id_EnFrame7F_BANK1 _id_EnFrame7F_BANK3 _id_EnFrame7F_BANK4 _id_EnFrame7F_BANK5 */
 #define _id_EnFrame7F_BANK3 0x007F  /* also: _id_EnFrame7F_BANK1 _id_EnFrame7F_BANK2 _id_EnFrame7F_BANK4 _id_EnFrame7F_BANK5 */
@@ -12655,11 +12462,12 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame_SmallEnergyPickup_BANK4 0x0081  /* also: _id_EnFrame_SmallEnergyPickup _id_EnFrame_SmallEnergyPickup_BANK2 _id_EnFrame_SmallEnergyPickup_BANK3 _id_EnFrame_SmallEnergyPickup_BANK5 wa_ScrewAttack */
 #define _id_EnFrame_SmallEnergyPickup_BANK5 0x0081  /* also: _id_EnFrame_SmallEnergyPickup _id_EnFrame_SmallEnergyPickup_BANK2 _id_EnFrame_SmallEnergyPickup_BANK3 _id_EnFrame_SmallEnergyPickup_BANK4 wa_ScrewAttack */
 #define wa_ScrewAttack 0x0081  /* also: _id_EnFrame_SmallEnergyPickup _id_EnFrame_SmallEnergyPickup_BANK2 _id_EnFrame_SmallEnergyPickup_BANK3 _id_EnFrame_SmallEnergyPickup_BANK4 _id_EnFrame_SmallEnergyPickup_BANK5 */
-#define _id_EnFrame82_BANK1 0x0082  /* also: _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 */
-#define _id_EnFrame82_BANK2 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 */
-#define _id_EnFrame82_BANK3 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 */
-#define _id_EnFrame82_BANK4 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK5 */
-#define _id_EnFrame82_BANK5 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 */
+#define _id_EnFrame82_BANK1 0x0082  /* also: _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 _sizeof_SongEscapeSQ1 */
+#define _id_EnFrame82_BANK2 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 _sizeof_SongEscapeSQ1 */
+#define _id_EnFrame82_BANK3 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 _sizeof_SongEscapeSQ1 */
+#define _id_EnFrame82_BANK4 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK5 _sizeof_SongEscapeSQ1 */
+#define _id_EnFrame82_BANK5 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 _sizeof_SongEscapeSQ1 */
+#define _sizeof_SongEscapeSQ1 0x0082  /* also: _id_EnFrame82_BANK1 _id_EnFrame82_BANK2 _id_EnFrame82_BANK3 _id_EnFrame82_BANK4 _id_EnFrame82_BANK5 */
 #define _id_EnFrame83_BANK1 0x0083  /* also: _id_EnFrame83_BANK2 _id_EnFrame83_BANK3 _id_EnFrame83_BANK4 _id_EnFrame83_BANK5 */
 #define _id_EnFrame83_BANK2 0x0083  /* also: _id_EnFrame83_BANK1 _id_EnFrame83_BANK3 _id_EnFrame83_BANK4 _id_EnFrame83_BANK5 */
 #define _id_EnFrame83_BANK3 0x0083  /* also: _id_EnFrame83_BANK1 _id_EnFrame83_BANK2 _id_EnFrame83_BANK4 _id_EnFrame83_BANK5 */
@@ -12700,9 +12508,10 @@ extern uint16_t g_rts_target;
 #define _sizeof_SFXData 0x0089  /* also: _id_EnFrame_BigEnergyPickup _id_EnFrame_BigEnergyPickup_BANK2 _id_EnFrame_BigEnergyPickup_BANK3 _id_EnFrame_BigEnergyPickup_BANK4 _id_EnFrame_BigEnergyPickup_BANK5 */
 #define _id_EnFrame8A_BANK1 0x008A  /* also: _id_EnFrame8A_BANK4 */
 #define _id_EnFrame8A_BANK4 0x008A  /* also: _id_EnFrame8A_BANK1 */
-#define _id_EnFrame8B_BANK1 0x008B  /* also: _id_EnFrame8B_BANK4 _sizeof_UpdateEnemy_ForceSpeedTowardsSamus */
-#define _id_EnFrame8B_BANK4 0x008B  /* also: _id_EnFrame8B_BANK1 _sizeof_UpdateEnemy_ForceSpeedTowardsSamus */
-#define _sizeof_UpdateEnemy_ForceSpeedTowardsSamus 0x008B  /* also: _id_EnFrame8B_BANK1 _id_EnFrame8B_BANK4 */
+#define _id_EnFrame8B_BANK1 0x008B  /* also: _id_EnFrame8B_BANK4 _sizeof_SongEscapeTri _sizeof_UpdateEnemy_ForceSpeedTowardsSamus */
+#define _id_EnFrame8B_BANK4 0x008B  /* also: _id_EnFrame8B_BANK1 _sizeof_SongEscapeTri _sizeof_UpdateEnemy_ForceSpeedTowardsSamus */
+#define _sizeof_SongEscapeTri 0x008B  /* also: _id_EnFrame8B_BANK1 _id_EnFrame8B_BANK4 _sizeof_UpdateEnemy_ForceSpeedTowardsSamus */
+#define _sizeof_UpdateEnemy_ForceSpeedTowardsSamus 0x008B  /* also: _id_EnFrame8B_BANK1 _id_EnFrame8B_BANK4 _sizeof_SongEscapeTri */
 #define _id_EnFrame8C_BANK1 0x008C  /* also: _id_EnFrame8C_BANK4 _sizeof_LoadNextMusicChannelInstr_Continued */
 #define _id_EnFrame8C_BANK4 0x008C  /* also: _id_EnFrame8C_BANK1 _sizeof_LoadNextMusicChannelInstr_Continued */
 #define _sizeof_LoadNextMusicChannelInstr_Continued 0x008C  /* also: _id_EnFrame8C_BANK1 _id_EnFrame8C_BANK4 */
@@ -12726,33 +12535,32 @@ extern uint16_t g_rts_target;
 #define _id_EnFrame_Kraid1_L_BANK4 0x0094  /* also: _id_EnFrame_Kraid1_L_BANK1 */
 #define _id_EnFrame_KraidExplode_R_BANK1 0x0095  /* also: _id_EnFrame_KraidExplode_R_BANK4 */
 #define _id_EnFrame_KraidExplode_R_BANK4 0x0095  /* also: _id_EnFrame_KraidExplode_R_BANK1 */
-#define _id_EnFrame_KraidExplode_L_BANK1 0x0096  /* also: _id_EnFrame_KraidExplode_L_BANK4 _sizeof_SongBrinstarTri */
-#define _id_EnFrame_KraidExplode_L_BANK4 0x0096  /* also: _id_EnFrame_KraidExplode_L_BANK1 _sizeof_SongBrinstarTri */
-#define _sizeof_SongBrinstarTri 0x0096  /* also: _id_EnFrame_KraidExplode_L_BANK1 _id_EnFrame_KraidExplode_L_BANK4 */
+#define _id_EnFrame_KraidExplode_L_BANK1 0x0096  /* also: _id_EnFrame_KraidExplode_L_BANK4 */
+#define _id_EnFrame_KraidExplode_L_BANK4 0x0096  /* also: _id_EnFrame_KraidExplode_L_BANK1 */
+#define _sizeof_InitializeMusic 0x0097
 #define _sizeof_CalculatePassword 0x0098
 #define _sizeof_EndStarDataTable 0x009C
 #define _sizeof_IntroStarSprite 0x00A0
 #define _sizeof_LoadTanksAndMissiles 0x00A1
 #define _sizeof_Startup 0x00A2
 #define _sizeof_GFX_Bank5Garbage 0x00B0
-#define _sizeof_SongEscapeTri 0x00B1
 #define _sizeof_DeleteOffscreenRoomSprites 0x00B6
-#define _sizeof_SongBrinstarNoise 0x00B9
-#define _sizeof_SongEscapeSQ1 0x00BF
 #define _sizeof_GFX_KraiBG2 0x00C0  /* also: _sizeof_GFX_RidlBG */
 #define _sizeof_GFX_RidlBG 0x00C0  /* also: _sizeof_GFX_KraiBG2 */
-#define _sizeof_LoadPasswordChar 0x00C1  /* also: _sizeof_SongEndTri */
-#define _sizeof_SongEndTri 0x00C1  /* also: _sizeof_LoadPasswordChar */
+#define _sizeof_LoadPasswordChar 0x00C1
 #define _sizeof_IntroStarsData 0x00C4
 #define _sizeof_SongEndSQ2 0x00C9
 #define _sizeof_GFXInfo 0x00CB
 #define _sizeof_RinkaAIRoutine_BANK3 0x00CD
-#define _sizeof_TileBlasts 0x00D0
+#define _sizeof_SongEndTri 0x00D0  /* also: _sizeof_TileBlasts */
+#define _sizeof_TileBlasts 0x00D0  /* also: _sizeof_SongEndTri */
 #define _sizeof_SpecItmsTbl_BANK2 0x00D2
 #define _sizeof_ObjFramePtrTable 0x00D4
+#define _sizeof_SongBrinstarNoise 0x00D5
 #define _sizeof_GFX_Garbage98A0 0x00E0  /* also: _sizeof_GFX_KraiUnused */
 #define _sizeof_GFX_KraiUnused 0x00E0  /* also: _sizeof_GFX_Garbage98A0 */
-#define _sizeof_SongEndSQ1 0x00E1
+#define _sizeof_SongIntroNoise 0x00EB
+#define _sizeof_SongEndSQ1 0x00F5
 #define sa_Begin 0x00FF
 #define _sizeof_EnFramePtrTable1_BANK1 0x0100  /* also: _sizeof_EnFramePtrTable1_BANK2 _sizeof_EnFramePtrTable1_BANK3 _sizeof_EnFramePtrTable1_BANK4 _sizeof_EnFramePtrTable1_BANK5 _sizeof_GFX_IntroSprites _sizeof_ItemHistory _sizeof_Objects ... */
 #define _sizeof_EnFramePtrTable1_BANK2 0x0100  /* also: _sizeof_EnFramePtrTable1_BANK1 _sizeof_EnFramePtrTable1_BANK3 _sizeof_EnFramePtrTable1_BANK4 _sizeof_EnFramePtrTable1_BANK5 _sizeof_GFX_IntroSprites _sizeof_ItemHistory _sizeof_Objects ... */
@@ -12766,14 +12574,13 @@ extern uint16_t g_rts_target;
 #define _sizeof_UniqueItemHistory 0x0100  /* also: _sizeof_EnFramePtrTable1_BANK1 _sizeof_EnFramePtrTable1_BANK2 _sizeof_EnFramePtrTable1_BANK3 _sizeof_EnFramePtrTable1_BANK4 _sizeof_EnFramePtrTable1_BANK5 _sizeof_GFX_IntroSprites _sizeof_ItemHistory _sizeof_Objects ... */
 #define _sizeof_MetatileDefs_BANK1 0x0110
 #define _sizeof_MetatileDefs_BANK2 0x0114
-#define _sizeof_SongIntroNoise 0x011B
 #define _sizeof_GFX_Garbage8AA0 0x0140
 #define _sizeof_GFX_BrinBG1 0x0150
+#define _sizeof_SongKraidTri 0x0156
 #define _sizeof_VRAMStruct_EndBackground 0x0168
-#define _sizeof_SongKraidTri 0x0186
+#define _sizeof_SongEndNoise 0x0172
+#define _sizeof_SongNorfairNoise 0x0175
 #define _sizeof_SpareMem6C74 0x018C
-#define _sizeof_SongEndNoise 0x0195
-#define _sizeof_SongNorfairNoise 0x01A5
 #define _sizeof_MetroidAIRoutine_BANK3 0x01B5
 #define _sizeof_MetatileDefs_BANK3 0x01B7
 #define _sizeof_GFX_KraiBG3 0x0200
@@ -12871,7 +12678,13 @@ void func_C215(void); /* ReadJoyPads */
 void func_C21F(void); /* ReadOnePad */
 void func_C24D(void); /* ReadOnePad_endIf_A */
 void func_C221(void);
-void func_FFD8(void); /* GotoSoundEngine */
+void func_B3B4_b0(void); /* SoundEngine */
+void func_B3B4_b1(void); /* SoundEngine */
+void func_B3B4_b2(void); /* SoundEngine */
+void func_B3B4_b3(void); /* SoundEngine */
+void func_B3B4_b4(void); /* SoundEngine */
+void func_B3B4_b5(void); /* SoundEngine */
+void func_B3B4_b6(void);
 void func_C158(void); /* ClearNameTables */
 void func_C175(void); /* ClearNameTable */
 void func_C184(void);
@@ -12914,13 +12727,73 @@ void func_8AC7_b4(void);
 void func_8AC7_b5(void);
 void func_8AC7_b6(void);
 void func_C4D9(void); /* PrepPPUMirror */
-void func_B3E4_b0(void); /* SoundEngine */
-void func_B3E4_b1(void); /* SoundEngine */
-void func_B3E4_b2(void); /* SoundEngine */
-void func_B3E4_b3(void); /* SoundEngine */
-void func_B3E4_b4(void); /* SoundEngine */
-void func_B3E4_b5(void); /* SoundEngine */
-void func_B3E4_b6(void);
+void func_B399_b0(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b0(void); /* RunSFXNoiseInitRoutine */
+void func_B322_b0(void); /* RunSFXNoiseContRoutine */
+void func_B34B_b0(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b0(void); /* RunSFXTriInitRoutine */
+void func_B344_b0(void); /* RunSFXTriContRoutine */
+void func_BC36_b0(void); /* RunMusicLoopRoutine */
+void func_BC3D_b0(void); /* RunMusicInitRoutine */
+void func_B404_b0(void); /* InitializeSoundAddresses */
+void func_B41D_b0(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b0(void);
+void func_B43E_b0(void); /* ClearSounds */
+void func_B40E_b0(void); /* ClearSpecialAddresses */
+void func_B399_b1(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b1(void); /* RunSFXNoiseInitRoutine */
+void func_B34B_b1(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b1(void); /* RunSFXTriInitRoutine */
+void func_BC36_b1(void); /* RunMusicLoopRoutine */
+void func_B404_b1(void); /* InitializeSoundAddresses */
+void func_B41D_b1(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b1(void);
+void func_B43E_b1(void); /* ClearSounds */
+void func_B40E_b1(void); /* ClearSpecialAddresses */
+void func_B399_b2(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b2(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b2(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b2(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b2(void); /* RunSFXTriInitRoutine */
+void func_BC36_b2(void); /* RunMusicLoopRoutine */
+void func_B404_b2(void); /* InitializeSoundAddresses */
+void func_B41D_b2(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b2(void);
+void func_B43E_b2(void); /* ClearSounds */
+void func_B40E_b2(void); /* ClearSpecialAddresses */
+void func_B399_b3(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b3(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b3(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b3(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b3(void); /* RunSFXTriInitRoutine */
+void func_BC36_b3(void); /* RunMusicLoopRoutine */
+void func_B404_b3(void); /* InitializeSoundAddresses */
+void func_B41D_b3(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b3(void);
+void func_B43E_b3(void); /* ClearSounds */
+void func_B40E_b3(void); /* ClearSpecialAddresses */
+void func_B399_b4(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b4(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b4(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b4(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b4(void); /* RunSFXTriInitRoutine */
+void func_BC36_b4(void); /* RunMusicLoopRoutine */
+void func_B404_b4(void); /* InitializeSoundAddresses */
+void func_B41D_b4(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b4(void);
+void func_B43E_b4(void); /* ClearSounds */
+void func_B40E_b4(void); /* ClearSpecialAddresses */
+void func_B399_b5(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b5(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b5(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b5(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b5(void); /* RunSFXTriInitRoutine */
+void func_BC36_b5(void); /* RunMusicLoopRoutine */
+void func_B404_b5(void); /* InitializeSoundAddresses */
+void func_B41D_b5(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b5(void);
+void func_B43E_b5(void); /* ClearSounds */
+void func_B40E_b5(void); /* ClearSpecialAddresses */
 void func_988A_b0(void); /* DecSpriteYCoord */
 void func_988A_b1(void);
 void func_988A_b2(void);
@@ -12966,8 +12839,6 @@ void func_C80F(void);
 void func_C81F(void);
 void func_C892(void);
 void func_C885(void);
-void func_C8A2(void);
-void func_C897(void);
 void func_C8D1(void); /* SamusInit */
 void func_C908(void);
 void func_C920(void);
@@ -13001,73 +12872,48 @@ void func_C2FF(void);
 void func_C2FD(void); /* VRAMStructWriteData_endIf_A */
 void func_C2F0(void);
 void func_C4B6(void); /* SetPPUMirror */
-void func_B3C9_b0(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b0(void); /* RunSFXNoiseInitRoutine */
-void func_B352_b0(void); /* RunSFXNoiseContRoutine */
-void func_B37B_b0(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b0(void); /* RunSFXTriInitRoutine */
-void func_B374_b0(void); /* RunSFXTriContRoutine */
-void func_BC66_b0(void); /* RunMusicLoopRoutine */
-void func_BC6D_b0(void); /* RunMusicInitRoutine */
-void func_B434_b0(void); /* InitializeSoundAddresses */
-void func_B44D_b0(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b0(void);
-void func_B46E_b0(void); /* ClearSounds */
-void func_B43E_b0(void); /* ClearSpecialAddresses */
-void func_B3C9_b1(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b1(void); /* RunSFXNoiseInitRoutine */
-void func_B37B_b1(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b1(void); /* RunSFXTriInitRoutine */
-void func_BC66_b1(void); /* RunMusicLoopRoutine */
-void func_B434_b1(void); /* InitializeSoundAddresses */
-void func_B44D_b1(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b1(void);
-void func_B46E_b1(void); /* ClearSounds */
-void func_B43E_b1(void); /* ClearSpecialAddresses */
-void func_B3C9_b2(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b2(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b2(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b2(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b2(void); /* RunSFXTriInitRoutine */
-void func_BC66_b2(void); /* RunMusicLoopRoutine */
-void func_B434_b2(void); /* InitializeSoundAddresses */
-void func_B44D_b2(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b2(void);
-void func_B46E_b2(void); /* ClearSounds */
-void func_B43E_b2(void); /* ClearSpecialAddresses */
-void func_B3C9_b3(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b3(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b3(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b3(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b3(void); /* RunSFXTriInitRoutine */
-void func_BC66_b3(void); /* RunMusicLoopRoutine */
-void func_B434_b3(void); /* InitializeSoundAddresses */
-void func_B44D_b3(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b3(void);
-void func_B46E_b3(void); /* ClearSounds */
-void func_B43E_b3(void); /* ClearSpecialAddresses */
-void func_B3C9_b4(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b4(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b4(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b4(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b4(void); /* RunSFXTriInitRoutine */
-void func_BC66_b4(void); /* RunMusicLoopRoutine */
-void func_B434_b4(void); /* InitializeSoundAddresses */
-void func_B44D_b4(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b4(void);
-void func_B46E_b4(void); /* ClearSounds */
-void func_B43E_b4(void); /* ClearSpecialAddresses */
-void func_B3C9_b5(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b5(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b5(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b5(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b5(void); /* RunSFXTriInitRoutine */
-void func_BC66_b5(void); /* RunMusicLoopRoutine */
-void func_B434_b5(void); /* InitializeSoundAddresses */
-void func_B44D_b5(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b5(void);
-void func_B46E_b5(void); /* ClearSounds */
-void func_B43E_b5(void); /* ClearSpecialAddresses */
+void func_B38F_b0(void); /* PauseSFX */
+void func_B368_b0(void); /* LoadSFXData */
+void func_B4BD_b0(void); /* GetSoundRoutine */
+void func_B4EE_b0(void); /* GetSoundRoutine_RTS */
+void func_B4EA_b0(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b0(void); /* FindMusicInitIndex */
+void func_BC64_b0(void); /* MusicInitIndexAdd8 */
+void func_B337_b0(void); /* RunSoundRoutine */
+void func_B38F_b1(void); /* PauseSFX */
+void func_B368_b1(void); /* LoadSFXData */
+void func_B4BD_b1(void); /* GetSoundRoutine */
+void func_BC53_b1(void); /* FindMusicInitIndex */
+void func_BC64_b1(void); /* MusicInitIndexAdd8 */
+void func_B337_b1(void); /* RunSoundRoutine */
+void func_B38F_b2(void); /* PauseSFX */
+void func_B368_b2(void); /* LoadSFXData */
+void func_B4BD_b2(void); /* GetSoundRoutine */
+void func_B4EA_b2(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b2(void); /* FindMusicInitIndex */
+void func_BC64_b2(void); /* MusicInitIndexAdd8 */
+void func_B337_b2(void); /* RunSoundRoutine */
+void func_B38F_b3(void); /* PauseSFX */
+void func_B368_b3(void); /* LoadSFXData */
+void func_B4BD_b3(void); /* GetSoundRoutine */
+void func_B4EA_b3(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b3(void); /* FindMusicInitIndex */
+void func_BC64_b3(void); /* MusicInitIndexAdd8 */
+void func_B337_b3(void); /* RunSoundRoutine */
+void func_B38F_b4(void); /* PauseSFX */
+void func_B368_b4(void); /* LoadSFXData */
+void func_B4BD_b4(void); /* GetSoundRoutine */
+void func_B4EA_b4(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b4(void); /* FindMusicInitIndex */
+void func_BC64_b4(void); /* MusicInitIndexAdd8 */
+void func_B337_b4(void); /* RunSoundRoutine */
+void func_B38F_b5(void); /* PauseSFX */
+void func_B368_b5(void); /* LoadSFXData */
+void func_B4BD_b5(void); /* GetSoundRoutine */
+void func_B4EA_b5(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b5(void); /* FindMusicInitIndex */
+void func_BC64_b5(void); /* MusicInitIndexAdd8 */
+void func_B337_b5(void); /* RunSoundRoutine */
 void func_8036_b2(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
 void func_8039_b2(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
 void func_9A42_b2(void); /* StoreEnemyPositionToTemp__BANK2 */
@@ -13203,9 +13049,9 @@ void func_C8B0(void); /* CopyAreaPointers */
 void func_E720(void); /* GetRoomNum */
 void func_E730(void);
 void func_E731(void);
-void func_E74C(void);
 void func_EA2B(void); /* SetupRoom */
 void func_EA2D(void);
+void func_EA4C(void);
 void func_C447(void); /* ScreenOn */
 void func_CBFD(void); /* IntroMusic */
 void func_E1F1(void); /* ScrollDoor */
@@ -13244,6 +13090,7 @@ void func_E0B1(void);
 void func_E0AD(void);
 void func_E0C7(void); /* DisplayBar_loop */
 void func_E09D(void);
+void func_E099(void);
 void func_8058_b0(void);
 void func_8058_b1(void); /* EnemyMove */
 void func_8058_b2(void); /* EnemyMove */
@@ -13257,57 +13104,8 @@ void func_C2A9(void);
 void func_C318(void); /* SetPPUInc */
 void func_C319(void);
 void func_C321(void); /* SetPPUInc_endIf_A */
-void func_B3BF_b0(void); /* PauseSFX */
-void func_B398_b0(void); /* LoadSFXData */
-void func_B4ED_b0(void); /* GetSoundRoutine */
-void func_B51E_b0(void); /* GetSoundRoutine_RTS */
-void func_B51A_b0(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b0(void);
-void func_BC83_b0(void); /* FindMusicInitIndex */
-void func_BC94_b0(void); /* MusicInitIndexAdd8 */
-void func_B367_b0(void); /* RunSoundRoutine */
-void func_B3BF_b1(void); /* PauseSFX */
-void func_B398_b1(void); /* LoadSFXData */
-void func_B4ED_b1(void); /* GetSoundRoutine */
-void func_BC83_b1(void); /* FindMusicInitIndex */
-void func_BC94_b1(void); /* MusicInitIndexAdd8 */
-void func_B367_b1(void); /* RunSoundRoutine */
-void func_B3BF_b2(void); /* PauseSFX */
-void func_B398_b2(void); /* LoadSFXData */
-void func_B4ED_b2(void); /* GetSoundRoutine */
-void func_B51A_b2(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b2(void);
-void func_B51E_b2(void); /* GetSoundRoutine_RTS */
-void func_BC83_b2(void); /* FindMusicInitIndex */
-void func_BC94_b2(void); /* MusicInitIndexAdd8 */
-void func_B367_b2(void); /* RunSoundRoutine */
-void func_B3BF_b3(void); /* PauseSFX */
-void func_B398_b3(void); /* LoadSFXData */
-void func_B4ED_b3(void); /* GetSoundRoutine */
-void func_B51A_b3(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b3(void);
-void func_B51E_b3(void); /* GetSoundRoutine_RTS */
-void func_BC83_b3(void); /* FindMusicInitIndex */
-void func_BC94_b3(void); /* MusicInitIndexAdd8 */
-void func_B367_b3(void); /* RunSoundRoutine */
-void func_B3BF_b4(void); /* PauseSFX */
-void func_B398_b4(void); /* LoadSFXData */
-void func_B4ED_b4(void); /* GetSoundRoutine */
-void func_B51A_b4(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b4(void);
-void func_B51E_b4(void); /* GetSoundRoutine_RTS */
-void func_BC83_b4(void); /* FindMusicInitIndex */
-void func_BC94_b4(void); /* MusicInitIndexAdd8 */
-void func_B367_b4(void); /* RunSoundRoutine */
-void func_B3BF_b5(void); /* PauseSFX */
-void func_B398_b5(void); /* LoadSFXData */
-void func_B4ED_b5(void); /* GetSoundRoutine */
-void func_B51A_b5(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b5(void);
-void func_B51E_b5(void); /* GetSoundRoutine_RTS */
-void func_BC83_b5(void); /* FindMusicInitIndex */
-void func_BC94_b5(void); /* MusicInitIndexAdd8 */
-void func_B367_b5(void); /* RunSoundRoutine */
+void func_B4EA_b1(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_B4EE_b1(void); /* GetSoundRoutine_RTS */
 void func_833F_b2(void); /* EnemyGetDeltaY_UsingAcceleration */
 void func_8395_b2(void); /* EnemyGetDeltaX_UsingAcceleration */
 void func_FD8F(void); /* ApplySpeedToPosition */
@@ -13368,35 +13166,40 @@ void func_AEE7_b4(void);
 void func_B03F_b4(void); /* SongKraidSQ1 */
 void func_B037_b4(void);
 void func_B084_b4(void);
-void func_B0D1_b4(void);
-void func_BB22_b4(void);
+void func_B0B8_b4(void);
+void func_B0BC_b4(void);
+void func_B09B_b4(void);
 void func_B920_b4(void);
-void func_B1AE_b4(void);
-void func_B1B2_b4(void);
-void func_B226_b4(void);
-void func_B2F5_b4(void);
-void func_B3A4_b4(void); /* LoadSFXData_SQ2 */
-void func_B39C_b4(void); /* LoadSFXData_Tri */
-void func_B3A0_b4(void); /* LoadSFXData_Noise */
-void func_B4C3_b4(void); /* UpdateContFlags */
-void func_B482_b4(void); /* InitSFXData */
-void func_B493_b4(void);
-void func_B4A2_b4(void); /* InitSFXData_Tri */
-void func_B4D9_b4(void); /* IncrementSFXFrame */
-void func_B5BF_b4(void); /* EndNoiseSFX */
-void func_B5B7_b4(void); /* GotoInitSFXData */
-void func_B4D2_b4(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b4(void); /* MultiSFXInit */
-void func_B65C_b4(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b4(void); /* EndMultiSFX */
-void func_B722_b4(void); /* EndSQ1SFX */
-void func_B8C6_b4(void); /* EndTriSFX */
-void func_B8D6_b4(void); /* EndTriSFX_RTS */
-void func_B9BC_b4(void); /* DecreaseSFXTriPeriod */
-void func_B899_b4(void); /* WriteSFXTriPeriod */
-void func_B9A8_b4(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b4(void); /* DivideSFXTriPeriod */
-void func_B8F3_b4(void); /* RndTriPeriods */
+void func_B151_b4(void);
+void func_B144_b4(void);
+void func_B154_b4(void);
+void func_B19B_b4(void);
+void func_B1A8_b4(void);
+void func_9830_b4(void);
+void func_B1E0_b4(void);
+void func_80C7_b4(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b4(void);
+void func_B374_b4(void); /* LoadSFXData_SQ2 */
+void func_B36C_b4(void); /* LoadSFXData_Tri */
+void func_B370_b4(void); /* LoadSFXData_Noise */
+void func_B493_b4(void); /* UpdateContFlags */
+void func_B452_b4(void); /* InitSFXData */
+void func_B463_b4(void);
+void func_B472_b4(void); /* InitSFXData_Tri */
+void func_B4A9_b4(void); /* IncrementSFXFrame */
+void func_B58F_b4(void); /* EndNoiseSFX */
+void func_B587_b4(void); /* GotoInitSFXData */
+void func_B4A2_b4(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b4(void); /* MultiSFXInit */
+void func_B62C_b4(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b4(void); /* EndMultiSFX */
+void func_B6F2_b4(void); /* EndSQ1SFX */
+void func_B896_b4(void); /* EndTriSFX */
+void func_B98C_b4(void); /* DecreaseSFXTriPeriod */
+void func_B869_b4(void); /* WriteSFXTriPeriod */
+void func_B978_b4(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b4(void); /* DivideSFXTriPeriod */
+void func_B8C3_b4(void); /* RndTriPeriods */
 void func_833F_b5(void); /* EnemyGetDeltaY_UsingAcceleration */
 void func_8395_b5(void); /* EnemyGetDeltaX_UsingAcceleration */
 void func_98AE_b0(void); /* LoadStarSprites */
@@ -13570,7 +13373,6 @@ void func_C3D4(void); /* TwosComplement */
 void func_83F5_b1(void); /* EnemyMoveOnePixelUp */
 void func_8400_b1(void);
 void func_80B8_b1(void); /* EnemyIfMoveFailedUp */
-void func_80F6_b1(void); /* EnemyIfMoveFailedUp_abortLoop */
 void func_844B_b1(void); /* EnemyMoveOnePixelDown */
 void func_80FB_b1(void); /* EnemyIfMoveFailedDown */
 void func_812F_b1(void); /* EnemyIfMoveFailedDown_abortLoop */
@@ -13693,8 +13495,6 @@ void func_DDB0(void); /* DrawEnemy_NotBlank */
 void func_DE07(void);
 void func_DE13(void);
 void func_DEDE(void);
-void func_B51A_b1(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B51E_b1(void); /* GetSoundRoutine_RTS */
 void func_E449(void); /* NegateTemp00Temp01 */
 void func_E44C(void);
 void func_CE84(void); /* IsSamusDead */
@@ -13721,40 +13521,47 @@ void func_FA18(void); /* RemoveEnemy */
 void func_FB7B(void); /* InitEnemyFacingDirectionAxisAndDelay */
 void func_F85A(void); /* InitEnemyForceSpeedTowardsSamusDelayAndHealth */
 void func_AB7B_b4(void);
-void func_BA71_b4(void); /* UpdateVolumeEnvelope */
-void func_BA38_b4(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b4(void); /* EndOrLoopMusic */
-void func_BA67_b4(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b4(void); /* ResetVolumeIndex */
-void func_BB4C_b4(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b4(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b4(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b4(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b4(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b4(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b4(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b4(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAD5_b4(void); /* UpdateAllMusicChannels */
-void func_BCDA_b4(void); /* Music00Init */
-void func_BCD4_b4(void); /* Music01Init */
-void func_BCCA_b4(void); /* Music02Init */
-void func_BCC6_b4(void); /* Music03Init */
-void func_BCB9_b4(void); /* Music04Init */
-void func_BCCE_b4(void); /* Music05Init */
-void func_BA14_b4(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b4(void); /* InitializeMusic */
-void func_BDCF_b4(void);
-void func_BE38_b4(void); /* SongPowerUpTri */
-void func_BE6E_b4(void); /* SongFadeInSQ1 */
+void func_BA41_b4(void); /* UpdateVolumeEnvelope */
+void func_BA08_b4(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b4(void); /* EndOrLoopMusic */
+void func_BA37_b4(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b4(void); /* ResetVolumeIndex */
+void func_BB1C_b4(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b4(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b4(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b4(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b4(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b4(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b4(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b4(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b4(void); /* UpdateAllMusicChannels */
+void func_BCAA_b4(void); /* Music00Init */
+void func_BCA4_b4(void); /* Music01Init */
+void func_BC9A_b4(void); /* Music02Init */
+void func_BC96_b4(void); /* Music03Init */
+void func_BC89_b4(void); /* Music04Init */
+void func_BC9E_b4(void); /* Music05Init */
+void func_B9E4_b4(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b4(void); /* InitializeMusic */
+void func_BD77_b4(void);
+void func_BD9F_b4(void);
+void func_BE08_b4(void); /* SongPowerUpTri */
+void func_BE3E_b4(void); /* SongFadeInSQ1 */
 void func_E0FF(void);
-void func_BEE0_b4(void);
+void func_BEB0_b4(void);
 void func_AEAC_b4(void);
 void func_AEAE_b4(void);
-void func_BF47_b4(void);
-void func_B0CE_b4(void);
-void func_BDBB_b4(void);
-void func_B91C_b4(void); /* SamusDieSFXInit_RTS */
-void func_B194_b4(void);
+void func_BF1B_b4(void);
+void func_BF0B_b4(void);
+void func_BF67_b4(void);
+void func_AFFE_b4(void);
+void func_B06C_b4(void);
+void func_B17E_b4(void);
+void func_983F_b4(void); /* EnemyMovement0F_R_BANK4 */
+void func_98E7_b4(void); /* EnProjectileMovement2_BANK4 */
+void func_98F7_b4(void);
+void func_80C1_b4(void); /* EnemyIfMoveFailedUp_bounce */
+void func_856B_b4(void); /* XorEnData05 */
 void func_881A_b0(void); /* DoSparkleSpriteCoord */
 void func_887B_b0(void); /* WriteIntroSprite */
 void func_981E_b0(void); /* UpdateCrossMissileCoords */
@@ -13877,7 +13684,6 @@ void func_F852(void); /* CrawlerAIRoutine_ShouldCrawlerMove */
 void func_EB6E(void);
 void func_FB87(void); /* Exit13 */
 void func_F870(void); /* SpawnEnProjectile */
-void func_F03D(void);
 void func_F86F(void); /* InitEnemyForceSpeedTowardsSamusDelayAndHealth_RTS */
 void func_EFD0(void);
 void func_F1D1(void);
@@ -14064,6 +13870,7 @@ void func_EFAB(void);
 void func_F084(void);
 void func_FA9F(void); /* UpdateAllEnemyExplosions_loop */
 void func_EA7D(void);
+void func_F03D(void);
 void func_F0B4(void);
 void func_ED32(void); /* DeleteOffscreenRoomSprites_loop_pipeBugHoles */
 void func_F012(void); /* InitTables_loop */
@@ -14097,6 +13904,7 @@ void func_EE0D(void);
 void func_EBC6(void);
 void func_ED85(void);
 void func_EA85(void);
+void func_F7B9(void); /* AndEnData05_RTS */
 void func_EAA5(void);
 void func_F83E(void); /* GetEnemyTypeTimes2PlusFacingDirectionBit0 */
 void func_F64C(void);
@@ -14116,7 +13924,6 @@ void func_F0B9(void);
 void func_FC7D(void);
 void func_FB99(void);
 void func_F999(void);
-void func_F7B9(void); /* AndEnData05_RTS */
 void func_EFB9(void);
 void func_F8A9(void);
 void func_EB06(void); /* LoadEnemy */
@@ -14342,9 +14149,7 @@ void func_9C49_b4(void); /* AreaRoutineStub_BANK4 */
 void func_9B48_b5(void); /* RTS_Polyp_BANK5 */
 void func_D7D1(void); /* ElevatorIdle */
 void func_D80E(void); /* ElevatorScrollXToCenter */
-void func_D821(void);
 void func_D83D(void); /* ElevatorMove */
-void func_D84C(void); /* ElevatorMove_endIf_B */
 void func_D870(void); /* ElevatorScrollY */
 void func_D879(void);
 void func_D885(void);
@@ -14401,6 +14206,7 @@ void func_FE6D(void); /* SetTileAnim */
 void func_FF54(void); /* UpdateTileBlastAnim */
 void func_FF85(void);
 void func_FF69(void);
+void func_FF60(void); /* UpdateTileBlastAnim_update */
 void func_FF72(void);
 void func_FAB3(void); /* UpdateAllEnemyExplosions_RTS */
 void func_DB16(void); /* Exit0 */
@@ -14467,7 +14273,6 @@ void func_8563_b4(void); /* GetOtherNameTableIndex */
 void func_855A_b4(void); /* SwitchEnemyNameTable */
 void func_81FC_b4(void); /* EnemyIfMoveFailedVertical_Bounce */
 void func_8206_b4(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
-void func_856B_b4(void); /* XorEnData05 */
 void func_81C7_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce */
 void func_81D1_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
 void func_81F5_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
@@ -14492,14 +14297,14 @@ void func_E783(void); /* EnemyCheckMoveVertical */
 void func_E785(void);
 void func_E7BD(void); /* CheckMoveVertical */
 void func_81B8_b4(void); /* EnemyTriggerResting */
-void func_BB49_b4(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b4(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b4(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b4(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b4(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b4(void);
-void func_BCBB_b4(void); /* XYMusicInit */
-void func_B42C_b4(void); /* CheckMusicFlags */
+void func_BB19_b4(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b4(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b4(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b4(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b4(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b4(void);
+void func_BC8B_b4(void); /* XYMusicInit */
+void func_B3FC_b4(void); /* CheckMusicFlags */
 void func_C45D(void); /* ScreenNmiOff */
 void func_A93E_b4(void);
 void func_C5D7(void); /* InitTitleGFX */
@@ -14523,6 +14328,8 @@ void func_CBDE(void); /* SFX_SamusHit */
 void func_CE66(void); /* CheckHealthBeep */
 void func_CF4E(void);
 void func_CBF3(void); /* SFX_Beep */
+void func_AFD7_b4(void);
+void func_AFE4_b4(void);
 void func_C2C0(void); /* Adiv8 */
 void func_8871_b0(void); /* DoSparkleSpriteCoord_NibbleSubtract */
 void func_9871_b0(void); /* UpdateCrossMissileCoords_CalcDisplacement */
@@ -14565,7 +14372,6 @@ void func_E683(void);
 void func_E690(void);
 void func_E67E(void);
 void func_E685(void);
-void func_E6A2(void);
 void func_E6A0(void);
 void func_E699(void);
 void func_D088(void);
@@ -14585,7 +14391,6 @@ void func_D4A8(void); /* Door_DeleteOffscreenEnemies_deletePipeBugHole */
 void func_E564(void); /* GetNameAddrs */
 void func_E880(void); /* ObjectCheckMoveLeft */
 void func_D976(void); /* SamusCollisionWithSolidEntities */
-void func_D9B9(void); /* SamusCollisionWithSolidEntities_RTS */
 void func_D983(void); /* SamusCollisionWithSolidEntities_loop */
 void func_ED57(void);
 void func_9C6F_b3(void); /* DeleteOffscreenRoomSprites_Tourian */
@@ -14712,6 +14517,7 @@ void func_D606(void); /* GotoWeaponProjectileHitDoorOrStatue */
 void func_D651(void); /* CheckBlastTile */
 void func_E9BE(void); /* IsBlastTile */
 void func_E9F2(void);
+void func_E9CC(void);
 void func_D602(void);
 void func_9B37_b3(void); /* UpdateAllCannons */
 void func_9B44_b3(void); /* UpdateAllCannons_updateIfPossible */
@@ -14827,6 +14633,7 @@ void func_E935(void);
 void func_E98E(void); /* CalculateNextBGCollisionPoint */
 void func_E9A8(void);
 void func_E7E6(void);
+void func_AF83_b4(void);
 void func_8BD4_b0(void); /* LoadUniqueItems */
 void func_8D3D_b0(void); /* LoadTanksAndMissiles */
 void func_E7AD(void); /* ObjectCheckMoveDown */
@@ -14878,6 +14685,8 @@ void func_A8AC_b5(void);
 void func_A91F_b5(void);
 void func_A98E_b5(void);
 void func_AAA3_b5(void);
+void func_B948_b5(void);
+void func_BC23_b5(void);
 void func_AB86_b5(void);
 void func_AD21_b5(void);
 void func_AD04_b5(void);
@@ -14888,21 +14697,25 @@ void func_AEE7_b5(void);
 void func_B03F_b5(void); /* SongKraidSQ1 */
 void func_B037_b5(void);
 void func_B084_b5(void);
-void func_B0D1_b5(void);
-void func_BB22_b5(void);
+void func_B0B8_b5(void);
+void func_B0BC_b5(void);
+void func_B09B_b5(void);
 void func_B920_b5(void);
-void func_B1AE_b5(void);
-void func_B1B2_b5(void);
-void func_B226_b5(void);
+void func_B151_b5(void);
+void func_B144_b5(void);
+void func_B154_b5(void);
+void func_B19B_b5(void);
+void func_B1A8_b5(void);
+void func_9830_b5(void); /* UpdateEnemyCommon_Decide_BANK5 */
+void func_B1E0_b5(void);
+void func_80C7_b5(void); /* EnemyIfMoveFailedUp_facingHorizontal */
 void func_9B20_b3(void); /* Amul16_ */
 void func_9D88_b3(void); /* GetNameTableAtScrollDir_ */
 void func_C27C(void); /* JumpEngine */
 void func_C27D(void);
 void func_C284(void);
 void func_F56C(void);
-void func_F049(void);
-void func_F1FB(void);
-void func_F222(void);
+void func_B0D4_b2(void);
 void func_A5EB_b2(void);
 void func_A608_b2(void);
 void func_A650_b2(void);
@@ -14933,18 +14746,22 @@ void func_AEE0_b2(void);
 void func_AF59_b2(void);
 void func_AF2B_b2(void);
 void func_B03F_b2(void);
-void func_B61C_b2(void); /* BossHitSFXInit */
+void func_B61C_b2(void);
 void func_B06C_b2(void);
-void func_B2F5_b2(void);
-void func_B3A4_b2(void); /* LoadSFXData_SQ2 */
-void func_B39C_b2(void); /* LoadSFXData_Tri */
-void func_B3A0_b2(void); /* LoadSFXData_Noise */
-void func_B4C3_b2(void); /* UpdateContFlags */
-void func_B482_b2(void); /* InitSFXData */
-void func_B493_b2(void);
-void func_B4A2_b2(void); /* InitSFXData_Tri */
-void func_B4D9_b2(void); /* IncrementSFXFrame */
-void func_B5BF_b2(void); /* EndNoiseSFX */
+void func_B0A4_b2(void);
+void func_9830_b2(void);
+void func_B1E0_b2(void);
+void func_80C7_b2(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b2(void);
+void func_B374_b2(void); /* LoadSFXData_SQ2 */
+void func_B36C_b2(void); /* LoadSFXData_Tri */
+void func_B370_b2(void); /* LoadSFXData_Noise */
+void func_B493_b2(void); /* UpdateContFlags */
+void func_B452_b2(void); /* InitSFXData */
+void func_B463_b2(void);
+void func_B472_b2(void); /* InitSFXData_Tri */
+void func_B4A9_b2(void); /* IncrementSFXFrame */
+void func_B58F_b2(void); /* EndNoiseSFX */
 void func_D78B(void);
 void func_D78D(void);
 void func_D76A(void); /* BombCurrentTile */
@@ -15063,117 +14880,126 @@ void func_DFAD(void);
 void func_E7DE(void);
 void func_E95F(void);
 void func_E934(void);
+void func_AF53_b4(void);
 void func_8BF5_b0(void); /* LoadUniqueItems_loop_unused */
 void func_8C39_b0(void); /* SamusHasItem */
 void func_8C0A_b0(void); /* LoadUniqueItems_processItemBit */
 void func_8C03_b0(void); /* LoadUniqueItems_processItemByte */
 void func_8DA9_b0(void); /* LoadTanksAndMissiles_IncrementToNextItem */
 void func_D318(void);
-void func_B2F5_b5(void);
-void func_B3A4_b5(void); /* LoadSFXData_SQ2 */
-void func_B39C_b5(void); /* LoadSFXData_Tri */
-void func_B3A0_b5(void); /* LoadSFXData_Noise */
-void func_B4C3_b5(void); /* UpdateContFlags */
-void func_B482_b5(void); /* InitSFXData */
-void func_B493_b5(void);
-void func_B4A2_b5(void); /* InitSFXData_Tri */
-void func_B4D9_b5(void); /* IncrementSFXFrame */
-void func_B5BF_b5(void); /* EndNoiseSFX */
-void func_B5B7_b5(void); /* GotoInitSFXData */
-void func_B4D2_b5(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b5(void); /* MultiSFXInit */
-void func_B65C_b5(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b5(void); /* EndMultiSFX */
-void func_B722_b5(void); /* EndSQ1SFX */
-void func_B8C6_b5(void); /* EndTriSFX */
-void func_B8D6_b5(void); /* EndTriSFX_RTS */
-void func_B9BC_b5(void); /* DecreaseSFXTriPeriod */
-void func_B899_b5(void); /* WriteSFXTriPeriod */
-void func_B9A8_b5(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b5(void); /* DivideSFXTriPeriod */
-void func_B8F3_b5(void); /* RndTriPeriods */
-void func_BA71_b5(void); /* UpdateVolumeEnvelope */
-void func_BA38_b5(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b5(void); /* EndOrLoopMusic */
-void func_BA67_b5(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b5(void); /* ResetVolumeIndex */
-void func_BB4C_b5(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b5(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b5(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b5(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b5(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b5(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b5(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b5(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_B2C5_b5(void);
+void func_B374_b5(void); /* LoadSFXData_SQ2 */
+void func_B36C_b5(void); /* LoadSFXData_Tri */
+void func_B370_b5(void); /* LoadSFXData_Noise */
+void func_B493_b5(void); /* UpdateContFlags */
+void func_B452_b5(void); /* InitSFXData */
+void func_B463_b5(void);
+void func_B472_b5(void); /* InitSFXData_Tri */
+void func_B4A9_b5(void); /* IncrementSFXFrame */
+void func_B58F_b5(void); /* EndNoiseSFX */
+void func_B587_b5(void); /* GotoInitSFXData */
+void func_B4A2_b5(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b5(void); /* MultiSFXInit */
+void func_B62C_b5(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b5(void); /* EndMultiSFX */
+void func_B6F2_b5(void); /* EndSQ1SFX */
+void func_B896_b5(void); /* EndTriSFX */
+void func_B98C_b5(void); /* DecreaseSFXTriPeriod */
+void func_B869_b5(void); /* WriteSFXTriPeriod */
+void func_B978_b5(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b5(void); /* DivideSFXTriPeriod */
+void func_B8C3_b5(void); /* RndTriPeriods */
+void func_BA41_b5(void); /* UpdateVolumeEnvelope */
+void func_BA08_b5(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b5(void); /* EndOrLoopMusic */
+void func_BA37_b5(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b5(void); /* ResetVolumeIndex */
+void func_BB1C_b5(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b5(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b5(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b5(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b5(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b5(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b5(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b5(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
 void func_AB32_b5(void);
-void func_BAD5_b5(void); /* UpdateAllMusicChannels */
-void func_BCDA_b5(void); /* Music00Init */
-void func_BCD4_b5(void); /* Music01Init */
-void func_BCCA_b5(void); /* Music02Init */
-void func_BCC6_b5(void); /* Music03Init */
-void func_BCB9_b5(void); /* Music04Init */
-void func_BCCE_b5(void); /* Music05Init */
-void func_BA14_b5(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b5(void); /* InitializeMusic */
-void func_BDCF_b5(void);
-void func_BE38_b5(void); /* SongPowerUpTri */
-void func_BE6E_b5(void); /* SongFadeInSQ1 */
-void func_BEE0_b5(void);
+void func_BAA5_b5(void); /* UpdateAllMusicChannels */
+void func_BCAA_b5(void); /* Music00Init */
+void func_BCA4_b5(void); /* Music01Init */
+void func_BC9A_b5(void); /* Music02Init */
+void func_BC96_b5(void); /* Music03Init */
+void func_BC89_b5(void); /* Music04Init */
+void func_BC9E_b5(void); /* Music05Init */
+void func_B9E4_b5(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b5(void); /* InitializeMusic */
+void func_BD77_b5(void);
+void func_BD9F_b5(void);
+void func_BE08_b5(void); /* SongPowerUpTri */
+void func_BE3E_b5(void); /* SongFadeInSQ1 */
+void func_BEB0_b5(void);
 void func_AEAC_b5(void);
 void func_AEAE_b5(void);
-void func_BF47_b5(void);
-void func_B0CE_b5(void);
-void func_BDBB_b5(void);
-void func_B91C_b5(void); /* SamusDieSFXInit_RTS */
-void func_B194_b5(void);
-void func_B5B7_b2(void); /* GotoInitSFXData */
-void func_B4D2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b2(void); /* MultiSFXInit */
-void func_B65C_b2(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b2(void); /* EndMultiSFX */
-void func_B722_b2(void); /* EndSQ1SFX */
+void func_BF1B_b5(void);
+void func_BF0B_b5(void);
+void func_BF67_b5(void);
+void func_AFFE_b5(void);
+void func_B06C_b5(void);
+void func_B17E_b5(void);
+void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_80C1_b5(void); /* EnemyIfMoveFailedUp_bounce */
+void func_B0A2_b2(void);
+void func_B587_b2(void); /* GotoInitSFXData */
+void func_B4A2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b2(void); /* MultiSFXInit */
+void func_B62C_b2(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b2(void); /* EndMultiSFX */
+void func_B6F2_b2(void); /* EndSQ1SFX */
 void func_9416_b2(void);
 void func_9431_b2(void);
 void func_94EE_b2(void);
 void func_9526_b2(void);
 void func_94E2_b2(void);
 void func_9564_b2(void);
-void func_B8C6_b2(void); /* EndTriSFX */
-void func_B8D6_b2(void); /* EndTriSFX_RTS */
-void func_B9BC_b2(void); /* DecreaseSFXTriPeriod */
-void func_B899_b2(void); /* WriteSFXTriPeriod */
-void func_B9A8_b2(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b2(void); /* DivideSFXTriPeriod */
-void func_B8F3_b2(void); /* RndTriPeriods */
-void func_BA71_b2(void); /* UpdateVolumeEnvelope */
-void func_BA38_b2(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b2(void); /* EndOrLoopMusic */
-void func_BA67_b2(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b2(void); /* ResetVolumeIndex */
-void func_BB4C_b2(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b2(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b2(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b2(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b2(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b2(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b2(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b2(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAD5_b2(void); /* UpdateAllMusicChannels */
-void func_BCDA_b2(void); /* Music00Init */
-void func_BCD4_b2(void); /* Music01Init */
-void func_BCCA_b2(void); /* Music02Init */
-void func_BCC6_b2(void); /* Music03Init */
-void func_BCB9_b2(void); /* Music04Init */
-void func_BCCE_b2(void); /* Music05Init */
-void func_BA14_b2(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b2(void); /* InitializeMusic */
-void func_BDDC_b2(void);
-void func_BDCF_b2(void);
-void func_BE38_b2(void); /* SongPowerUpTri */
-void func_BE6E_b2(void); /* SongFadeInSQ1 */
-void func_BEE0_b2(void);
-void func_BF47_b2(void);
+void func_B896_b2(void); /* EndTriSFX */
+void func_B98C_b2(void); /* DecreaseSFXTriPeriod */
+void func_B869_b2(void); /* WriteSFXTriPeriod */
+void func_B978_b2(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b2(void); /* DivideSFXTriPeriod */
+void func_B8C3_b2(void); /* RndTriPeriods */
+void func_BA41_b2(void); /* UpdateVolumeEnvelope */
+void func_BA08_b2(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b2(void); /* EndOrLoopMusic */
+void func_BA37_b2(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b2(void); /* ResetVolumeIndex */
+void func_BB1C_b2(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b2(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b2(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b2(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b2(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b2(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b2(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b2(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b2(void); /* UpdateAllMusicChannels */
+void func_BCAA_b2(void); /* Music00Init */
+void func_BCA4_b2(void); /* Music01Init */
+void func_BC9A_b2(void); /* Music02Init */
+void func_BC96_b2(void); /* Music03Init */
+void func_BC89_b2(void); /* Music04Init */
+void func_BC9E_b2(void); /* Music05Init */
+void func_B9E4_b2(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b2(void); /* InitializeMusic */
+void func_BD79_b2(void);
+void func_BDAC_b2(void);
+void func_BD77_b2(void);
+void func_BD9F_b2(void);
+void func_BE08_b2(void); /* SongPowerUpTri */
+void func_BE3E_b2(void); /* SongFadeInSQ1 */
+void func_BEB0_b2(void);
+void func_BF1B_b2(void);
+void func_BF0B_b2(void);
+void func_BF67_b2(void);
 void func_AF53_b2(void);
+void func_80C1_b2(void); /* EnemyIfMoveFailedUp_bounce */
 void func_D798(void);
 void func_A0C6_b3(void); /* UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
 void func_9BAF_b3(void); /* Cannon_ShootEnProjectile */
@@ -15214,23 +15040,25 @@ void func_A44C_b6(void);
 void func_A655_b6(void);
 void func_A657_b6(void);
 void func_8D95_b0(void); /* LoadTanksAndMissiles_loop_tanks */
-void func_BB49_b5(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b5(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b5(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b5(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b5(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b5(void);
-void func_BCBB_b5(void); /* XYMusicInit */
-void func_B42C_b5(void); /* CheckMusicFlags */
+void func_BB19_b5(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b5(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b5(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b5(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b5(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b5(void);
+void func_BC8B_b5(void); /* XYMusicInit */
+void func_B3FC_b5(void); /* CheckMusicFlags */
 void func_A93E_b5(void);
-void func_BB49_b2(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b2(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b2(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b2(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b2(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b2(void);
-void func_BCBB_b2(void); /* XYMusicInit */
-void func_B42C_b2(void); /* CheckMusicFlags */
+void func_AFD7_b5(void);
+void func_AFE4_b5(void);
+void func_BB19_b2(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b2(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b2(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b2(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b2(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b2(void);
+void func_BC8B_b2(void); /* XYMusicInit */
+void func_B3FC_b2(void); /* CheckMusicFlags */
 void func_A93E_b2(void);
 void func_9EF9_b3(void); /* Xplus16 */
 void func_915E_b6(void);
@@ -15255,6 +15083,7 @@ void func_AE8D_b6(void);
 void func_A1F2_b6(void);
 void func_A1FA_b6(void);
 void func_8810_b6(void);
+void func_AF83_b5(void);
 void func_C020(void);
 void func_B039_b6(void);
 void func_B10A_b6(void);
@@ -15288,6 +15117,7 @@ void func_AC6D_b6(void);
 void func_A1AD_b6(void);
 void func_A1B5_b6(void);
 void func_87FD_b6(void);
+void func_AF53_b5(void);
 void func_84C8_b0(void);
 void func_84C8_b1(void);
 void func_84C8_b2(void);
@@ -15296,55 +15126,56 @@ void func_84C8_b4(void);
 void func_84C8_b5(void);
 void func_84C8_b6(void);
 void func_B82E_b6(void);
-void func_B4D2_b6(void);
-void func_B482_b6(void);
-void func_B8F3_b6(void);
-void func_B4D9_b6(void);
-void func_B8C6_b6(void);
-void func_B434_b6(void);
-void func_B9BC_b6(void);
-void func_B9D0_b6(void);
-void func_B9A8_b6(void);
-void func_B899_b6(void);
-void func_BA71_b6(void);
-void func_BA38_b6(void);
-void func_B420_b6(void);
-void func_BA67_b6(void);
-void func_BA23_b6(void);
-void func_BB4C_b6(void);
-void func_BB0C_b6(void);
-void func_BC0E_b6(void);
-void func_BBE7_b6(void);
-void func_BAE3_b6(void);
-void func_BBD8_b6(void);
-void func_BBFD_b6(void);
-void func_BB67_b6(void);
-void func_B4ED_b6(void);
-void func_BC83_b6(void);
-void func_BAD5_b6(void);
-void func_BCDA_b6(void);
-void func_BCD4_b6(void);
-void func_BCCA_b6(void);
-void func_BCC6_b6(void);
-void func_BCB9_b6(void);
-void func_BCCE_b6(void);
-void func_BA14_b6(void);
-void func_BF62_b6(void);
-void func_BDCF_b6(void);
-void func_BE38_b6(void);
-void func_BE6E_b6(void);
-void func_BEE0_b6(void);
-void func_BF47_b6(void);
+void func_B404_b6(void);
+void func_B452_b6(void);
+void func_B4A9_b6(void);
+void func_B98C_b6(void);
+void func_B896_b6(void);
+void func_B9A0_b6(void);
+void func_B978_b6(void);
+void func_B869_b6(void);
+void func_BA41_b6(void);
+void func_BA08_b6(void);
+void func_B3F0_b6(void); /* GFX_RidlBG */
+void func_BA37_b6(void);
+void func_B9F3_b6(void);
+void func_BB1C_b6(void);
+void func_BADC_b6(void);
+void func_BBDE_b6(void);
+void func_BBB7_b6(void);
+void func_BAB3_b6(void);
+void func_BBA8_b6(void);
+void func_BBCD_b6(void);
+void func_BB37_b6(void);
+void func_B4BD_b6(void);
+void func_BC53_b6(void);
+void func_BAA5_b6(void);
+void func_BCAA_b6(void);
+void func_BCA4_b6(void);
+void func_BC9A_b6(void);
+void func_BC96_b6(void);
+void func_BC89_b6(void);
+void func_BC9E_b6(void);
+void func_B9E4_b6(void);
+void func_BF19_b6(void);
+void func_BD77_b6(void);
+void func_BD9F_b6(void);
+void func_BE08_b6(void);
+void func_BE3E_b6(void);
+void func_BEB0_b6(void);
+void func_BF1B_b6(void);
+void func_BF0B_b6(void);
+void func_BF67_b6(void);
 void func_A93E_b6(void);
 void func_FF4F(void);
-void func_BB49_b6(void);
-void func_BB46_b6(void);
-void func_BACD_b6(void);
-void func_BAD1_b6(void);
-void func_BAE0_b6(void);
-void func_BCBD_b6(void);
-void func_BCBB_b6(void);
-void func_B42C_b6(void);
+void func_BB19_b6(void);
+void func_BB16_b6(void);
+void func_BA9D_b6(void);
+void func_BAA1_b6(void);
+void func_BAB0_b6(void);
+void func_BC8D_b6(void);
+void func_BC8B_b6(void);
+void func_B3FC_b6(void);
 void func_CA2F(void);
 void func_D0CB(void);
 void func_FA21(void);
@@ -15619,6 +15450,7 @@ void func_CCBE(void); /* RunAnimationTbl */
 void func_C0BE(void);
 void func_CCC0(void); /* RunAccelerationTbl */
 void func_CCC2(void); /* SamusRun */
+void func_CCCC(void);
 void func_CD04(void);
 void func_CD10(void);
 void func_CCF0(void);
@@ -16045,6 +15877,7 @@ void func_E44A(void);
 void func_C943(void);
 void func_C953(void);
 void func_EFC9(void);
+void func_F049(void);
 void func_C90D(void);
 void func_C61E(void);
 void func_E540(void);
@@ -16266,14 +16099,10 @@ void func_D0BC(void);
 void func_C98A(void);
 void func_D14C(void);
 void func_CA0A(void);
-void func_C980(void);
-void func_D0C3(void);
-void func_D0CD(void);
-void func_D034(void);
-void func_D06D(void);
-void func_D1B6(void);
-void func_D1B9(void); /* SamusPntUp_endIf_B */
 void func_D050(void);
+void func_C980(void);
+void func_D034(void);
+void func_D1B9(void); /* SamusPntUp_endIf_B */
 void func_D24C(void);
 void func_CCBD(void);
 void func_C9A0(void);
@@ -16501,7 +16330,10 @@ void func_C329(void);
 void func_E02A(void);
 void func_FF09(void);
 void func_C01B(void);
+void func_FFC1(void);
 void func_FDEF(void);
+void func_B3E4_b1(void);
+void func_B3E4_b6(void);
 void func_C4AD(void);
 void func_C4B2(void); /* PrepVertMirror */
 void func_CAF7(void); /* ChooseEnding_loop */
@@ -16539,6 +16371,12 @@ void func_8CCF_b0(void);
 void func_8CCF_b6(void);
 void func_EB4B(void);
 void func_ED25(void);
+void func_B503_b0(void);
+void func_B503_b1(void);
+void func_B503_b2(void);
+void func_B503_b3(void);
+void func_B503_b4(void);
+void func_B503_b5(void);
 void func_B503_b6(void);
 void func_D60A(void);
 void func_CA63(void);
@@ -16571,64 +16409,68 @@ void func_A203_b6(void);
 void func_FD33(void);
 void func_CC0A(void);
 void func_CBC3(void);
-void func_B0A0_b0(void);
-void func_B0AD_b0(void);
-void func_BB22_b3(void);
-void func_B0CE_b3(void);
+void func_B0D4_b1(void);
 void func_B920_b3(void);
-void func_B1AE_b3(void);
-void func_B1B2_b3(void);
-void func_B226_b3(void);
-void func_B2F5_b3(void);
-void func_B3A4_b3(void); /* LoadSFXData_SQ2 */
-void func_B39C_b3(void); /* LoadSFXData_Tri */
-void func_B3A0_b3(void); /* LoadSFXData_Noise */
-void func_B4C3_b3(void); /* UpdateContFlags */
-void func_B482_b3(void); /* InitSFXData */
-void func_B493_b3(void);
-void func_B4A2_b3(void); /* InitSFXData_Tri */
-void func_B4D9_b3(void); /* IncrementSFXFrame */
-void func_B5BF_b3(void); /* EndNoiseSFX */
-void func_B5B7_b3(void); /* GotoInitSFXData */
-void func_B4D2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b3(void); /* MultiSFXInit */
-void func_B65C_b3(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b3(void); /* EndMultiSFX */
-void func_B722_b3(void); /* EndSQ1SFX */
-void func_B8C6_b3(void); /* EndTriSFX */
-void func_B8D6_b3(void); /* EndTriSFX_RTS */
-void func_B9BC_b3(void); /* DecreaseSFXTriPeriod */
-void func_B899_b3(void); /* WriteSFXTriPeriod */
-void func_B9A8_b3(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b3(void); /* DivideSFXTriPeriod */
-void func_B8F3_b3(void); /* RndTriPeriods */
-void func_BA71_b3(void); /* UpdateVolumeEnvelope */
-void func_BA38_b3(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b3(void); /* EndOrLoopMusic */
-void func_BA67_b3(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b3(void); /* ResetVolumeIndex */
-void func_BB4C_b3(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b3(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b3(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b3(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b3(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b3(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAD5_b3(void); /* UpdateAllMusicChannels */
-void func_BCDA_b3(void); /* Music00Init */
-void func_BCD4_b3(void); /* Music01Init */
-void func_BCCA_b3(void); /* Music02Init */
-void func_BCC6_b3(void); /* Music03Init */
-void func_BCB9_b3(void); /* Music04Init */
-void func_BCCE_b3(void); /* Music05Init */
-void func_BA14_b3(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b3(void); /* InitializeMusic */
-void func_BDCF_b3(void);
-void func_BE38_b3(void); /* SongPowerUpTri */
-void func_BE6E_b3(void); /* SongFadeInSQ1 */
-void func_BEE0_b3(void);
-void func_BF47_b3(void);
+void func_B151_b3(void);
+void func_B144_b3(void);
+void func_B154_b3(void);
+void func_B19B_b3(void);
+void func_B1A8_b3(void);
+void func_9830_b3(void);
+void func_B1E0_b3(void);
+void func_80C7_b3(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b3(void);
+void func_B374_b3(void); /* LoadSFXData_SQ2 */
+void func_B36C_b3(void); /* LoadSFXData_Tri */
+void func_B370_b3(void); /* LoadSFXData_Noise */
+void func_B493_b3(void); /* UpdateContFlags */
+void func_B452_b3(void); /* InitSFXData */
+void func_B463_b3(void);
+void func_B472_b3(void); /* InitSFXData_Tri */
+void func_B4A9_b3(void); /* IncrementSFXFrame */
+void func_B58F_b3(void); /* EndNoiseSFX */
+void func_B587_b3(void); /* GotoInitSFXData */
+void func_B4A2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b3(void); /* MultiSFXInit */
+void func_B62C_b3(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b3(void); /* EndMultiSFX */
+void func_B6F2_b3(void); /* EndSQ1SFX */
+void func_B896_b3(void); /* EndTriSFX */
+void func_B98C_b3(void); /* DecreaseSFXTriPeriod */
+void func_B869_b3(void); /* WriteSFXTriPeriod */
+void func_B978_b3(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b3(void); /* DivideSFXTriPeriod */
+void func_B8C3_b3(void); /* RndTriPeriods */
+void func_BA41_b3(void); /* UpdateVolumeEnvelope */
+void func_BA08_b3(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b3(void); /* EndOrLoopMusic */
+void func_BA37_b3(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b3(void); /* ResetVolumeIndex */
+void func_BB1C_b3(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b3(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b3(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b3(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b3(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b3(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b3(void); /* UpdateAllMusicChannels */
+void func_BCAA_b3(void); /* Music00Init */
+void func_BCA4_b3(void); /* Music01Init */
+void func_BC9A_b3(void); /* Music02Init */
+void func_BC96_b3(void); /* Music03Init */
+void func_BC89_b3(void); /* Music04Init */
+void func_BC9E_b3(void); /* Music05Init */
+void func_B9E4_b3(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b3(void); /* InitializeMusic */
+void func_BD77_b3(void);
+void func_BD9F_b3(void);
+void func_BE08_b3(void); /* SongPowerUpTri */
+void func_BE3E_b3(void); /* SongFadeInSQ1 */
+void func_BEB0_b3(void);
+void func_BF1B_b3(void);
+void func_BF0B_b3(void);
+void func_BF67_b3(void);
 void func_E3E0(void);
 void func_A82D_b1(void);
 void func_8001_b1(void);
@@ -16639,104 +16481,108 @@ void func_A8D0_b1(void);
 void func_A8AC_b1(void);
 void func_A998_b1(void);
 void func_A9FC_b1(void);
-void func_BA71_b1(void); /* UpdateVolumeEnvelope */
-void func_BA38_b1(void); /* LoadMusicSQ1SQ2Periods */
-void func_BA67_b1(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b1(void); /* ResetVolumeIndex */
-void func_BAE3_b1(void); /* IncrementToNextMusicChannel */
-void func_BB67_b1(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BA14_b1(void); /* SetVolumeAndDisableSweep */
-void func_BB49_b1(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b1(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BAE0_b1(void); /* MusicChannelBaseEmpty */
+void func_BA41_b1(void); /* UpdateVolumeEnvelope */
+void func_BA08_b1(void); /* LoadMusicSQ1SQ2Periods */
+void func_BA37_b1(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b1(void); /* ResetVolumeIndex */
+void func_BAB3_b1(void); /* IncrementToNextMusicChannel */
+void func_BB37_b1(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_B9E4_b1(void); /* SetVolumeAndDisableSweep */
+void func_BB19_b1(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b1(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BAB0_b1(void); /* MusicChannelBaseEmpty */
 void func_AA49_b1(void);
-void func_BC0E_b1(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b1(void); /* UpdateMusicTriLinearCount */
-void func_BBFD_b1(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BBDE_b1(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b1(void); /* UpdateMusicTriLinearCount */
+void func_BBCD_b1(void); /* UpdateMusicTriLinearCount_setToNoteLength */
 void func_AA9E_b1(void);
 void func_AAE2_b1(void);
 void func_AB00_b1(void);
 void func_AC72_b1(void);
-void func_BCD4_b1(void); /* Music01Init */
-void func_BCCE_b1(void); /* Music05Init */
-void func_BE38_b1(void); /* SongPowerUpTri */
-void func_BCBD_b1(void);
-void func_BCBB_b1(void); /* XYMusicInit */
-void func_BCAA_b1(void); /* GotoMusic01Init */
-void func_BDBB_b1(void);
+void func_BCA4_b1(void); /* Music01Init */
+void func_BC9E_b1(void); /* Music05Init */
+void func_BE08_b1(void); /* SongPowerUpTri */
+void func_BC8B_b1(void); /* XYMusicInit */
 void func_AC76_b1(void);
 void func_AC8A_b1(void);
 void func_AF5D_b1(void);
-void func_B04F_b1(void);
-void func_B0DE_b1(void);
-void func_B2F5_b1(void);
-void func_B359_b1(void); /* RunSFXSQ1InitRoutine */
-void func_B3A4_b1(void); /* LoadSFXData_SQ2 */
-void func_B39C_b1(void); /* LoadSFXData_Tri */
-void func_B3A0_b1(void); /* LoadSFXData_Noise */
-void func_B4C3_b1(void); /* UpdateContFlags */
-void func_B482_b1(void); /* InitSFXData */
-void func_B493_b1(void);
-void func_B4A2_b1(void); /* InitSFXData_Tri */
-void func_B4D9_b1(void); /* IncrementSFXFrame */
-void func_B5BF_b1(void); /* EndNoiseSFX */
-void func_B5C7_b1(void); /* EndNoiseSFX_RTS */
-void func_B5B7_b1(void); /* GotoInitSFXData */
-void func_B4D2_b1(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b1(void); /* MultiSFXInit */
-void func_B65C_b1(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b1(void); /* EndMultiSFX */
-void func_B722_b1(void); /* EndSQ1SFX */
-void func_B8C6_b1(void); /* EndTriSFX */
-void func_B9BC_b1(void); /* DecreaseSFXTriPeriod */
-void func_B899_b1(void); /* WriteSFXTriPeriod */
-void func_B9A8_b1(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b1(void); /* DivideSFXTriPeriod */
-void func_B8F3_b1(void); /* RndTriPeriods */
+void func_B04D_b1(void);
+void func_B0BA_b1(void);
+void func_B0CA_b1(void);
+void func_9830_b1(void);
+void func_B1E0_b1(void);
+void func_80C7_b1(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_80F6_b1(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_B2C5_b1(void);
+void func_B329_b1(void); /* RunSFXSQ1InitRoutine */
+void func_B374_b1(void); /* LoadSFXData_SQ2 */
+void func_B36C_b1(void); /* LoadSFXData_Tri */
+void func_B370_b1(void); /* LoadSFXData_Noise */
+void func_B493_b1(void); /* UpdateContFlags */
+void func_B452_b1(void); /* InitSFXData */
+void func_B463_b1(void);
+void func_B472_b1(void); /* InitSFXData_Tri */
+void func_B4A9_b1(void); /* IncrementSFXFrame */
+void func_B58F_b1(void); /* EndNoiseSFX */
+void func_B597_b1(void); /* EndNoiseSFX_RTS */
+void func_B587_b1(void); /* GotoInitSFXData */
+void func_B4A2_b1(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b1(void); /* MultiSFXInit */
+void func_B62C_b1(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b1(void); /* EndMultiSFX */
+void func_B6F2_b1(void); /* EndSQ1SFX */
+void func_B896_b1(void); /* EndTriSFX */
+void func_B98C_b1(void); /* DecreaseSFXTriPeriod */
+void func_B869_b1(void); /* WriteSFXTriPeriod */
+void func_B978_b1(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b1(void); /* DivideSFXTriPeriod */
+void func_B8C3_b1(void); /* RndTriPeriods */
+void func_B452_b0(void); /* InitSFXData */
+void func_B463_b0(void);
+void func_B472_b0(void); /* InitSFXData_Tri */
 void func_A1D1_b4(void);
-void func_BDBB_b3(void);
-void func_B91C_b3(void); /* SamusDieSFXInit_RTS */
-void func_B194_b3(void);
-void func_BB49_b3(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b3(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b3(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b3(void);
-void func_BCBB_b3(void); /* XYMusicInit */
-void func_B42C_b3(void); /* CheckMusicFlags */
+void func_B17E_b3(void);
+void func_9A06_b3(void); /* GetMetroidAccel */
+void func_9A07_b3(void);
+void func_80C1_b3(void); /* EnemyIfMoveFailedUp_bounce */
+void func_BB19_b3(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b3(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b3(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b3(void);
+void func_BC8B_b3(void); /* XYMusicInit */
+void func_B3FC_b3(void); /* CheckMusicFlags */
 void func_A93E_b3(void);
-void func_AFD4_b1(void);
-void func_B420_b1(void); /* EndOrLoopMusic */
-void func_BB4C_b1(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b1(void); /* LoadNextMusicChannelInstr */
-void func_BBD8_b1(void); /* SetMusicInstrDelayToLength */
-void func_BAD5_b1(void); /* UpdateAllMusicChannels */
-void func_BAD8_b1(void);
-void func_BCDA_b1(void); /* Music00Init */
-void func_BCCA_b1(void); /* Music02Init */
-void func_BCC6_b1(void); /* Music03Init */
-void func_BCB9_b1(void); /* Music04Init */
-void func_BF62_b1(void); /* InitializeMusic */
-void func_BDCF_b1(void);
-void func_BE4E_b1(void);
-void func_BF19_b1(void);
-void func_C2BF_b1(void); /* Adiv16 */
-void func_C2C0_b1(void); /* Adiv8 */
-void func_C2C5_b1(void); /* Amul16 */
-void func_C3D4_b1(void); /* TwosComplement */
-void func_CB73_b1(void); /* SelectSamusPalette */
-void func_CBDA_b1(void); /* SFX_Door */
-void func_CC03_b1(void); /* MotherBrainMusic */
-void func_CC07_b1(void); /* TourianMusic */
-void func_BE66_b1(void); /* SongFadeInTri */
-void func_BE6E_b1(void); /* SongFadeInSQ1 */
-void func_BEE0_b1(void);
-void func_BF47_b1(void);
-void func_BACD_b1(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b1(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_B42C_b1(void); /* CheckMusicFlags */
-void func_BE8E_b1(void);
+void func_AFCC_b1(void);
+void func_AFDA_b1(void);
+void func_B3F0_b1(void); /* EndOrLoopMusic */
+void func_BB1C_b1(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b1(void); /* LoadNextMusicChannelInstr */
+void func_BBA8_b1(void); /* SetMusicInstrDelayToLength */
+void func_BAA5_b1(void); /* UpdateAllMusicChannels */
+void func_BAA8_b1(void);
+void func_BCAA_b1(void); /* Music00Init */
+void func_BC9A_b1(void); /* Music02Init */
+void func_BC96_b1(void); /* Music03Init */
+void func_BC89_b1(void); /* Music04Init */
+void func_BF19_b1(void); /* InitializeMusic */
+void func_BD77_b1(void);
+void func_BD9F_b1(void);
+void func_BE3E_b1(void); /* SongFadeInSQ1 */
+void func_BEB0_b1(void);
+void func_BF1B_b1(void);
+void func_BF0B_b1(void);
+void func_BF67_b1(void);
+void func_80C1_b1(void); /* EnemyIfMoveFailedUp_bounce */
+void func_B374_b0(void); /* LoadSFXData_SQ2 */
+void func_B36C_b0(void); /* LoadSFXData_Tri */
+void func_B370_b0(void); /* LoadSFXData_Noise */
+void func_B493_b0(void); /* UpdateContFlags */
+void func_BA9D_b1(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b1(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BC8D_b1(void);
+void func_B3FC_b1(void); /* CheckMusicFlags */
 void func_A93E_b1(void);
 void func_D184(void);
 void func_E6C9(void);
@@ -16801,8 +16647,6 @@ void func_D07B(void);
 void func_C97C(void);
 void func_D07C(void);
 void func_D4D0(void);
-void func_E1B7(void);
-void func_C3A2(void);
 void func_E385(void);
 void func_E2B1(void);
 void func_EE60(void);
@@ -16811,11 +16655,11 @@ void func_F08A(void);
 void func_DD06(void);
 void func_E285(void);
 void func_EEF3(void);
-void func_D04D(void);
-void func_FD4C(void);
+void func_C92D(void);
+void func_CD4C(void);
 void func_D0B6(void);
-void func_D079(void);
-void func_F34C(void);
+void func_D03D(void);
+void func_D04D(void);
 void func_EEB9(void);
 void func_EE2D(void);
 void func_ED06(void);
@@ -16823,12 +16667,13 @@ void func_C600(void);
 void func_E7D0(void);
 void func_F0E6(void);
 void func_C9C0(void);
-void func_C9B0(void);
-void func_C5B6(void); /* InitBank4 */
-void func_E1A2(void);
-void func_FA90(void);
-void func_CA4C(void);
 void func_DC4C(void);
+void func_C9B0(void);
+void func_FA90(void);
+void func_F5A2(void); /* PlaySnd2 */
+void func_D0F6(void);
+void func_E9D0(void);
+void func_CA4C(void);
 void func_F0F6(void);
 void func_FD00(void);
 void func_FEBD(void);
@@ -16877,7 +16722,6 @@ void func_D09F(void);
 void func_E09E(void);
 void func_C99E(void);
 void func_C099(void);
-void func_C92D(void);
 void func_F09E(void);
 void func_D99E(void); /* SamusCollisionWithSolidEntities_notOnEnemy */
 void func_D905(void);
@@ -16897,269 +16741,24 @@ void func_B1C8_b4(void);
 void func_B1C8_b5(void);
 void func_B1C8_b6(void);
 void func_C39B(void); /* WritePaletteStringByte */
-void func_F347(void); /* UpdateAllEnemies_loop */
 void func_FD68(void);
 void func_F274(void);
 void func_FD0B(void);
 void func_E2E3(void); /* SamusMoveVertically_loop_down */
 void func_FAF4(void); /* UpdateAllPipeBugHoles_loop */
-void func_B17F_b3(void);
-void func_B17F_b4(void);
-void func_B17F_b5(void);
-void func_B6E0_b0(void); /* MissilePickupSFXCont */
-void func_B703_b0(void); /* EnergyPickupSFXCont */
-void func_B71D_b0(void); /* SQ1SFXCont */
-void func_B77F_b0(void); /* BulletFireSFXCont */
-void func_B7B1_b0(void); /* WaveBeamSFXCont */
-void func_B902_b0(void); /* SamusDieSFXInit */
-void func_B7DC_b0(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b0(void); /* MetroidHitSFXInit */
-void func_B951_b0(void); /* StatueRaiseSFXInit */
-void func_B809_b0(void); /* BeepSFXInit */
-void func_B81F_b0(void); /* BigEnemyHitSFXInit */
-void func_B864_b0(void); /* SamusToBallSFXInit */
-void func_B8A8_b0(void); /* BombLaunchSFXInit */
-void func_B91D_b0(void); /* SamusDieSFXCont */
-void func_B7FB_b0(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b0(void); /* MetroidHitSFXCont */
-void func_B970_b0(void); /* StatueRaiseSFXCont */
-void func_B978_b0(void);
-void func_B817_b0(void); /* BeepSFXCont */
-void func_B83E_b0(void); /* BigEnemyHitSFXCont */
-void func_B87F_b0(void); /* SamusToBallSFXCont */
-void func_B8AF_b0(void); /* BombLaunchSFXCont */
-void func_BCAA_b0(void); /* GotoMusic01Init */
-void func_B6A3_b0(void); /* SamusHitSFXInit */
-void func_B61C_b0(void); /* BossHitSFXInit */
-void func_B6C5_b0(void); /* IncorrectPasswordSFXInit */
-void func_B680_b0(void); /* SamusHitSFXCont */
-void func_B626_b0(void); /* BossHitSFXCont */
-void func_B6D1_b0(void); /* IncorrectPasswordSFXCont */
-void func_B6E0_b1(void); /* MissilePickupSFXCont */
-void func_B7B1_b1(void); /* WaveBeamSFXCont */
-void func_B7D6_b1(void); /* LoadSQ1PeriodLow_RTS */
-void func_B902_b1(void); /* SamusDieSFXInit */
-void func_B7DC_b1(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b1(void); /* MetroidHitSFXInit */
-void func_B951_b1(void); /* StatueRaiseSFXInit */
-void func_B809_b1(void); /* BeepSFXInit */
-void func_B81F_b1(void); /* BigEnemyHitSFXInit */
-void func_B864_b1(void); /* SamusToBallSFXInit */
-void func_B8A8_b1(void); /* BombLaunchSFXInit */
-void func_B91D_b1(void); /* SamusDieSFXCont */
-void func_B7FB_b1(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b1(void); /* MetroidHitSFXCont */
-void func_B970_b1(void); /* StatueRaiseSFXCont */
-void func_B978_b1(void);
-void func_B817_b1(void); /* BeepSFXCont */
-void func_B83E_b1(void); /* BigEnemyHitSFXCont */
-void func_B87F_b1(void); /* SamusToBallSFXCont */
-void func_B8AF_b1(void); /* BombLaunchSFXCont */
-void func_80AD_b1(void);
-void func_B6A3_b1(void); /* SamusHitSFXInit */
-void func_B61C_b1(void); /* BossHitSFXInit */
-void func_B6C5_b1(void); /* IncorrectPasswordSFXInit */
-void func_B680_b1(void); /* SamusHitSFXCont */
-void func_B626_b1(void); /* BossHitSFXCont */
-void func_B6D1_b1(void); /* IncorrectPasswordSFXCont */
-void func_B6E0_b2(void); /* MissilePickupSFXCont */
-void func_B703_b2(void); /* EnergyPickupSFXCont */
-void func_B71D_b2(void); /* SQ1SFXCont */
-void func_B77F_b2(void); /* BulletFireSFXCont */
-void func_B7B1_b2(void); /* WaveBeamSFXCont */
-void func_B902_b2(void); /* SamusDieSFXInit */
-void func_B7DC_b2(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b2(void); /* MetroidHitSFXInit */
-void func_B951_b2(void); /* StatueRaiseSFXInit */
-void func_B809_b2(void); /* BeepSFXInit */
-void func_B81F_b2(void); /* BigEnemyHitSFXInit */
-void func_B864_b2(void); /* SamusToBallSFXInit */
-void func_B8A8_b2(void); /* BombLaunchSFXInit */
-void func_B91D_b2(void); /* SamusDieSFXCont */
-void func_B7FB_b2(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b2(void); /* MetroidHitSFXCont */
-void func_B970_b2(void); /* StatueRaiseSFXCont */
-void func_B978_b2(void);
-void func_B817_b2(void); /* BeepSFXCont */
-void func_B83E_b2(void); /* BigEnemyHitSFXCont */
-void func_B87F_b2(void); /* SamusToBallSFXCont */
-void func_B8AF_b2(void); /* BombLaunchSFXCont */
-void func_80AD_b2(void);
-void func_BCAA_b2(void); /* GotoMusic01Init */
-void func_B6A3_b2(void); /* SamusHitSFXInit */
-void func_B6C5_b2(void); /* IncorrectPasswordSFXInit */
-void func_B680_b2(void); /* SamusHitSFXCont */
-void func_B626_b2(void); /* BossHitSFXCont */
-void func_B6D1_b2(void); /* IncorrectPasswordSFXCont */
 void func_99E5_b3(void);
 void func_8009_b3(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
 void func_9B45_b3(void);
 void func_9B85_b3(void);
-void func_B6E0_b3(void); /* MissilePickupSFXCont */
-void func_B703_b3(void); /* EnergyPickupSFXCont */
-void func_B71D_b3(void); /* SQ1SFXCont */
-void func_B77F_b3(void); /* BulletFireSFXCont */
-void func_B7B1_b3(void); /* WaveBeamSFXCont */
-void func_B902_b3(void); /* SamusDieSFXInit */
-void func_B7DC_b3(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b3(void); /* MetroidHitSFXInit */
-void func_B951_b3(void); /* StatueRaiseSFXInit */
-void func_B809_b3(void); /* BeepSFXInit */
-void func_B81F_b3(void); /* BigEnemyHitSFXInit */
-void func_B864_b3(void); /* SamusToBallSFXInit */
-void func_B8A8_b3(void); /* BombLaunchSFXInit */
-void func_B91D_b3(void); /* SamusDieSFXCont */
-void func_B7FB_b3(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b3(void); /* MetroidHitSFXCont */
-void func_B970_b3(void); /* StatueRaiseSFXCont */
-void func_B978_b3(void);
-void func_B817_b3(void); /* BeepSFXCont */
-void func_B83E_b3(void); /* BigEnemyHitSFXCont */
-void func_B87F_b3(void); /* SamusToBallSFXCont */
-void func_B8AF_b3(void); /* BombLaunchSFXCont */
-void func_80AD_b3(void);
-void func_BCAA_b3(void); /* GotoMusic01Init */
-void func_B6A3_b3(void); /* SamusHitSFXInit */
-void func_B61C_b3(void); /* BossHitSFXInit */
-void func_B6C5_b3(void); /* IncorrectPasswordSFXInit */
-void func_B680_b3(void); /* SamusHitSFXCont */
-void func_B626_b3(void); /* BossHitSFXCont */
-void func_B6D1_b3(void); /* IncorrectPasswordSFXCont */
 void func_A0F1_b3(void);
 void func_847F_b3(void);
-void func_B6E0_b4(void); /* MissilePickupSFXCont */
-void func_B703_b4(void); /* EnergyPickupSFXCont */
-void func_B71D_b4(void); /* SQ1SFXCont */
-void func_B77F_b4(void); /* BulletFireSFXCont */
-void func_B7B1_b4(void); /* WaveBeamSFXCont */
-void func_B902_b4(void); /* SamusDieSFXInit */
-void func_B7DC_b4(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b4(void); /* MetroidHitSFXInit */
-void func_B951_b4(void); /* StatueRaiseSFXInit */
-void func_B809_b4(void); /* BeepSFXInit */
-void func_B81F_b4(void); /* BigEnemyHitSFXInit */
-void func_B864_b4(void); /* SamusToBallSFXInit */
-void func_B8A8_b4(void); /* BombLaunchSFXInit */
-void func_B91D_b4(void); /* SamusDieSFXCont */
-void func_B7FB_b4(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b4(void); /* MetroidHitSFXCont */
-void func_B970_b4(void); /* StatueRaiseSFXCont */
-void func_B978_b4(void);
-void func_B817_b4(void); /* BeepSFXCont */
-void func_B83E_b4(void); /* BigEnemyHitSFXCont */
-void func_B87F_b4(void); /* SamusToBallSFXCont */
-void func_B8AF_b4(void); /* BombLaunchSFXCont */
-void func_80AD_b4(void);
-void func_BCAA_b4(void); /* GotoMusic01Init */
-void func_B6A3_b4(void); /* SamusHitSFXInit */
-void func_B61C_b4(void); /* BossHitSFXInit */
-void func_B6C5_b4(void); /* IncorrectPasswordSFXInit */
-void func_B680_b4(void); /* SamusHitSFXCont */
-void func_B626_b4(void); /* BossHitSFXCont */
-void func_B6D1_b4(void); /* IncorrectPasswordSFXCont */
-void func_B6E0_b5(void); /* MissilePickupSFXCont */
-void func_B703_b5(void); /* EnergyPickupSFXCont */
-void func_B71D_b5(void); /* SQ1SFXCont */
-void func_B77F_b5(void); /* BulletFireSFXCont */
-void func_B7B1_b5(void); /* WaveBeamSFXCont */
-void func_B902_b5(void); /* SamusDieSFXInit */
-void func_B7DC_b5(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b5(void); /* MetroidHitSFXInit */
-void func_B951_b5(void); /* StatueRaiseSFXInit */
-void func_B809_b5(void); /* BeepSFXInit */
-void func_B81F_b5(void); /* BigEnemyHitSFXInit */
-void func_B864_b5(void); /* SamusToBallSFXInit */
-void func_B8A8_b5(void); /* BombLaunchSFXInit */
-void func_B91D_b5(void); /* SamusDieSFXCont */
-void func_B7FB_b5(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b5(void); /* MetroidHitSFXCont */
-void func_B970_b5(void); /* StatueRaiseSFXCont */
-void func_B978_b5(void);
-void func_B817_b5(void); /* BeepSFXCont */
-void func_B83E_b5(void); /* BigEnemyHitSFXCont */
-void func_B87F_b5(void); /* SamusToBallSFXCont */
-void func_B8AF_b5(void); /* BombLaunchSFXCont */
-void func_80AD_b5(void);
-void func_BCAA_b5(void); /* GotoMusic01Init */
-void func_B6A3_b5(void); /* SamusHitSFXInit */
-void func_B61C_b5(void); /* BossHitSFXInit */
-void func_B6C5_b5(void); /* IncorrectPasswordSFXInit */
-void func_B680_b5(void); /* SamusHitSFXCont */
-void func_B626_b5(void); /* BossHitSFXCont */
-void func_B6D1_b5(void); /* IncorrectPasswordSFXCont */
-void func_B4D9_b0(void); /* IncrementSFXFrame */
-void func_B722_b0(void); /* EndSQ1SFX */
-void func_B6FC_b0(void); /* MissilePickupSFXCont_RTS */
-void func_B4D2_b0(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B482_b0(void); /* InitSFXData */
-void func_B493_b0(void);
-void func_B4A2_b0(void); /* InitSFXData_Tri */
-void func_B8F3_b0(void); /* RndTriPeriods */
-void func_B7D6_b0(void); /* LoadSQ1PeriodLow_RTS */
-void func_B9BC_b0(void); /* DecreaseSFXTriPeriod */
-void func_B91C_b0(void); /* SamusDieSFXInit_RTS */
-void func_B8C6_b0(void); /* EndTriSFX */
-void func_B8D6_b0(void); /* EndTriSFX_RTS */
-void func_B9D0_b0(void); /* DivideSFXTriPeriod */
-void func_B9A8_b0(void); /* IncreaseSFXTriPeriod */
-void func_B899_b0(void); /* WriteSFXTriPeriod */
-void func_B39C_b0(void); /* LoadSFXData_Tri */
-void func_BCD4_b0(void); /* Music01Init */
-void func_B5D5_b0(void); /* MultiSFXInit */
-void func_B5FD_b0(void); /* EndMultiSFX */
-void func_B3A4_b0(void); /* LoadSFXData_SQ2 */
-void func_B65C_b0(void); /* WriteSQ1SQ2PeriodLow */
-void func_B6C4_b0(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b1(void); /* MissilePickupSFXCont_RTS */
-void func_80A5_b1(void); /* EnemyMove_loop_Right */
-void func_B6FC_b2(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b2(void); /* LoadSQ1PeriodLow_RTS */
-void func_B91C_b2(void); /* SamusDieSFXInit_RTS */
-void func_80A5_b2(void); /* EnemyMove_loop_Right */
-void func_B6C4_b2(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b3(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b3(void); /* LoadSQ1PeriodLow_RTS */
-void func_80A5_b3(void); /* EnemyMove_loop_Right */
-void func_B6C4_b3(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b4(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b4(void); /* LoadSQ1PeriodLow_RTS */
-void func_80A5_b4(void); /* EnemyMove_loop_Right */
-void func_B6C4_b4(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b5(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b5(void); /* LoadSQ1PeriodLow_RTS */
-void func_80A5_b5(void); /* EnemyMove_loop_Right */
-void func_B6C4_b5(void); /* SamusHitSFXInit_RTS */
-void func_B4C3_b0(void); /* UpdateContFlags */
-void func_B3A0_b0(void); /* LoadSFXData_Noise */
-void func_BCBD_b0(void);
-void func_BA14_b0(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b0(void); /* InitializeMusic */
-void func_BAD5_b0(void); /* UpdateAllMusicChannels */
-void func_BB0C_b0(void); /* LoadNextMusicChannelInstr */
-void func_BAE3_b0(void); /* IncrementToNextMusicChannel */
-void func_BAE0_b0(void); /* MusicChannelBaseEmpty */
-void func_B42C_b0(void); /* CheckMusicFlags */
-void func_BA23_b0(void); /* ResetVolumeIndex */
-void func_BAD1_b0(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BACD_b0(void); /* GotoEndOrLoopMusic */
-void func_BB4C_b0(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BA67_b0(void); /* UpdateAllVolumeEnvelopes */
-void func_B420_b0(void); /* EndOrLoopMusic */
-void func_BB49_b0(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b0(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BBD8_b0(void); /* SetMusicInstrDelayToLength */
-void func_BA71_b0(void); /* UpdateVolumeEnvelope */
-void func_BBE7_b0(void); /* UpdateMusicTriLinearCount */
-void func_BC0E_b0(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BA38_b0(void); /* LoadMusicSQ1SQ2Periods */
-void func_BBFD_b0(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b0(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
 void func_C531(void); /* InitBank0 */
 void func_C54A(void);
 void func_C543(void);
 void func_C552(void); /* InitBank1 */
 void func_C583(void); /* InitBank2 */
 void func_C585(void);
+void func_C5B6(void); /* InitBank4 */
 void func_C5C3(void); /* InitBank5 */
 void func_84C8_b7(void);
 void func_A0A0_b7(void);
@@ -17198,7 +16797,6 @@ void func_8042_b2(void); /* CommonJump_SubtractHealth */
 void func_8042_b4(void); /* CommonJump_SubtractHealth */
 void func_8042_b5(void); /* CommonJump_SubtractHealth */
 void func_8006_b1(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
-void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
 void func_801B_b1(void); /* CommonJump_EnemyFlipAfterDisplacement */
 void func_801B_b3(void); /* CommonJump_EnemyFlipAfterDisplacement */
 void func_801B_b5(void); /* CommonJump_EnemyFlipAfterDisplacement */
@@ -17224,16 +16822,56 @@ void func_8033_b3(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_8033_b5(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_802A_b1(void); /* CommonJump_0E */
 void func_802A_b5(void); /* CommonJump_0E */
-void func_BB22_b0(void);
-void func_BB22_b1(void);
-void func_BB22_b2(void);
 void func_B920_b0(void);
+void func_B920_b1(void);
+void func_B921_b1(void); /* StatueRaiseSFXInit */
 void func_B920_b2(void);
-void func_B359_b0(void); /* RunSFXSQ1InitRoutine */
-void func_B360_b0(void); /* RunSFXSQ1ContRoutine */
-void func_B5BF_b0(void); /* EndNoiseSFX */
-void func_B5B7_b0(void); /* GotoInitSFXData */
-void func_BF47_b0(void);
+void func_B329_b0(void); /* RunSFXSQ1InitRoutine */
+void func_B330_b0(void); /* RunSFXSQ1ContRoutine */
+void func_B4A9_b0(void); /* IncrementSFXFrame */
+void func_B58F_b0(void); /* EndNoiseSFX */
+void func_B587_b0(void); /* GotoInitSFXData */
+void func_B4A2_b0(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b0(void); /* MultiSFXInit */
+void func_B62C_b0(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b0(void); /* EndMultiSFX */
+void func_B6F2_b0(void); /* EndSQ1SFX */
+void func_B896_b0(void); /* EndTriSFX */
+void func_B98C_b0(void); /* DecreaseSFXTriPeriod */
+void func_B869_b0(void); /* WriteSFXTriPeriod */
+void func_B978_b0(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b0(void); /* DivideSFXTriPeriod */
+void func_B8C3_b0(void); /* RndTriPeriods */
+void func_BA41_b0(void); /* UpdateVolumeEnvelope */
+void func_BA08_b0(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b0(void); /* EndOrLoopMusic */
+void func_BA37_b0(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b0(void); /* ResetVolumeIndex */
+void func_BB1C_b0(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BBDE_b0(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b0(void); /* UpdateMusicTriLinearCount */
+void func_BBA8_b0(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b0(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b0(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b0(void); /* UpdateAllMusicChannels */
+void func_BADC_b0(void); /* LoadNextMusicChannelInstr */
+void func_BAB3_b0(void); /* IncrementToNextMusicChannel */
+void func_BAB0_b0(void); /* MusicChannelBaseEmpty */
+void func_BCA4_b0(void); /* Music01Init */
+void func_BCAA_b0(void); /* Music00Init */
+void func_BC9A_b0(void); /* Music02Init */
+void func_BC96_b0(void); /* Music03Init */
+void func_BC89_b0(void); /* Music04Init */
+void func_BC9E_b0(void); /* Music05Init */
+void func_B9E4_b0(void); /* SetVolumeAndDisableSweep */
+void func_BF67_b0(void);
+void func_BB19_b0(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b0(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b0(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b0(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BC8D_b0(void);
+void func_BC8B_b0(void); /* XYMusicInit */
+void func_B3FC_b0(void); /* CheckMusicFlags */
 void func_8021_b1(void); /* CommonJump_SpawnEnProjectile */
 void func_8021_b3(void); /* CommonJump_SpawnEnProjectile */
 void func_8021_b4(void); /* CommonJump_SpawnEnProjectile */
@@ -17242,6 +16880,11 @@ void func_803F_b1(void); /* CommonJump_DrawTileBlast */
 void func_803F_b2(void); /* CommonJump_DrawTileBlast */
 void func_803F_b4(void); /* CommonJump_DrawTileBlast */
 void func_803F_b5(void); /* CommonJump_DrawTileBlast */
+void func_B61C_b0(void);
+void func_B61C_b1(void);
+void func_B61C_b3(void);
+void func_B61C_b4(void);
+void func_B61C_b5(void);
 void func_8045_b1(void); /* CommonJump_Base10Subtract */
 void func_8045_b2(void); /* CommonJump_Base10Subtract */
 void func_8045_b4(void); /* CommonJump_Base10Subtract */
@@ -17258,44 +16901,42 @@ void func_847F_b1(void);
 void func_847F_b2(void);
 void func_847F_b4(void);
 void func_847F_b5(void);
-void func_BDBB_b0(void);
-void func_BF19_b0(void);
-void func_C000_b0(void); /* RandomNumbers */
-void func_BDBB_b2(void);
-void func_BDCF_b0(void);
-void func_BE38_b0(void); /* SongPowerUpTri */
-void func_BE6E_b0(void); /* SongFadeInSQ1 */
-void func_BEE0_b0(void);
+void func_BF19_b0(void); /* InitializeMusic */
 void func_80B0_b7(void);
 void func_8296_b7(void);
 void func_832F_b7(void);
 void func_8180_b0(void);
 void func_8182_b0(void); /* Crosshairs */
 void func_8988_b0(void);
-void func_B31B_b0(void); /* SFXSQ1ContRoutineTbl */
-void func_B329_b0(void);
-void func_B33D_b0(void);
-void func_B38C_b0(void); /* RunSFXMultiContRoutine */
-void func_B394_b0(void); /* GotoRunSFXSQ1InitRoutine */
-void func_B3F0_b0(void);
-void func_B3FC_b0(void);
-void func_B40E_b0(void);
-void func_B4A9_b0(void);
-void func_B4BD_b0(void);
-void func_B587_b0(void);
-void func_B5A5_b0(void);
-void func_B98C_b0(void);
-void func_B9A0_b0(void);
-void func_B9E4_b0(void);
-void func_B9E5_b0(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b0(void);
-void func_BA41_b0(void);
-void func_BC1C_b0(void);
-void func_BC53_b0(void);
-void func_BC64_b0(void);
-void func_BC7B_b0(void); /* ContinueMusic */
-void func_BA70_b1(void);
-void func_BA7B_b1(void);
+void func_B2EB_b0(void); /* SFXSQ1ContRoutineTbl */
+void func_B2F9_b0(void);
+void func_B30D_b0(void);
+void func_B35C_b0(void); /* RunSFXMultiContRoutine */
+void func_B364_b0(void); /* GotoRunSFXSQ1InitRoutine */
+void func_B3C0_b0(void);
+void func_B3E4_b0(void);
+void func_B3CC_b0(void);
+void func_B3DE_b0(void);
+void func_B479_b0(void);
+void func_B48D_b0(void);
+void func_B557_b0(void);
+void func_B575_b0(void);
+void func_B948_b0(void);
+void func_B95C_b0(void);
+void func_B970_b0(void);
+void func_B9B4_b0(void);
+void func_B9B5_b0(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b0(void);
+void func_BA11_b0(void);
+void func_BBEC_b0(void);
+void func_BC23_b0(void);
+void func_BC34_b0(void);
+void func_BC4B_b0(void); /* ContinueMusic */
+void func_BC7A_b0(void); /* GotoMusic01Init */
+void func_BEE9_b0(void);
+void func_C000_b0(void); /* RandomNumbers */
+void func_BA40_b1(void);
+void func_BA4B_b1(void);
 void func_871F_b1(void); /* ObjPlace1 */
 void func_872B_b1(void); /* ObjPlace2 */
 void func_8737_b1(void); /* ObjPlace3 */
@@ -17401,47 +17042,81 @@ void func_9C96_b1(void); /* LoadEnemyPositionFromTemp__BANK1 */
 void func_9CA8_b1(void); /* StoreEnemyPositionToTemp__BANK1 */
 void func_9CCC_b1(void); /* KraidTryToLaunchLint_BANK1 */
 void func_9D05_b1(void); /* KraidTryToLaunchNail_BANK1 */
-void func_B3F0_b1(void);
-void func_B3FC_b1(void);
-void func_B40E_b1(void);
-void func_B4A9_b1(void);
-void func_B4BD_b1(void);
-void func_B53F_b1(void); /* SpitFlameSFXInit */
-void func_B546_b1(void); /* SpitFlameSFXCont */
-void func_B55B_b1(void); /* ScrewAttackSFXInit */
-void func_B569_b1(void); /* ScrewAttackSFXCont */
-void func_B587_b1(void);
-void func_B59E_b1(void); /* MissileLaunchSFXInit */
-void func_B5A5_b1(void);
-void func_B5AB_b1(void); /* MissileLaunchSFXCont */
-void func_B5B3_b1(void); /* BombExplodeSFXInit */
-void func_B5BA_b1(void); /* NoiseSFXCont */
-void func_B5C8_b1(void); /* SamusWalkSFXInit */
-void func_B6FD_b1(void); /* MissilePickupSFXInit */
-void func_B703_b1(void); /* EnergyPickupSFXCont */
-void func_B717_b1(void); /* EnergyPickupSFXInit */
-void func_B71D_b1(void); /* SQ1SFXCont */
-void func_B733_b1(void); /* SamusJumpSFXInit */
-void func_B740_b1(void); /* EnemyHitSFXInit */
-void func_B746_b1(void); /* BulletFireSFXInit */
-void func_B765_b1(void); /* MetalSFXInit */
-void func_B76C_b1(void); /* OutOfPipeSFXInit */
-void func_B77F_b1(void); /* BulletFireSFXCont */
-void func_B7AA_b1(void); /* WaveBeamSFXInit */
-void func_B98C_b1(void);
-void func_B9A0_b1(void);
-void func_B9E4_b1(void);
-void func_B9E5_b1(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b1(void);
-void func_BA41_b1(void);
-void func_BCA7_b1(void); /* GotoMusic00Init */
-void func_BCAD_b1(void); /* GotoMusic02Init */
-void func_BCB0_b1(void); /* GotoMusic03Init */
-void func_BCB3_b1(void); /* GotoMusic04Init */
-void func_BC1C_b1(void);
-void func_BC27_b1(void); /* MusicChannelInstr_SongNoteNoise_endIf_A */
-void func_BC53_b1(void);
-void func_BC64_b1(void);
+void func_B3C0_b1(void);
+void func_B3CC_b1(void);
+void func_B3DE_b1(void);
+void func_B479_b1(void);
+void func_B48D_b1(void);
+void func_B50F_b1(void); /* SpitFlameSFXInit */
+void func_B516_b1(void); /* SpitFlameSFXCont */
+void func_B52B_b1(void); /* ScrewAttackSFXInit */
+void func_B539_b1(void); /* ScrewAttackSFXCont */
+void func_B557_b1(void);
+void func_B56E_b1(void); /* MissileLaunchSFXInit */
+void func_B575_b1(void);
+void func_B57B_b1(void); /* MissileLaunchSFXCont */
+void func_B583_b1(void); /* BombExplodeSFXInit */
+void func_B58A_b1(void); /* NoiseSFXCont */
+void func_B598_b1(void); /* SamusWalkSFXInit */
+void func_B5EC_b1(void); /* BossHitSFXInit */
+void func_B5F6_b1(void); /* BossHitSFXCont */
+void func_B650_b1(void); /* SamusHitSFXCont */
+void func_B673_b1(void); /* SamusHitSFXInit */
+void func_B695_b1(void); /* IncorrectPasswordSFXInit */
+void func_B6A1_b1(void); /* IncorrectPasswordSFXCont */
+void func_B6B0_b1(void); /* MissilePickupSFXCont */
+void func_B6CD_b1(void); /* MissilePickupSFXInit */
+void func_B6D3_b1(void); /* EnergyPickupSFXCont */
+void func_B6E7_b1(void); /* EnergyPickupSFXInit */
+void func_B6ED_b1(void); /* SQ1SFXCont */
+void func_B703_b1(void); /* SamusJumpSFXInit */
+void func_B710_b1(void); /* EnemyHitSFXInit */
+void func_B716_b1(void); /* BulletFireSFXInit */
+void func_B735_b1(void); /* MetalSFXInit */
+void func_B73C_b1(void); /* OutOfPipeSFXInit */
+void func_B74F_b1(void); /* BulletFireSFXCont */
+void func_B77A_b1(void); /* WaveBeamSFXInit */
+void func_B781_b1(void); /* WaveBeamSFXCont */
+void func_B7A6_b1(void); /* LoadSQ1PeriodLow_RTS */
+void func_B7AC_b1(void); /* DoorOpenCloseSFXInit */
+void func_B7CB_b1(void); /* DoorOpenCloseSFXCont */
+void func_B7D9_b1(void); /* BeepSFXInit */
+void func_B7E7_b1(void); /* BeepSFXCont */
+void func_B7EF_b1(void); /* BigEnemyHitSFXInit */
+void func_B80E_b1(void); /* BigEnemyHitSFXCont */
+void func_B834_b1(void); /* SamusToBallSFXInit */
+void func_B84F_b1(void); /* SamusToBallSFXCont */
+void func_B878_b1(void); /* BombLaunchSFXInit */
+void func_B87F_b1(void); /* BombLaunchSFXCont */
+void func_B8A7_b1(void); /* MetroidHitSFXInit */
+void func_B8B1_b1(void); /* MetroidHitSFXCont */
+void func_B8D2_b1(void); /* SamusDieSFXInit */
+void func_B8ED_b1(void); /* SamusDieSFXCont */
+void func_B940_b1(void); /* StatueRaiseSFXCont */
+void func_B948_b1(void);
+void func_B95C_b1(void);
+void func_B970_b1(void);
+void func_B9B4_b1(void);
+void func_B9B5_b1(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b1(void);
+void func_BA11_b1(void);
+void func_BC77_b1(void); /* GotoMusic00Init */
+void func_BC7D_b1(void); /* GotoMusic02Init */
+void func_BC80_b1(void); /* GotoMusic03Init */
+void func_BC83_b1(void); /* GotoMusic04Init */
+void func_BBEC_b1(void);
+void func_BBF7_b1(void); /* MusicChannelInstr_SongNoteNoise_endIf_A */
+void func_BC23_b1(void);
+void func_BC34_b1(void);
+void func_BEE9_b1(void);
+void func_C2BF_b1(void); /* Adiv16 */
+void func_C2C0_b1(void); /* Adiv8 */
+void func_C2C5_b1(void); /* Amul16 */
+void func_C3D4_b1(void); /* TwosComplement */
+void func_CB73_b1(void); /* SelectSamusPalette */
+void func_CBDA_b1(void); /* SFX_Door */
+void func_CC03_b1(void); /* MotherBrainMusic */
+void func_CC07_b1(void); /* TourianMusic */
 void func_D2FD_b1(void); /* SetObjAnimIndex */
 void func_DC1E_b1(void); /* MapScrollRoutine */
 void func_E449_b1(void); /* NegateTemp00Temp01 */
@@ -17452,23 +17127,25 @@ void func_E8FC_b1(void); /* EnemyCheckMoveRight */
 void func_E96A_b1(void); /* MakeRoomRAMPtr */
 void func_F744_b1(void); /* OrEnData05 */
 void func_F74B_b1(void); /* ReadTableAt968B */
-void func_B3F0_b2(void);
-void func_B3FC_b2(void);
-void func_B40E_b2(void);
-void func_B4A9_b2(void);
-void func_B4BD_b2(void);
-void func_B587_b2(void);
-void func_B5A5_b2(void);
-void func_B98C_b2(void);
-void func_B9A0_b2(void);
-void func_B9E4_b2(void);
-void func_B9E5_b2(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b2(void);
-void func_BA41_b2(void);
-void func_BC1C_b2(void);
-void func_BC53_b2(void);
-void func_BC64_b2(void);
-void func_BF19_b2(void);
+void func_B3C0_b2(void);
+void func_B3E4_b2(void);
+void func_B3CC_b2(void);
+void func_B3DE_b2(void);
+void func_B479_b2(void);
+void func_B48D_b2(void);
+void func_B557_b2(void);
+void func_B575_b2(void);
+void func_B948_b2(void);
+void func_B95C_b2(void);
+void func_B970_b2(void);
+void func_B9B4_b2(void);
+void func_B9B5_b2(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b2(void);
+void func_BA11_b2(void);
+void func_BBEC_b2(void);
+void func_BC23_b2(void);
+void func_BC34_b2(void);
+void func_BEE9_b2(void);
 void func_C2BF_b2(void); /* Adiv16 */
 void func_C2C0_b2(void); /* Adiv8 */
 void func_C2C5_b2(void); /* Amul16 */
@@ -17487,8 +17164,6 @@ void func_E8FC_b2(void); /* EnemyCheckMoveRight */
 void func_E96A_b2(void); /* MakeRoomRAMPtr */
 void func_F744_b2(void); /* OrEnData05 */
 void func_F74B_b2(void); /* ReadTableAt968B */
-void func_9A06_b3(void); /* GetMetroidAccel */
-void func_9A07_b3(void);
 void func_9AF9_b3(void); /* SetRinkaSpeed_BANK3 */
 void func_9DF2_b3(void); /* MotherBrain_Idle_CollideWithSamus */
 void func_9E43_b3(void); /* UpdateMotherBrainFlashDelay */
@@ -17500,23 +17175,26 @@ void func_A028_b3(void);
 void func_A02E_b3(void); /* MotherBrain_Idle_UpdateAnimEye */
 void func_A041_b3(void); /* MotherBrain_DrawSprites */
 void func_A072_b3(void); /* MotherBrain_Disappear_Disintegrate */
-void func_B3F0_b3(void);
-void func_B3FC_b3(void);
-void func_B40E_b3(void);
-void func_B4A9_b3(void);
-void func_B4BD_b3(void);
-void func_B587_b3(void);
-void func_B5A5_b3(void);
-void func_B98C_b3(void);
-void func_B9A0_b3(void);
-void func_B9E4_b3(void);
-void func_B9E5_b3(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b3(void);
-void func_BA41_b3(void);
-void func_BC1C_b3(void);
-void func_BC53_b3(void);
-void func_BC64_b3(void);
-void func_BF19_b3(void);
+void func_B3C0_b3(void);
+void func_B3E4_b3(void);
+void func_B3CC_b3(void);
+void func_B3DE_b3(void);
+void func_B479_b3(void);
+void func_B48D_b3(void);
+void func_B557_b3(void);
+void func_B575_b3(void);
+void func_B948_b3(void);
+void func_B95C_b3(void);
+void func_B970_b3(void);
+void func_B9B4_b3(void);
+void func_B9B5_b3(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b3(void);
+void func_BA11_b3(void);
+void func_BAF2_b3(void);
+void func_BBEC_b3(void);
+void func_BC23_b3(void);
+void func_BC34_b3(void);
+void func_BEE9_b3(void);
 void func_C2BF_b3(void); /* Adiv16 */
 void func_C2C0_b3(void); /* Adiv8 */
 void func_C2C5_b3(void); /* Amul16 */
@@ -17535,23 +17213,26 @@ void func_E8FC_b3(void); /* EnemyCheckMoveRight */
 void func_E96A_b3(void); /* MakeRoomRAMPtr */
 void func_F744_b3(void); /* OrEnData05 */
 void func_F74B_b3(void); /* ReadTableAt968B */
-void func_B3F0_b4(void);
-void func_B3FC_b4(void);
-void func_B40E_b4(void);
-void func_B4A9_b4(void);
-void func_B4BD_b4(void);
-void func_B587_b4(void);
-void func_B5A5_b4(void);
-void func_B98C_b4(void);
-void func_B9A0_b4(void);
-void func_B9E4_b4(void);
-void func_B9E5_b4(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b4(void);
-void func_BA41_b4(void);
-void func_BC1C_b4(void);
-void func_BC53_b4(void);
-void func_BC64_b4(void);
-void func_BF19_b4(void);
+void func_B3C0_b4(void);
+void func_B3E4_b4(void);
+void func_B3CC_b4(void);
+void func_B3DE_b4(void);
+void func_B479_b4(void);
+void func_B48D_b4(void);
+void func_B557_b4(void);
+void func_B575_b4(void);
+void func_B948_b4(void);
+void func_B95C_b4(void);
+void func_B970_b4(void);
+void func_B9B4_b4(void);
+void func_B9B5_b4(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b4(void);
+void func_BA11_b4(void);
+void func_BAF2_b4(void);
+void func_BBEC_b4(void);
+void func_BC23_b4(void);
+void func_BC34_b4(void);
+void func_BEE9_b4(void);
 void func_C2BF_b4(void); /* Adiv16 */
 void func_C2C0_b4(void); /* Adiv8 */
 void func_C2C5_b4(void); /* Amul16 */
@@ -17572,7 +17253,6 @@ void func_F744_b4(void); /* OrEnData05 */
 void func_F74B_b4(void); /* ReadTableAt968B */
 void func_871C_b5(void);
 void func_95C6_b5(void); /* TwosComplement_ */
-void func_9830_b5(void); /* UpdateEnemyCommon_Decide_BANK5 */
 void func_98F8_b5(void); /* UpdateSwooperAnim_BANK5 */
 void func_9958_b5(void); /* SwooperChangeEnemyType_BANK5 */
 void func_99AD_b5(void); /* CrawlerReorientSprite_BANK5 */
@@ -17583,23 +17263,24 @@ void func_99F8_b5(void); /* CrawlerOutsideCornerGetNextOrientation_BANK5 */
 void func_9A00_b5(void); /* JumpByRTSToMovementRoutine_BANK5 */
 void func_9A07_b5(void);
 void func_9A79_b5(void); /* RidleyTryToLaunchFireball_BANK5 */
-void func_B3F0_b5(void);
-void func_B3FC_b5(void);
-void func_B40E_b5(void);
-void func_B4A9_b5(void);
-void func_B4BD_b5(void);
-void func_B587_b5(void);
-void func_B5A5_b5(void);
-void func_B98C_b5(void);
-void func_B9A0_b5(void);
-void func_B9E4_b5(void);
-void func_B9E5_b5(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b5(void);
-void func_BA41_b5(void);
-void func_BC1C_b5(void);
-void func_BC53_b5(void);
-void func_BC64_b5(void);
-void func_BF19_b5(void);
+void func_B3C0_b5(void);
+void func_B3E4_b5(void);
+void func_B3CC_b5(void);
+void func_B3DE_b5(void);
+void func_B479_b5(void);
+void func_B48D_b5(void);
+void func_B557_b5(void);
+void func_B575_b5(void);
+void func_B95C_b5(void);
+void func_B970_b5(void);
+void func_B9B4_b5(void);
+void func_B9B5_b5(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b5(void);
+void func_BA11_b5(void);
+void func_BAF2_b5(void);
+void func_BBEC_b5(void);
+void func_BC34_b5(void);
+void func_BEE9_b5(void);
 void func_C2BF_b5(void); /* Adiv16 */
 void func_C2C0_b5(void); /* Adiv8 */
 void func_C2C5_b5(void); /* Amul16 */
@@ -17618,9 +17299,8 @@ void func_E8FC_b5(void); /* EnemyCheckMoveRight */
 void func_E96A_b5(void); /* MakeRoomRAMPtr */
 void func_F744_b5(void); /* OrEnData05 */
 void func_F74B_b5(void); /* ReadTableAt968B */
-void func_B2FC_b0(void);
-void func_B568_b0(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b0(void);
+void func_B2A3_b0(void);
+void func_B538_b0(void); /* ScrewAttackSFXInit_RTS */
 void func_86FB_b1(void);
 void func_86FD_b1(void); /* ObjPlace6 */
 void func_8701_b1(void); /* ObjPlace0 */
@@ -17658,19 +17338,18 @@ void func_87B1_b1(void); /* ObjPlaceE */
 void func_89F6_b1(void);
 void func_89FB_b1(void); /* ObjFrame_SamusRunPntUpFire2 */
 void func_99A1_b1(void); /* UpdateEnemyCommon_Decide_BANK1 */
-void func_B568_b1(void); /* ScrewAttackSFXInit_RTS */
-void func_B594_b1(void); /* IncrementNoisePeriod */
-void func_B769_b1(void); /* GotoInitSFXData2 */
-void func_BC22_b1(void);
-void func_B568_b2(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b2(void);
+void func_B538_b1(void); /* ScrewAttackSFXInit_RTS */
+void func_B564_b1(void); /* IncrementNoisePeriod */
+void func_B694_b1(void); /* SamusHitSFXInit_RTS */
+void func_B6CC_b1(void); /* MissilePickupSFXCont_RTS */
+void func_B739_b1(void); /* GotoInitSFXData2 */
+void func_B8A6_b1(void); /* EndTriSFX_RTS */
+void func_B8EC_b1(void); /* SamusDieSFXInit_RTS */
+void func_B538_b2(void); /* ScrewAttackSFXInit_RTS */
 void func_9DF1_b3(void);
-void func_B568_b3(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b3(void);
-void func_B568_b4(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b4(void);
-void func_B568_b5(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b5(void);
+void func_B538_b3(void); /* ScrewAttackSFXInit_RTS */
+void func_B538_b4(void); /* ScrewAttackSFXInit_RTS */
+void func_B538_b5(void); /* ScrewAttackSFXInit_RTS */
 void func_913F_b1(void);
 void func_9A07_b1(void);
 void func_9F54_b1(void);
@@ -17704,16 +17383,11 @@ void func_9161_b1(void);
 void func_9173_b1(void);
 void func_A44D_b1(void);
 void func_B0E7_b1(void);
-void func_AFE5_b1(void);
+void func_B0A2_b1(void);
 void func_A470_b1(void);
 void func_A6FB_b1(void);
 void func_A6ED_b1(void);
 void func_A7AD_b1(void);
-void func_B503_b1(void);
-void func_B91C_b1(void); /* SamusDieSFXInit_RTS */
-void func_B8D6_b1(void); /* EndTriSFX_RTS */
-void func_B6C4_b1(void); /* SamusHitSFXInit_RTS */
-void func_B920_b1(void);
 void func_A7BC_b1(void);
 void func_A7FB_b1(void);
 void func_A7CE_b1(void);
@@ -17795,8 +17469,6 @@ void func_E54A_body(int _entry);
 void func_D5C8_body(int _entry);
 void func_D65E_body(int _entry);
 void func_D609_body(int _entry);
-void func_D80E_body(int _entry);
-void func_D83D_body(int _entry);
 void func_D870_body(int _entry);
 void func_D8A3_body(int _entry);
 void func_D8BF_body(int _entry);
@@ -17878,35 +17550,33 @@ void func_C814_body(int _entry);
 void func_C531_body(int _entry);
 void func_C583_body(int _entry);
 void func_C360_body(int _entry);
+void func_B31B_b0_body(int _entry);
+void func_B33D_b0_body(int _entry);
+void func_BC36_b0_body(int _entry);
+void func_B41D_b0_body(int _entry);
 void func_8000_b0_body(int _entry);
-void func_B34B_b0_body(int _entry);
-void func_B36D_b0_body(int _entry);
-void func_BC66_b0_body(int _entry);
-void func_B44D_b0_body(int _entry);
+void func_B4BD_b0_body(int _entry);
 void func_8071_b0_body(int _entry);
 void func_812C_b0_body(int _entry);
 void func_9147_b0_body(int _entry);
-void func_B4ED_b0_body(int _entry);
 void func_87CF_b0_body(int _entry);
 void func_88FE_b0_body(int _entry);
-void func_B970_b0_body(int _entry);
-void func_B482_b0_body(int _entry);
-void func_B8C6_b0_body(int _entry);
-void func_BAD5_b0_body(int _entry);
-void func_B359_b0_body(int _entry);
-void func_BDBB_b0_body(int _entry);
+void func_B452_b0_body(int _entry);
+void func_B329_b0_body(int _entry);
+void func_BAA5_b0_body(int _entry);
+void func_BCA4_b0_body(int _entry);
 void func_8180_b0_body(int _entry);
-void func_B3FC_b0_body(int _entry);
-void func_B9E5_b0_body(int _entry);
-void func_B34B_b4_body(int _entry);
-void func_B44D_b4_body(int _entry);
+void func_B3C0_b0_body(int _entry);
+void func_B3CC_b0_body(int _entry);
+void func_B9B5_b0_body(int _entry);
+void func_B31B_b4_body(int _entry);
+void func_B41D_b4_body(int _entry);
+void func_B4BD_b4_body(int _entry);
 void func_99F7_b4_body(int _entry);
 void func_9B3C_b4_body(int _entry);
-void func_B4ED_b4_body(int _entry);
 void func_8244_b4_body(int _entry);
 void func_8318_b4_body(int _entry);
-void func_B482_b4_body(int _entry);
-void func_B8C6_b4_body(int _entry);
+void func_B452_b4_body(int _entry);
 void func_8B13_b4_body(int _entry);
 void func_83F5_b4_body(int _entry);
 void func_80B8_b4_body(int _entry);
@@ -17921,32 +17591,30 @@ void func_81C7_b4_body(int _entry);
 void func_8C01_b4_body(int _entry);
 void func_8CC6_b4_body(int _entry);
 void func_8CF7_b4_body(int _entry);
-void func_B970_b4_body(int _entry);
-void func_B3FC_b4_body(int _entry);
-void func_B9E5_b4_body(int _entry);
+void func_B3C0_b4_body(int _entry);
+void func_B3CC_b4_body(int _entry);
+void func_B9B5_b4_body(int _entry);
 void func_C2BF_b4_body(int _entry);
 void func_CBDA_b4_body(int _entry);
-void func_B44D_b1_body(int _entry);
+void func_B41D_b1_body(int _entry);
+void func_B4EA_b1_body(int _entry);
 void func_8B13_b1_body(int _entry);
 void func_8244_b1_body(int _entry);
 void func_83F5_b1_body(int _entry);
-void func_80B8_b1_body(int _entry);
 void func_80FB_b1_body(int _entry);
 void func_8318_b1_body(int _entry);
 void func_84A7_b1_body(int _entry);
 void func_816E_b1_body(int _entry);
 void func_84FE_b1_body(int _entry);
 void func_8134_b1_body(int _entry);
-void func_B51A_b1_body(int _entry);
 void func_81FC_b1_body(int _entry);
 void func_81C7_b1_body(int _entry);
 void func_A9FC_b1_body(int _entry);
-void func_B482_b1_body(int _entry);
-void func_B5BF_b1_body(int _entry);
-void func_BAD5_b1_body(int _entry);
-void func_BE4E_b1_body(int _entry);
-void func_B7B1_b1_body(int _entry);
-void func_B970_b1_body(int _entry);
+void func_80C7_b1_body(int _entry);
+void func_B452_b1_body(int _entry);
+void func_B58F_b1_body(int _entry);
+void func_BAA5_b1_body(int _entry);
+void func_B920_b1_body(int _entry);
 void func_8737_b1_body(int _entry);
 void func_8775_b1_body(int _entry);
 void func_8885_b1_body(int _entry);
@@ -17960,22 +17628,25 @@ void func_8AC4_b1_body(int _entry);
 void func_99FA_b1_body(int _entry);
 void func_9AA8_b1_body(int _entry);
 void func_9C2A_b1_body(int _entry);
-void func_B3FC_b1_body(int _entry);
-void func_B569_b1_body(int _entry);
-void func_B59E_b1_body(int _entry);
-void func_B6FD_b1_body(int _entry);
-void func_B717_b1_body(int _entry);
-void func_B76C_b1_body(int _entry);
-void func_B9E5_b1_body(int _entry);
-void func_BC1C_b1_body(int _entry);
+void func_B3CC_b1_body(int _entry);
+void func_B539_b1_body(int _entry);
+void func_B56E_b1_body(int _entry);
+void func_B6CD_b1_body(int _entry);
+void func_B6E7_b1_body(int _entry);
+void func_B73C_b1_body(int _entry);
+void func_B781_b1_body(int _entry);
+void func_B940_b1_body(int _entry);
+void func_B9B5_b1_body(int _entry);
+void func_BBEC_b1_body(int _entry);
+void func_C2BF_b1_body(int _entry);
+void func_CBDA_b1_body(int _entry);
 void func_86FB_b1_body(int _entry);
 void func_8796_b1_body(int _entry);
 void func_89F6_b1_body(int _entry);
 void func_913F_b1_body(int _entry);
-void func_A7AD_b1_body(int _entry);
-void func_B34B_b2_body(int _entry);
-void func_B44D_b2_body(int _entry);
-void func_B4ED_b2_body(int _entry);
+void func_B31B_b2_body(int _entry);
+void func_B41D_b2_body(int _entry);
+void func_B4BD_b2_body(int _entry);
 void func_8B13_b2_body(int _entry);
 void func_8244_b2_body(int _entry);
 void func_83F5_b2_body(int _entry);
@@ -17992,19 +17663,18 @@ void func_81C7_b2_body(int _entry);
 void func_99F5_b2_body(int _entry);
 void func_8C01_b2_body(int _entry);
 void func_8CC6_b2_body(int _entry);
-void func_B482_b2_body(int _entry);
+void func_B452_b2_body(int _entry);
 void func_8CF7_b2_body(int _entry);
-void func_B8C6_b2_body(int _entry);
-void func_B970_b2_body(int _entry);
-void func_B3FC_b2_body(int _entry);
-void func_B9E5_b2_body(int _entry);
+void func_B3C0_b2_body(int _entry);
+void func_B3CC_b2_body(int _entry);
+void func_B9B5_b2_body(int _entry);
 void func_C2BF_b2_body(int _entry);
 void func_CBDA_b2_body(int _entry);
-void func_B34B_b3_body(int _entry);
-void func_B44D_b3_body(int _entry);
+void func_B31B_b3_body(int _entry);
+void func_B41D_b3_body(int _entry);
+void func_B4BD_b3_body(int _entry);
 void func_99C3_b3_body(int _entry);
 void func_99AE_b3_body(int _entry);
-void func_B4ED_b3_body(int _entry);
 void func_8B13_b3_body(int _entry);
 void func_8244_b3_body(int _entry);
 void func_83F5_b3_body(int _entry);
@@ -18027,19 +17697,18 @@ void func_8C01_b3_body(int _entry);
 void func_8CC6_b3_body(int _entry);
 void func_9B70_b3_body(int _entry);
 void func_8CF7_b3_body(int _entry);
-void func_B482_b3_body(int _entry);
-void func_B8C6_b3_body(int _entry);
-void func_B970_b3_body(int _entry);
+void func_B452_b3_body(int _entry);
 void func_9A06_b3_body(int _entry);
 void func_9FED_b3_body(int _entry);
 void func_A01B_b3_body(int _entry);
-void func_B3FC_b3_body(int _entry);
-void func_B9E5_b3_body(int _entry);
+void func_B3C0_b3_body(int _entry);
+void func_B3CC_b3_body(int _entry);
+void func_B9B5_b3_body(int _entry);
 void func_C2BF_b3_body(int _entry);
 void func_CBDA_b3_body(int _entry);
-void func_B34B_b5_body(int _entry);
-void func_B44D_b5_body(int _entry);
-void func_B4ED_b5_body(int _entry);
+void func_B31B_b5_body(int _entry);
+void func_B41D_b5_body(int _entry);
+void func_B4BD_b5_body(int _entry);
 void func_8B13_b5_body(int _entry);
 void func_8244_b5_body(int _entry);
 void func_83F5_b5_body(int _entry);
@@ -18055,14 +17724,14 @@ void func_81FC_b5_body(int _entry);
 void func_81C7_b5_body(int _entry);
 void func_8C01_b5_body(int _entry);
 void func_8CC6_b5_body(int _entry);
+void func_AAA3_b5_body(int _entry);
 void func_8CF7_b5_body(int _entry);
-void func_B482_b5_body(int _entry);
-void func_B8C6_b5_body(int _entry);
-void func_B970_b5_body(int _entry);
+void func_B452_b5_body(int _entry);
 void func_99C6_b5_body(int _entry);
 void func_9A00_b5_body(int _entry);
-void func_B3FC_b5_body(int _entry);
-void func_B9E5_b5_body(int _entry);
+void func_B3C0_b5_body(int _entry);
+void func_B3CC_b5_body(int _entry);
+void func_B9B5_b5_body(int _entry);
 void func_C2BF_b5_body(int _entry);
 void func_CBDA_b5_body(int _entry);
 

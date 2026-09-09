@@ -8,146 +8,507 @@
 
 #include "metroid_full_decls.h"
 
-void func_B3E4_b5(void) { /* SoundEngine */
+void func_B3B4_b5(void) { /* SoundEngine */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3E4_b5");
+    recomp_stack_push("func_B3B4_b5");
 #endif
-label_B3E4:; /* SoundEngine */
-    /* $B3E4: A9 */ nes_cpu_instruction_boundary(0xB3E4, 2); g_cpu.A = 0xC0; FLAG_NZ(g_cpu.A);
-label_B3E6:;
-    /* $B3E6: 8D */ nes_cpu_instruction_boundary(0xB3E6, 4); nes_write(0x4017, g_cpu.A);
-label_B3E9:;
-    /* $B3E9: AD */ nes_cpu_instruction_boundary(0xB3E9, 4); g_cpu.A = nes_read(0x0680); FLAG_NZ(g_cpu.A);
-label_B3EC:;
-    /* $B3EC: 4A */ nes_cpu_instruction_boundary(0xB3EC, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_B3ED:;
-    /* $B3ED: B0 */ nes_cpu_instruction_boundary(0xB3ED, 2); if (g_cpu.C) { maybe_trigger_vblank(2); goto label_B41B; }
-label_B3EF:;
-    /* $B3EF: A5 */ nes_cpu_instruction_boundary(0xB3EF, 3); g_cpu.A = nes_read(0x1E); FLAG_NZ(g_cpu.A);
-label_B3F1:;
-    /* $B3F1: C9 */ nes_cpu_instruction_boundary(0xB3F1, 2); { int r=g_cpu.A-0x05; g_cpu.C=(g_cpu.A>=0x05)?1:0; FLAG_NZ(r&0xFF); }
-label_B3F3:;
-    /* $B3F3: F0 */ nes_cpu_instruction_boundary(0xB3F3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB3C9); return; }
-label_B3F5:;
-    /* $B3F5: A9 */ nes_cpu_instruction_boundary(0xB3F5, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B3F7:;
-    /* $B3F7: 8D */ nes_cpu_instruction_boundary(0xB3F7, 4); nes_write(0x0602, g_cpu.A);
-label_B3FA:;
-    /* $B3FA: 20 */ nes_cpu_instruction_boundary(0xB3FA, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xFC; g_cpu.S--; func_B34B_b5();
+label_B3B4:; /* SoundEngine */
+    /* $B3B4: A9 */ nes_cpu_instruction_boundary(0xB3B4, 2); g_cpu.A = 0xC0; FLAG_NZ(g_cpu.A);
+label_B3B6:;
+    /* $B3B6: 8D */ nes_cpu_instruction_boundary(0xB3B6, 4); nes_write(0x4017, g_cpu.A);
+label_B3B9:;
+    /* $B3B9: AD */ nes_cpu_instruction_boundary(0xB3B9, 4); g_cpu.A = nes_read(0x0680); FLAG_NZ(g_cpu.A);
+label_B3BC:;
+    /* $B3BC: 4A */ nes_cpu_instruction_boundary(0xB3BC, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_B3BD:;
+    /* $B3BD: B0 */ nes_cpu_instruction_boundary(0xB3BD, 2); if (g_cpu.C) { maybe_trigger_vblank(1); goto label_B3EB; }
+label_B3BF:;
+    /* $B3BF: A5 */ nes_cpu_instruction_boundary(0xB3BF, 3); g_cpu.A = nes_read(0x1E); FLAG_NZ(g_cpu.A);
+label_B3C1:;
+    /* $B3C1: C9 */ nes_cpu_instruction_boundary(0xB3C1, 2); { int r=g_cpu.A-0x05; g_cpu.C=(g_cpu.A>=0x05)?1:0; FLAG_NZ(r&0xFF); }
+label_B3C3:;
+    /* $B3C3: F0 */ nes_cpu_instruction_boundary(0xB3C3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB399); return; }
+label_B3C5:;
+    /* $B3C5: A9 */ nes_cpu_instruction_boundary(0xB3C5, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B3C7:;
+    /* $B3C7: 8D */ nes_cpu_instruction_boundary(0xB3C7, 4); nes_write(0x0602, g_cpu.A);
+label_B3CA:;
+    /* $B3CA: 20 */ nes_cpu_instruction_boundary(0xB3CA, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xCC; g_cpu.S--; func_B31B_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB3FA, _cbs);
+    bail_trace(0xB3CA, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B3FD:;
-    /* $B3FD: 20 */ nes_cpu_instruction_boundary(0xB3FD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xFF; g_cpu.S--; func_B37B_b5();
+label_B3CD:;
+    /* $B3CD: 20 */ nes_cpu_instruction_boundary(0xB3CD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xCF; g_cpu.S--; func_B34B_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB3FD, _cbs);
+    bail_trace(0xB3CD, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B400:;
-    /* $B400: 20 */ nes_cpu_instruction_boundary(0xB400, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x02; g_cpu.S--; func_B36D_b5();
+label_B3D0:;
+    /* $B3D0: 20 */ nes_cpu_instruction_boundary(0xB3D0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD2; g_cpu.S--; func_B33D_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB400, _cbs);
+    bail_trace(0xB3D0, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B403:;
-    /* $B403: 20 */ nes_cpu_instruction_boundary(0xB403, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x05; g_cpu.S--; func_BC66_b5();
+label_B3D3:;
+    /* $B3D3: 20 */ nes_cpu_instruction_boundary(0xB3D3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD5; g_cpu.S--; func_BC36_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB403, _cbs);
+    bail_trace(0xB3D3, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B406:; /* ClearInitFlags */
-    /* $B406: A9 */ nes_cpu_instruction_boundary(0xB406, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B408:;
-    /* $B408: 8D */ nes_cpu_instruction_boundary(0xB408, 4); nes_write(0x0680, g_cpu.A);
-label_B40B:;
-    /* $B40B: 8D */ nes_cpu_instruction_boundary(0xB40B, 4); nes_write(0x0681, g_cpu.A);
-label_B40E:;
-    /* $B40E: 8D */ nes_cpu_instruction_boundary(0xB40E, 4); nes_write(0x0682, g_cpu.A);
-label_B411:;
-    /* $B411: 8D */ nes_cpu_instruction_boundary(0xB411, 4); nes_write(0x0683, g_cpu.A);
-label_B414:;
-    /* $B414: 8D */ nes_cpu_instruction_boundary(0xB414, 4); nes_write(0x0684, g_cpu.A);
-label_B417:;
-    /* $B417: 8D */ nes_cpu_instruction_boundary(0xB417, 4); nes_write(0x0685, g_cpu.A);
-label_B41A:;
-    /* $B41A: 60 */ nes_cpu_instruction_boundary(0xB41A, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B3D6:; /* ClearInitFlags */
+    /* $B3D6: A9 */ nes_cpu_instruction_boundary(0xB3D6, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B3D8:;
+    /* $B3D8: 8D */ nes_cpu_instruction_boundary(0xB3D8, 4); nes_write(0x0680, g_cpu.A);
+label_B3DB:;
+    /* $B3DB: 8D */ nes_cpu_instruction_boundary(0xB3DB, 4); nes_write(0x0681, g_cpu.A);
+label_B3DE:;
+    /* $B3DE: 8D */ nes_cpu_instruction_boundary(0xB3DE, 4); nes_write(0x0682, g_cpu.A);
+label_B3E1:;
+    /* $B3E1: 8D */ nes_cpu_instruction_boundary(0xB3E1, 4); nes_write(0x0683, g_cpu.A);
+label_B3E4:;
+    /* $B3E4: 8D */ nes_cpu_instruction_boundary(0xB3E4, 4); nes_write(0x0684, g_cpu.A);
+label_B3E7:;
+    /* $B3E7: 8D */ nes_cpu_instruction_boundary(0xB3E7, 4); nes_write(0x0685, g_cpu.A);
+label_B3EA:;
+    /* $B3EA: 60 */ nes_cpu_instruction_boundary(0xB3EA, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
     return;
-label_B41B:; /* SoundEngine_SilenceMusic */
-    /* $B41B: 20 */ nes_cpu_instruction_boundary(0xB41B, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x1D; g_cpu.S--; func_B434_b5();
+label_B3EB:; /* SoundEngine_SilenceMusic */
+    /* $B3EB: 20 */ nes_cpu_instruction_boundary(0xB3EB, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xED; g_cpu.S--; func_B404_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB41B, _cbs);
+    bail_trace(0xB3EB, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B41E:;
-    /* $B41E: F0 */ nes_cpu_instruction_boundary(0xB41E, 2); if (g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB406, 1);
+label_B3EE:;
+    /* $B3EE: F0 */ nes_cpu_instruction_boundary(0xB3EE, 2); if (g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB3D6, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_B406;
+    goto label_B3D6;
     }
-label_B420:; /* EndOrLoopMusic */
-    /* $B420: AD */ nes_cpu_instruction_boundary(0xB420, 4); g_cpu.A = nes_read(0x062C); FLAG_NZ(g_cpu.A);
-label_B423:;
-    /* $B423: F0 */ nes_cpu_instruction_boundary(0xB423, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B434; }
-label_B425:;
-    /* $B425: AD */ nes_cpu_instruction_boundary(0xB425, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
-label_B428:;
-    /* $B428: 8D */ nes_cpu_instruction_boundary(0xB428, 4); nes_write(0x065D, g_cpu.A);
-label_B42B:;
-    /* $B42B: 60 */ nes_cpu_instruction_boundary(0xB42B, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B3F0:; /* EndOrLoopMusic */
+    /* $B3F0: AD */ nes_cpu_instruction_boundary(0xB3F0, 4); g_cpu.A = nes_read(0x062C); FLAG_NZ(g_cpu.A);
+label_B3F3:;
+    /* $B3F3: F0 */ nes_cpu_instruction_boundary(0xB3F3, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_B404; }
+label_B3F5:;
+    /* $B3F5: AD */ nes_cpu_instruction_boundary(0xB3F5, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
+label_B3F8:;
+    /* $B3F8: 8D */ nes_cpu_instruction_boundary(0xB3F8, 4); nes_write(0x065D, g_cpu.A);
+label_B3FB:;
+    /* $B3FB: 60 */ nes_cpu_instruction_boundary(0xB3FB, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
     return;
-label_B42C:; /* CheckMusicFlags */
-    /* $B42C: AD */ nes_cpu_instruction_boundary(0xB42C, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
-label_B42F:;
-    /* $B42F: CD */ nes_cpu_instruction_boundary(0xB42F, 4); { uint8_t m=nes_read(0x064D); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B432:;
-    /* $B432: F0 */ nes_cpu_instruction_boundary(0xB432, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B43A; }
-label_B434:; /* InitializeSoundAddresses */
-    /* $B434: 20 */ nes_cpu_instruction_boundary(0xB434, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x36; g_cpu.S--; func_B44D_b5();
+label_B3FC:; /* CheckMusicFlags */
+    /* $B3FC: AD */ nes_cpu_instruction_boundary(0xB3FC, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
+label_B3FF:;
+    /* $B3FF: CD */ nes_cpu_instruction_boundary(0xB3FF, 4); { uint8_t m=nes_read(0x064D); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B402:;
+    /* $B402: F0 */ nes_cpu_instruction_boundary(0xB402, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B40A; }
+label_B404:; /* InitializeSoundAddresses */
+    /* $B404: 20 */ nes_cpu_instruction_boundary(0xB404, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x06; g_cpu.S--; func_B41D_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB434, _cbs);
+    bail_trace(0xB404, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
+label_B407:;
+    /* $B407: 20 */ nes_cpu_instruction_boundary(0xB407, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x09; g_cpu.S--; func_B43E_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB407, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B40A:; /* GotoClearSpecialAddresses */
+    /* $B40A: 20 */ nes_cpu_instruction_boundary(0xB40A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x0C; g_cpu.S--; func_B40E_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB40A, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B40D:;
+    /* $B40D: 60 */ nes_cpu_instruction_boundary(0xB40D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B399_b5(void) { /* SoundEngine_GameIsPaused */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B399_b5");
+#endif
+label_B399:; /* SoundEngine_GameIsPaused */
+    /* $B399: AD */ nes_cpu_instruction_boundary(0xB399, 4); g_cpu.A = nes_read(0x0602); FLAG_NZ(g_cpu.A);
+label_B39C:;
+    /* $B39C: F0 */ nes_cpu_instruction_boundary(0xB39C, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB38F); return; }
+label_B39E:;
+    /* $B39E: AD */ nes_cpu_instruction_boundary(0xB39E, 4); g_cpu.A = nes_read(0x0603); FLAG_NZ(g_cpu.A);
+label_B3A1:;
+    /* $B3A1: C9 */ nes_cpu_instruction_boundary(0xB3A1, 2); { int r=g_cpu.A-0x12; g_cpu.C=(g_cpu.A>=0x12)?1:0; FLAG_NZ(r&0xFF); }
+label_B3A3:;
+    /* $B3A3: F0 */ nes_cpu_instruction_boundary(0xB3A3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3B3; }
+label_B3A5:;
+    /* $B3A5: 29 */ nes_cpu_instruction_boundary(0xB3A5, 2); g_cpu.A &= 0x03; FLAG_NZ(g_cpu.A);
+label_B3A7:;
+    /* $B3A7: C9 */ nes_cpu_instruction_boundary(0xB3A7, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
+label_B3A9:;
+    /* $B3A9: D0 */ nes_cpu_instruction_boundary(0xB3A9, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3B0; }
+label_B3AB:;
+    /* $B3AB: A0 */ nes_cpu_instruction_boundary(0xB3AB, 2); g_cpu.Y = 0x0D; FLAG_NZ(g_cpu.Y);
+label_B3AD:;
+    /* $B3AD: 20 */ nes_cpu_instruction_boundary(0xB3AD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xAF; g_cpu.S--; func_B368_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB3AD, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B3B0:; /* SoundEngine_GameIsPaused_endIf_A */
+    /* $B3B0: EE */ nes_cpu_instruction_boundary(0xB3B0, 6); { uint16_t a=0x0603; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B3B3:; /* SoundEngine_GameIsPaused_RTS */
+    /* $B3B3: 60 */ nes_cpu_instruction_boundary(0xB3B3, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B31B_b5_body(int _entry) { /* RunSFXNoiseInitRoutine */
+    switch (_entry) {
+        case 1: goto label_B329;
+    }
+label_B31B:; /* RunSFXNoiseInitRoutine */
+    /* $B31B: AD */ nes_cpu_instruction_boundary(0xB31B, 4); g_cpu.A = nes_read(0x0680); FLAG_NZ(g_cpu.A);
+label_B31E:;
+    /* $B31E: A2 */ nes_cpu_instruction_boundary(0xB31E, 2); g_cpu.X = 0x89; FLAG_NZ(g_cpu.X);
+label_B320:;
+    /* $B320: D0 */ nes_cpu_instruction_boundary(0xB320, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B337; }
+label_B322:; /* RunSFXNoiseContRoutine */
+    /* $B322: AD */ nes_cpu_instruction_boundary(0xB322, 4); g_cpu.A = nes_read(0x0688); FLAG_NZ(g_cpu.A);
+label_B325:;
+    /* $B325: A2 */ nes_cpu_instruction_boundary(0xB325, 2); g_cpu.X = 0x8E; FLAG_NZ(g_cpu.X);
+label_B327:;
+    /* $B327: D0 */ nes_cpu_instruction_boundary(0xB327, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B337; }
+label_B329:; /* RunSFXSQ1InitRoutine */
+    /* $B329: AD */ nes_cpu_instruction_boundary(0xB329, 4); g_cpu.A = nes_read(0x0681); FLAG_NZ(g_cpu.A);
+label_B32C:;
+    /* $B32C: A2 */ nes_cpu_instruction_boundary(0xB32C, 2); g_cpu.X = 0x93; FLAG_NZ(g_cpu.X);
+label_B32E:;
+    /* $B32E: D0 */ nes_cpu_instruction_boundary(0xB32E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B337; }
+label_B330:; /* RunSFXSQ1ContRoutine */
+    /* $B330: AD */ nes_cpu_instruction_boundary(0xB330, 4); g_cpu.A = nes_read(0x0689); FLAG_NZ(g_cpu.A);
+label_B333:;
+    /* $B333: A2 */ nes_cpu_instruction_boundary(0xB333, 2); g_cpu.X = 0x98; FLAG_NZ(g_cpu.X);
+label_B335:;
+    /* $B335: D0 */ nes_cpu_instruction_boundary(0xB335, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B337; }
+label_B337:; /* RunSoundRoutine */
+    /* $B337: 20 */ nes_cpu_instruction_boundary(0xB337, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x39; g_cpu.S--; func_B4BD_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB337, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B33A:;
+    /* $B33A: 6C */ nes_cpu_instruction_boundary(0xB33A, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
+}
+
+void func_B31B_b5(void) { /* RunSFXNoiseInitRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B31B_b5");
+#endif
+    func_B31B_b5_body(0);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B329_b5(void) { /* RunSFXSQ1InitRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B329_b5");
+#endif
+    func_B31B_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B34B_b5(void) { /* RunSFXMultiInitRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B34B_b5");
+#endif
+label_B34B:; /* RunSFXMultiInitRoutine */
+    /* $B34B: AD */ nes_cpu_instruction_boundary(0xB34B, 4); g_cpu.A = nes_read(0x0684); FLAG_NZ(g_cpu.A);
+label_B34E:;
+    /* $B34E: A2 */ nes_cpu_instruction_boundary(0xB34E, 2); g_cpu.X = 0xA7; FLAG_NZ(g_cpu.X);
+label_B350:;
+    /* $B350: 20 */ nes_cpu_instruction_boundary(0xB350, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x52; g_cpu.S--; func_B4BD_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB350, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B353:;
+    /* $B353: 20 */ nes_cpu_instruction_boundary(0xB353, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x55; g_cpu.S--; func_BC53_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB353, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B356:;
+    /* $B356: 20 */ nes_cpu_instruction_boundary(0xB356, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x58; g_cpu.S--; func_BC64_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB356, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B359:;
+    /* $B359: 6C */ nes_cpu_instruction_boundary(0xB359, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
+}
+
+void func_B33D_b5(void) { /* RunSFXTriInitRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B33D_b5");
+#endif
+label_B33D:; /* RunSFXTriInitRoutine */
+    /* $B33D: AD */ nes_cpu_instruction_boundary(0xB33D, 4); g_cpu.A = nes_read(0x0683); FLAG_NZ(g_cpu.A);
+label_B340:;
+    /* $B340: A2 */ nes_cpu_instruction_boundary(0xB340, 2); g_cpu.X = 0x9D; FLAG_NZ(g_cpu.X);
+label_B342:;
+    /* $B342: D0 */ nes_cpu_instruction_boundary(0xB342, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB337); return; }
+label_B344:; /* RunSFXTriContRoutine */
+    /* $B344: AD */ nes_cpu_instruction_boundary(0xB344, 4); g_cpu.A = nes_read(0x068B); FLAG_NZ(g_cpu.A);
+label_B347:;
+    /* $B347: A2 */ nes_cpu_instruction_boundary(0xB347, 2); g_cpu.X = 0xA2; FLAG_NZ(g_cpu.X);
+label_B349:;
+    /* $B349: D0 */ nes_cpu_instruction_boundary(0xB349, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB337); return; }
+label_B34B:; /* RunSFXMultiInitRoutine */
+    /* $B34B: AD */ nes_cpu_instruction_boundary(0xB34B, 4); g_cpu.A = nes_read(0x0684); FLAG_NZ(g_cpu.A);
+label_B34E:;
+    /* $B34E: A2 */ nes_cpu_instruction_boundary(0xB34E, 2); g_cpu.X = 0xA7; FLAG_NZ(g_cpu.X);
+label_B350:;
+    /* $B350: 20 */ nes_cpu_instruction_boundary(0xB350, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x52; g_cpu.S--; func_B4BD_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB350, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B353:;
+    /* $B353: 20 */ nes_cpu_instruction_boundary(0xB353, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x55; g_cpu.S--; func_BC53_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB353, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B356:;
+    /* $B356: 20 */ nes_cpu_instruction_boundary(0xB356, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x58; g_cpu.S--; func_BC64_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB356, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B359:;
+    /* $B359: 6C */ nes_cpu_instruction_boundary(0xB359, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
+}
+
+void func_BC36_b5(void) { /* RunMusicLoopRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BC36_b5");
+#endif
+label_BC36:; /* RunMusicLoopRoutine */
+    /* $BC36: AD */ nes_cpu_instruction_boundary(0xBC36, 4); g_cpu.A = nes_read(0x065D); FLAG_NZ(g_cpu.A);
+label_BC39:;
+    /* $BC39: A2 */ nes_cpu_instruction_boundary(0xBC39, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BC3B:;
+    /* $BC3B: D0 */ nes_cpu_instruction_boundary(0xBC3B, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC42; }
+label_BC3D:; /* RunMusicInitRoutine */
+    /* $BC3D: AD */ nes_cpu_instruction_boundary(0xBC3D, 4); g_cpu.A = nes_read(0x0685); FLAG_NZ(g_cpu.A);
+label_BC40:;
+    /* $BC40: A2 */ nes_cpu_instruction_boundary(0xBC40, 2); g_cpu.X = 0xB1; FLAG_NZ(g_cpu.X);
+label_BC42:; /* RunMusicInitRoutine_Common */
+    /* $BC42: 20 */ nes_cpu_instruction_boundary(0xBC42, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x44; g_cpu.S--; func_B4BD_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBC42, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BC45:;
+    /* $BC45: 20 */ nes_cpu_instruction_boundary(0xBC45, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x47; g_cpu.S--; func_BC53_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBC45, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BC48:;
+    /* $BC48: 6C */ nes_cpu_instruction_boundary(0xBC48, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
+}
+
+void func_B404_b5(void) { /* InitializeSoundAddresses */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B404_b5");
+#endif
+label_B404:; /* InitializeSoundAddresses */
+    /* $B404: 20 */ nes_cpu_instruction_boundary(0xB404, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x06; g_cpu.S--; func_B41D_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB404, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B407:;
+    /* $B407: 20 */ nes_cpu_instruction_boundary(0xB407, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x09; g_cpu.S--; func_B43E_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB407, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B40A:; /* GotoClearSpecialAddresses */
+    /* $B40A: 20 */ nes_cpu_instruction_boundary(0xB40A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x0C; g_cpu.S--; func_B40E_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB40A, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B40D:;
+    /* $B40D: 60 */ nes_cpu_instruction_boundary(0xB40D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B41D_b5_body(int _entry) { /* ClearMusicAndSFXAddresses */
+    switch (_entry) {
+        case 1: goto label_B422;
+    }
+label_B41D:; /* ClearMusicAndSFXAddresses */
+    /* $B41D: A9 */ nes_cpu_instruction_boundary(0xB41D, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B41F:;
+    /* $B41F: 8D */ nes_cpu_instruction_boundary(0xB41F, 4); nes_write(0x0653, g_cpu.A);
+label_B422:;
+    /* $B422: 8D */ nes_cpu_instruction_boundary(0xB422, 4); nes_write(0x0654, g_cpu.A);
+label_B425:;
+    /* $B425: 8D */ nes_cpu_instruction_boundary(0xB425, 4); nes_write(0x0655, g_cpu.A);
+label_B428:;
+    /* $B428: 8D */ nes_cpu_instruction_boundary(0xB428, 4); nes_write(0x0607, g_cpu.A);
+label_B42B:;
+    /* $B42B: 8D */ nes_cpu_instruction_boundary(0xB42B, 4); nes_write(0x0688, g_cpu.A);
+label_B42E:;
+    /* $B42E: 8D */ nes_cpu_instruction_boundary(0xB42E, 4); nes_write(0x0689, g_cpu.A);
+label_B431:;
+    /* $B431: 8D */ nes_cpu_instruction_boundary(0xB431, 4); nes_write(0x068A, g_cpu.A);
+label_B434:;
+    /* $B434: 8D */ nes_cpu_instruction_boundary(0xB434, 4); nes_write(0x068B, g_cpu.A);
 label_B437:;
-    /* $B437: 20 */ nes_cpu_instruction_boundary(0xB437, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x39; g_cpu.S--; func_B46E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB437, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B43A:; /* GotoClearSpecialAddresses */
-    /* $B43A: 20 */ nes_cpu_instruction_boundary(0xB43A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3C; g_cpu.S--; func_B43E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB43A, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
+    /* $B437: 8D */ nes_cpu_instruction_boundary(0xB437, 4); nes_write(0x068C, g_cpu.A);
+label_B43A:;
+    /* $B43A: 8D */ nes_cpu_instruction_boundary(0xB43A, 4); nes_write(0x068D, g_cpu.A);
 label_B43D:;
     /* $B43D: 60 */ nes_cpu_instruction_boundary(0xB43D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B41D_b5(void) { /* ClearMusicAndSFXAddresses */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B41D_b5");
+#endif
+    func_B41D_b5_body(0);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B422_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B422_b5");
+#endif
+    func_B41D_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B43E_b5(void) { /* ClearSounds */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B43E_b5");
+#endif
+label_B43E:; /* ClearSounds */
+    /* $B43E: A9 */ nes_cpu_instruction_boundary(0xB43E, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
+label_B440:;
+    /* $B440: 8D */ nes_cpu_instruction_boundary(0xB440, 4); nes_write(0x4000, g_cpu.A);
+label_B443:;
+    /* $B443: 8D */ nes_cpu_instruction_boundary(0xB443, 4); nes_write(0x4004, g_cpu.A);
+label_B446:;
+    /* $B446: 8D */ nes_cpu_instruction_boundary(0xB446, 4); nes_write(0x400C, g_cpu.A);
+label_B449:;
+    /* $B449: A9 */ nes_cpu_instruction_boundary(0xB449, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B44B:;
+    /* $B44B: 8D */ nes_cpu_instruction_boundary(0xB44B, 4); nes_write(0x4008, g_cpu.A);
+label_B44E:;
+    /* $B44E: 8D */ nes_cpu_instruction_boundary(0xB44E, 4); nes_write(0x4011, g_cpu.A);
+label_B451:;
+    /* $B451: 60 */ nes_cpu_instruction_boundary(0xB451, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B40E_b5(void) { /* ClearSpecialAddresses */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B40E_b5");
+#endif
+label_B40E:; /* ClearSpecialAddresses */
+    /* $B40E: A9 */ nes_cpu_instruction_boundary(0xB40E, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B410:;
+    /* $B410: 8D */ nes_cpu_instruction_boundary(0xB410, 4); nes_write(0x062D, g_cpu.A);
+label_B413:;
+    /* $B413: 8D */ nes_cpu_instruction_boundary(0xB413, 4); nes_write(0x0602, g_cpu.A);
+label_B416:;
+    /* $B416: 8D */ nes_cpu_instruction_boundary(0xB416, 4); nes_write(0x065D, g_cpu.A);
+label_B419:;
+    /* $B419: 8D */ nes_cpu_instruction_boundary(0xB419, 4); nes_write(0x062C, g_cpu.A);
+label_B41C:;
+    /* $B41C: 60 */ nes_cpu_instruction_boundary(0xB41C, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -268,40 +629,24 @@ label_8000:; /* CommonJump_UpdateEnemyCommon */
     /* $8000: 4C */ nes_cpu_instruction_boundary(0x8000, 3); nes_cpu_instruction_boundary(0xF410, 2); func_F410(); return;
 }
 
-void func_B3C9_b5(void) { /* SoundEngine_GameIsPaused */
+void func_B38F_b5(void) { /* PauseSFX */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3C9_b5");
+    recomp_stack_push("func_B38F_b5");
 #endif
-label_B3C9:; /* SoundEngine_GameIsPaused */
-    /* $B3C9: AD */ nes_cpu_instruction_boundary(0xB3C9, 4); g_cpu.A = nes_read(0x0602); FLAG_NZ(g_cpu.A);
-label_B3CC:;
-    /* $B3CC: F0 */ nes_cpu_instruction_boundary(0xB3CC, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB3BF); return; }
-label_B3CE:;
-    /* $B3CE: AD */ nes_cpu_instruction_boundary(0xB3CE, 4); g_cpu.A = nes_read(0x0603); FLAG_NZ(g_cpu.A);
-label_B3D1:;
-    /* $B3D1: C9 */ nes_cpu_instruction_boundary(0xB3D1, 2); { int r=g_cpu.A-0x12; g_cpu.C=(g_cpu.A>=0x12)?1:0; FLAG_NZ(r&0xFF); }
-label_B3D3:;
-    /* $B3D3: F0 */ nes_cpu_instruction_boundary(0xB3D3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3E3; }
-label_B3D5:;
-    /* $B3D5: 29 */ nes_cpu_instruction_boundary(0xB3D5, 2); g_cpu.A &= 0x03; FLAG_NZ(g_cpu.A);
-label_B3D7:;
-    /* $B3D7: C9 */ nes_cpu_instruction_boundary(0xB3D7, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
-label_B3D9:;
-    /* $B3D9: D0 */ nes_cpu_instruction_boundary(0xB3D9, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3E0; }
-label_B3DB:;
-    /* $B3DB: A0 */ nes_cpu_instruction_boundary(0xB3DB, 2); g_cpu.Y = 0x3D; FLAG_NZ(g_cpu.Y);
-label_B3DD:;
-    /* $B3DD: 20 */ nes_cpu_instruction_boundary(0xB3DD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xDF; g_cpu.S--; func_B398_b5();
+label_B38F:; /* PauseSFX */
+    /* $B38F: EE */ nes_cpu_instruction_boundary(0xB38F, 6); { uint16_t a=0x0602; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B392:;
+    /* $B392: 20 */ nes_cpu_instruction_boundary(0xB392, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x94; g_cpu.S--; func_B43E_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB3DD, _cbs);
+    bail_trace(0xB392, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B3E0:; /* SoundEngine_GameIsPaused_endIf_A */
-    /* $B3E0: EE */ nes_cpu_instruction_boundary(0xB3E0, 6); { uint16_t a=0x0603; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B3E3:; /* SoundEngine_GameIsPaused_RTS */
-    /* $B3E3: 60 */ nes_cpu_instruction_boundary(0xB3E3, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B395:;
+    /* $B395: 8D */ nes_cpu_instruction_boundary(0xB395, 4); nes_write(0x0603, g_cpu.A);
+label_B398:;
+    /* $B398: 60 */ nes_cpu_instruction_boundary(0xB398, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -309,249 +654,58 @@ label_B3E3:; /* SoundEngine_GameIsPaused_RTS */
     return;
 }
 
-void func_B34B_b5_body(int _entry) { /* RunSFXNoiseInitRoutine */
-    switch (_entry) {
-        case 1: goto label_B359;
-    }
-label_B34B:; /* RunSFXNoiseInitRoutine */
-    /* $B34B: AD */ nes_cpu_instruction_boundary(0xB34B, 4); g_cpu.A = nes_read(0x0680); FLAG_NZ(g_cpu.A);
-label_B34E:;
-    /* $B34E: A2 */ nes_cpu_instruction_boundary(0xB34E, 2); g_cpu.X = 0xB9; FLAG_NZ(g_cpu.X);
-label_B350:;
-    /* $B350: D0 */ nes_cpu_instruction_boundary(0xB350, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B367; }
-label_B352:; /* RunSFXNoiseContRoutine */
-    /* $B352: AD */ nes_cpu_instruction_boundary(0xB352, 4); g_cpu.A = nes_read(0x0688); FLAG_NZ(g_cpu.A);
-label_B355:;
-    /* $B355: A2 */ nes_cpu_instruction_boundary(0xB355, 2); g_cpu.X = 0xBE; FLAG_NZ(g_cpu.X);
-label_B357:;
-    /* $B357: D0 */ nes_cpu_instruction_boundary(0xB357, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B367; }
-label_B359:; /* RunSFXSQ1InitRoutine */
-    /* $B359: AD */ nes_cpu_instruction_boundary(0xB359, 4); g_cpu.A = nes_read(0x0681); FLAG_NZ(g_cpu.A);
-label_B35C:;
-    /* $B35C: A2 */ nes_cpu_instruction_boundary(0xB35C, 2); g_cpu.X = 0xC3; FLAG_NZ(g_cpu.X);
-label_B35E:;
-    /* $B35E: D0 */ nes_cpu_instruction_boundary(0xB35E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B367; }
-label_B360:; /* RunSFXSQ1ContRoutine */
-    /* $B360: AD */ nes_cpu_instruction_boundary(0xB360, 4); g_cpu.A = nes_read(0x0689); FLAG_NZ(g_cpu.A);
-label_B363:;
-    /* $B363: A2 */ nes_cpu_instruction_boundary(0xB363, 2); g_cpu.X = 0xC8; FLAG_NZ(g_cpu.X);
-label_B365:;
-    /* $B365: D0 */ nes_cpu_instruction_boundary(0xB365, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B367; }
-label_B367:; /* RunSoundRoutine */
-    /* $B367: 20 */ nes_cpu_instruction_boundary(0xB367, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x69; g_cpu.S--; func_B4ED_b5();
-if (g_cpu.S != _cbs) {
+void func_B368_b5(void) { /* LoadSFXData */
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB367, _cbs);
-    recomp_stack_pop();
+    recomp_stack_push("func_B368_b5");
 #endif
-    return; } }
+label_B368:; /* LoadSFXData */
+    /* $B368: A9 */ nes_cpu_instruction_boundary(0xB368, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
 label_B36A:;
-    /* $B36A: 6C */ nes_cpu_instruction_boundary(0xB36A, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
-}
-
-void func_B34B_b5(void) { /* RunSFXNoiseInitRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B34B_b5");
-#endif
-    func_B34B_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B359_b5(void) { /* RunSFXSQ1InitRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B359_b5");
-#endif
-    func_B34B_b5_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B37B_b5(void) { /* RunSFXMultiInitRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B37B_b5");
-#endif
-label_B37B:; /* RunSFXMultiInitRoutine */
-    /* $B37B: AD */ nes_cpu_instruction_boundary(0xB37B, 4); g_cpu.A = nes_read(0x0684); FLAG_NZ(g_cpu.A);
-label_B37E:;
-    /* $B37E: A2 */ nes_cpu_instruction_boundary(0xB37E, 2); g_cpu.X = 0xD7; FLAG_NZ(g_cpu.X);
-label_B380:;
-    /* $B380: 20 */ nes_cpu_instruction_boundary(0xB380, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x82; g_cpu.S--; func_B4ED_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB380, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B383:;
-    /* $B383: 20 */ nes_cpu_instruction_boundary(0xB383, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x85; g_cpu.S--; func_BC83_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB383, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B386:;
-    /* $B386: 20 */ nes_cpu_instruction_boundary(0xB386, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x88; g_cpu.S--; func_BC94_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB386, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B389:;
-    /* $B389: 6C */ nes_cpu_instruction_boundary(0xB389, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
-}
-
-void func_B36D_b5(void) { /* RunSFXTriInitRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B36D_b5");
-#endif
-label_B36D:; /* RunSFXTriInitRoutine */
-    /* $B36D: AD */ nes_cpu_instruction_boundary(0xB36D, 4); g_cpu.A = nes_read(0x0683); FLAG_NZ(g_cpu.A);
-label_B370:;
-    /* $B370: A2 */ nes_cpu_instruction_boundary(0xB370, 2); g_cpu.X = 0xCD; FLAG_NZ(g_cpu.X);
+    /* $B36A: F0 */ nes_cpu_instruction_boundary(0xB36A, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B376; }
+label_B36C:; /* LoadSFXData_Tri */
+    /* $B36C: A9 */ nes_cpu_instruction_boundary(0xB36C, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
+label_B36E:;
+    /* $B36E: D0 */ nes_cpu_instruction_boundary(0xB36E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B376; }
+label_B370:; /* LoadSFXData_Noise */
+    /* $B370: A9 */ nes_cpu_instruction_boundary(0xB370, 2); g_cpu.A = 0x0C; FLAG_NZ(g_cpu.A);
 label_B372:;
-    /* $B372: D0 */ nes_cpu_instruction_boundary(0xB372, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB367); return; }
-label_B374:; /* RunSFXTriContRoutine */
-    /* $B374: AD */ nes_cpu_instruction_boundary(0xB374, 4); g_cpu.A = nes_read(0x068B); FLAG_NZ(g_cpu.A);
-label_B377:;
-    /* $B377: A2 */ nes_cpu_instruction_boundary(0xB377, 2); g_cpu.X = 0xD2; FLAG_NZ(g_cpu.X);
-label_B379:;
-    /* $B379: D0 */ nes_cpu_instruction_boundary(0xB379, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB367); return; }
-label_B37B:; /* RunSFXMultiInitRoutine */
-    /* $B37B: AD */ nes_cpu_instruction_boundary(0xB37B, 4); g_cpu.A = nes_read(0x0684); FLAG_NZ(g_cpu.A);
+    /* $B372: D0 */ nes_cpu_instruction_boundary(0xB372, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B376; }
+label_B374:; /* LoadSFXData_SQ2 */
+    /* $B374: A9 */ nes_cpu_instruction_boundary(0xB374, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
+label_B376:; /* LoadSFXData_Common */
+    /* $B376: 85 */ nes_cpu_instruction_boundary(0xB376, 3); nes_write(0xE0, g_cpu.A);
+label_B378:;
+    /* $B378: A9 */ nes_cpu_instruction_boundary(0xB378, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
+label_B37A:;
+    /* $B37A: 85 */ nes_cpu_instruction_boundary(0xB37A, 3); nes_write(0xE1, g_cpu.A);
+label_B37C:;
+    /* $B37C: 84 */ nes_cpu_instruction_boundary(0xB37C, 3); nes_write(0xE2, g_cpu.Y);
 label_B37E:;
-    /* $B37E: A2 */ nes_cpu_instruction_boundary(0xB37E, 2); g_cpu.X = 0xD7; FLAG_NZ(g_cpu.X);
+    /* $B37E: A9 */ nes_cpu_instruction_boundary(0xB37E, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
 label_B380:;
-    /* $B380: 20 */ nes_cpu_instruction_boundary(0xB380, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x82; g_cpu.S--; func_B4ED_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB380, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B383:;
-    /* $B383: 20 */ nes_cpu_instruction_boundary(0xB383, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x85; g_cpu.S--; func_BC83_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB383, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
+    /* $B380: 85 */ nes_cpu_instruction_boundary(0xB380, 3); nes_write(0xE3, g_cpu.A);
+label_B382:;
+    /* $B382: A0 */ nes_cpu_instruction_boundary(0xB382, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_B384:; /* LoadSFXData_loop_LoadSFXRegisters */
+    /* $B384: B1 */ nes_cpu_instruction_boundary(0xB384, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_B386:;
-    /* $B386: 20 */ nes_cpu_instruction_boundary(0xB386, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x88; g_cpu.S--; func_BC94_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB386, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
+    /* $B386: 91 */ nes_cpu_instruction_boundary(0xB386, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_B388:;
+    /* $B388: C8 */ nes_cpu_instruction_boundary(0xB388, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
 label_B389:;
-    /* $B389: 6C */ nes_cpu_instruction_boundary(0xB389, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
-}
-
-void func_BC66_b5(void) { /* RunMusicLoopRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC66_b5");
+    /* $B389: 98 */ nes_cpu_instruction_boundary(0xB389, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_B38A:;
+    /* $B38A: C9 */ nes_cpu_instruction_boundary(0xB38A, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_B38C:;
+    /* $B38C: D0 */ nes_cpu_instruction_boundary(0xB38C, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB384, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
 #endif
-label_BC66:; /* RunMusicLoopRoutine */
-    /* $BC66: AD */ nes_cpu_instruction_boundary(0xBC66, 4); g_cpu.A = nes_read(0x065D); FLAG_NZ(g_cpu.A);
-label_BC69:;
-    /* $BC69: A2 */ nes_cpu_instruction_boundary(0xBC69, 2); g_cpu.X = 0xE6; FLAG_NZ(g_cpu.X);
-label_BC6B:;
-    /* $BC6B: D0 */ nes_cpu_instruction_boundary(0xBC6B, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC72; }
-label_BC6D:; /* RunMusicInitRoutine */
-    /* $BC6D: AD */ nes_cpu_instruction_boundary(0xBC6D, 4); g_cpu.A = nes_read(0x0685); FLAG_NZ(g_cpu.A);
-label_BC70:;
-    /* $BC70: A2 */ nes_cpu_instruction_boundary(0xBC70, 2); g_cpu.X = 0xE1; FLAG_NZ(g_cpu.X);
-label_BC72:; /* RunMusicInitRoutine_Common */
-    /* $BC72: 20 */ nes_cpu_instruction_boundary(0xBC72, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x74; g_cpu.S--; func_B4ED_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBC72, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BC75:;
-    /* $BC75: 20 */ nes_cpu_instruction_boundary(0xBC75, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x77; g_cpu.S--; func_BC83_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBC75, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BC78:;
-    /* $BC78: 6C */ nes_cpu_instruction_boundary(0xBC78, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
-}
-
-void func_B434_b5(void) { /* InitializeSoundAddresses */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B434_b5");
-#endif
-label_B434:; /* InitializeSoundAddresses */
-    /* $B434: 20 */ nes_cpu_instruction_boundary(0xB434, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x36; g_cpu.S--; func_B44D_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB434, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B437:;
-    /* $B437: 20 */ nes_cpu_instruction_boundary(0xB437, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x39; g_cpu.S--; func_B46E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB437, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B43A:; /* GotoClearSpecialAddresses */
-    /* $B43A: 20 */ nes_cpu_instruction_boundary(0xB43A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3C; g_cpu.S--; func_B43E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB43A, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B43D:;
-    /* $B43D: 60 */ nes_cpu_instruction_boundary(0xB43D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B44D_b5_body(int _entry) { /* ClearMusicAndSFXAddresses */
-    switch (_entry) {
-        case 1: goto label_B452;
+    goto label_B384;
     }
-label_B44D:; /* ClearMusicAndSFXAddresses */
-    /* $B44D: A9 */ nes_cpu_instruction_boundary(0xB44D, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B44F:;
-    /* $B44F: 8D */ nes_cpu_instruction_boundary(0xB44F, 4); nes_write(0x0653, g_cpu.A);
-label_B452:;
-    /* $B452: 8D */ nes_cpu_instruction_boundary(0xB452, 4); nes_write(0x0654, g_cpu.A);
-label_B455:;
-    /* $B455: 8D */ nes_cpu_instruction_boundary(0xB455, 4); nes_write(0x0655, g_cpu.A);
-label_B458:;
-    /* $B458: 8D */ nes_cpu_instruction_boundary(0xB458, 4); nes_write(0x0607, g_cpu.A);
-label_B45B:;
-    /* $B45B: 8D */ nes_cpu_instruction_boundary(0xB45B, 4); nes_write(0x0688, g_cpu.A);
-label_B45E:;
-    /* $B45E: 8D */ nes_cpu_instruction_boundary(0xB45E, 4); nes_write(0x0689, g_cpu.A);
-label_B461:;
-    /* $B461: 8D */ nes_cpu_instruction_boundary(0xB461, 4); nes_write(0x068A, g_cpu.A);
-label_B464:;
-    /* $B464: 8D */ nes_cpu_instruction_boundary(0xB464, 4); nes_write(0x068B, g_cpu.A);
-label_B467:;
-    /* $B467: 8D */ nes_cpu_instruction_boundary(0xB467, 4); nes_write(0x068C, g_cpu.A);
-label_B46A:;
-    /* $B46A: 8D */ nes_cpu_instruction_boundary(0xB46A, 4); nes_write(0x068D, g_cpu.A);
-label_B46D:;
-    /* $B46D: 60 */ nes_cpu_instruction_boundary(0xB46D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B38E:;
+    /* $B38E: 60 */ nes_cpu_instruction_boundary(0xB38E, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -559,46 +713,140 @@ label_B46D:;
     return;
 }
 
-void func_B44D_b5(void) { /* ClearMusicAndSFXAddresses */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B44D_b5");
+void func_B4BD_b5_body(int _entry) { /* GetSoundRoutine */
+    switch (_entry) {
+        case 1: goto label_B4EA;
+    }
+label_B4BD:; /* GetSoundRoutine */
+    /* $B4BD: 8D */ nes_cpu_instruction_boundary(0xB4BD, 4); nes_write(0x064D, g_cpu.A);
+label_B4C0:;
+    /* $B4C0: 86 */ nes_cpu_instruction_boundary(0xB4C0, 3); nes_write(0xE4, g_cpu.X);
+label_B4C2:;
+    /* $B4C2: A0 */ nes_cpu_instruction_boundary(0xB4C2, 2); g_cpu.Y = 0xB2; FLAG_NZ(g_cpu.Y);
+label_B4C4:;
+    /* $B4C4: 84 */ nes_cpu_instruction_boundary(0xB4C4, 3); nes_write(0xE5, g_cpu.Y);
+label_B4C6:;
+    /* $B4C6: A0 */ nes_cpu_instruction_boundary(0xB4C6, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_B4C8:; /* GetSoundRoutine_loop_A */
+    /* $B4C8: B1 */ nes_cpu_instruction_boundary(0xB4C8, 5); g_cpu.A = nes_read((nes_read16zp(0xE4) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B4CA:;
+    /* $B4CA: 99 */ nes_cpu_instruction_boundary(0xB4CA, 5); nes_write((0x00E0 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_B4CD:;
+    /* $B4CD: C8 */ nes_cpu_instruction_boundary(0xB4CD, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B4CE:;
+    /* $B4CE: 98 */ nes_cpu_instruction_boundary(0xB4CE, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_B4CF:;
+    /* $B4CF: C9 */ nes_cpu_instruction_boundary(0xB4CF, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_B4D1:;
+    /* $B4D1: D0 */ nes_cpu_instruction_boundary(0xB4D1, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB4C8, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
 #endif
-    func_B44D_b5_body(0);
+    goto label_B4C8;
+    }
+label_B4D3:;
+    /* $B4D3: B1 */ nes_cpu_instruction_boundary(0xB4D3, 5); g_cpu.A = nes_read((nes_read16zp(0xE4) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B4D5:;
+    /* $B4D5: 8D */ nes_cpu_instruction_boundary(0xB4D5, 4); nes_write(0x065C, g_cpu.A);
+label_B4D8:;
+    /* $B4D8: A0 */ nes_cpu_instruction_boundary(0xB4D8, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_B4DA:;
+    /* $B4DA: AD */ nes_cpu_instruction_boundary(0xB4DA, 4); g_cpu.A = nes_read(0x064D); FLAG_NZ(g_cpu.A);
+label_B4DD:;
+    /* $B4DD: 48 */ nes_cpu_instruction_boundary(0xB4DD, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_B4DE:; /* GetSoundRoutine_loop_B */
+    /* $B4DE: 0E */ nes_cpu_instruction_boundary(0xB4DE, 6); { uint16_t a=0x064D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B4E1:;
+    /* $B4E1: B0 */ nes_cpu_instruction_boundary(0xB4E1, 2); if (g_cpu.C) { maybe_trigger_vblank(1); goto label_B4EF; }
+label_B4E3:;
+    /* $B4E3: C8 */ nes_cpu_instruction_boundary(0xB4E3, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B4E4:;
+    /* $B4E4: C8 */ nes_cpu_instruction_boundary(0xB4E4, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B4E5:;
+    /* $B4E5: 98 */ nes_cpu_instruction_boundary(0xB4E5, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_B4E6:;
+    /* $B4E6: C9 */ nes_cpu_instruction_boundary(0xB4E6, 2); { int r=g_cpu.A-0x10; g_cpu.C=(g_cpu.A>=0x10)?1:0; FLAG_NZ(r&0xFF); }
+label_B4E8:;
+    /* $B4E8: D0 */ nes_cpu_instruction_boundary(0xB4E8, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB4DE, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_B4DE;
+    }
+label_B4EA:; /* GetSoundRoutine_RestoreSFXFlags */
+    /* $B4EA: 68 */ nes_cpu_instruction_boundary(0xB4EA, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B4EB:;
+    /* $B4EB: 8D */ nes_cpu_instruction_boundary(0xB4EB, 4); nes_write(0x064D, g_cpu.A);
+label_B4EE:; /* GetSoundRoutine_RTS */
+    /* $B4EE: 60 */ nes_cpu_instruction_boundary(0xB4EE, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+label_B4EF:; /* GetSoundRoutine_SoundFlagFound */
+    /* $B4EF: B1 */ nes_cpu_instruction_boundary(0xB4EF, 5); g_cpu.A = nes_read((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B4F1:;
+    /* $B4F1: 85 */ nes_cpu_instruction_boundary(0xB4F1, 3); nes_write(0xE2, g_cpu.A);
+label_B4F3:;
+    /* $B4F3: C8 */ nes_cpu_instruction_boundary(0xB4F3, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B4F4:;
+    /* $B4F4: B1 */ nes_cpu_instruction_boundary(0xB4F4, 5); g_cpu.A = nes_read((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B4F6:;
+    /* $B4F6: 85 */ nes_cpu_instruction_boundary(0xB4F6, 3); nes_write(0xE3, g_cpu.A);
+label_B4F8:;
+    /* $B4F8: 4C */ nes_cpu_instruction_boundary(0xB4F8, 3); nes_cpu_instruction_boundary(0xB4EA, 2);
+    goto label_B4EA;
+}
+
+void func_B4BD_b5(void) { /* GetSoundRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B4BD_b5");
+#endif
+    func_B4BD_b5_body(0);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
 }
 
-void func_B452_b5(void) {
+void func_B4EA_b5(void) { /* GetSoundRoutine_RestoreSFXFlags */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B452_b5");
+    recomp_stack_push("func_B4EA_b5");
 #endif
-    func_B44D_b5_body(1);
+    func_B4BD_b5_body(1);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
 }
 
-void func_B46E_b5(void) { /* ClearSounds */
+void func_BC53_b5(void) { /* FindMusicInitIndex */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B46E_b5");
+    recomp_stack_push("func_BC53_b5");
 #endif
-label_B46E:; /* ClearSounds */
-    /* $B46E: A9 */ nes_cpu_instruction_boundary(0xB46E, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_B470:;
-    /* $B470: 8D */ nes_cpu_instruction_boundary(0xB470, 4); nes_write(0x4000, g_cpu.A);
-label_B473:;
-    /* $B473: 8D */ nes_cpu_instruction_boundary(0xB473, 4); nes_write(0x4004, g_cpu.A);
-label_B476:;
-    /* $B476: 8D */ nes_cpu_instruction_boundary(0xB476, 4); nes_write(0x400C, g_cpu.A);
-label_B479:;
-    /* $B479: A9 */ nes_cpu_instruction_boundary(0xB479, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B47B:;
-    /* $B47B: 8D */ nes_cpu_instruction_boundary(0xB47B, 4); nes_write(0x4008, g_cpu.A);
-label_B47E:;
-    /* $B47E: 8D */ nes_cpu_instruction_boundary(0xB47E, 4); nes_write(0x4011, g_cpu.A);
-label_B481:;
-    /* $B481: 60 */ nes_cpu_instruction_boundary(0xB481, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_BC53:; /* FindMusicInitIndex */
+    /* $BC53: A9 */ nes_cpu_instruction_boundary(0xBC53, 2); g_cpu.A = 0xFF; FLAG_NZ(g_cpu.A);
+label_BC55:;
+    /* $BC55: 8D */ nes_cpu_instruction_boundary(0xBC55, 4); nes_write(0x065E, g_cpu.A);
+label_BC58:;
+    /* $BC58: AD */ nes_cpu_instruction_boundary(0xBC58, 4); g_cpu.A = nes_read(0x064D); FLAG_NZ(g_cpu.A);
+label_BC5B:;
+    /* $BC5B: F0 */ nes_cpu_instruction_boundary(0xBC5B, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC63; }
+label_BC5D:; /* FindMusicInitIndex_loop */
+    /* $BC5D: EE */ nes_cpu_instruction_boundary(0xBC5D, 6); { uint16_t a=0x065E; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BC60:;
+    /* $BC60: 0A */ nes_cpu_instruction_boundary(0xBC60, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BC61:;
+    /* $BC61: 90 */ nes_cpu_instruction_boundary(0xBC61, 2); if (!g_cpu.C) {
+    nes_cpu_instruction_boundary(0xBC5D, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BC5D;
+    }
+label_BC63:; /* FindMusicInitIndex_RTS */
+    /* $BC63: 60 */ nes_cpu_instruction_boundary(0xBC63, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -606,27 +854,41 @@ label_B481:;
     return;
 }
 
-void func_B43E_b5(void) { /* ClearSpecialAddresses */
+void func_BC64_b5(void) { /* MusicInitIndexAdd8 */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B43E_b5");
+    recomp_stack_push("func_BC64_b5");
 #endif
-label_B43E:; /* ClearSpecialAddresses */
-    /* $B43E: A9 */ nes_cpu_instruction_boundary(0xB43E, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B440:;
-    /* $B440: 8D */ nes_cpu_instruction_boundary(0xB440, 4); nes_write(0x062D, g_cpu.A);
-label_B443:;
-    /* $B443: 8D */ nes_cpu_instruction_boundary(0xB443, 4); nes_write(0x0602, g_cpu.A);
-label_B446:;
-    /* $B446: 8D */ nes_cpu_instruction_boundary(0xB446, 4); nes_write(0x065D, g_cpu.A);
-label_B449:;
-    /* $B449: 8D */ nes_cpu_instruction_boundary(0xB449, 4); nes_write(0x062C, g_cpu.A);
-label_B44C:;
-    /* $B44C: 60 */ nes_cpu_instruction_boundary(0xB44C, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_BC64:; /* MusicInitIndexAdd8 */
+    /* $BC64: AD */ nes_cpu_instruction_boundary(0xBC64, 4); g_cpu.A = nes_read(0x065E); FLAG_NZ(g_cpu.A);
+label_BC67:;
+    /* $BC67: 18 */ nes_cpu_instruction_boundary(0xBC67, 2); g_cpu.C = 0;
+label_BC68:;
+    /* $BC68: 69 */ nes_cpu_instruction_boundary(0xBC68, 2); { uint16_t r = g_cpu.A + 0x08 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x08); g_cpu.A=r&0xFF; }
+label_BC6A:;
+    /* $BC6A: 8D */ nes_cpu_instruction_boundary(0xBC6A, 4); nes_write(0x065E, g_cpu.A);
+label_BC6D:;
+    /* $BC6D: 60 */ nes_cpu_instruction_boundary(0xBC6D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
     return;
+}
+
+void func_B337_b5(void) { /* RunSoundRoutine */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B337_b5");
+#endif
+label_B337:; /* RunSoundRoutine */
+    /* $B337: 20 */ nes_cpu_instruction_boundary(0xB337, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x39; g_cpu.S--; func_B4BD_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB337, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B33A:;
+    /* $B33A: 6C */ nes_cpu_instruction_boundary(0xB33A, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
 }
 
 void func_8036_b5(void) { /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
@@ -894,290 +1156,6 @@ label_80AF:; /* EnemyMove_RTS */
     recomp_stack_pop();
 #endif
     return;
-}
-
-void func_B3BF_b5(void) { /* PauseSFX */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3BF_b5");
-#endif
-label_B3BF:; /* PauseSFX */
-    /* $B3BF: EE */ nes_cpu_instruction_boundary(0xB3BF, 6); { uint16_t a=0x0602; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B3C2:;
-    /* $B3C2: 20 */ nes_cpu_instruction_boundary(0xB3C2, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC4; g_cpu.S--; func_B46E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB3C2, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B3C5:;
-    /* $B3C5: 8D */ nes_cpu_instruction_boundary(0xB3C5, 4); nes_write(0x0603, g_cpu.A);
-label_B3C8:;
-    /* $B3C8: 60 */ nes_cpu_instruction_boundary(0xB3C8, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B398_b5(void) { /* LoadSFXData */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B398_b5");
-#endif
-label_B398:; /* LoadSFXData */
-    /* $B398: A9 */ nes_cpu_instruction_boundary(0xB398, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B39A:;
-    /* $B39A: F0 */ nes_cpu_instruction_boundary(0xB39A, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3A6; }
-label_B39C:; /* LoadSFXData_Tri */
-    /* $B39C: A9 */ nes_cpu_instruction_boundary(0xB39C, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
-label_B39E:;
-    /* $B39E: D0 */ nes_cpu_instruction_boundary(0xB39E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3A6; }
-label_B3A0:; /* LoadSFXData_Noise */
-    /* $B3A0: A9 */ nes_cpu_instruction_boundary(0xB3A0, 2); g_cpu.A = 0x0C; FLAG_NZ(g_cpu.A);
-label_B3A2:;
-    /* $B3A2: D0 */ nes_cpu_instruction_boundary(0xB3A2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3A6; }
-label_B3A4:; /* LoadSFXData_SQ2 */
-    /* $B3A4: A9 */ nes_cpu_instruction_boundary(0xB3A4, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
-label_B3A6:; /* LoadSFXData_Common */
-    /* $B3A6: 85 */ nes_cpu_instruction_boundary(0xB3A6, 3); nes_write(0xE0, g_cpu.A);
-label_B3A8:;
-    /* $B3A8: A9 */ nes_cpu_instruction_boundary(0xB3A8, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
-label_B3AA:;
-    /* $B3AA: 85 */ nes_cpu_instruction_boundary(0xB3AA, 3); nes_write(0xE1, g_cpu.A);
-label_B3AC:;
-    /* $B3AC: 84 */ nes_cpu_instruction_boundary(0xB3AC, 3); nes_write(0xE2, g_cpu.Y);
-label_B3AE:;
-    /* $B3AE: A9 */ nes_cpu_instruction_boundary(0xB3AE, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
-label_B3B0:;
-    /* $B3B0: 85 */ nes_cpu_instruction_boundary(0xB3B0, 3); nes_write(0xE3, g_cpu.A);
-label_B3B2:;
-    /* $B3B2: A0 */ nes_cpu_instruction_boundary(0xB3B2, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_B3B4:; /* LoadSFXData_loop_LoadSFXRegisters */
-    /* $B3B4: B1 */ nes_cpu_instruction_boundary(0xB3B4, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B3B6:;
-    /* $B3B6: 91 */ nes_cpu_instruction_boundary(0xB3B6, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B3B8:;
-    /* $B3B8: C8 */ nes_cpu_instruction_boundary(0xB3B8, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B3B9:;
-    /* $B3B9: 98 */ nes_cpu_instruction_boundary(0xB3B9, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_B3BA:;
-    /* $B3BA: C9 */ nes_cpu_instruction_boundary(0xB3BA, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
-label_B3BC:;
-    /* $B3BC: D0 */ nes_cpu_instruction_boundary(0xB3BC, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB3B4, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_B3B4;
-    }
-label_B3BE:;
-    /* $B3BE: 60 */ nes_cpu_instruction_boundary(0xB3BE, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B4ED_b5_body(int _entry) { /* GetSoundRoutine */
-    switch (_entry) {
-        case 1: goto label_B51A;
-        case 2: goto label_B503;
-        case 3: goto label_B51E;
-    }
-label_B4ED:; /* GetSoundRoutine */
-    /* $B4ED: 8D */ nes_cpu_instruction_boundary(0xB4ED, 4); nes_write(0x064D, g_cpu.A);
-label_B4F0:;
-    /* $B4F0: 86 */ nes_cpu_instruction_boundary(0xB4F0, 3); nes_write(0xE4, g_cpu.X);
-label_B4F2:;
-    /* $B4F2: A0 */ nes_cpu_instruction_boundary(0xB4F2, 2); g_cpu.Y = 0xB2; FLAG_NZ(g_cpu.Y);
-label_B4F4:;
-    /* $B4F4: 84 */ nes_cpu_instruction_boundary(0xB4F4, 3); nes_write(0xE5, g_cpu.Y);
-label_B4F6:;
-    /* $B4F6: A0 */ nes_cpu_instruction_boundary(0xB4F6, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_B4F8:; /* GetSoundRoutine_loop_A */
-    /* $B4F8: B1 */ nes_cpu_instruction_boundary(0xB4F8, 5); g_cpu.A = nes_read((nes_read16zp(0xE4) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B4FA:;
-    /* $B4FA: 99 */ nes_cpu_instruction_boundary(0xB4FA, 5); nes_write((0x00E0 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B4FD:;
-    /* $B4FD: C8 */ nes_cpu_instruction_boundary(0xB4FD, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B4FE:;
-    /* $B4FE: 98 */ nes_cpu_instruction_boundary(0xB4FE, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_B4FF:;
-    /* $B4FF: C9 */ nes_cpu_instruction_boundary(0xB4FF, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
-label_B501:;
-    /* $B501: D0 */ nes_cpu_instruction_boundary(0xB501, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB4F8, 2);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_B4F8;
-    }
-label_B503:;
-    /* $B503: B1 */ nes_cpu_instruction_boundary(0xB503, 5); g_cpu.A = nes_read((nes_read16zp(0xE4) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B505:;
-    /* $B505: 8D */ nes_cpu_instruction_boundary(0xB505, 4); nes_write(0x065C, g_cpu.A);
-label_B508:;
-    /* $B508: A0 */ nes_cpu_instruction_boundary(0xB508, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_B50A:;
-    /* $B50A: AD */ nes_cpu_instruction_boundary(0xB50A, 4); g_cpu.A = nes_read(0x064D); FLAG_NZ(g_cpu.A);
-label_B50D:;
-    /* $B50D: 48 */ nes_cpu_instruction_boundary(0xB50D, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_B50E:; /* GetSoundRoutine_loop_B */
-    /* $B50E: 0E */ nes_cpu_instruction_boundary(0xB50E, 6); { uint16_t a=0x064D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B511:;
-    /* $B511: B0 */ nes_cpu_instruction_boundary(0xB511, 2); if (g_cpu.C) { maybe_trigger_vblank(1); goto label_B51F; }
-label_B513:;
-    /* $B513: C8 */ nes_cpu_instruction_boundary(0xB513, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B514:;
-    /* $B514: C8 */ nes_cpu_instruction_boundary(0xB514, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B515:;
-    /* $B515: 98 */ nes_cpu_instruction_boundary(0xB515, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_B516:;
-    /* $B516: C9 */ nes_cpu_instruction_boundary(0xB516, 2); { int r=g_cpu.A-0x10; g_cpu.C=(g_cpu.A>=0x10)?1:0; FLAG_NZ(r&0xFF); }
-label_B518:;
-    /* $B518: D0 */ nes_cpu_instruction_boundary(0xB518, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB50E, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_B50E;
-    }
-label_B51A:; /* GetSoundRoutine_RestoreSFXFlags */
-    /* $B51A: 68 */ nes_cpu_instruction_boundary(0xB51A, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_B51B:;
-    /* $B51B: 8D */ nes_cpu_instruction_boundary(0xB51B, 4); nes_write(0x064D, g_cpu.A);
-label_B51E:; /* GetSoundRoutine_RTS */
-    /* $B51E: 60 */ nes_cpu_instruction_boundary(0xB51E, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_B51F:; /* GetSoundRoutine_SoundFlagFound */
-    /* $B51F: B1 */ nes_cpu_instruction_boundary(0xB51F, 5); g_cpu.A = nes_read((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B521:;
-    /* $B521: 85 */ nes_cpu_instruction_boundary(0xB521, 3); nes_write(0xE2, g_cpu.A);
-label_B523:;
-    /* $B523: C8 */ nes_cpu_instruction_boundary(0xB523, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B524:;
-    /* $B524: B1 */ nes_cpu_instruction_boundary(0xB524, 5); g_cpu.A = nes_read((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B526:;
-    /* $B526: 85 */ nes_cpu_instruction_boundary(0xB526, 3); nes_write(0xE3, g_cpu.A);
-label_B528:;
-    /* $B528: 4C */ nes_cpu_instruction_boundary(0xB528, 3); nes_cpu_instruction_boundary(0xB51A, 2);
-    goto label_B51A;
-}
-
-void func_B4ED_b5(void) { /* GetSoundRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B4ED_b5");
-#endif
-    func_B4ED_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B51A_b5(void) { /* GetSoundRoutine_RestoreSFXFlags */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B51A_b5");
-#endif
-    func_B4ED_b5_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B503_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B503_b5");
-#endif
-    func_B4ED_b5_body(2);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B51E_b5(void) { /* GetSoundRoutine_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B51E_b5");
-#endif
-    func_B4ED_b5_body(3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BC83_b5(void) { /* FindMusicInitIndex */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC83_b5");
-#endif
-label_BC83:; /* FindMusicInitIndex */
-    /* $BC83: A9 */ nes_cpu_instruction_boundary(0xBC83, 2); g_cpu.A = 0xFF; FLAG_NZ(g_cpu.A);
-label_BC85:;
-    /* $BC85: 8D */ nes_cpu_instruction_boundary(0xBC85, 4); nes_write(0x065E, g_cpu.A);
-label_BC88:;
-    /* $BC88: AD */ nes_cpu_instruction_boundary(0xBC88, 4); g_cpu.A = nes_read(0x064D); FLAG_NZ(g_cpu.A);
-label_BC8B:;
-    /* $BC8B: F0 */ nes_cpu_instruction_boundary(0xBC8B, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC93; }
-label_BC8D:; /* FindMusicInitIndex_loop */
-    /* $BC8D: EE */ nes_cpu_instruction_boundary(0xBC8D, 6); { uint16_t a=0x065E; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BC90:;
-    /* $BC90: 0A */ nes_cpu_instruction_boundary(0xBC90, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BC91:;
-    /* $BC91: 90 */ nes_cpu_instruction_boundary(0xBC91, 2); if (!g_cpu.C) {
-    nes_cpu_instruction_boundary(0xBC8D, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BC8D;
-    }
-label_BC93:; /* FindMusicInitIndex_RTS */
-    /* $BC93: 60 */ nes_cpu_instruction_boundary(0xBC93, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_BC94_b5(void) { /* MusicInitIndexAdd8 */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC94_b5");
-#endif
-label_BC94:; /* MusicInitIndexAdd8 */
-    /* $BC94: AD */ nes_cpu_instruction_boundary(0xBC94, 4); g_cpu.A = nes_read(0x065E); FLAG_NZ(g_cpu.A);
-label_BC97:;
-    /* $BC97: 18 */ nes_cpu_instruction_boundary(0xBC97, 2); g_cpu.C = 0;
-label_BC98:;
-    /* $BC98: 69 */ nes_cpu_instruction_boundary(0xBC98, 2); { uint16_t r = g_cpu.A + 0x08 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x08); g_cpu.A=r&0xFF; }
-label_BC9A:;
-    /* $BC9A: 8D */ nes_cpu_instruction_boundary(0xBC9A, 4); nes_write(0x065E, g_cpu.A);
-label_BC9D:;
-    /* $BC9D: 60 */ nes_cpu_instruction_boundary(0xBC9D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B367_b5(void) { /* RunSoundRoutine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B367_b5");
-#endif
-label_B367:; /* RunSoundRoutine */
-    /* $B367: 20 */ nes_cpu_instruction_boundary(0xB367, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x69; g_cpu.S--; func_B4ED_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB367, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B36A:;
-    /* $B36A: 6C */ nes_cpu_instruction_boundary(0xB36A, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
 }
 
 void func_833F_b5(void) { /* EnemyGetDeltaY_UsingAcceleration */
@@ -4240,10 +4218,11 @@ label_81BF:;
     return;
 }
 
-void func_AAA3_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_AAA3_b5");
-#endif
+void func_AAA3_b5_body(int _entry) {
+    switch (_entry) {
+        case 1: goto label_B948;
+        case 2: goto label_BC23;
+    }
 label_AAA3:;
     /* $AAA3: 0E */ nes_cpu_instruction_boundary(0xAAA3, 6); { uint16_t a=0x040D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_AAA6:;
@@ -4725,6 +4704,92 @@ label_AC9D:;
     /* $AC9D: 46 */ nes_cpu_instruction_boundary(0xAC9D, 5); { uint16_t a=0x4B; uint8_t v=nes_read(a); g_cpu.C=v&1; v>>=1; nes_write(a,v); FLAG_NZ(v); }
 label_AC9F:;
     /* $AC9F: 4C */ nes_cpu_instruction_boundary(0xAC9F, 3); nes_cpu_instruction_boundary(0x504D, 2); call_by_address_tail(0x504D, -1); return;
+label_B948:;
+    /* $B948: AD */ nes_cpu_instruction_boundary(0xB948, 4); g_cpu.A = nes_read(0x0673); FLAG_NZ(g_cpu.A);
+label_B94B:;
+    /* $B94B: C9 */ nes_cpu_instruction_boundary(0xB94B, 2); { int r=g_cpu.A-0x09; g_cpu.C=(g_cpu.A>=0x09)?1:0; FLAG_NZ(r&0xFF); }
+label_B94D:;
+    /* $B94D: D0 */ nes_cpu_instruction_boundary(0xB94D, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B952; }
+label_B94F:;
+    /* $B94F: 4C */ nes_cpu_instruction_boundary(0xB94F, 3); nes_cpu_instruction_boundary(0xB896, 2); func_B896_b5(); return;
+label_B952:; /* StatueRaiseSFXCont_endIf_B */
+    /* $B952: AD */ nes_cpu_instruction_boundary(0xB952, 4); g_cpu.A = nes_read(0x0612); FLAG_NZ(g_cpu.A);
+label_B955:;
+    /* $B955: 48 */ nes_cpu_instruction_boundary(0xB955, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_B956:;
+    /* $B956: AD */ nes_cpu_instruction_boundary(0xB956, 4); g_cpu.A = nes_read(0x0613); FLAG_NZ(g_cpu.A);
+label_B959:;
+    /* $B959: 48 */ nes_cpu_instruction_boundary(0xB959, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_B95A:;
+    /* $B95A: A9 */ nes_cpu_instruction_boundary(0xB95A, 2); g_cpu.A = 0x25; FLAG_NZ(g_cpu.A);
+label_B95C:;
+    /* $B95C: 8D */ nes_cpu_instruction_boundary(0xB95C, 4); nes_write(0x0612, g_cpu.A);
+label_B95F:;
+    /* $B95F: A9 */ nes_cpu_instruction_boundary(0xB95F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B961:;
+    /* $B961: 8D */ nes_cpu_instruction_boundary(0xB961, 4); nes_write(0x0613, g_cpu.A);
+label_B964:;
+    /* $B964: 20 */ nes_cpu_instruction_boundary(0xB964, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x66; g_cpu.S--; func_B978_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB964, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B967:;
+    /* $B967: 68 */ nes_cpu_instruction_boundary(0xB967, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B968:;
+    /* $B968: 8D */ nes_cpu_instruction_boundary(0xB968, 4); nes_write(0x0613, g_cpu.A);
+label_B96B:;
+    /* $B96B: 68 */ nes_cpu_instruction_boundary(0xB96B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B96C:;
+    /* $B96C: 8D */ nes_cpu_instruction_boundary(0xB96C, 4); nes_write(0x0612, g_cpu.A);
+label_B96F:;
+    /* $B96F: 4C */ nes_cpu_instruction_boundary(0xB96F, 3); nes_cpu_instruction_boundary(0xB869, 2); func_B869_b5(); return;
+label_BC23:;
+    /* $BC23: B5 */ nes_cpu_instruction_boundary(0xBC23, 4); g_cpu.A = nes_read((0xA1 + g_cpu.X) & 0xFF); FLAG_NZ(g_cpu.A);
+label_BC25:;
+    /* $BC25: B6 */ nes_cpu_instruction_boundary(0xBC25, 4); g_cpu.X = nes_read((0x83 + g_cpu.Y) & 0xFF); FLAG_NZ(g_cpu.X);
+label_BC27:;
+    /* $BC27: BC */ nes_cpu_instruction_boundary(0xBC27, 4); g_cpu.Y = nes_read((0xBC77 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BC2A:;
+    /* $BC2A: 77 */ nes_cpu_instruction_boundary(0xBC2A, 6); { uint16_t a=(0xBC + g_cpu.X) & 0xFF; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=v&1; v=((v>>1)|(c<<7))&0xFF; nes_write(a,v); uint16_t r=g_cpu.A+v+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
+label_BC2C:;
+    /* $BC2C: 77 */ nes_cpu_instruction_boundary(0xBC2C, 6); { uint16_t a=(0xBC + g_cpu.X) & 0xFF; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=v&1; v=((v>>1)|(c<<7))&0xFF; nes_write(a,v); uint16_t r=g_cpu.A+v+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
+label_BC2E:;
+    /* $BC2E: 80 */ nes_cpu_instruction_boundary(0xBC2E, 2); /* NOP */
+label_BC30:;
+    /* $BC30: 7D */ nes_cpu_instruction_boundary(0xBC30, 4); { uint8_t m=nes_read((0x77BC + g_cpu.X) & 0xFFFF); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_BC33:;
+    /* $BC33: BC */ nes_cpu_instruction_boundary(0xBC33, 4); g_cpu.Y = nes_read((0xBC80 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BC36:; /* RunMusicLoopRoutine */
+    /* $BC36: AD */ nes_cpu_instruction_boundary(0xBC36, 4); g_cpu.A = nes_read(0x065D); FLAG_NZ(g_cpu.A);
+label_BC39:;
+    /* $BC39: A2 */ nes_cpu_instruction_boundary(0xBC39, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BC3B:;
+    /* $BC3B: D0 */ nes_cpu_instruction_boundary(0xBC3B, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC42; }
+label_BC3D:; /* RunMusicInitRoutine */
+    /* $BC3D: AD */ nes_cpu_instruction_boundary(0xBC3D, 4); g_cpu.A = nes_read(0x0685); FLAG_NZ(g_cpu.A);
+label_BC40:;
+    /* $BC40: A2 */ nes_cpu_instruction_boundary(0xBC40, 2); g_cpu.X = 0xB1; FLAG_NZ(g_cpu.X);
+label_BC42:; /* RunMusicInitRoutine_Common */
+    /* $BC42: 20 */ nes_cpu_instruction_boundary(0xBC42, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x44; g_cpu.S--; func_B4BD_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBC42, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BC45:;
+    /* $BC45: 20 */ nes_cpu_instruction_boundary(0xBC45, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x47; g_cpu.S--; func_BC53_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBC45, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BC48:;
+    /* $BC48: 6C */ nes_cpu_instruction_boundary(0xBC48, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
 label_ACA2:; return;
 label_ACA5:; return;
 label_ACA8:; return;
@@ -5131,9 +5196,8 @@ label_AFF0:; return;
 label_AFF2:; return;
 label_AFF3:; return;
 label_AFF5:; return;
-label_AFF7:; return;
-label_AFF9:; return;
-label_AFFB:; return;
+label_AFF8:; return;
+label_AFFA:; return;
 label_AFFC:; return;
 label_AFFE:; return;
 label_B000:; return;
@@ -5173,363 +5237,340 @@ label_B03D:; return;
 label_B040:; return;
 label_B041:; return;
 label_B043:; return;
-label_B046:; return;
+label_B044:; return;
+label_B045:; return;
 label_B048:; return;
 label_B049:; return;
 label_B04B:; return;
-label_B04C:; return;
-label_B04D:; return;
 label_B04E:; return;
 label_B050:; return;
 label_B051:; return;
-label_B053:; return;
-label_B055:; return;
+label_B054:; return;
 label_B056:; return;
 label_B057:; return;
-label_B058:; return;
+label_B059:; return;
 label_B05A:; return;
 label_B05B:; return;
-label_B05C:; return;
 label_B05E:; return;
 label_B05F:; return;
-label_B060:; return;
+label_B061:; return;
 label_B062:; return;
 label_B063:; return;
-label_B066:; return;
-label_B068:; return;
-label_B069:; return;
+label_B064:; return;
+label_B067:; return;
 label_B06A:; return;
-label_B06B:; return;
-label_B06C:; return;
 label_B06D:; return;
-label_B06E:; return;
+label_B06F:; return;
 label_B071:; return;
-label_B072:; return;
-label_B075:; return;
-label_B077:; return;
-label_B079:; return;
-label_B07B:; return;
+label_B073:; return;
+label_B074:; return;
+label_B076:; return;
+label_B078:; return;
+label_B07A:; return;
 label_B07C:; return;
-label_B07D:; return;
 label_B07E:; return;
-label_B07F:; return;
+label_B080:; return;
 label_B082:; return;
-label_B083:; return;
 label_B085:; return;
-label_B087:; return;
-label_B088:; return;
-label_B08A:; return;
-label_B08B:; return;
-label_B08C:; return;
-label_B08D:; return;
-label_B090:; return;
-label_B092:; return;
-label_B093:; return;
-label_B096:; return;
-label_B098:; return;
-label_B099:; return;
-label_B09C:; return;
-label_B09F:; return;
-label_B0A0:; return;
-label_B0A1:; return;
-label_B0A2:; return;
-label_B0A4:; return;
-label_B0A5:; return;
-label_B0A6:; return;
-label_B0A7:; return;
-label_B0A8:; return;
-label_B0AB:; return;
-label_B0AC:; return;
-label_B0AE:; return;
-label_B0B1:; return;
-label_B0B2:; return;
-label_B0B5:; return;
-label_B0B6:; return;
-label_B0B9:; return;
+label_B0B8:; return;
 label_B0BA:; return;
 label_B0BD:; return;
 label_B0BE:; return;
 label_B0C1:; return;
 label_B0C4:; return;
-label_B0C6:; return;
-label_B0C8:; return;
+label_B0C7:; return;
 label_B0C9:; return;
-label_B0CA:; return;
+label_B0CB:; return;
 label_B0CC:; return;
-label_B0CE:; return;
+label_B0CD:; return;
 label_B0CF:; return;
-label_B0D0:; return;
+label_B0D1:; return;
 label_B0D3:; return;
-label_B0D5:; return;
 label_B0D6:; return;
 label_B0D8:; return;
 label_B0D9:; return;
-label_B0DA:; return;
 label_B0DC:; return;
 label_B0DD:; return;
-label_B0DE:; return;
+label_B0DF:; return;
 label_B0E0:; return;
 label_B0E1:; return;
-label_B0E2:; return;
-label_B0E5:; return;
-label_B0E8:; return;
+label_B0E4:; return;
+label_B0E6:; return;
 label_B0E9:; return;
-label_B0EC:; return;
+label_B0EA:; return;
 label_B0ED:; return;
+label_B0EE:; return;
+label_B0EF:; return;
 label_B0F0:; return;
+label_B0F1:; return;
 label_B0F2:; return;
+label_B0F3:; return;
 label_B0F4:; return;
-label_B0F5:; return;
+label_B0F7:; return;
 label_B0F8:; return;
 label_B0F9:; return;
-label_B0FC:; return;
+label_B0FB:; return;
+label_B0FE:; return;
 label_B0FF:; return;
-label_B102:; return;
-label_B103:; return;
+label_B101:; return;
+label_B104:; return;
+label_B105:; return;
 label_B106:; return;
-label_B107:; return;
+label_B109:; return;
 label_B10A:; return;
-label_B10D:; return;
+label_B10B:; return;
+label_B10C:; return;
+label_B10F:; return;
 label_B110:; return;
 label_B111:; return;
 label_B114:; return;
 label_B117:; return;
-label_B11A:; return;
-label_B11C:; return;
-label_B11F:; return;
+label_B118:; return;
+label_B11B:; return;
+label_B11D:; return;
+label_B11E:; return;
+label_B120:; return;
+label_B121:; return;
 label_B122:; return;
 label_B123:; return;
 label_B126:; return;
-label_B127:; return;
+label_B129:; return;
 label_B12A:; return;
-label_B12B:; return;
+label_B12C:; return;
 label_B12E:; return;
-label_B12F:; return;
 label_B130:; return;
-label_B131:; return;
-label_B134:; return;
+label_B132:; return;
+label_B133:; return;
 label_B135:; return;
+label_B136:; return;
+label_B137:; return;
 label_B138:; return;
-label_B139:; return;
-label_B13A:; return;
 label_B13B:; return;
-label_B13E:; return;
+label_B13D:; return;
 label_B13F:; return;
 label_B142:; return;
-label_B143:; return;
-label_B144:; return;
 label_B145:; return;
 label_B146:; return;
 label_B147:; return;
+label_B148:; return;
+label_B149:; return;
 label_B14A:; return;
-label_B14B:; return;
+label_B14D:; return;
 label_B14E:; return;
+label_B14F:; return;
 label_B150:; return;
-label_B153:; return;
-label_B156:; return;
+label_B152:; return;
+label_B155:; return;
 label_B158:; return;
 label_B15B:; return;
+label_B15C:; return;
 label_B15E:; return;
-label_B15F:; return;
-label_B162:; return;
+label_B160:; return;
 label_B163:; return;
+label_B164:; return;
+label_B165:; return;
 label_B166:; return;
 label_B167:; return;
-label_B16A:; return;
-label_B16B:; return;
-label_B16E:; return;
+label_B168:; return;
+label_B169:; return;
+label_B16C:; return;
+label_B16F:; return;
+label_B170:; return;
 label_B171:; return;
+label_B173:; return;
 label_B174:; return;
 label_B177:; return;
+label_B178:; return;
 label_B17A:; return;
+label_B17B:; return;
 label_B17C:; return;
 label_B17F:; return;
-label_B180:; return;
 label_B182:; return;
-label_B185:; return;
+label_B184:; return;
 label_B186:; return;
 label_B187:; return;
-label_B188:; return;
-label_B18B:; return;
+label_B18A:; return;
+label_B18D:; return;
 label_B18E:; return;
+label_B18F:; return;
 label_B191:; return;
-label_B193:; return;
 label_B194:; return;
-label_B196:; return;
+label_B197:; return;
 label_B198:; return;
 label_B19A:; return;
-label_B19C:; return;
 label_B19D:; return;
-label_B19F:; return;
 label_B1A0:; return;
-label_B1A1:; return;
 label_B1A2:; return;
 label_B1A5:; return;
 label_B1A7:; return;
 label_B1A9:; return;
 label_B1AC:; return;
-label_B1AF:; return;
+label_B1AE:; return;
 label_B1B0:; return;
 label_B1B3:; return;
-label_B1B4:; return;
-label_B1B5:; return;
 label_B1B6:; return;
 label_B1B9:; return;
 label_B1BA:; return;
 label_B1BB:; return;
 label_B1BC:; return;
+label_B1BD:; return;
 label_B1BE:; return;
+label_B1BF:; return;
 label_B1C1:; return;
-label_B1C4:; return;
+label_B1C3:; return;
+label_B1C5:; return;
 label_B1C7:; return;
+label_B1C9:; return;
 label_B1CA:; return;
+label_B1CB:; return;
+label_B1CC:; return;
 label_B1CD:; return;
+label_B1CE:; return;
 label_B1CF:; return;
+label_B1D0:; return;
 label_B1D2:; return;
+label_B1D3:; return;
 label_B1D4:; return;
+label_B1D5:; return;
 label_B1D6:; return;
+label_B1D7:; return;
 label_B1D8:; return;
 label_B1DA:; return;
 label_B1DC:; return;
-label_B1DE:; return;
 label_B1E0:; return;
 label_B1E2:; return;
 label_B1E4:; return;
-label_B1E6:; return;
+label_B1E7:; return;
 label_B1E8:; return;
-label_B1EA:; return;
-label_B1EC:; return;
-label_B1EE:; return;
+label_B1E9:; return;
+label_B1EB:; return;
+label_B1ED:; return;
 label_B1EF:; return;
-label_B1F0:; return;
 label_B1F1:; return;
-label_B1F2:; return;
 label_B1F3:; return;
-label_B1F4:; return;
+label_B1F6:; return;
 label_B1F7:; return;
+label_B1F9:; return;
 label_B1FA:; return;
 label_B1FB:; return;
-label_B1FC:; return;
+label_B1FD:; return;
 label_B1FE:; return;
 label_B1FF:; return;
-label_B202:; return;
+label_B200:; return;
+label_B201:; return;
 label_B203:; return;
+label_B204:; return;
 label_B205:; return;
-label_B206:; return;
 label_B207:; return;
+label_B209:; return;
 label_B20A:; return;
+label_B20B:; return;
 label_B20D:; return;
 label_B20F:; return;
 label_B211:; return;
-label_B212:; return;
-label_B215:; return;
-label_B218:; return;
+label_B213:; return;
+label_B214:; return;
+label_B216:; return;
 label_B219:; return;
-label_B21A:; return;
 label_B21C:; return;
+label_B21D:; return;
 label_B21F:; return;
-label_B222:; return;
+label_B221:; return;
 label_B223:; return;
-label_B225:; return;
+label_B226:; return;
 label_B228:; return;
 label_B22B:; return;
-label_B22C:; return;
-label_B22E:; return;
+label_B22D:; return;
 label_B22F:; return;
-label_B230:; return;
-label_B231:; return;
-label_B233:; return;
-label_B234:; return;
+label_B232:; return;
 label_B235:; return;
 label_B237:; return;
 label_B239:; return;
-label_B23A:; return;
 label_B23B:; return;
 label_B23D:; return;
 label_B23F:; return;
 label_B241:; return;
 label_B243:; return;
-label_B244:; return;
 label_B246:; return;
 label_B249:; return;
+label_B24B:; return;
 label_B24C:; return;
 label_B24D:; return;
 label_B24F:; return;
+label_B250:; return;
 label_B251:; return;
 label_B253:; return;
-label_B256:; return;
-label_B258:; return;
-label_B25B:; return;
+label_B254:; return;
+label_B257:; return;
+label_B25A:; return;
 label_B25D:; return;
-label_B25F:; return;
+label_B260:; return;
+label_B261:; return;
 label_B262:; return;
 label_B265:; return;
 label_B267:; return;
+label_B268:; return;
 label_B269:; return;
 label_B26B:; return;
 label_B26D:; return;
-label_B26F:; return;
-label_B271:; return;
+label_B270:; return;
 label_B273:; return;
 label_B276:; return;
 label_B279:; return;
 label_B27B:; return;
-label_B27C:; return;
 label_B27D:; return;
 label_B27F:; return;
 label_B280:; return;
 label_B281:; return;
 label_B283:; return;
-label_B284:; return;
-label_B287:; return;
-label_B28A:; return;
-label_B28D:; return;
+label_B285:; return;
+label_B288:; return;
+label_B289:; return;
+label_B28C:; return;
+label_B28E:; return;
 label_B290:; return;
-label_B291:; return;
-label_B292:; return;
-label_B295:; return;
-label_B297:; return;
+label_B293:; return;
+label_B296:; return;
 label_B298:; return;
-label_B299:; return;
-label_B29B:; return;
+label_B29A:; return;
 label_B29D:; return;
 label_B2A0:; return;
-label_B2A3:; return;
-label_B2A6:; return;
+label_B2A2:; return;
+label_B2A4:; return;
+label_B2A7:; return;
 label_B2A9:; return;
-label_B2AB:; return;
-label_B2AD:; return;
-label_B2AF:; return;
+label_B2AC:; return;
+label_B2AE:; return;
 label_B2B0:; return;
-label_B2B1:; return;
-label_B2B3:; return;
+label_B2B2:; return;
 label_B2B5:; return;
+label_B2B6:; return;
 label_B2B8:; return;
-label_B2B9:; return;
 label_B2BB:; return;
-label_B2BC:; return;
 label_B2BE:; return;
-label_B2C1:; return;
-label_B2C3:; return;
-label_B2C5:; return;
+label_B2C0:; return;
+label_B2C2:; return;
+label_B2C4:; return;
 label_B2C6:; return;
 label_B2C8:; return;
-label_B2CB:; return;
-label_B2CD:; return;
-label_B2CF:; return;
-label_B2D1:; return;
-label_B2D3:; return;
-label_B2D5:; return;
-label_B2D7:; return;
-label_B2D9:; return;
+label_B2CA:; return;
+label_B2CC:; return;
+label_B2CE:; return;
+label_B2D0:; return;
+label_B2D2:; return;
+label_B2D4:; return;
+label_B2D6:; return;
+label_B2D8:; return;
+label_B2DA:; return;
 label_B2DC:; return;
 label_B2DE:; return;
 label_B2E0:; return;
 label_B2E2:; return;
-label_B2E5:; return;
+label_B2E4:; return;
 label_B2E6:; return;
 label_B2E8:; return;
-label_B2EB:; return;
+label_B2EA:; return;
+label_B2EC:; return;
 label_B2EE:; return;
 label_B2F0:; return;
 label_B2F2:; return;
@@ -5538,145 +5579,140 @@ label_B2F6:; return;
 label_B2F8:; return;
 label_B2FA:; return;
 label_B2FC:; return;
-label_B2FE:; return;
+label_B2FD:; return;
 label_B300:; return;
-label_B302:; return;
-label_B304:; return;
+label_B301:; return;
+label_B303:; return;
 label_B306:; return;
 label_B308:; return;
+label_B309:; return;
 label_B30A:; return;
-label_B30C:; return;
+label_B30B:; return;
 label_B30E:; return;
 label_B310:; return;
+label_B311:; return;
 label_B312:; return;
-label_B314:; return;
-label_B316:; return;
+label_B315:; return;
 label_B318:; return;
-label_B31A:; return;
+label_B319:; return;
 label_B31C:; return;
 label_B31E:; return;
 label_B320:; return;
 label_B322:; return;
-label_B324:; return;
-label_B326:; return;
-label_B328:; return;
-label_B32A:; return;
+label_B325:; return;
+label_B327:; return;
+label_B329:; return;
 label_B32C:; return;
-label_B32F:; return;
-label_B331:; return;
+label_B32E:; return;
+label_B330:; return;
 label_B333:; return;
 label_B335:; return;
-label_B338:; return;
-label_B339:; return;
+label_B337:; return;
 label_B33A:; return;
-label_B33B:; return;
-label_B33E:; return;
+label_B33D:; return;
 label_B340:; return;
-label_B341:; return;
-label_B343:; return;
-label_B345:; return;
-label_B348:; return;
+label_B342:; return;
+label_B344:; return;
+label_B347:; return;
 label_B349:; return;
-label_B34C:; return;
+label_B34B:; return;
 label_B34E:; return;
 label_B350:; return;
-label_B352:; return;
-label_B355:; return;
-label_B357:; return;
+label_B353:; return;
+label_B356:; return;
 label_B359:; return;
 label_B35C:; return;
-label_B35E:; return;
-label_B360:; return;
-label_B363:; return;
-label_B365:; return;
+label_B35F:; return;
+label_B361:; return;
+label_B364:; return;
 label_B367:; return;
+label_B368:; return;
 label_B36A:; return;
-label_B36D:; return;
+label_B36C:; return;
+label_B36E:; return;
 label_B370:; return;
 label_B372:; return;
 label_B374:; return;
-label_B377:; return;
-label_B379:; return;
-label_B37B:; return;
+label_B376:; return;
+label_B378:; return;
+label_B37A:; return;
+label_B37C:; return;
 label_B37E:; return;
 label_B380:; return;
-label_B383:; return;
+label_B382:; return;
+label_B384:; return;
 label_B386:; return;
+label_B388:; return;
 label_B389:; return;
+label_B38A:; return;
 label_B38C:; return;
+label_B38E:; return;
 label_B38F:; return;
-label_B391:; return;
-label_B394:; return;
-label_B397:; return;
+label_B392:; return;
+label_B395:; return;
 label_B398:; return;
-label_B39A:; return;
+label_B399:; return;
 label_B39C:; return;
 label_B39E:; return;
-label_B3A0:; return;
-label_B3A2:; return;
-label_B3A4:; return;
-label_B3A6:; return;
-label_B3A8:; return;
-label_B3AA:; return;
-label_B3AC:; return;
-label_B3AE:; return;
+label_B3A1:; return;
+label_B3A3:; return;
+label_B3A5:; return;
+label_B3A7:; return;
+label_B3A9:; return;
+label_B3AB:; return;
+label_B3AD:; return;
 label_B3B0:; return;
-label_B3B2:; return;
+label_B3B3:; return;
 label_B3B4:; return;
 label_B3B6:; return;
-label_B3B8:; return;
 label_B3B9:; return;
-label_B3BA:; return;
 label_B3BC:; return;
-label_B3BE:; return;
+label_B3BD:; return;
 label_B3BF:; return;
-label_B3C2:; return;
+label_B3C1:; return;
+label_B3C3:; return;
 label_B3C5:; return;
-label_B3C8:; return;
-label_B3C9:; return;
-label_B3CC:; return;
-label_B3CE:; return;
-label_B3D1:; return;
+label_B3C7:; return;
+label_B3CA:; return;
+label_B3CD:; return;
+label_B3D0:; return;
 label_B3D3:; return;
-label_B3D5:; return;
-label_B3D7:; return;
-label_B3D9:; return;
+label_B3D6:; return;
+label_B3D8:; return;
 label_B3DB:; return;
-label_B3DD:; return;
-label_B3E0:; return;
-label_B3E3:; return;
+label_B3DE:; return;
+label_B3E1:; return;
 label_B3E4:; return;
-label_B3E6:; return;
-label_B3E9:; return;
-label_B3EC:; return;
-label_B3ED:; return;
-label_B3EF:; return;
-label_B3F1:; return;
+label_B3E7:; return;
+label_B3EA:; return;
+label_B3EB:; return;
+label_B3EE:; return;
+label_B3F0:; return;
 label_B3F3:; return;
 label_B3F5:; return;
-label_B3F7:; return;
-label_B3FA:; return;
-label_B3FD:; return;
-label_B400:; return;
-label_B403:; return;
-label_B406:; return;
-label_B408:; return;
-label_B40B:; return;
+label_B3F8:; return;
+label_B3FB:; return;
+label_B3FC:; return;
+label_B3FF:; return;
+label_B402:; return;
+label_B404:; return;
+label_B407:; return;
+label_B40A:; return;
+label_B40D:; return;
 label_B40E:; return;
-label_B411:; return;
-label_B414:; return;
-label_B417:; return;
-label_B41A:; return;
-label_B41B:; return;
-label_B41E:; return;
-label_B420:; return;
-label_B423:; return;
+label_B410:; return;
+label_B413:; return;
+label_B416:; return;
+label_B419:; return;
+label_B41C:; return;
+label_B41D:; return;
+label_B41F:; return;
+label_B422:; return;
 label_B425:; return;
 label_B428:; return;
 label_B42B:; return;
-label_B42C:; return;
-label_B42F:; return;
-label_B432:; return;
+label_B42E:; return;
+label_B431:; return;
 label_B434:; return;
 label_B437:; return;
 label_B43A:; return;
@@ -5686,206 +5722,207 @@ label_B440:; return;
 label_B443:; return;
 label_B446:; return;
 label_B449:; return;
-label_B44C:; return;
-label_B44D:; return;
-label_B44F:; return;
+label_B44B:; return;
+label_B44E:; return;
+label_B451:; return;
 label_B452:; return;
 label_B455:; return;
 label_B458:; return;
+label_B459:; return;
 label_B45B:; return;
-label_B45E:; return;
+label_B45D:; return;
+label_B45F:; return;
 label_B461:; return;
-label_B464:; return;
+label_B463:; return;
+label_B465:; return;
 label_B467:; return;
-label_B46A:; return;
+label_B468:; return;
+label_B46B:; return;
 label_B46D:; return;
-label_B46E:; return;
 label_B470:; return;
-label_B473:; return;
-label_B476:; return;
-label_B479:; return;
-label_B47B:; return;
+label_B472:; return;
+label_B475:; return;
+label_B477:; return;
+label_B47A:; return;
+label_B47D:; return;
 label_B47E:; return;
 label_B481:; return;
-label_B482:; return;
-label_B485:; return;
-label_B488:; return;
+label_B483:; return;
+label_B486:; return;
 label_B489:; return;
-label_B48B:; return;
-label_B48D:; return;
+label_B48C:; return;
 label_B48F:; return;
-label_B491:; return;
+label_B492:; return;
 label_B493:; return;
-label_B495:; return;
-label_B497:; return;
-label_B498:; return;
+label_B496:; return;
+label_B499:; return;
 label_B49B:; return;
-label_B49D:; return;
-label_B4A0:; return;
+label_B49E:; return;
+label_B4A1:; return;
 label_B4A2:; return;
-label_B4A5:; return;
+label_B4A4:; return;
 label_B4A7:; return;
-label_B4AA:; return;
-label_B4AD:; return;
-label_B4AE:; return;
-label_B4B1:; return;
-label_B4B3:; return;
-label_B4B6:; return;
+label_B4A9:; return;
+label_B4AC:; return;
+label_B4AF:; return;
+label_B4B2:; return;
+label_B4B5:; return;
+label_B4B7:; return;
 label_B4B9:; return;
 label_B4BC:; return;
-label_B4BF:; return;
+label_B4BD:; return;
+label_B4C0:; return;
 label_B4C2:; return;
-label_B4C3:; return;
+label_B4C4:; return;
 label_B4C6:; return;
-label_B4C9:; return;
-label_B4CB:; return;
+label_B4C8:; return;
+label_B4CA:; return;
+label_B4CD:; return;
 label_B4CE:; return;
+label_B4CF:; return;
 label_B4D1:; return;
-label_B4D2:; return;
-label_B4D4:; return;
-label_B4D7:; return;
-label_B4D9:; return;
-label_B4DC:; return;
-label_B4DF:; return;
-label_B4E2:; return;
+label_B4D3:; return;
+label_B4D5:; return;
+label_B4D8:; return;
+label_B4DA:; return;
+label_B4DD:; return;
+label_B4DE:; return;
+label_B4E1:; return;
+label_B4E3:; return;
+label_B4E4:; return;
 label_B4E5:; return;
-label_B4E7:; return;
-label_B4E9:; return;
-label_B4EC:; return;
-label_B4ED:; return;
-label_B4F0:; return;
-label_B4F2:; return;
+label_B4E6:; return;
+label_B4E8:; return;
+label_B4EA:; return;
+label_B4EB:; return;
+label_B4EE:; return;
+label_B4EF:; return;
+label_B4F1:; return;
+label_B4F3:; return;
 label_B4F4:; return;
 label_B4F6:; return;
 label_B4F8:; return;
-label_B4FA:; return;
-label_B4FD:; return;
+label_B4FB:; return;
+label_B4FC:; return;
 label_B4FE:; return;
-label_B4FF:; return;
-label_B501:; return;
-label_B503:; return;
+label_B500:; return;
+label_B502:; return;
 label_B505:; return;
 label_B508:; return;
-label_B50A:; return;
-label_B50D:; return;
+label_B509:; return;
+label_B50C:; return;
 label_B50E:; return;
+label_B50F:; return;
 label_B511:; return;
 label_B513:; return;
-label_B514:; return;
-label_B515:; return;
 label_B516:; return;
-label_B518:; return;
-label_B51A:; return;
+label_B519:; return;
 label_B51B:; return;
 label_B51E:; return;
-label_B51F:; return;
 label_B521:; return;
-label_B523:; return;
 label_B524:; return;
-label_B526:; return;
-label_B528:; return;
+label_B527:; return;
+label_B52A:; return;
 label_B52B:; return;
-label_B52C:; return;
-label_B52E:; return;
-label_B530:; return;
+label_B52D:; return;
+label_B52F:; return;
 label_B532:; return;
 label_B535:; return;
 label_B538:; return;
 label_B539:; return;
 label_B53C:; return;
 label_B53E:; return;
-label_B53F:; return;
-label_B541:; return;
+label_B540:; return;
 label_B543:; return;
-label_B546:; return;
+label_B545:; return;
+label_B548:; return;
 label_B549:; return;
-label_B54B:; return;
+label_B54C:; return;
 label_B54E:; return;
 label_B551:; return;
 label_B554:; return;
 label_B557:; return;
 label_B55A:; return;
-label_B55B:; return;
 label_B55D:; return;
 label_B55F:; return;
-label_B562:; return;
-label_B565:; return;
-label_B568:; return;
-label_B569:; return;
-label_B56C:; return;
+label_B561:; return;
+label_B564:; return;
+label_B567:; return;
+label_B56A:; return;
+label_B56D:; return;
 label_B56E:; return;
 label_B570:; return;
-label_B573:; return;
+label_B572:; return;
 label_B575:; return;
-label_B578:; return;
-label_B579:; return;
-label_B57C:; return;
+label_B577:; return;
+label_B57A:; return;
+label_B57B:; return;
 label_B57E:; return;
-label_B581:; return;
-label_B584:; return;
+label_B580:; return;
+label_B583:; return;
+label_B585:; return;
 label_B587:; return;
 label_B58A:; return;
 label_B58D:; return;
 label_B58F:; return;
-label_B591:; return;
+label_B592:; return;
 label_B594:; return;
 label_B597:; return;
-label_B59A:; return;
+label_B598:; return;
+label_B59B:; return;
 label_B59D:; return;
-label_B59E:; return;
-label_B5A0:; return;
-label_B5A2:; return;
+label_B59F:; return;
+label_B5A1:; return;
+label_B5A3:; return;
 label_B5A5:; return;
-label_B5A7:; return;
-label_B5AA:; return;
+label_B5A8:; return;
 label_B5AB:; return;
 label_B5AE:; return;
 label_B5B0:; return;
 label_B5B3:; return;
 label_B5B5:; return;
-label_B5B7:; return;
+label_B5B8:; return;
 label_B5BA:; return;
 label_B5BD:; return;
-label_B5BF:; return;
-label_B5C2:; return;
-label_B5C4:; return;
-label_B5C7:; return;
-label_B5C8:; return;
-label_B5CB:; return;
+label_B5C0:; return;
+label_B5C3:; return;
+label_B5C6:; return;
+label_B5C9:; return;
+label_B5CC:; return;
 label_B5CD:; return;
 label_B5CF:; return;
-label_B5D1:; return;
-label_B5D3:; return;
+label_B5D2:; return;
 label_B5D5:; return;
-label_B5D8:; return;
-label_B5DB:; return;
-label_B5DE:; return;
+label_B5D7:; return;
+label_B5DA:; return;
+label_B5DD:; return;
 label_B5E0:; return;
-label_B5E3:; return;
+label_B5E2:; return;
 label_B5E5:; return;
 label_B5E8:; return;
-label_B5EA:; return;
-label_B5ED:; return;
-label_B5F0:; return;
+label_B5EB:; return;
+label_B5EC:; return;
+label_B5EE:; return;
+label_B5F1:; return;
 label_B5F3:; return;
 label_B5F6:; return;
 label_B5F9:; return;
 label_B5FC:; return;
-label_B5FD:; return;
 label_B5FF:; return;
 label_B602:; return;
 label_B605:; return;
-label_B607:; return;
+label_B608:; return;
 label_B60A:; return;
-label_B60D:; return;
+label_B60C:; return;
+label_B60E:; return;
 label_B610:; return;
 label_B612:; return;
-label_B615:; return;
-label_B618:; return;
-label_B61B:; return;
-label_B61C:; return;
-label_B61E:; return;
-label_B621:; return;
+label_B614:; return;
+label_B616:; return;
+label_B619:; return;
+label_B61A:; return;
+label_B61D:; return;
+label_B620:; return;
 label_B623:; return;
 label_B626:; return;
 label_B629:; return;
@@ -5894,159 +5931,159 @@ label_B62F:; return;
 label_B632:; return;
 label_B635:; return;
 label_B638:; return;
-label_B63A:; return;
+label_B639:; return;
 label_B63C:; return;
-label_B63E:; return;
+label_B63D:; return;
 label_B640:; return;
-label_B642:; return;
-label_B644:; return;
+label_B643:; return;
 label_B646:; return;
 label_B649:; return;
-label_B64A:; return;
-label_B64D:; return;
-label_B650:; return;
-label_B653:; return;
+label_B64C:; return;
+label_B64F:; return;
+label_B652:; return;
+label_B654:; return;
 label_B656:; return;
 label_B659:; return;
+label_B65B:; return;
 label_B65C:; return;
-label_B65F:; return;
-label_B662:; return;
-label_B665:; return;
-label_B668:; return;
+label_B65E:; return;
+label_B661:; return;
+label_B664:; return;
+label_B666:; return;
 label_B669:; return;
+label_B66B:; return;
 label_B66C:; return;
 label_B66D:; return;
-label_B670:; return;
+label_B66F:; return;
+label_B672:; return;
 label_B673:; return;
-label_B676:; return;
-label_B679:; return;
+label_B675:; return;
+label_B678:; return;
+label_B67A:; return;
 label_B67C:; return;
 label_B67F:; return;
+label_B680:; return;
 label_B682:; return;
 label_B684:; return;
 label_B686:; return;
-label_B689:; return;
+label_B688:; return;
 label_B68B:; return;
-label_B68C:; return;
+label_B68D:; return;
 label_B68E:; return;
+label_B68F:; return;
 label_B691:; return;
 label_B694:; return;
-label_B696:; return;
-label_B699:; return;
-label_B69B:; return;
+label_B695:; return;
+label_B697:; return;
+label_B69A:; return;
 label_B69C:; return;
-label_B69D:; return;
-label_B69F:; return;
-label_B6A2:; return;
-label_B6A3:; return;
-label_B6A5:; return;
-label_B6A8:; return;
-label_B6AA:; return;
+label_B69E:; return;
+label_B6A1:; return;
+label_B6A4:; return;
+label_B6A6:; return;
+label_B6A9:; return;
 label_B6AC:; return;
 label_B6AF:; return;
 label_B6B0:; return;
-label_B6B2:; return;
-label_B6B4:; return;
-label_B6B6:; return;
+label_B6B3:; return;
+label_B6B5:; return;
 label_B6B8:; return;
 label_B6BB:; return;
 label_B6BD:; return;
-label_B6BE:; return;
-label_B6BF:; return;
-label_B6C1:; return;
-label_B6C4:; return;
-label_B6C5:; return;
-label_B6C7:; return;
-label_B6CA:; return;
+label_B6C0:; return;
+label_B6C3:; return;
+label_B6C6:; return;
+label_B6C9:; return;
 label_B6CC:; return;
-label_B6CE:; return;
+label_B6CD:; return;
+label_B6CF:; return;
 label_B6D1:; return;
-label_B6D4:; return;
+label_B6D3:; return;
 label_B6D6:; return;
-label_B6D9:; return;
-label_B6DC:; return;
-label_B6DF:; return;
+label_B6D8:; return;
+label_B6DB:; return;
+label_B6DE:; return;
 label_B6E0:; return;
-label_B6E3:; return;
-label_B6E5:; return;
-label_B6E8:; return;
-label_B6EB:; return;
-label_B6ED:; return;
-label_B6F0:; return;
-label_B6F3:; return;
-label_B6F6:; return;
+label_B6E2:; return;
+label_B6E4:; return;
+label_B6F2:; return;
+label_B6F4:; return;
+label_B6F7:; return;
 label_B6F9:; return;
 label_B6FC:; return;
-label_B6FD:; return;
 label_B6FF:; return;
-label_B701:; return;
+label_B702:; return;
 label_B703:; return;
 label_B706:; return;
 label_B708:; return;
-label_B70B:; return;
+label_B70A:; return;
+label_B70C:; return;
 label_B70E:; return;
 label_B710:; return;
 label_B712:; return;
 label_B714:; return;
-label_B722:; return;
-label_B724:; return;
+label_B716:; return;
+label_B719:; return;
+label_B71A:; return;
+label_B71C:; return;
+label_B71F:; return;
+label_B721:; return;
+label_B723:; return;
+label_B726:; return;
 label_B727:; return;
 label_B729:; return;
-label_B72C:; return;
+label_B72B:; return;
+label_B72D:; return;
 label_B72F:; return;
-label_B732:; return;
+label_B731:; return;
 label_B733:; return;
-label_B736:; return;
-label_B738:; return;
-label_B73A:; return;
-label_B73C:; return;
-label_B73E:; return;
-label_B740:; return;
-label_B742:; return;
-label_B744:; return;
-label_B746:; return;
-label_B749:; return;
-label_B74A:; return;
-label_B74C:; return;
-label_B74F:; return;
-label_B751:; return;
-label_B753:; return;
-label_B756:; return;
-label_B757:; return;
-label_B759:; return;
-label_B75B:; return;
-label_B75D:; return;
-label_B75F:; return;
-label_B761:; return;
-label_B763:; return;
+label_B735:; return;
+label_B737:; return;
+label_B739:; return;
+label_B75E:; return;
+label_B760:; return;
+label_B762:; return;
 label_B765:; return;
-label_B767:; return;
-label_B769:; return;
-label_B78E:; return;
-label_B790:; return;
-label_B792:; return;
-label_B795:; return;
-label_B798:; return;
-label_B79A:; return;
-label_B79D:; return;
+label_B768:; return;
+label_B76A:; return;
+label_B76D:; return;
+label_B770:; return;
+label_B772:; return;
+label_B773:; return;
+label_B776:; return;
+label_B778:; return;
+label_B77A:; return;
+label_B77C:; return;
+label_B77E:; return;
 label_B7A0:; return;
-label_B7A2:; return;
 label_B7A3:; return;
 label_B7A6:; return;
+label_B7A7:; return;
 label_B7A8:; return;
-label_B7AA:; return;
+label_B7AB:; return;
 label_B7AC:; return;
-label_B7AE:; return;
+label_B7AF:; return;
+label_B7B2:; return;
+label_B7B5:; return;
+label_B7B7:; return;
+label_B7BA:; return;
+label_B7BC:; return;
+label_B7BF:; return;
+label_B7C1:; return;
+label_B7C4:; return;
+label_B7C6:; return;
+label_B7C8:; return;
+label_B7CB:; return;
+label_B7CE:; return;
 label_B7D0:; return;
 label_B7D3:; return;
 label_B7D6:; return;
-label_B7D7:; return;
-label_B7D8:; return;
-label_B7DB:; return;
+label_B7D9:; return;
 label_B7DC:; return;
-label_B7DF:; return;
+label_B7DE:; return;
+label_B7E0:; return;
 label_B7E2:; return;
-label_B7E5:; return;
+label_B7E4:; return;
 label_B7E7:; return;
 label_B7EA:; return;
 label_B7EC:; return;
@@ -6054,499 +6091,523 @@ label_B7EF:; return;
 label_B7F1:; return;
 label_B7F4:; return;
 label_B7F6:; return;
-label_B7F8:; return;
-label_B7FB:; return;
-label_B7FE:; return;
-label_B800:; return;
-label_B803:; return;
-label_B806:; return;
+label_B7F9:; return;
+label_B7FC:; return;
+label_B7FF:; return;
+label_B802:; return;
+label_B804:; return;
+label_B807:; return;
 label_B809:; return;
-label_B80C:; return;
+label_B80B:; return;
 label_B80E:; return;
-label_B810:; return;
-label_B812:; return;
-label_B814:; return;
-label_B817:; return;
-label_B81A:; return;
-label_B81C:; return;
-label_B81F:; return;
-label_B821:; return;
-label_B824:; return;
-label_B826:; return;
-label_B829:; return;
-label_B82C:; return;
-label_B82F:; return;
-label_B832:; return;
+label_B811:; return;
+label_B813:; return;
+label_B816:; return;
+label_B819:; return;
+label_B81B:; return;
+label_B81D:; return;
+label_B820:; return;
+label_B823:; return;
+label_B825:; return;
+label_B828:; return;
+label_B82B:; return;
+label_B82E:; return;
+label_B830:; return;
+label_B833:; return;
 label_B834:; return;
-label_B837:; return;
-label_B839:; return;
+label_B836:; return;
+label_B838:; return;
 label_B83B:; return;
-label_B83E:; return;
-label_B841:; return;
+label_B83D:; return;
+label_B840:; return;
 label_B843:; return;
 label_B846:; return;
 label_B849:; return;
 label_B84B:; return;
-label_B84D:; return;
-label_B850:; return;
-label_B853:; return;
-label_B855:; return;
-label_B858:; return;
-label_B85B:; return;
-label_B85E:; return;
+label_B84E:; return;
+label_B84F:; return;
+label_B852:; return;
+label_B854:; return;
+label_B857:; return;
+label_B85A:; return;
+label_B85D:; return;
 label_B860:; return;
 label_B863:; return;
-label_B864:; return;
 label_B866:; return;
-label_B868:; return;
-label_B86B:; return;
-label_B86D:; return;
-label_B870:; return;
-label_B873:; return;
-label_B876:; return;
-label_B879:; return;
-label_B87B:; return;
-label_B87E:; return;
+label_B869:; return;
+label_B86C:; return;
+label_B86F:; return;
+label_B872:; return;
+label_B874:; return;
+label_B877:; return;
+label_B878:; return;
+label_B87A:; return;
+label_B87C:; return;
 label_B87F:; return;
 label_B882:; return;
 label_B884:; return;
 label_B887:; return;
 label_B88A:; return;
-label_B88D:; return;
-label_B890:; return;
+label_B88C:; return;
+label_B88E:; return;
+label_B891:; return;
 label_B893:; return;
-label_B896:; return;
-label_B899:; return;
-label_B89C:; return;
-label_B89F:; return;
-label_B8A2:; return;
-label_B8A4:; return;
+label_B8A6:; return;
 label_B8A7:; return;
-label_B8A8:; return;
-label_B8AA:; return;
-label_B8AC:; return;
-label_B8AF:; return;
-label_B8B2:; return;
+label_B8A9:; return;
+label_B8AB:; return;
+label_B8AE:; return;
+label_B8B1:; return;
 label_B8B4:; return;
-label_B8B7:; return;
-label_B8BA:; return;
+label_B8B6:; return;
+label_B8B9:; return;
 label_B8BC:; return;
 label_B8BE:; return;
-label_B8C1:; return;
+label_B8C0:; return;
 label_B8C3:; return;
-label_B8D6:; return;
+label_B8C5:; return;
+label_B8C7:; return;
+label_B8CA:; return;
+label_B8CC:; return;
+label_B8CE:; return;
+label_B8D1:; return;
+label_B8D2:; return;
+label_B8D5:; return;
 label_B8D7:; return;
 label_B8D9:; return;
-label_B8DB:; return;
+label_B8DC:; return;
 label_B8DE:; return;
 label_B8E1:; return;
 label_B8E4:; return;
-label_B8E6:; return;
+label_B8E7:; return;
 label_B8E9:; return;
 label_B8EC:; return;
-label_B8EE:; return;
+label_B8ED:; return;
 label_B8F0:; return;
-label_B8F3:; return;
-label_B8F5:; return;
+label_B8F2:; return;
+label_B8F4:; return;
 label_B8F7:; return;
-label_B8FA:; return;
+label_B8F9:; return;
 label_B8FC:; return;
-label_B8FE:; return;
-label_B901:; return;
+label_B8FF:; return;
 label_B902:; return;
 label_B905:; return;
 label_B907:; return;
 label_B909:; return;
 label_B90C:; return;
-label_B90E:; return;
-label_B911:; return;
-label_B914:; return;
-label_B917:; return;
-label_B919:; return;
-label_B91C:; return;
-label_B91D:; return;
-label_B920:; return;
-label_B922:; return;
+label_B90F:; return;
+label_B912:; return;
+label_B915:; return;
+label_B918:; return;
+label_B91B:; return;
+label_B91E:; return;
+label_B921:; return;
 label_B924:; return;
 label_B927:; return;
-label_B929:; return;
+label_B92A:; return;
 label_B92C:; return;
 label_B92F:; return;
-label_B932:; return;
-label_B935:; return;
-label_B937:; return;
+label_B931:; return;
+label_B934:; return;
+label_B936:; return;
 label_B939:; return;
-label_B93C:; return;
-label_B93F:; return;
-label_B942:; return;
+label_B93B:; return;
+label_B93D:; return;
+label_B940:; return;
+label_B943:; return;
 label_B945:; return;
-label_B948:; return;
-label_B94B:; return;
-label_B94E:; return;
-label_B951:; return;
-label_B954:; return;
-label_B957:; return;
-label_B95A:; return;
-label_B95C:; return;
-label_B95F:; return;
-label_B961:; return;
-label_B964:; return;
-label_B966:; return;
-label_B969:; return;
-label_B96B:; return;
-label_B96D:; return;
-label_B970:; return;
-label_B973:; return;
+label_B972:; return;
 label_B975:; return;
 label_B978:; return;
-label_B97B:; return;
-label_B97D:; return;
+label_B979:; return;
+label_B97C:; return;
 label_B97F:; return;
 label_B982:; return;
 label_B985:; return;
-label_B986:; return;
-label_B989:; return;
-label_B98A:; return;
+label_B988:; return;
+label_B98B:; return;
 label_B98C:; return;
-label_B98F:; return;
-label_B991:; return;
-label_B994:; return;
-label_B997:; return;
-label_B998:; return;
-label_B99B:; return;
+label_B98D:; return;
+label_B990:; return;
+label_B993:; return;
+label_B996:; return;
+label_B999:; return;
 label_B99C:; return;
 label_B99F:; return;
-label_B9A2:; return;
-label_B9A5:; return;
+label_B9A0:; return;
+label_B9A3:; return;
+label_B9A4:; return;
+label_B9A7:; return;
 label_B9A8:; return;
-label_B9A9:; return;
-label_B9AC:; return;
+label_B9AA:; return;
+label_B9AD:; return;
 label_B9AF:; return;
 label_B9B2:; return;
 label_B9B5:; return;
 label_B9B8:; return;
 label_B9BB:; return;
-label_B9BC:; return;
-label_B9BD:; return;
+label_B9BE:; return;
 label_B9C0:; return;
 label_B9C3:; return;
 label_B9C6:; return;
 label_B9C9:; return;
 label_B9CC:; return;
+label_B9CD:; return;
 label_B9CF:; return;
-label_B9D0:; return;
-label_B9D3:; return;
-label_B9D4:; return;
-label_B9D7:; return;
+label_B9D2:; return;
+label_B9D5:; return;
 label_B9D8:; return;
-label_B9DA:; return;
-label_B9DD:; return;
+label_B9DB:; return;
+label_B9DC:; return;
 label_B9DF:; return;
-label_B9E2:; return;
-label_B9E5:; return;
-label_B9E8:; return;
-label_B9EB:; return;
-label_B9EE:; return;
-label_B9F0:; return;
+label_B9E0:; return;
+label_B9E3:; return;
+label_B9E4:; return;
+label_B9E6:; return;
+label_B9E9:; return;
+label_B9EC:; return;
+label_B9EF:; return;
+label_B9F2:; return;
 label_B9F3:; return;
 label_B9F6:; return;
-label_B9F9:; return;
-label_B9FC:; return;
+label_B9F8:; return;
+label_B9FA:; return;
 label_B9FD:; return;
-label_B9FF:; return;
+label_BA00:; return;
 label_BA02:; return;
-label_BA05:; return;
+label_BA04:; return;
+label_BA07:; return;
 label_BA08:; return;
 label_BA0B:; return;
-label_BA0C:; return;
+label_BA0D:; return;
 label_BA0F:; return;
-label_BA10:; return;
-label_BA13:; return;
-label_BA14:; return;
-label_BA16:; return;
-label_BA19:; return;
-label_BA1C:; return;
-label_BA1F:; return;
-label_BA22:; return;
-label_BA23:; return;
-label_BA26:; return;
-label_BA28:; return;
+label_BA12:; return;
+label_BA15:; return;
+label_BA18:; return;
+label_BA1B:; return;
+label_BA1E:; return;
+label_BA21:; return;
+label_BA24:; return;
+label_BA27:; return;
 label_BA2A:; return;
 label_BA2D:; return;
 label_BA30:; return;
-label_BA32:; return;
-label_BA34:; return;
+label_BA33:; return;
+label_BA36:; return;
 label_BA37:; return;
-label_BA38:; return;
-label_BA3B:; return;
+label_BA39:; return;
+label_BA3C:; return;
 label_BA3D:; return;
-label_BA3F:; return;
-label_BA42:; return;
-label_BA45:; return;
+label_BA40:; return;
+label_BA41:; return;
+label_BA44:; return;
+label_BA46:; return;
 label_BA48:; return;
 label_BA4B:; return;
 label_BA4E:; return;
-label_BA51:; return;
+label_BA50:; return;
+label_BA52:; return;
 label_BA54:; return;
-label_BA57:; return;
+label_BA56:; return;
+label_BA58:; return;
+label_BA59:; return;
 label_BA5A:; return;
-label_BA5D:; return;
-label_BA60:; return;
-label_BA63:; return;
+label_BA5C:; return;
+label_BA5F:; return;
+label_BA61:; return;
+label_BA64:; return;
 label_BA66:; return;
-label_BA67:; return;
 label_BA69:; return;
-label_BA6C:; return;
+label_BA6B:; return;
 label_BA6D:; return;
-label_BA70:; return;
+label_BA6F:; return;
 label_BA71:; return;
-label_BA74:; return;
-label_BA76:; return;
+label_BA73:; return;
+label_BA75:; return;
 label_BA78:; return;
-label_BA7B:; return;
-label_BA7E:; return;
+label_BA7A:; return;
+label_BA7C:; return;
+label_BA7D:; return;
 label_BA80:; return;
-label_BA82:; return;
-label_BA84:; return;
+label_BA83:; return;
+label_BA85:; return;
 label_BA86:; return;
 label_BA88:; return;
-label_BA89:; return;
-label_BA8A:; return;
+label_BA8B:; return;
 label_BA8C:; return;
 label_BA8F:; return;
-label_BA91:; return;
-label_BA94:; return;
-label_BA96:; return;
+label_BA90:; return;
+label_BA93:; return;
+label_BA95:; return;
+label_BA97:; return;
 label_BA99:; return;
 label_BA9B:; return;
 label_BA9D:; return;
-label_BA9F:; return;
+label_BAA0:; return;
 label_BAA1:; return;
-label_BAA3:; return;
+label_BAA4:; return;
 label_BAA5:; return;
 label_BAA8:; return;
 label_BAAA:; return;
-label_BAAC:; return;
-label_BAAD:; return;
+label_BAAB:; return;
+label_BAAE:; return;
 label_BAB0:; return;
+label_BAB1:; return;
+label_BAB2:; return;
 label_BAB3:; return;
+label_BAB4:; return;
 label_BAB5:; return;
-label_BAB6:; return;
-label_BAB8:; return;
-label_BABB:; return;
+label_BAB7:; return;
+label_BAB9:; return;
 label_BABC:; return;
+label_BABD:; return;
 label_BABF:; return;
-label_BAC0:; return;
+label_BAC2:; return;
 label_BAC3:; return;
+label_BAC4:; return;
 label_BAC5:; return;
-label_BAC7:; return;
-label_BAC9:; return;
-label_BACB:; return;
+label_BAC8:; return;
+label_BACA:; return;
 label_BACD:; return;
-label_BAD0:; return;
-label_BAD1:; return;
+label_BACF:; return;
+label_BAD2:; return;
 label_BAD4:; return;
 label_BAD5:; return;
-label_BAD8:; return;
+label_BAD6:; return;
+label_BAD7:; return;
 label_BADA:; return;
-label_BADB:; return;
-label_BADE:; return;
-label_BAE0:; return;
-label_BAE1:; return;
+label_BADC:; return;
+label_BADF:; return;
 label_BAE2:; return;
-label_BAE3:; return;
 label_BAE4:; return;
-label_BAE5:; return;
+label_BAE6:; return;
 label_BAE7:; return;
 label_BAE9:; return;
-label_BAEC:; return;
+label_BAEB:; return;
 label_BAED:; return;
 label_BAEF:; return;
-label_BAF2:; return;
-label_BAF3:; return;
+label_BAF1:; return;
 label_BAF4:; return;
-label_BAF5:; return;
-label_BAF8:; return;
-label_BAFA:; return;
-label_BAFD:; return;
+label_BAF7:; return;
+label_BAF9:; return;
+label_BAFC:; return;
 label_BAFF:; return;
 label_BB02:; return;
 label_BB04:; return;
 label_BB05:; return;
-label_BB06:; return;
 label_BB07:; return;
 label_BB0A:; return;
-label_BB0C:; return;
-label_BB0F:; return;
-label_BB12:; return;
-label_BB14:; return;
+label_BB0D:; return;
+label_BB10:; return;
+label_BB13:; return;
 label_BB16:; return;
-label_BB17:; return;
 label_BB19:; return;
-label_BB1B:; return;
+label_BB1C:; return;
 label_BB1D:; return;
 label_BB1F:; return;
 label_BB21:; return;
+label_BB23:; return;
 label_BB24:; return;
+label_BB26:; return;
 label_BB27:; return;
-label_BB29:; return;
-label_BB2C:; return;
-label_BB2F:; return;
+label_BB2A:; return;
+label_BB2B:; return;
+label_BB2E:; return;
+label_BB31:; return;
 label_BB32:; return;
-label_BB34:; return;
+label_BB33:; return;
 label_BB35:; return;
 label_BB37:; return;
 label_BB3A:; return;
 label_BB3D:; return;
+label_BB3F:; return;
 label_BB40:; return;
+label_BB41:; return;
 label_BB43:; return;
+label_BB45:; return;
 label_BB46:; return;
 label_BB49:; return;
 label_BB4C:; return;
-label_BB4D:; return;
-label_BB4F:; return;
+label_BB4E:; return;
 label_BB51:; return;
-label_BB53:; return;
 label_BB54:; return;
 label_BB56:; return;
-label_BB57:; return;
+label_BB59:; return;
 label_BB5A:; return;
 label_BB5B:; return;
-label_BB5E:; return;
+label_BB5C:; return;
+label_BB5D:; return;
+label_BB5F:; return;
 label_BB61:; return;
-label_BB62:; return;
 label_BB63:; return;
-label_BB65:; return;
-label_BB67:; return;
+label_BB64:; return;
+label_BB66:; return;
+label_BB68:; return;
 label_BB6A:; return;
-label_BB6D:; return;
-label_BB6F:; return;
-label_BB70:; return;
+label_BB6C:; return;
+label_BB6E:; return;
 label_BB71:; return;
 label_BB73:; return;
-label_BB75:; return;
-label_BB76:; return;
-label_BB79:; return;
+label_BB74:; return;
+label_BB77:; return;
+label_BB7A:; return;
 label_BB7C:; return;
-label_BB7E:; return;
-label_BB81:; return;
-label_BB84:; return;
-label_BB86:; return;
-label_BB89:; return;
+label_BB7F:; return;
+label_BB82:; return;
+label_BB83:; return;
+label_BB85:; return;
+label_BB87:; return;
 label_BB8A:; return;
-label_BB8B:; return;
 label_BB8C:; return;
-label_BB8D:; return;
-label_BB8F:; return;
+label_BB8E:; return;
 label_BB91:; return;
 label_BB93:; return;
-label_BB94:; return;
 label_BB96:; return;
-label_BB98:; return;
-label_BB9A:; return;
+label_BB99:; return;
 label_BB9C:; return;
-label_BB9E:; return;
-label_BBA1:; return;
-label_BBA3:; return;
-label_BBA4:; return;
-label_BBA7:; return;
-label_BBAA:; return;
-label_BBAC:; return;
-label_BBAF:; return;
-label_BBB2:; return;
-label_BBB3:; return;
-label_BBB5:; return;
+label_BB9F:; return;
+label_BBA2:; return;
+label_BBA5:; return;
+label_BBA8:; return;
+label_BBAB:; return;
+label_BBAE:; return;
+label_BBB1:; return;
+label_BBB4:; return;
 label_BBB7:; return;
 label_BBBA:; return;
 label_BBBC:; return;
 label_BBBE:; return;
 label_BBC1:; return;
 label_BBC3:; return;
+label_BBC5:; return;
 label_BBC6:; return;
 label_BBC9:; return;
-label_BBCC:; return;
-label_BBCF:; return;
+label_BBCB:; return;
+label_BBCD:; return;
+label_BBCE:; return;
+label_BBD0:; return;
+label_BBD1:; return;
 label_BBD2:; return;
-label_BBD5:; return;
+label_BBD4:; return;
+label_BBD6:; return;
 label_BBD8:; return;
 label_BBDB:; return;
 label_BBDE:; return;
 label_BBE1:; return;
-label_BBE4:; return;
-label_BBE7:; return;
-label_BBEA:; return;
-label_BBEC:; return;
+label_BBE3:; return;
+label_BBE5:; return;
+label_BBE8:; return;
+label_BBEB:; return;
 label_BBEE:; return;
 label_BBF1:; return;
-label_BBF3:; return;
-label_BBF5:; return;
-label_BBF6:; return;
-label_BBF9:; return;
-label_BBFB:; return;
-label_BBFD:; return;
+label_BBF4:; return;
+label_BBF7:; return;
+label_BBFA:; return;
+label_BBFC:; return;
 label_BBFE:; return;
-label_BC00:; return;
-label_BC01:; return;
+label_BBFF:; return;
 label_BC02:; return;
-label_BC04:; return;
-label_BC06:; return;
+label_BC03:; return;
+label_BC05:; return;
 label_BC08:; return;
-label_BC0B:; return;
-label_BC0E:; return;
-label_BC11:; return;
-label_BC13:; return;
+label_BC09:; return;
+label_BC0C:; return;
+label_BC0D:; return;
+label_BC10:; return;
+label_BC12:; return;
 label_BC15:; return;
-label_BC18:; return;
+label_BC17:; return;
+label_BC19:; return;
 label_BC1B:; return;
-label_BC1E:; return;
+label_BC1D:; return;
+label_BC1F:; return;
 label_BC21:; return;
-label_BC24:; return;
-label_BC27:; return;
-label_BC2A:; return;
-label_BC2C:; return;
-label_BC2E:; return;
-label_BC2F:; return;
-label_BC32:; return;
-label_BC33:; return;
-label_BC35:; return;
-label_BC38:; return;
-label_BC39:; return;
-label_BC3C:; return;
-label_BC3D:; return;
-label_BC40:; return;
-label_BC42:; return;
-label_BC45:; return;
-label_BC47:; return;
-label_BC49:; return;
 label_BC4B:; return;
-label_BC4D:; return;
-label_BC4F:; return;
-label_BC51:; return;
-label_BC53:; return;
-label_BC55:; return;
-label_BC57:; return;
-label_BC5A:; return;
-label_BC5C:; return;
-label_BC5E:; return;
-label_BC60:; return;
-label_BC63:; return;
-label_BC66:; return;
-label_BC69:; return;
-label_BC6B:; return;
-label_BC6D:; return;
-label_BC70:; return;
-label_BC72:; return;
-label_BC75:; return;
-label_BC78:; return;
-label_BC7B:; return;
-label_BC7E:; return;
+label_BC4E:; return;
+label_BC50:; return;
+label_BC76:; return;
+label_BC77:; return;
+label_BC7A:; return;
+label_BC7D:; return;
 label_BC80:; return;
+label_BC83:; return;
+label_BC86:; return;
+label_BC89:; return;
+label_BC8B:; return;
+label_BC8C:; return;
+label_BC8D:; return;
+label_BC90:; return;
+label_BC93:; return;
+label_BC96:; return;
+label_BC98:; return;
+label_BC9A:; return;
+label_BC9C:; return;
+label_BC9E:; return;
+label_BCA0:; return;
+label_BCA2:; return;
+label_BCA4:; return;
 label_BCA6:; return;
-label_BCA7:; return;
+label_BCA8:; return;
 label_BCAA:; return;
-label_BCAD:; return;
+label_BCAC:; return;
+label_BCAE:; return;
 label_BCB0:; return;
-label_BCB3:; return;
+label_BCB1:; return;
+label_BCB4:; return;
+label_BCB7:; return;
+label_BCBA:; return;
+label_BCBC:; return;
+label_BCBD:; return;
+label_BCBF:; return;
+label_BCC1:; return;
+label_BCC3:; return;
+label_BCC4:; return;
+label_BCC7:; return;
+label_BCC9:; return;
+label_BCCB:; return;
+label_BCCD:; return;
+label_BCCF:; return;
+label_BCD0:; return;
+label_BCD3:; return;
+label_BCD5:; return;
+label_BCD7:; return;
+label_BCD9:; return;
+label_BCDC:; return;
+label_BCDE:; return;
+label_BCE0:; return;
+label_BCE2:; return;
+label_BCE4:; return;
+label_BCE6:; return;
+}
+
+void func_AAA3_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AAA3_b5");
+#endif
+    func_AAA3_b5_body(0);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B948_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B948_b5");
+#endif
+    func_AAA3_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BC23_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BC23_b5");
+#endif
+    func_AAA3_b5_body(2);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
 }
 
 void func_AD04_b5(void) {
@@ -6803,12 +6864,16 @@ label_AEC8:;
     return;
 }
 
-void func_BB22_b5(void) {
+void func_B084_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BB22_b5");
+    recomp_stack_push("func_B084_b5");
 #endif
-label_BB22:;
-    /* $BB22: 4C */ nes_cpu_instruction_boundary(0xBB22, 3); nes_cpu_instruction_boundary(0xBDBB, 2); func_BDBB_b5(); return;
+label_B084:;
+    /* $B084: 46 */ nes_cpu_instruction_boundary(0xB084, 5); { uint16_t a=0x4C; uint8_t v=nes_read(a); g_cpu.C=v&1; v>>=1; nes_write(a,v); FLAG_NZ(v); }
+label_B086:;
+    /* $B086: 46 */ nes_cpu_instruction_boundary(0xB086, 5); { uint16_t a=0x54; uint8_t v=nes_read(a); g_cpu.C=v&1; v>>=1; nes_write(a,v); FLAG_NZ(v); }
+label_B088:;
+    /* $B088: 4C */ nes_cpu_instruction_boundary(0xB088, 3); nes_cpu_instruction_boundary(0x3E42, 2); call_by_address_tail(0x3E42, -1); return;
 }
 
 void func_B920_b5(void) {
@@ -6816,59 +6881,132 @@ void func_B920_b5(void) {
     recomp_stack_push("func_B920_b5");
 #endif
 label_B920:;
-    /* $B920: D0 */ nes_cpu_instruction_boundary(0xB920, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B93C; }
-label_B922:;
-    /* $B922: A9 */ nes_cpu_instruction_boundary(0xB922, 2); g_cpu.A = 0x20; FLAG_NZ(g_cpu.A);
+    /* $B920: B8 */ nes_cpu_instruction_boundary(0xB920, 2); g_cpu.V = 0;
+label_B921:; /* StatueRaiseSFXInit */
+    /* $B921: AD */ nes_cpu_instruction_boundary(0xB921, 4); g_cpu.A = nes_read(0xB283); FLAG_NZ(g_cpu.A);
 label_B924:;
-    /* $B924: 8D */ nes_cpu_instruction_boundary(0xB924, 4); nes_write(0x0612, g_cpu.A);
+    /* $B924: 8D */ nes_cpu_instruction_boundary(0xB924, 4); nes_write(0x0610, g_cpu.A);
 label_B927:;
-    /* $B927: A9 */ nes_cpu_instruction_boundary(0xB927, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B929:;
-    /* $B929: 8D */ nes_cpu_instruction_boundary(0xB929, 4); nes_write(0x0613, g_cpu.A);
+    /* $B927: AD */ nes_cpu_instruction_boundary(0xB927, 4); g_cpu.A = nes_read(0xB284); FLAG_NZ(g_cpu.A);
+label_B92A:;
+    /* $B92A: 29 */ nes_cpu_instruction_boundary(0xB92A, 2); g_cpu.A &= 0x07; FLAG_NZ(g_cpu.A);
 label_B92C:;
-    /* $B92C: 20 */ nes_cpu_instruction_boundary(0xB92C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x2E; g_cpu.S--; func_B9BC_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB92C, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
+    /* $B92C: 8D */ nes_cpu_instruction_boundary(0xB92C, 4); nes_write(0x0611, g_cpu.A);
 label_B92F:;
-    /* $B92F: EE */ nes_cpu_instruction_boundary(0xB92F, 6); { uint16_t a=0x0673; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B932:;
-    /* $B932: AD */ nes_cpu_instruction_boundary(0xB932, 4); g_cpu.A = nes_read(0x0673); FLAG_NZ(g_cpu.A);
-label_B935:;
-    /* $B935: C9 */ nes_cpu_instruction_boundary(0xB935, 2); { int r=g_cpu.A-0x06; g_cpu.C=(g_cpu.A>=0x06)?1:0; FLAG_NZ(r&0xFF); }
-label_B937:;
-    /* $B937: D0 */ nes_cpu_instruction_boundary(0xB937, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB91C); return; }
+    /* $B92F: A9 */ nes_cpu_instruction_boundary(0xB92F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B931:;
+    /* $B931: 8D */ nes_cpu_instruction_boundary(0xB931, 4); nes_write(0x0613, g_cpu.A);
+label_B934:;
+    /* $B934: A9 */ nes_cpu_instruction_boundary(0xB934, 2); g_cpu.A = 0x0B; FLAG_NZ(g_cpu.A);
+label_B936:;
+    /* $B936: 8D */ nes_cpu_instruction_boundary(0xB936, 4); nes_write(0x0612, g_cpu.A);
 label_B939:;
-    /* $B939: 4C */ nes_cpu_instruction_boundary(0xB939, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B93C:;
-    /* $B93C: 20 */ nes_cpu_instruction_boundary(0xB93C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3E; g_cpu.S--; func_B9D0_b5();
+    /* $B939: A9 */ nes_cpu_instruction_boundary(0xB939, 2); g_cpu.A = 0x06; FLAG_NZ(g_cpu.A);
+label_B93B:;
+    /* $B93B: A0 */ nes_cpu_instruction_boundary(0xB93B, 2); g_cpu.Y = 0x81; FLAG_NZ(g_cpu.Y);
+label_B93D:;
+    /* $B93D: 4C */ nes_cpu_instruction_boundary(0xB93D, 3); nes_cpu_instruction_boundary(0xB452, 2); func_B452_b5(); return;
+}
+
+void func_9830_b5(void) { /* UpdateEnemyCommon_Decide_BANK5 */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_9830_b5");
+#endif
+label_9830:; /* UpdateEnemyCommon_Decide_BANK5 */
+    /* $9830: A5 */ nes_cpu_instruction_boundary(0x9830, 3); g_cpu.A = nes_read(0x81); FLAG_NZ(g_cpu.A);
+label_9832:;
+    /* $9832: C9 */ nes_cpu_instruction_boundary(0x9832, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
+label_9834:;
+    /* $9834: F0 */ nes_cpu_instruction_boundary(0x9834, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_983F; }
+label_9836:;
+    /* $9836: C9 */ nes_cpu_instruction_boundary(0x9836, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
+label_9838:;
+    /* $9838: F0 */ nes_cpu_instruction_boundary(0x9838, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_9844; }
+label_983A:;
+    /* $983A: A5 */ nes_cpu_instruction_boundary(0x983A, 3); g_cpu.A = nes_read(0x00); FLAG_NZ(g_cpu.A);
+label_983C:;
+    /* $983C: 4C */ nes_cpu_instruction_boundary(0x983C, 3); nes_cpu_instruction_boundary(0x8000, 2); func_8000_b5(); return;
+label_983F:; /* UpdateEnemyCommon_Decide_BANK5_resting */
+    /* $983F: A5 */ nes_cpu_instruction_boundary(0x983F, 3); g_cpu.A = nes_read(0x01); FLAG_NZ(g_cpu.A);
+label_9841:;
+    /* $9841: 4C */ nes_cpu_instruction_boundary(0x9841, 3); nes_cpu_instruction_boundary(0x8003, 2); func_8003_b5(); return;
+label_9844:; /* UpdateEnemyCommon_Decide_BANK5_explode */
+    /* $9844: 4C */ nes_cpu_instruction_boundary(0x9844, 3); nes_cpu_instruction_boundary(0x8006, 2); func_8006_b5(); return;
+}
+
+void func_80C7_b5(void) { /* EnemyIfMoveFailedUp_facingHorizontal */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_80C7_b5");
+#endif
+label_80C7:; /* EnemyIfMoveFailedUp_facingHorizontal */
+    /* $80C7: 20 */ nes_cpu_instruction_boundary(0x80C7, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x80; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC9; g_cpu.S--; func_80B0_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB93C, _cbs);
+    bail_trace(0x80C7, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B93F:;
-    /* $B93F: AD */ nes_cpu_instruction_boundary(0xB93F, 4); g_cpu.A = nes_read(0x0614); FLAG_NZ(g_cpu.A);
-label_B942:;
-    /* $B942: 8D */ nes_cpu_instruction_boundary(0xB942, 4); nes_write(0x0612, g_cpu.A);
-label_B945:;
-    /* $B945: AD */ nes_cpu_instruction_boundary(0xB945, 4); g_cpu.A = nes_read(0x0615); FLAG_NZ(g_cpu.A);
-label_B948:;
-    /* $B948: 8D */ nes_cpu_instruction_boundary(0xB948, 4); nes_write(0x0613, g_cpu.A);
-label_B94B:;
-    /* $B94B: 20 */ nes_cpu_instruction_boundary(0xB94B, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x4D; g_cpu.S--; func_B9A8_b5();
+label_80CA:;
+    /* $80CA: 10 */ nes_cpu_instruction_boundary(0x80CA, 2); if (!g_cpu.N) { maybe_trigger_vblank(1); goto label_80EA; }
+label_80CC:;
+    /* $80CC: BD */ nes_cpu_instruction_boundary(0x80CC, 4); g_cpu.A = nes_read((0x6B03 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_80CF:;
+    /* $80CF: F0 */ nes_cpu_instruction_boundary(0x80CF, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0x80C1); return; }
+label_80D1:;
+    /* $80D1: 10 */ nes_cpu_instruction_boundary(0x80D1, 2); if (!g_cpu.N) { maybe_trigger_vblank(1); goto label_80D8; }
+label_80D3:;
+    /* $80D3: 20 */ nes_cpu_instruction_boundary(0x80D3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x80; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD5; g_cpu.S--; func_81B1_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB94B, _cbs);
+    bail_trace(0x80D3, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B94E:;
-    /* $B94E: 4C */ nes_cpu_instruction_boundary(0xB94E, 3); nes_cpu_instruction_boundary(0xB899, 2); func_B899_b5(); return;
+label_80D6:;
+    /* $80D6: F0 */ nes_cpu_instruction_boundary(0x80D6, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_80E2; }
+label_80D8:; /* EnemyIfMoveFailedUp_brushOnCeiling */
+    /* $80D8: 38 */ nes_cpu_instruction_boundary(0x80D8, 2); g_cpu.C = 1;
+label_80D9:;
+    /* $80D9: 7E */ nes_cpu_instruction_boundary(0x80D9, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=v&1; v=((v>>1)|(c<<7))&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_80DC:;
+    /* $80DC: 7E */ nes_cpu_instruction_boundary(0x80DC, 7); { uint16_t a=(0x0406 + g_cpu.X) & 0xFFFF; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=v&1; v=((v>>1)|(c<<7))&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_80DF:;
+    /* $80DF: 4C */ nes_cpu_instruction_boundary(0x80DF, 3); nes_cpu_instruction_boundary(0x80F6, 2); func_80F6_b5(); return;
+label_80E2:; /* EnemyIfMoveFailedUp_landOnCeilingPt2 */
+    /* $80E2: 9D */ nes_cpu_instruction_boundary(0x80E2, 5); nes_write((0x0402 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_80E5:;
+    /* $80E5: 9D */ nes_cpu_instruction_boundary(0x80E5, 5); nes_write((0x0406 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_80E8:;
+    /* $80E8: F0 */ nes_cpu_instruction_boundary(0x80E8, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_80F6; }
+label_80EA:; /* EnemyIfMoveFailedUp_movementStrings */
+    /* $80EA: B9 */ nes_cpu_instruction_boundary(0x80EA, 4); g_cpu.A = nes_read((0x977B + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_80ED:;
+    /* $80ED: 4A */ nes_cpu_instruction_boundary(0x80ED, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_80EE:;
+    /* $80EE: 4A */ nes_cpu_instruction_boundary(0x80EE, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_80EF:;
+    /* $80EF: 90 */ nes_cpu_instruction_boundary(0x80EF, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_80F6; }
+label_80F1:;
+    /* $80F1: A9 */ nes_cpu_instruction_boundary(0x80F1, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
+label_80F3:;
+    /* $80F3: 20 */ nes_cpu_instruction_boundary(0x80F3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x80; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xF5; g_cpu.S--; func_856B_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0x80F3, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_80F6:; /* EnemyIfMoveFailedUp_abortLoop */
+    /* $80F6: A9 */ nes_cpu_instruction_boundary(0x80F6, 2); g_cpu.A = 0x01; FLAG_NZ(g_cpu.A);
+label_80F8:;
+    /* $80F8: 85 */ nes_cpu_instruction_boundary(0x80F8, 3); nes_write(0x66, g_cpu.A);
+label_80FA:; /* EnemyIfMoveFailedUp_RTS */
+    /* $80FA: 60 */ nes_cpu_instruction_boundary(0x80FA, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
 }
 
 void func_95BD_b5(void) {
@@ -7051,46 +7189,46 @@ label_8C81:;
     /* $8C81: 4C */ nes_cpu_instruction_boundary(0x8C81, 3); nes_cpu_instruction_boundary(0xCBDA, 2); func_CBDA(); return;
 }
 
-void func_B3A4_b5(void) { /* LoadSFXData_SQ2 */
+void func_B374_b5(void) { /* LoadSFXData_SQ2 */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3A4_b5");
+    recomp_stack_push("func_B374_b5");
 #endif
-label_B3A4:; /* LoadSFXData_SQ2 */
-    /* $B3A4: A9 */ nes_cpu_instruction_boundary(0xB3A4, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
-label_B3A6:; /* LoadSFXData_Common */
-    /* $B3A6: 85 */ nes_cpu_instruction_boundary(0xB3A6, 3); nes_write(0xE0, g_cpu.A);
-label_B3A8:;
-    /* $B3A8: A9 */ nes_cpu_instruction_boundary(0xB3A8, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
-label_B3AA:;
-    /* $B3AA: 85 */ nes_cpu_instruction_boundary(0xB3AA, 3); nes_write(0xE1, g_cpu.A);
-label_B3AC:;
-    /* $B3AC: 84 */ nes_cpu_instruction_boundary(0xB3AC, 3); nes_write(0xE2, g_cpu.Y);
-label_B3AE:;
-    /* $B3AE: A9 */ nes_cpu_instruction_boundary(0xB3AE, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
-label_B3B0:;
-    /* $B3B0: 85 */ nes_cpu_instruction_boundary(0xB3B0, 3); nes_write(0xE3, g_cpu.A);
-label_B3B2:;
-    /* $B3B2: A0 */ nes_cpu_instruction_boundary(0xB3B2, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_B3B4:; /* LoadSFXData_loop_LoadSFXRegisters */
-    /* $B3B4: B1 */ nes_cpu_instruction_boundary(0xB3B4, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B3B6:;
-    /* $B3B6: 91 */ nes_cpu_instruction_boundary(0xB3B6, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B3B8:;
-    /* $B3B8: C8 */ nes_cpu_instruction_boundary(0xB3B8, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B3B9:;
-    /* $B3B9: 98 */ nes_cpu_instruction_boundary(0xB3B9, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_B3BA:;
-    /* $B3BA: C9 */ nes_cpu_instruction_boundary(0xB3BA, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
-label_B3BC:;
-    /* $B3BC: D0 */ nes_cpu_instruction_boundary(0xB3BC, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB3B4, 1);
+label_B374:; /* LoadSFXData_SQ2 */
+    /* $B374: A9 */ nes_cpu_instruction_boundary(0xB374, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
+label_B376:; /* LoadSFXData_Common */
+    /* $B376: 85 */ nes_cpu_instruction_boundary(0xB376, 3); nes_write(0xE0, g_cpu.A);
+label_B378:;
+    /* $B378: A9 */ nes_cpu_instruction_boundary(0xB378, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
+label_B37A:;
+    /* $B37A: 85 */ nes_cpu_instruction_boundary(0xB37A, 3); nes_write(0xE1, g_cpu.A);
+label_B37C:;
+    /* $B37C: 84 */ nes_cpu_instruction_boundary(0xB37C, 3); nes_write(0xE2, g_cpu.Y);
+label_B37E:;
+    /* $B37E: A9 */ nes_cpu_instruction_boundary(0xB37E, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
+label_B380:;
+    /* $B380: 85 */ nes_cpu_instruction_boundary(0xB380, 3); nes_write(0xE3, g_cpu.A);
+label_B382:;
+    /* $B382: A0 */ nes_cpu_instruction_boundary(0xB382, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_B384:; /* LoadSFXData_loop_LoadSFXRegisters */
+    /* $B384: B1 */ nes_cpu_instruction_boundary(0xB384, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B386:;
+    /* $B386: 91 */ nes_cpu_instruction_boundary(0xB386, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_B388:;
+    /* $B388: C8 */ nes_cpu_instruction_boundary(0xB388, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B389:;
+    /* $B389: 98 */ nes_cpu_instruction_boundary(0xB389, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_B38A:;
+    /* $B38A: C9 */ nes_cpu_instruction_boundary(0xB38A, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_B38C:;
+    /* $B38C: D0 */ nes_cpu_instruction_boundary(0xB38C, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB384, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_B3B4;
+    goto label_B384;
     }
-label_B3BE:;
-    /* $B3BE: 60 */ nes_cpu_instruction_boundary(0xB3BE, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B38E:;
+    /* $B38E: 60 */ nes_cpu_instruction_boundary(0xB38E, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7098,54 +7236,54 @@ label_B3BE:;
     return;
 }
 
-void func_B39C_b5(void) { /* LoadSFXData_Tri */
+void func_B36C_b5(void) { /* LoadSFXData_Tri */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B39C_b5");
+    recomp_stack_push("func_B36C_b5");
 #endif
-label_B39C:; /* LoadSFXData_Tri */
-    /* $B39C: A9 */ nes_cpu_instruction_boundary(0xB39C, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
-label_B39E:;
-    /* $B39E: D0 */ nes_cpu_instruction_boundary(0xB39E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3A6; }
-label_B3A0:; /* LoadSFXData_Noise */
-    /* $B3A0: A9 */ nes_cpu_instruction_boundary(0xB3A0, 2); g_cpu.A = 0x0C; FLAG_NZ(g_cpu.A);
-label_B3A2:;
-    /* $B3A2: D0 */ nes_cpu_instruction_boundary(0xB3A2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3A6; }
-label_B3A4:; /* LoadSFXData_SQ2 */
-    /* $B3A4: A9 */ nes_cpu_instruction_boundary(0xB3A4, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
-label_B3A6:; /* LoadSFXData_Common */
-    /* $B3A6: 85 */ nes_cpu_instruction_boundary(0xB3A6, 3); nes_write(0xE0, g_cpu.A);
-label_B3A8:;
-    /* $B3A8: A9 */ nes_cpu_instruction_boundary(0xB3A8, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
-label_B3AA:;
-    /* $B3AA: 85 */ nes_cpu_instruction_boundary(0xB3AA, 3); nes_write(0xE1, g_cpu.A);
-label_B3AC:;
-    /* $B3AC: 84 */ nes_cpu_instruction_boundary(0xB3AC, 3); nes_write(0xE2, g_cpu.Y);
-label_B3AE:;
-    /* $B3AE: A9 */ nes_cpu_instruction_boundary(0xB3AE, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
-label_B3B0:;
-    /* $B3B0: 85 */ nes_cpu_instruction_boundary(0xB3B0, 3); nes_write(0xE3, g_cpu.A);
-label_B3B2:;
-    /* $B3B2: A0 */ nes_cpu_instruction_boundary(0xB3B2, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_B3B4:; /* LoadSFXData_loop_LoadSFXRegisters */
-    /* $B3B4: B1 */ nes_cpu_instruction_boundary(0xB3B4, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B3B6:;
-    /* $B3B6: 91 */ nes_cpu_instruction_boundary(0xB3B6, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B3B8:;
-    /* $B3B8: C8 */ nes_cpu_instruction_boundary(0xB3B8, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B3B9:;
-    /* $B3B9: 98 */ nes_cpu_instruction_boundary(0xB3B9, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_B3BA:;
-    /* $B3BA: C9 */ nes_cpu_instruction_boundary(0xB3BA, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
-label_B3BC:;
-    /* $B3BC: D0 */ nes_cpu_instruction_boundary(0xB3BC, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB3B4, 1);
+label_B36C:; /* LoadSFXData_Tri */
+    /* $B36C: A9 */ nes_cpu_instruction_boundary(0xB36C, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
+label_B36E:;
+    /* $B36E: D0 */ nes_cpu_instruction_boundary(0xB36E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B376; }
+label_B370:; /* LoadSFXData_Noise */
+    /* $B370: A9 */ nes_cpu_instruction_boundary(0xB370, 2); g_cpu.A = 0x0C; FLAG_NZ(g_cpu.A);
+label_B372:;
+    /* $B372: D0 */ nes_cpu_instruction_boundary(0xB372, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B376; }
+label_B374:; /* LoadSFXData_SQ2 */
+    /* $B374: A9 */ nes_cpu_instruction_boundary(0xB374, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
+label_B376:; /* LoadSFXData_Common */
+    /* $B376: 85 */ nes_cpu_instruction_boundary(0xB376, 3); nes_write(0xE0, g_cpu.A);
+label_B378:;
+    /* $B378: A9 */ nes_cpu_instruction_boundary(0xB378, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
+label_B37A:;
+    /* $B37A: 85 */ nes_cpu_instruction_boundary(0xB37A, 3); nes_write(0xE1, g_cpu.A);
+label_B37C:;
+    /* $B37C: 84 */ nes_cpu_instruction_boundary(0xB37C, 3); nes_write(0xE2, g_cpu.Y);
+label_B37E:;
+    /* $B37E: A9 */ nes_cpu_instruction_boundary(0xB37E, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
+label_B380:;
+    /* $B380: 85 */ nes_cpu_instruction_boundary(0xB380, 3); nes_write(0xE3, g_cpu.A);
+label_B382:;
+    /* $B382: A0 */ nes_cpu_instruction_boundary(0xB382, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_B384:; /* LoadSFXData_loop_LoadSFXRegisters */
+    /* $B384: B1 */ nes_cpu_instruction_boundary(0xB384, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B386:;
+    /* $B386: 91 */ nes_cpu_instruction_boundary(0xB386, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_B388:;
+    /* $B388: C8 */ nes_cpu_instruction_boundary(0xB388, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B389:;
+    /* $B389: 98 */ nes_cpu_instruction_boundary(0xB389, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_B38A:;
+    /* $B38A: C9 */ nes_cpu_instruction_boundary(0xB38A, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_B38C:;
+    /* $B38C: D0 */ nes_cpu_instruction_boundary(0xB38C, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB384, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_B3B4;
+    goto label_B384;
     }
-label_B3BE:;
-    /* $B3BE: 60 */ nes_cpu_instruction_boundary(0xB3BE, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B38E:;
+    /* $B38E: 60 */ nes_cpu_instruction_boundary(0xB38E, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7153,50 +7291,50 @@ label_B3BE:;
     return;
 }
 
-void func_B3A0_b5(void) { /* LoadSFXData_Noise */
+void func_B370_b5(void) { /* LoadSFXData_Noise */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3A0_b5");
+    recomp_stack_push("func_B370_b5");
 #endif
-label_B3A0:; /* LoadSFXData_Noise */
-    /* $B3A0: A9 */ nes_cpu_instruction_boundary(0xB3A0, 2); g_cpu.A = 0x0C; FLAG_NZ(g_cpu.A);
-label_B3A2:;
-    /* $B3A2: D0 */ nes_cpu_instruction_boundary(0xB3A2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B3A6; }
-label_B3A4:; /* LoadSFXData_SQ2 */
-    /* $B3A4: A9 */ nes_cpu_instruction_boundary(0xB3A4, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
-label_B3A6:; /* LoadSFXData_Common */
-    /* $B3A6: 85 */ nes_cpu_instruction_boundary(0xB3A6, 3); nes_write(0xE0, g_cpu.A);
-label_B3A8:;
-    /* $B3A8: A9 */ nes_cpu_instruction_boundary(0xB3A8, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
-label_B3AA:;
-    /* $B3AA: 85 */ nes_cpu_instruction_boundary(0xB3AA, 3); nes_write(0xE1, g_cpu.A);
-label_B3AC:;
-    /* $B3AC: 84 */ nes_cpu_instruction_boundary(0xB3AC, 3); nes_write(0xE2, g_cpu.Y);
-label_B3AE:;
-    /* $B3AE: A9 */ nes_cpu_instruction_boundary(0xB3AE, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
-label_B3B0:;
-    /* $B3B0: 85 */ nes_cpu_instruction_boundary(0xB3B0, 3); nes_write(0xE3, g_cpu.A);
-label_B3B2:;
-    /* $B3B2: A0 */ nes_cpu_instruction_boundary(0xB3B2, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_B3B4:; /* LoadSFXData_loop_LoadSFXRegisters */
-    /* $B3B4: B1 */ nes_cpu_instruction_boundary(0xB3B4, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B3B6:;
-    /* $B3B6: 91 */ nes_cpu_instruction_boundary(0xB3B6, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B3B8:;
-    /* $B3B8: C8 */ nes_cpu_instruction_boundary(0xB3B8, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_B3B9:;
-    /* $B3B9: 98 */ nes_cpu_instruction_boundary(0xB3B9, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_B3BA:;
-    /* $B3BA: C9 */ nes_cpu_instruction_boundary(0xB3BA, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
-label_B3BC:;
-    /* $B3BC: D0 */ nes_cpu_instruction_boundary(0xB3BC, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB3B4, 1);
+label_B370:; /* LoadSFXData_Noise */
+    /* $B370: A9 */ nes_cpu_instruction_boundary(0xB370, 2); g_cpu.A = 0x0C; FLAG_NZ(g_cpu.A);
+label_B372:;
+    /* $B372: D0 */ nes_cpu_instruction_boundary(0xB372, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B376; }
+label_B374:; /* LoadSFXData_SQ2 */
+    /* $B374: A9 */ nes_cpu_instruction_boundary(0xB374, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
+label_B376:; /* LoadSFXData_Common */
+    /* $B376: 85 */ nes_cpu_instruction_boundary(0xB376, 3); nes_write(0xE0, g_cpu.A);
+label_B378:;
+    /* $B378: A9 */ nes_cpu_instruction_boundary(0xB378, 2); g_cpu.A = 0x40; FLAG_NZ(g_cpu.A);
+label_B37A:;
+    /* $B37A: 85 */ nes_cpu_instruction_boundary(0xB37A, 3); nes_write(0xE1, g_cpu.A);
+label_B37C:;
+    /* $B37C: 84 */ nes_cpu_instruction_boundary(0xB37C, 3); nes_write(0xE2, g_cpu.Y);
+label_B37E:;
+    /* $B37E: A9 */ nes_cpu_instruction_boundary(0xB37E, 2); g_cpu.A = 0xB2; FLAG_NZ(g_cpu.A);
+label_B380:;
+    /* $B380: 85 */ nes_cpu_instruction_boundary(0xB380, 3); nes_write(0xE3, g_cpu.A);
+label_B382:;
+    /* $B382: A0 */ nes_cpu_instruction_boundary(0xB382, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_B384:; /* LoadSFXData_loop_LoadSFXRegisters */
+    /* $B384: B1 */ nes_cpu_instruction_boundary(0xB384, 5); g_cpu.A = nes_read((nes_read16zp(0xE2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B386:;
+    /* $B386: 91 */ nes_cpu_instruction_boundary(0xB386, 6); nes_write((nes_read16zp(0xE0) + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_B388:;
+    /* $B388: C8 */ nes_cpu_instruction_boundary(0xB388, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_B389:;
+    /* $B389: 98 */ nes_cpu_instruction_boundary(0xB389, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_B38A:;
+    /* $B38A: C9 */ nes_cpu_instruction_boundary(0xB38A, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_B38C:;
+    /* $B38C: D0 */ nes_cpu_instruction_boundary(0xB38C, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB384, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_B3B4;
+    goto label_B384;
     }
-label_B3BE:;
-    /* $B3BE: 60 */ nes_cpu_instruction_boundary(0xB3BE, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B38E:;
+    /* $B38E: 60 */ nes_cpu_instruction_boundary(0xB38E, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7204,182 +7342,248 @@ label_B3BE:;
     return;
 }
 
-void func_B4C3_b5(void) { /* UpdateContFlags */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B4C3_b5");
-#endif
-label_B4C3:; /* UpdateContFlags */
-    /* $B4C3: AE */ nes_cpu_instruction_boundary(0xB4C3, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
-label_B4C6:;
-    /* $B4C6: BD */ nes_cpu_instruction_boundary(0xB4C6, 4); g_cpu.A = nes_read((0x0688 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B4C9:;
-    /* $B4C9: 29 */ nes_cpu_instruction_boundary(0xB4C9, 2); g_cpu.A &= 0x00; FLAG_NZ(g_cpu.A);
-label_B4CB:;
-    /* $B4CB: 0D */ nes_cpu_instruction_boundary(0xB4CB, 4); g_cpu.A |= nes_read(0x064D); FLAG_NZ(g_cpu.A);
-label_B4CE:;
-    /* $B4CE: 9D */ nes_cpu_instruction_boundary(0xB4CE, 5); nes_write((0x0688 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4D1:;
-    /* $B4D1: 60 */ nes_cpu_instruction_boundary(0xB4D1, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B482_b5_body(int _entry) { /* InitSFXData */
-    switch (_entry) {
-        case 1: goto label_B493;
-        case 2: goto label_B4A2;
-    }
-label_B482:; /* InitSFXData */
-    /* $B482: AE */ nes_cpu_instruction_boundary(0xB482, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
-label_B485:;
-    /* $B485: 9D */ nes_cpu_instruction_boundary(0xB485, 5); nes_write((0x0660 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B488:;
-    /* $B488: 8A */ nes_cpu_instruction_boundary(0xB488, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_B489:;
-    /* $B489: F0 */ nes_cpu_instruction_boundary(0xB489, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4A7; }
-label_B48B:;
-    /* $B48B: C9 */ nes_cpu_instruction_boundary(0xB48B, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
-label_B48D:;
-    /* $B48D: F0 */ nes_cpu_instruction_boundary(0xB48D, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B498; }
-label_B48F:;
-    /* $B48F: C9 */ nes_cpu_instruction_boundary(0xB48F, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_B491:;
-    /* $B491: F0 */ nes_cpu_instruction_boundary(0xB491, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B49D; }
-label_B493:;
-    /* $B493: C9 */ nes_cpu_instruction_boundary(0xB493, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
-label_B495:;
-    /* $B495: F0 */ nes_cpu_instruction_boundary(0xB495, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4A2; }
-label_B497:;
-    /* $B497: 60 */ nes_cpu_instruction_boundary(0xB497, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_B498:; /* InitSFXData_SQ1 */
-    /* $B498: 20 */ nes_cpu_instruction_boundary(0xB498, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x9A; g_cpu.S--; func_B398_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB498, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B49B:;
-    /* $B49B: F0 */ nes_cpu_instruction_boundary(0xB49B, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4AA; }
-label_B49D:; /* InitSFXData_SQ2 */
-    /* $B49D: 20 */ nes_cpu_instruction_boundary(0xB49D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x9F; g_cpu.S--; func_B3A4_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB49D, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B4A0:;
-    /* $B4A0: F0 */ nes_cpu_instruction_boundary(0xB4A0, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4AA; }
-label_B4A2:; /* InitSFXData_Tri */
-    /* $B4A2: 20 */ nes_cpu_instruction_boundary(0xB4A2, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA4; g_cpu.S--; func_B39C_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB4A2, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B4A5:;
-    /* $B4A5: F0 */ nes_cpu_instruction_boundary(0xB4A5, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4AA; }
-label_B4A7:; /* InitSFXData_Noise */
-    /* $B4A7: 20 */ nes_cpu_instruction_boundary(0xB4A7, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA9; g_cpu.S--; func_B3A0_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB4A7, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B4AA:; /* InitSFXData_Common */
-    /* $B4AA: 20 */ nes_cpu_instruction_boundary(0xB4AA, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xAC; g_cpu.S--; func_B4C3_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB4AA, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B4AD:;
-    /* $B4AD: 8A */ nes_cpu_instruction_boundary(0xB4AD, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_B4AE:;
-    /* $B4AE: 9D */ nes_cpu_instruction_boundary(0xB4AE, 5); nes_write((0x0652 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4B1:;
-    /* $B4B1: A9 */ nes_cpu_instruction_boundary(0xB4B1, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B4B3:;
-    /* $B4B3: 9D */ nes_cpu_instruction_boundary(0xB4B3, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4B6:;
-    /* $B4B6: 9D */ nes_cpu_instruction_boundary(0xB4B6, 5); nes_write((0x0670 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4B9:;
-    /* $B4B9: 9D */ nes_cpu_instruction_boundary(0xB4B9, 5); nes_write((0x0674 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4BC:;
-    /* $B4BC: 9D */ nes_cpu_instruction_boundary(0xB4BC, 5); nes_write((0x0678 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4BF:;
-    /* $B4BF: 8D */ nes_cpu_instruction_boundary(0xB4BF, 4); nes_write(0x0607, g_cpu.A);
-label_B4C2:;
-    /* $B4C2: 60 */ nes_cpu_instruction_boundary(0xB4C2, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B482_b5(void) { /* InitSFXData */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B482_b5");
-#endif
-    func_B482_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B493_b5(void) {
+void func_B493_b5(void) { /* UpdateContFlags */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_B493_b5");
 #endif
-    func_B482_b5_body(1);
+label_B493:; /* UpdateContFlags */
+    /* $B493: AE */ nes_cpu_instruction_boundary(0xB493, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
+label_B496:;
+    /* $B496: BD */ nes_cpu_instruction_boundary(0xB496, 4); g_cpu.A = nes_read((0x0688 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B499:;
+    /* $B499: 29 */ nes_cpu_instruction_boundary(0xB499, 2); g_cpu.A &= 0x00; FLAG_NZ(g_cpu.A);
+label_B49B:;
+    /* $B49B: 0D */ nes_cpu_instruction_boundary(0xB49B, 4); g_cpu.A |= nes_read(0x064D); FLAG_NZ(g_cpu.A);
+label_B49E:;
+    /* $B49E: 9D */ nes_cpu_instruction_boundary(0xB49E, 5); nes_write((0x0688 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B4A1:;
+    /* $B4A1: 60 */ nes_cpu_instruction_boundary(0xB4A1, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B452_b5_body(int _entry) { /* InitSFXData */
+    switch (_entry) {
+        case 1: goto label_B463;
+        case 2: goto label_B472;
+    }
+label_B452:; /* InitSFXData */
+    /* $B452: AE */ nes_cpu_instruction_boundary(0xB452, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
+label_B455:;
+    /* $B455: 9D */ nes_cpu_instruction_boundary(0xB455, 5); nes_write((0x0660 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B458:;
+    /* $B458: 8A */ nes_cpu_instruction_boundary(0xB458, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_B459:;
+    /* $B459: F0 */ nes_cpu_instruction_boundary(0xB459, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B477; }
+label_B45B:;
+    /* $B45B: C9 */ nes_cpu_instruction_boundary(0xB45B, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
+label_B45D:;
+    /* $B45D: F0 */ nes_cpu_instruction_boundary(0xB45D, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B468; }
+label_B45F:;
+    /* $B45F: C9 */ nes_cpu_instruction_boundary(0xB45F, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
+label_B461:;
+    /* $B461: F0 */ nes_cpu_instruction_boundary(0xB461, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B46D; }
+label_B463:;
+    /* $B463: C9 */ nes_cpu_instruction_boundary(0xB463, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
+label_B465:;
+    /* $B465: F0 */ nes_cpu_instruction_boundary(0xB465, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B472; }
+label_B467:;
+    /* $B467: 60 */ nes_cpu_instruction_boundary(0xB467, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+label_B468:; /* InitSFXData_SQ1 */
+    /* $B468: 20 */ nes_cpu_instruction_boundary(0xB468, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x6A; g_cpu.S--; func_B368_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB468, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B46B:;
+    /* $B46B: F0 */ nes_cpu_instruction_boundary(0xB46B, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B47A; }
+label_B46D:; /* InitSFXData_SQ2 */
+    /* $B46D: 20 */ nes_cpu_instruction_boundary(0xB46D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x6F; g_cpu.S--; func_B374_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB46D, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B470:;
+    /* $B470: F0 */ nes_cpu_instruction_boundary(0xB470, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B47A; }
+label_B472:; /* InitSFXData_Tri */
+    /* $B472: 20 */ nes_cpu_instruction_boundary(0xB472, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x74; g_cpu.S--; func_B36C_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB472, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B475:;
+    /* $B475: F0 */ nes_cpu_instruction_boundary(0xB475, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B47A; }
+label_B477:; /* InitSFXData_Noise */
+    /* $B477: 20 */ nes_cpu_instruction_boundary(0xB477, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x79; g_cpu.S--; func_B370_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB477, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B47A:; /* InitSFXData_Common */
+    /* $B47A: 20 */ nes_cpu_instruction_boundary(0xB47A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x7C; g_cpu.S--; func_B493_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB47A, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B47D:;
+    /* $B47D: 8A */ nes_cpu_instruction_boundary(0xB47D, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_B47E:;
+    /* $B47E: 9D */ nes_cpu_instruction_boundary(0xB47E, 5); nes_write((0x0652 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B481:;
+    /* $B481: A9 */ nes_cpu_instruction_boundary(0xB481, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B483:;
+    /* $B483: 9D */ nes_cpu_instruction_boundary(0xB483, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B486:;
+    /* $B486: 9D */ nes_cpu_instruction_boundary(0xB486, 5); nes_write((0x0670 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B489:;
+    /* $B489: 9D */ nes_cpu_instruction_boundary(0xB489, 5); nes_write((0x0674 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B48C:;
+    /* $B48C: 9D */ nes_cpu_instruction_boundary(0xB48C, 5); nes_write((0x0678 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B48F:;
+    /* $B48F: 8D */ nes_cpu_instruction_boundary(0xB48F, 4); nes_write(0x0607, g_cpu.A);
+label_B492:;
+    /* $B492: 60 */ nes_cpu_instruction_boundary(0xB492, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B452_b5(void) { /* InitSFXData */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B452_b5");
+#endif
+    func_B452_b5_body(0);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
 }
 
-void func_B4A2_b5(void) { /* InitSFXData_Tri */
+void func_B463_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B463_b5");
+#endif
+    func_B452_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B472_b5(void) { /* InitSFXData_Tri */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B472_b5");
+#endif
+    func_B452_b5_body(2);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B4A9_b5(void) { /* IncrementSFXFrame */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B4A9_b5");
+#endif
+label_B4A9:; /* IncrementSFXFrame */
+    /* $B4A9: AE */ nes_cpu_instruction_boundary(0xB4A9, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
+label_B4AC:;
+    /* $B4AC: FE */ nes_cpu_instruction_boundary(0xB4AC, 7); { uint16_t a=(0x0665 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B4AF:;
+    /* $B4AF: BD */ nes_cpu_instruction_boundary(0xB4AF, 4); g_cpu.A = nes_read((0x0665 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B4B2:;
+    /* $B4B2: DD */ nes_cpu_instruction_boundary(0xB4B2, 4); { uint8_t m=nes_read((0x0660 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B4B5:;
+    /* $B4B5: D0 */ nes_cpu_instruction_boundary(0xB4B5, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4BC; }
+label_B4B7:;
+    /* $B4B7: A9 */ nes_cpu_instruction_boundary(0xB4B7, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B4B9:;
+    /* $B4B9: 9D */ nes_cpu_instruction_boundary(0xB4B9, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B4BC:; /* IncrementSFXFrame_RTS */
+    /* $B4BC: 60 */ nes_cpu_instruction_boundary(0xB4BC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B58F_b5(void) { /* EndNoiseSFX */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B58F_b5");
+#endif
+label_B58F:; /* EndNoiseSFX */
+    /* $B58F: 20 */ nes_cpu_instruction_boundary(0xB58F, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x91; g_cpu.S--; func_B4A2_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB58F, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B592:;
+    /* $B592: A9 */ nes_cpu_instruction_boundary(0xB592, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
+label_B594:;
+    /* $B594: 8D */ nes_cpu_instruction_boundary(0xB594, 4); nes_write(0x400C, g_cpu.A);
+label_B597:; /* EndNoiseSFX_RTS */
+    /* $B597: 60 */ nes_cpu_instruction_boundary(0xB597, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B587_b5(void) { /* GotoInitSFXData */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B587_b5");
+#endif
+label_B587:; /* GotoInitSFXData */
+    /* $B587: 4C */ nes_cpu_instruction_boundary(0xB587, 3); nes_cpu_instruction_boundary(0xB452, 2); func_B452_b5(); return;
+}
+
+void func_B4A2_b5(void) { /* ClearCurrentSoundFlagsAndContFlags */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_B4A2_b5");
 #endif
-    func_B482_b5_body(2);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B4D9_b5(void) { /* IncrementSFXFrame */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B4D9_b5");
-#endif
-label_B4D9:; /* IncrementSFXFrame */
-    /* $B4D9: AE */ nes_cpu_instruction_boundary(0xB4D9, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
-label_B4DC:;
-    /* $B4DC: FE */ nes_cpu_instruction_boundary(0xB4DC, 7); { uint16_t a=(0x0665 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B4DF:;
-    /* $B4DF: BD */ nes_cpu_instruction_boundary(0xB4DF, 4); g_cpu.A = nes_read((0x0665 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B4E2:;
-    /* $B4E2: DD */ nes_cpu_instruction_boundary(0xB4E2, 4); { uint8_t m=nes_read((0x0660 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B4E5:;
-    /* $B4E5: D0 */ nes_cpu_instruction_boundary(0xB4E5, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4EC; }
-label_B4E7:;
-    /* $B4E7: A9 */ nes_cpu_instruction_boundary(0xB4E7, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B4E9:;
-    /* $B4E9: 9D */ nes_cpu_instruction_boundary(0xB4E9, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4EC:; /* IncrementSFXFrame_RTS */
-    /* $B4EC: 60 */ nes_cpu_instruction_boundary(0xB4EC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B4A2:; /* ClearCurrentSoundFlagsAndContFlags */
+    /* $B4A2: A9 */ nes_cpu_instruction_boundary(0xB4A2, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B4A4:;
+    /* $B4A4: 8D */ nes_cpu_instruction_boundary(0xB4A4, 4); nes_write(0x064D, g_cpu.A);
+label_B4A7:;
+    /* $B4A7: F0 */ nes_cpu_instruction_boundary(0xB4A7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB493); return; }
+label_B4A9:; /* IncrementSFXFrame */
+    /* $B4A9: AE */ nes_cpu_instruction_boundary(0xB4A9, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
+label_B4AC:;
+    /* $B4AC: FE */ nes_cpu_instruction_boundary(0xB4AC, 7); { uint16_t a=(0x0665 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B4AF:;
+    /* $B4AF: BD */ nes_cpu_instruction_boundary(0xB4AF, 4); g_cpu.A = nes_read((0x0665 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B4B2:;
+    /* $B4B2: DD */ nes_cpu_instruction_boundary(0xB4B2, 4); { uint8_t m=nes_read((0x0660 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B4B5:;
+    /* $B4B5: D0 */ nes_cpu_instruction_boundary(0xB4B5, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4BC; }
+label_B4B7:;
+    /* $B4B7: A9 */ nes_cpu_instruction_boundary(0xB4B7, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B4B9:;
+    /* $B4B9: 9D */ nes_cpu_instruction_boundary(0xB4B9, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B4BC:; /* IncrementSFXFrame_RTS */
+    /* $B4BC: 60 */ nes_cpu_instruction_boundary(0xB4BC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7387,24 +7591,52 @@ label_B4EC:; /* IncrementSFXFrame_RTS */
     return;
 }
 
-void func_B5BF_b5(void) { /* EndNoiseSFX */
+void func_B5A5_b5(void) { /* MultiSFXInit */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B5BF_b5");
+    recomp_stack_push("func_B5A5_b5");
 #endif
-label_B5BF:; /* EndNoiseSFX */
-    /* $B5BF: 20 */ nes_cpu_instruction_boundary(0xB5BF, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC1; g_cpu.S--; func_B4D2_b5();
+label_B5A5:; /* MultiSFXInit */
+    /* $B5A5: 8D */ nes_cpu_instruction_boundary(0xB5A5, 4); nes_write(0x0664, g_cpu.A);
+label_B5A8:;
+    /* $B5A8: 20 */ nes_cpu_instruction_boundary(0xB5A8, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xAA; g_cpu.S--; func_B374_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB5BF, _cbs);
+    bail_trace(0xB5A8, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B5C2:;
-    /* $B5C2: A9 */ nes_cpu_instruction_boundary(0xB5C2, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_B5C4:;
-    /* $B5C4: 8D */ nes_cpu_instruction_boundary(0xB5C4, 4); nes_write(0x400C, g_cpu.A);
-label_B5C7:; /* EndNoiseSFX_RTS */
-    /* $B5C7: 60 */ nes_cpu_instruction_boundary(0xB5C7, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B5AB:;
+    /* $B5AB: 20 */ nes_cpu_instruction_boundary(0xB5AB, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xAD; g_cpu.S--; func_B493_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB5AB, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B5AE:;
+    /* $B5AE: A9 */ nes_cpu_instruction_boundary(0xB5AE, 2); g_cpu.A = 0x01; FLAG_NZ(g_cpu.A);
+label_B5B0:;
+    /* $B5B0: 8D */ nes_cpu_instruction_boundary(0xB5B0, 4); nes_write(0x0653, g_cpu.A);
+label_B5B3:;
+    /* $B5B3: A9 */ nes_cpu_instruction_boundary(0xB5B3, 2); g_cpu.A = 0x02; FLAG_NZ(g_cpu.A);
+label_B5B5:;
+    /* $B5B5: 8D */ nes_cpu_instruction_boundary(0xB5B5, 4); nes_write(0x0654, g_cpu.A);
+label_B5B8:;
+    /* $B5B8: A9 */ nes_cpu_instruction_boundary(0xB5B8, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B5BA:;
+    /* $B5BA: 8D */ nes_cpu_instruction_boundary(0xB5BA, 4); nes_write(0x0689, g_cpu.A);
+label_B5BD:;
+    /* $B5BD: 8D */ nes_cpu_instruction_boundary(0xB5BD, 4); nes_write(0x0671, g_cpu.A);
+label_B5C0:;
+    /* $B5C0: 8D */ nes_cpu_instruction_boundary(0xB5C0, 4); nes_write(0x0675, g_cpu.A);
+label_B5C3:;
+    /* $B5C3: 8D */ nes_cpu_instruction_boundary(0xB5C3, 4); nes_write(0x0679, g_cpu.A);
+label_B5C6:;
+    /* $B5C6: 8D */ nes_cpu_instruction_boundary(0xB5C6, 4); nes_write(0x0669, g_cpu.A);
+label_B5C9:;
+    /* $B5C9: 8D */ nes_cpu_instruction_boundary(0xB5C9, 4); nes_write(0x0607, g_cpu.A);
+label_B5CC:;
+    /* $B5CC: 60 */ nes_cpu_instruction_boundary(0xB5CC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7412,40 +7644,20 @@ label_B5C7:; /* EndNoiseSFX_RTS */
     return;
 }
 
-void func_B5B7_b5(void) { /* GotoInitSFXData */
+void func_B62C_b5(void) { /* WriteSQ1SQ2PeriodLow */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B5B7_b5");
+    recomp_stack_push("func_B62C_b5");
 #endif
-label_B5B7:; /* GotoInitSFXData */
-    /* $B5B7: 4C */ nes_cpu_instruction_boundary(0xB5B7, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-}
-
-void func_B4D2_b5(void) { /* ClearCurrentSoundFlagsAndContFlags */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B4D2_b5");
-#endif
-label_B4D2:; /* ClearCurrentSoundFlagsAndContFlags */
-    /* $B4D2: A9 */ nes_cpu_instruction_boundary(0xB4D2, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B4D4:;
-    /* $B4D4: 8D */ nes_cpu_instruction_boundary(0xB4D4, 4); nes_write(0x064D, g_cpu.A);
-label_B4D7:;
-    /* $B4D7: F0 */ nes_cpu_instruction_boundary(0xB4D7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB4C3); return; }
-label_B4D9:; /* IncrementSFXFrame */
-    /* $B4D9: AE */ nes_cpu_instruction_boundary(0xB4D9, 4); g_cpu.X = nes_read(0x065C); FLAG_NZ(g_cpu.X);
-label_B4DC:;
-    /* $B4DC: FE */ nes_cpu_instruction_boundary(0xB4DC, 7); { uint16_t a=(0x0665 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B4DF:;
-    /* $B4DF: BD */ nes_cpu_instruction_boundary(0xB4DF, 4); g_cpu.A = nes_read((0x0665 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B4E2:;
-    /* $B4E2: DD */ nes_cpu_instruction_boundary(0xB4E2, 4); { uint8_t m=nes_read((0x0660 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B4E5:;
-    /* $B4E5: D0 */ nes_cpu_instruction_boundary(0xB4E5, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B4EC; }
-label_B4E7:;
-    /* $B4E7: A9 */ nes_cpu_instruction_boundary(0xB4E7, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B4E9:;
-    /* $B4E9: 9D */ nes_cpu_instruction_boundary(0xB4E9, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4EC:; /* IncrementSFXFrame_RTS */
-    /* $B4EC: 60 */ nes_cpu_instruction_boundary(0xB4EC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B62C:; /* WriteSQ1SQ2PeriodLow */
+    /* $B62C: AD */ nes_cpu_instruction_boundary(0xB62C, 4); g_cpu.A = nes_read(0x0675); FLAG_NZ(g_cpu.A);
+label_B62F:;
+    /* $B62F: 8D */ nes_cpu_instruction_boundary(0xB62F, 4); nes_write(0x4006, g_cpu.A);
+label_B632:;
+    /* $B632: AD */ nes_cpu_instruction_boundary(0xB632, 4); g_cpu.A = nes_read(0x0679); FLAG_NZ(g_cpu.A);
+label_B635:;
+    /* $B635: 8D */ nes_cpu_instruction_boundary(0xB635, 4); nes_write(0x4002, g_cpu.A);
+label_B638:;
+    /* $B638: 60 */ nes_cpu_instruction_boundary(0xB638, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7453,52 +7665,40 @@ label_B4EC:; /* IncrementSFXFrame_RTS */
     return;
 }
 
-void func_B5D5_b5(void) { /* MultiSFXInit */
+void func_B5CD_b5(void) { /* EndMultiSFX */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B5D5_b5");
+    recomp_stack_push("func_B5CD_b5");
 #endif
-label_B5D5:; /* MultiSFXInit */
-    /* $B5D5: 8D */ nes_cpu_instruction_boundary(0xB5D5, 4); nes_write(0x0664, g_cpu.A);
-label_B5D8:;
-    /* $B5D8: 20 */ nes_cpu_instruction_boundary(0xB5D8, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xDA; g_cpu.S--; func_B3A4_b5();
+label_B5CD:; /* EndMultiSFX */
+    /* $B5CD: A9 */ nes_cpu_instruction_boundary(0xB5CD, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
+label_B5CF:;
+    /* $B5CF: 8D */ nes_cpu_instruction_boundary(0xB5CF, 4); nes_write(0x4000, g_cpu.A);
+label_B5D2:;
+    /* $B5D2: 8D */ nes_cpu_instruction_boundary(0xB5D2, 4); nes_write(0x4004, g_cpu.A);
+label_B5D5:;
+    /* $B5D5: A9 */ nes_cpu_instruction_boundary(0xB5D5, 2); g_cpu.A = 0x7F; FLAG_NZ(g_cpu.A);
+label_B5D7:;
+    /* $B5D7: 8D */ nes_cpu_instruction_boundary(0xB5D7, 4); nes_write(0x4001, g_cpu.A);
+label_B5DA:;
+    /* $B5DA: 8D */ nes_cpu_instruction_boundary(0xB5DA, 4); nes_write(0x4005, g_cpu.A);
+label_B5DD:;
+    /* $B5DD: 20 */ nes_cpu_instruction_boundary(0xB5DD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xDF; g_cpu.S--; func_B4A2_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB5D8, _cbs);
+    bail_trace(0xB5DD, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B5DB:;
-    /* $B5DB: 20 */ nes_cpu_instruction_boundary(0xB5DB, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB5; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xDD; g_cpu.S--; func_B4C3_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB5DB, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B5DE:;
-    /* $B5DE: A9 */ nes_cpu_instruction_boundary(0xB5DE, 2); g_cpu.A = 0x01; FLAG_NZ(g_cpu.A);
 label_B5E0:;
-    /* $B5E0: 8D */ nes_cpu_instruction_boundary(0xB5E0, 4); nes_write(0x0653, g_cpu.A);
-label_B5E3:;
-    /* $B5E3: A9 */ nes_cpu_instruction_boundary(0xB5E3, 2); g_cpu.A = 0x02; FLAG_NZ(g_cpu.A);
+    /* $B5E0: A9 */ nes_cpu_instruction_boundary(0xB5E0, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B5E2:;
+    /* $B5E2: 8D */ nes_cpu_instruction_boundary(0xB5E2, 4); nes_write(0x0653, g_cpu.A);
 label_B5E5:;
     /* $B5E5: 8D */ nes_cpu_instruction_boundary(0xB5E5, 4); nes_write(0x0654, g_cpu.A);
 label_B5E8:;
-    /* $B5E8: A9 */ nes_cpu_instruction_boundary(0xB5E8, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B5EA:;
-    /* $B5EA: 8D */ nes_cpu_instruction_boundary(0xB5EA, 4); nes_write(0x0689, g_cpu.A);
-label_B5ED:;
-    /* $B5ED: 8D */ nes_cpu_instruction_boundary(0xB5ED, 4); nes_write(0x0671, g_cpu.A);
-label_B5F0:;
-    /* $B5F0: 8D */ nes_cpu_instruction_boundary(0xB5F0, 4); nes_write(0x0675, g_cpu.A);
-label_B5F3:;
-    /* $B5F3: 8D */ nes_cpu_instruction_boundary(0xB5F3, 4); nes_write(0x0679, g_cpu.A);
-label_B5F6:;
-    /* $B5F6: 8D */ nes_cpu_instruction_boundary(0xB5F6, 4); nes_write(0x0669, g_cpu.A);
-label_B5F9:;
-    /* $B5F9: 8D */ nes_cpu_instruction_boundary(0xB5F9, 4); nes_write(0x0607, g_cpu.A);
-label_B5FC:;
-    /* $B5FC: 60 */ nes_cpu_instruction_boundary(0xB5FC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+    /* $B5E8: EE */ nes_cpu_instruction_boundary(0xB5E8, 6); { uint16_t a=0x0607; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B5EB:;
+    /* $B5EB: 60 */ nes_cpu_instruction_boundary(0xB5EB, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7506,61 +7706,30 @@ label_B5FC:;
     return;
 }
 
-void func_B65C_b5(void) { /* WriteSQ1SQ2PeriodLow */
+void func_B6F2_b5(void) { /* EndSQ1SFX */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B65C_b5");
+    recomp_stack_push("func_B6F2_b5");
 #endif
-label_B65C:; /* WriteSQ1SQ2PeriodLow */
-    /* $B65C: AD */ nes_cpu_instruction_boundary(0xB65C, 4); g_cpu.A = nes_read(0x0675); FLAG_NZ(g_cpu.A);
-label_B65F:;
-    /* $B65F: 8D */ nes_cpu_instruction_boundary(0xB65F, 4); nes_write(0x4006, g_cpu.A);
-label_B662:;
-    /* $B662: AD */ nes_cpu_instruction_boundary(0xB662, 4); g_cpu.A = nes_read(0x0679); FLAG_NZ(g_cpu.A);
-label_B665:;
-    /* $B665: 8D */ nes_cpu_instruction_boundary(0xB665, 4); nes_write(0x4002, g_cpu.A);
-label_B668:;
-    /* $B668: 60 */ nes_cpu_instruction_boundary(0xB668, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B5FD_b5(void) { /* EndMultiSFX */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B5FD_b5");
-#endif
-label_B5FD:; /* EndMultiSFX */
-    /* $B5FD: A9 */ nes_cpu_instruction_boundary(0xB5FD, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_B5FF:;
-    /* $B5FF: 8D */ nes_cpu_instruction_boundary(0xB5FF, 4); nes_write(0x4000, g_cpu.A);
-label_B602:;
-    /* $B602: 8D */ nes_cpu_instruction_boundary(0xB602, 4); nes_write(0x4004, g_cpu.A);
-label_B605:;
-    /* $B605: A9 */ nes_cpu_instruction_boundary(0xB605, 2); g_cpu.A = 0x7F; FLAG_NZ(g_cpu.A);
-label_B607:;
-    /* $B607: 8D */ nes_cpu_instruction_boundary(0xB607, 4); nes_write(0x4001, g_cpu.A);
-label_B60A:;
-    /* $B60A: 8D */ nes_cpu_instruction_boundary(0xB60A, 4); nes_write(0x4005, g_cpu.A);
-label_B60D:;
-    /* $B60D: 20 */ nes_cpu_instruction_boundary(0xB60D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x0F; g_cpu.S--; func_B4D2_b5();
+label_B6F2:; /* EndSQ1SFX */
+    /* $B6F2: A9 */ nes_cpu_instruction_boundary(0xB6F2, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
+label_B6F4:;
+    /* $B6F4: 8D */ nes_cpu_instruction_boundary(0xB6F4, 4); nes_write(0x4000, g_cpu.A);
+label_B6F7:;
+    /* $B6F7: A9 */ nes_cpu_instruction_boundary(0xB6F7, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B6F9:;
+    /* $B6F9: 8D */ nes_cpu_instruction_boundary(0xB6F9, 4); nes_write(0x0653, g_cpu.A);
+label_B6FC:;
+    /* $B6FC: 20 */ nes_cpu_instruction_boundary(0xB6FC, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xFE; g_cpu.S--; func_B4A2_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB60D, _cbs);
+    bail_trace(0xB6FC, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B610:;
-    /* $B610: A9 */ nes_cpu_instruction_boundary(0xB610, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B612:;
-    /* $B612: 8D */ nes_cpu_instruction_boundary(0xB612, 4); nes_write(0x0653, g_cpu.A);
-label_B615:;
-    /* $B615: 8D */ nes_cpu_instruction_boundary(0xB615, 4); nes_write(0x0654, g_cpu.A);
-label_B618:;
-    /* $B618: EE */ nes_cpu_instruction_boundary(0xB618, 6); { uint16_t a=0x0607; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B61B:;
-    /* $B61B: 60 */ nes_cpu_instruction_boundary(0xB61B, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B6FF:;
+    /* $B6FF: EE */ nes_cpu_instruction_boundary(0xB6FF, 6); { uint16_t a=0x0607; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B702:;
+    /* $B702: 60 */ nes_cpu_instruction_boundary(0xB702, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7568,30 +7737,30 @@ label_B61B:;
     return;
 }
 
-void func_B722_b5(void) { /* EndSQ1SFX */
+void func_B896_b5(void) { /* EndTriSFX */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B722_b5");
+    recomp_stack_push("func_B896_b5");
 #endif
-label_B722:; /* EndSQ1SFX */
-    /* $B722: A9 */ nes_cpu_instruction_boundary(0xB722, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_B724:;
-    /* $B724: 8D */ nes_cpu_instruction_boundary(0xB724, 4); nes_write(0x4000, g_cpu.A);
-label_B727:;
-    /* $B727: A9 */ nes_cpu_instruction_boundary(0xB727, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B729:;
-    /* $B729: 8D */ nes_cpu_instruction_boundary(0xB729, 4); nes_write(0x0653, g_cpu.A);
-label_B72C:;
-    /* $B72C: 20 */ nes_cpu_instruction_boundary(0xB72C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x2E; g_cpu.S--; func_B4D2_b5();
+label_B896:; /* EndTriSFX */
+    /* $B896: A9 */ nes_cpu_instruction_boundary(0xB896, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B898:;
+    /* $B898: 8D */ nes_cpu_instruction_boundary(0xB898, 4); nes_write(0x4008, g_cpu.A);
+label_B89B:;
+    /* $B89B: 8D */ nes_cpu_instruction_boundary(0xB89B, 4); nes_write(0x0655, g_cpu.A);
+label_B89E:;
+    /* $B89E: A9 */ nes_cpu_instruction_boundary(0xB89E, 2); g_cpu.A = 0x18; FLAG_NZ(g_cpu.A);
+label_B8A0:;
+    /* $B8A0: 8D */ nes_cpu_instruction_boundary(0xB8A0, 4); nes_write(0x400B, g_cpu.A);
+label_B8A3:;
+    /* $B8A3: 20 */ nes_cpu_instruction_boundary(0xB8A3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA5; g_cpu.S--; func_B4A2_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB72C, _cbs);
+    bail_trace(0xB8A3, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B72F:;
-    /* $B72F: EE */ nes_cpu_instruction_boundary(0xB72F, 6); { uint16_t a=0x0607; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B732:;
-    /* $B732: 60 */ nes_cpu_instruction_boundary(0xB732, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B8A6:; /* EndTriSFX_RTS */
+    /* $B8A6: 60 */ nes_cpu_instruction_boundary(0xB8A6, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7599,30 +7768,26 @@ label_B732:;
     return;
 }
 
-void func_B8C6_b5_body(int _entry) { /* EndTriSFX */
-    switch (_entry) {
-        case 1: goto label_B8D6;
-    }
-label_B8C6:; /* EndTriSFX */
-    /* $B8C6: A9 */ nes_cpu_instruction_boundary(0xB8C6, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B8C8:;
-    /* $B8C8: 8D */ nes_cpu_instruction_boundary(0xB8C8, 4); nes_write(0x4008, g_cpu.A);
-label_B8CB:;
-    /* $B8CB: 8D */ nes_cpu_instruction_boundary(0xB8CB, 4); nes_write(0x0655, g_cpu.A);
-label_B8CE:;
-    /* $B8CE: A9 */ nes_cpu_instruction_boundary(0xB8CE, 2); g_cpu.A = 0x18; FLAG_NZ(g_cpu.A);
-label_B8D0:;
-    /* $B8D0: 8D */ nes_cpu_instruction_boundary(0xB8D0, 4); nes_write(0x400B, g_cpu.A);
-label_B8D3:;
-    /* $B8D3: 20 */ nes_cpu_instruction_boundary(0xB8D3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD5; g_cpu.S--; func_B4D2_b5();
-if (g_cpu.S != _cbs) {
+void func_B98C_b5(void) { /* DecreaseSFXTriPeriod */
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB8D3, _cbs);
-    recomp_stack_pop();
+    recomp_stack_push("func_B98C_b5");
 #endif
-    return; } }
-label_B8D6:; /* EndTriSFX_RTS */
-    /* $B8D6: 60 */ nes_cpu_instruction_boundary(0xB8D6, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B98C:; /* DecreaseSFXTriPeriod */
+    /* $B98C: 38 */ nes_cpu_instruction_boundary(0xB98C, 2); g_cpu.C = 1;
+label_B98D:;
+    /* $B98D: AD */ nes_cpu_instruction_boundary(0xB98D, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B990:;
+    /* $B990: ED */ nes_cpu_instruction_boundary(0xB990, 4); { uint8_t m=nes_read(0x0612); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B993:;
+    /* $B993: 8D */ nes_cpu_instruction_boundary(0xB993, 4); nes_write(0x0610, g_cpu.A);
+label_B996:;
+    /* $B996: AD */ nes_cpu_instruction_boundary(0xB996, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B999:;
+    /* $B999: ED */ nes_cpu_instruction_boundary(0xB999, 4); { uint8_t m=nes_read(0x0613); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B99C:;
+    /* $B99C: 8D */ nes_cpu_instruction_boundary(0xB99C, 4); nes_write(0x0611, g_cpu.A);
+label_B99F:;
+    /* $B99F: 60 */ nes_cpu_instruction_boundary(0xB99F, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7630,46 +7795,22 @@ label_B8D6:; /* EndTriSFX_RTS */
     return;
 }
 
-void func_B8C6_b5(void) { /* EndTriSFX */
+void func_B869_b5(void) { /* WriteSFXTriPeriod */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8C6_b5");
+    recomp_stack_push("func_B869_b5");
 #endif
-    func_B8C6_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B8D6_b5(void) { /* EndTriSFX_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8D6_b5");
-#endif
-    func_B8C6_b5_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B9BC_b5(void) { /* DecreaseSFXTriPeriod */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9BC_b5");
-#endif
-label_B9BC:; /* DecreaseSFXTriPeriod */
-    /* $B9BC: 38 */ nes_cpu_instruction_boundary(0xB9BC, 2); g_cpu.C = 1;
-label_B9BD:;
-    /* $B9BD: AD */ nes_cpu_instruction_boundary(0xB9BD, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B9C0:;
-    /* $B9C0: ED */ nes_cpu_instruction_boundary(0xB9C0, 4); { uint8_t m=nes_read(0x0612); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B9C3:;
-    /* $B9C3: 8D */ nes_cpu_instruction_boundary(0xB9C3, 4); nes_write(0x0610, g_cpu.A);
-label_B9C6:;
-    /* $B9C6: AD */ nes_cpu_instruction_boundary(0xB9C6, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B9C9:;
-    /* $B9C9: ED */ nes_cpu_instruction_boundary(0xB9C9, 4); { uint8_t m=nes_read(0x0613); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B9CC:;
-    /* $B9CC: 8D */ nes_cpu_instruction_boundary(0xB9CC, 4); nes_write(0x0611, g_cpu.A);
-label_B9CF:;
-    /* $B9CF: 60 */ nes_cpu_instruction_boundary(0xB9CF, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B869:; /* WriteSFXTriPeriod */
+    /* $B869: AD */ nes_cpu_instruction_boundary(0xB869, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B86C:;
+    /* $B86C: 8D */ nes_cpu_instruction_boundary(0xB86C, 4); nes_write(0x400A, g_cpu.A);
+label_B86F:;
+    /* $B86F: AD */ nes_cpu_instruction_boundary(0xB86F, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B872:;
+    /* $B872: 09 */ nes_cpu_instruction_boundary(0xB872, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
+label_B874:;
+    /* $B874: 8D */ nes_cpu_instruction_boundary(0xB874, 4); nes_write(0x400B, g_cpu.A);
+label_B877:;
+    /* $B877: 60 */ nes_cpu_instruction_boundary(0xB877, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7677,22 +7818,26 @@ label_B9CF:;
     return;
 }
 
-void func_B899_b5(void) { /* WriteSFXTriPeriod */
+void func_B978_b5(void) { /* IncreaseSFXTriPeriod */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B899_b5");
+    recomp_stack_push("func_B978_b5");
 #endif
-label_B899:; /* WriteSFXTriPeriod */
-    /* $B899: AD */ nes_cpu_instruction_boundary(0xB899, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B89C:;
-    /* $B89C: 8D */ nes_cpu_instruction_boundary(0xB89C, 4); nes_write(0x400A, g_cpu.A);
-label_B89F:;
-    /* $B89F: AD */ nes_cpu_instruction_boundary(0xB89F, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B8A2:;
-    /* $B8A2: 09 */ nes_cpu_instruction_boundary(0xB8A2, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
-label_B8A4:;
-    /* $B8A4: 8D */ nes_cpu_instruction_boundary(0xB8A4, 4); nes_write(0x400B, g_cpu.A);
-label_B8A7:;
-    /* $B8A7: 60 */ nes_cpu_instruction_boundary(0xB8A7, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B978:; /* IncreaseSFXTriPeriod */
+    /* $B978: 18 */ nes_cpu_instruction_boundary(0xB978, 2); g_cpu.C = 0;
+label_B979:;
+    /* $B979: AD */ nes_cpu_instruction_boundary(0xB979, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B97C:;
+    /* $B97C: 6D */ nes_cpu_instruction_boundary(0xB97C, 4); { uint8_t m=nes_read(0x0612); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B97F:;
+    /* $B97F: 8D */ nes_cpu_instruction_boundary(0xB97F, 4); nes_write(0x0610, g_cpu.A);
+label_B982:;
+    /* $B982: AD */ nes_cpu_instruction_boundary(0xB982, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B985:;
+    /* $B985: 6D */ nes_cpu_instruction_boundary(0xB985, 4); { uint8_t m=nes_read(0x0613); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B988:;
+    /* $B988: 8D */ nes_cpu_instruction_boundary(0xB988, 4); nes_write(0x0611, g_cpu.A);
+label_B98B:;
+    /* $B98B: 60 */ nes_cpu_instruction_boundary(0xB98B, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7700,99 +7845,72 @@ label_B8A7:;
     return;
 }
 
-void func_B9A8_b5(void) { /* IncreaseSFXTriPeriod */
+void func_B9A0_b5(void) { /* DivideSFXTriPeriod */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9A8_b5");
+    recomp_stack_push("func_B9A0_b5");
 #endif
-label_B9A8:; /* IncreaseSFXTriPeriod */
-    /* $B9A8: 18 */ nes_cpu_instruction_boundary(0xB9A8, 2); g_cpu.C = 0;
-label_B9A9:;
-    /* $B9A9: AD */ nes_cpu_instruction_boundary(0xB9A9, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B9AC:;
-    /* $B9AC: 6D */ nes_cpu_instruction_boundary(0xB9AC, 4); { uint8_t m=nes_read(0x0612); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B9A0:; /* DivideSFXTriPeriod */
+    /* $B9A0: AD */ nes_cpu_instruction_boundary(0xB9A0, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B9A3:;
+    /* $B9A3: 48 */ nes_cpu_instruction_boundary(0xB9A3, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_B9A4:;
+    /* $B9A4: AD */ nes_cpu_instruction_boundary(0xB9A4, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B9A7:;
+    /* $B9A7: 48 */ nes_cpu_instruction_boundary(0xB9A7, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_B9A8:;
+    /* $B9A8: A9 */ nes_cpu_instruction_boundary(0xB9A8, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B9AA:;
+    /* $B9AA: 8D */ nes_cpu_instruction_boundary(0xB9AA, 4); nes_write(0x0617, g_cpu.A);
+label_B9AD:;
+    /* $B9AD: A2 */ nes_cpu_instruction_boundary(0xB9AD, 2); g_cpu.X = 0x10; FLAG_NZ(g_cpu.X);
 label_B9AF:;
-    /* $B9AF: 8D */ nes_cpu_instruction_boundary(0xB9AF, 4); nes_write(0x0610, g_cpu.A);
+    /* $B9AF: 2E */ nes_cpu_instruction_boundary(0xB9AF, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_B9B2:;
-    /* $B9B2: AD */ nes_cpu_instruction_boundary(0xB9B2, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B9B5:;
-    /* $B9B5: 6D */ nes_cpu_instruction_boundary(0xB9B5, 4); { uint8_t m=nes_read(0x0613); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+    /* $B9B2: 2E */ nes_cpu_instruction_boundary(0xB9B2, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9B5:; /* DivideSFXTriPeriod_loop */
+    /* $B9B5: 2E */ nes_cpu_instruction_boundary(0xB9B5, 6); { uint16_t a=0x0617; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_B9B8:;
-    /* $B9B8: 8D */ nes_cpu_instruction_boundary(0xB9B8, 4); nes_write(0x0611, g_cpu.A);
+    /* $B9B8: AD */ nes_cpu_instruction_boundary(0xB9B8, 4); g_cpu.A = nes_read(0x0617); FLAG_NZ(g_cpu.A);
 label_B9BB:;
-    /* $B9BB: 60 */ nes_cpu_instruction_boundary(0xB9BB, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B9D0_b5(void) { /* DivideSFXTriPeriod */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9D0_b5");
-#endif
-label_B9D0:; /* DivideSFXTriPeriod */
-    /* $B9D0: AD */ nes_cpu_instruction_boundary(0xB9D0, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B9D3:;
-    /* $B9D3: 48 */ nes_cpu_instruction_boundary(0xB9D3, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_B9D4:;
-    /* $B9D4: AD */ nes_cpu_instruction_boundary(0xB9D4, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B9D7:;
-    /* $B9D7: 48 */ nes_cpu_instruction_boundary(0xB9D7, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_B9D8:;
-    /* $B9D8: A9 */ nes_cpu_instruction_boundary(0xB9D8, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B9DA:;
-    /* $B9DA: 8D */ nes_cpu_instruction_boundary(0xB9DA, 4); nes_write(0x0617, g_cpu.A);
-label_B9DD:;
-    /* $B9DD: A2 */ nes_cpu_instruction_boundary(0xB9DD, 2); g_cpu.X = 0x10; FLAG_NZ(g_cpu.X);
-label_B9DF:;
-    /* $B9DF: 2E */ nes_cpu_instruction_boundary(0xB9DF, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9E2:;
-    /* $B9E2: 2E */ nes_cpu_instruction_boundary(0xB9E2, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9E5:; /* DivideSFXTriPeriod_loop */
-    /* $B9E5: 2E */ nes_cpu_instruction_boundary(0xB9E5, 6); { uint16_t a=0x0617; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9E8:;
-    /* $B9E8: AD */ nes_cpu_instruction_boundary(0xB9E8, 4); g_cpu.A = nes_read(0x0617); FLAG_NZ(g_cpu.A);
-label_B9EB:;
-    /* $B9EB: CD */ nes_cpu_instruction_boundary(0xB9EB, 4); { uint8_t m=nes_read(0x0616); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B9EE:;
-    /* $B9EE: 90 */ nes_cpu_instruction_boundary(0xB9EE, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B9F6; }
-label_B9F0:;
-    /* $B9F0: ED */ nes_cpu_instruction_boundary(0xB9F0, 4); { uint8_t m=nes_read(0x0616); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B9F3:;
-    /* $B9F3: 8D */ nes_cpu_instruction_boundary(0xB9F3, 4); nes_write(0x0617, g_cpu.A);
-label_B9F6:; /* DivideSFXTriPeriod_endIf_A */
-    /* $B9F6: 2E */ nes_cpu_instruction_boundary(0xB9F6, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9F9:;
-    /* $B9F9: 2E */ nes_cpu_instruction_boundary(0xB9F9, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9FC:;
-    /* $B9FC: CA */ nes_cpu_instruction_boundary(0xB9FC, 2); g_cpu.X = (g_cpu.X-1)&0xFF; FLAG_NZ(g_cpu.X);
-label_B9FD:;
-    /* $B9FD: D0 */ nes_cpu_instruction_boundary(0xB9FD, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB9E5, 1);
+    /* $B9BB: CD */ nes_cpu_instruction_boundary(0xB9BB, 4); { uint8_t m=nes_read(0x0616); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B9BE:;
+    /* $B9BE: 90 */ nes_cpu_instruction_boundary(0xB9BE, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B9C6; }
+label_B9C0:;
+    /* $B9C0: ED */ nes_cpu_instruction_boundary(0xB9C0, 4); { uint8_t m=nes_read(0x0616); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B9C3:;
+    /* $B9C3: 8D */ nes_cpu_instruction_boundary(0xB9C3, 4); nes_write(0x0617, g_cpu.A);
+label_B9C6:; /* DivideSFXTriPeriod_endIf_A */
+    /* $B9C6: 2E */ nes_cpu_instruction_boundary(0xB9C6, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9C9:;
+    /* $B9C9: 2E */ nes_cpu_instruction_boundary(0xB9C9, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9CC:;
+    /* $B9CC: CA */ nes_cpu_instruction_boundary(0xB9CC, 2); g_cpu.X = (g_cpu.X-1)&0xFF; FLAG_NZ(g_cpu.X);
+label_B9CD:;
+    /* $B9CD: D0 */ nes_cpu_instruction_boundary(0xB9CD, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB9B5, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_B9E5;
+    goto label_B9B5;
     }
-label_B9FF:;
-    /* $B9FF: AD */ nes_cpu_instruction_boundary(0xB9FF, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_BA02:;
-    /* $BA02: 8D */ nes_cpu_instruction_boundary(0xBA02, 4); nes_write(0x0614, g_cpu.A);
-label_BA05:;
-    /* $BA05: AD */ nes_cpu_instruction_boundary(0xBA05, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_BA08:;
-    /* $BA08: 8D */ nes_cpu_instruction_boundary(0xBA08, 4); nes_write(0x0615, g_cpu.A);
-label_BA0B:;
-    /* $BA0B: 68 */ nes_cpu_instruction_boundary(0xBA0B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BA0C:;
-    /* $BA0C: 8D */ nes_cpu_instruction_boundary(0xBA0C, 4); nes_write(0x0611, g_cpu.A);
-label_BA0F:;
-    /* $BA0F: 68 */ nes_cpu_instruction_boundary(0xBA0F, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BA10:;
-    /* $BA10: 8D */ nes_cpu_instruction_boundary(0xBA10, 4); nes_write(0x0610, g_cpu.A);
-label_BA13:;
-    /* $BA13: 60 */ nes_cpu_instruction_boundary(0xBA13, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B9CF:;
+    /* $B9CF: AD */ nes_cpu_instruction_boundary(0xB9CF, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B9D2:;
+    /* $B9D2: 8D */ nes_cpu_instruction_boundary(0xB9D2, 4); nes_write(0x0614, g_cpu.A);
+label_B9D5:;
+    /* $B9D5: AD */ nes_cpu_instruction_boundary(0xB9D5, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B9D8:;
+    /* $B9D8: 8D */ nes_cpu_instruction_boundary(0xB9D8, 4); nes_write(0x0615, g_cpu.A);
+label_B9DB:;
+    /* $B9DB: 68 */ nes_cpu_instruction_boundary(0xB9DB, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B9DC:;
+    /* $B9DC: 8D */ nes_cpu_instruction_boundary(0xB9DC, 4); nes_write(0x0611, g_cpu.A);
+label_B9DF:;
+    /* $B9DF: 68 */ nes_cpu_instruction_boundary(0xB9DF, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B9E0:;
+    /* $B9E0: 8D */ nes_cpu_instruction_boundary(0xB9E0, 4); nes_write(0x0610, g_cpu.A);
+label_B9E3:;
+    /* $B9E3: 60 */ nes_cpu_instruction_boundary(0xB9E3, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7800,24 +7918,24 @@ label_BA13:;
     return;
 }
 
-void func_B8F3_b5(void) { /* RndTriPeriods */
+void func_B8C3_b5(void) { /* RndTriPeriods */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8F3_b5");
+    recomp_stack_push("func_B8C3_b5");
 #endif
-label_B8F3:; /* RndTriPeriods */
-    /* $B8F3: A5 */ nes_cpu_instruction_boundary(0xB8F3, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B8F5:;
-    /* $B8F5: 09 */ nes_cpu_instruction_boundary(0xB8F5, 2); g_cpu.A |= 0x6C; FLAG_NZ(g_cpu.A);
-label_B8F7:;
-    /* $B8F7: 8D */ nes_cpu_instruction_boundary(0xB8F7, 4); nes_write(0x400A, g_cpu.A);
-label_B8FA:;
-    /* $B8FA: 29 */ nes_cpu_instruction_boundary(0xB8FA, 2); g_cpu.A &= 0x01; FLAG_NZ(g_cpu.A);
-label_B8FC:;
-    /* $B8FC: 09 */ nes_cpu_instruction_boundary(0xB8FC, 2); g_cpu.A |= 0xF8; FLAG_NZ(g_cpu.A);
-label_B8FE:;
-    /* $B8FE: 8D */ nes_cpu_instruction_boundary(0xB8FE, 4); nes_write(0x400B, g_cpu.A);
-label_B901:;
-    /* $B901: 60 */ nes_cpu_instruction_boundary(0xB901, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B8C3:; /* RndTriPeriods */
+    /* $B8C3: A5 */ nes_cpu_instruction_boundary(0xB8C3, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
+label_B8C5:;
+    /* $B8C5: 09 */ nes_cpu_instruction_boundary(0xB8C5, 2); g_cpu.A |= 0x6C; FLAG_NZ(g_cpu.A);
+label_B8C7:;
+    /* $B8C7: 8D */ nes_cpu_instruction_boundary(0xB8C7, 4); nes_write(0x400A, g_cpu.A);
+label_B8CA:;
+    /* $B8CA: 29 */ nes_cpu_instruction_boundary(0xB8CA, 2); g_cpu.A &= 0x01; FLAG_NZ(g_cpu.A);
+label_B8CC:;
+    /* $B8CC: 09 */ nes_cpu_instruction_boundary(0xB8CC, 2); g_cpu.A |= 0xF8; FLAG_NZ(g_cpu.A);
+label_B8CE:;
+    /* $B8CE: 8D */ nes_cpu_instruction_boundary(0xB8CE, 4); nes_write(0x400B, g_cpu.A);
+label_B8D1:;
+    /* $B8D1: 60 */ nes_cpu_instruction_boundary(0xB8D1, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7825,146 +7943,146 @@ label_B901:;
     return;
 }
 
-void func_BA71_b5(void) { /* UpdateVolumeEnvelope */
+void func_BA41_b5(void) { /* UpdateVolumeEnvelope */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BA71_b5");
+    recomp_stack_push("func_BA41_b5");
 #endif
-label_BA71:; /* UpdateVolumeEnvelope */
-    /* $BA71: BD */ nes_cpu_instruction_boundary(0xBA71, 4); g_cpu.A = nes_read((0x062E + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BA74:;
-    /* $BA74: F0 */ nes_cpu_instruction_boundary(0xBA74, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BABB; }
-label_BA76:;
-    /* $BA76: 85 */ nes_cpu_instruction_boundary(0xBA76, 3); nes_write(0xEB, g_cpu.A);
-label_BA78:;
-    /* $BA78: 20 */ nes_cpu_instruction_boundary(0xBA78, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x7A; g_cpu.S--; func_BA38_b5();
+label_BA41:; /* UpdateVolumeEnvelope */
+    /* $BA41: BD */ nes_cpu_instruction_boundary(0xBA41, 4); g_cpu.A = nes_read((0x062E + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA44:;
+    /* $BA44: F0 */ nes_cpu_instruction_boundary(0xBA44, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA8B; }
+label_BA46:;
+    /* $BA46: 85 */ nes_cpu_instruction_boundary(0xBA46, 3); nes_write(0xEB, g_cpu.A);
+label_BA48:;
+    /* $BA48: 20 */ nes_cpu_instruction_boundary(0xBA48, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x4A; g_cpu.S--; func_BA08_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBA78, _cbs);
+    bail_trace(0xBA48, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BA7B:;
-    /* $BA7B: BD */ nes_cpu_instruction_boundary(0xBA7B, 4); g_cpu.A = nes_read((0x066C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BA7E:;
-    /* $BA7E: C9 */ nes_cpu_instruction_boundary(0xBA7E, 2); { int r=g_cpu.A-0x10; g_cpu.C=(g_cpu.A>=0x10)?1:0; FLAG_NZ(r&0xFF); }
-label_BA80:;
-    /* $BA80: F0 */ nes_cpu_instruction_boundary(0xBA80, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAC9; }
-label_BA82:;
-    /* $BA82: A0 */ nes_cpu_instruction_boundary(0xBA82, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
-label_BA84:; /* UpdateVolumeEnvelope_loop_multiply */
-    /* $BA84: C6 */ nes_cpu_instruction_boundary(0xBA84, 5); { uint16_t a=0xEB; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BA4B:;
+    /* $BA4B: BD */ nes_cpu_instruction_boundary(0xBA4B, 4); g_cpu.A = nes_read((0x066C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA4E:;
+    /* $BA4E: C9 */ nes_cpu_instruction_boundary(0xBA4E, 2); { int r=g_cpu.A-0x10; g_cpu.C=(g_cpu.A>=0x10)?1:0; FLAG_NZ(r&0xFF); }
+label_BA50:;
+    /* $BA50: F0 */ nes_cpu_instruction_boundary(0xBA50, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA99; }
+label_BA52:;
+    /* $BA52: A0 */ nes_cpu_instruction_boundary(0xBA52, 2); g_cpu.Y = 0x00; FLAG_NZ(g_cpu.Y);
+label_BA54:; /* UpdateVolumeEnvelope_loop_multiply */
+    /* $BA54: C6 */ nes_cpu_instruction_boundary(0xBA54, 5); { uint16_t a=0xEB; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BA56:;
+    /* $BA56: F0 */ nes_cpu_instruction_boundary(0xBA56, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA5C; }
+label_BA58:;
+    /* $BA58: C8 */ nes_cpu_instruction_boundary(0xBA58, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_BA59:;
+    /* $BA59: C8 */ nes_cpu_instruction_boundary(0xBA59, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_BA5A:;
+    /* $BA5A: D0 */ nes_cpu_instruction_boundary(0xBA5A, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBA54, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BA54;
+    }
+label_BA5C:; /* UpdateVolumeEnvelope_exitLoop_multiply */
+    /* $BA5C: B9 */ nes_cpu_instruction_boundary(0xBA5C, 4); g_cpu.A = nes_read((0xBCB0 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA5F:;
+    /* $BA5F: 85 */ nes_cpu_instruction_boundary(0xBA5F, 3); nes_write(0xEC, g_cpu.A);
+label_BA61:;
+    /* $BA61: B9 */ nes_cpu_instruction_boundary(0xBA61, 4); g_cpu.A = nes_read((0xBCB1 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA64:;
+    /* $BA64: 85 */ nes_cpu_instruction_boundary(0xBA64, 3); nes_write(0xED, g_cpu.A);
+label_BA66:;
+    /* $BA66: BC */ nes_cpu_instruction_boundary(0xBA66, 4); g_cpu.Y = nes_read((0x066A + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BA69:;
+    /* $BA69: B1 */ nes_cpu_instruction_boundary(0xBA69, 5); g_cpu.A = nes_read((nes_read16zp(0xEC) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA6B:;
+    /* $BA6B: 85 */ nes_cpu_instruction_boundary(0xBA6B, 3); nes_write(0xEA, g_cpu.A);
+label_BA6D:;
+    /* $BA6D: C9 */ nes_cpu_instruction_boundary(0xBA6D, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
+label_BA6F:;
+    /* $BA6F: F0 */ nes_cpu_instruction_boundary(0xBA6F, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA90; }
+label_BA71:;
+    /* $BA71: C9 */ nes_cpu_instruction_boundary(0xBA71, 2); { int r=g_cpu.A-0xF0; g_cpu.C=(g_cpu.A>=0xF0)?1:0; FLAG_NZ(r&0xFF); }
+label_BA73:;
+    /* $BA73: F0 */ nes_cpu_instruction_boundary(0xBA73, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA95; }
+label_BA75:;
+    /* $BA75: BD */ nes_cpu_instruction_boundary(0xBA75, 4); g_cpu.A = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA78:;
+    /* $BA78: 29 */ nes_cpu_instruction_boundary(0xBA78, 2); g_cpu.A &= 0xF0; FLAG_NZ(g_cpu.A);
+label_BA7A:;
+    /* $BA7A: 05 */ nes_cpu_instruction_boundary(0xBA7A, 3); g_cpu.A |= nes_read(0xEA); FLAG_NZ(g_cpu.A);
+label_BA7C:;
+    /* $BA7C: A8 */ nes_cpu_instruction_boundary(0xBA7C, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BA7D:; /* UpdateVolumeEnvelope_updateRegister_inc */
+    /* $BA7D: FE */ nes_cpu_instruction_boundary(0xBA7D, 7); { uint16_t a=(0x066A + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BA80:; /* UpdateVolumeEnvelope_updateRegister_noInc */
+    /* $BA80: BD */ nes_cpu_instruction_boundary(0xBA80, 4); g_cpu.A = nes_read((0x0653 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BA83:;
+    /* $BA83: D0 */ nes_cpu_instruction_boundary(0xBA83, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA8B; }
+label_BA85:;
+    /* $BA85: 8A */ nes_cpu_instruction_boundary(0xBA85, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
 label_BA86:;
     /* $BA86: F0 */ nes_cpu_instruction_boundary(0xBA86, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA8C; }
-label_BA88:;
-    /* $BA88: C8 */ nes_cpu_instruction_boundary(0xBA88, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_BA89:;
-    /* $BA89: C8 */ nes_cpu_instruction_boundary(0xBA89, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
-label_BA8A:;
-    /* $BA8A: D0 */ nes_cpu_instruction_boundary(0xBA8A, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBA84, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
+label_BA88:; /* UpdateVolumeEnvelope_writeSQ2_VOL */
+    /* $BA88: 8C */ nes_cpu_instruction_boundary(0xBA88, 4); nes_write(0x4004, g_cpu.Y);
+label_BA8B:; /* UpdateVolumeEnvelope_RTS */
+    /* $BA8B: 60 */ nes_cpu_instruction_boundary(0xBA8B, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
 #endif
-    goto label_BA84;
-    }
-label_BA8C:; /* UpdateVolumeEnvelope_exitLoop_multiply */
-    /* $BA8C: B9 */ nes_cpu_instruction_boundary(0xBA8C, 4); g_cpu.A = nes_read((0xBCE0 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+    return;
+label_BA8C:; /* UpdateVolumeEnvelope_writeSQ1_VOL */
+    /* $BA8C: 8C */ nes_cpu_instruction_boundary(0xBA8C, 4); nes_write(0x4000, g_cpu.Y);
 label_BA8F:;
-    /* $BA8F: 85 */ nes_cpu_instruction_boundary(0xBA8F, 3); nes_write(0xEC, g_cpu.A);
-label_BA91:;
-    /* $BA91: B9 */ nes_cpu_instruction_boundary(0xBA91, 4); g_cpu.A = nes_read((0xBCE1 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BA94:;
-    /* $BA94: 85 */ nes_cpu_instruction_boundary(0xBA94, 3); nes_write(0xED, g_cpu.A);
-label_BA96:;
-    /* $BA96: BC */ nes_cpu_instruction_boundary(0xBA96, 4); g_cpu.Y = nes_read((0x066A + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BA99:;
-    /* $BA99: B1 */ nes_cpu_instruction_boundary(0xBA99, 5); g_cpu.A = nes_read((nes_read16zp(0xEC) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+    /* $BA8F: 60 */ nes_cpu_instruction_boundary(0xBA8F, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+label_BA90:; /* UpdateVolumeEnvelope_keepPrevVolume */
+    /* $BA90: BC */ nes_cpu_instruction_boundary(0xBA90, 4); g_cpu.Y = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BA93:;
+    /* $BA93: D0 */ nes_cpu_instruction_boundary(0xBA93, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBA80, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BA80;
+    }
+label_BA95:; /* UpdateVolumeEnvelope_killVolume */
+    /* $BA95: A0 */ nes_cpu_instruction_boundary(0xBA95, 2); g_cpu.Y = 0x10; FLAG_NZ(g_cpu.Y);
+label_BA97:;
+    /* $BA97: D0 */ nes_cpu_instruction_boundary(0xBA97, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBA80, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BA80;
+    }
+label_BA99:; /* UpdateVolumeEnvelope_noVolume */
+    /* $BA99: A0 */ nes_cpu_instruction_boundary(0xBA99, 2); g_cpu.Y = 0x10; FLAG_NZ(g_cpu.Y);
 label_BA9B:;
-    /* $BA9B: 85 */ nes_cpu_instruction_boundary(0xBA9B, 3); nes_write(0xEA, g_cpu.A);
-label_BA9D:;
-    /* $BA9D: C9 */ nes_cpu_instruction_boundary(0xBA9D, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
-label_BA9F:;
-    /* $BA9F: F0 */ nes_cpu_instruction_boundary(0xBA9F, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAC0; }
-label_BAA1:;
-    /* $BAA1: C9 */ nes_cpu_instruction_boundary(0xBAA1, 2); { int r=g_cpu.A-0xF0; g_cpu.C=(g_cpu.A>=0xF0)?1:0; FLAG_NZ(r&0xFF); }
-label_BAA3:;
-    /* $BAA3: F0 */ nes_cpu_instruction_boundary(0xBAA3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAC5; }
-label_BAA5:;
-    /* $BAA5: BD */ nes_cpu_instruction_boundary(0xBAA5, 4); g_cpu.A = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAA8:;
-    /* $BAA8: 29 */ nes_cpu_instruction_boundary(0xBAA8, 2); g_cpu.A &= 0xF0; FLAG_NZ(g_cpu.A);
-label_BAAA:;
-    /* $BAAA: 05 */ nes_cpu_instruction_boundary(0xBAAA, 3); g_cpu.A |= nes_read(0xEA); FLAG_NZ(g_cpu.A);
-label_BAAC:;
-    /* $BAAC: A8 */ nes_cpu_instruction_boundary(0xBAAC, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BAAD:; /* UpdateVolumeEnvelope_updateRegister_inc */
-    /* $BAAD: FE */ nes_cpu_instruction_boundary(0xBAAD, 7); { uint16_t a=(0x066A + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BAB0:; /* UpdateVolumeEnvelope_updateRegister_noInc */
-    /* $BAB0: BD */ nes_cpu_instruction_boundary(0xBAB0, 4); g_cpu.A = nes_read((0x0653 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAB3:;
-    /* $BAB3: D0 */ nes_cpu_instruction_boundary(0xBAB3, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BABB; }
-label_BAB5:;
-    /* $BAB5: 8A */ nes_cpu_instruction_boundary(0xBAB5, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAB6:;
-    /* $BAB6: F0 */ nes_cpu_instruction_boundary(0xBAB6, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BABC; }
-label_BAB8:; /* UpdateVolumeEnvelope_writeSQ2_VOL */
-    /* $BAB8: 8C */ nes_cpu_instruction_boundary(0xBAB8, 4); nes_write(0x4004, g_cpu.Y);
-label_BABB:; /* UpdateVolumeEnvelope_RTS */
-    /* $BABB: 60 */ nes_cpu_instruction_boundary(0xBABB, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_BABC:; /* UpdateVolumeEnvelope_writeSQ1_VOL */
-    /* $BABC: 8C */ nes_cpu_instruction_boundary(0xBABC, 4); nes_write(0x4000, g_cpu.Y);
-label_BABF:;
-    /* $BABF: 60 */ nes_cpu_instruction_boundary(0xBABF, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_BAC0:; /* UpdateVolumeEnvelope_keepPrevVolume */
-    /* $BAC0: BC */ nes_cpu_instruction_boundary(0xBAC0, 4); g_cpu.Y = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BAC3:;
-    /* $BAC3: D0 */ nes_cpu_instruction_boundary(0xBAC3, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAB0, 1);
+    /* $BA9B: D0 */ nes_cpu_instruction_boundary(0xBA9B, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBA7D, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_BAB0;
+    goto label_BA7D;
     }
-label_BAC5:; /* UpdateVolumeEnvelope_killVolume */
-    /* $BAC5: A0 */ nes_cpu_instruction_boundary(0xBAC5, 2); g_cpu.Y = 0x10; FLAG_NZ(g_cpu.Y);
-label_BAC7:;
-    /* $BAC7: D0 */ nes_cpu_instruction_boundary(0xBAC7, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAB0, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BAB0;
-    }
-label_BAC9:; /* UpdateVolumeEnvelope_noVolume */
-    /* $BAC9: A0 */ nes_cpu_instruction_boundary(0xBAC9, 2); g_cpu.Y = 0x10; FLAG_NZ(g_cpu.Y);
-label_BACB:;
-    /* $BACB: D0 */ nes_cpu_instruction_boundary(0xBACB, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAAD, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BAAD;
-    }
-label_BACD:; /* GotoEndOrLoopMusic */
-    /* $BACD: 20 */ nes_cpu_instruction_boundary(0xBACD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xCF; g_cpu.S--; func_B420_b5();
+label_BA9D:; /* GotoEndOrLoopMusic */
+    /* $BA9D: 20 */ nes_cpu_instruction_boundary(0xBA9D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x9F; g_cpu.S--; func_B3F0_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBACD, _cbs);
+    bail_trace(0xBA9D, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BAD0:;
-    /* $BAD0: 60 */ nes_cpu_instruction_boundary(0xBAD0, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_BAA0:;
+    /* $BAA0: 60 */ nes_cpu_instruction_boundary(0xBAA0, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -7972,164 +8090,44 @@ label_BAD0:;
     return;
 }
 
-void func_BA38_b5(void) { /* LoadMusicSQ1SQ2Periods */
+void func_BA08_b5(void) { /* LoadMusicSQ1SQ2Periods */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BA38_b5");
+    recomp_stack_push("func_BA08_b5");
 #endif
-label_BA38:; /* LoadMusicSQ1SQ2Periods */
-    /* $BA38: AD */ nes_cpu_instruction_boundary(0xBA38, 4); g_cpu.A = nes_read(0x0607); FLAG_NZ(g_cpu.A);
-label_BA3B:;
-    /* $BA3B: F0 */ nes_cpu_instruction_boundary(0xBA3B, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA66; }
-label_BA3D:;
-    /* $BA3D: A9 */ nes_cpu_instruction_boundary(0xBA3D, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_BA3F:;
-    /* $BA3F: 8D */ nes_cpu_instruction_boundary(0xBA3F, 4); nes_write(0x0607, g_cpu.A);
-label_BA42:;
-    /* $BA42: AD */ nes_cpu_instruction_boundary(0xBA42, 4); g_cpu.A = nes_read(0x0648); FLAG_NZ(g_cpu.A);
-label_BA45:;
-    /* $BA45: 8D */ nes_cpu_instruction_boundary(0xBA45, 4); nes_write(0x4001, g_cpu.A);
-label_BA48:;
-    /* $BA48: AD */ nes_cpu_instruction_boundary(0xBA48, 4); g_cpu.A = nes_read(0x0600); FLAG_NZ(g_cpu.A);
-label_BA4B:;
-    /* $BA4B: 8D */ nes_cpu_instruction_boundary(0xBA4B, 4); nes_write(0x4002, g_cpu.A);
-label_BA4E:;
-    /* $BA4E: AD */ nes_cpu_instruction_boundary(0xBA4E, 4); g_cpu.A = nes_read(0x0601); FLAG_NZ(g_cpu.A);
-label_BA51:;
-    /* $BA51: 8D */ nes_cpu_instruction_boundary(0xBA51, 4); nes_write(0x4003, g_cpu.A);
-label_BA54:;
-    /* $BA54: AD */ nes_cpu_instruction_boundary(0xBA54, 4); g_cpu.A = nes_read(0x0649); FLAG_NZ(g_cpu.A);
-label_BA57:;
-    /* $BA57: 8D */ nes_cpu_instruction_boundary(0xBA57, 4); nes_write(0x4005, g_cpu.A);
-label_BA5A:;
-    /* $BA5A: AD */ nes_cpu_instruction_boundary(0xBA5A, 4); g_cpu.A = nes_read(0x0604); FLAG_NZ(g_cpu.A);
-label_BA5D:;
-    /* $BA5D: 8D */ nes_cpu_instruction_boundary(0xBA5D, 4); nes_write(0x4006, g_cpu.A);
-label_BA60:;
-    /* $BA60: AD */ nes_cpu_instruction_boundary(0xBA60, 4); g_cpu.A = nes_read(0x0605); FLAG_NZ(g_cpu.A);
-label_BA63:;
-    /* $BA63: 8D */ nes_cpu_instruction_boundary(0xBA63, 4); nes_write(0x4007, g_cpu.A);
-label_BA66:; /* LoadMusicSQ1SQ2Periods_RTS */
-    /* $BA66: 60 */ nes_cpu_instruction_boundary(0xBA66, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B420_b5(void) { /* EndOrLoopMusic */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B420_b5");
-#endif
-label_B420:; /* EndOrLoopMusic */
-    /* $B420: AD */ nes_cpu_instruction_boundary(0xB420, 4); g_cpu.A = nes_read(0x062C); FLAG_NZ(g_cpu.A);
-label_B423:;
-    /* $B423: F0 */ nes_cpu_instruction_boundary(0xB423, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B434; }
-label_B425:;
-    /* $B425: AD */ nes_cpu_instruction_boundary(0xB425, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
-label_B428:;
-    /* $B428: 8D */ nes_cpu_instruction_boundary(0xB428, 4); nes_write(0x065D, g_cpu.A);
-label_B42B:;
-    /* $B42B: 60 */ nes_cpu_instruction_boundary(0xB42B, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_B42C:; /* CheckMusicFlags */
-    /* $B42C: AD */ nes_cpu_instruction_boundary(0xB42C, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
-label_B42F:;
-    /* $B42F: CD */ nes_cpu_instruction_boundary(0xB42F, 4); { uint8_t m=nes_read(0x064D); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B432:;
-    /* $B432: F0 */ nes_cpu_instruction_boundary(0xB432, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B43A; }
-label_B434:; /* InitializeSoundAddresses */
-    /* $B434: 20 */ nes_cpu_instruction_boundary(0xB434, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x36; g_cpu.S--; func_B44D_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB434, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B437:;
-    /* $B437: 20 */ nes_cpu_instruction_boundary(0xB437, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x39; g_cpu.S--; func_B46E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB437, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B43A:; /* GotoClearSpecialAddresses */
-    /* $B43A: 20 */ nes_cpu_instruction_boundary(0xB43A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3C; g_cpu.S--; func_B43E_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB43A, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B43D:;
-    /* $B43D: 60 */ nes_cpu_instruction_boundary(0xB43D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_BA67_b5(void) { /* UpdateAllVolumeEnvelopes */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BA67_b5");
-#endif
-label_BA67:; /* UpdateAllVolumeEnvelopes */
-    /* $BA67: A2 */ nes_cpu_instruction_boundary(0xBA67, 2); g_cpu.X = 0x00; FLAG_NZ(g_cpu.X);
-label_BA69:;
-    /* $BA69: 20 */ nes_cpu_instruction_boundary(0xBA69, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x6B; g_cpu.S--; func_BA71_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBA69, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BA6C:;
-    /* $BA6C: E8 */ nes_cpu_instruction_boundary(0xBA6C, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
-label_BA6D:;
-    /* $BA6D: 20 */ nes_cpu_instruction_boundary(0xBA6D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x6F; g_cpu.S--; func_BA71_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBA6D, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BA70:;
-    /* $BA70: 60 */ nes_cpu_instruction_boundary(0xBA70, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_BA23_b5(void) { /* ResetVolumeIndex */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BA23_b5");
-#endif
-label_BA23:; /* ResetVolumeIndex */
-    /* $BA23: AD */ nes_cpu_instruction_boundary(0xBA23, 4); g_cpu.A = nes_read(0x0640); FLAG_NZ(g_cpu.A);
-label_BA26:;
-    /* $BA26: C9 */ nes_cpu_instruction_boundary(0xBA26, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
-label_BA28:;
-    /* $BA28: D0 */ nes_cpu_instruction_boundary(0xBA28, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA2D; }
+label_BA08:; /* LoadMusicSQ1SQ2Periods */
+    /* $BA08: AD */ nes_cpu_instruction_boundary(0xBA08, 4); g_cpu.A = nes_read(0x0607); FLAG_NZ(g_cpu.A);
+label_BA0B:;
+    /* $BA0B: F0 */ nes_cpu_instruction_boundary(0xBA0B, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA36; }
+label_BA0D:;
+    /* $BA0D: A9 */ nes_cpu_instruction_boundary(0xBA0D, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BA0F:;
+    /* $BA0F: 8D */ nes_cpu_instruction_boundary(0xBA0F, 4); nes_write(0x0607, g_cpu.A);
+label_BA12:;
+    /* $BA12: AD */ nes_cpu_instruction_boundary(0xBA12, 4); g_cpu.A = nes_read(0x0648); FLAG_NZ(g_cpu.A);
+label_BA15:;
+    /* $BA15: 8D */ nes_cpu_instruction_boundary(0xBA15, 4); nes_write(0x4001, g_cpu.A);
+label_BA18:;
+    /* $BA18: AD */ nes_cpu_instruction_boundary(0xBA18, 4); g_cpu.A = nes_read(0x0600); FLAG_NZ(g_cpu.A);
+label_BA1B:;
+    /* $BA1B: 8D */ nes_cpu_instruction_boundary(0xBA1B, 4); nes_write(0x4002, g_cpu.A);
+label_BA1E:;
+    /* $BA1E: AD */ nes_cpu_instruction_boundary(0xBA1E, 4); g_cpu.A = nes_read(0x0601); FLAG_NZ(g_cpu.A);
+label_BA21:;
+    /* $BA21: 8D */ nes_cpu_instruction_boundary(0xBA21, 4); nes_write(0x4003, g_cpu.A);
+label_BA24:;
+    /* $BA24: AD */ nes_cpu_instruction_boundary(0xBA24, 4); g_cpu.A = nes_read(0x0649); FLAG_NZ(g_cpu.A);
+label_BA27:;
+    /* $BA27: 8D */ nes_cpu_instruction_boundary(0xBA27, 4); nes_write(0x4005, g_cpu.A);
 label_BA2A:;
-    /* $BA2A: 8D */ nes_cpu_instruction_boundary(0xBA2A, 4); nes_write(0x066A, g_cpu.A);
-label_BA2D:; /* ResetVolumeIndex_endIf_A */
-    /* $BA2D: AD */ nes_cpu_instruction_boundary(0xBA2D, 4); g_cpu.A = nes_read(0x0641); FLAG_NZ(g_cpu.A);
+    /* $BA2A: AD */ nes_cpu_instruction_boundary(0xBA2A, 4); g_cpu.A = nes_read(0x0604); FLAG_NZ(g_cpu.A);
+label_BA2D:;
+    /* $BA2D: 8D */ nes_cpu_instruction_boundary(0xBA2D, 4); nes_write(0x4006, g_cpu.A);
 label_BA30:;
-    /* $BA30: C9 */ nes_cpu_instruction_boundary(0xBA30, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
-label_BA32:;
-    /* $BA32: D0 */ nes_cpu_instruction_boundary(0xBA32, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA37; }
-label_BA34:;
-    /* $BA34: 8D */ nes_cpu_instruction_boundary(0xBA34, 4); nes_write(0x066B, g_cpu.A);
-label_BA37:; /* ResetVolumeIndex_endIf_B */
-    /* $BA37: 60 */ nes_cpu_instruction_boundary(0xBA37, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+    /* $BA30: AD */ nes_cpu_instruction_boundary(0xBA30, 4); g_cpu.A = nes_read(0x0605); FLAG_NZ(g_cpu.A);
+label_BA33:;
+    /* $BA33: 8D */ nes_cpu_instruction_boundary(0xBA33, 4); nes_write(0x4007, g_cpu.A);
+label_BA36:; /* LoadMusicSQ1SQ2Periods_RTS */
+    /* $BA36: 60 */ nes_cpu_instruction_boundary(0xBA36, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -8137,702 +8135,821 @@ label_BA37:; /* ResetVolumeIndex_endIf_B */
     return;
 }
 
-void func_BB4C_b5(void) { /* LoadNextMusicChannelInstr_Continued */
+void func_B3F0_b5(void) { /* EndOrLoopMusic */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BB4C_b5");
+    recomp_stack_push("func_B3F0_b5");
 #endif
-label_BB4C:; /* LoadNextMusicChannelInstr_Continued */
-    /* $BB4C: 98 */ nes_cpu_instruction_boundary(0xBB4C, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB4D:;
-    /* $BB4D: 29 */ nes_cpu_instruction_boundary(0xBB4D, 2); g_cpu.A &= 0xB0; FLAG_NZ(g_cpu.A);
-label_BB4F:;
-    /* $BB4F: C9 */ nes_cpu_instruction_boundary(0xBB4F, 2); { int r=g_cpu.A-0xB0; g_cpu.C=(g_cpu.A>=0xB0)?1:0; FLAG_NZ(r&0xFF); }
-label_BB51:;
-    /* $BB51: D0 */ nes_cpu_instruction_boundary(0xBB51, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB70; }
-label_BB53:;
-    /* $BB53: 98 */ nes_cpu_instruction_boundary(0xBB53, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB54:;
-    /* $BB54: 29 */ nes_cpu_instruction_boundary(0xBB54, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
-label_BB56:;
-    /* $BB56: 18 */ nes_cpu_instruction_boundary(0xBB56, 2); g_cpu.C = 0;
-label_BB57:;
-    /* $BB57: 6D */ nes_cpu_instruction_boundary(0xBB57, 4); { uint8_t m=nes_read(0x062B); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_BB5A:;
-    /* $BB5A: A8 */ nes_cpu_instruction_boundary(0xBB5A, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB5B:;
-    /* $BB5B: B9 */ nes_cpu_instruction_boundary(0xBB5B, 4); g_cpu.A = nes_read((0xBF27 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB5E:;
-    /* $BB5E: 9D */ nes_cpu_instruction_boundary(0xBB5E, 5); nes_write((0x0620 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB61:;
-    /* $BB61: A8 */ nes_cpu_instruction_boundary(0xBB61, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB62:;
-    /* $BB62: 8A */ nes_cpu_instruction_boundary(0xBB62, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BB63:;
-    /* $BB63: C9 */ nes_cpu_instruction_boundary(0xBB63, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_BB65:;
-    /* $BB65: F0 */ nes_cpu_instruction_boundary(0xBB65, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBB49); return; }
-label_BB67:; /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-    /* $BB67: BC */ nes_cpu_instruction_boundary(0xBB67, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BB6A:;
-    /* $BB6A: FE */ nes_cpu_instruction_boundary(0xBB6A, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB6D:;
-    /* $BB6D: B1 */ nes_cpu_instruction_boundary(0xBB6D, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB6F:;
-    /* $BB6F: A8 */ nes_cpu_instruction_boundary(0xBB6F, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB70:; /* LoadNextMusicChannelInstr_Continued_noteOrRest */
-    /* $BB70: 8A */ nes_cpu_instruction_boundary(0xBB70, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BB71:;
-    /* $BB71: C9 */ nes_cpu_instruction_boundary(0xBB71, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
-label_BB73:;
-    /* $BB73: F0 */ nes_cpu_instruction_boundary(0xBB73, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBB46); return; }
-label_BB75:;
-    /* $BB75: 48 */ nes_cpu_instruction_boundary(0xBB75, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_BB76:;
-    /* $BB76: AE */ nes_cpu_instruction_boundary(0xBB76, 4); g_cpu.X = nes_read(0x064B); FLAG_NZ(g_cpu.X);
-label_BB79:;
-    /* $BB79: B9 */ nes_cpu_instruction_boundary(0xBB79, 4); g_cpu.A = nes_read((0xBEA8 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB7C:;
-    /* $BB7C: F0 */ nes_cpu_instruction_boundary(0xBB7C, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB89; }
-label_BB7E:;
-    /* $BB7E: 9D */ nes_cpu_instruction_boundary(0xBB7E, 5); nes_write((0x0600 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB81:;
-    /* $BB81: B9 */ nes_cpu_instruction_boundary(0xBB81, 4); g_cpu.A = nes_read((0xBEA7 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB84:;
-    /* $BB84: 09 */ nes_cpu_instruction_boundary(0xBB84, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
-label_BB86:;
-    /* $BB86: 9D */ nes_cpu_instruction_boundary(0xBB86, 5); nes_write((0x0601 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB89:; /* LoadNextMusicChannelInstr_Continued_endIf_A */
-    /* $BB89: A8 */ nes_cpu_instruction_boundary(0xBB89, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB8A:;
-    /* $BB8A: 68 */ nes_cpu_instruction_boundary(0xBB8A, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BB8B:;
-    /* $BB8B: AA */ nes_cpu_instruction_boundary(0xBB8B, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BB8C:;
-    /* $BB8C: 98 */ nes_cpu_instruction_boundary(0xBB8C, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB8D:;
-    /* $BB8D: D0 */ nes_cpu_instruction_boundary(0xBB8D, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB9E; }
-label_BB8F:;
-    /* $BB8F: A9 */ nes_cpu_instruction_boundary(0xBB8F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_BB91:;
-    /* $BB91: 85 */ nes_cpu_instruction_boundary(0xBB91, 3); nes_write(0xEA, g_cpu.A);
-label_BB93:;
-    /* $BB93: 8A */ nes_cpu_instruction_boundary(0xBB93, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BB94:;
-    /* $BB94: C9 */ nes_cpu_instruction_boundary(0xBB94, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_BB96:;
-    /* $BB96: F0 */ nes_cpu_instruction_boundary(0xBB96, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBA3; }
-label_BB98:;
-    /* $BB98: A9 */ nes_cpu_instruction_boundary(0xBB98, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_BB9A:;
-    /* $BB9A: 85 */ nes_cpu_instruction_boundary(0xBB9A, 3); nes_write(0xEA, g_cpu.A);
-label_BB9C:;
-    /* $BB9C: D0 */ nes_cpu_instruction_boundary(0xBB9C, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBA3; }
-label_BB9E:; /* LoadNextMusicChannelInstr_Continued_else_B */
-    /* $BB9E: BD */ nes_cpu_instruction_boundary(0xBB9E, 4); g_cpu.A = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBA1:;
-    /* $BBA1: 85 */ nes_cpu_instruction_boundary(0xBBA1, 3); nes_write(0xEA, g_cpu.A);
-label_BBA3:; /* LoadNextMusicChannelInstr_Continued_endIf_B */
-    /* $BBA3: 8A */ nes_cpu_instruction_boundary(0xBBA3, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BBA4:;
-    /* $BBA4: DE */ nes_cpu_instruction_boundary(0xBBA4, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BBA7:;
-    /* $BBA7: DD */ nes_cpu_instruction_boundary(0xBBA7, 4); { uint8_t m=nes_read((0x0653 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_BBAA:;
-    /* $BBAA: F0 */ nes_cpu_instruction_boundary(0xBBAA, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBE1; }
-label_BBAC:;
-    /* $BBAC: FE */ nes_cpu_instruction_boundary(0xBBAC, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BBAF:;
-    /* $BBAF: AC */ nes_cpu_instruction_boundary(0xBBAF, 4); g_cpu.Y = nes_read(0x064B); FLAG_NZ(g_cpu.Y);
-label_BBB2:;
-    /* $BBB2: 8A */ nes_cpu_instruction_boundary(0xBBB2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BBB3:;
-    /* $BBB3: C9 */ nes_cpu_instruction_boundary(0xBBB3, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_BBB5:;
-    /* $BBB5: F0 */ nes_cpu_instruction_boundary(0xBBB5, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBBC; }
-label_BBB7:;
-    /* $BBB7: BD */ nes_cpu_instruction_boundary(0xBBB7, 4); g_cpu.A = nes_read((0x062E + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBBA:;
-    /* $BBBA: D0 */ nes_cpu_instruction_boundary(0xBBBA, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBC1; }
-label_BBBC:; /* LoadNextMusicChannelInstr_Continued_if_Cntrl0Data */
-    /* $BBBC: A5 */ nes_cpu_instruction_boundary(0xBBBC, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
-label_BBBE:;
-    /* $BBBE: 99 */ nes_cpu_instruction_boundary(0xBBBE, 5); nes_write((0x4000 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBC1:; /* LoadNextMusicChannelInstr_Continued_endIf_Cntrl0Data */
-    /* $BBC1: A5 */ nes_cpu_instruction_boundary(0xBBC1, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
-label_BBC3:;
-    /* $BBC3: 9D */ nes_cpu_instruction_boundary(0xBBC3, 5); nes_write((0x066C + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BBC6:;
-    /* $BBC6: B9 */ nes_cpu_instruction_boundary(0xBBC6, 4); g_cpu.A = nes_read((0x0600 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBC9:;
-    /* $BBC9: 99 */ nes_cpu_instruction_boundary(0xBBC9, 5); nes_write((0x4002 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBCC:;
-    /* $BBCC: B9 */ nes_cpu_instruction_boundary(0xBBCC, 4); g_cpu.A = nes_read((0x0601 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBCF:;
-    /* $BBCF: 99 */ nes_cpu_instruction_boundary(0xBBCF, 5); nes_write((0x4003 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBD2:;
-    /* $BBD2: BD */ nes_cpu_instruction_boundary(0xBBD2, 4); g_cpu.A = nes_read((0x0648 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBD5:;
-    /* $BBD5: 99 */ nes_cpu_instruction_boundary(0xBBD5, 5); nes_write((0x4001 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBD8:; /* SetMusicInstrDelayToLength */
-    /* $BBD8: BD */ nes_cpu_instruction_boundary(0xBBD8, 4); g_cpu.A = nes_read((0x0620 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBDB:;
-    /* $BBDB: 9D */ nes_cpu_instruction_boundary(0xBBDB, 5); nes_write((0x0640 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BBDE:;
-    /* $BBDE: 4C */ nes_cpu_instruction_boundary(0xBBDE, 3); nes_cpu_instruction_boundary(0xBAE3, 2); func_BAE3_b5(); return;
-label_BBE1:; /* MusicChannelIsUsedBySFX */
-    /* $BBE1: FE */ nes_cpu_instruction_boundary(0xBBE1, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BBE4:;
-    /* $BBE4: 4C */ nes_cpu_instruction_boundary(0xBBE4, 3); nes_cpu_instruction_boundary(0xBBD8, 2);
-    goto label_BBD8;
+label_B3F0:; /* EndOrLoopMusic */
+    /* $B3F0: AD */ nes_cpu_instruction_boundary(0xB3F0, 4); g_cpu.A = nes_read(0x062C); FLAG_NZ(g_cpu.A);
+label_B3F3:;
+    /* $B3F3: F0 */ nes_cpu_instruction_boundary(0xB3F3, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_B404; }
+label_B3F5:;
+    /* $B3F5: AD */ nes_cpu_instruction_boundary(0xB3F5, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
+label_B3F8:;
+    /* $B3F8: 8D */ nes_cpu_instruction_boundary(0xB3F8, 4); nes_write(0x065D, g_cpu.A);
+label_B3FB:;
+    /* $B3FB: 60 */ nes_cpu_instruction_boundary(0xB3FB, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+label_B3FC:; /* CheckMusicFlags */
+    /* $B3FC: AD */ nes_cpu_instruction_boundary(0xB3FC, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
+label_B3FF:;
+    /* $B3FF: CD */ nes_cpu_instruction_boundary(0xB3FF, 4); { uint8_t m=nes_read(0x064D); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B402:;
+    /* $B402: F0 */ nes_cpu_instruction_boundary(0xB402, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B40A; }
+label_B404:; /* InitializeSoundAddresses */
+    /* $B404: 20 */ nes_cpu_instruction_boundary(0xB404, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x06; g_cpu.S--; func_B41D_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB404, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B407:;
+    /* $B407: 20 */ nes_cpu_instruction_boundary(0xB407, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x09; g_cpu.S--; func_B43E_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB407, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B40A:; /* GotoClearSpecialAddresses */
+    /* $B40A: 20 */ nes_cpu_instruction_boundary(0xB40A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x0C; g_cpu.S--; func_B40E_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB40A, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B40D:;
+    /* $B40D: 60 */ nes_cpu_instruction_boundary(0xB40D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
 }
 
-void func_BB0C_b5(void) { /* LoadNextMusicChannelInstr */
+void func_BA37_b5(void) { /* UpdateAllVolumeEnvelopes */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BB0C_b5");
+    recomp_stack_push("func_BA37_b5");
 #endif
-label_BB0C:; /* LoadNextMusicChannelInstr */
-    /* $BB0C: BC */ nes_cpu_instruction_boundary(0xBB0C, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BB0F:;
-    /* $BB0F: FE */ nes_cpu_instruction_boundary(0xBB0F, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB12:;
-    /* $BB12: B1 */ nes_cpu_instruction_boundary(0xBB12, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB14:;
-    /* $BB14: F0 */ nes_cpu_instruction_boundary(0xBB14, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xBACD); return; }
-label_BB16:;
-    /* $BB16: A8 */ nes_cpu_instruction_boundary(0xBB16, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB17:;
-    /* $BB17: C9 */ nes_cpu_instruction_boundary(0xBB17, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
-label_BB19:;
-    /* $BB19: F0 */ nes_cpu_instruction_boundary(0xBB19, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB24; }
-label_BB1B:;
-    /* $BB1B: 29 */ nes_cpu_instruction_boundary(0xBB1B, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
+label_BA37:; /* UpdateAllVolumeEnvelopes */
+    /* $BA37: A2 */ nes_cpu_instruction_boundary(0xBA37, 2); g_cpu.X = 0x00; FLAG_NZ(g_cpu.X);
+label_BA39:;
+    /* $BA39: 20 */ nes_cpu_instruction_boundary(0xBA39, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3B; g_cpu.S--; func_BA41_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBA39, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BA3C:;
+    /* $BA3C: E8 */ nes_cpu_instruction_boundary(0xBA3C, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+label_BA3D:;
+    /* $BA3D: 20 */ nes_cpu_instruction_boundary(0xBA3D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3F; g_cpu.S--; func_BA41_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBA3D, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BA40:;
+    /* $BA40: 60 */ nes_cpu_instruction_boundary(0xBA40, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B9F3_b5(void) { /* ResetVolumeIndex */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B9F3_b5");
+#endif
+label_B9F3:; /* ResetVolumeIndex */
+    /* $B9F3: AD */ nes_cpu_instruction_boundary(0xB9F3, 4); g_cpu.A = nes_read(0x0640); FLAG_NZ(g_cpu.A);
+label_B9F6:;
+    /* $B9F6: C9 */ nes_cpu_instruction_boundary(0xB9F6, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
+label_B9F8:;
+    /* $B9F8: D0 */ nes_cpu_instruction_boundary(0xB9F8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B9FD; }
+label_B9FA:;
+    /* $B9FA: 8D */ nes_cpu_instruction_boundary(0xB9FA, 4); nes_write(0x066A, g_cpu.A);
+label_B9FD:; /* ResetVolumeIndex_endIf_A */
+    /* $B9FD: AD */ nes_cpu_instruction_boundary(0xB9FD, 4); g_cpu.A = nes_read(0x0641); FLAG_NZ(g_cpu.A);
+label_BA00:;
+    /* $BA00: C9 */ nes_cpu_instruction_boundary(0xBA00, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
+label_BA02:;
+    /* $BA02: D0 */ nes_cpu_instruction_boundary(0xBA02, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BA07; }
+label_BA04:;
+    /* $BA04: 8D */ nes_cpu_instruction_boundary(0xBA04, 4); nes_write(0x066B, g_cpu.A);
+label_BA07:; /* ResetVolumeIndex_endIf_B */
+    /* $BA07: 60 */ nes_cpu_instruction_boundary(0xBA07, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_BB1C_b5(void) { /* LoadNextMusicChannelInstr_Continued */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BB1C_b5");
+#endif
+label_BB1C:; /* LoadNextMusicChannelInstr_Continued */
+    /* $BB1C: 98 */ nes_cpu_instruction_boundary(0xBB1C, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
 label_BB1D:;
-    /* $BB1D: C9 */ nes_cpu_instruction_boundary(0xBB1D, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
+    /* $BB1D: 29 */ nes_cpu_instruction_boundary(0xBB1D, 2); g_cpu.A &= 0xB0; FLAG_NZ(g_cpu.A);
 label_BB1F:;
-    /* $BB1F: F0 */ nes_cpu_instruction_boundary(0xBB1F, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB34; }
+    /* $BB1F: C9 */ nes_cpu_instruction_boundary(0xBB1F, 2); { int r=g_cpu.A-0xB0; g_cpu.C=(g_cpu.A>=0xB0)?1:0; FLAG_NZ(r&0xFF); }
 label_BB21:;
-    /* $BB21: 4C */ nes_cpu_instruction_boundary(0xBB21, 3); nes_cpu_instruction_boundary(0xBB4C, 2); func_BB4C_b5(); return;
-label_BB24:; /* MusicChannelInstr_SongRepeat */
-    /* $BB24: BD */ nes_cpu_instruction_boundary(0xBB24, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+    /* $BB21: D0 */ nes_cpu_instruction_boundary(0xBB21, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB40; }
+label_BB23:;
+    /* $BB23: 98 */ nes_cpu_instruction_boundary(0xBB23, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_BB24:;
+    /* $BB24: 29 */ nes_cpu_instruction_boundary(0xBB24, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
+label_BB26:;
+    /* $BB26: 18 */ nes_cpu_instruction_boundary(0xBB26, 2); g_cpu.C = 0;
 label_BB27:;
-    /* $BB27: F0 */ nes_cpu_instruction_boundary(0xBB27, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB29:;
-    /* $BB29: DE */ nes_cpu_instruction_boundary(0xBB29, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB2C:;
-    /* $BB2C: BD */ nes_cpu_instruction_boundary(0xBB2C, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB2F:;
-    /* $BB2F: 9D */ nes_cpu_instruction_boundary(0xBB2F, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
+    /* $BB27: 6D */ nes_cpu_instruction_boundary(0xBB27, 4); { uint8_t m=nes_read(0x062B); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_BB2A:;
+    /* $BB2A: A8 */ nes_cpu_instruction_boundary(0xBB2A, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BB2B:;
+    /* $BB2B: B9 */ nes_cpu_instruction_boundary(0xBB2B, 4); g_cpu.A = nes_read((0xBEF7 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB2E:;
+    /* $BB2E: 9D */ nes_cpu_instruction_boundary(0xBB2E, 5); nes_write((0x0620 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB31:;
+    /* $BB31: A8 */ nes_cpu_instruction_boundary(0xBB31, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
 label_BB32:;
-    /* $BB32: D0 */ nes_cpu_instruction_boundary(0xBB32, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB34:; /* MusicChannelInstr_SongRepeatSetup */
-    /* $BB34: 98 */ nes_cpu_instruction_boundary(0xBB34, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+    /* $BB32: 8A */ nes_cpu_instruction_boundary(0xBB32, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB33:;
+    /* $BB33: C9 */ nes_cpu_instruction_boundary(0xBB33, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
 label_BB35:;
-    /* $BB35: 29 */ nes_cpu_instruction_boundary(0xBB35, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
-label_BB37:;
-    /* $BB37: 9D */ nes_cpu_instruction_boundary(0xBB37, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
+    /* $BB35: F0 */ nes_cpu_instruction_boundary(0xBB35, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBB19); return; }
+label_BB37:; /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+    /* $BB37: BC */ nes_cpu_instruction_boundary(0xBB37, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
 label_BB3A:;
-    /* $BB3A: DE */ nes_cpu_instruction_boundary(0xBB3A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+    /* $BB3A: FE */ nes_cpu_instruction_boundary(0xBB3A, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_BB3D:;
-    /* $BB3D: BD */ nes_cpu_instruction_boundary(0xBB3D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB40:;
-    /* $BB40: 9D */ nes_cpu_instruction_boundary(0xBB40, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB43:; /* GotoLoadNextMusicChannelInstr */
-    /* $BB43: 4C */ nes_cpu_instruction_boundary(0xBB43, 3); nes_cpu_instruction_boundary(0xBB0C, 2);
-    goto label_BB0C;
+    /* $BB3D: B1 */ nes_cpu_instruction_boundary(0xBB3D, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB3F:;
+    /* $BB3F: A8 */ nes_cpu_instruction_boundary(0xBB3F, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BB40:; /* LoadNextMusicChannelInstr_Continued_noteOrRest */
+    /* $BB40: 8A */ nes_cpu_instruction_boundary(0xBB40, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB41:;
+    /* $BB41: C9 */ nes_cpu_instruction_boundary(0xBB41, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
+label_BB43:;
+    /* $BB43: F0 */ nes_cpu_instruction_boundary(0xBB43, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBB16); return; }
+label_BB45:;
+    /* $BB45: 48 */ nes_cpu_instruction_boundary(0xBB45, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_BB46:;
+    /* $BB46: AE */ nes_cpu_instruction_boundary(0xBB46, 4); g_cpu.X = nes_read(0x064B); FLAG_NZ(g_cpu.X);
+label_BB49:;
+    /* $BB49: B9 */ nes_cpu_instruction_boundary(0xBB49, 4); g_cpu.A = nes_read((0xBE78 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB4C:;
+    /* $BB4C: F0 */ nes_cpu_instruction_boundary(0xBB4C, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB59; }
+label_BB4E:;
+    /* $BB4E: 9D */ nes_cpu_instruction_boundary(0xBB4E, 5); nes_write((0x0600 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB51:;
+    /* $BB51: B9 */ nes_cpu_instruction_boundary(0xBB51, 4); g_cpu.A = nes_read((0xBE77 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB54:;
+    /* $BB54: 09 */ nes_cpu_instruction_boundary(0xBB54, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
+label_BB56:;
+    /* $BB56: 9D */ nes_cpu_instruction_boundary(0xBB56, 5); nes_write((0x0601 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB59:; /* LoadNextMusicChannelInstr_Continued_endIf_A */
+    /* $BB59: A8 */ nes_cpu_instruction_boundary(0xBB59, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BB5A:;
+    /* $BB5A: 68 */ nes_cpu_instruction_boundary(0xBB5A, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_BB5B:;
+    /* $BB5B: AA */ nes_cpu_instruction_boundary(0xBB5B, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BB5C:;
+    /* $BB5C: 98 */ nes_cpu_instruction_boundary(0xBB5C, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_BB5D:;
+    /* $BB5D: D0 */ nes_cpu_instruction_boundary(0xBB5D, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB6E; }
+label_BB5F:;
+    /* $BB5F: A9 */ nes_cpu_instruction_boundary(0xBB5F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BB61:;
+    /* $BB61: 85 */ nes_cpu_instruction_boundary(0xBB61, 3); nes_write(0xEA, g_cpu.A);
+label_BB63:;
+    /* $BB63: 8A */ nes_cpu_instruction_boundary(0xBB63, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB64:;
+    /* $BB64: C9 */ nes_cpu_instruction_boundary(0xBB64, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
+label_BB66:;
+    /* $BB66: F0 */ nes_cpu_instruction_boundary(0xBB66, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB73; }
+label_BB68:;
+    /* $BB68: A9 */ nes_cpu_instruction_boundary(0xBB68, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
+label_BB6A:;
+    /* $BB6A: 85 */ nes_cpu_instruction_boundary(0xBB6A, 3); nes_write(0xEA, g_cpu.A);
+label_BB6C:;
+    /* $BB6C: D0 */ nes_cpu_instruction_boundary(0xBB6C, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB73; }
+label_BB6E:; /* LoadNextMusicChannelInstr_Continued_else_B */
+    /* $BB6E: BD */ nes_cpu_instruction_boundary(0xBB6E, 4); g_cpu.A = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB71:;
+    /* $BB71: 85 */ nes_cpu_instruction_boundary(0xBB71, 3); nes_write(0xEA, g_cpu.A);
+label_BB73:; /* LoadNextMusicChannelInstr_Continued_endIf_B */
+    /* $BB73: 8A */ nes_cpu_instruction_boundary(0xBB73, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB74:;
+    /* $BB74: DE */ nes_cpu_instruction_boundary(0xBB74, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB77:;
+    /* $BB77: DD */ nes_cpu_instruction_boundary(0xBB77, 4); { uint8_t m=nes_read((0x0653 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_BB7A:;
+    /* $BB7A: F0 */ nes_cpu_instruction_boundary(0xBB7A, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBB1; }
+label_BB7C:;
+    /* $BB7C: FE */ nes_cpu_instruction_boundary(0xBB7C, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB7F:;
+    /* $BB7F: AC */ nes_cpu_instruction_boundary(0xBB7F, 4); g_cpu.Y = nes_read(0x064B); FLAG_NZ(g_cpu.Y);
+label_BB82:;
+    /* $BB82: 8A */ nes_cpu_instruction_boundary(0xBB82, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB83:;
+    /* $BB83: C9 */ nes_cpu_instruction_boundary(0xBB83, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
+label_BB85:;
+    /* $BB85: F0 */ nes_cpu_instruction_boundary(0xBB85, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB8C; }
+label_BB87:;
+    /* $BB87: BD */ nes_cpu_instruction_boundary(0xBB87, 4); g_cpu.A = nes_read((0x062E + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB8A:;
+    /* $BB8A: D0 */ nes_cpu_instruction_boundary(0xBB8A, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB91; }
+label_BB8C:; /* LoadNextMusicChannelInstr_Continued_if_Cntrl0Data */
+    /* $BB8C: A5 */ nes_cpu_instruction_boundary(0xBB8C, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
+label_BB8E:;
+    /* $BB8E: 99 */ nes_cpu_instruction_boundary(0xBB8E, 5); nes_write((0x4000 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BB91:; /* LoadNextMusicChannelInstr_Continued_endIf_Cntrl0Data */
+    /* $BB91: A5 */ nes_cpu_instruction_boundary(0xBB91, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
+label_BB93:;
+    /* $BB93: 9D */ nes_cpu_instruction_boundary(0xBB93, 5); nes_write((0x066C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB96:;
+    /* $BB96: B9 */ nes_cpu_instruction_boundary(0xBB96, 4); g_cpu.A = nes_read((0x0600 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB99:;
+    /* $BB99: 99 */ nes_cpu_instruction_boundary(0xBB99, 5); nes_write((0x4002 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BB9C:;
+    /* $BB9C: B9 */ nes_cpu_instruction_boundary(0xBB9C, 4); g_cpu.A = nes_read((0x0601 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB9F:;
+    /* $BB9F: 99 */ nes_cpu_instruction_boundary(0xBB9F, 5); nes_write((0x4003 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BBA2:;
+    /* $BBA2: BD */ nes_cpu_instruction_boundary(0xBBA2, 4); g_cpu.A = nes_read((0x0648 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBA5:;
+    /* $BBA5: 99 */ nes_cpu_instruction_boundary(0xBBA5, 5); nes_write((0x4001 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BBA8:; /* SetMusicInstrDelayToLength */
+    /* $BBA8: BD */ nes_cpu_instruction_boundary(0xBBA8, 4); g_cpu.A = nes_read((0x0620 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBAB:;
+    /* $BBAB: 9D */ nes_cpu_instruction_boundary(0xBBAB, 5); nes_write((0x0640 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BBAE:;
+    /* $BBAE: 4C */ nes_cpu_instruction_boundary(0xBBAE, 3); nes_cpu_instruction_boundary(0xBAB3, 2); func_BAB3_b5(); return;
+label_BBB1:; /* MusicChannelIsUsedBySFX */
+    /* $BBB1: FE */ nes_cpu_instruction_boundary(0xBBB1, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BBB4:;
+    /* $BBB4: 4C */ nes_cpu_instruction_boundary(0xBBB4, 3); nes_cpu_instruction_boundary(0xBBA8, 2);
+    goto label_BBA8;
+}
+
+void func_BADC_b5(void) { /* LoadNextMusicChannelInstr */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BADC_b5");
+#endif
+label_BADC:; /* LoadNextMusicChannelInstr */
+    /* $BADC: BC */ nes_cpu_instruction_boundary(0xBADC, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BADF:;
+    /* $BADF: FE */ nes_cpu_instruction_boundary(0xBADF, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAE2:;
+    /* $BAE2: B1 */ nes_cpu_instruction_boundary(0xBAE2, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAE4:;
+    /* $BAE4: F0 */ nes_cpu_instruction_boundary(0xBAE4, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBA9D); return; }
+label_BAE6:;
+    /* $BAE6: A8 */ nes_cpu_instruction_boundary(0xBAE6, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BAE7:;
+    /* $BAE7: C9 */ nes_cpu_instruction_boundary(0xBAE7, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
+label_BAE9:;
+    /* $BAE9: F0 */ nes_cpu_instruction_boundary(0xBAE9, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAF4; }
+label_BAEB:;
+    /* $BAEB: 29 */ nes_cpu_instruction_boundary(0xBAEB, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
+label_BAED:;
+    /* $BAED: C9 */ nes_cpu_instruction_boundary(0xBAED, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
+label_BAEF:;
+    /* $BAEF: F0 */ nes_cpu_instruction_boundary(0xBAEF, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB04; }
+label_BAF1:;
+    /* $BAF1: 4C */ nes_cpu_instruction_boundary(0xBAF1, 3); nes_cpu_instruction_boundary(0xBB1C, 2); func_BB1C_b5(); return;
+label_BAF4:; /* MusicChannelInstr_SongRepeat */
+    /* $BAF4: BD */ nes_cpu_instruction_boundary(0xBAF4, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAF7:;
+    /* $BAF7: F0 */ nes_cpu_instruction_boundary(0xBAF7, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB13; }
+label_BAF9:;
+    /* $BAF9: DE */ nes_cpu_instruction_boundary(0xBAF9, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAFC:;
+    /* $BAFC: BD */ nes_cpu_instruction_boundary(0xBAFC, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAFF:;
+    /* $BAFF: 9D */ nes_cpu_instruction_boundary(0xBAFF, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB02:;
+    /* $BB02: D0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB13; }
+label_BB04:; /* MusicChannelInstr_SongRepeatSetup */
+    /* $BB04: 98 */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_BB05:;
+    /* $BB05: 29 */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
+label_BB07:;
+    /* $BB07: 9D */ nes_cpu_instruction_boundary(0xBB07, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB0A:;
+    /* $BB0A: DE */ nes_cpu_instruction_boundary(0xBB0A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB0D:;
+    /* $BB0D: BD */ nes_cpu_instruction_boundary(0xBB0D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB10:;
+    /* $BB10: 9D */ nes_cpu_instruction_boundary(0xBB10, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB13:; /* GotoLoadNextMusicChannelInstr */
+    /* $BB13: 4C */ nes_cpu_instruction_boundary(0xBB13, 3); nes_cpu_instruction_boundary(0xBADC, 2);
+    goto label_BADC;
+label_BB16:; return;
+label_BB19:; return;
+label_BB1C:; return;
+label_BB1D:; return;
+label_BB1F:; return;
+label_BB21:; return;
+label_BB23:; return;
+label_BB24:; return;
+label_BB26:; return;
+label_BB27:; return;
+label_BB2A:; return;
+label_BB2B:; return;
+label_BB2E:; return;
+label_BB31:; return;
+label_BB32:; return;
+label_BB33:; return;
+label_BB35:; return;
+label_BB37:; return;
+label_BB3A:; return;
+label_BB3D:; return;
+label_BB3F:; return;
+label_BB40:; return;
+label_BB41:; return;
+label_BB43:; return;
+label_BB45:; return;
 label_BB46:; return;
 label_BB49:; return;
 label_BB4C:; return;
-label_BB4D:; return;
-label_BB4F:; return;
+label_BB4E:; return;
 label_BB51:; return;
-label_BB53:; return;
 label_BB54:; return;
 label_BB56:; return;
-label_BB57:; return;
+label_BB59:; return;
 label_BB5A:; return;
 label_BB5B:; return;
-label_BB5E:; return;
+label_BB5C:; return;
+label_BB5D:; return;
+label_BB5F:; return;
 label_BB61:; return;
-label_BB62:; return;
 label_BB63:; return;
-label_BB65:; return;
-label_BB67:; return;
+label_BB64:; return;
+label_BB66:; return;
+label_BB68:; return;
 label_BB6A:; return;
-label_BB6D:; return;
-label_BB6F:; return;
-label_BB70:; return;
+label_BB6C:; return;
+label_BB6E:; return;
 label_BB71:; return;
 label_BB73:; return;
-label_BB75:; return;
-label_BB76:; return;
-label_BB79:; return;
+label_BB74:; return;
+label_BB77:; return;
+label_BB7A:; return;
 label_BB7C:; return;
-label_BB7E:; return;
-label_BB81:; return;
-label_BB84:; return;
-label_BB86:; return;
-label_BB89:; return;
+label_BB7F:; return;
+label_BB82:; return;
+label_BB83:; return;
+label_BB85:; return;
+label_BB87:; return;
 label_BB8A:; return;
-label_BB8B:; return;
 label_BB8C:; return;
-label_BB8D:; return;
-label_BB8F:; return;
+label_BB8E:; return;
 label_BB91:; return;
 label_BB93:; return;
-label_BB94:; return;
 label_BB96:; return;
-label_BB98:; return;
-label_BB9A:; return;
+label_BB99:; return;
 label_BB9C:; return;
-label_BB9E:; return;
-label_BBA1:; return;
-label_BBA3:; return;
-label_BBA4:; return;
-label_BBA7:; return;
-label_BBAA:; return;
-label_BBAC:; return;
-label_BBAF:; return;
-label_BBB2:; return;
-label_BBB3:; return;
-label_BBB5:; return;
+label_BB9F:; return;
+label_BBA2:; return;
+label_BBA5:; return;
+label_BBA8:; return;
+label_BBAB:; return;
+label_BBAE:; return;
+label_BBB1:; return;
+label_BBB4:; return;
 label_BBB7:; return;
 label_BBBA:; return;
 label_BBBC:; return;
 label_BBBE:; return;
 label_BBC1:; return;
 label_BBC3:; return;
+label_BBC5:; return;
 label_BBC6:; return;
 label_BBC9:; return;
-label_BBCC:; return;
-label_BBCF:; return;
+label_BBCB:; return;
+label_BBCD:; return;
+label_BBCE:; return;
+label_BBD0:; return;
+label_BBD1:; return;
 label_BBD2:; return;
-label_BBD5:; return;
+label_BBD4:; return;
+label_BBD6:; return;
 label_BBD8:; return;
 label_BBDB:; return;
 label_BBDE:; return;
 label_BBE1:; return;
-label_BBE4:; return;
-label_BBE7:; return;
-label_BBEA:; return;
-label_BBEC:; return;
+label_BBE3:; return;
+label_BBE5:; return;
+label_BBE8:; return;
+label_BBEB:; return;
 label_BBEE:; return;
 label_BBF1:; return;
-label_BBF3:; return;
-label_BBF5:; return;
-label_BBF6:; return;
-label_BBF9:; return;
-label_BBFB:; return;
-label_BBFD:; return;
+label_BBF4:; return;
+label_BBF7:; return;
+label_BBFA:; return;
+label_BBFC:; return;
 label_BBFE:; return;
-label_BC00:; return;
-label_BC01:; return;
+label_BBFF:; return;
 label_BC02:; return;
-label_BC04:; return;
-label_BC06:; return;
+label_BC03:; return;
+label_BC05:; return;
 label_BC08:; return;
-label_BC0B:; return;
-label_BC0E:; return;
-label_BC11:; return;
-label_BC13:; return;
+label_BC09:; return;
+label_BC0C:; return;
+label_BC0D:; return;
+label_BC10:; return;
+label_BC12:; return;
 label_BC15:; return;
-label_BC18:; return;
+label_BC17:; return;
+label_BC19:; return;
 label_BC1B:; return;
-label_BC1E:; return;
+label_BC1D:; return;
+label_BC1F:; return;
 label_BC21:; return;
-label_BC24:; return;
+label_BC23:; return;
+label_BC25:; return;
 label_BC27:; return;
 label_BC2A:; return;
 label_BC2C:; return;
 label_BC2E:; return;
-label_BC2F:; return;
-label_BC32:; return;
+label_BC30:; return;
 label_BC33:; return;
-label_BC35:; return;
-label_BC38:; return;
+label_BC36:; return;
 label_BC39:; return;
-label_BC3C:; return;
+label_BC3B:; return;
 label_BC3D:; return;
 label_BC40:; return;
 label_BC42:; return;
 label_BC45:; return;
-label_BC47:; return;
-label_BC49:; return;
+label_BC48:; return;
 label_BC4B:; return;
-label_BC4D:; return;
-label_BC4F:; return;
-label_BC51:; return;
-label_BC53:; return;
-label_BC55:; return;
-label_BC57:; return;
-label_BC5A:; return;
-label_BC5C:; return;
-label_BC5E:; return;
-label_BC60:; return;
-label_BC63:; return;
-label_BC66:; return;
-label_BC69:; return;
-label_BC6B:; return;
-label_BC6D:; return;
-label_BC70:; return;
-label_BC72:; return;
-label_BC75:; return;
-label_BC78:; return;
-label_BC7B:; return;
-label_BC7E:; return;
+label_BC4E:; return;
+label_BC50:; return;
+label_BC76:; return;
+label_BC77:; return;
+label_BC7A:; return;
+label_BC7D:; return;
 label_BC80:; return;
+label_BC83:; return;
+label_BC86:; return;
+label_BC89:; return;
+label_BC8B:; return;
+label_BC8C:; return;
+label_BC8D:; return;
+label_BC90:; return;
+label_BC93:; return;
+label_BC96:; return;
+label_BC98:; return;
+label_BC9A:; return;
+label_BC9C:; return;
+label_BC9E:; return;
+label_BCA0:; return;
+label_BCA2:; return;
+label_BCA4:; return;
 label_BCA6:; return;
-label_BCA7:; return;
+label_BCA8:; return;
 label_BCAA:; return;
-label_BCAD:; return;
+label_BCAC:; return;
+label_BCAE:; return;
 label_BCB0:; return;
-label_BCB3:; return;
-label_BCB6:; return;
-label_BCB9:; return;
-label_BCBB:; return;
+label_BCB1:; return;
+label_BCB4:; return;
+label_BCB7:; return;
+label_BCBA:; return;
 label_BCBC:; return;
 label_BCBD:; return;
-label_BCC0:; return;
+label_BCBF:; return;
+label_BCC1:; return;
 label_BCC3:; return;
-label_BCC6:; return;
-label_BCC8:; return;
-label_BCCA:; return;
-label_BCCC:; return;
-label_BCCE:; return;
+label_BCC4:; return;
+label_BCC7:; return;
+label_BCC9:; return;
+label_BCCB:; return;
+label_BCCD:; return;
+label_BCCF:; return;
 label_BCD0:; return;
-label_BCD2:; return;
-label_BCD4:; return;
-label_BCD6:; return;
-label_BCD8:; return;
-label_BCDA:; return;
+label_BCD3:; return;
+label_BCD5:; return;
+label_BCD7:; return;
+label_BCD9:; return;
 label_BCDC:; return;
 label_BCDE:; return;
 label_BCE0:; return;
-label_BCE1:; return;
+label_BCE2:; return;
 label_BCE4:; return;
-label_BCE7:; return;
+label_BCE6:; return;
+label_BCE8:; return;
 label_BCEA:; return;
 label_BCEC:; return;
 label_BCEE:; return;
 label_BCF0:; return;
 label_BCF2:; return;
 label_BCF4:; return;
+label_BCF5:; return;
+label_BCF6:; return;
 label_BCF7:; return;
+label_BCF8:; return;
 label_BCF9:; return;
+label_BCFA:; return;
 label_BCFB:; return;
+label_BCFC:; return;
 label_BCFD:; return;
 label_BCFF:; return;
-label_BD00:; return;
+label_BD01:; return;
 label_BD03:; return;
+label_BD04:; return;
 label_BD05:; return;
 label_BD07:; return;
 label_BD09:; return;
-label_BD0C:; return;
-label_BD0E:; return;
-label_BD10:; return;
-label_BD12:; return;
-label_BD14:; return;
+label_BD0B:; return;
+label_BD0D:; return;
+label_BD0F:; return;
+label_BD11:; return;
+label_BD13:; return;
+label_BD15:; return;
 label_BD16:; return;
-label_BD18:; return;
-label_BD1A:; return;
-label_BD1C:; return;
+label_BD17:; return;
+label_BD19:; return;
+label_BD1B:; return;
+label_BD1D:; return;
 label_BD1E:; return;
-label_BD20:; return;
-label_BD22:; return;
-label_BD24:; return;
+label_BD1F:; return;
+label_BD21:; return;
+label_BD23:; return;
 label_BD25:; return;
-label_BD26:; return;
 label_BD27:; return;
 label_BD28:; return;
-label_BD29:; return;
 label_BD2A:; return;
-label_BD2B:; return;
 label_BD2C:; return;
 label_BD2D:; return;
-label_BD2F:; return;
-label_BD31:; return;
-label_BD33:; return;
-label_BD34:; return;
+label_BD2E:; return;
+label_BD30:; return;
+label_BD32:; return;
 label_BD35:; return;
+label_BD36:; return;
 label_BD37:; return;
 label_BD39:; return;
 label_BD3B:; return;
 label_BD3D:; return;
-label_BD3F:; return;
+label_BD3E:; return;
+label_BD40:; return;
 label_BD41:; return;
+label_BD42:; return;
 label_BD43:; return;
-label_BD45:; return;
+label_BD44:; return;
 label_BD46:; return;
-label_BD47:; return;
-label_BD49:; return;
-label_BD4B:; return;
-label_BD4D:; return;
-label_BD4E:; return;
+label_BD48:; return;
+label_BD4A:; return;
+label_BD4C:; return;
 label_BD4F:; return;
 label_BD51:; return;
 label_BD53:; return;
 label_BD55:; return;
 label_BD57:; return;
-label_BD58:; return;
-label_BD5A:; return;
+label_BD59:; return;
 label_BD5C:; return;
 label_BD5D:; return;
-label_BD5E:; return;
 label_BD60:; return;
 label_BD62:; return;
+label_BD64:; return;
 label_BD65:; return;
-label_BD66:; return;
 label_BD67:; return;
-label_BD68:; return;
 label_BD69:; return;
 label_BD6A:; return;
 label_BD6B:; return;
-label_BD6C:; return;
-label_BD6D:; return;
 label_BD6E:; return;
-label_BD6F:; return;
+label_BD71:; return;
 label_BD72:; return;
-label_BD73:; return;
 label_BD74:; return;
-label_BD75:; return;
 label_BD76:; return;
-label_BD77:; return;
 label_BD78:; return;
-label_BD79:; return;
 label_BD7A:; return;
-label_BD7B:; return;
 label_BD7C:; return;
+label_BD7E:; return;
 label_BD7F:; return;
 label_BD81:; return;
 label_BD82:; return;
 label_BD83:; return;
-label_BD84:; return;
 label_BD85:; return;
-label_BD86:; return;
 label_BD87:; return;
-label_BD88:; return;
+label_BD89:; return;
 label_BD8B:; return;
-label_BD8C:; return;
 label_BD8D:; return;
+label_BD8E:; return;
 label_BD90:; return;
 label_BD92:; return;
 label_BD94:; return;
-label_BD95:; return;
 label_BD96:; return;
-label_BD99:; return;
+label_BD98:; return;
 label_BD9A:; return;
 label_BD9B:; return;
+label_BD9D:; return;
 label_BD9E:; return;
 label_BDA1:; return;
-label_BDA2:; return;
-label_BDA3:; return;
+label_BDA4:; return;
+label_BDA5:; return;
 label_BDA6:; return;
+label_BDA7:; return;
 label_BDA8:; return;
 label_BDAA:; return;
-label_BDAC:; return;
-label_BDAE:; return;
-label_BDAF:; return;
-label_BDB1:; return;
-label_BDB2:; return;
+label_BDAB:; return;
+label_BDAD:; return;
+label_BDB0:; return;
 label_BDB3:; return;
 label_BDB5:; return;
 label_BDB6:; return;
 label_BDB7:; return;
-label_BDB8:; return;
 label_BDB9:; return;
-label_BDBA:; return;
 label_BDBB:; return;
-label_BDBC:; return;
-label_BDBE:; return;
-label_BDC0:; return;
-label_BDC2:; return;
-label_BDC3:; return;
+label_BDBD:; return;
+label_BDBF:; return;
+label_BDC1:; return;
 label_BDC4:; return;
 label_BDC5:; return;
-label_BDC6:; return;
-label_BDC7:; return;
 label_BDC8:; return;
-label_BDC9:; return;
-label_BDCA:; return;
 label_BDCB:; return;
+label_BDCC:; return;
 label_BDCD:; return;
 label_BDCE:; return;
+label_BDD0:; return;
 label_BDD1:; return;
 label_BDD4:; return;
-label_BDD5:; return;
-label_BDD6:; return;
 label_BDD7:; return;
-label_BDD8:; return;
-label_BDDA:; return;
-label_BDDB:; return;
-label_BDDD:; return;
-label_BDE0:; return;
+label_BDD9:; return;
+label_BDDC:; return;
+label_BDDE:; return;
+label_BDDF:; return;
+label_BDE1:; return;
+label_BDE2:; return;
 label_BDE3:; return;
 label_BDE4:; return;
-label_BDE7:; return;
+label_BDE5:; return;
+label_BDE6:; return;
+label_BDE8:; return;
 label_BDE9:; return;
 label_BDEA:; return;
 label_BDEB:; return;
-label_BDEC:; return;
-label_BDED:; return;
-label_BDEE:; return;
-label_BDEF:; return;
-label_BDF0:; return;
-label_BDF1:; return;
-label_BDF4:; return;
-label_BDF5:; return;
-label_BDF7:; return;
-label_BDF9:; return;
-label_BDFA:; return;
-label_BDFD:; return;
-label_BDFE:; return;
-label_BE00:; return;
-label_BE01:; return;
-label_BE04:; return;
-label_BE07:; return;
-label_BE09:; return;
-label_BE0C:; return;
+label_BE08:; return;
+label_BE0A:; return;
+label_BE0B:; return;
 label_BE0E:; return;
 label_BE0F:; return;
-label_BE11:; return;
 label_BE12:; return;
 label_BE13:; return;
-label_BE14:; return;
 label_BE15:; return;
-label_BE16:; return;
-label_BE18:; return;
+label_BE17:; return;
 label_BE19:; return;
-label_BE1A:; return;
 label_BE1B:; return;
+label_BE1C:; return;
+label_BE1D:; return;
+label_BE1F:; return;
+label_BE22:; return;
+label_BE24:; return;
+label_BE26:; return;
+label_BE28:; return;
+label_BE2B:; return;
+label_BE2C:; return;
+label_BE2E:; return;
+label_BE30:; return;
+label_BE33:; return;
+label_BE35:; return;
 label_BE38:; return;
 label_BE3A:; return;
 label_BE3B:; return;
-label_BE3E:; return;
-label_BE3F:; return;
-label_BE42:; return;
+label_BE3D:; return;
+label_BE40:; return;
+label_BE41:; return;
 label_BE43:; return;
 label_BE45:; return;
+label_BE46:; return;
 label_BE47:; return;
 label_BE49:; return;
 label_BE4B:; return;
 label_BE4C:; return;
-label_BE4D:; return;
-label_BE4F:; return;
-label_BE52:; return;
-label_BE54:; return;
-label_BE56:; return;
-label_BE58:; return;
-label_BE5B:; return;
+label_BE4E:; return;
+label_BE50:; return;
+label_BE51:; return;
+label_BE53:; return;
+label_BE55:; return;
+label_BE57:; return;
+label_BE5A:; return;
 label_BE5C:; return;
-label_BE5E:; return;
+label_BE5F:; return;
 label_BE60:; return;
 label_BE63:; return;
 label_BE65:; return;
+label_BE67:; return;
 label_BE68:; return;
 label_BE6A:; return;
-label_BE6B:; return;
 label_BE6D:; return;
 label_BE70:; return;
-label_BE71:; return;
-label_BE73:; return;
-label_BE75:; return;
-label_BE76:; return;
-label_BE77:; return;
-label_BE79:; return;
-label_BE7B:; return;
-label_BE7C:; return;
-label_BE7E:; return;
-label_BE80:; return;
-label_BE81:; return;
-label_BE83:; return;
-label_BE85:; return;
-label_BE87:; return;
-label_BE8A:; return;
-label_BE8C:; return;
-label_BE8F:; return;
-label_BE90:; return;
-label_BE93:; return;
-label_BE95:; return;
-label_BE97:; return;
-label_BE98:; return;
-label_BE9A:; return;
-label_BE9D:; return;
-label_BEA0:; return;
-label_BED3:; return;
+label_BEA3:; return;
+label_BEA5:; return;
+label_BEA7:; return;
+label_BEA9:; return;
+label_BEAB:; return;
+label_BEAD:; return;
+label_BEAF:; return;
+label_BEB1:; return;
+label_BEB3:; return;
+label_BEB5:; return;
+label_BEB7:; return;
+label_BEB9:; return;
+label_BEBA:; return;
+label_BEBD:; return;
+label_BEBE:; return;
+label_BEC0:; return;
+label_BEC2:; return;
+label_BEC3:; return;
+label_BEC4:; return;
+label_BEC7:; return;
+label_BEC8:; return;
+label_BEC9:; return;
+label_BECA:; return;
+label_BECD:; return;
+label_BECE:; return;
+label_BED1:; return;
+label_BED2:; return;
 label_BED5:; return;
-label_BED7:; return;
-label_BED9:; return;
-label_BEDB:; return;
-label_BEDD:; return;
+label_BED6:; return;
+label_BED8:; return;
+label_BEDA:; return;
+label_BEDC:; return;
 label_BEDF:; return;
-label_BEE1:; return;
-label_BEE3:; return;
+label_BEE0:; return;
+label_BEE2:; return;
 label_BEE5:; return;
-label_BEE7:; return;
+label_BEE6:; return;
+label_BEE8:; return;
 label_BEE9:; return;
 label_BEEA:; return;
 label_BEED:; return;
 label_BEEE:; return;
 label_BEF0:; return;
 label_BEF2:; return;
-label_BEF3:; return;
 label_BEF4:; return;
 label_BEF7:; return;
-label_BEF8:; return;
 label_BEF9:; return;
-label_BEFA:; return;
+label_BEFB:; return;
+label_BEFC:; return;
 label_BEFD:; return;
-label_BEFE:; return;
+label_BEFF:; return;
 label_BF01:; return;
 label_BF02:; return;
+label_BF04:; return;
 label_BF05:; return;
-label_BF06:; return;
-label_BF08:; return;
+label_BF07:; return;
+label_BF09:; return;
 label_BF0A:; return;
 label_BF0C:; return;
-label_BF0F:; return;
+label_BF0E:; return;
 label_BF10:; return;
-label_BF12:; return;
-label_BF15:; return;
+label_BF13:; return;
+label_BF14:; return;
 label_BF16:; return;
+label_BF17:; return;
 label_BF18:; return;
-label_BF19:; return;
 label_BF1A:; return;
 label_BF1D:; return;
-label_BF1E:; return;
 label_BF20:; return;
-label_BF22:; return;
-label_BF24:; return;
-label_BF27:; return;
+label_BF23:; return;
+label_BF26:; return;
 label_BF29:; return;
+label_BF2A:; return;
 label_BF2C:; return;
-label_BF2D:; return;
 label_BF2F:; return;
-label_BF30:; return;
 label_BF32:; return;
+label_BF33:; return;
 label_BF34:; return;
 label_BF35:; return;
 label_BF37:; return;
-label_BF38:; return;
 label_BF39:; return;
 label_BF3B:; return;
-label_BF3D:; return;
 label_BF3E:; return;
-label_BF40:; return;
 label_BF41:; return;
-label_BF43:; return;
-label_BF45:; return;
-label_BF48:; return;
-label_BF4A:; return;
-label_BF4B:; return;
-label_BF4D:; return;
-label_BF4E:; return;
-label_BF50:; return;
+label_BF44:; return;
+label_BF47:; return;
+label_BF49:; return;
+label_BF4C:; return;
+label_BF4F:; return;
 label_BF52:; return;
-label_BF53:; return;
 label_BF55:; return;
-label_BF57:; return;
-label_BF59:; return;
-label_BF5C:; return;
+label_BF56:; return;
+label_BF58:; return;
+label_BF5B:; return;
 label_BF5D:; return;
 label_BF5F:; return;
 label_BF60:; return;
@@ -8864,13 +8981,19 @@ label_BF9B:; return;
 label_BF9E:; return;
 label_BF9F:; return;
 label_BFA2:; return;
+label_BFA3:; return;
 label_BFA4:; return;
+label_BFA5:; return;
 label_BFA6:; return;
+label_BFA7:; return;
 label_BFA8:; return;
+label_BFA9:; return;
 label_BFAA:; return;
 label_BFAB:; return;
+label_BFAC:; return;
 label_BFAD:; return;
 label_BFAE:; return;
+label_BFAF:; return;
 label_BFB0:; return;
 label_BFB1:; return;
 label_BFB2:; return;
@@ -8887,23 +9010,33 @@ label_BFCC:; return;
 label_BFCF:; return;
 label_BFD2:; return;
 label_BFD5:; return;
-label_BFD6:; return;
-label_BFD9:; return;
-label_BFDA:; return;
-label_BFDD:; return;
+label_BFD8:; return;
+label_BFDB:; return;
 label_BFDE:; return;
 label_BFE1:; return;
 label_BFE2:; return;
+label_BFE3:; return;
+label_BFE4:; return;
 label_BFE5:; return;
 label_BFE6:; return;
+label_BFE7:; return;
+label_BFE8:; return;
 label_BFE9:; return;
 label_BFEA:; return;
+label_BFEB:; return;
+label_BFEC:; return;
 label_BFED:; return;
 label_BFEE:; return;
+label_BFEF:; return;
+label_BFF0:; return;
 label_BFF1:; return;
 label_BFF2:; return;
+label_BFF3:; return;
+label_BFF4:; return;
 label_BFF5:; return;
 label_BFF6:; return;
+label_BFF7:; return;
+label_BFF8:; return;
 label_BFF9:; return;
 label_BFFA:; return;
 label_BFFD:; return;
@@ -10348,754 +10481,751 @@ label_CBD6:; return;
 label_CBD8:; return;
 label_CBDA:; return;
 label_CBDC:; return;
-label_CBDE:; return;
-label_CBE0:; return;
-label_CBE2:; return;
-label_CBE4:; return;
-label_CBE6:; return;
-label_CBE8:; return;
-label_CBEB:; return;
-label_CBEE:; return;
-label_CBEF:; return;
-label_CBF1:; return;
-label_CBF3:; return;
-label_CBF5:; return;
-label_CBF7:; return;
-label_CBF9:; return;
-label_CBFB:; return;
 }
 
-void func_BC0E_b5(void) { /* MusicChannelInstr_SongNoteNoise */
+void func_BBDE_b5(void) { /* MusicChannelInstr_SongNoteNoise */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC0E_b5");
+    recomp_stack_push("func_BBDE_b5");
 #endif
-label_BC0E:; /* MusicChannelInstr_SongNoteNoise */
-    /* $BC0E: AD */ nes_cpu_instruction_boundary(0xBC0E, 4); g_cpu.A = nes_read(0x0688); FLAG_NZ(g_cpu.A);
-label_BC11:;
-    /* $BC11: 29 */ nes_cpu_instruction_boundary(0xBC11, 2); g_cpu.A &= 0xFC; FLAG_NZ(g_cpu.A);
-label_BC13:;
-    /* $BC13: D0 */ nes_cpu_instruction_boundary(0xBC13, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC27; }
-label_BC15:;
-    /* $BC15: B9 */ nes_cpu_instruction_boundary(0xBC15, 4); g_cpu.A = nes_read((0xB230 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BC18:;
-    /* $BC18: 8D */ nes_cpu_instruction_boundary(0xBC18, 4); nes_write(0x400C, g_cpu.A);
-label_BC1B:;
-    /* $BC1B: B9 */ nes_cpu_instruction_boundary(0xBC1B, 4); g_cpu.A = nes_read((0xB231 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BC1E:;
-    /* $BC1E: 8D */ nes_cpu_instruction_boundary(0xBC1E, 4); nes_write(0x400E, g_cpu.A);
-label_BC21:;
-    /* $BC21: B9 */ nes_cpu_instruction_boundary(0xBC21, 4); g_cpu.A = nes_read((0xB232 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BC24:;
-    /* $BC24: 8D */ nes_cpu_instruction_boundary(0xBC24, 4); nes_write(0x400F, g_cpu.A);
-label_BC27:; /* MusicChannelInstr_SongNoteNoise_endIf_A */
-    /* $BC27: 4C */ nes_cpu_instruction_boundary(0xBC27, 3); nes_cpu_instruction_boundary(0xBBD8, 2); func_BBD8_b5(); return;
-}
-
-void func_BBE7_b5(void) { /* UpdateMusicTriLinearCount */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BBE7_b5");
-#endif
-label_BBE7:; /* UpdateMusicTriLinearCount */
-    /* $BBE7: AD */ nes_cpu_instruction_boundary(0xBBE7, 4); g_cpu.A = nes_read(0x062D); FLAG_NZ(g_cpu.A);
-label_BBEA:;
-    /* $BBEA: 29 */ nes_cpu_instruction_boundary(0xBBEA, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
-label_BBEC:;
-    /* $BBEC: D0 */ nes_cpu_instruction_boundary(0xBBEC, 2); if (!g_cpu.Z) { maybe_trigger_vblank(2); goto label_BC08; }
+label_BBDE:; /* MusicChannelInstr_SongNoteNoise */
+    /* $BBDE: AD */ nes_cpu_instruction_boundary(0xBBDE, 4); g_cpu.A = nes_read(0x0688); FLAG_NZ(g_cpu.A);
+label_BBE1:;
+    /* $BBE1: 29 */ nes_cpu_instruction_boundary(0xBBE1, 2); g_cpu.A &= 0xFC; FLAG_NZ(g_cpu.A);
+label_BBE3:;
+    /* $BBE3: D0 */ nes_cpu_instruction_boundary(0xBBE3, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBF7; }
+label_BBE5:;
+    /* $BBE5: B9 */ nes_cpu_instruction_boundary(0xBBE5, 4); g_cpu.A = nes_read((0xB200 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBE8:;
+    /* $BBE8: 8D */ nes_cpu_instruction_boundary(0xBBE8, 4); nes_write(0x400C, g_cpu.A);
+label_BBEB:;
+    /* $BBEB: B9 */ nes_cpu_instruction_boundary(0xBBEB, 4); g_cpu.A = nes_read((0xB201 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BBEE:;
-    /* $BBEE: AD */ nes_cpu_instruction_boundary(0xBBEE, 4); g_cpu.A = nes_read(0x062D); FLAG_NZ(g_cpu.A);
+    /* $BBEE: 8D */ nes_cpu_instruction_boundary(0xBBEE, 4); nes_write(0x400E, g_cpu.A);
 label_BBF1:;
-    /* $BBF1: 29 */ nes_cpu_instruction_boundary(0xBBF1, 2); g_cpu.A &= 0xF0; FLAG_NZ(g_cpu.A);
-label_BBF3:;
-    /* $BBF3: D0 */ nes_cpu_instruction_boundary(0xBBF3, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBF9; }
-label_BBF5:;
-    /* $BBF5: 98 */ nes_cpu_instruction_boundary(0xBBF5, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BBF6:;
-    /* $BBF6: 4C */ nes_cpu_instruction_boundary(0xBBF6, 3); nes_cpu_instruction_boundary(0xBBFD, 2); func_BBFD_b5(); return;
-label_BBF9:; /* UpdateMusicTriLinearCount_endIf_A */
-    /* $BBF9: A9 */ nes_cpu_instruction_boundary(0xBBF9, 2); g_cpu.A = 0xFF; FLAG_NZ(g_cpu.A);
-label_BBFB:;
-    /* $BBFB: D0 */ nes_cpu_instruction_boundary(0xBBFB, 2); if (!g_cpu.Z) { maybe_trigger_vblank(2); goto label_BC08; }
-label_BBFD:; /* UpdateMusicTriLinearCount_setToNoteLength */
-    /* $BBFD: 18 */ nes_cpu_instruction_boundary(0xBBFD, 2); g_cpu.C = 0;
-label_BBFE:;
-    /* $BBFE: 69 */ nes_cpu_instruction_boundary(0xBBFE, 2); { uint16_t r = g_cpu.A + 0xFF + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0xFF); g_cpu.A=r&0xFF; }
-label_BC00:;
-    /* $BC00: 0A */ nes_cpu_instruction_boundary(0xBC00, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BC01:;
-    /* $BC01: 0A */ nes_cpu_instruction_boundary(0xBC01, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BC02:;
-    /* $BC02: C9 */ nes_cpu_instruction_boundary(0xBC02, 2); { int r=g_cpu.A-0x3C; g_cpu.C=(g_cpu.A>=0x3C)?1:0; FLAG_NZ(r&0xFF); }
-label_BC04:;
-    /* $BC04: 90 */ nes_cpu_instruction_boundary(0xBC04, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_BC08; }
-label_BC06:;
-    /* $BC06: A9 */ nes_cpu_instruction_boundary(0xBC06, 2); g_cpu.A = 0x3C; FLAG_NZ(g_cpu.A);
-label_BC08:; /* UpdateMusicTriLinearCount_endIf_B */
-    /* $BC08: 8D */ nes_cpu_instruction_boundary(0xBC08, 4); nes_write(0x062A, g_cpu.A);
-label_BC0B:;
-    /* $BC0B: 4C */ nes_cpu_instruction_boundary(0xBC0B, 3); nes_cpu_instruction_boundary(0xBB67, 2); func_BB67_b5(); return;
+    /* $BBF1: B9 */ nes_cpu_instruction_boundary(0xBBF1, 4); g_cpu.A = nes_read((0xB202 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBF4:;
+    /* $BBF4: 8D */ nes_cpu_instruction_boundary(0xBBF4, 4); nes_write(0x400F, g_cpu.A);
+label_BBF7:; /* MusicChannelInstr_SongNoteNoise_endIf_A */
+    /* $BBF7: 4C */ nes_cpu_instruction_boundary(0xBBF7, 3); nes_cpu_instruction_boundary(0xBBA8, 2); func_BBA8_b5(); return;
 }
 
-void func_BAE3_b5(void) { /* IncrementToNextMusicChannel */
+void func_BBB7_b5(void) { /* UpdateMusicTriLinearCount */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BAE3_b5");
+    recomp_stack_push("func_BBB7_b5");
 #endif
-label_BAE3:; /* IncrementToNextMusicChannel */
-    /* $BAE3: E8 */ nes_cpu_instruction_boundary(0xBAE3, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
-label_BAE4:;
-    /* $BAE4: 8A */ nes_cpu_instruction_boundary(0xBAE4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAE5:;
-    /* $BAE5: C9 */ nes_cpu_instruction_boundary(0xBAE5, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
-label_BAE7:;
-    /* $BAE7: F0 */ nes_cpu_instruction_boundary(0xBAE7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAD1); return; }
-label_BAE9:;
-    /* $BAE9: AD */ nes_cpu_instruction_boundary(0xBAE9, 4); g_cpu.A = nes_read(0x064B); FLAG_NZ(g_cpu.A);
-label_BAEC:;
-    /* $BAEC: 18 */ nes_cpu_instruction_boundary(0xBAEC, 2); g_cpu.C = 0;
-label_BAED:;
-    /* $BAED: 69 */ nes_cpu_instruction_boundary(0xBAED, 2); { uint16_t r = g_cpu.A + 0x04 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x04); g_cpu.A=r&0xFF; }
-label_BAEF:;
-    /* $BAEF: 8D */ nes_cpu_instruction_boundary(0xBAEF, 4); nes_write(0x064B, g_cpu.A);
-label_BAF2:; /* UpdateMusicChannel */
-    /* $BAF2: 8A */ nes_cpu_instruction_boundary(0xBAF2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAF3:;
-    /* $BAF3: 0A */ nes_cpu_instruction_boundary(0xBAF3, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BAF4:;
-    /* $BAF4: AA */ nes_cpu_instruction_boundary(0xBAF4, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BAF5:;
-    /* $BAF5: BD */ nes_cpu_instruction_boundary(0xBAF5, 4); g_cpu.A = nes_read((0x0630 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAF8:;
-    /* $BAF8: 85 */ nes_cpu_instruction_boundary(0xBAF8, 3); nes_write(0xE6, g_cpu.A);
-label_BAFA:;
-    /* $BAFA: BD */ nes_cpu_instruction_boundary(0xBAFA, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAFD:;
-    /* $BAFD: 85 */ nes_cpu_instruction_boundary(0xBAFD, 3); nes_write(0xE7, g_cpu.A);
-label_BAFF:;
-    /* $BAFF: BD */ nes_cpu_instruction_boundary(0xBAFF, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB02:;
-    /* $BB02: F0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xBAE0); return; }
-label_BB04:;
-    /* $BB04: 8A */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BB05:;
-    /* $BB05: 4A */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_BB06:;
-    /* $BB06: AA */ nes_cpu_instruction_boundary(0xBB06, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BB07:;
-    /* $BB07: DE */ nes_cpu_instruction_boundary(0xBB07, 7); { uint16_t a=(0x0640 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB0A:;
-    /* $BB0A: D0 */ nes_cpu_instruction_boundary(0xBB0A, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAE3, 2);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BAE3;
-    }
-label_BB0C:; /* LoadNextMusicChannelInstr */
-    /* $BB0C: BC */ nes_cpu_instruction_boundary(0xBB0C, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BB0F:;
-    /* $BB0F: FE */ nes_cpu_instruction_boundary(0xBB0F, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB12:;
-    /* $BB12: B1 */ nes_cpu_instruction_boundary(0xBB12, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB14:;
-    /* $BB14: F0 */ nes_cpu_instruction_boundary(0xBB14, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xBACD); return; }
-label_BB16:;
-    /* $BB16: A8 */ nes_cpu_instruction_boundary(0xBB16, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB17:;
-    /* $BB17: C9 */ nes_cpu_instruction_boundary(0xBB17, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
-label_BB19:;
-    /* $BB19: F0 */ nes_cpu_instruction_boundary(0xBB19, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB24; }
-label_BB1B:;
-    /* $BB1B: 29 */ nes_cpu_instruction_boundary(0xBB1B, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
-label_BB1D:;
-    /* $BB1D: C9 */ nes_cpu_instruction_boundary(0xBB1D, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
-label_BB1F:;
-    /* $BB1F: F0 */ nes_cpu_instruction_boundary(0xBB1F, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB34; }
-label_BB21:;
-    /* $BB21: 4C */ nes_cpu_instruction_boundary(0xBB21, 3); nes_cpu_instruction_boundary(0xBB4C, 2); func_BB4C_b5(); return;
-label_BB24:; /* MusicChannelInstr_SongRepeat */
-    /* $BB24: BD */ nes_cpu_instruction_boundary(0xBB24, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB27:;
-    /* $BB27: F0 */ nes_cpu_instruction_boundary(0xBB27, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB29:;
-    /* $BB29: DE */ nes_cpu_instruction_boundary(0xBB29, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB2C:;
-    /* $BB2C: BD */ nes_cpu_instruction_boundary(0xBB2C, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB2F:;
-    /* $BB2F: 9D */ nes_cpu_instruction_boundary(0xBB2F, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB32:;
-    /* $BB32: D0 */ nes_cpu_instruction_boundary(0xBB32, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB34:; /* MusicChannelInstr_SongRepeatSetup */
-    /* $BB34: 98 */ nes_cpu_instruction_boundary(0xBB34, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB35:;
-    /* $BB35: 29 */ nes_cpu_instruction_boundary(0xBB35, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
-label_BB37:;
-    /* $BB37: 9D */ nes_cpu_instruction_boundary(0xBB37, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB3A:;
-    /* $BB3A: DE */ nes_cpu_instruction_boundary(0xBB3A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB3D:;
-    /* $BB3D: BD */ nes_cpu_instruction_boundary(0xBB3D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB40:;
-    /* $BB40: 9D */ nes_cpu_instruction_boundary(0xBB40, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB43:; /* GotoLoadNextMusicChannelInstr */
-    /* $BB43: 4C */ nes_cpu_instruction_boundary(0xBB43, 3); nes_cpu_instruction_boundary(0xBB0C, 2);
-    goto label_BB0C;
-}
-
-void func_BBD8_b5(void) { /* SetMusicInstrDelayToLength */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BBD8_b5");
-#endif
-label_BBD8:; /* SetMusicInstrDelayToLength */
-    /* $BBD8: BD */ nes_cpu_instruction_boundary(0xBBD8, 4); g_cpu.A = nes_read((0x0620 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBDB:;
-    /* $BBDB: 9D */ nes_cpu_instruction_boundary(0xBBDB, 5); nes_write((0x0640 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BBDE:;
-    /* $BBDE: 4C */ nes_cpu_instruction_boundary(0xBBDE, 3); nes_cpu_instruction_boundary(0xBAE3, 2); func_BAE3_b5(); return;
-}
-
-void func_BBFD_b5(void) { /* UpdateMusicTriLinearCount_setToNoteLength */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BBFD_b5");
-#endif
-label_BBFD:; /* UpdateMusicTriLinearCount_setToNoteLength */
-    /* $BBFD: 18 */ nes_cpu_instruction_boundary(0xBBFD, 2); g_cpu.C = 0;
-label_BBFE:;
-    /* $BBFE: 69 */ nes_cpu_instruction_boundary(0xBBFE, 2); { uint16_t r = g_cpu.A + 0xFF + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0xFF); g_cpu.A=r&0xFF; }
-label_BC00:;
-    /* $BC00: 0A */ nes_cpu_instruction_boundary(0xBC00, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BC01:;
-    /* $BC01: 0A */ nes_cpu_instruction_boundary(0xBC01, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BC02:;
-    /* $BC02: C9 */ nes_cpu_instruction_boundary(0xBC02, 2); { int r=g_cpu.A-0x3C; g_cpu.C=(g_cpu.A>=0x3C)?1:0; FLAG_NZ(r&0xFF); }
-label_BC04:;
-    /* $BC04: 90 */ nes_cpu_instruction_boundary(0xBC04, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_BC08; }
-label_BC06:;
-    /* $BC06: A9 */ nes_cpu_instruction_boundary(0xBC06, 2); g_cpu.A = 0x3C; FLAG_NZ(g_cpu.A);
-label_BC08:; /* UpdateMusicTriLinearCount_endIf_B */
-    /* $BC08: 8D */ nes_cpu_instruction_boundary(0xBC08, 4); nes_write(0x062A, g_cpu.A);
-label_BC0B:;
-    /* $BC0B: 4C */ nes_cpu_instruction_boundary(0xBC0B, 3); nes_cpu_instruction_boundary(0xBB67, 2); func_BB67_b5(); return;
-}
-
-void func_BB67_b5(void) { /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BB67_b5");
-#endif
-label_BB67:; /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-    /* $BB67: BC */ nes_cpu_instruction_boundary(0xBB67, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BB6A:;
-    /* $BB6A: FE */ nes_cpu_instruction_boundary(0xBB6A, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB6D:;
-    /* $BB6D: B1 */ nes_cpu_instruction_boundary(0xBB6D, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB6F:;
-    /* $BB6F: A8 */ nes_cpu_instruction_boundary(0xBB6F, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB70:; /* LoadNextMusicChannelInstr_Continued_noteOrRest */
-    /* $BB70: 8A */ nes_cpu_instruction_boundary(0xBB70, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BB71:;
-    /* $BB71: C9 */ nes_cpu_instruction_boundary(0xBB71, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
-label_BB73:;
-    /* $BB73: F0 */ nes_cpu_instruction_boundary(0xBB73, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBB46); return; }
-label_BB75:;
-    /* $BB75: 48 */ nes_cpu_instruction_boundary(0xBB75, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_BB76:;
-    /* $BB76: AE */ nes_cpu_instruction_boundary(0xBB76, 4); g_cpu.X = nes_read(0x064B); FLAG_NZ(g_cpu.X);
-label_BB79:;
-    /* $BB79: B9 */ nes_cpu_instruction_boundary(0xBB79, 4); g_cpu.A = nes_read((0xBEA8 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB7C:;
-    /* $BB7C: F0 */ nes_cpu_instruction_boundary(0xBB7C, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB89; }
-label_BB7E:;
-    /* $BB7E: 9D */ nes_cpu_instruction_boundary(0xBB7E, 5); nes_write((0x0600 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB81:;
-    /* $BB81: B9 */ nes_cpu_instruction_boundary(0xBB81, 4); g_cpu.A = nes_read((0xBEA7 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB84:;
-    /* $BB84: 09 */ nes_cpu_instruction_boundary(0xBB84, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
-label_BB86:;
-    /* $BB86: 9D */ nes_cpu_instruction_boundary(0xBB86, 5); nes_write((0x0601 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB89:; /* LoadNextMusicChannelInstr_Continued_endIf_A */
-    /* $BB89: A8 */ nes_cpu_instruction_boundary(0xBB89, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB8A:;
-    /* $BB8A: 68 */ nes_cpu_instruction_boundary(0xBB8A, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BB8B:;
-    /* $BB8B: AA */ nes_cpu_instruction_boundary(0xBB8B, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BB8C:;
-    /* $BB8C: 98 */ nes_cpu_instruction_boundary(0xBB8C, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB8D:;
-    /* $BB8D: D0 */ nes_cpu_instruction_boundary(0xBB8D, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB9E; }
-label_BB8F:;
-    /* $BB8F: A9 */ nes_cpu_instruction_boundary(0xBB8F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_BB91:;
-    /* $BB91: 85 */ nes_cpu_instruction_boundary(0xBB91, 3); nes_write(0xEA, g_cpu.A);
-label_BB93:;
-    /* $BB93: 8A */ nes_cpu_instruction_boundary(0xBB93, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BB94:;
-    /* $BB94: C9 */ nes_cpu_instruction_boundary(0xBB94, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_BB96:;
-    /* $BB96: F0 */ nes_cpu_instruction_boundary(0xBB96, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBA3; }
-label_BB98:;
-    /* $BB98: A9 */ nes_cpu_instruction_boundary(0xBB98, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_BB9A:;
-    /* $BB9A: 85 */ nes_cpu_instruction_boundary(0xBB9A, 3); nes_write(0xEA, g_cpu.A);
-label_BB9C:;
-    /* $BB9C: D0 */ nes_cpu_instruction_boundary(0xBB9C, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBA3; }
-label_BB9E:; /* LoadNextMusicChannelInstr_Continued_else_B */
-    /* $BB9E: BD */ nes_cpu_instruction_boundary(0xBB9E, 4); g_cpu.A = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBA1:;
-    /* $BBA1: 85 */ nes_cpu_instruction_boundary(0xBBA1, 3); nes_write(0xEA, g_cpu.A);
-label_BBA3:; /* LoadNextMusicChannelInstr_Continued_endIf_B */
-    /* $BBA3: 8A */ nes_cpu_instruction_boundary(0xBBA3, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BBA4:;
-    /* $BBA4: DE */ nes_cpu_instruction_boundary(0xBBA4, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BBA7:;
-    /* $BBA7: DD */ nes_cpu_instruction_boundary(0xBBA7, 4); { uint8_t m=nes_read((0x0653 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_BBAA:;
-    /* $BBAA: F0 */ nes_cpu_instruction_boundary(0xBBAA, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBE1; }
-label_BBAC:;
-    /* $BBAC: FE */ nes_cpu_instruction_boundary(0xBBAC, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BBAF:;
-    /* $BBAF: AC */ nes_cpu_instruction_boundary(0xBBAF, 4); g_cpu.Y = nes_read(0x064B); FLAG_NZ(g_cpu.Y);
-label_BBB2:;
-    /* $BBB2: 8A */ nes_cpu_instruction_boundary(0xBBB2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BBB3:;
-    /* $BBB3: C9 */ nes_cpu_instruction_boundary(0xBBB3, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_BBB5:;
-    /* $BBB5: F0 */ nes_cpu_instruction_boundary(0xBBB5, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBBC; }
-label_BBB7:;
-    /* $BBB7: BD */ nes_cpu_instruction_boundary(0xBBB7, 4); g_cpu.A = nes_read((0x062E + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBB7:; /* UpdateMusicTriLinearCount */
+    /* $BBB7: AD */ nes_cpu_instruction_boundary(0xBBB7, 4); g_cpu.A = nes_read(0x062D); FLAG_NZ(g_cpu.A);
 label_BBBA:;
-    /* $BBBA: D0 */ nes_cpu_instruction_boundary(0xBBBA, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBC1; }
-label_BBBC:; /* LoadNextMusicChannelInstr_Continued_if_Cntrl0Data */
-    /* $BBBC: A5 */ nes_cpu_instruction_boundary(0xBBBC, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
+    /* $BBBA: 29 */ nes_cpu_instruction_boundary(0xBBBA, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
+label_BBBC:;
+    /* $BBBC: D0 */ nes_cpu_instruction_boundary(0xBBBC, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBD8; }
 label_BBBE:;
-    /* $BBBE: 99 */ nes_cpu_instruction_boundary(0xBBBE, 5); nes_write((0x4000 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBC1:; /* LoadNextMusicChannelInstr_Continued_endIf_Cntrl0Data */
-    /* $BBC1: A5 */ nes_cpu_instruction_boundary(0xBBC1, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
+    /* $BBBE: AD */ nes_cpu_instruction_boundary(0xBBBE, 4); g_cpu.A = nes_read(0x062D); FLAG_NZ(g_cpu.A);
+label_BBC1:;
+    /* $BBC1: 29 */ nes_cpu_instruction_boundary(0xBBC1, 2); g_cpu.A &= 0xF0; FLAG_NZ(g_cpu.A);
 label_BBC3:;
-    /* $BBC3: 9D */ nes_cpu_instruction_boundary(0xBBC3, 5); nes_write((0x066C + g_cpu.X) & 0xFFFF, g_cpu.A);
+    /* $BBC3: D0 */ nes_cpu_instruction_boundary(0xBBC3, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBC9; }
+label_BBC5:;
+    /* $BBC5: 98 */ nes_cpu_instruction_boundary(0xBBC5, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
 label_BBC6:;
-    /* $BBC6: B9 */ nes_cpu_instruction_boundary(0xBBC6, 4); g_cpu.A = nes_read((0x0600 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBC9:;
-    /* $BBC9: 99 */ nes_cpu_instruction_boundary(0xBBC9, 5); nes_write((0x4002 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBCC:;
-    /* $BBCC: B9 */ nes_cpu_instruction_boundary(0xBBCC, 4); g_cpu.A = nes_read((0x0601 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBCF:;
-    /* $BBCF: 99 */ nes_cpu_instruction_boundary(0xBBCF, 5); nes_write((0x4003 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+    /* $BBC6: 4C */ nes_cpu_instruction_boundary(0xBBC6, 3); nes_cpu_instruction_boundary(0xBBCD, 2); func_BBCD_b5(); return;
+label_BBC9:; /* UpdateMusicTriLinearCount_endIf_A */
+    /* $BBC9: A9 */ nes_cpu_instruction_boundary(0xBBC9, 2); g_cpu.A = 0xFF; FLAG_NZ(g_cpu.A);
+label_BBCB:;
+    /* $BBCB: D0 */ nes_cpu_instruction_boundary(0xBBCB, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBD8; }
+label_BBCD:; /* UpdateMusicTriLinearCount_setToNoteLength */
+    /* $BBCD: 18 */ nes_cpu_instruction_boundary(0xBBCD, 2); g_cpu.C = 0;
+label_BBCE:;
+    /* $BBCE: 69 */ nes_cpu_instruction_boundary(0xBBCE, 2); { uint16_t r = g_cpu.A + 0xFF + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0xFF); g_cpu.A=r&0xFF; }
+label_BBD0:;
+    /* $BBD0: 0A */ nes_cpu_instruction_boundary(0xBBD0, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BBD1:;
+    /* $BBD1: 0A */ nes_cpu_instruction_boundary(0xBBD1, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
 label_BBD2:;
-    /* $BBD2: BD */ nes_cpu_instruction_boundary(0xBBD2, 4); g_cpu.A = nes_read((0x0648 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BBD5:;
-    /* $BBD5: 99 */ nes_cpu_instruction_boundary(0xBBD5, 5); nes_write((0x4001 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_BBD8:; /* SetMusicInstrDelayToLength */
-    /* $BBD8: BD */ nes_cpu_instruction_boundary(0xBBD8, 4); g_cpu.A = nes_read((0x0620 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+    /* $BBD2: C9 */ nes_cpu_instruction_boundary(0xBBD2, 2); { int r=g_cpu.A-0x3C; g_cpu.C=(g_cpu.A>=0x3C)?1:0; FLAG_NZ(r&0xFF); }
+label_BBD4:;
+    /* $BBD4: 90 */ nes_cpu_instruction_boundary(0xBBD4, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_BBD8; }
+label_BBD6:;
+    /* $BBD6: A9 */ nes_cpu_instruction_boundary(0xBBD6, 2); g_cpu.A = 0x3C; FLAG_NZ(g_cpu.A);
+label_BBD8:; /* UpdateMusicTriLinearCount_endIf_B */
+    /* $BBD8: 8D */ nes_cpu_instruction_boundary(0xBBD8, 4); nes_write(0x062A, g_cpu.A);
 label_BBDB:;
-    /* $BBDB: 9D */ nes_cpu_instruction_boundary(0xBBDB, 5); nes_write((0x0640 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BBDE:;
-    /* $BBDE: 4C */ nes_cpu_instruction_boundary(0xBBDE, 3); nes_cpu_instruction_boundary(0xBAE3, 2); func_BAE3_b5(); return;
-label_BBE1:; /* MusicChannelIsUsedBySFX */
-    /* $BBE1: FE */ nes_cpu_instruction_boundary(0xBBE1, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BBE4:;
-    /* $BBE4: 4C */ nes_cpu_instruction_boundary(0xBBE4, 3); nes_cpu_instruction_boundary(0xBBD8, 2);
-    goto label_BBD8;
+    /* $BBDB: 4C */ nes_cpu_instruction_boundary(0xBBDB, 3); nes_cpu_instruction_boundary(0xBB37, 2); func_BB37_b5(); return;
 }
 
-void func_BAD5_b5(void) { /* UpdateAllMusicChannels */
+void func_BAB3_b5(void) { /* IncrementToNextMusicChannel */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BAD5_b5");
+    recomp_stack_push("func_BAB3_b5");
 #endif
-label_BAD5:; /* UpdateAllMusicChannels */
-    /* $BAD5: 20 */ nes_cpu_instruction_boundary(0xBAD5, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD7; g_cpu.S--; func_BA23_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBAD5, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BAD8:;
-    /* $BAD8: A9 */ nes_cpu_instruction_boundary(0xBAD8, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BAB3:; /* IncrementToNextMusicChannel */
+    /* $BAB3: E8 */ nes_cpu_instruction_boundary(0xBAB3, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+label_BAB4:;
+    /* $BAB4: 8A */ nes_cpu_instruction_boundary(0xBAB4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAB5:;
+    /* $BAB5: C9 */ nes_cpu_instruction_boundary(0xBAB5, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_BAB7:;
+    /* $BAB7: F0 */ nes_cpu_instruction_boundary(0xBAB7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAA1); return; }
+label_BAB9:;
+    /* $BAB9: AD */ nes_cpu_instruction_boundary(0xBAB9, 4); g_cpu.A = nes_read(0x064B); FLAG_NZ(g_cpu.A);
+label_BABC:;
+    /* $BABC: 18 */ nes_cpu_instruction_boundary(0xBABC, 2); g_cpu.C = 0;
+label_BABD:;
+    /* $BABD: 69 */ nes_cpu_instruction_boundary(0xBABD, 2); { uint16_t r = g_cpu.A + 0x04 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x04); g_cpu.A=r&0xFF; }
+label_BABF:;
+    /* $BABF: 8D */ nes_cpu_instruction_boundary(0xBABF, 4); nes_write(0x064B, g_cpu.A);
+label_BAC2:; /* UpdateMusicChannel */
+    /* $BAC2: 8A */ nes_cpu_instruction_boundary(0xBAC2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAC3:;
+    /* $BAC3: 0A */ nes_cpu_instruction_boundary(0xBAC3, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BAC4:;
+    /* $BAC4: AA */ nes_cpu_instruction_boundary(0xBAC4, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAC5:;
+    /* $BAC5: BD */ nes_cpu_instruction_boundary(0xBAC5, 4); g_cpu.A = nes_read((0x0630 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAC8:;
+    /* $BAC8: 85 */ nes_cpu_instruction_boundary(0xBAC8, 3); nes_write(0xE6, g_cpu.A);
+label_BACA:;
+    /* $BACA: BD */ nes_cpu_instruction_boundary(0xBACA, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BACD:;
+    /* $BACD: 85 */ nes_cpu_instruction_boundary(0xBACD, 3); nes_write(0xE7, g_cpu.A);
+label_BACF:;
+    /* $BACF: BD */ nes_cpu_instruction_boundary(0xBACF, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAD2:;
+    /* $BAD2: F0 */ nes_cpu_instruction_boundary(0xBAD2, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAB0); return; }
+label_BAD4:;
+    /* $BAD4: 8A */ nes_cpu_instruction_boundary(0xBAD4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAD5:;
+    /* $BAD5: 4A */ nes_cpu_instruction_boundary(0xBAD5, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_BAD6:;
+    /* $BAD6: AA */ nes_cpu_instruction_boundary(0xBAD6, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAD7:;
+    /* $BAD7: DE */ nes_cpu_instruction_boundary(0xBAD7, 7); { uint16_t a=(0x0640 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_BADA:;
-    /* $BADA: AA */ nes_cpu_instruction_boundary(0xBADA, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BADB:;
-    /* $BADB: 8D */ nes_cpu_instruction_boundary(0xBADB, 4); nes_write(0x064B, g_cpu.A);
-label_BADE:;
-    /* $BADE: F0 */ nes_cpu_instruction_boundary(0xBADE, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAF2; }
-label_BAE0:; /* MusicChannelBaseEmpty */
-    /* $BAE0: 8A */ nes_cpu_instruction_boundary(0xBAE0, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAE1:;
-    /* $BAE1: 4A */ nes_cpu_instruction_boundary(0xBAE1, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+    /* $BADA: D0 */ nes_cpu_instruction_boundary(0xBADA, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBAB3, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BAB3;
+    }
+label_BADC:; /* LoadNextMusicChannelInstr */
+    /* $BADC: BC */ nes_cpu_instruction_boundary(0xBADC, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BADF:;
+    /* $BADF: FE */ nes_cpu_instruction_boundary(0xBADF, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_BAE2:;
-    /* $BAE2: AA */ nes_cpu_instruction_boundary(0xBAE2, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BAE3:; /* IncrementToNextMusicChannel */
-    /* $BAE3: E8 */ nes_cpu_instruction_boundary(0xBAE3, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+    /* $BAE2: B1 */ nes_cpu_instruction_boundary(0xBAE2, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BAE4:;
-    /* $BAE4: 8A */ nes_cpu_instruction_boundary(0xBAE4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAE5:;
-    /* $BAE5: C9 */ nes_cpu_instruction_boundary(0xBAE5, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+    /* $BAE4: F0 */ nes_cpu_instruction_boundary(0xBAE4, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBA9D); return; }
+label_BAE6:;
+    /* $BAE6: A8 */ nes_cpu_instruction_boundary(0xBAE6, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
 label_BAE7:;
-    /* $BAE7: F0 */ nes_cpu_instruction_boundary(0xBAE7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAD1); return; }
+    /* $BAE7: C9 */ nes_cpu_instruction_boundary(0xBAE7, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
 label_BAE9:;
-    /* $BAE9: AD */ nes_cpu_instruction_boundary(0xBAE9, 4); g_cpu.A = nes_read(0x064B); FLAG_NZ(g_cpu.A);
-label_BAEC:;
-    /* $BAEC: 18 */ nes_cpu_instruction_boundary(0xBAEC, 2); g_cpu.C = 0;
+    /* $BAE9: F0 */ nes_cpu_instruction_boundary(0xBAE9, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAF4; }
+label_BAEB:;
+    /* $BAEB: 29 */ nes_cpu_instruction_boundary(0xBAEB, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
 label_BAED:;
-    /* $BAED: 69 */ nes_cpu_instruction_boundary(0xBAED, 2); { uint16_t r = g_cpu.A + 0x04 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x04); g_cpu.A=r&0xFF; }
+    /* $BAED: C9 */ nes_cpu_instruction_boundary(0xBAED, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
 label_BAEF:;
-    /* $BAEF: 8D */ nes_cpu_instruction_boundary(0xBAEF, 4); nes_write(0x064B, g_cpu.A);
-label_BAF2:; /* UpdateMusicChannel */
-    /* $BAF2: 8A */ nes_cpu_instruction_boundary(0xBAF2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAF3:;
-    /* $BAF3: 0A */ nes_cpu_instruction_boundary(0xBAF3, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BAF4:;
-    /* $BAF4: AA */ nes_cpu_instruction_boundary(0xBAF4, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BAF5:;
-    /* $BAF5: BD */ nes_cpu_instruction_boundary(0xBAF5, 4); g_cpu.A = nes_read((0x0630 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAF8:;
-    /* $BAF8: 85 */ nes_cpu_instruction_boundary(0xBAF8, 3); nes_write(0xE6, g_cpu.A);
-label_BAFA:;
-    /* $BAFA: BD */ nes_cpu_instruction_boundary(0xBAFA, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAFD:;
-    /* $BAFD: 85 */ nes_cpu_instruction_boundary(0xBAFD, 3); nes_write(0xE7, g_cpu.A);
+    /* $BAEF: F0 */ nes_cpu_instruction_boundary(0xBAEF, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB04; }
+label_BAF1:;
+    /* $BAF1: 4C */ nes_cpu_instruction_boundary(0xBAF1, 3); nes_cpu_instruction_boundary(0xBB1C, 2); func_BB1C_b5(); return;
+label_BAF4:; /* MusicChannelInstr_SongRepeat */
+    /* $BAF4: BD */ nes_cpu_instruction_boundary(0xBAF4, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAF7:;
+    /* $BAF7: F0 */ nes_cpu_instruction_boundary(0xBAF7, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB13; }
+label_BAF9:;
+    /* $BAF9: DE */ nes_cpu_instruction_boundary(0xBAF9, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAFC:;
+    /* $BAFC: BD */ nes_cpu_instruction_boundary(0xBAFC, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BAFF:;
-    /* $BAFF: BD */ nes_cpu_instruction_boundary(0xBAFF, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+    /* $BAFF: 9D */ nes_cpu_instruction_boundary(0xBAFF, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
 label_BB02:;
-    /* $BB02: F0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAE0, 2);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BAE0;
-    }
-label_BB04:;
-    /* $BB04: 8A */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+    /* $BB02: D0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB13; }
+label_BB04:; /* MusicChannelInstr_SongRepeatSetup */
+    /* $BB04: 98 */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
 label_BB05:;
-    /* $BB05: 4A */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_BB06:;
-    /* $BB06: AA */ nes_cpu_instruction_boundary(0xBB06, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+    /* $BB05: 29 */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
 label_BB07:;
-    /* $BB07: DE */ nes_cpu_instruction_boundary(0xBB07, 7); { uint16_t a=(0x0640 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+    /* $BB07: 9D */ nes_cpu_instruction_boundary(0xBB07, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
 label_BB0A:;
-    /* $BB0A: D0 */ nes_cpu_instruction_boundary(0xBB0A, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAE3, 2);
+    /* $BB0A: DE */ nes_cpu_instruction_boundary(0xBB0A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB0D:;
+    /* $BB0D: BD */ nes_cpu_instruction_boundary(0xBB0D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB10:;
+    /* $BB10: 9D */ nes_cpu_instruction_boundary(0xBB10, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB13:; /* GotoLoadNextMusicChannelInstr */
+    /* $BB13: 4C */ nes_cpu_instruction_boundary(0xBB13, 3); nes_cpu_instruction_boundary(0xBADC, 2);
+    goto label_BADC;
+}
+
+void func_BBA8_b5(void) { /* SetMusicInstrDelayToLength */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BBA8_b5");
+#endif
+label_BBA8:; /* SetMusicInstrDelayToLength */
+    /* $BBA8: BD */ nes_cpu_instruction_boundary(0xBBA8, 4); g_cpu.A = nes_read((0x0620 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBAB:;
+    /* $BBAB: 9D */ nes_cpu_instruction_boundary(0xBBAB, 5); nes_write((0x0640 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BBAE:;
+    /* $BBAE: 4C */ nes_cpu_instruction_boundary(0xBBAE, 3); nes_cpu_instruction_boundary(0xBAB3, 2); func_BAB3_b5(); return;
+}
+
+void func_BBCD_b5(void) { /* UpdateMusicTriLinearCount_setToNoteLength */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BBCD_b5");
+#endif
+label_BBCD:; /* UpdateMusicTriLinearCount_setToNoteLength */
+    /* $BBCD: 18 */ nes_cpu_instruction_boundary(0xBBCD, 2); g_cpu.C = 0;
+label_BBCE:;
+    /* $BBCE: 69 */ nes_cpu_instruction_boundary(0xBBCE, 2); { uint16_t r = g_cpu.A + 0xFF + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0xFF); g_cpu.A=r&0xFF; }
+label_BBD0:;
+    /* $BBD0: 0A */ nes_cpu_instruction_boundary(0xBBD0, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BBD1:;
+    /* $BBD1: 0A */ nes_cpu_instruction_boundary(0xBBD1, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BBD2:;
+    /* $BBD2: C9 */ nes_cpu_instruction_boundary(0xBBD2, 2); { int r=g_cpu.A-0x3C; g_cpu.C=(g_cpu.A>=0x3C)?1:0; FLAG_NZ(r&0xFF); }
+label_BBD4:;
+    /* $BBD4: 90 */ nes_cpu_instruction_boundary(0xBBD4, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_BBD8; }
+label_BBD6:;
+    /* $BBD6: A9 */ nes_cpu_instruction_boundary(0xBBD6, 2); g_cpu.A = 0x3C; FLAG_NZ(g_cpu.A);
+label_BBD8:; /* UpdateMusicTriLinearCount_endIf_B */
+    /* $BBD8: 8D */ nes_cpu_instruction_boundary(0xBBD8, 4); nes_write(0x062A, g_cpu.A);
+label_BBDB:;
+    /* $BBDB: 4C */ nes_cpu_instruction_boundary(0xBBDB, 3); nes_cpu_instruction_boundary(0xBB37, 2); func_BB37_b5(); return;
+}
+
+void func_BB37_b5(void) { /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BB37_b5");
+#endif
+label_BB37:; /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+    /* $BB37: BC */ nes_cpu_instruction_boundary(0xBB37, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BB3A:;
+    /* $BB3A: FE */ nes_cpu_instruction_boundary(0xBB3A, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB3D:;
+    /* $BB3D: B1 */ nes_cpu_instruction_boundary(0xBB3D, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB3F:;
+    /* $BB3F: A8 */ nes_cpu_instruction_boundary(0xBB3F, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BB40:; /* LoadNextMusicChannelInstr_Continued_noteOrRest */
+    /* $BB40: 8A */ nes_cpu_instruction_boundary(0xBB40, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB41:;
+    /* $BB41: C9 */ nes_cpu_instruction_boundary(0xBB41, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
+label_BB43:;
+    /* $BB43: F0 */ nes_cpu_instruction_boundary(0xBB43, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBB16); return; }
+label_BB45:;
+    /* $BB45: 48 */ nes_cpu_instruction_boundary(0xBB45, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_BB46:;
+    /* $BB46: AE */ nes_cpu_instruction_boundary(0xBB46, 4); g_cpu.X = nes_read(0x064B); FLAG_NZ(g_cpu.X);
+label_BB49:;
+    /* $BB49: B9 */ nes_cpu_instruction_boundary(0xBB49, 4); g_cpu.A = nes_read((0xBE78 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB4C:;
+    /* $BB4C: F0 */ nes_cpu_instruction_boundary(0xBB4C, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB59; }
+label_BB4E:;
+    /* $BB4E: 9D */ nes_cpu_instruction_boundary(0xBB4E, 5); nes_write((0x0600 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB51:;
+    /* $BB51: B9 */ nes_cpu_instruction_boundary(0xBB51, 4); g_cpu.A = nes_read((0xBE77 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB54:;
+    /* $BB54: 09 */ nes_cpu_instruction_boundary(0xBB54, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
+label_BB56:;
+    /* $BB56: 9D */ nes_cpu_instruction_boundary(0xBB56, 5); nes_write((0x0601 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB59:; /* LoadNextMusicChannelInstr_Continued_endIf_A */
+    /* $BB59: A8 */ nes_cpu_instruction_boundary(0xBB59, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BB5A:;
+    /* $BB5A: 68 */ nes_cpu_instruction_boundary(0xBB5A, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_BB5B:;
+    /* $BB5B: AA */ nes_cpu_instruction_boundary(0xBB5B, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BB5C:;
+    /* $BB5C: 98 */ nes_cpu_instruction_boundary(0xBB5C, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_BB5D:;
+    /* $BB5D: D0 */ nes_cpu_instruction_boundary(0xBB5D, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB6E; }
+label_BB5F:;
+    /* $BB5F: A9 */ nes_cpu_instruction_boundary(0xBB5F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BB61:;
+    /* $BB61: 85 */ nes_cpu_instruction_boundary(0xBB61, 3); nes_write(0xEA, g_cpu.A);
+label_BB63:;
+    /* $BB63: 8A */ nes_cpu_instruction_boundary(0xBB63, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB64:;
+    /* $BB64: C9 */ nes_cpu_instruction_boundary(0xBB64, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
+label_BB66:;
+    /* $BB66: F0 */ nes_cpu_instruction_boundary(0xBB66, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB73; }
+label_BB68:;
+    /* $BB68: A9 */ nes_cpu_instruction_boundary(0xBB68, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
+label_BB6A:;
+    /* $BB6A: 85 */ nes_cpu_instruction_boundary(0xBB6A, 3); nes_write(0xEA, g_cpu.A);
+label_BB6C:;
+    /* $BB6C: D0 */ nes_cpu_instruction_boundary(0xBB6C, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB73; }
+label_BB6E:; /* LoadNextMusicChannelInstr_Continued_else_B */
+    /* $BB6E: BD */ nes_cpu_instruction_boundary(0xBB6E, 4); g_cpu.A = nes_read((0x0628 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB71:;
+    /* $BB71: 85 */ nes_cpu_instruction_boundary(0xBB71, 3); nes_write(0xEA, g_cpu.A);
+label_BB73:; /* LoadNextMusicChannelInstr_Continued_endIf_B */
+    /* $BB73: 8A */ nes_cpu_instruction_boundary(0xBB73, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB74:;
+    /* $BB74: DE */ nes_cpu_instruction_boundary(0xBB74, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB77:;
+    /* $BB77: DD */ nes_cpu_instruction_boundary(0xBB77, 4); { uint8_t m=nes_read((0x0653 + g_cpu.X) & 0xFFFF); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_BB7A:;
+    /* $BB7A: F0 */ nes_cpu_instruction_boundary(0xBB7A, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BBB1; }
+label_BB7C:;
+    /* $BB7C: FE */ nes_cpu_instruction_boundary(0xBB7C, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB7F:;
+    /* $BB7F: AC */ nes_cpu_instruction_boundary(0xBB7F, 4); g_cpu.Y = nes_read(0x064B); FLAG_NZ(g_cpu.Y);
+label_BB82:;
+    /* $BB82: 8A */ nes_cpu_instruction_boundary(0xBB82, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BB83:;
+    /* $BB83: C9 */ nes_cpu_instruction_boundary(0xBB83, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
+label_BB85:;
+    /* $BB85: F0 */ nes_cpu_instruction_boundary(0xBB85, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB8C; }
+label_BB87:;
+    /* $BB87: BD */ nes_cpu_instruction_boundary(0xBB87, 4); g_cpu.A = nes_read((0x062E + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB8A:;
+    /* $BB8A: D0 */ nes_cpu_instruction_boundary(0xBB8A, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB91; }
+label_BB8C:; /* LoadNextMusicChannelInstr_Continued_if_Cntrl0Data */
+    /* $BB8C: A5 */ nes_cpu_instruction_boundary(0xBB8C, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
+label_BB8E:;
+    /* $BB8E: 99 */ nes_cpu_instruction_boundary(0xBB8E, 5); nes_write((0x4000 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BB91:; /* LoadNextMusicChannelInstr_Continued_endIf_Cntrl0Data */
+    /* $BB91: A5 */ nes_cpu_instruction_boundary(0xBB91, 3); g_cpu.A = nes_read(0xEA); FLAG_NZ(g_cpu.A);
+label_BB93:;
+    /* $BB93: 9D */ nes_cpu_instruction_boundary(0xBB93, 5); nes_write((0x066C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB96:;
+    /* $BB96: B9 */ nes_cpu_instruction_boundary(0xBB96, 4); g_cpu.A = nes_read((0x0600 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB99:;
+    /* $BB99: 99 */ nes_cpu_instruction_boundary(0xBB99, 5); nes_write((0x4002 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BB9C:;
+    /* $BB9C: B9 */ nes_cpu_instruction_boundary(0xBB9C, 4); g_cpu.A = nes_read((0x0601 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB9F:;
+    /* $BB9F: 99 */ nes_cpu_instruction_boundary(0xBB9F, 5); nes_write((0x4003 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BBA2:;
+    /* $BBA2: BD */ nes_cpu_instruction_boundary(0xBBA2, 4); g_cpu.A = nes_read((0x0648 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBA5:;
+    /* $BBA5: 99 */ nes_cpu_instruction_boundary(0xBBA5, 5); nes_write((0x4001 + g_cpu.Y) & 0xFFFF, g_cpu.A);
+label_BBA8:; /* SetMusicInstrDelayToLength */
+    /* $BBA8: BD */ nes_cpu_instruction_boundary(0xBBA8, 4); g_cpu.A = nes_read((0x0620 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBAB:;
+    /* $BBAB: 9D */ nes_cpu_instruction_boundary(0xBBAB, 5); nes_write((0x0640 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BBAE:;
+    /* $BBAE: 4C */ nes_cpu_instruction_boundary(0xBBAE, 3); nes_cpu_instruction_boundary(0xBAB3, 2); func_BAB3_b5(); return;
+label_BBB1:; /* MusicChannelIsUsedBySFX */
+    /* $BBB1: FE */ nes_cpu_instruction_boundary(0xBBB1, 7); { uint16_t a=(0x0653 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BBB4:;
+    /* $BBB4: 4C */ nes_cpu_instruction_boundary(0xBBB4, 3); nes_cpu_instruction_boundary(0xBBA8, 2);
+    goto label_BBA8;
+}
+
+void func_BAA5_b5(void) { /* UpdateAllMusicChannels */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BAA5_b5");
+#endif
+label_BAA5:; /* UpdateAllMusicChannels */
+    /* $BAA5: 20 */ nes_cpu_instruction_boundary(0xBAA5, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA7; g_cpu.S--; func_B9F3_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBAA5, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BAA8:;
+    /* $BAA8: A9 */ nes_cpu_instruction_boundary(0xBAA8, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BAAA:;
+    /* $BAAA: AA */ nes_cpu_instruction_boundary(0xBAAA, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAAB:;
+    /* $BAAB: 8D */ nes_cpu_instruction_boundary(0xBAAB, 4); nes_write(0x064B, g_cpu.A);
+label_BAAE:;
+    /* $BAAE: F0 */ nes_cpu_instruction_boundary(0xBAAE, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAC2; }
+label_BAB0:; /* MusicChannelBaseEmpty */
+    /* $BAB0: 8A */ nes_cpu_instruction_boundary(0xBAB0, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAB1:;
+    /* $BAB1: 4A */ nes_cpu_instruction_boundary(0xBAB1, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_BAB2:;
+    /* $BAB2: AA */ nes_cpu_instruction_boundary(0xBAB2, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAB3:; /* IncrementToNextMusicChannel */
+    /* $BAB3: E8 */ nes_cpu_instruction_boundary(0xBAB3, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+label_BAB4:;
+    /* $BAB4: 8A */ nes_cpu_instruction_boundary(0xBAB4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAB5:;
+    /* $BAB5: C9 */ nes_cpu_instruction_boundary(0xBAB5, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_BAB7:;
+    /* $BAB7: F0 */ nes_cpu_instruction_boundary(0xBAB7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAA1); return; }
+label_BAB9:;
+    /* $BAB9: AD */ nes_cpu_instruction_boundary(0xBAB9, 4); g_cpu.A = nes_read(0x064B); FLAG_NZ(g_cpu.A);
+label_BABC:;
+    /* $BABC: 18 */ nes_cpu_instruction_boundary(0xBABC, 2); g_cpu.C = 0;
+label_BABD:;
+    /* $BABD: 69 */ nes_cpu_instruction_boundary(0xBABD, 2); { uint16_t r = g_cpu.A + 0x04 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x04); g_cpu.A=r&0xFF; }
+label_BABF:;
+    /* $BABF: 8D */ nes_cpu_instruction_boundary(0xBABF, 4); nes_write(0x064B, g_cpu.A);
+label_BAC2:; /* UpdateMusicChannel */
+    /* $BAC2: 8A */ nes_cpu_instruction_boundary(0xBAC2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAC3:;
+    /* $BAC3: 0A */ nes_cpu_instruction_boundary(0xBAC3, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BAC4:;
+    /* $BAC4: AA */ nes_cpu_instruction_boundary(0xBAC4, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAC5:;
+    /* $BAC5: BD */ nes_cpu_instruction_boundary(0xBAC5, 4); g_cpu.A = nes_read((0x0630 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAC8:;
+    /* $BAC8: 85 */ nes_cpu_instruction_boundary(0xBAC8, 3); nes_write(0xE6, g_cpu.A);
+label_BACA:;
+    /* $BACA: BD */ nes_cpu_instruction_boundary(0xBACA, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BACD:;
+    /* $BACD: 85 */ nes_cpu_instruction_boundary(0xBACD, 3); nes_write(0xE7, g_cpu.A);
+label_BACF:;
+    /* $BACF: BD */ nes_cpu_instruction_boundary(0xBACF, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAD2:;
+    /* $BAD2: F0 */ nes_cpu_instruction_boundary(0xBAD2, 2); if (g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBAB0, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_BAE3;
+    goto label_BAB0;
     }
-label_BB0C:; /* LoadNextMusicChannelInstr */
-    /* $BB0C: BC */ nes_cpu_instruction_boundary(0xBB0C, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BB0F:;
-    /* $BB0F: FE */ nes_cpu_instruction_boundary(0xBB0F, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB12:;
-    /* $BB12: B1 */ nes_cpu_instruction_boundary(0xBB12, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB14:;
-    /* $BB14: F0 */ nes_cpu_instruction_boundary(0xBB14, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xBACD); return; }
-label_BB16:;
-    /* $BB16: A8 */ nes_cpu_instruction_boundary(0xBB16, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB17:;
-    /* $BB17: C9 */ nes_cpu_instruction_boundary(0xBB17, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
-label_BB19:;
-    /* $BB19: F0 */ nes_cpu_instruction_boundary(0xBB19, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB24; }
-label_BB1B:;
-    /* $BB1B: 29 */ nes_cpu_instruction_boundary(0xBB1B, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
-label_BB1D:;
-    /* $BB1D: C9 */ nes_cpu_instruction_boundary(0xBB1D, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
-label_BB1F:;
-    /* $BB1F: F0 */ nes_cpu_instruction_boundary(0xBB1F, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB34; }
-label_BB21:;
-    /* $BB21: 4C */ nes_cpu_instruction_boundary(0xBB21, 3); nes_cpu_instruction_boundary(0xBB4C, 2); func_BB4C_b5(); return;
-label_BB24:; /* MusicChannelInstr_SongRepeat */
-    /* $BB24: BD */ nes_cpu_instruction_boundary(0xBB24, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB27:;
-    /* $BB27: F0 */ nes_cpu_instruction_boundary(0xBB27, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB29:;
-    /* $BB29: DE */ nes_cpu_instruction_boundary(0xBB29, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB2C:;
-    /* $BB2C: BD */ nes_cpu_instruction_boundary(0xBB2C, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB2F:;
-    /* $BB2F: 9D */ nes_cpu_instruction_boundary(0xBB2F, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB32:;
-    /* $BB32: D0 */ nes_cpu_instruction_boundary(0xBB32, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB34:; /* MusicChannelInstr_SongRepeatSetup */
-    /* $BB34: 98 */ nes_cpu_instruction_boundary(0xBB34, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB35:;
-    /* $BB35: 29 */ nes_cpu_instruction_boundary(0xBB35, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
-label_BB37:;
-    /* $BB37: 9D */ nes_cpu_instruction_boundary(0xBB37, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB3A:;
-    /* $BB3A: DE */ nes_cpu_instruction_boundary(0xBB3A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB3D:;
-    /* $BB3D: BD */ nes_cpu_instruction_boundary(0xBB3D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB40:;
-    /* $BB40: 9D */ nes_cpu_instruction_boundary(0xBB40, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB43:; /* GotoLoadNextMusicChannelInstr */
-    /* $BB43: 4C */ nes_cpu_instruction_boundary(0xBB43, 3); nes_cpu_instruction_boundary(0xBB0C, 2);
-    goto label_BB0C;
+label_BAD4:;
+    /* $BAD4: 8A */ nes_cpu_instruction_boundary(0xBAD4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAD5:;
+    /* $BAD5: 4A */ nes_cpu_instruction_boundary(0xBAD5, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_BAD6:;
+    /* $BAD6: AA */ nes_cpu_instruction_boundary(0xBAD6, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAD7:;
+    /* $BAD7: DE */ nes_cpu_instruction_boundary(0xBAD7, 7); { uint16_t a=(0x0640 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BADA:;
+    /* $BADA: D0 */ nes_cpu_instruction_boundary(0xBADA, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBAB3, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BAB3;
+    }
+label_BADC:; /* LoadNextMusicChannelInstr */
+    /* $BADC: BC */ nes_cpu_instruction_boundary(0xBADC, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BADF:;
+    /* $BADF: FE */ nes_cpu_instruction_boundary(0xBADF, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAE2:;
+    /* $BAE2: B1 */ nes_cpu_instruction_boundary(0xBAE2, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAE4:;
+    /* $BAE4: F0 */ nes_cpu_instruction_boundary(0xBAE4, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBA9D); return; }
+label_BAE6:;
+    /* $BAE6: A8 */ nes_cpu_instruction_boundary(0xBAE6, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BAE7:;
+    /* $BAE7: C9 */ nes_cpu_instruction_boundary(0xBAE7, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
+label_BAE9:;
+    /* $BAE9: F0 */ nes_cpu_instruction_boundary(0xBAE9, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAF4; }
+label_BAEB:;
+    /* $BAEB: 29 */ nes_cpu_instruction_boundary(0xBAEB, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
+label_BAED:;
+    /* $BAED: C9 */ nes_cpu_instruction_boundary(0xBAED, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
+label_BAEF:;
+    /* $BAEF: F0 */ nes_cpu_instruction_boundary(0xBAEF, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB04; }
+label_BAF1:;
+    /* $BAF1: 4C */ nes_cpu_instruction_boundary(0xBAF1, 3); nes_cpu_instruction_boundary(0xBB1C, 2); func_BB1C_b5(); return;
+label_BAF4:; /* MusicChannelInstr_SongRepeat */
+    /* $BAF4: BD */ nes_cpu_instruction_boundary(0xBAF4, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAF7:;
+    /* $BAF7: F0 */ nes_cpu_instruction_boundary(0xBAF7, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB13; }
+label_BAF9:;
+    /* $BAF9: DE */ nes_cpu_instruction_boundary(0xBAF9, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAFC:;
+    /* $BAFC: BD */ nes_cpu_instruction_boundary(0xBAFC, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAFF:;
+    /* $BAFF: 9D */ nes_cpu_instruction_boundary(0xBAFF, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB02:;
+    /* $BB02: D0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB13; }
+label_BB04:; /* MusicChannelInstr_SongRepeatSetup */
+    /* $BB04: 98 */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_BB05:;
+    /* $BB05: 29 */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
+label_BB07:;
+    /* $BB07: 9D */ nes_cpu_instruction_boundary(0xBB07, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB0A:;
+    /* $BB0A: DE */ nes_cpu_instruction_boundary(0xBB0A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB0D:;
+    /* $BB0D: BD */ nes_cpu_instruction_boundary(0xBB0D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB10:;
+    /* $BB10: 9D */ nes_cpu_instruction_boundary(0xBB10, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB13:; /* GotoLoadNextMusicChannelInstr */
+    /* $BB13: 4C */ nes_cpu_instruction_boundary(0xBB13, 3); nes_cpu_instruction_boundary(0xBADC, 2);
+    goto label_BADC;
 }
 
-void func_BCD4_b5(void) { /* Music01Init */
+void func_BCA4_b5(void) { /* Music01Init */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCD4_b5");
+    recomp_stack_push("func_BCA4_b5");
 #endif
-label_BCD4:; /* Music01Init */
-    /* $BCD4: A2 */ nes_cpu_instruction_boundary(0xBCD4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
-label_BCD6:;
-    /* $BCD6: A0 */ nes_cpu_instruction_boundary(0xBCD6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD8:;
-    /* $BCD8: D0 */ nes_cpu_instruction_boundary(0xBCD8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCDA:; /* Music00Init */
-    /* $BCDA: A2 */ nes_cpu_instruction_boundary(0xBCDA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
-label_BCDC:;
-    /* $BCDC: A0 */ nes_cpu_instruction_boundary(0xBCDC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
-label_BCDE:;
-    /* $BCDE: D0 */ nes_cpu_instruction_boundary(0xBCDE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCE0:; /* VolumeEnvelopePtrTable */
-    /* $BCE0: EA */ nes_cpu_instruction_boundary(0xBCE0, 2); /* NOP */
-label_BCE1:;
-    /* $BCE1: BC */ nes_cpu_instruction_boundary(0xBCE1, 4); g_cpu.Y = nes_read((0xBCF5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BCE4:;
-    /* $BCE4: FF */ nes_cpu_instruction_boundary(0xBCE4, 7); { uint16_t a=(0x0ABC + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCE7:;
-    /* $BCE7: BD */ nes_cpu_instruction_boundary(0xBCE7, 4); g_cpu.A = nes_read((0xBD33 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BCEA:; /* VolumeEnvelope1 */
-    /* $BCEA: 01 */ nes_cpu_instruction_boundary(0xBCEA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
-label_BCEC:;
-    /* $BCEC: 03 */ nes_cpu_instruction_boundary(0xBCEC, 8); { uint16_t a=nes_read16zp((0x04 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCEE:;
-    /* $BCEE: 04 */ nes_cpu_instruction_boundary(0xBCEE, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
-label_BCF0:;
-    /* $BCF0: 06 */ nes_cpu_instruction_boundary(0xBCF0, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BCF2:;
-    /* $BCF2: 07 */ nes_cpu_instruction_boundary(0xBCF2, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCF4:;
-    /* $BCF4: FF */ nes_cpu_instruction_boundary(0xBCF4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCF7:;
-    /* $BCF7: 05 */ nes_cpu_instruction_boundary(0xBCF7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
-label_BCF9:;
-    /* $BCF9: 07 */ nes_cpu_instruction_boundary(0xBCF9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFB:;
-    /* $BCFB: 07 */ nes_cpu_instruction_boundary(0xBCFB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFD:;
-    /* $BCFD: 05 */ nes_cpu_instruction_boundary(0xBCFD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
-label_BCFF:; /* VolumeEnvelope3 */
-    /* $BCFF: 00 */ nes_cpu_instruction_boundary(0xBCFF, 7); nes_brk_executed(0xBCFF); return;
-}
-
-void func_BCCA_b5(void) { /* Music02Init */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCCA_b5");
-#endif
-label_BCCA:; /* Music02Init */
-    /* $BCCA: A9 */ nes_cpu_instruction_boundary(0xBCCA, 2); g_cpu.A = 0xF4; FLAG_NZ(g_cpu.A);
-label_BCCC:;
-    /* $BCCC: D0 */ nes_cpu_instruction_boundary(0xBCCC, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBB); return; }
-label_BCCE:; /* Music05Init */
-    /* $BCCE: A2 */ nes_cpu_instruction_boundary(0xBCCE, 2); g_cpu.X = 0xF5; FLAG_NZ(g_cpu.X);
-label_BCD0:;
-    /* $BCD0: A0 */ nes_cpu_instruction_boundary(0xBCD0, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD2:;
-    /* $BCD2: D0 */ nes_cpu_instruction_boundary(0xBCD2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCD4:; /* Music01Init */
-    /* $BCD4: A2 */ nes_cpu_instruction_boundary(0xBCD4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
-label_BCD6:;
-    /* $BCD6: A0 */ nes_cpu_instruction_boundary(0xBCD6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD8:;
-    /* $BCD8: D0 */ nes_cpu_instruction_boundary(0xBCD8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCDA:; /* Music00Init */
-    /* $BCDA: A2 */ nes_cpu_instruction_boundary(0xBCDA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
-label_BCDC:;
-    /* $BCDC: A0 */ nes_cpu_instruction_boundary(0xBCDC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
-label_BCDE:;
-    /* $BCDE: D0 */ nes_cpu_instruction_boundary(0xBCDE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCE0:; /* VolumeEnvelopePtrTable */
-    /* $BCE0: EA */ nes_cpu_instruction_boundary(0xBCE0, 2); /* NOP */
-label_BCE1:;
-    /* $BCE1: BC */ nes_cpu_instruction_boundary(0xBCE1, 4); g_cpu.Y = nes_read((0xBCF5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BCE4:;
-    /* $BCE4: FF */ nes_cpu_instruction_boundary(0xBCE4, 7); { uint16_t a=(0x0ABC + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCE7:;
-    /* $BCE7: BD */ nes_cpu_instruction_boundary(0xBCE7, 4); g_cpu.A = nes_read((0xBD33 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BCEA:; /* VolumeEnvelope1 */
-    /* $BCEA: 01 */ nes_cpu_instruction_boundary(0xBCEA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
-label_BCEC:;
-    /* $BCEC: 03 */ nes_cpu_instruction_boundary(0xBCEC, 8); { uint16_t a=nes_read16zp((0x04 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCEE:;
-    /* $BCEE: 04 */ nes_cpu_instruction_boundary(0xBCEE, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
-label_BCF0:;
-    /* $BCF0: 06 */ nes_cpu_instruction_boundary(0xBCF0, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BCF2:;
-    /* $BCF2: 07 */ nes_cpu_instruction_boundary(0xBCF2, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCF4:;
-    /* $BCF4: FF */ nes_cpu_instruction_boundary(0xBCF4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCF7:;
-    /* $BCF7: 05 */ nes_cpu_instruction_boundary(0xBCF7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
-label_BCF9:;
-    /* $BCF9: 07 */ nes_cpu_instruction_boundary(0xBCF9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFB:;
-    /* $BCFB: 07 */ nes_cpu_instruction_boundary(0xBCFB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFD:;
-    /* $BCFD: 05 */ nes_cpu_instruction_boundary(0xBCFD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
-label_BCFF:; /* VolumeEnvelope3 */
-    /* $BCFF: 00 */ nes_cpu_instruction_boundary(0xBCFF, 7); nes_brk_executed(0xBCFF); return;
-}
-
-void func_BCC6_b5(void) { /* Music03Init */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCC6_b5");
-#endif
-label_BCC6:; /* Music03Init */
-    /* $BCC6: A9 */ nes_cpu_instruction_boundary(0xBCC6, 2); g_cpu.A = 0x34; FLAG_NZ(g_cpu.A);
-label_BCC8:;
-    /* $BCC8: D0 */ nes_cpu_instruction_boundary(0xBCC8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBB); return; }
-label_BCCA:; /* Music02Init */
-    /* $BCCA: A9 */ nes_cpu_instruction_boundary(0xBCCA, 2); g_cpu.A = 0xF4; FLAG_NZ(g_cpu.A);
-label_BCCC:;
-    /* $BCCC: D0 */ nes_cpu_instruction_boundary(0xBCCC, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBB); return; }
-label_BCCE:; /* Music05Init */
-    /* $BCCE: A2 */ nes_cpu_instruction_boundary(0xBCCE, 2); g_cpu.X = 0xF5; FLAG_NZ(g_cpu.X);
-label_BCD0:;
-    /* $BCD0: A0 */ nes_cpu_instruction_boundary(0xBCD0, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD2:;
-    /* $BCD2: D0 */ nes_cpu_instruction_boundary(0xBCD2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCD4:; /* Music01Init */
-    /* $BCD4: A2 */ nes_cpu_instruction_boundary(0xBCD4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
-label_BCD6:;
-    /* $BCD6: A0 */ nes_cpu_instruction_boundary(0xBCD6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD8:;
-    /* $BCD8: D0 */ nes_cpu_instruction_boundary(0xBCD8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCDA:; /* Music00Init */
-    /* $BCDA: A2 */ nes_cpu_instruction_boundary(0xBCDA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
-label_BCDC:;
-    /* $BCDC: A0 */ nes_cpu_instruction_boundary(0xBCDC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
-label_BCDE:;
-    /* $BCDE: D0 */ nes_cpu_instruction_boundary(0xBCDE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCE0:; /* VolumeEnvelopePtrTable */
-    /* $BCE0: EA */ nes_cpu_instruction_boundary(0xBCE0, 2); /* NOP */
-label_BCE1:;
-    /* $BCE1: BC */ nes_cpu_instruction_boundary(0xBCE1, 4); g_cpu.Y = nes_read((0xBCF5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BCE4:;
-    /* $BCE4: FF */ nes_cpu_instruction_boundary(0xBCE4, 7); { uint16_t a=(0x0ABC + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCE7:;
-    /* $BCE7: BD */ nes_cpu_instruction_boundary(0xBCE7, 4); g_cpu.A = nes_read((0xBD33 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BCEA:; /* VolumeEnvelope1 */
-    /* $BCEA: 01 */ nes_cpu_instruction_boundary(0xBCEA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
-label_BCEC:;
-    /* $BCEC: 03 */ nes_cpu_instruction_boundary(0xBCEC, 8); { uint16_t a=nes_read16zp((0x04 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCEE:;
-    /* $BCEE: 04 */ nes_cpu_instruction_boundary(0xBCEE, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
-label_BCF0:;
-    /* $BCF0: 06 */ nes_cpu_instruction_boundary(0xBCF0, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BCF2:;
-    /* $BCF2: 07 */ nes_cpu_instruction_boundary(0xBCF2, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCF4:;
-    /* $BCF4: FF */ nes_cpu_instruction_boundary(0xBCF4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCF7:;
-    /* $BCF7: 05 */ nes_cpu_instruction_boundary(0xBCF7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
-label_BCF9:;
-    /* $BCF9: 07 */ nes_cpu_instruction_boundary(0xBCF9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFB:;
-    /* $BCFB: 07 */ nes_cpu_instruction_boundary(0xBCFB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFD:;
-    /* $BCFD: 05 */ nes_cpu_instruction_boundary(0xBCFD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
-label_BCFF:; /* VolumeEnvelope3 */
-    /* $BCFF: 00 */ nes_cpu_instruction_boundary(0xBCFF, 7); nes_brk_executed(0xBCFF); return;
-}
-
-void func_BCB9_b5(void) { /* Music04Init */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCB9_b5");
-#endif
-label_BCB9:; /* Music04Init */
-    /* $BCB9: A9 */ nes_cpu_instruction_boundary(0xBCB9, 2); g_cpu.A = 0xB3; FLAG_NZ(g_cpu.A);
-label_BCBB:; /* XYMusicInit */
-    /* $BCBB: AA */ nes_cpu_instruction_boundary(0xBCBB, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BCA4:; /* Music01Init */
+    /* $BCA4: A2 */ nes_cpu_instruction_boundary(0xBCA4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BCA6:;
+    /* $BCA6: A0 */ nes_cpu_instruction_boundary(0xBCA6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA8:;
+    /* $BCA8: D0 */ nes_cpu_instruction_boundary(0xBCA8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCAA:; /* Music00Init */
+    /* $BCAA: A2 */ nes_cpu_instruction_boundary(0xBCAA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
+label_BCAC:;
+    /* $BCAC: A0 */ nes_cpu_instruction_boundary(0xBCAC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
+label_BCAE:;
+    /* $BCAE: D0 */ nes_cpu_instruction_boundary(0xBCAE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCB0:; /* VolumeEnvelopePtrTable */
+    /* $BCB0: BA */ nes_cpu_instruction_boundary(0xBCB0, 2); g_cpu.X = g_cpu.S; FLAG_NZ(g_cpu.X);
+label_BCB1:;
+    /* $BCB1: BC */ nes_cpu_instruction_boundary(0xBCB1, 4); g_cpu.Y = nes_read((0xBCC5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCB4:;
+    /* $BCB4: CF */ nes_cpu_instruction_boundary(0xBCB4, 6); { uint16_t a=0xDABC; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); g_cpu.C=(g_cpu.A>=v)?1:0; FLAG_NZ((uint8_t)(g_cpu.A-v)); }
+label_BCB7:;
+    /* $BCB7: BC */ nes_cpu_instruction_boundary(0xBCB7, 4); g_cpu.Y = nes_read((0xBD03 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCBA:; /* VolumeEnvelope1 */
+    /* $BCBA: 01 */ nes_cpu_instruction_boundary(0xBCBA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
 label_BCBC:;
-    /* $BCBC: A8 */ nes_cpu_instruction_boundary(0xBCBC, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+    /* $BCBC: 02 */ nes_cpu_instruction_boundary(0xBCBC, 2); /* ILLEGAL $02 — skip 1 */
 label_BCBD:;
-    /* $BCBD: 20 */ nes_cpu_instruction_boundary(0xBCBD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xBF; g_cpu.S--; func_BA14_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBCBD, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BCC0:;
-    /* $BCC0: 20 */ nes_cpu_instruction_boundary(0xBCC0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC2; g_cpu.S--; func_BF62_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBCC0, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
+    /* $BCBD: 03 */ nes_cpu_instruction_boundary(0xBCBD, 8); { uint16_t a=nes_read16zp((0x03 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCBF:;
+    /* $BCBF: 04 */ nes_cpu_instruction_boundary(0xBCBF, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
+label_BCC1:;
+    /* $BCC1: 06 */ nes_cpu_instruction_boundary(0xBCC1, 5); { uint16_t a=0x07; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_BCC3:;
-    /* $BCC3: 4C */ nes_cpu_instruction_boundary(0xBCC3, 3); nes_cpu_instruction_boundary(0xBAD5, 2); func_BAD5_b5(); return;
+    /* $BCC3: 08 */ nes_cpu_instruction_boundary(0xBCC3, 3); { uint8_t p = (g_cpu.N<<7)|(g_cpu.V<<6)|0x30|(g_cpu.D<<3)|(g_cpu.I<<2)|(g_cpu.Z<<1)|g_cpu.C;
+  g_ram[0x100 + g_cpu.S] = p; g_cpu.S--; }
+label_BCC4:;
+    /* $BCC4: FF */ nes_cpu_instruction_boundary(0xBCC4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
+label_BCC7:;
+    /* $BCC7: 05 */ nes_cpu_instruction_boundary(0xBCC7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
+label_BCC9:;
+    /* $BCC9: 07 */ nes_cpu_instruction_boundary(0xBCC9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCB:;
+    /* $BCCB: 07 */ nes_cpu_instruction_boundary(0xBCCB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCD:;
+    /* $BCCD: 05 */ nes_cpu_instruction_boundary(0xBCCD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
+label_BCCF:; /* VolumeEnvelope3 */
+    /* $BCCF: 00 */ nes_cpu_instruction_boundary(0xBCCF, 7); nes_brk_executed(0xBCCF); return;
 }
 
-void func_BCCE_b5(void) { /* Music05Init */
+void func_BC9A_b5(void) { /* Music02Init */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCCE_b5");
+    recomp_stack_push("func_BC9A_b5");
 #endif
-label_BCCE:; /* Music05Init */
-    /* $BCCE: A2 */ nes_cpu_instruction_boundary(0xBCCE, 2); g_cpu.X = 0xF5; FLAG_NZ(g_cpu.X);
-label_BCD0:;
-    /* $BCD0: A0 */ nes_cpu_instruction_boundary(0xBCD0, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD2:;
-    /* $BCD2: D0 */ nes_cpu_instruction_boundary(0xBCD2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCD4:; /* Music01Init */
-    /* $BCD4: A2 */ nes_cpu_instruction_boundary(0xBCD4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
-label_BCD6:;
-    /* $BCD6: A0 */ nes_cpu_instruction_boundary(0xBCD6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
-label_BCD8:;
-    /* $BCD8: D0 */ nes_cpu_instruction_boundary(0xBCD8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCDA:; /* Music00Init */
-    /* $BCDA: A2 */ nes_cpu_instruction_boundary(0xBCDA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
-label_BCDC:;
-    /* $BCDC: A0 */ nes_cpu_instruction_boundary(0xBCDC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
-label_BCDE:;
-    /* $BCDE: D0 */ nes_cpu_instruction_boundary(0xBCDE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBCBD); return; }
-label_BCE0:; /* VolumeEnvelopePtrTable */
-    /* $BCE0: EA */ nes_cpu_instruction_boundary(0xBCE0, 2); /* NOP */
-label_BCE1:;
-    /* $BCE1: BC */ nes_cpu_instruction_boundary(0xBCE1, 4); g_cpu.Y = nes_read((0xBCF5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BCE4:;
-    /* $BCE4: FF */ nes_cpu_instruction_boundary(0xBCE4, 7); { uint16_t a=(0x0ABC + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCE7:;
-    /* $BCE7: BD */ nes_cpu_instruction_boundary(0xBCE7, 4); g_cpu.A = nes_read((0xBD33 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BCEA:; /* VolumeEnvelope1 */
-    /* $BCEA: 01 */ nes_cpu_instruction_boundary(0xBCEA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
-label_BCEC:;
-    /* $BCEC: 03 */ nes_cpu_instruction_boundary(0xBCEC, 8); { uint16_t a=nes_read16zp((0x04 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCEE:;
-    /* $BCEE: 04 */ nes_cpu_instruction_boundary(0xBCEE, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
-label_BCF0:;
-    /* $BCF0: 06 */ nes_cpu_instruction_boundary(0xBCF0, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BCF2:;
-    /* $BCF2: 07 */ nes_cpu_instruction_boundary(0xBCF2, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCF4:;
-    /* $BCF4: FF */ nes_cpu_instruction_boundary(0xBCF4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_BCF7:;
-    /* $BCF7: 05 */ nes_cpu_instruction_boundary(0xBCF7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
-label_BCF9:;
-    /* $BCF9: 07 */ nes_cpu_instruction_boundary(0xBCF9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFB:;
-    /* $BCFB: 07 */ nes_cpu_instruction_boundary(0xBCFB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_BCFD:;
-    /* $BCFD: 05 */ nes_cpu_instruction_boundary(0xBCFD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
-label_BCFF:; /* VolumeEnvelope3 */
-    /* $BCFF: 00 */ nes_cpu_instruction_boundary(0xBCFF, 7); nes_brk_executed(0xBCFF); return;
+label_BC9A:; /* Music02Init */
+    /* $BC9A: A9 */ nes_cpu_instruction_boundary(0xBC9A, 2); g_cpu.A = 0xF4; FLAG_NZ(g_cpu.A);
+label_BC9C:;
+    /* $BC9C: D0 */ nes_cpu_instruction_boundary(0xBC9C, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8B); return; }
+label_BC9E:; /* Music05Init */
+    /* $BC9E: A2 */ nes_cpu_instruction_boundary(0xBC9E, 2); g_cpu.X = 0xF5; FLAG_NZ(g_cpu.X);
+label_BCA0:;
+    /* $BCA0: A0 */ nes_cpu_instruction_boundary(0xBCA0, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA2:;
+    /* $BCA2: D0 */ nes_cpu_instruction_boundary(0xBCA2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCA4:; /* Music01Init */
+    /* $BCA4: A2 */ nes_cpu_instruction_boundary(0xBCA4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BCA6:;
+    /* $BCA6: A0 */ nes_cpu_instruction_boundary(0xBCA6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA8:;
+    /* $BCA8: D0 */ nes_cpu_instruction_boundary(0xBCA8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCAA:; /* Music00Init */
+    /* $BCAA: A2 */ nes_cpu_instruction_boundary(0xBCAA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
+label_BCAC:;
+    /* $BCAC: A0 */ nes_cpu_instruction_boundary(0xBCAC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
+label_BCAE:;
+    /* $BCAE: D0 */ nes_cpu_instruction_boundary(0xBCAE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCB0:; /* VolumeEnvelopePtrTable */
+    /* $BCB0: BA */ nes_cpu_instruction_boundary(0xBCB0, 2); g_cpu.X = g_cpu.S; FLAG_NZ(g_cpu.X);
+label_BCB1:;
+    /* $BCB1: BC */ nes_cpu_instruction_boundary(0xBCB1, 4); g_cpu.Y = nes_read((0xBCC5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCB4:;
+    /* $BCB4: CF */ nes_cpu_instruction_boundary(0xBCB4, 6); { uint16_t a=0xDABC; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); g_cpu.C=(g_cpu.A>=v)?1:0; FLAG_NZ((uint8_t)(g_cpu.A-v)); }
+label_BCB7:;
+    /* $BCB7: BC */ nes_cpu_instruction_boundary(0xBCB7, 4); g_cpu.Y = nes_read((0xBD03 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCBA:; /* VolumeEnvelope1 */
+    /* $BCBA: 01 */ nes_cpu_instruction_boundary(0xBCBA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
+label_BCBC:;
+    /* $BCBC: 02 */ nes_cpu_instruction_boundary(0xBCBC, 2); /* ILLEGAL $02 — skip 1 */
+label_BCBD:;
+    /* $BCBD: 03 */ nes_cpu_instruction_boundary(0xBCBD, 8); { uint16_t a=nes_read16zp((0x03 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCBF:;
+    /* $BCBF: 04 */ nes_cpu_instruction_boundary(0xBCBF, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
+label_BCC1:;
+    /* $BCC1: 06 */ nes_cpu_instruction_boundary(0xBCC1, 5); { uint16_t a=0x07; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BCC3:;
+    /* $BCC3: 08 */ nes_cpu_instruction_boundary(0xBCC3, 3); { uint8_t p = (g_cpu.N<<7)|(g_cpu.V<<6)|0x30|(g_cpu.D<<3)|(g_cpu.I<<2)|(g_cpu.Z<<1)|g_cpu.C;
+  g_ram[0x100 + g_cpu.S] = p; g_cpu.S--; }
+label_BCC4:;
+    /* $BCC4: FF */ nes_cpu_instruction_boundary(0xBCC4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
+label_BCC7:;
+    /* $BCC7: 05 */ nes_cpu_instruction_boundary(0xBCC7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
+label_BCC9:;
+    /* $BCC9: 07 */ nes_cpu_instruction_boundary(0xBCC9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCB:;
+    /* $BCCB: 07 */ nes_cpu_instruction_boundary(0xBCCB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCD:;
+    /* $BCCD: 05 */ nes_cpu_instruction_boundary(0xBCCD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
+label_BCCF:; /* VolumeEnvelope3 */
+    /* $BCCF: 00 */ nes_cpu_instruction_boundary(0xBCCF, 7); nes_brk_executed(0xBCCF); return;
 }
 
-void func_BA14_b5(void) { /* SetVolumeAndDisableSweep */
+void func_BC96_b5(void) { /* Music03Init */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BA14_b5");
+    recomp_stack_push("func_BC96_b5");
 #endif
-label_BA14:; /* SetVolumeAndDisableSweep */
-    /* $BA14: A9 */ nes_cpu_instruction_boundary(0xBA14, 2); g_cpu.A = 0x7F; FLAG_NZ(g_cpu.A);
-label_BA16:;
-    /* $BA16: 8D */ nes_cpu_instruction_boundary(0xBA16, 4); nes_write(0x0648, g_cpu.A);
-label_BA19:;
-    /* $BA19: 8D */ nes_cpu_instruction_boundary(0xBA19, 4); nes_write(0x0649, g_cpu.A);
-label_BA1C:;
-    /* $BA1C: 8E */ nes_cpu_instruction_boundary(0xBA1C, 4); nes_write(0x0628, g_cpu.X);
-label_BA1F:;
-    /* $BA1F: 8C */ nes_cpu_instruction_boundary(0xBA1F, 4); nes_write(0x0629, g_cpu.Y);
-label_BA22:;
-    /* $BA22: 60 */ nes_cpu_instruction_boundary(0xBA22, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_BC96:; /* Music03Init */
+    /* $BC96: A9 */ nes_cpu_instruction_boundary(0xBC96, 2); g_cpu.A = 0x34; FLAG_NZ(g_cpu.A);
+label_BC98:;
+    /* $BC98: D0 */ nes_cpu_instruction_boundary(0xBC98, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8B); return; }
+label_BC9A:; /* Music02Init */
+    /* $BC9A: A9 */ nes_cpu_instruction_boundary(0xBC9A, 2); g_cpu.A = 0xF4; FLAG_NZ(g_cpu.A);
+label_BC9C:;
+    /* $BC9C: D0 */ nes_cpu_instruction_boundary(0xBC9C, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8B); return; }
+label_BC9E:; /* Music05Init */
+    /* $BC9E: A2 */ nes_cpu_instruction_boundary(0xBC9E, 2); g_cpu.X = 0xF5; FLAG_NZ(g_cpu.X);
+label_BCA0:;
+    /* $BCA0: A0 */ nes_cpu_instruction_boundary(0xBCA0, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA2:;
+    /* $BCA2: D0 */ nes_cpu_instruction_boundary(0xBCA2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCA4:; /* Music01Init */
+    /* $BCA4: A2 */ nes_cpu_instruction_boundary(0xBCA4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BCA6:;
+    /* $BCA6: A0 */ nes_cpu_instruction_boundary(0xBCA6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA8:;
+    /* $BCA8: D0 */ nes_cpu_instruction_boundary(0xBCA8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCAA:; /* Music00Init */
+    /* $BCAA: A2 */ nes_cpu_instruction_boundary(0xBCAA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
+label_BCAC:;
+    /* $BCAC: A0 */ nes_cpu_instruction_boundary(0xBCAC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
+label_BCAE:;
+    /* $BCAE: D0 */ nes_cpu_instruction_boundary(0xBCAE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCB0:; /* VolumeEnvelopePtrTable */
+    /* $BCB0: BA */ nes_cpu_instruction_boundary(0xBCB0, 2); g_cpu.X = g_cpu.S; FLAG_NZ(g_cpu.X);
+label_BCB1:;
+    /* $BCB1: BC */ nes_cpu_instruction_boundary(0xBCB1, 4); g_cpu.Y = nes_read((0xBCC5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCB4:;
+    /* $BCB4: CF */ nes_cpu_instruction_boundary(0xBCB4, 6); { uint16_t a=0xDABC; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); g_cpu.C=(g_cpu.A>=v)?1:0; FLAG_NZ((uint8_t)(g_cpu.A-v)); }
+label_BCB7:;
+    /* $BCB7: BC */ nes_cpu_instruction_boundary(0xBCB7, 4); g_cpu.Y = nes_read((0xBD03 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCBA:; /* VolumeEnvelope1 */
+    /* $BCBA: 01 */ nes_cpu_instruction_boundary(0xBCBA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
+label_BCBC:;
+    /* $BCBC: 02 */ nes_cpu_instruction_boundary(0xBCBC, 2); /* ILLEGAL $02 — skip 1 */
+label_BCBD:;
+    /* $BCBD: 03 */ nes_cpu_instruction_boundary(0xBCBD, 8); { uint16_t a=nes_read16zp((0x03 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCBF:;
+    /* $BCBF: 04 */ nes_cpu_instruction_boundary(0xBCBF, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
+label_BCC1:;
+    /* $BCC1: 06 */ nes_cpu_instruction_boundary(0xBCC1, 5); { uint16_t a=0x07; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BCC3:;
+    /* $BCC3: 08 */ nes_cpu_instruction_boundary(0xBCC3, 3); { uint8_t p = (g_cpu.N<<7)|(g_cpu.V<<6)|0x30|(g_cpu.D<<3)|(g_cpu.I<<2)|(g_cpu.Z<<1)|g_cpu.C;
+  g_ram[0x100 + g_cpu.S] = p; g_cpu.S--; }
+label_BCC4:;
+    /* $BCC4: FF */ nes_cpu_instruction_boundary(0xBCC4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
+label_BCC7:;
+    /* $BCC7: 05 */ nes_cpu_instruction_boundary(0xBCC7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
+label_BCC9:;
+    /* $BCC9: 07 */ nes_cpu_instruction_boundary(0xBCC9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCB:;
+    /* $BCCB: 07 */ nes_cpu_instruction_boundary(0xBCCB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCD:;
+    /* $BCCD: 05 */ nes_cpu_instruction_boundary(0xBCCD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
+label_BCCF:; /* VolumeEnvelope3 */
+    /* $BCCF: 00 */ nes_cpu_instruction_boundary(0xBCCF, 7); nes_brk_executed(0xBCCF); return;
+}
+
+void func_BC89_b5(void) { /* Music04Init */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BC89_b5");
+#endif
+label_BC89:; /* Music04Init */
+    /* $BC89: A9 */ nes_cpu_instruction_boundary(0xBC89, 2); g_cpu.A = 0xB3; FLAG_NZ(g_cpu.A);
+label_BC8B:; /* XYMusicInit */
+    /* $BC8B: AA */ nes_cpu_instruction_boundary(0xBC8B, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BC8C:;
+    /* $BC8C: A8 */ nes_cpu_instruction_boundary(0xBC8C, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BC8D:;
+    /* $BC8D: 20 */ nes_cpu_instruction_boundary(0xBC8D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x8F; g_cpu.S--; func_B9E4_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBC8D, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BC90:;
+    /* $BC90: 20 */ nes_cpu_instruction_boundary(0xBC90, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x92; g_cpu.S--; func_BF19_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBC90, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BC93:;
+    /* $BC93: 4C */ nes_cpu_instruction_boundary(0xBC93, 3); nes_cpu_instruction_boundary(0xBAA5, 2); func_BAA5_b5(); return;
+}
+
+void func_BC9E_b5(void) { /* Music05Init */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BC9E_b5");
+#endif
+label_BC9E:; /* Music05Init */
+    /* $BC9E: A2 */ nes_cpu_instruction_boundary(0xBC9E, 2); g_cpu.X = 0xF5; FLAG_NZ(g_cpu.X);
+label_BCA0:;
+    /* $BCA0: A0 */ nes_cpu_instruction_boundary(0xBCA0, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA2:;
+    /* $BCA2: D0 */ nes_cpu_instruction_boundary(0xBCA2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCA4:; /* Music01Init */
+    /* $BCA4: A2 */ nes_cpu_instruction_boundary(0xBCA4, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BCA6:;
+    /* $BCA6: A0 */ nes_cpu_instruction_boundary(0xBCA6, 2); g_cpu.Y = 0xF6; FLAG_NZ(g_cpu.Y);
+label_BCA8:;
+    /* $BCA8: D0 */ nes_cpu_instruction_boundary(0xBCA8, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCAA:; /* Music00Init */
+    /* $BCAA: A2 */ nes_cpu_instruction_boundary(0xBCAA, 2); g_cpu.X = 0x92; FLAG_NZ(g_cpu.X);
+label_BCAC:;
+    /* $BCAC: A0 */ nes_cpu_instruction_boundary(0xBCAC, 2); g_cpu.Y = 0x96; FLAG_NZ(g_cpu.Y);
+label_BCAE:;
+    /* $BCAE: D0 */ nes_cpu_instruction_boundary(0xBCAE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBC8D); return; }
+label_BCB0:; /* VolumeEnvelopePtrTable */
+    /* $BCB0: BA */ nes_cpu_instruction_boundary(0xBCB0, 2); g_cpu.X = g_cpu.S; FLAG_NZ(g_cpu.X);
+label_BCB1:;
+    /* $BCB1: BC */ nes_cpu_instruction_boundary(0xBCB1, 4); g_cpu.Y = nes_read((0xBCC5 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCB4:;
+    /* $BCB4: CF */ nes_cpu_instruction_boundary(0xBCB4, 6); { uint16_t a=0xDABC; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); g_cpu.C=(g_cpu.A>=v)?1:0; FLAG_NZ((uint8_t)(g_cpu.A-v)); }
+label_BCB7:;
+    /* $BCB7: BC */ nes_cpu_instruction_boundary(0xBCB7, 4); g_cpu.Y = nes_read((0xBD03 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BCBA:; /* VolumeEnvelope1 */
+    /* $BCBA: 01 */ nes_cpu_instruction_boundary(0xBCBA, 6); g_cpu.A |= nes_read(nes_read16zp((0x02 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
+label_BCBC:;
+    /* $BCBC: 02 */ nes_cpu_instruction_boundary(0xBCBC, 2); /* ILLEGAL $02 — skip 1 */
+label_BCBD:;
+    /* $BCBD: 03 */ nes_cpu_instruction_boundary(0xBCBD, 8); { uint16_t a=nes_read16zp((0x03 + g_cpu.X) & 0xFF); uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCBF:;
+    /* $BCBF: 04 */ nes_cpu_instruction_boundary(0xBCBF, 3); (void)nes_read(0x05); /* NOP* (unofficial DOP/TOP read, result discarded) */
+label_BCC1:;
+    /* $BCC1: 06 */ nes_cpu_instruction_boundary(0xBCC1, 5); { uint16_t a=0x07; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BCC3:;
+    /* $BCC3: 08 */ nes_cpu_instruction_boundary(0xBCC3, 3); { uint8_t p = (g_cpu.N<<7)|(g_cpu.V<<6)|0x30|(g_cpu.D<<3)|(g_cpu.I<<2)|(g_cpu.Z<<1)|g_cpu.C;
+  g_ram[0x100 + g_cpu.S] = p; g_cpu.S--; }
+label_BCC4:;
+    /* $BCC4: FF */ nes_cpu_instruction_boundary(0xBCC4, 7); { uint16_t a=(0x0402 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
+label_BCC7:;
+    /* $BCC7: 05 */ nes_cpu_instruction_boundary(0xBCC7, 3); g_cpu.A |= nes_read(0x06); FLAG_NZ(g_cpu.A);
+label_BCC9:;
+    /* $BCC9: 07 */ nes_cpu_instruction_boundary(0xBCC9, 5); { uint16_t a=0x08; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCB:;
+    /* $BCCB: 07 */ nes_cpu_instruction_boundary(0xBCCB, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_BCCD:;
+    /* $BCCD: 05 */ nes_cpu_instruction_boundary(0xBCCD, 3); g_cpu.A |= nes_read(0xFF); FLAG_NZ(g_cpu.A);
+label_BCCF:; /* VolumeEnvelope3 */
+    /* $BCCF: 00 */ nes_cpu_instruction_boundary(0xBCCF, 7); nes_brk_executed(0xBCCF); return;
+}
+
+void func_B9E4_b5(void) { /* SetVolumeAndDisableSweep */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B9E4_b5");
+#endif
+label_B9E4:; /* SetVolumeAndDisableSweep */
+    /* $B9E4: A9 */ nes_cpu_instruction_boundary(0xB9E4, 2); g_cpu.A = 0x7F; FLAG_NZ(g_cpu.A);
+label_B9E6:;
+    /* $B9E6: 8D */ nes_cpu_instruction_boundary(0xB9E6, 4); nes_write(0x0648, g_cpu.A);
+label_B9E9:;
+    /* $B9E9: 8D */ nes_cpu_instruction_boundary(0xB9E9, 4); nes_write(0x0649, g_cpu.A);
+label_B9EC:;
+    /* $B9EC: 8E */ nes_cpu_instruction_boundary(0xB9EC, 4); nes_write(0x0628, g_cpu.X);
+label_B9EF:;
+    /* $B9EF: 8C */ nes_cpu_instruction_boundary(0xB9EF, 4); nes_write(0x0629, g_cpu.Y);
+label_B9F2:;
+    /* $B9F2: 60 */ nes_cpu_instruction_boundary(0xB9F2, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -11103,33 +11233,165 @@ label_BA22:;
     return;
 }
 
-void func_BF62_b5(void) { /* InitializeMusic */
+void func_BF19_b5(void) { /* InitializeMusic */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BF62_b5");
+    recomp_stack_push("func_BF19_b5");
 #endif
-label_BF62:; /* InitializeMusic */
-    /* $BF62: 20 */ nes_cpu_instruction_boundary(0xBF62, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBF; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x64; g_cpu.S--; func_B42C_b5();
+label_BF19:; /* InitializeMusic */
+    /* $BF19: 20 */ nes_cpu_instruction_boundary(0xBF19, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBF; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x1B; g_cpu.S--; func_B3FC_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBF62, _cbs);
+    bail_trace(0xBF19, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BF65:;
-    /* $BF65: AD */ nes_cpu_instruction_boundary(0xBF65, 4); g_cpu.A = nes_read(0x064D); FLAG_NZ(g_cpu.A);
-label_BF68:;
-    /* $BF68: 8D */ nes_cpu_instruction_boundary(0xBF68, 4); nes_write(0x068D, g_cpu.A);
-label_BF6B:;
-    /* $BF6B: AD */ nes_cpu_instruction_boundary(0xBF6B, 4); g_cpu.A = nes_read(0x065E); FLAG_NZ(g_cpu.A);
-label_BF6E:;
-    /* $BF6E: A8 */ nes_cpu_instruction_boundary(0xBF6E, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BF1C:;
+    /* $BF1C: AD */ nes_cpu_instruction_boundary(0xBF1C, 4); g_cpu.A = nes_read(0x064D); FLAG_NZ(g_cpu.A);
+label_BF1F:;
+    /* $BF1F: 8D */ nes_cpu_instruction_boundary(0xBF1F, 4); nes_write(0x068D, g_cpu.A);
+label_BF22:;
+    /* $BF22: AD */ nes_cpu_instruction_boundary(0xBF22, 4); g_cpu.A = nes_read(0x065E); FLAG_NZ(g_cpu.A);
+label_BF25:;
+    /* $BF25: A8 */ nes_cpu_instruction_boundary(0xBF25, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BF26:;
+    /* $BF26: B9 */ nes_cpu_instruction_boundary(0xBF26, 4); g_cpu.A = nes_read((0xBBFA + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BF29:;
+    /* $BF29: A8 */ nes_cpu_instruction_boundary(0xBF29, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BF2A:;
+    /* $BF2A: A2 */ nes_cpu_instruction_boundary(0xBF2A, 2); g_cpu.X = 0x00; FLAG_NZ(g_cpu.X);
+label_BF2C:; /* InitializeMusic_loop */
+    /* $BF2C: B9 */ nes_cpu_instruction_boundary(0xBF2C, 4); g_cpu.A = nes_read((0xBD31 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BF2F:;
+    /* $BF2F: 9D */ nes_cpu_instruction_boundary(0xBF2F, 5); nes_write((0x062B + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BF32:;
+    /* $BF32: C8 */ nes_cpu_instruction_boundary(0xBF32, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_BF33:;
+    /* $BF33: E8 */ nes_cpu_instruction_boundary(0xBF33, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+label_BF34:;
+    /* $BF34: 8A */ nes_cpu_instruction_boundary(0xBF34, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BF35:;
+    /* $BF35: C9 */ nes_cpu_instruction_boundary(0xBF35, 2); { int r=g_cpu.A-0x0D; g_cpu.C=(g_cpu.A>=0x0D)?1:0; FLAG_NZ(r&0xFF); }
+label_BF37:;
+    /* $BF37: D0 */ nes_cpu_instruction_boundary(0xBF37, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBF2C, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BF2C;
+    }
+label_BF39:;
+    /* $BF39: A9 */ nes_cpu_instruction_boundary(0xBF39, 2); g_cpu.A = 0x01; FLAG_NZ(g_cpu.A);
+label_BF3B:;
+    /* $BF3B: 8D */ nes_cpu_instruction_boundary(0xBF3B, 4); nes_write(0x0640, g_cpu.A);
+label_BF3E:;
+    /* $BF3E: 8D */ nes_cpu_instruction_boundary(0xBF3E, 4); nes_write(0x0641, g_cpu.A);
+label_BF41:;
+    /* $BF41: 8D */ nes_cpu_instruction_boundary(0xBF41, 4); nes_write(0x0642, g_cpu.A);
+label_BF44:;
+    /* $BF44: 8D */ nes_cpu_instruction_boundary(0xBF44, 4); nes_write(0x0643, g_cpu.A);
+label_BF47:;
+    /* $BF47: A9 */ nes_cpu_instruction_boundary(0xBF47, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BF49:;
+    /* $BF49: 8D */ nes_cpu_instruction_boundary(0xBF49, 4); nes_write(0x0638, g_cpu.A);
+label_BF4C:;
+    /* $BF4C: 8D */ nes_cpu_instruction_boundary(0xBF4C, 4); nes_write(0x0639, g_cpu.A);
+label_BF4F:;
+    /* $BF4F: 8D */ nes_cpu_instruction_boundary(0xBF4F, 4); nes_write(0x063A, g_cpu.A);
+label_BF52:;
+    /* $BF52: 8D */ nes_cpu_instruction_boundary(0xBF52, 4); nes_write(0x063B, g_cpu.A);
+label_BF55:;
+    /* $BF55: 60 */ nes_cpu_instruction_boundary(0xBF55, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_BF1B_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BF1B_b5");
+#endif
+label_BF1B:;
+    /* $BF1B: B3 */ nes_cpu_instruction_boundary(0xBF1B, 5); g_cpu.A = g_cpu.X = nes_read((nes_read16zp(0xAD) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BF1D:;
+    /* $BF1D: 4D */ nes_cpu_instruction_boundary(0xBF1D, 4); g_cpu.A ^= nes_read(0x8D06); FLAG_NZ(g_cpu.A);
+label_BF20:;
+    /* $BF20: 8D */ nes_cpu_instruction_boundary(0xBF20, 4); nes_write(0xAD06, g_cpu.A);
+label_BF23:;
+    /* $BF23: 5E */ nes_cpu_instruction_boundary(0xBF23, 7); { uint16_t a=(0xA806 + g_cpu.X) & 0xFFFF; uint8_t v=nes_read(a); g_cpu.C=v&1; v>>=1; nes_write(a,v); FLAG_NZ(v); }
+label_BF26:;
+    /* $BF26: B9 */ nes_cpu_instruction_boundary(0xBF26, 4); g_cpu.A = nes_read((0xBBFA + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BF29:;
+    /* $BF29: A8 */ nes_cpu_instruction_boundary(0xBF29, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BF2A:;
+    /* $BF2A: A2 */ nes_cpu_instruction_boundary(0xBF2A, 2); g_cpu.X = 0x00; FLAG_NZ(g_cpu.X);
+label_BF2C:; /* InitializeMusic_loop */
+    /* $BF2C: B9 */ nes_cpu_instruction_boundary(0xBF2C, 4); g_cpu.A = nes_read((0xBD31 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BF2F:;
+    /* $BF2F: 9D */ nes_cpu_instruction_boundary(0xBF2F, 5); nes_write((0x062B + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BF32:;
+    /* $BF32: C8 */ nes_cpu_instruction_boundary(0xBF32, 2); g_cpu.Y = (g_cpu.Y+1)&0xFF; FLAG_NZ(g_cpu.Y);
+label_BF33:;
+    /* $BF33: E8 */ nes_cpu_instruction_boundary(0xBF33, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+label_BF34:;
+    /* $BF34: 8A */ nes_cpu_instruction_boundary(0xBF34, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BF35:;
+    /* $BF35: C9 */ nes_cpu_instruction_boundary(0xBF35, 2); { int r=g_cpu.A-0x0D; g_cpu.C=(g_cpu.A>=0x0D)?1:0; FLAG_NZ(r&0xFF); }
+label_BF37:;
+    /* $BF37: D0 */ nes_cpu_instruction_boundary(0xBF37, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBF2C, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
+#endif
+    goto label_BF2C;
+    }
+label_BF39:;
+    /* $BF39: A9 */ nes_cpu_instruction_boundary(0xBF39, 2); g_cpu.A = 0x01; FLAG_NZ(g_cpu.A);
+label_BF3B:;
+    /* $BF3B: 8D */ nes_cpu_instruction_boundary(0xBF3B, 4); nes_write(0x0640, g_cpu.A);
+label_BF3E:;
+    /* $BF3E: 8D */ nes_cpu_instruction_boundary(0xBF3E, 4); nes_write(0x0641, g_cpu.A);
+label_BF41:;
+    /* $BF41: 8D */ nes_cpu_instruction_boundary(0xBF41, 4); nes_write(0x0642, g_cpu.A);
+label_BF44:;
+    /* $BF44: 8D */ nes_cpu_instruction_boundary(0xBF44, 4); nes_write(0x0643, g_cpu.A);
+label_BF47:;
+    /* $BF47: A9 */ nes_cpu_instruction_boundary(0xBF47, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_BF49:;
+    /* $BF49: 8D */ nes_cpu_instruction_boundary(0xBF49, 4); nes_write(0x0638, g_cpu.A);
+label_BF4C:;
+    /* $BF4C: 8D */ nes_cpu_instruction_boundary(0xBF4C, 4); nes_write(0x0639, g_cpu.A);
+label_BF4F:;
+    /* $BF4F: 8D */ nes_cpu_instruction_boundary(0xBF4F, 4); nes_write(0x063A, g_cpu.A);
+label_BF52:;
+    /* $BF52: 8D */ nes_cpu_instruction_boundary(0xBF52, 4); nes_write(0x063B, g_cpu.A);
+label_BF55:;
+    /* $BF55: 60 */ nes_cpu_instruction_boundary(0xBF55, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_BF67_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BF67_b5");
+#endif
+label_BF67:;
+    /* $BF67: 06 */ nes_cpu_instruction_boundary(0xBF67, 5); { uint16_t a=0x8D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BF69:;
+    /* $BF69: 8D */ nes_cpu_instruction_boundary(0xBF69, 4); nes_write(0xAD06, g_cpu.A);
+label_BF6C:;
+    /* $BF6C: 5E */ nes_cpu_instruction_boundary(0xBF6C, 7); { uint16_t a=(0xA806 + g_cpu.X) & 0xFFFF; uint8_t v=nes_read(a); g_cpu.C=v&1; v>>=1; nes_write(a,v); FLAG_NZ(v); }
 label_BF6F:;
     /* $BF6F: B9 */ nes_cpu_instruction_boundary(0xBF6F, 4); g_cpu.A = nes_read((0xBC2A + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BF72:;
     /* $BF72: A8 */ nes_cpu_instruction_boundary(0xBF72, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
 label_BF73:;
     /* $BF73: A2 */ nes_cpu_instruction_boundary(0xBF73, 2); g_cpu.X = 0x00; FLAG_NZ(g_cpu.X);
-label_BF75:; /* InitializeMusic_loop */
+label_BF75:;
     /* $BF75: B9 */ nes_cpu_instruction_boundary(0xBF75, 4); g_cpu.A = nes_read((0xBD61 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BF78:;
     /* $BF78: 9D */ nes_cpu_instruction_boundary(0xBF78, 5); nes_write((0x062B + g_cpu.X) & 0xFFFF, g_cpu.A);
@@ -11178,12 +11440,80 @@ label_BF9E:;
     return;
 }
 
-void func_B91C_b5(void) { /* SamusDieSFXInit_RTS */
+void func_B17E_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B91C_b5");
+    recomp_stack_push("func_B17E_b5");
 #endif
-label_B91C:; /* SamusDieSFXInit_RTS */
-    /* $B91C: 60 */ nes_cpu_instruction_boundary(0xB91C, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B17E:;
+    /* $B17E: 28 */ nes_cpu_instruction_boundary(0xB17E, 4); { g_cpu.S++; uint8_t p = g_ram[0x100 + g_cpu.S];
+  g_cpu.N=(p>>7)&1; g_cpu.V=(p>>6)&1; g_cpu.D=(p>>3)&1;
+  g_cpu.I=(p>>2)&1; g_cpu.Z=(p>>1)&1; g_cpu.C=p&1; }
+label_B17F:;
+    /* $B17F: 2E */ nes_cpu_instruction_boundary(0xB17F, 6); { uint16_t a=0x1802; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B182:;
+    /* $B182: 44 */ nes_cpu_instruction_boundary(0xB182, 3); (void)nes_read(0x02); /* NOP* (unofficial DOP/TOP read, result discarded) */
+label_B184:;
+    /* $B184: 46 */ nes_cpu_instruction_boundary(0xB184, 5); { uint16_t a=0x48; uint8_t v=nes_read(a); g_cpu.C=v&1; v>>=1; nes_write(a,v); FLAG_NZ(v); }
+label_B186:;
+    /* $B186: 4A */ nes_cpu_instruction_boundary(0xB186, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_B187:;
+    /* $B187: 4C */ nes_cpu_instruction_boundary(0xB187, 3); nes_cpu_instruction_boundary(0x1802, 2); call_by_address_tail(0x1802, -1); return;
+}
+
+void func_8006_b5(void) { /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_8006_b5");
+#endif
+label_8006:; /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+    /* $8006: 4C */ nes_cpu_instruction_boundary(0x8006, 3); nes_cpu_instruction_boundary(0xF416, 2); func_F416(); return;
+}
+
+void func_80C1_b5(void) { /* EnemyIfMoveFailedUp_bounce */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_80C1_b5");
+#endif
+label_80C1:; /* EnemyIfMoveFailedUp_bounce */
+    /* $80C1: 20 */ nes_cpu_instruction_boundary(0x80C1, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x80; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC3; g_cpu.S--; func_81FC_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0x80C1, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_80C4:;
+    /* $80C4: 4C */ nes_cpu_instruction_boundary(0x80C4, 3); nes_cpu_instruction_boundary(0x80F6, 2); func_80F6_b5(); return;
+}
+
+void func_BB19_b5(void) { /* GotoUpdateMusicTriLinearCount */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BB19_b5");
+#endif
+label_BB19:; /* GotoUpdateMusicTriLinearCount */
+    /* $BB19: 4C */ nes_cpu_instruction_boundary(0xBB19, 3); nes_cpu_instruction_boundary(0xBBB7, 2); func_BBB7_b5(); return;
+}
+
+void func_BB16_b5(void) { /* GotoMusicChannelInstr_SongNoteNoise */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BB16_b5");
+#endif
+label_BB16:; /* GotoMusicChannelInstr_SongNoteNoise */
+    /* $BB16: 4C */ nes_cpu_instruction_boundary(0xBB16, 3); nes_cpu_instruction_boundary(0xBBDE, 2); func_BBDE_b5(); return;
+}
+
+void func_BA9D_b5(void) { /* GotoEndOrLoopMusic */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BA9D_b5");
+#endif
+label_BA9D:; /* GotoEndOrLoopMusic */
+    /* $BA9D: 20 */ nes_cpu_instruction_boundary(0xBA9D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x9F; g_cpu.S--; func_B3F0_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xBA9D, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_BAA0:;
+    /* $BAA0: 60 */ nes_cpu_instruction_boundary(0xBAA0, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -11191,36 +11521,20 @@ label_B91C:; /* SamusDieSFXInit_RTS */
     return;
 }
 
-void func_BB49_b5(void) { /* GotoUpdateMusicTriLinearCount */
+void func_BAA1_b5(void) { /* GotoUpdateAllVolumeEnvelopes */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BB49_b5");
+    recomp_stack_push("func_BAA1_b5");
 #endif
-label_BB49:; /* GotoUpdateMusicTriLinearCount */
-    /* $BB49: 4C */ nes_cpu_instruction_boundary(0xBB49, 3); nes_cpu_instruction_boundary(0xBBE7, 2); func_BBE7_b5(); return;
-}
-
-void func_BB46_b5(void) { /* GotoMusicChannelInstr_SongNoteNoise */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BB46_b5");
-#endif
-label_BB46:; /* GotoMusicChannelInstr_SongNoteNoise */
-    /* $BB46: 4C */ nes_cpu_instruction_boundary(0xBB46, 3); nes_cpu_instruction_boundary(0xBC0E, 2); func_BC0E_b5(); return;
-}
-
-void func_BACD_b5(void) { /* GotoEndOrLoopMusic */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BACD_b5");
-#endif
-label_BACD:; /* GotoEndOrLoopMusic */
-    /* $BACD: 20 */ nes_cpu_instruction_boundary(0xBACD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xCF; g_cpu.S--; func_B420_b5();
+label_BAA1:; /* GotoUpdateAllVolumeEnvelopes */
+    /* $BAA1: 20 */ nes_cpu_instruction_boundary(0xBAA1, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA3; g_cpu.S--; func_BA37_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBACD, _cbs);
+    bail_trace(0xBAA1, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BAD0:;
-    /* $BAD0: 60 */ nes_cpu_instruction_boundary(0xBAD0, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_BAA4:;
+    /* $BAA4: 60 */ nes_cpu_instruction_boundary(0xBAA4, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -11228,232 +11542,211 @@ label_BAD0:;
     return;
 }
 
-void func_BAD1_b5(void) { /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b5(void) { /* MusicChannelBaseEmpty */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BAD1_b5");
+    recomp_stack_push("func_BAB0_b5");
 #endif
-label_BAD1:; /* GotoUpdateAllVolumeEnvelopes */
-    /* $BAD1: 20 */ nes_cpu_instruction_boundary(0xBAD1, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD3; g_cpu.S--; func_BA67_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBAD1, _cbs);
-    recomp_stack_pop();
+label_BAB0:; /* MusicChannelBaseEmpty */
+    /* $BAB0: 8A */ nes_cpu_instruction_boundary(0xBAB0, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAB1:;
+    /* $BAB1: 4A */ nes_cpu_instruction_boundary(0xBAB1, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_BAB2:;
+    /* $BAB2: AA */ nes_cpu_instruction_boundary(0xBAB2, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAB3:; /* IncrementToNextMusicChannel */
+    /* $BAB3: E8 */ nes_cpu_instruction_boundary(0xBAB3, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+label_BAB4:;
+    /* $BAB4: 8A */ nes_cpu_instruction_boundary(0xBAB4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAB5:;
+    /* $BAB5: C9 */ nes_cpu_instruction_boundary(0xBAB5, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+label_BAB7:;
+    /* $BAB7: F0 */ nes_cpu_instruction_boundary(0xBAB7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAA1); return; }
+label_BAB9:;
+    /* $BAB9: AD */ nes_cpu_instruction_boundary(0xBAB9, 4); g_cpu.A = nes_read(0x064B); FLAG_NZ(g_cpu.A);
+label_BABC:;
+    /* $BABC: 18 */ nes_cpu_instruction_boundary(0xBABC, 2); g_cpu.C = 0;
+label_BABD:;
+    /* $BABD: 69 */ nes_cpu_instruction_boundary(0xBABD, 2); { uint16_t r = g_cpu.A + 0x04 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x04); g_cpu.A=r&0xFF; }
+label_BABF:;
+    /* $BABF: 8D */ nes_cpu_instruction_boundary(0xBABF, 4); nes_write(0x064B, g_cpu.A);
+label_BAC2:; /* UpdateMusicChannel */
+    /* $BAC2: 8A */ nes_cpu_instruction_boundary(0xBAC2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAC3:;
+    /* $BAC3: 0A */ nes_cpu_instruction_boundary(0xBAC3, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
+label_BAC4:;
+    /* $BAC4: AA */ nes_cpu_instruction_boundary(0xBAC4, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAC5:;
+    /* $BAC5: BD */ nes_cpu_instruction_boundary(0xBAC5, 4); g_cpu.A = nes_read((0x0630 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAC8:;
+    /* $BAC8: 85 */ nes_cpu_instruction_boundary(0xBAC8, 3); nes_write(0xE6, g_cpu.A);
+label_BACA:;
+    /* $BACA: BD */ nes_cpu_instruction_boundary(0xBACA, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BACD:;
+    /* $BACD: 85 */ nes_cpu_instruction_boundary(0xBACD, 3); nes_write(0xE7, g_cpu.A);
+label_BACF:;
+    /* $BACF: BD */ nes_cpu_instruction_boundary(0xBACF, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAD2:;
+    /* $BAD2: F0 */ nes_cpu_instruction_boundary(0xBAD2, 2); if (g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBAB0, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
 #endif
-    return; } }
+    goto label_BAB0;
+    }
 label_BAD4:;
-    /* $BAD4: 60 */ nes_cpu_instruction_boundary(0xBAD4, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
+    /* $BAD4: 8A */ nes_cpu_instruction_boundary(0xBAD4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_BAD5:;
+    /* $BAD5: 4A */ nes_cpu_instruction_boundary(0xBAD5, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+label_BAD6:;
+    /* $BAD6: AA */ nes_cpu_instruction_boundary(0xBAD6, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BAD7:;
+    /* $BAD7: DE */ nes_cpu_instruction_boundary(0xBAD7, 7); { uint16_t a=(0x0640 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BADA:;
+    /* $BADA: D0 */ nes_cpu_instruction_boundary(0xBADA, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xBAB3, 1);
+#ifdef WATCHDOG_ENABLED
+    watchdog_check();
 #endif
-    return;
-}
-
-void func_BAE0_b5(void) { /* MusicChannelBaseEmpty */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BAE0_b5");
-#endif
-label_BAE0:; /* MusicChannelBaseEmpty */
-    /* $BAE0: 8A */ nes_cpu_instruction_boundary(0xBAE0, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAE1:;
-    /* $BAE1: 4A */ nes_cpu_instruction_boundary(0xBAE1, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
+    goto label_BAB3;
+    }
+label_BADC:; /* LoadNextMusicChannelInstr */
+    /* $BADC: BC */ nes_cpu_instruction_boundary(0xBADC, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
+label_BADF:;
+    /* $BADF: FE */ nes_cpu_instruction_boundary(0xBADF, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_BAE2:;
-    /* $BAE2: AA */ nes_cpu_instruction_boundary(0xBAE2, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BAE3:; /* IncrementToNextMusicChannel */
-    /* $BAE3: E8 */ nes_cpu_instruction_boundary(0xBAE3, 2); g_cpu.X = (g_cpu.X+1)&0xFF; FLAG_NZ(g_cpu.X);
+    /* $BAE2: B1 */ nes_cpu_instruction_boundary(0xBAE2, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BAE4:;
-    /* $BAE4: 8A */ nes_cpu_instruction_boundary(0xBAE4, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAE5:;
-    /* $BAE5: C9 */ nes_cpu_instruction_boundary(0xBAE5, 2); { int r=g_cpu.A-0x04; g_cpu.C=(g_cpu.A>=0x04)?1:0; FLAG_NZ(r&0xFF); }
+    /* $BAE4: F0 */ nes_cpu_instruction_boundary(0xBAE4, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBA9D); return; }
+label_BAE6:;
+    /* $BAE6: A8 */ nes_cpu_instruction_boundary(0xBAE6, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
 label_BAE7:;
-    /* $BAE7: F0 */ nes_cpu_instruction_boundary(0xBAE7, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xBAD1); return; }
+    /* $BAE7: C9 */ nes_cpu_instruction_boundary(0xBAE7, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
 label_BAE9:;
-    /* $BAE9: AD */ nes_cpu_instruction_boundary(0xBAE9, 4); g_cpu.A = nes_read(0x064B); FLAG_NZ(g_cpu.A);
-label_BAEC:;
-    /* $BAEC: 18 */ nes_cpu_instruction_boundary(0xBAEC, 2); g_cpu.C = 0;
+    /* $BAE9: F0 */ nes_cpu_instruction_boundary(0xBAE9, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BAF4; }
+label_BAEB:;
+    /* $BAEB: 29 */ nes_cpu_instruction_boundary(0xBAEB, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
 label_BAED:;
-    /* $BAED: 69 */ nes_cpu_instruction_boundary(0xBAED, 2); { uint16_t r = g_cpu.A + 0x04 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x04); g_cpu.A=r&0xFF; }
+    /* $BAED: C9 */ nes_cpu_instruction_boundary(0xBAED, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
 label_BAEF:;
-    /* $BAEF: 8D */ nes_cpu_instruction_boundary(0xBAEF, 4); nes_write(0x064B, g_cpu.A);
-label_BAF2:; /* UpdateMusicChannel */
-    /* $BAF2: 8A */ nes_cpu_instruction_boundary(0xBAF2, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_BAF3:;
-    /* $BAF3: 0A */ nes_cpu_instruction_boundary(0xBAF3, 2); g_cpu.C = (g_cpu.A>>7)&1; g_cpu.A = (g_cpu.A<<1)&0xFF; FLAG_NZ(g_cpu.A);
-label_BAF4:;
-    /* $BAF4: AA */ nes_cpu_instruction_boundary(0xBAF4, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BAF5:;
-    /* $BAF5: BD */ nes_cpu_instruction_boundary(0xBAF5, 4); g_cpu.A = nes_read((0x0630 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAF8:;
-    /* $BAF8: 85 */ nes_cpu_instruction_boundary(0xBAF8, 3); nes_write(0xE6, g_cpu.A);
-label_BAFA:;
-    /* $BAFA: BD */ nes_cpu_instruction_boundary(0xBAFA, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BAFD:;
-    /* $BAFD: 85 */ nes_cpu_instruction_boundary(0xBAFD, 3); nes_write(0xE7, g_cpu.A);
+    /* $BAEF: F0 */ nes_cpu_instruction_boundary(0xBAEF, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB04; }
+label_BAF1:;
+    /* $BAF1: 4C */ nes_cpu_instruction_boundary(0xBAF1, 3); nes_cpu_instruction_boundary(0xBB1C, 2); func_BB1C_b5(); return;
+label_BAF4:; /* MusicChannelInstr_SongRepeat */
+    /* $BAF4: BD */ nes_cpu_instruction_boundary(0xBAF4, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAF7:;
+    /* $BAF7: F0 */ nes_cpu_instruction_boundary(0xBAF7, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB13; }
+label_BAF9:;
+    /* $BAF9: DE */ nes_cpu_instruction_boundary(0xBAF9, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAFC:;
+    /* $BAFC: BD */ nes_cpu_instruction_boundary(0xBAFC, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_BAFF:;
-    /* $BAFF: BD */ nes_cpu_instruction_boundary(0xBAFF, 4); g_cpu.A = nes_read((0x0631 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+    /* $BAFF: 9D */ nes_cpu_instruction_boundary(0xBAFF, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
 label_BB02:;
-    /* $BB02: F0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAE0, 2);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BAE0;
-    }
-label_BB04:;
-    /* $BB04: 8A */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+    /* $BB02: D0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB13; }
+label_BB04:; /* MusicChannelInstr_SongRepeatSetup */
+    /* $BB04: 98 */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
 label_BB05:;
-    /* $BB05: 4A */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_BB06:;
-    /* $BB06: AA */ nes_cpu_instruction_boundary(0xBB06, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+    /* $BB05: 29 */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
 label_BB07:;
-    /* $BB07: DE */ nes_cpu_instruction_boundary(0xBB07, 7); { uint16_t a=(0x0640 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+    /* $BB07: 9D */ nes_cpu_instruction_boundary(0xBB07, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
 label_BB0A:;
-    /* $BB0A: D0 */ nes_cpu_instruction_boundary(0xBB0A, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xBAE3, 2);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_BAE3;
-    }
-label_BB0C:; /* LoadNextMusicChannelInstr */
-    /* $BB0C: BC */ nes_cpu_instruction_boundary(0xBB0C, 4); g_cpu.Y = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BB0F:;
-    /* $BB0F: FE */ nes_cpu_instruction_boundary(0xBB0F, 7); { uint16_t a=(0x0638 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB12:;
-    /* $BB12: B1 */ nes_cpu_instruction_boundary(0xBB12, 5); g_cpu.A = nes_read((nes_read16zp(0xE6) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB14:;
-    /* $BB14: F0 */ nes_cpu_instruction_boundary(0xBB14, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xBACD); return; }
-label_BB16:;
-    /* $BB16: A8 */ nes_cpu_instruction_boundary(0xBB16, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BB17:;
-    /* $BB17: C9 */ nes_cpu_instruction_boundary(0xBB17, 2); { int r=g_cpu.A-0xFF; g_cpu.C=(g_cpu.A>=0xFF)?1:0; FLAG_NZ(r&0xFF); }
-label_BB19:;
-    /* $BB19: F0 */ nes_cpu_instruction_boundary(0xBB19, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB24; }
-label_BB1B:;
-    /* $BB1B: 29 */ nes_cpu_instruction_boundary(0xBB1B, 2); g_cpu.A &= 0xC0; FLAG_NZ(g_cpu.A);
-label_BB1D:;
-    /* $BB1D: C9 */ nes_cpu_instruction_boundary(0xBB1D, 2); { int r=g_cpu.A-0xC0; g_cpu.C=(g_cpu.A>=0xC0)?1:0; FLAG_NZ(r&0xFF); }
-label_BB1F:;
-    /* $BB1F: F0 */ nes_cpu_instruction_boundary(0xBB1F, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB34; }
-label_BB21:;
-    /* $BB21: 4C */ nes_cpu_instruction_boundary(0xBB21, 3); nes_cpu_instruction_boundary(0xBB4C, 2); func_BB4C_b5(); return;
-label_BB24:; /* MusicChannelInstr_SongRepeat */
-    /* $BB24: BD */ nes_cpu_instruction_boundary(0xBB24, 4); g_cpu.A = nes_read((0x0624 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB27:;
-    /* $BB27: F0 */ nes_cpu_instruction_boundary(0xBB27, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB29:;
-    /* $BB29: DE */ nes_cpu_instruction_boundary(0xBB29, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB2C:;
-    /* $BB2C: BD */ nes_cpu_instruction_boundary(0xBB2C, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB2F:;
-    /* $BB2F: 9D */ nes_cpu_instruction_boundary(0xBB2F, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB32:;
-    /* $BB32: D0 */ nes_cpu_instruction_boundary(0xBB32, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB43; }
-label_BB34:; /* MusicChannelInstr_SongRepeatSetup */
-    /* $BB34: 98 */ nes_cpu_instruction_boundary(0xBB34, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
-label_BB35:;
-    /* $BB35: 29 */ nes_cpu_instruction_boundary(0xBB35, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
-label_BB37:;
-    /* $BB37: 9D */ nes_cpu_instruction_boundary(0xBB37, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB3A:;
-    /* $BB3A: DE */ nes_cpu_instruction_boundary(0xBB3A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BB3D:;
-    /* $BB3D: BD */ nes_cpu_instruction_boundary(0xBB3D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BB40:;
-    /* $BB40: 9D */ nes_cpu_instruction_boundary(0xBB40, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_BB43:; /* GotoLoadNextMusicChannelInstr */
-    /* $BB43: 4C */ nes_cpu_instruction_boundary(0xBB43, 3); nes_cpu_instruction_boundary(0xBB0C, 2);
-    goto label_BB0C;
+    /* $BB0A: DE */ nes_cpu_instruction_boundary(0xBB0A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB0D:;
+    /* $BB0D: BD */ nes_cpu_instruction_boundary(0xBB0D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB10:;
+    /* $BB10: 9D */ nes_cpu_instruction_boundary(0xBB10, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB13:; /* GotoLoadNextMusicChannelInstr */
+    /* $BB13: 4C */ nes_cpu_instruction_boundary(0xBB13, 3); nes_cpu_instruction_boundary(0xBADC, 2);
+    goto label_BADC;
 }
 
-void func_BCBD_b5(void) {
+void func_BC8D_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCBD_b5");
+    recomp_stack_push("func_BC8D_b5");
 #endif
-label_BCBD:;
-    /* $BCBD: 20 */ nes_cpu_instruction_boundary(0xBCBD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xBF; g_cpu.S--; func_BA14_b5();
+label_BC8D:;
+    /* $BC8D: 20 */ nes_cpu_instruction_boundary(0xBC8D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x8F; g_cpu.S--; func_B9E4_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBCBD, _cbs);
+    bail_trace(0xBC8D, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BCC0:;
-    /* $BCC0: 20 */ nes_cpu_instruction_boundary(0xBCC0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC2; g_cpu.S--; func_BF62_b5();
+label_BC90:;
+    /* $BC90: 20 */ nes_cpu_instruction_boundary(0xBC90, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x92; g_cpu.S--; func_BF19_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBCC0, _cbs);
+    bail_trace(0xBC90, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BCC3:;
-    /* $BCC3: 4C */ nes_cpu_instruction_boundary(0xBCC3, 3); nes_cpu_instruction_boundary(0xBAD5, 2); func_BAD5_b5(); return;
+label_BC93:;
+    /* $BC93: 4C */ nes_cpu_instruction_boundary(0xBC93, 3); nes_cpu_instruction_boundary(0xBAA5, 2); func_BAA5_b5(); return;
 }
 
-void func_BCBB_b5(void) { /* XYMusicInit */
+void func_BC8B_b5(void) { /* XYMusicInit */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCBB_b5");
+    recomp_stack_push("func_BC8B_b5");
 #endif
-label_BCBB:; /* XYMusicInit */
-    /* $BCBB: AA */ nes_cpu_instruction_boundary(0xBCBB, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
-label_BCBC:;
-    /* $BCBC: A8 */ nes_cpu_instruction_boundary(0xBCBC, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_BCBD:;
-    /* $BCBD: 20 */ nes_cpu_instruction_boundary(0xBCBD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xBF; g_cpu.S--; func_BA14_b5();
+label_BC8B:; /* XYMusicInit */
+    /* $BC8B: AA */ nes_cpu_instruction_boundary(0xBC8B, 2); g_cpu.X = g_cpu.A; FLAG_NZ(g_cpu.X);
+label_BC8C:;
+    /* $BC8C: A8 */ nes_cpu_instruction_boundary(0xBC8C, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
+label_BC8D:;
+    /* $BC8D: 20 */ nes_cpu_instruction_boundary(0xBC8D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x8F; g_cpu.S--; func_B9E4_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBCBD, _cbs);
+    bail_trace(0xBC8D, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BCC0:;
-    /* $BCC0: 20 */ nes_cpu_instruction_boundary(0xBCC0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC2; g_cpu.S--; func_BF62_b5();
+label_BC90:;
+    /* $BC90: 20 */ nes_cpu_instruction_boundary(0xBC90, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x92; g_cpu.S--; func_BF19_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBCC0, _cbs);
+    bail_trace(0xBC90, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BCC3:;
-    /* $BCC3: 4C */ nes_cpu_instruction_boundary(0xBCC3, 3); nes_cpu_instruction_boundary(0xBAD5, 2); func_BAD5_b5(); return;
+label_BC93:;
+    /* $BC93: 4C */ nes_cpu_instruction_boundary(0xBC93, 3); nes_cpu_instruction_boundary(0xBAA5, 2); func_BAA5_b5(); return;
 }
 
-void func_B42C_b5(void) { /* CheckMusicFlags */
+void func_B3FC_b5(void) { /* CheckMusicFlags */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B42C_b5");
+    recomp_stack_push("func_B3FC_b5");
 #endif
-label_B42C:; /* CheckMusicFlags */
-    /* $B42C: AD */ nes_cpu_instruction_boundary(0xB42C, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
-label_B42F:;
-    /* $B42F: CD */ nes_cpu_instruction_boundary(0xB42F, 4); { uint8_t m=nes_read(0x064D); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B432:;
-    /* $B432: F0 */ nes_cpu_instruction_boundary(0xB432, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B43A; }
-label_B434:; /* InitializeSoundAddresses */
-    /* $B434: 20 */ nes_cpu_instruction_boundary(0xB434, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x36; g_cpu.S--; func_B44D_b5();
+label_B3FC:; /* CheckMusicFlags */
+    /* $B3FC: AD */ nes_cpu_instruction_boundary(0xB3FC, 4); g_cpu.A = nes_read(0x068D); FLAG_NZ(g_cpu.A);
+label_B3FF:;
+    /* $B3FF: CD */ nes_cpu_instruction_boundary(0xB3FF, 4); { uint8_t m=nes_read(0x064D); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B402:;
+    /* $B402: F0 */ nes_cpu_instruction_boundary(0xB402, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B40A; }
+label_B404:; /* InitializeSoundAddresses */
+    /* $B404: 20 */ nes_cpu_instruction_boundary(0xB404, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x06; g_cpu.S--; func_B41D_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB434, _cbs);
+    bail_trace(0xB404, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B437:;
-    /* $B437: 20 */ nes_cpu_instruction_boundary(0xB437, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x39; g_cpu.S--; func_B46E_b5();
+label_B407:;
+    /* $B407: 20 */ nes_cpu_instruction_boundary(0xB407, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x09; g_cpu.S--; func_B43E_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB437, _cbs);
+    bail_trace(0xB407, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B43A:; /* GotoClearSpecialAddresses */
-    /* $B43A: 20 */ nes_cpu_instruction_boundary(0xB43A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3C; g_cpu.S--; func_B43E_b5();
+label_B40A:; /* GotoClearSpecialAddresses */
+    /* $B40A: 20 */ nes_cpu_instruction_boundary(0xB40A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x0C; g_cpu.S--; func_B40E_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB43A, _cbs);
+    bail_trace(0xB40A, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B43D:;
-    /* $B43D: 60 */ nes_cpu_instruction_boundary(0xB43D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B40D:;
+    /* $B40D: 60 */ nes_cpu_instruction_boundary(0xB40D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -11544,1230 +11837,6 @@ label_83F4:;
     return;
 }
 
-void func_B6E0_b5(void) { /* MissilePickupSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B6E0_b5");
-#endif
-label_B6E0:; /* MissilePickupSFXCont */
-    /* $B6E0: 20 */ nes_cpu_instruction_boundary(0xB6E0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xE2; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB6E0, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B6E3:;
-    /* $B6E3: D0 */ nes_cpu_instruction_boundary(0xB6E3, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B6FC; }
-label_B6E5:;
-    /* $B6E5: AC */ nes_cpu_instruction_boundary(0xB6E5, 4); g_cpu.Y = nes_read(0x0671); FLAG_NZ(g_cpu.Y);
-label_B6E8:;
-    /* $B6E8: B9 */ nes_cpu_instruction_boundary(0xB6E8, 4); g_cpu.A = nes_read((0xB6D9 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B6EB:;
-    /* $B6EB: D0 */ nes_cpu_instruction_boundary(0xB6EB, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B6F0; }
-label_B6ED:;
-    /* $B6ED: 4C */ nes_cpu_instruction_boundary(0xB6ED, 3); nes_cpu_instruction_boundary(0xB722, 2); func_B722_b5(); return;
-label_B6F0:; /* MissilePickupSFXCont_endIf_A */
-    /* $B6F0: 8D */ nes_cpu_instruction_boundary(0xB6F0, 4); nes_write(0x4002, g_cpu.A);
-label_B6F3:;
-    /* $B6F3: AD */ nes_cpu_instruction_boundary(0xB6F3, 4); g_cpu.A = nes_read(0xB274); FLAG_NZ(g_cpu.A);
-label_B6F6:;
-    /* $B6F6: 8D */ nes_cpu_instruction_boundary(0xB6F6, 4); nes_write(0x4003, g_cpu.A);
-label_B6F9:;
-    /* $B6F9: EE */ nes_cpu_instruction_boundary(0xB6F9, 6); { uint16_t a=0x0671; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B6FC:; /* MissilePickupSFXCont_RTS */
-    /* $B6FC: 60 */ nes_cpu_instruction_boundary(0xB6FC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B703_b5(void) { /* EnergyPickupSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B703_b5");
-#endif
-label_B703:; /* EnergyPickupSFXCont */
-    /* $B703: 20 */ nes_cpu_instruction_boundary(0xB703, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x05; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB703, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B706:;
-    /* $B706: D0 */ nes_cpu_instruction_boundary(0xB706, 2); if (!g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xB6FC); return; }
-label_B708:;
-    /* $B708: EE */ nes_cpu_instruction_boundary(0xB708, 6); { uint16_t a=0x0671; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B70B:;
-    /* $B70B: AD */ nes_cpu_instruction_boundary(0xB70B, 4); g_cpu.A = nes_read(0x0671); FLAG_NZ(g_cpu.A);
-label_B70E:;
-    /* $B70E: C9 */ nes_cpu_instruction_boundary(0xB70E, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
-label_B710:;
-    /* $B710: F0 */ nes_cpu_instruction_boundary(0xB710, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B722; }
-label_B712:;
-    /* $B712: A0 */ nes_cpu_instruction_boundary(0xB712, 2); g_cpu.Y = 0x6D; FLAG_NZ(g_cpu.Y);
-label_B714:;
-    /* $B714: 4C */ nes_cpu_instruction_boundary(0xB714, 3); nes_cpu_instruction_boundary(0xB398, 2); func_B398_b5(); return;
-label_B722:; /* EndSQ1SFX */
-    /* $B722: A9 */ nes_cpu_instruction_boundary(0xB722, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_B724:;
-    /* $B724: 8D */ nes_cpu_instruction_boundary(0xB724, 4); nes_write(0x4000, g_cpu.A);
-label_B727:;
-    /* $B727: A9 */ nes_cpu_instruction_boundary(0xB727, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B729:;
-    /* $B729: 8D */ nes_cpu_instruction_boundary(0xB729, 4); nes_write(0x0653, g_cpu.A);
-label_B72C:;
-    /* $B72C: 20 */ nes_cpu_instruction_boundary(0xB72C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x2E; g_cpu.S--; func_B4D2_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB72C, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B72F:;
-    /* $B72F: EE */ nes_cpu_instruction_boundary(0xB72F, 6); { uint16_t a=0x0607; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B732:;
-    /* $B732: 60 */ nes_cpu_instruction_boundary(0xB732, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B71D_b5(void) { /* SQ1SFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B71D_b5");
-#endif
-label_B71D:; /* SQ1SFXCont */
-    /* $B71D: 20 */ nes_cpu_instruction_boundary(0xB71D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x1F; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB71D, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B720:;
-    /* $B720: D0 */ nes_cpu_instruction_boundary(0xB720, 2); if (!g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xB6FC); return; }
-label_B722:; /* EndSQ1SFX */
-    /* $B722: A9 */ nes_cpu_instruction_boundary(0xB722, 2); g_cpu.A = 0x10; FLAG_NZ(g_cpu.A);
-label_B724:;
-    /* $B724: 8D */ nes_cpu_instruction_boundary(0xB724, 4); nes_write(0x4000, g_cpu.A);
-label_B727:;
-    /* $B727: A9 */ nes_cpu_instruction_boundary(0xB727, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B729:;
-    /* $B729: 8D */ nes_cpu_instruction_boundary(0xB729, 4); nes_write(0x0653, g_cpu.A);
-label_B72C:;
-    /* $B72C: 20 */ nes_cpu_instruction_boundary(0xB72C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x2E; g_cpu.S--; func_B4D2_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB72C, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B72F:;
-    /* $B72F: EE */ nes_cpu_instruction_boundary(0xB72F, 6); { uint16_t a=0x0607; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B732:;
-    /* $B732: 60 */ nes_cpu_instruction_boundary(0xB732, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B77F_b5(void) { /* BulletFireSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B77F_b5");
-#endif
-label_B77F:; /* BulletFireSFXCont */
-    /* $B77F: AD */ nes_cpu_instruction_boundary(0xB77F, 4); g_cpu.A = nes_read(0x061F); FLAG_NZ(g_cpu.A);
-label_B782:;
-    /* $B782: 4A */ nes_cpu_instruction_boundary(0xB782, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_B783:;
-    /* $B783: B0 */ nes_cpu_instruction_boundary(0xB783, 2); if (g_cpu.C) { maybe_trigger_vblank(1); goto label_B795; }
-label_B785:;
-    /* $B785: 20 */ nes_cpu_instruction_boundary(0xB785, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x87; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB785, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B788:;
-    /* $B788: D0 */ nes_cpu_instruction_boundary(0xB788, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B78D; }
-label_B78A:;
-    /* $B78A: 4C */ nes_cpu_instruction_boundary(0xB78A, 3); nes_cpu_instruction_boundary(0xB722, 2); func_B722_b5(); return;
-label_B78D:; /* BulletFireSFXCont_RTS */
-    /* $B78D: 60 */ nes_cpu_instruction_boundary(0xB78D, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_B78E:; /* HasIceBeamSFXInit */
-    /* $B78E: A9 */ nes_cpu_instruction_boundary(0xB78E, 2); g_cpu.A = 0x07; FLAG_NZ(g_cpu.A);
-label_B790:;
-    /* $B790: A0 */ nes_cpu_instruction_boundary(0xB790, 2); g_cpu.Y = 0x91; FLAG_NZ(g_cpu.Y);
-label_B792:;
-    /* $B792: 4C */ nes_cpu_instruction_boundary(0xB792, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-label_B795:; /* HasIceBeamSFXCont */
-    /* $B795: 20 */ nes_cpu_instruction_boundary(0xB795, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x97; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB795, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B798:;
-    /* $B798: D0 */ nes_cpu_instruction_boundary(0xB798, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B79D; }
-label_B79A:;
-    /* $B79A: 4C */ nes_cpu_instruction_boundary(0xB79A, 3); nes_cpu_instruction_boundary(0xB722, 2); func_B722_b5(); return;
-label_B79D:; /* HasIceBeamSFXCont_endIf_A */
-    /* $B79D: AD */ nes_cpu_instruction_boundary(0xB79D, 4); g_cpu.A = nes_read(0x0671); FLAG_NZ(g_cpu.A);
-label_B7A0:;
-    /* $B7A0: 29 */ nes_cpu_instruction_boundary(0xB7A0, 2); g_cpu.A &= 0x01; FLAG_NZ(g_cpu.A);
-label_B7A2:;
-    /* $B7A2: A8 */ nes_cpu_instruction_boundary(0xB7A2, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_B7A3:;
-    /* $B7A3: B9 */ nes_cpu_instruction_boundary(0xB7A3, 4); g_cpu.A = nes_read((0xB7A8 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B7A6:;
-    /* $B7A6: D0 */ nes_cpu_instruction_boundary(0xB7A6, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B7D0; }
-label_B7A8:; /* HasIceBeamSFXCont_IceBeamTbl */
-    /* $B7A8: 93 */ nes_cpu_instruction_boundary(0xB7A8, 6); /* ILLEGAL $93 — skip 2 */
-label_B7AA:; /* WaveBeamSFXInit */
-    /* $B7AA: A9 */ nes_cpu_instruction_boundary(0xB7AA, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
-label_B7AC:;
-    /* $B7AC: A0 */ nes_cpu_instruction_boundary(0xB7AC, 2); g_cpu.Y = 0x8D; FLAG_NZ(g_cpu.Y);
-label_B7AE:;
-    /* $B7AE: 4C */ nes_cpu_instruction_boundary(0xB7AE, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-label_B7D0:; /* LoadSQ1PeriodLow */
-    /* $B7D0: 8D */ nes_cpu_instruction_boundary(0xB7D0, 4); nes_write(0x4002, g_cpu.A);
-label_B7D3:;
-    /* $B7D3: EE */ nes_cpu_instruction_boundary(0xB7D3, 6); { uint16_t a=0x0671; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B7D6:; /* LoadSQ1PeriodLow_RTS */
-    /* $B7D6: 60 */ nes_cpu_instruction_boundary(0xB7D6, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B7B1_b5(void) { /* WaveBeamSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B7B1_b5");
-#endif
-label_B7B1:; /* WaveBeamSFXCont */
-    /* $B7B1: 20 */ nes_cpu_instruction_boundary(0xB7B1, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB7B1, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B7B4:;
-    /* $B7B4: D0 */ nes_cpu_instruction_boundary(0xB7B4, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B7C7; }
-label_B7B6:;
-    /* $B7B6: AC */ nes_cpu_instruction_boundary(0xB7B6, 4); g_cpu.Y = nes_read(0x0675); FLAG_NZ(g_cpu.Y);
-label_B7B9:;
-    /* $B7B9: EE */ nes_cpu_instruction_boundary(0xB7B9, 6); { uint16_t a=0x0675; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B7BC:;
-    /* $B7BC: B9 */ nes_cpu_instruction_boundary(0xB7BC, 4); g_cpu.A = nes_read((0xB7D9 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B7BF:;
-    /* $B7BF: 8D */ nes_cpu_instruction_boundary(0xB7BF, 4); nes_write(0x4000, g_cpu.A);
-label_B7C2:;
-    /* $B7C2: D0 */ nes_cpu_instruction_boundary(0xB7C2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B7D6; }
-label_B7C4:;
-    /* $B7C4: 4C */ nes_cpu_instruction_boundary(0xB7C4, 3); nes_cpu_instruction_boundary(0xB722, 2); func_B722_b5(); return;
-label_B7C7:; /* WaveBeamSFXCont_endIf_A */
-    /* $B7C7: AD */ nes_cpu_instruction_boundary(0xB7C7, 4); g_cpu.A = nes_read(0x0671); FLAG_NZ(g_cpu.A);
-label_B7CA:;
-    /* $B7CA: 29 */ nes_cpu_instruction_boundary(0xB7CA, 2); g_cpu.A &= 0x01; FLAG_NZ(g_cpu.A);
-label_B7CC:;
-    /* $B7CC: A8 */ nes_cpu_instruction_boundary(0xB7CC, 2); g_cpu.Y = g_cpu.A; FLAG_NZ(g_cpu.Y);
-label_B7CD:;
-    /* $B7CD: B9 */ nes_cpu_instruction_boundary(0xB7CD, 4); g_cpu.A = nes_read((0xB7D7 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B7D0:; /* LoadSQ1PeriodLow */
-    /* $B7D0: 8D */ nes_cpu_instruction_boundary(0xB7D0, 4); nes_write(0x4002, g_cpu.A);
-label_B7D3:;
-    /* $B7D3: EE */ nes_cpu_instruction_boundary(0xB7D3, 6); { uint16_t a=0x0671; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B7D6:; /* LoadSQ1PeriodLow_RTS */
-    /* $B7D6: 60 */ nes_cpu_instruction_boundary(0xB7D6, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B902_b5(void) { /* SamusDieSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B902_b5");
-#endif
-label_B902:; /* SamusDieSFXInit */
-    /* $B902: 20 */ nes_cpu_instruction_boundary(0xB902, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x04; g_cpu.S--; func_B434_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB902, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B905:;
-    /* $B905: A9 */ nes_cpu_instruction_boundary(0xB905, 2); g_cpu.A = 0x0E; FLAG_NZ(g_cpu.A);
-label_B907:;
-    /* $B907: A0 */ nes_cpu_instruction_boundary(0xB907, 2); g_cpu.Y = 0xA5; FLAG_NZ(g_cpu.Y);
-label_B909:;
-    /* $B909: 20 */ nes_cpu_instruction_boundary(0xB909, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x0B; g_cpu.S--; func_B482_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB909, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B90C:;
-    /* $B90C: A9 */ nes_cpu_instruction_boundary(0xB90C, 2); g_cpu.A = 0x15; FLAG_NZ(g_cpu.A);
-label_B90E:;
-    /* $B90E: 8D */ nes_cpu_instruction_boundary(0xB90E, 4); nes_write(0x0616, g_cpu.A);
-label_B911:;
-    /* $B911: AD */ nes_cpu_instruction_boundary(0xB911, 4); g_cpu.A = nes_read(0xB2A7); FLAG_NZ(g_cpu.A);
-label_B914:;
-    /* $B914: 8D */ nes_cpu_instruction_boundary(0xB914, 4); nes_write(0x0610, g_cpu.A);
-label_B917:;
-    /* $B917: A9 */ nes_cpu_instruction_boundary(0xB917, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B919:;
-    /* $B919: 8D */ nes_cpu_instruction_boundary(0xB919, 4); nes_write(0x0611, g_cpu.A);
-label_B91C:; /* SamusDieSFXInit_RTS */
-    /* $B91C: 60 */ nes_cpu_instruction_boundary(0xB91C, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B7DC_b5(void) { /* DoorOpenCloseSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B7DC_b5");
-#endif
-label_B7DC:; /* DoorOpenCloseSFXInit */
-    /* $B7DC: AD */ nes_cpu_instruction_boundary(0xB7DC, 4); g_cpu.A = nes_read(0xB2B7); FLAG_NZ(g_cpu.A);
-label_B7DF:;
-    /* $B7DF: 8D */ nes_cpu_instruction_boundary(0xB7DF, 4); nes_write(0x0610, g_cpu.A);
-label_B7E2:;
-    /* $B7E2: AD */ nes_cpu_instruction_boundary(0xB7E2, 4); g_cpu.A = nes_read(0xB2B8); FLAG_NZ(g_cpu.A);
-label_B7E5:;
-    /* $B7E5: 29 */ nes_cpu_instruction_boundary(0xB7E5, 2); g_cpu.A &= 0x07; FLAG_NZ(g_cpu.A);
-label_B7E7:;
-    /* $B7E7: 8D */ nes_cpu_instruction_boundary(0xB7E7, 4); nes_write(0x0611, g_cpu.A);
-label_B7EA:;
-    /* $B7EA: A9 */ nes_cpu_instruction_boundary(0xB7EA, 2); g_cpu.A = 0x0F; FLAG_NZ(g_cpu.A);
-label_B7EC:;
-    /* $B7EC: 8D */ nes_cpu_instruction_boundary(0xB7EC, 4); nes_write(0x0612, g_cpu.A);
-label_B7EF:;
-    /* $B7EF: A9 */ nes_cpu_instruction_boundary(0xB7EF, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B7F1:;
-    /* $B7F1: 8D */ nes_cpu_instruction_boundary(0xB7F1, 4); nes_write(0x0613, g_cpu.A);
-label_B7F4:;
-    /* $B7F4: A9 */ nes_cpu_instruction_boundary(0xB7F4, 2); g_cpu.A = 0x1F; FLAG_NZ(g_cpu.A);
-label_B7F6:;
-    /* $B7F6: A0 */ nes_cpu_instruction_boundary(0xB7F6, 2); g_cpu.Y = 0xB5; FLAG_NZ(g_cpu.Y);
-label_B7F8:;
-    /* $B7F8: 4C */ nes_cpu_instruction_boundary(0xB7F8, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-}
-
-void func_B8D7_b5(void) { /* MetroidHitSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8D7_b5");
-#endif
-label_B8D7:; /* MetroidHitSFXInit */
-    /* $B8D7: A9 */ nes_cpu_instruction_boundary(0xB8D7, 2); g_cpu.A = 0x03; FLAG_NZ(g_cpu.A);
-label_B8D9:;
-    /* $B8D9: A0 */ nes_cpu_instruction_boundary(0xB8D9, 2); g_cpu.Y = 0xA1; FLAG_NZ(g_cpu.Y);
-label_B8DB:;
-    /* $B8DB: 20 */ nes_cpu_instruction_boundary(0xB8DB, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xDD; g_cpu.S--; func_B482_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB8DB, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B8DE:;
-    /* $B8DE: 4C */ nes_cpu_instruction_boundary(0xB8DE, 3); nes_cpu_instruction_boundary(0xB8F3, 2); func_B8F3_b5(); return;
-}
-
-void func_B951_b5(void) { /* StatueRaiseSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B951_b5");
-#endif
-label_B951:; /* StatueRaiseSFXInit */
-    /* $B951: AD */ nes_cpu_instruction_boundary(0xB951, 4); g_cpu.A = nes_read(0xB2B3); FLAG_NZ(g_cpu.A);
-label_B954:;
-    /* $B954: 8D */ nes_cpu_instruction_boundary(0xB954, 4); nes_write(0x0610, g_cpu.A);
-label_B957:;
-    /* $B957: AD */ nes_cpu_instruction_boundary(0xB957, 4); g_cpu.A = nes_read(0xB2B4); FLAG_NZ(g_cpu.A);
-label_B95A:;
-    /* $B95A: 29 */ nes_cpu_instruction_boundary(0xB95A, 2); g_cpu.A &= 0x07; FLAG_NZ(g_cpu.A);
-label_B95C:;
-    /* $B95C: 8D */ nes_cpu_instruction_boundary(0xB95C, 4); nes_write(0x0611, g_cpu.A);
-label_B95F:;
-    /* $B95F: A9 */ nes_cpu_instruction_boundary(0xB95F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B961:;
-    /* $B961: 8D */ nes_cpu_instruction_boundary(0xB961, 4); nes_write(0x0613, g_cpu.A);
-label_B964:;
-    /* $B964: A9 */ nes_cpu_instruction_boundary(0xB964, 2); g_cpu.A = 0x0B; FLAG_NZ(g_cpu.A);
-label_B966:;
-    /* $B966: 8D */ nes_cpu_instruction_boundary(0xB966, 4); nes_write(0x0612, g_cpu.A);
-label_B969:;
-    /* $B969: A9 */ nes_cpu_instruction_boundary(0xB969, 2); g_cpu.A = 0x06; FLAG_NZ(g_cpu.A);
-label_B96B:;
-    /* $B96B: A0 */ nes_cpu_instruction_boundary(0xB96B, 2); g_cpu.Y = 0xB1; FLAG_NZ(g_cpu.Y);
-label_B96D:;
-    /* $B96D: 4C */ nes_cpu_instruction_boundary(0xB96D, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-}
-
-void func_B809_b5(void) { /* BeepSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B809_b5");
-#endif
-label_B809:; /* BeepSFXInit */
-    /* $B809: AD */ nes_cpu_instruction_boundary(0xB809, 4); g_cpu.A = nes_read(0x068B); FLAG_NZ(g_cpu.A);
-label_B80C:;
-    /* $B80C: 29 */ nes_cpu_instruction_boundary(0xB80C, 2); g_cpu.A &= 0x80; FLAG_NZ(g_cpu.A);
-label_B80E:;
-    /* $B80E: D0 */ nes_cpu_instruction_boundary(0xB80E, 2); if (!g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xB7D6); return; }
-label_B810:;
-    /* $B810: A9 */ nes_cpu_instruction_boundary(0xB810, 2); g_cpu.A = 0x03; FLAG_NZ(g_cpu.A);
-label_B812:;
-    /* $B812: A0 */ nes_cpu_instruction_boundary(0xB812, 2); g_cpu.Y = 0xA9; FLAG_NZ(g_cpu.Y);
-label_B814:;
-    /* $B814: 4C */ nes_cpu_instruction_boundary(0xB814, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-}
-
-void func_B81F_b5(void) { /* BigEnemyHitSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B81F_b5");
-#endif
-label_B81F:; /* BigEnemyHitSFXInit */
-    /* $B81F: A9 */ nes_cpu_instruction_boundary(0xB81F, 2); g_cpu.A = 0x12; FLAG_NZ(g_cpu.A);
-label_B821:;
-    /* $B821: 8D */ nes_cpu_instruction_boundary(0xB821, 4); nes_write(0x0612, g_cpu.A);
-label_B824:;
-    /* $B824: A9 */ nes_cpu_instruction_boundary(0xB824, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B826:;
-    /* $B826: 8D */ nes_cpu_instruction_boundary(0xB826, 4); nes_write(0x0613, g_cpu.A);
-label_B829:;
-    /* $B829: AD */ nes_cpu_instruction_boundary(0xB829, 4); g_cpu.A = nes_read(0xB2AF); FLAG_NZ(g_cpu.A);
-label_B82C:;
-    /* $B82C: 8D */ nes_cpu_instruction_boundary(0xB82C, 4); nes_write(0x0610, g_cpu.A);
-label_B82F:;
-    /* $B82F: AD */ nes_cpu_instruction_boundary(0xB82F, 4); g_cpu.A = nes_read(0xB2B0); FLAG_NZ(g_cpu.A);
-label_B832:;
-    /* $B832: 29 */ nes_cpu_instruction_boundary(0xB832, 2); g_cpu.A &= 0x07; FLAG_NZ(g_cpu.A);
-label_B834:;
-    /* $B834: 8D */ nes_cpu_instruction_boundary(0xB834, 4); nes_write(0x0611, g_cpu.A);
-label_B837:;
-    /* $B837: A9 */ nes_cpu_instruction_boundary(0xB837, 2); g_cpu.A = 0x0A; FLAG_NZ(g_cpu.A);
-label_B839:;
-    /* $B839: A0 */ nes_cpu_instruction_boundary(0xB839, 2); g_cpu.Y = 0xAD; FLAG_NZ(g_cpu.Y);
-label_B83B:;
-    /* $B83B: 4C */ nes_cpu_instruction_boundary(0xB83B, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-}
-
-void func_B864_b5(void) { /* SamusToBallSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B864_b5");
-#endif
-label_B864:; /* SamusToBallSFXInit */
-    /* $B864: A9 */ nes_cpu_instruction_boundary(0xB864, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
-label_B866:;
-    /* $B866: A0 */ nes_cpu_instruction_boundary(0xB866, 2); g_cpu.Y = 0x9D; FLAG_NZ(g_cpu.Y);
-label_B868:;
-    /* $B868: 20 */ nes_cpu_instruction_boundary(0xB868, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x6A; g_cpu.S--; func_B482_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB868, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B86B:;
-    /* $B86B: A9 */ nes_cpu_instruction_boundary(0xB86B, 2); g_cpu.A = 0x05; FLAG_NZ(g_cpu.A);
-label_B86D:;
-    /* $B86D: 8D */ nes_cpu_instruction_boundary(0xB86D, 4); nes_write(0x0616, g_cpu.A);
-label_B870:;
-    /* $B870: AD */ nes_cpu_instruction_boundary(0xB870, 4); g_cpu.A = nes_read(0xB29F); FLAG_NZ(g_cpu.A);
-label_B873:;
-    /* $B873: 8D */ nes_cpu_instruction_boundary(0xB873, 4); nes_write(0x0610, g_cpu.A);
-label_B876:;
-    /* $B876: AD */ nes_cpu_instruction_boundary(0xB876, 4); g_cpu.A = nes_read(0xB2A0); FLAG_NZ(g_cpu.A);
-label_B879:;
-    /* $B879: 29 */ nes_cpu_instruction_boundary(0xB879, 2); g_cpu.A &= 0x07; FLAG_NZ(g_cpu.A);
-label_B87B:;
-    /* $B87B: 8D */ nes_cpu_instruction_boundary(0xB87B, 4); nes_write(0x0611, g_cpu.A);
-label_B87E:;
-    /* $B87E: 60 */ nes_cpu_instruction_boundary(0xB87E, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B8A8_b5(void) { /* BombLaunchSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8A8_b5");
-#endif
-label_B8A8:; /* BombLaunchSFXInit */
-    /* $B8A8: A9 */ nes_cpu_instruction_boundary(0xB8A8, 2); g_cpu.A = 0x04; FLAG_NZ(g_cpu.A);
-label_B8AA:;
-    /* $B8AA: A0 */ nes_cpu_instruction_boundary(0xB8AA, 2); g_cpu.Y = 0x95; FLAG_NZ(g_cpu.Y);
-label_B8AC:;
-    /* $B8AC: 4C */ nes_cpu_instruction_boundary(0xB8AC, 3); nes_cpu_instruction_boundary(0xB482, 2); func_B482_b5(); return;
-}
-
-void func_B91D_b5(void) { /* SamusDieSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B91D_b5");
-#endif
-label_B91D:; /* SamusDieSFXCont */
-    /* $B91D: 20 */ nes_cpu_instruction_boundary(0xB91D, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x1F; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB91D, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B920:;
-    /* $B920: D0 */ nes_cpu_instruction_boundary(0xB920, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B93C; }
-label_B922:;
-    /* $B922: A9 */ nes_cpu_instruction_boundary(0xB922, 2); g_cpu.A = 0x20; FLAG_NZ(g_cpu.A);
-label_B924:;
-    /* $B924: 8D */ nes_cpu_instruction_boundary(0xB924, 4); nes_write(0x0612, g_cpu.A);
-label_B927:;
-    /* $B927: A9 */ nes_cpu_instruction_boundary(0xB927, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B929:;
-    /* $B929: 8D */ nes_cpu_instruction_boundary(0xB929, 4); nes_write(0x0613, g_cpu.A);
-label_B92C:;
-    /* $B92C: 20 */ nes_cpu_instruction_boundary(0xB92C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x2E; g_cpu.S--; func_B9BC_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB92C, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B92F:;
-    /* $B92F: EE */ nes_cpu_instruction_boundary(0xB92F, 6); { uint16_t a=0x0673; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B932:;
-    /* $B932: AD */ nes_cpu_instruction_boundary(0xB932, 4); g_cpu.A = nes_read(0x0673); FLAG_NZ(g_cpu.A);
-label_B935:;
-    /* $B935: C9 */ nes_cpu_instruction_boundary(0xB935, 2); { int r=g_cpu.A-0x06; g_cpu.C=(g_cpu.A>=0x06)?1:0; FLAG_NZ(r&0xFF); }
-label_B937:;
-    /* $B937: D0 */ nes_cpu_instruction_boundary(0xB937, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB91C); return; }
-label_B939:;
-    /* $B939: 4C */ nes_cpu_instruction_boundary(0xB939, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B93C:;
-    /* $B93C: 20 */ nes_cpu_instruction_boundary(0xB93C, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x3E; g_cpu.S--; func_B9D0_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB93C, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B93F:;
-    /* $B93F: AD */ nes_cpu_instruction_boundary(0xB93F, 4); g_cpu.A = nes_read(0x0614); FLAG_NZ(g_cpu.A);
-label_B942:;
-    /* $B942: 8D */ nes_cpu_instruction_boundary(0xB942, 4); nes_write(0x0612, g_cpu.A);
-label_B945:;
-    /* $B945: AD */ nes_cpu_instruction_boundary(0xB945, 4); g_cpu.A = nes_read(0x0615); FLAG_NZ(g_cpu.A);
-label_B948:;
-    /* $B948: 8D */ nes_cpu_instruction_boundary(0xB948, 4); nes_write(0x0613, g_cpu.A);
-label_B94B:;
-    /* $B94B: 20 */ nes_cpu_instruction_boundary(0xB94B, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x4D; g_cpu.S--; func_B9A8_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB94B, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B94E:;
-    /* $B94E: 4C */ nes_cpu_instruction_boundary(0xB94E, 3); nes_cpu_instruction_boundary(0xB899, 2); func_B899_b5(); return;
-}
-
-void func_B7FB_b5(void) { /* DoorOpenCloseSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B7FB_b5");
-#endif
-label_B7FB:; /* DoorOpenCloseSFXCont */
-    /* $B7FB: 20 */ nes_cpu_instruction_boundary(0xB7FB, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB7; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xFD; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB7FB, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B7FE:;
-    /* $B7FE: D0 */ nes_cpu_instruction_boundary(0xB7FE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B803; }
-label_B800:;
-    /* $B800: 4C */ nes_cpu_instruction_boundary(0xB800, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B803:; /* DoorOpenCloseSFXCont_endIf_A */
-    /* $B803: 20 */ nes_cpu_instruction_boundary(0xB803, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x05; g_cpu.S--; func_B9BC_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB803, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B806:;
-    /* $B806: 4C */ nes_cpu_instruction_boundary(0xB806, 3); nes_cpu_instruction_boundary(0xB899, 2); func_B899_b5(); return;
-}
-
-void func_B8E1_b5(void) { /* MetroidHitSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8E1_b5");
-#endif
-label_B8E1:; /* MetroidHitSFXCont */
-    /* $B8E1: 20 */ nes_cpu_instruction_boundary(0xB8E1, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xE3; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB8E1, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B8E4:;
-    /* $B8E4: F0 */ nes_cpu_instruction_boundary(0xB8E4, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B8F3; }
-label_B8E6:;
-    /* $B8E6: EE */ nes_cpu_instruction_boundary(0xB8E6, 6); { uint16_t a=0x0673; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B8E9:;
-    /* $B8E9: AD */ nes_cpu_instruction_boundary(0xB8E9, 4); g_cpu.A = nes_read(0x0673); FLAG_NZ(g_cpu.A);
-label_B8EC:;
-    /* $B8EC: C9 */ nes_cpu_instruction_boundary(0xB8EC, 2); { int r=g_cpu.A-0x09; g_cpu.C=(g_cpu.A>=0x09)?1:0; FLAG_NZ(r&0xFF); }
-label_B8EE:;
-    /* $B8EE: D0 */ nes_cpu_instruction_boundary(0xB8EE, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB8D6); return; }
-label_B8F0:;
-    /* $B8F0: 4C */ nes_cpu_instruction_boundary(0xB8F0, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B8F3:; /* RndTriPeriods */
-    /* $B8F3: A5 */ nes_cpu_instruction_boundary(0xB8F3, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B8F5:;
-    /* $B8F5: 09 */ nes_cpu_instruction_boundary(0xB8F5, 2); g_cpu.A |= 0x6C; FLAG_NZ(g_cpu.A);
-label_B8F7:;
-    /* $B8F7: 8D */ nes_cpu_instruction_boundary(0xB8F7, 4); nes_write(0x400A, g_cpu.A);
-label_B8FA:;
-    /* $B8FA: 29 */ nes_cpu_instruction_boundary(0xB8FA, 2); g_cpu.A &= 0x01; FLAG_NZ(g_cpu.A);
-label_B8FC:;
-    /* $B8FC: 09 */ nes_cpu_instruction_boundary(0xB8FC, 2); g_cpu.A |= 0xF8; FLAG_NZ(g_cpu.A);
-label_B8FE:;
-    /* $B8FE: 8D */ nes_cpu_instruction_boundary(0xB8FE, 4); nes_write(0x400B, g_cpu.A);
-label_B901:;
-    /* $B901: 60 */ nes_cpu_instruction_boundary(0xB901, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B970_b5_body(int _entry) { /* StatueRaiseSFXCont */
-    switch (_entry) {
-        case 1: goto label_B978;
-    }
-label_B970:; /* StatueRaiseSFXCont */
-    /* $B970: 20 */ nes_cpu_instruction_boundary(0xB970, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x72; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB970, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B973:;
-    /* $B973: D0 */ nes_cpu_instruction_boundary(0xB973, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B9A2; }
-label_B975:;
-    /* $B975: EE */ nes_cpu_instruction_boundary(0xB975, 6); { uint16_t a=0x0673; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B978:;
-    /* $B978: AD */ nes_cpu_instruction_boundary(0xB978, 4); g_cpu.A = nes_read(0x0673); FLAG_NZ(g_cpu.A);
-label_B97B:;
-    /* $B97B: C9 */ nes_cpu_instruction_boundary(0xB97B, 2); { int r=g_cpu.A-0x09; g_cpu.C=(g_cpu.A>=0x09)?1:0; FLAG_NZ(r&0xFF); }
-label_B97D:;
-    /* $B97D: D0 */ nes_cpu_instruction_boundary(0xB97D, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B982; }
-label_B97F:;
-    /* $B97F: 4C */ nes_cpu_instruction_boundary(0xB97F, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B982:; /* StatueRaiseSFXCont_endIf_B */
-    /* $B982: AD */ nes_cpu_instruction_boundary(0xB982, 4); g_cpu.A = nes_read(0x0612); FLAG_NZ(g_cpu.A);
-label_B985:;
-    /* $B985: 48 */ nes_cpu_instruction_boundary(0xB985, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_B986:;
-    /* $B986: AD */ nes_cpu_instruction_boundary(0xB986, 4); g_cpu.A = nes_read(0x0613); FLAG_NZ(g_cpu.A);
-label_B989:;
-    /* $B989: 48 */ nes_cpu_instruction_boundary(0xB989, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_B98A:;
-    /* $B98A: A9 */ nes_cpu_instruction_boundary(0xB98A, 2); g_cpu.A = 0x25; FLAG_NZ(g_cpu.A);
-label_B98C:;
-    /* $B98C: 8D */ nes_cpu_instruction_boundary(0xB98C, 4); nes_write(0x0612, g_cpu.A);
-label_B98F:;
-    /* $B98F: A9 */ nes_cpu_instruction_boundary(0xB98F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B991:;
-    /* $B991: 8D */ nes_cpu_instruction_boundary(0xB991, 4); nes_write(0x0613, g_cpu.A);
-label_B994:;
-    /* $B994: 20 */ nes_cpu_instruction_boundary(0xB994, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x96; g_cpu.S--; func_B9A8_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB994, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B997:;
-    /* $B997: 68 */ nes_cpu_instruction_boundary(0xB997, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_B998:;
-    /* $B998: 8D */ nes_cpu_instruction_boundary(0xB998, 4); nes_write(0x0613, g_cpu.A);
-label_B99B:;
-    /* $B99B: 68 */ nes_cpu_instruction_boundary(0xB99B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_B99C:;
-    /* $B99C: 8D */ nes_cpu_instruction_boundary(0xB99C, 4); nes_write(0x0612, g_cpu.A);
-label_B99F:;
-    /* $B99F: 4C */ nes_cpu_instruction_boundary(0xB99F, 3); nes_cpu_instruction_boundary(0xB899, 2); func_B899_b5(); return;
-label_B9A2:; /* StatueRaiseSFXCont_endIf_A */
-    /* $B9A2: 20 */ nes_cpu_instruction_boundary(0xB9A2, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA4; g_cpu.S--; func_B9BC_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB9A2, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B9A5:;
-    /* $B9A5: 4C */ nes_cpu_instruction_boundary(0xB9A5, 3); nes_cpu_instruction_boundary(0xB899, 2); func_B899_b5(); return;
-}
-
-void func_B970_b5(void) { /* StatueRaiseSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B970_b5");
-#endif
-    func_B970_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B978_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B978_b5");
-#endif
-    func_B970_b5_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B817_b5(void) { /* BeepSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B817_b5");
-#endif
-label_B817:; /* BeepSFXCont */
-    /* $B817: 20 */ nes_cpu_instruction_boundary(0xB817, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x19; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB817, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B81A:;
-    /* $B81A: D0 */ nes_cpu_instruction_boundary(0xB81A, 2); if (!g_cpu.Z) { maybe_trigger_vblank(2); call_by_address(0xB7D6); return; }
-label_B81C:;
-    /* $B81C: 4C */ nes_cpu_instruction_boundary(0xB81C, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-}
-
-void func_B83E_b5(void) { /* BigEnemyHitSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B83E_b5");
-#endif
-label_B83E:; /* BigEnemyHitSFXCont */
-    /* $B83E: 20 */ nes_cpu_instruction_boundary(0xB83E, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x40; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB83E, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B841:;
-    /* $B841: D0 */ nes_cpu_instruction_boundary(0xB841, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B846; }
-label_B843:;
-    /* $B843: 4C */ nes_cpu_instruction_boundary(0xB843, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B846:; /* BigEnemyHitSFXCont_dontEnd */
-    /* $B846: 20 */ nes_cpu_instruction_boundary(0xB846, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x48; g_cpu.S--; func_B9A8_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB846, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B849:;
-    /* $B849: A5 */ nes_cpu_instruction_boundary(0xB849, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B84B:;
-    /* $B84B: 29 */ nes_cpu_instruction_boundary(0xB84B, 2); g_cpu.A &= 0x3C; FLAG_NZ(g_cpu.A);
-label_B84D:;
-    /* $B84D: 8D */ nes_cpu_instruction_boundary(0xB84D, 4); nes_write(0x0673, g_cpu.A);
-label_B850:;
-    /* $B850: AD */ nes_cpu_instruction_boundary(0xB850, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B853:;
-    /* $B853: 29 */ nes_cpu_instruction_boundary(0xB853, 2); g_cpu.A &= 0xC3; FLAG_NZ(g_cpu.A);
-label_B855:;
-    /* $B855: 0D */ nes_cpu_instruction_boundary(0xB855, 4); g_cpu.A |= nes_read(0x0673); FLAG_NZ(g_cpu.A);
-label_B858:;
-    /* $B858: 8D */ nes_cpu_instruction_boundary(0xB858, 4); nes_write(0x400A, g_cpu.A);
-label_B85B:;
-    /* $B85B: AD */ nes_cpu_instruction_boundary(0xB85B, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B85E:;
-    /* $B85E: 09 */ nes_cpu_instruction_boundary(0xB85E, 2); g_cpu.A |= 0x40; FLAG_NZ(g_cpu.A);
-label_B860:;
-    /* $B860: 8D */ nes_cpu_instruction_boundary(0xB860, 4); nes_write(0x400B, g_cpu.A);
-label_B863:;
-    /* $B863: 60 */ nes_cpu_instruction_boundary(0xB863, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B87F_b5(void) { /* SamusToBallSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B87F_b5");
-#endif
-label_B87F:; /* SamusToBallSFXCont */
-    /* $B87F: 20 */ nes_cpu_instruction_boundary(0xB87F, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x81; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB87F, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B882:;
-    /* $B882: D0 */ nes_cpu_instruction_boundary(0xB882, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B887; }
-label_B884:;
-    /* $B884: 4C */ nes_cpu_instruction_boundary(0xB884, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B887:;
-    /* $B887: 20 */ nes_cpu_instruction_boundary(0xB887, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x89; g_cpu.S--; func_B9D0_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB887, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B88A:;
-    /* $B88A: AD */ nes_cpu_instruction_boundary(0xB88A, 4); g_cpu.A = nes_read(0x0614); FLAG_NZ(g_cpu.A);
-label_B88D:;
-    /* $B88D: 8D */ nes_cpu_instruction_boundary(0xB88D, 4); nes_write(0x0612, g_cpu.A);
-label_B890:;
-    /* $B890: AD */ nes_cpu_instruction_boundary(0xB890, 4); g_cpu.A = nes_read(0x0615); FLAG_NZ(g_cpu.A);
-label_B893:;
-    /* $B893: 8D */ nes_cpu_instruction_boundary(0xB893, 4); nes_write(0x0613, g_cpu.A);
-label_B896:;
-    /* $B896: 20 */ nes_cpu_instruction_boundary(0xB896, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x98; g_cpu.S--; func_B9BC_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB896, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B899:; /* WriteSFXTriPeriod */
-    /* $B899: AD */ nes_cpu_instruction_boundary(0xB899, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B89C:;
-    /* $B89C: 8D */ nes_cpu_instruction_boundary(0xB89C, 4); nes_write(0x400A, g_cpu.A);
-label_B89F:;
-    /* $B89F: AD */ nes_cpu_instruction_boundary(0xB89F, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B8A2:;
-    /* $B8A2: 09 */ nes_cpu_instruction_boundary(0xB8A2, 2); g_cpu.A |= 0x08; FLAG_NZ(g_cpu.A);
-label_B8A4:;
-    /* $B8A4: 8D */ nes_cpu_instruction_boundary(0xB8A4, 4); nes_write(0x400B, g_cpu.A);
-label_B8A7:;
-    /* $B8A7: 60 */ nes_cpu_instruction_boundary(0xB8A7, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B8AF_b5(void) { /* BombLaunchSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B8AF_b5");
-#endif
-label_B8AF:; /* BombLaunchSFXCont */
-    /* $B8AF: 20 */ nes_cpu_instruction_boundary(0xB8AF, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB8; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xB1; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB8AF, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B8B2:;
-    /* $B8B2: D0 */ nes_cpu_instruction_boundary(0xB8B2, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B8D6; }
-label_B8B4:;
-    /* $B8B4: EE */ nes_cpu_instruction_boundary(0xB8B4, 6); { uint16_t a=0x0673; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B8B7:;
-    /* $B8B7: AD */ nes_cpu_instruction_boundary(0xB8B7, 4); g_cpu.A = nes_read(0x0673); FLAG_NZ(g_cpu.A);
-label_B8BA:;
-    /* $B8BA: C9 */ nes_cpu_instruction_boundary(0xB8BA, 2); { int r=g_cpu.A-0x02; g_cpu.C=(g_cpu.A>=0x02)?1:0; FLAG_NZ(r&0xFF); }
-label_B8BC:;
-    /* $B8BC: D0 */ nes_cpu_instruction_boundary(0xB8BC, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B8C1; }
-label_B8BE:;
-    /* $B8BE: 4C */ nes_cpu_instruction_boundary(0xB8BE, 3); nes_cpu_instruction_boundary(0xB8C6, 2); func_B8C6_b5(); return;
-label_B8C1:; /* BombLaunchSFXCont_endIf_A */
-    /* $B8C1: A0 */ nes_cpu_instruction_boundary(0xB8C1, 2); g_cpu.Y = 0x99; FLAG_NZ(g_cpu.Y);
-label_B8C3:;
-    /* $B8C3: 4C */ nes_cpu_instruction_boundary(0xB8C3, 3); nes_cpu_instruction_boundary(0xB39C, 2); func_B39C_b5(); return;
-label_B8D6:; /* EndTriSFX_RTS */
-    /* $B8D6: 60 */ nes_cpu_instruction_boundary(0xB8D6, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_80AD_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_80AD_b5");
-#endif
-label_80AD:;
-    /* $80AD: D0 */ nes_cpu_instruction_boundary(0x80AD, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0x80A5); return; }
-label_80AF:; /* EnemyMove_RTS */
-    /* $80AF: 60 */ nes_cpu_instruction_boundary(0x80AF, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_BCAA_b5(void) { /* GotoMusic01Init */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCAA_b5");
-#endif
-label_BCAA:; /* GotoMusic01Init */
-    /* $BCAA: 4C */ nes_cpu_instruction_boundary(0xBCAA, 3); nes_cpu_instruction_boundary(0xBCD4, 2); func_BCD4_b5(); return;
-}
-
-void func_B6A3_b5(void) { /* SamusHitSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B6A3_b5");
-#endif
-label_B6A3:; /* SamusHitSFXInit */
-    /* $B6A3: A0 */ nes_cpu_instruction_boundary(0xB6A3, 2); g_cpu.Y = 0x55; FLAG_NZ(g_cpu.Y);
-label_B6A5:;
-    /* $B6A5: 20 */ nes_cpu_instruction_boundary(0xB6A5, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA7; g_cpu.S--; func_B398_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB6A5, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B6A8:;
-    /* $B6A8: A5 */ nes_cpu_instruction_boundary(0xB6A8, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B6AA:;
-    /* $B6AA: 29 */ nes_cpu_instruction_boundary(0xB6AA, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
-label_B6AC:;
-    /* $B6AC: 8D */ nes_cpu_instruction_boundary(0xB6AC, 4); nes_write(0x4002, g_cpu.A);
-label_B6AF:;
-    /* $B6AF: 18 */ nes_cpu_instruction_boundary(0xB6AF, 2); g_cpu.C = 0;
-label_B6B0:;
-    /* $B6B0: A5 */ nes_cpu_instruction_boundary(0xB6B0, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B6B2:;
-    /* $B6B2: 29 */ nes_cpu_instruction_boundary(0xB6B2, 2); g_cpu.A &= 0x03; FLAG_NZ(g_cpu.A);
-label_B6B4:;
-    /* $B6B4: 69 */ nes_cpu_instruction_boundary(0xB6B4, 2); { uint16_t r = g_cpu.A + 0x01 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0x01); g_cpu.A=r&0xFF; }
-label_B6B6:;
-    /* $B6B6: A0 */ nes_cpu_instruction_boundary(0xB6B6, 2); g_cpu.Y = 0x55; FLAG_NZ(g_cpu.Y);
-label_B6B8:;
-    /* $B6B8: 20 */ nes_cpu_instruction_boundary(0xB6B8, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xBA; g_cpu.S--; func_B5D5_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB6B8, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B6BB:;
-    /* $B6BB: A5 */ nes_cpu_instruction_boundary(0xB6BB, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B6BD:;
-    /* $B6BD: 4A */ nes_cpu_instruction_boundary(0xB6BD, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_B6BE:;
-    /* $B6BE: 4A */ nes_cpu_instruction_boundary(0xB6BE, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_B6BF:;
-    /* $B6BF: 29 */ nes_cpu_instruction_boundary(0xB6BF, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
-label_B6C1:;
-    /* $B6C1: 8D */ nes_cpu_instruction_boundary(0xB6C1, 4); nes_write(0x4006, g_cpu.A);
-label_B6C4:; /* SamusHitSFXInit_RTS */
-    /* $B6C4: 60 */ nes_cpu_instruction_boundary(0xB6C4, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B61C_b5(void) { /* BossHitSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B61C_b5");
-#endif
-label_B61C:; /* BossHitSFXInit */
-    /* $B61C: A0 */ nes_cpu_instruction_boundary(0xB61C, 2); g_cpu.Y = 0x5D; FLAG_NZ(g_cpu.Y);
-label_B61E:;
-    /* $B61E: 20 */ nes_cpu_instruction_boundary(0xB61E, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x20; g_cpu.S--; func_B398_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB61E, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B621:;
-    /* $B621: A0 */ nes_cpu_instruction_boundary(0xB621, 2); g_cpu.Y = 0x59; FLAG_NZ(g_cpu.Y);
-label_B623:;
-    /* $B623: 4C */ nes_cpu_instruction_boundary(0xB623, 3); nes_cpu_instruction_boundary(0xB5D5, 2); func_B5D5_b5(); return;
-}
-
-void func_B6C5_b5(void) { /* IncorrectPasswordSFXInit */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B6C5_b5");
-#endif
-label_B6C5:; /* IncorrectPasswordSFXInit */
-    /* $B6C5: A0 */ nes_cpu_instruction_boundary(0xB6C5, 2); g_cpu.Y = 0x61; FLAG_NZ(g_cpu.Y);
-label_B6C7:;
-    /* $B6C7: 20 */ nes_cpu_instruction_boundary(0xB6C7, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xC9; g_cpu.S--; func_B398_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB6C7, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B6CA:;
-    /* $B6CA: A9 */ nes_cpu_instruction_boundary(0xB6CA, 2); g_cpu.A = 0x20; FLAG_NZ(g_cpu.A);
-label_B6CC:;
-    /* $B6CC: A0 */ nes_cpu_instruction_boundary(0xB6CC, 2); g_cpu.Y = 0x65; FLAG_NZ(g_cpu.Y);
-label_B6CE:;
-    /* $B6CE: 4C */ nes_cpu_instruction_boundary(0xB6CE, 3); nes_cpu_instruction_boundary(0xB5D5, 2); func_B5D5_b5(); return;
-}
-
-void func_B680_b5(void) { /* SamusHitSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B680_b5");
-#endif
-label_B680:; /* SamusHitSFXCont */
-    /* $B680: 20 */ nes_cpu_instruction_boundary(0xB680, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x82; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB680, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B683:;
-    /* $B683: D0 */ nes_cpu_instruction_boundary(0xB683, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_B688; }
-label_B685:;
-    /* $B685: 4C */ nes_cpu_instruction_boundary(0xB685, 3); nes_cpu_instruction_boundary(0xB5FD, 2); func_B5FD_b5(); return;
-label_B688:; /* SamusHitSFXCont_endIf_A */
-    /* $B688: A0 */ nes_cpu_instruction_boundary(0xB688, 2); g_cpu.Y = 0x55; FLAG_NZ(g_cpu.Y);
-label_B68A:;
-    /* $B68A: 20 */ nes_cpu_instruction_boundary(0xB68A, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x8C; g_cpu.S--; func_B398_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB68A, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B68D:;
-    /* $B68D: A5 */ nes_cpu_instruction_boundary(0xB68D, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B68F:;
-    /* $B68F: 29 */ nes_cpu_instruction_boundary(0xB68F, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
-label_B691:;
-    /* $B691: 8D */ nes_cpu_instruction_boundary(0xB691, 4); nes_write(0x4002, g_cpu.A);
-label_B694:;
-    /* $B694: A0 */ nes_cpu_instruction_boundary(0xB694, 2); g_cpu.Y = 0x55; FLAG_NZ(g_cpu.Y);
-label_B696:;
-    /* $B696: 20 */ nes_cpu_instruction_boundary(0xB696, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x98; g_cpu.S--; func_B3A4_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB696, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B699:;
-    /* $B699: A5 */ nes_cpu_instruction_boundary(0xB699, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B69B:;
-    /* $B69B: 4A */ nes_cpu_instruction_boundary(0xB69B, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_B69C:;
-    /* $B69C: 4A */ nes_cpu_instruction_boundary(0xB69C, 2); g_cpu.C = g_cpu.A&1; g_cpu.A >>= 1; FLAG_NZ(g_cpu.A);
-label_B69D:;
-    /* $B69D: 29 */ nes_cpu_instruction_boundary(0xB69D, 2); g_cpu.A &= 0x0F; FLAG_NZ(g_cpu.A);
-label_B69F:;
-    /* $B69F: 8D */ nes_cpu_instruction_boundary(0xB69F, 4); nes_write(0x4006, g_cpu.A);
-label_B6A2:;
-    /* $B6A2: 60 */ nes_cpu_instruction_boundary(0xB6A2, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B626_b5(void) { /* BossHitSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B626_b5");
-#endif
-label_B626:; /* BossHitSFXCont */
-    /* $B626: EE */ nes_cpu_instruction_boundary(0xB626, 6); { uint16_t a=0x0671; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B629:;
-    /* $B629: AC */ nes_cpu_instruction_boundary(0xB629, 4); g_cpu.Y = nes_read(0x0671); FLAG_NZ(g_cpu.Y);
-label_B62C:;
-    /* $B62C: B9 */ nes_cpu_instruction_boundary(0xB62C, 4); g_cpu.A = nes_read((0xB66C + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B62F:;
-    /* $B62F: 8D */ nes_cpu_instruction_boundary(0xB62F, 4); nes_write(0x4000, g_cpu.A);
-label_B632:;
-    /* $B632: 8D */ nes_cpu_instruction_boundary(0xB632, 4); nes_write(0x4004, g_cpu.A);
-label_B635:;
-    /* $B635: AD */ nes_cpu_instruction_boundary(0xB635, 4); g_cpu.A = nes_read(0x0671); FLAG_NZ(g_cpu.A);
-label_B638:;
-    /* $B638: C9 */ nes_cpu_instruction_boundary(0xB638, 2); { int r=g_cpu.A-0x14; g_cpu.C=(g_cpu.A>=0x14)?1:0; FLAG_NZ(r&0xFF); }
-label_B63A:;
-    /* $B63A: F0 */ nes_cpu_instruction_boundary(0xB63A, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_B669; }
-label_B63C:;
-    /* $B63C: C9 */ nes_cpu_instruction_boundary(0xB63C, 2); { int r=g_cpu.A-0x06; g_cpu.C=(g_cpu.A>=0x06)?1:0; FLAG_NZ(r&0xFF); }
-label_B63E:;
-    /* $B63E: 90 */ nes_cpu_instruction_boundary(0xB63E, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B650; }
-label_B640:;
-    /* $B640: A5 */ nes_cpu_instruction_boundary(0xB640, 3); g_cpu.A = nes_read(0x2E); FLAG_NZ(g_cpu.A);
-label_B642:;
-    /* $B642: 09 */ nes_cpu_instruction_boundary(0xB642, 2); g_cpu.A |= 0x10; FLAG_NZ(g_cpu.A);
-label_B644:;
-    /* $B644: 29 */ nes_cpu_instruction_boundary(0xB644, 2); g_cpu.A &= 0x7F; FLAG_NZ(g_cpu.A);
-label_B646:;
-    /* $B646: 8D */ nes_cpu_instruction_boundary(0xB646, 4); nes_write(0x0679, g_cpu.A);
-label_B649:;
-    /* $B649: 2A */ nes_cpu_instruction_boundary(0xB649, 2); { uint8_t c=g_cpu.C; g_cpu.C=(g_cpu.A>>7)&1; g_cpu.A=((g_cpu.A<<1)|c)&0xFF; FLAG_NZ(g_cpu.A); }
-label_B64A:;
-    /* $B64A: 8D */ nes_cpu_instruction_boundary(0xB64A, 4); nes_write(0x0675, g_cpu.A);
-label_B64D:;
-    /* $B64D: 4C */ nes_cpu_instruction_boundary(0xB64D, 3); nes_cpu_instruction_boundary(0xB65C, 2); func_B65C_b5(); return;
-label_B650:; /* BossHitSFXCont_endIf_A */
-    /* $B650: EE */ nes_cpu_instruction_boundary(0xB650, 6); { uint16_t a=0x0675; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B653:;
-    /* $B653: EE */ nes_cpu_instruction_boundary(0xB653, 6); { uint16_t a=0x0675; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B656:;
-    /* $B656: EE */ nes_cpu_instruction_boundary(0xB656, 6); { uint16_t a=0x0679; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B659:;
-    /* $B659: EE */ nes_cpu_instruction_boundary(0xB659, 6); { uint16_t a=0x0679; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B65C:; /* WriteSQ1SQ2PeriodLow */
-    /* $B65C: AD */ nes_cpu_instruction_boundary(0xB65C, 4); g_cpu.A = nes_read(0x0675); FLAG_NZ(g_cpu.A);
-label_B65F:;
-    /* $B65F: 8D */ nes_cpu_instruction_boundary(0xB65F, 4); nes_write(0x4006, g_cpu.A);
-label_B662:;
-    /* $B662: AD */ nes_cpu_instruction_boundary(0xB662, 4); g_cpu.A = nes_read(0x0679); FLAG_NZ(g_cpu.A);
-label_B665:;
-    /* $B665: 8D */ nes_cpu_instruction_boundary(0xB665, 4); nes_write(0x4002, g_cpu.A);
-label_B668:;
-    /* $B668: 60 */ nes_cpu_instruction_boundary(0xB668, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-label_B669:; /* GotoEndMultiSFX */
-    /* $B669: 4C */ nes_cpu_instruction_boundary(0xB669, 3); nes_cpu_instruction_boundary(0xB5FD, 2); func_B5FD_b5(); return;
-}
-
-void func_B6D1_b5(void) { /* IncorrectPasswordSFXCont */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B6D1_b5");
-#endif
-label_B6D1:; /* IncorrectPasswordSFXCont */
-    /* $B6D1: 20 */ nes_cpu_instruction_boundary(0xB6D1, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB6; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD3; g_cpu.S--; func_B4D9_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB6D1, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B6D4:;
-    /* $B6D4: D0 */ nes_cpu_instruction_boundary(0xB6D4, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB6C4); return; }
-label_B6D6:;
-    /* $B6D6: 4C */ nes_cpu_instruction_boundary(0xB6D6, 3); nes_cpu_instruction_boundary(0xB5FD, 2); func_B5FD_b5(); return;
-}
-
-void func_B6FC_b5(void) { /* MissilePickupSFXCont_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B6FC_b5");
-#endif
-label_B6FC:; /* MissilePickupSFXCont_RTS */
-    /* $B6FC: 60 */ nes_cpu_instruction_boundary(0xB6FC, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B7D6_b5(void) { /* LoadSQ1PeriodLow_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B7D6_b5");
-#endif
-label_B7D6:; /* LoadSQ1PeriodLow_RTS */
-    /* $B7D6: 60 */ nes_cpu_instruction_boundary(0xB7D6, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_80A5_b5(void) { /* EnemyMove_loop_Right */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_80A5_b5");
-#endif
-label_80A5:; /* EnemyMove_loop_Right */
-    /* $80A5: 20 */ nes_cpu_instruction_boundary(0x80A5, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x80; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xA7; g_cpu.S--; func_84FE_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0x80A5, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_80A8:;
-    /* $80A8: 20 */ nes_cpu_instruction_boundary(0x80A8, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x80; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xAA; g_cpu.S--; func_8134_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0x80A8, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_80AB:;
-    /* $80AB: C6 */ nes_cpu_instruction_boundary(0x80AB, 5); { uint16_t a=0x66; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_80AD:;
-    /* $80AD: D0 */ nes_cpu_instruction_boundary(0x80AD, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0x80A5, 1);
-#ifdef WATCHDOG_ENABLED
-    watchdog_check();
-#endif
-    goto label_80A5;
-    }
-label_80AF:; /* EnemyMove_RTS */
-    /* $80AF: 60 */ nes_cpu_instruction_boundary(0x80AF, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B6C4_b5(void) { /* SamusHitSFXInit_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B6C4_b5");
-#endif
-label_B6C4:; /* SamusHitSFXInit_RTS */
-    /* $B6C4: 60 */ nes_cpu_instruction_boundary(0xB6C4, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
 void func_800F_b5(void) { /* CommonJump_InitEnAnimIndex */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_800F_b5");
@@ -12782,14 +11851,6 @@ void func_8042_b5(void) { /* CommonJump_SubtractHealth */
 #endif
 label_8042:; /* CommonJump_SubtractHealth */
     /* $8042: 4C */ nes_cpu_instruction_boundary(0x8042, 3); nes_cpu_instruction_boundary(0xCE92, 2); func_CE92(); return;
-}
-
-void func_8006_b5(void) { /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_8006_b5");
-#endif
-label_8006:; /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
-    /* $8006: 4C */ nes_cpu_instruction_boundary(0x8006, 3); nes_cpu_instruction_boundary(0xF416, 2); func_F416(); return;
 }
 
 void func_801B_b5(void) { /* CommonJump_EnemyFlipAfterDisplacement */
@@ -12870,6 +11931,39 @@ void func_803F_b5(void) { /* CommonJump_DrawTileBlast */
 #endif
 label_803F:; /* CommonJump_DrawTileBlast */
     /* $803F: 4C */ nes_cpu_instruction_boundary(0x803F, 3); nes_cpu_instruction_boundary(0xFEDC, 2); func_FEDC(); return;
+}
+
+void func_B61C_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B61C_b5");
+#endif
+label_B61C:;
+    /* $B61C: 06 */ nes_cpu_instruction_boundary(0xB61C, 5); { uint16_t a=0x4C; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B61E:;
+    /* $B61E: 2C */ nes_cpu_instruction_boundary(0xB61E, 4); { uint8_t m=nes_read(0xEEB6); g_cpu.Z=(g_cpu.A&m)?0:1; g_cpu.N=(m>>7)&1; g_cpu.V=(m>>6)&1; }
+label_B621:;
+    /* $B621: 75 */ nes_cpu_instruction_boundary(0xB621, 4); { uint8_t m=nes_read((0x06 + g_cpu.X) & 0xFF); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B623:;
+    /* $B623: EE */ nes_cpu_instruction_boundary(0xB623, 6); { uint16_t a=0x0675; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B626:;
+    /* $B626: EE */ nes_cpu_instruction_boundary(0xB626, 6); { uint16_t a=0x0679; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B629:;
+    /* $B629: EE */ nes_cpu_instruction_boundary(0xB629, 6); { uint16_t a=0x0679; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B62C:; /* WriteSQ1SQ2PeriodLow */
+    /* $B62C: AD */ nes_cpu_instruction_boundary(0xB62C, 4); g_cpu.A = nes_read(0x0675); FLAG_NZ(g_cpu.A);
+label_B62F:;
+    /* $B62F: 8D */ nes_cpu_instruction_boundary(0xB62F, 4); nes_write(0x4006, g_cpu.A);
+label_B632:;
+    /* $B632: AD */ nes_cpu_instruction_boundary(0xB632, 4); g_cpu.A = nes_read(0x0679); FLAG_NZ(g_cpu.A);
+label_B635:;
+    /* $B635: 8D */ nes_cpu_instruction_boundary(0xB635, 4); nes_write(0x4002, g_cpu.A);
+label_B638:;
+    /* $B638: 60 */ nes_cpu_instruction_boundary(0xB638, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
 }
 
 void func_8045_b5(void) { /* CommonJump_Base10Subtract */
@@ -12990,32 +12084,6 @@ label_95CB:;
     recomp_stack_pop();
 #endif
     return;
-}
-
-void func_9830_b5(void) { /* UpdateEnemyCommon_Decide_BANK5 */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_9830_b5");
-#endif
-label_9830:; /* UpdateEnemyCommon_Decide_BANK5 */
-    /* $9830: A5 */ nes_cpu_instruction_boundary(0x9830, 3); g_cpu.A = nes_read(0x81); FLAG_NZ(g_cpu.A);
-label_9832:;
-    /* $9832: C9 */ nes_cpu_instruction_boundary(0x9832, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
-label_9834:;
-    /* $9834: F0 */ nes_cpu_instruction_boundary(0x9834, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_983F; }
-label_9836:;
-    /* $9836: C9 */ nes_cpu_instruction_boundary(0x9836, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
-label_9838:;
-    /* $9838: F0 */ nes_cpu_instruction_boundary(0x9838, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_9844; }
-label_983A:;
-    /* $983A: A5 */ nes_cpu_instruction_boundary(0x983A, 3); g_cpu.A = nes_read(0x00); FLAG_NZ(g_cpu.A);
-label_983C:;
-    /* $983C: 4C */ nes_cpu_instruction_boundary(0x983C, 3); nes_cpu_instruction_boundary(0x8000, 2); func_8000_b5(); return;
-label_983F:; /* UpdateEnemyCommon_Decide_BANK5_resting */
-    /* $983F: A5 */ nes_cpu_instruction_boundary(0x983F, 3); g_cpu.A = nes_read(0x01); FLAG_NZ(g_cpu.A);
-label_9841:;
-    /* $9841: 4C */ nes_cpu_instruction_boundary(0x9841, 3); nes_cpu_instruction_boundary(0x8003, 2); func_8003_b5(); return;
-label_9844:; /* UpdateEnemyCommon_Decide_BANK5_explode */
-    /* $9844: 4C */ nes_cpu_instruction_boundary(0x9844, 3); nes_cpu_instruction_boundary(0x8006, 2); func_8006_b5(); return;
 }
 
 void func_98F8_b5(void) { /* UpdateSwooperAnim_BANK5 */
@@ -13427,267 +12495,337 @@ label_9ADC:;
     /* $9ADC: 4C */ nes_cpu_instruction_boundary(0x9ADC, 3); nes_cpu_instruction_boundary(0x802A, 2); func_802A_b5(); return;
 }
 
-void func_B3F0_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3F0_b5");
-#endif
-label_B3F0:;
-    /* $B3F0: 1E */ nes_cpu_instruction_boundary(0xB3F0, 7); { uint16_t a=(0x05C9 + g_cpu.X) & 0xFFFF; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B3F3:;
-    /* $B3F3: F0 */ nes_cpu_instruction_boundary(0xB3F3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB3C9); return; }
-label_B3F5:;
-    /* $B3F5: A9 */ nes_cpu_instruction_boundary(0xB3F5, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B3F7:;
-    /* $B3F7: 8D */ nes_cpu_instruction_boundary(0xB3F7, 4); nes_write(0x0602, g_cpu.A);
-label_B3FA:;
-    /* $B3FA: 20 */ nes_cpu_instruction_boundary(0xB3FA, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xFC; g_cpu.S--; func_B34B_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB3FA, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B3FD:;
-    /* $B3FD: 20 */ nes_cpu_instruction_boundary(0xB3FD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xFF; g_cpu.S--; func_B37B_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB3FD, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B400:;
-    /* $B400: 20 */ nes_cpu_instruction_boundary(0xB400, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x02; g_cpu.S--; func_B36D_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB400, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B403:;
-    /* $B403: 20 */ nes_cpu_instruction_boundary(0xB403, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB4; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x05; g_cpu.S--; func_BC66_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB403, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_B406:; /* ClearInitFlags */
-    /* $B406: A9 */ nes_cpu_instruction_boundary(0xB406, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B408:;
-    /* $B408: 8D */ nes_cpu_instruction_boundary(0xB408, 4); nes_write(0x0680, g_cpu.A);
-label_B40B:;
-    /* $B40B: 8D */ nes_cpu_instruction_boundary(0xB40B, 4); nes_write(0x0681, g_cpu.A);
-label_B40E:;
-    /* $B40E: 8D */ nes_cpu_instruction_boundary(0xB40E, 4); nes_write(0x0682, g_cpu.A);
-label_B411:;
-    /* $B411: 8D */ nes_cpu_instruction_boundary(0xB411, 4); nes_write(0x0683, g_cpu.A);
-label_B414:;
-    /* $B414: 8D */ nes_cpu_instruction_boundary(0xB414, 4); nes_write(0x0684, g_cpu.A);
-label_B417:;
-    /* $B417: 8D */ nes_cpu_instruction_boundary(0xB417, 4); nes_write(0x0685, g_cpu.A);
-label_B41A:;
-    /* $B41A: 60 */ nes_cpu_instruction_boundary(0xB41A, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B3FC_b5_body(int _entry) {
+void func_B3C0_b5_body(int _entry) {
     switch (_entry) {
-        case 1: goto label_B40E;
+        case 1: goto label_B3E4;
     }
-label_B3FC:;
-    /* $B3FC: B3 */ nes_cpu_instruction_boundary(0xB3FC, 5); g_cpu.A = g_cpu.X = nes_read((nes_read16zp(0x20) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B3FE:;
-    /* $B3FE: 7B */ nes_cpu_instruction_boundary(0xB3FE, 7); { uint16_t a=(0x20B3 + g_cpu.Y) & 0xFFFF; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=v&1; v=((v>>1)|(c<<7))&0xFF; nes_write(a,v); uint16_t r=g_cpu.A+v+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_B401:;
-    /* $B401: 6D */ nes_cpu_instruction_boundary(0xB401, 4); { uint8_t m=nes_read(0x20B3); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B404:;
-    /* $B404: 66 */ nes_cpu_instruction_boundary(0xB404, 5); { uint16_t a=0xBC; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=v&1; v=((v>>1)|(c<<7))&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B406:; /* ClearInitFlags */
-    /* $B406: A9 */ nes_cpu_instruction_boundary(0xB406, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B408:;
-    /* $B408: 8D */ nes_cpu_instruction_boundary(0xB408, 4); nes_write(0x0680, g_cpu.A);
-label_B40B:;
-    /* $B40B: 8D */ nes_cpu_instruction_boundary(0xB40B, 4); nes_write(0x0681, g_cpu.A);
-label_B40E:;
-    /* $B40E: 8D */ nes_cpu_instruction_boundary(0xB40E, 4); nes_write(0x0682, g_cpu.A);
-label_B411:;
-    /* $B411: 8D */ nes_cpu_instruction_boundary(0xB411, 4); nes_write(0x0683, g_cpu.A);
-label_B414:;
-    /* $B414: 8D */ nes_cpu_instruction_boundary(0xB414, 4); nes_write(0x0684, g_cpu.A);
-label_B417:;
-    /* $B417: 8D */ nes_cpu_instruction_boundary(0xB417, 4); nes_write(0x0685, g_cpu.A);
-label_B41A:;
-    /* $B41A: 60 */ nes_cpu_instruction_boundary(0xB41A, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B3FC_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B3FC_b5");
-#endif
-    func_B3FC_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B40E_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B40E_b5");
-#endif
-    func_B3FC_b5_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B4A9_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B4A9_b5");
-#endif
-label_B4A9:;
-    /* $B4A9: B3 */ nes_cpu_instruction_boundary(0xB4A9, 5); g_cpu.A = g_cpu.X = nes_read((nes_read16zp(0x20) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_B4AB:;
-    /* $B4AB: C3 */ nes_cpu_instruction_boundary(0xB4AB, 8); { uint16_t a=nes_read16zp((0xB4 + g_cpu.X) & 0xFF); uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); g_cpu.C=(g_cpu.A>=v)?1:0; FLAG_NZ((uint8_t)(g_cpu.A-v)); }
-label_B4AD:;
-    /* $B4AD: 8A */ nes_cpu_instruction_boundary(0xB4AD, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
-label_B4AE:;
-    /* $B4AE: 9D */ nes_cpu_instruction_boundary(0xB4AE, 5); nes_write((0x0652 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4B1:;
-    /* $B4B1: A9 */ nes_cpu_instruction_boundary(0xB4B1, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B4B3:;
-    /* $B4B3: 9D */ nes_cpu_instruction_boundary(0xB4B3, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4B6:;
-    /* $B4B6: 9D */ nes_cpu_instruction_boundary(0xB4B6, 5); nes_write((0x0670 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4B9:;
-    /* $B4B9: 9D */ nes_cpu_instruction_boundary(0xB4B9, 5); nes_write((0x0674 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4BC:;
-    /* $B4BC: 9D */ nes_cpu_instruction_boundary(0xB4BC, 5); nes_write((0x0678 + g_cpu.X) & 0xFFFF, g_cpu.A);
-label_B4BF:;
-    /* $B4BF: 8D */ nes_cpu_instruction_boundary(0xB4BF, 4); nes_write(0x0607, g_cpu.A);
-label_B4C2:;
-    /* $B4C2: 60 */ nes_cpu_instruction_boundary(0xB4C2, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B4BD_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B4BD_b5");
-#endif
-label_B4BD:;
-    /* $B4BD: 78 */ nes_cpu_instruction_boundary(0xB4BD, 2); g_cpu.I = 1;
-label_B4BE:;
-    /* $B4BE: 06 */ nes_cpu_instruction_boundary(0xB4BE, 5); { uint16_t a=0x8D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B4C0:;
-    /* $B4C0: 07 */ nes_cpu_instruction_boundary(0xB4C0, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_B4C2:;
-    /* $B4C2: 60 */ nes_cpu_instruction_boundary(0xB4C2, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B587_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B587_b5");
-#endif
-label_B587:;
-    /* $B587: EE */ nes_cpu_instruction_boundary(0xB587, 6); { uint16_t a=0x0674; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B58A:;
-    /* $B58A: AD */ nes_cpu_instruction_boundary(0xB58A, 4); g_cpu.A = nes_read(0x0674); FLAG_NZ(g_cpu.A);
-label_B58D:;
-    /* $B58D: C9 */ nes_cpu_instruction_boundary(0xB58D, 2); { int r=g_cpu.A-0x0F; g_cpu.C=(g_cpu.A>=0x0F)?1:0; FLAG_NZ(r&0xFF); }
-label_B58F:;
-    /* $B58F: D0 */ nes_cpu_instruction_boundary(0xB58F, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB568); return; }
-label_B591:;
-    /* $B591: 4C */ nes_cpu_instruction_boundary(0xB591, 3); nes_cpu_instruction_boundary(0xB5BF, 2); func_B5BF_b5(); return;
-}
-
-void func_B5A5_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B5A5_b5");
-#endif
-label_B5A5:;
-    /* $B5A5: A9 */ nes_cpu_instruction_boundary(0xB5A5, 2); g_cpu.A = 0x0A; FLAG_NZ(g_cpu.A);
-label_B5A7:;
-    /* $B5A7: 8D */ nes_cpu_instruction_boundary(0xB5A7, 4); nes_write(0x0670, g_cpu.A);
-label_B5AA:;
-    /* $B5AA: 60 */ nes_cpu_instruction_boundary(0xB5AA, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B98C_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B98C_b5");
-#endif
-label_B98C:;
-    /* $B98C: 8D */ nes_cpu_instruction_boundary(0xB98C, 4); nes_write(0x0612, g_cpu.A);
-label_B98F:;
-    /* $B98F: A9 */ nes_cpu_instruction_boundary(0xB98F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
-label_B991:;
-    /* $B991: 8D */ nes_cpu_instruction_boundary(0xB991, 4); nes_write(0x0613, g_cpu.A);
-label_B994:;
-    /* $B994: 20 */ nes_cpu_instruction_boundary(0xB994, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x96; g_cpu.S--; func_B9A8_b5();
+label_B3C0:;
+    /* $B3C0: 1E */ nes_cpu_instruction_boundary(0xB3C0, 7); { uint16_t a=(0x05C9 + g_cpu.X) & 0xFFFF; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B3C3:;
+    /* $B3C3: F0 */ nes_cpu_instruction_boundary(0xB3C3, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB399); return; }
+label_B3C5:;
+    /* $B3C5: A9 */ nes_cpu_instruction_boundary(0xB3C5, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B3C7:;
+    /* $B3C7: 8D */ nes_cpu_instruction_boundary(0xB3C7, 4); nes_write(0x0602, g_cpu.A);
+label_B3CA:;
+    /* $B3CA: 20 */ nes_cpu_instruction_boundary(0xB3CA, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xCC; g_cpu.S--; func_B31B_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xB994, _cbs);
+    bail_trace(0xB3CA, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_B997:;
-    /* $B997: 68 */ nes_cpu_instruction_boundary(0xB997, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_B998:;
-    /* $B998: 8D */ nes_cpu_instruction_boundary(0xB998, 4); nes_write(0x0613, g_cpu.A);
-label_B99B:;
-    /* $B99B: 68 */ nes_cpu_instruction_boundary(0xB99B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_B99C:;
-    /* $B99C: 8D */ nes_cpu_instruction_boundary(0xB99C, 4); nes_write(0x0612, g_cpu.A);
-label_B99F:;
-    /* $B99F: 4C */ nes_cpu_instruction_boundary(0xB99F, 3); nes_cpu_instruction_boundary(0xB899, 2); func_B899_b5(); return;
+label_B3CD:;
+    /* $B3CD: 20 */ nes_cpu_instruction_boundary(0xB3CD, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xCF; g_cpu.S--; func_B34B_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB3CD, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B3D0:;
+    /* $B3D0: 20 */ nes_cpu_instruction_boundary(0xB3D0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD2; g_cpu.S--; func_B33D_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB3D0, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B3D3:;
+    /* $B3D3: 20 */ nes_cpu_instruction_boundary(0xB3D3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD5; g_cpu.S--; func_BC36_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB3D3, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B3D6:; /* ClearInitFlags */
+    /* $B3D6: A9 */ nes_cpu_instruction_boundary(0xB3D6, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B3D8:;
+    /* $B3D8: 8D */ nes_cpu_instruction_boundary(0xB3D8, 4); nes_write(0x0680, g_cpu.A);
+label_B3DB:;
+    /* $B3DB: 8D */ nes_cpu_instruction_boundary(0xB3DB, 4); nes_write(0x0681, g_cpu.A);
+label_B3DE:;
+    /* $B3DE: 8D */ nes_cpu_instruction_boundary(0xB3DE, 4); nes_write(0x0682, g_cpu.A);
+label_B3E1:;
+    /* $B3E1: 8D */ nes_cpu_instruction_boundary(0xB3E1, 4); nes_write(0x0683, g_cpu.A);
+label_B3E4:;
+    /* $B3E4: 8D */ nes_cpu_instruction_boundary(0xB3E4, 4); nes_write(0x0684, g_cpu.A);
+label_B3E7:;
+    /* $B3E7: 8D */ nes_cpu_instruction_boundary(0xB3E7, 4); nes_write(0x0685, g_cpu.A);
+label_B3EA:;
+    /* $B3EA: 60 */ nes_cpu_instruction_boundary(0xB3EA, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
 }
 
-void func_B9A0_b5(void) {
+void func_B3C0_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9A0_b5");
+    recomp_stack_push("func_B3C0_b5");
 #endif
-label_B9A0:;
-    /* $B9A0: 99 */ nes_cpu_instruction_boundary(0xB9A0, 5); nes_write((0x20B8 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B9A3:;
-    /* $B9A3: BC */ nes_cpu_instruction_boundary(0xB9A3, 4); g_cpu.Y = nes_read((0x4CB9 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_B9A6:;
-    /* $B9A6: 99 */ nes_cpu_instruction_boundary(0xB9A6, 5); nes_write((0x18B8 + g_cpu.Y) & 0xFFFF, g_cpu.A);
-label_B9A9:;
-    /* $B9A9: AD */ nes_cpu_instruction_boundary(0xB9A9, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_B9AC:;
-    /* $B9AC: 6D */ nes_cpu_instruction_boundary(0xB9AC, 4); { uint8_t m=nes_read(0x0612); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B9AF:;
-    /* $B9AF: 8D */ nes_cpu_instruction_boundary(0xB9AF, 4); nes_write(0x0610, g_cpu.A);
-label_B9B2:;
-    /* $B9B2: AD */ nes_cpu_instruction_boundary(0xB9B2, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_B9B5:;
-    /* $B9B5: 6D */ nes_cpu_instruction_boundary(0xB9B5, 4); { uint8_t m=nes_read(0x0613); uint16_t r=g_cpu.A+m+g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+    func_B3C0_b5_body(0);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B3E4_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B3E4_b5");
+#endif
+    func_B3C0_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B3CC_b5_body(int _entry) {
+    switch (_entry) {
+        case 1: goto label_B3DE;
+    }
+label_B3CC:;
+    /* $B3CC: B3 */ nes_cpu_instruction_boundary(0xB3CC, 5); g_cpu.A = g_cpu.X = nes_read((nes_read16zp(0x20) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B3CE:;
+    /* $B3CE: 4B */ nes_cpu_instruction_boundary(0xB3CE, 2); g_cpu.A &= 0xB3; g_cpu.C=g_cpu.A&1; g_cpu.A>>=1; FLAG_NZ(g_cpu.A);
+label_B3D0:;
+    /* $B3D0: 20 */ nes_cpu_instruction_boundary(0xB3D0, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD2; g_cpu.S--; func_B33D_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB3D0, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B3D3:;
+    /* $B3D3: 20 */ nes_cpu_instruction_boundary(0xB3D3, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB3; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0xD5; g_cpu.S--; func_BC36_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB3D3, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B3D6:; /* ClearInitFlags */
+    /* $B3D6: A9 */ nes_cpu_instruction_boundary(0xB3D6, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B3D8:;
+    /* $B3D8: 8D */ nes_cpu_instruction_boundary(0xB3D8, 4); nes_write(0x0680, g_cpu.A);
+label_B3DB:;
+    /* $B3DB: 8D */ nes_cpu_instruction_boundary(0xB3DB, 4); nes_write(0x0681, g_cpu.A);
+label_B3DE:;
+    /* $B3DE: 8D */ nes_cpu_instruction_boundary(0xB3DE, 4); nes_write(0x0682, g_cpu.A);
+label_B3E1:;
+    /* $B3E1: 8D */ nes_cpu_instruction_boundary(0xB3E1, 4); nes_write(0x0683, g_cpu.A);
+label_B3E4:;
+    /* $B3E4: 8D */ nes_cpu_instruction_boundary(0xB3E4, 4); nes_write(0x0684, g_cpu.A);
+label_B3E7:;
+    /* $B3E7: 8D */ nes_cpu_instruction_boundary(0xB3E7, 4); nes_write(0x0685, g_cpu.A);
+label_B3EA:;
+    /* $B3EA: 60 */ nes_cpu_instruction_boundary(0xB3EA, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B3CC_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B3CC_b5");
+#endif
+    func_B3CC_b5_body(0);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B3DE_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B3DE_b5");
+#endif
+    func_B3CC_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B479_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B479_b5");
+#endif
+label_B479:;
+    /* $B479: B3 */ nes_cpu_instruction_boundary(0xB479, 5); g_cpu.A = g_cpu.X = nes_read((nes_read16zp(0x20) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_B47B:;
+    /* $B47B: 93 */ nes_cpu_instruction_boundary(0xB47B, 6); /* ILLEGAL $93 — skip 2 */
+label_B47D:;
+    /* $B47D: 8A */ nes_cpu_instruction_boundary(0xB47D, 2); g_cpu.A = g_cpu.X; FLAG_NZ(g_cpu.A);
+label_B47E:;
+    /* $B47E: 9D */ nes_cpu_instruction_boundary(0xB47E, 5); nes_write((0x0652 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B481:;
+    /* $B481: A9 */ nes_cpu_instruction_boundary(0xB481, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B483:;
+    /* $B483: 9D */ nes_cpu_instruction_boundary(0xB483, 5); nes_write((0x0665 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B486:;
+    /* $B486: 9D */ nes_cpu_instruction_boundary(0xB486, 5); nes_write((0x0670 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B489:;
+    /* $B489: 9D */ nes_cpu_instruction_boundary(0xB489, 5); nes_write((0x0674 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B48C:;
+    /* $B48C: 9D */ nes_cpu_instruction_boundary(0xB48C, 5); nes_write((0x0678 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_B48F:;
+    /* $B48F: 8D */ nes_cpu_instruction_boundary(0xB48F, 4); nes_write(0x0607, g_cpu.A);
+label_B492:;
+    /* $B492: 60 */ nes_cpu_instruction_boundary(0xB492, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B48D_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B48D_b5");
+#endif
+label_B48D:;
+    /* $B48D: 78 */ nes_cpu_instruction_boundary(0xB48D, 2); g_cpu.I = 1;
+label_B48E:;
+    /* $B48E: 06 */ nes_cpu_instruction_boundary(0xB48E, 5); { uint16_t a=0x8D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B490:;
+    /* $B490: 07 */ nes_cpu_instruction_boundary(0xB490, 5); { uint16_t a=0x06; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
+label_B492:;
+    /* $B492: 60 */ nes_cpu_instruction_boundary(0xB492, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B557_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B557_b5");
+#endif
+label_B557:;
+    /* $B557: EE */ nes_cpu_instruction_boundary(0xB557, 6); { uint16_t a=0x0674; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B55A:;
+    /* $B55A: AD */ nes_cpu_instruction_boundary(0xB55A, 4); g_cpu.A = nes_read(0x0674); FLAG_NZ(g_cpu.A);
+label_B55D:;
+    /* $B55D: C9 */ nes_cpu_instruction_boundary(0xB55D, 2); { int r=g_cpu.A-0x0F; g_cpu.C=(g_cpu.A>=0x0F)?1:0; FLAG_NZ(r&0xFF); }
+label_B55F:;
+    /* $B55F: D0 */ nes_cpu_instruction_boundary(0xB55F, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB538); return; }
+label_B561:;
+    /* $B561: 4C */ nes_cpu_instruction_boundary(0xB561, 3); nes_cpu_instruction_boundary(0xB58F, 2); func_B58F_b5(); return;
+}
+
+void func_B575_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B575_b5");
+#endif
+label_B575:;
+    /* $B575: A9 */ nes_cpu_instruction_boundary(0xB575, 2); g_cpu.A = 0x0A; FLAG_NZ(g_cpu.A);
+label_B577:;
+    /* $B577: 8D */ nes_cpu_instruction_boundary(0xB577, 4); nes_write(0x0670, g_cpu.A);
+label_B57A:;
+    /* $B57A: 60 */ nes_cpu_instruction_boundary(0xB57A, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B95C_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B95C_b5");
+#endif
+label_B95C:;
+    /* $B95C: 8D */ nes_cpu_instruction_boundary(0xB95C, 4); nes_write(0x0612, g_cpu.A);
+label_B95F:;
+    /* $B95F: A9 */ nes_cpu_instruction_boundary(0xB95F, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_B961:;
+    /* $B961: 8D */ nes_cpu_instruction_boundary(0xB961, 4); nes_write(0x0613, g_cpu.A);
+label_B964:;
+    /* $B964: 20 */ nes_cpu_instruction_boundary(0xB964, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x66; g_cpu.S--; func_B978_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB964, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B967:;
+    /* $B967: 68 */ nes_cpu_instruction_boundary(0xB967, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B968:;
+    /* $B968: 8D */ nes_cpu_instruction_boundary(0xB968, 4); nes_write(0x0613, g_cpu.A);
+label_B96B:;
+    /* $B96B: 68 */ nes_cpu_instruction_boundary(0xB96B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B96C:;
+    /* $B96C: 8D */ nes_cpu_instruction_boundary(0xB96C, 4); nes_write(0x0612, g_cpu.A);
+label_B96F:;
+    /* $B96F: 4C */ nes_cpu_instruction_boundary(0xB96F, 3); nes_cpu_instruction_boundary(0xB869, 2); func_B869_b5(); return;
+}
+
+void func_B970_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B970_b5");
+#endif
+label_B970:;
+    /* $B970: 69 */ nes_cpu_instruction_boundary(0xB970, 2); { uint16_t r = g_cpu.A + 0xB8 + g_cpu.C; FLAG_NZC_ADD(r,g_cpu.A,0xB8); g_cpu.A=r&0xFF; }
+label_B972:; /* StatueRaiseSFXCont_endIf_A */
+    /* $B972: 20 */ nes_cpu_instruction_boundary(0xB972, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xB9; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x74; g_cpu.S--; func_B98C_b5();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0xB972, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_B975:;
+    /* $B975: 4C */ nes_cpu_instruction_boundary(0xB975, 3); nes_cpu_instruction_boundary(0xB869, 2); func_B869_b5(); return;
+}
+
+void func_B9B4_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B9B4_b5");
+#endif
+label_B9B4:;
+    /* $B9B4: 06 */ nes_cpu_instruction_boundary(0xB9B4, 5); { uint16_t a=0x2E; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9B6:;
+    /* $B9B6: 17 */ nes_cpu_instruction_boundary(0xB9B6, 6); { uint16_t a=(0x06 + g_cpu.X) & 0xFF; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
 label_B9B8:;
-    /* $B9B8: 8D */ nes_cpu_instruction_boundary(0xB9B8, 4); nes_write(0x0611, g_cpu.A);
+    /* $B9B8: AD */ nes_cpu_instruction_boundary(0xB9B8, 4); g_cpu.A = nes_read(0x0617); FLAG_NZ(g_cpu.A);
 label_B9BB:;
-    /* $B9BB: 60 */ nes_cpu_instruction_boundary(0xB9BB, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+    /* $B9BB: CD */ nes_cpu_instruction_boundary(0xB9BB, 4); { uint8_t m=nes_read(0x0616); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B9BE:;
+    /* $B9BE: 90 */ nes_cpu_instruction_boundary(0xB9BE, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B9C6; }
+label_B9C0:;
+    /* $B9C0: ED */ nes_cpu_instruction_boundary(0xB9C0, 4); { uint8_t m=nes_read(0x0616); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B9C3:;
+    /* $B9C3: 8D */ nes_cpu_instruction_boundary(0xB9C3, 4); nes_write(0x0617, g_cpu.A);
+label_B9C6:; /* DivideSFXTriPeriod_endIf_A */
+    /* $B9C6: 2E */ nes_cpu_instruction_boundary(0xB9C6, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9C9:;
+    /* $B9C9: 2E */ nes_cpu_instruction_boundary(0xB9C9, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9CC:;
+    /* $B9CC: CA */ nes_cpu_instruction_boundary(0xB9CC, 2); g_cpu.X = (g_cpu.X-1)&0xFF; FLAG_NZ(g_cpu.X);
+label_B9CD:;
+    /* $B9CD: D0 */ nes_cpu_instruction_boundary(0xB9CD, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB9B5); return; }
+label_B9CF:;
+    /* $B9CF: AD */ nes_cpu_instruction_boundary(0xB9CF, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B9D2:;
+    /* $B9D2: 8D */ nes_cpu_instruction_boundary(0xB9D2, 4); nes_write(0x0614, g_cpu.A);
+label_B9D5:;
+    /* $B9D5: AD */ nes_cpu_instruction_boundary(0xB9D5, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B9D8:;
+    /* $B9D8: 8D */ nes_cpu_instruction_boundary(0xB9D8, 4); nes_write(0x0615, g_cpu.A);
+label_B9DB:;
+    /* $B9DB: 68 */ nes_cpu_instruction_boundary(0xB9DB, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B9DC:;
+    /* $B9DC: 8D */ nes_cpu_instruction_boundary(0xB9DC, 4); nes_write(0x0611, g_cpu.A);
+label_B9DF:;
+    /* $B9DF: 68 */ nes_cpu_instruction_boundary(0xB9DF, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B9E0:;
+    /* $B9E0: 8D */ nes_cpu_instruction_boundary(0xB9E0, 4); nes_write(0x0610, g_cpu.A);
+label_B9E3:;
+    /* $B9E3: 60 */ nes_cpu_instruction_boundary(0xB9E3, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -13695,105 +12833,115 @@ label_B9BB:;
     return;
 }
 
-void func_B9E4_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9E4_b5");
-#endif
-label_B9E4:;
-    /* $B9E4: 06 */ nes_cpu_instruction_boundary(0xB9E4, 5); { uint16_t a=0x2E; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9E6:;
-    /* $B9E6: 17 */ nes_cpu_instruction_boundary(0xB9E6, 6); { uint16_t a=(0x06 + g_cpu.X) & 0xFF; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); g_cpu.A|=v; FLAG_NZ(g_cpu.A); }
-label_B9E8:;
-    /* $B9E8: AD */ nes_cpu_instruction_boundary(0xB9E8, 4); g_cpu.A = nes_read(0x0617); FLAG_NZ(g_cpu.A);
-label_B9EB:;
-    /* $B9EB: CD */ nes_cpu_instruction_boundary(0xB9EB, 4); { uint8_t m=nes_read(0x0616); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B9EE:;
-    /* $B9EE: 90 */ nes_cpu_instruction_boundary(0xB9EE, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B9F6; }
-label_B9F0:;
-    /* $B9F0: ED */ nes_cpu_instruction_boundary(0xB9F0, 4); { uint8_t m=nes_read(0x0616); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B9F3:;
-    /* $B9F3: 8D */ nes_cpu_instruction_boundary(0xB9F3, 4); nes_write(0x0617, g_cpu.A);
-label_B9F6:; /* DivideSFXTriPeriod_endIf_A */
-    /* $B9F6: 2E */ nes_cpu_instruction_boundary(0xB9F6, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9F9:;
-    /* $B9F9: 2E */ nes_cpu_instruction_boundary(0xB9F9, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9FC:;
-    /* $B9FC: CA */ nes_cpu_instruction_boundary(0xB9FC, 2); g_cpu.X = (g_cpu.X-1)&0xFF; FLAG_NZ(g_cpu.X);
-label_B9FD:;
-    /* $B9FD: D0 */ nes_cpu_instruction_boundary(0xB9FD, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); call_by_address(0xB9E5); return; }
-label_B9FF:;
-    /* $B9FF: AD */ nes_cpu_instruction_boundary(0xB9FF, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_BA02:;
-    /* $BA02: 8D */ nes_cpu_instruction_boundary(0xBA02, 4); nes_write(0x0614, g_cpu.A);
-label_BA05:;
-    /* $BA05: AD */ nes_cpu_instruction_boundary(0xBA05, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_BA08:;
-    /* $BA08: 8D */ nes_cpu_instruction_boundary(0xBA08, 4); nes_write(0x0615, g_cpu.A);
-label_BA0B:;
-    /* $BA0B: 68 */ nes_cpu_instruction_boundary(0xBA0B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BA0C:;
-    /* $BA0C: 8D */ nes_cpu_instruction_boundary(0xBA0C, 4); nes_write(0x0611, g_cpu.A);
-label_BA0F:;
-    /* $BA0F: 68 */ nes_cpu_instruction_boundary(0xBA0F, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BA10:;
-    /* $BA10: 8D */ nes_cpu_instruction_boundary(0xBA10, 4); nes_write(0x0610, g_cpu.A);
-label_BA13:;
-    /* $BA13: 60 */ nes_cpu_instruction_boundary(0xBA13, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_B9E5_b5_body(int _entry) { /* DivideSFXTriPeriod_loop */
+void func_B9B5_b5_body(int _entry) { /* DivideSFXTriPeriod_loop */
     switch (_entry) {
-        case 1: goto label_B9F3;
+        case 1: goto label_B9C3;
     }
-label_B9E5:; /* DivideSFXTriPeriod_loop */
-    /* $B9E5: 2E */ nes_cpu_instruction_boundary(0xB9E5, 6); { uint16_t a=0x0617; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9E8:;
-    /* $B9E8: AD */ nes_cpu_instruction_boundary(0xB9E8, 4); g_cpu.A = nes_read(0x0617); FLAG_NZ(g_cpu.A);
-label_B9EB:;
-    /* $B9EB: CD */ nes_cpu_instruction_boundary(0xB9EB, 4); { uint8_t m=nes_read(0x0616); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
-label_B9EE:;
-    /* $B9EE: 90 */ nes_cpu_instruction_boundary(0xB9EE, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B9F6; }
-label_B9F0:;
-    /* $B9F0: ED */ nes_cpu_instruction_boundary(0xB9F0, 4); { uint8_t m=nes_read(0x0616); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
-label_B9F3:;
-    /* $B9F3: 8D */ nes_cpu_instruction_boundary(0xB9F3, 4); nes_write(0x0617, g_cpu.A);
-label_B9F6:; /* DivideSFXTriPeriod_endIf_A */
-    /* $B9F6: 2E */ nes_cpu_instruction_boundary(0xB9F6, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9F9:;
-    /* $B9F9: 2E */ nes_cpu_instruction_boundary(0xB9F9, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_B9FC:;
-    /* $B9FC: CA */ nes_cpu_instruction_boundary(0xB9FC, 2); g_cpu.X = (g_cpu.X-1)&0xFF; FLAG_NZ(g_cpu.X);
-label_B9FD:;
-    /* $B9FD: D0 */ nes_cpu_instruction_boundary(0xB9FD, 2); if (!g_cpu.Z) {
-    nes_cpu_instruction_boundary(0xB9E5, 1);
+label_B9B5:; /* DivideSFXTriPeriod_loop */
+    /* $B9B5: 2E */ nes_cpu_instruction_boundary(0xB9B5, 6); { uint16_t a=0x0617; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9B8:;
+    /* $B9B8: AD */ nes_cpu_instruction_boundary(0xB9B8, 4); g_cpu.A = nes_read(0x0617); FLAG_NZ(g_cpu.A);
+label_B9BB:;
+    /* $B9BB: CD */ nes_cpu_instruction_boundary(0xB9BB, 4); { uint8_t m=nes_read(0x0616); int r=g_cpu.A-m; g_cpu.C=(g_cpu.A>=m)?1:0; FLAG_NZ(r&0xFF); }
+label_B9BE:;
+    /* $B9BE: 90 */ nes_cpu_instruction_boundary(0xB9BE, 2); if (!g_cpu.C) { maybe_trigger_vblank(1); goto label_B9C6; }
+label_B9C0:;
+    /* $B9C0: ED */ nes_cpu_instruction_boundary(0xB9C0, 4); { uint8_t m=nes_read(0x0616); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_B9C3:;
+    /* $B9C3: 8D */ nes_cpu_instruction_boundary(0xB9C3, 4); nes_write(0x0617, g_cpu.A);
+label_B9C6:; /* DivideSFXTriPeriod_endIf_A */
+    /* $B9C6: 2E */ nes_cpu_instruction_boundary(0xB9C6, 6); { uint16_t a=0x0610; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9C9:;
+    /* $B9C9: 2E */ nes_cpu_instruction_boundary(0xB9C9, 6); { uint16_t a=0x0611; uint8_t v=nes_read(a); uint8_t c=g_cpu.C; g_cpu.C=(v>>7)&1; v=((v<<1)|c)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_B9CC:;
+    /* $B9CC: CA */ nes_cpu_instruction_boundary(0xB9CC, 2); g_cpu.X = (g_cpu.X-1)&0xFF; FLAG_NZ(g_cpu.X);
+label_B9CD:;
+    /* $B9CD: D0 */ nes_cpu_instruction_boundary(0xB9CD, 2); if (!g_cpu.Z) {
+    nes_cpu_instruction_boundary(0xB9B5, 1);
 #ifdef WATCHDOG_ENABLED
     watchdog_check();
 #endif
-    goto label_B9E5;
+    goto label_B9B5;
     }
-label_B9FF:;
-    /* $B9FF: AD */ nes_cpu_instruction_boundary(0xB9FF, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
-label_BA02:;
-    /* $BA02: 8D */ nes_cpu_instruction_boundary(0xBA02, 4); nes_write(0x0614, g_cpu.A);
-label_BA05:;
-    /* $BA05: AD */ nes_cpu_instruction_boundary(0xBA05, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
-label_BA08:;
-    /* $BA08: 8D */ nes_cpu_instruction_boundary(0xBA08, 4); nes_write(0x0615, g_cpu.A);
-label_BA0B:;
-    /* $BA0B: 68 */ nes_cpu_instruction_boundary(0xBA0B, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BA0C:;
-    /* $BA0C: 8D */ nes_cpu_instruction_boundary(0xBA0C, 4); nes_write(0x0611, g_cpu.A);
-label_BA0F:;
-    /* $BA0F: 68 */ nes_cpu_instruction_boundary(0xBA0F, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
-label_BA10:;
-    /* $BA10: 8D */ nes_cpu_instruction_boundary(0xBA10, 4); nes_write(0x0610, g_cpu.A);
+label_B9CF:;
+    /* $B9CF: AD */ nes_cpu_instruction_boundary(0xB9CF, 4); g_cpu.A = nes_read(0x0610); FLAG_NZ(g_cpu.A);
+label_B9D2:;
+    /* $B9D2: 8D */ nes_cpu_instruction_boundary(0xB9D2, 4); nes_write(0x0614, g_cpu.A);
+label_B9D5:;
+    /* $B9D5: AD */ nes_cpu_instruction_boundary(0xB9D5, 4); g_cpu.A = nes_read(0x0611); FLAG_NZ(g_cpu.A);
+label_B9D8:;
+    /* $B9D8: 8D */ nes_cpu_instruction_boundary(0xB9D8, 4); nes_write(0x0615, g_cpu.A);
+label_B9DB:;
+    /* $B9DB: 68 */ nes_cpu_instruction_boundary(0xB9DB, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B9DC:;
+    /* $B9DC: 8D */ nes_cpu_instruction_boundary(0xB9DC, 4); nes_write(0x0611, g_cpu.A);
+label_B9DF:;
+    /* $B9DF: 68 */ nes_cpu_instruction_boundary(0xB9DF, 4); g_cpu.S++; g_cpu.A = g_ram[0x100 + g_cpu.S]; FLAG_NZ(g_cpu.A);
+label_B9E0:;
+    /* $B9E0: 8D */ nes_cpu_instruction_boundary(0xB9E0, 4); nes_write(0x0610, g_cpu.A);
+label_B9E3:;
+    /* $B9E3: 60 */ nes_cpu_instruction_boundary(0xB9E3, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+    return;
+}
+
+void func_B9B5_b5(void) { /* DivideSFXTriPeriod_loop */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B9B5_b5");
+#endif
+    func_B9B5_b5_body(0);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B9C3_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B9C3_b5");
+#endif
+    func_B9B5_b5_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BA11_b5(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BA11_b5");
+#endif
+label_BA11:;
+    /* $BA11: 06 */ nes_cpu_instruction_boundary(0xBA11, 5); { uint16_t a=0xAD; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_BA13:;
-    /* $BA13: 60 */ nes_cpu_instruction_boundary(0xBA13, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+    /* $BA13: 48 */ nes_cpu_instruction_boundary(0xBA13, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
+label_BA14:;
+    /* $BA14: 06 */ nes_cpu_instruction_boundary(0xBA14, 5); { uint16_t a=0x8D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BA16:;
+    /* $BA16: 01 */ nes_cpu_instruction_boundary(0xBA16, 6); g_cpu.A |= nes_read(nes_read16zp((0x40 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
+label_BA18:;
+    /* $BA18: AD */ nes_cpu_instruction_boundary(0xBA18, 4); g_cpu.A = nes_read(0x0600); FLAG_NZ(g_cpu.A);
+label_BA1B:;
+    /* $BA1B: 8D */ nes_cpu_instruction_boundary(0xBA1B, 4); nes_write(0x4002, g_cpu.A);
+label_BA1E:;
+    /* $BA1E: AD */ nes_cpu_instruction_boundary(0xBA1E, 4); g_cpu.A = nes_read(0x0601); FLAG_NZ(g_cpu.A);
+label_BA21:;
+    /* $BA21: 8D */ nes_cpu_instruction_boundary(0xBA21, 4); nes_write(0x4003, g_cpu.A);
+label_BA24:;
+    /* $BA24: AD */ nes_cpu_instruction_boundary(0xBA24, 4); g_cpu.A = nes_read(0x0649); FLAG_NZ(g_cpu.A);
+label_BA27:;
+    /* $BA27: 8D */ nes_cpu_instruction_boundary(0xBA27, 4); nes_write(0x4005, g_cpu.A);
+label_BA2A:;
+    /* $BA2A: AD */ nes_cpu_instruction_boundary(0xBA2A, 4); g_cpu.A = nes_read(0x0604); FLAG_NZ(g_cpu.A);
+label_BA2D:;
+    /* $BA2D: 8D */ nes_cpu_instruction_boundary(0xBA2D, 4); nes_write(0x4006, g_cpu.A);
+label_BA30:;
+    /* $BA30: AD */ nes_cpu_instruction_boundary(0xBA30, 4); g_cpu.A = nes_read(0x0605); FLAG_NZ(g_cpu.A);
+label_BA33:;
+    /* $BA33: 8D */ nes_cpu_instruction_boundary(0xBA33, 4); nes_write(0x4007, g_cpu.A);
+label_BA36:; /* LoadMusicSQ1SQ2Periods_RTS */
+    /* $BA36: 60 */ nes_cpu_instruction_boundary(0xBA36, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
@@ -13801,175 +12949,98 @@ label_BA13:;
     return;
 }
 
-void func_B9E5_b5(void) { /* DivideSFXTriPeriod_loop */
+void func_BAF2_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9E5_b5");
+    recomp_stack_push("func_BAF2_b5");
 #endif
-    func_B9E5_b5_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
+label_BAF2:;
+    /* $BAF2: 1C */ nes_cpu_instruction_boundary(0xBAF2, 4); (void)nes_read((0xBDBB + g_cpu.X) & 0xFFFF); /* NOP* (unofficial DOP/TOP read, result discarded) */
+label_BAF5:;
+    /* $BAF5: 24 */ nes_cpu_instruction_boundary(0xBAF5, 3); { uint8_t m=nes_read(0x06); g_cpu.Z=(g_cpu.A&m)?0:1; g_cpu.N=(m>>7)&1; g_cpu.V=(m>>6)&1; }
+label_BAF7:;
+    /* $BAF7: F0 */ nes_cpu_instruction_boundary(0xBAF7, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_BB13; }
+label_BAF9:;
+    /* $BAF9: DE */ nes_cpu_instruction_boundary(0xBAF9, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BAFC:;
+    /* $BAFC: BD */ nes_cpu_instruction_boundary(0xBAFC, 4); g_cpu.A = nes_read((0x063C + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BAFF:;
+    /* $BAFF: 9D */ nes_cpu_instruction_boundary(0xBAFF, 5); nes_write((0x0638 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB02:;
+    /* $BB02: D0 */ nes_cpu_instruction_boundary(0xBB02, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BB13; }
+label_BB04:; /* MusicChannelInstr_SongRepeatSetup */
+    /* $BB04: 98 */ nes_cpu_instruction_boundary(0xBB04, 2); g_cpu.A = g_cpu.Y; FLAG_NZ(g_cpu.A);
+label_BB05:;
+    /* $BB05: 29 */ nes_cpu_instruction_boundary(0xBB05, 2); g_cpu.A &= 0x3F; FLAG_NZ(g_cpu.A);
+label_BB07:;
+    /* $BB07: 9D */ nes_cpu_instruction_boundary(0xBB07, 5); nes_write((0x0624 + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB0A:;
+    /* $BB0A: DE */ nes_cpu_instruction_boundary(0xBB0A, 7); { uint16_t a=(0x0624 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)-1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+label_BB0D:;
+    /* $BB0D: BD */ nes_cpu_instruction_boundary(0xBB0D, 4); g_cpu.A = nes_read((0x0638 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BB10:;
+    /* $BB10: 9D */ nes_cpu_instruction_boundary(0xBB10, 5); nes_write((0x063C + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_BB13:; /* GotoLoadNextMusicChannelInstr */
+    /* $BB13: 4C */ nes_cpu_instruction_boundary(0xBB13, 3); nes_cpu_instruction_boundary(0xBADC, 2); func_BADC_b5(); return;
 }
 
-void func_B9F3_b5(void) {
+void func_BBEC_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B9F3_b5");
+    recomp_stack_push("func_BBEC_b5");
 #endif
-    func_B9E5_b5_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
+label_BBEC:;
+    /* $BBEC: 01 */ nes_cpu_instruction_boundary(0xBBEC, 6); g_cpu.A |= nes_read(nes_read16zp((0xB2 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
+label_BBEE:;
+    /* $BBEE: 8D */ nes_cpu_instruction_boundary(0xBBEE, 4); nes_write(0x400E, g_cpu.A);
+label_BBF1:;
+    /* $BBF1: B9 */ nes_cpu_instruction_boundary(0xBBF1, 4); g_cpu.A = nes_read((0xB202 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_BBF4:;
+    /* $BBF4: 8D */ nes_cpu_instruction_boundary(0xBBF4, 4); nes_write(0x400F, g_cpu.A);
+label_BBF7:; /* MusicChannelInstr_SongNoteNoise_endIf_A */
+    /* $BBF7: 4C */ nes_cpu_instruction_boundary(0xBBF7, 3); nes_cpu_instruction_boundary(0xBBA8, 2); func_BBA8_b5(); return;
 }
 
-void func_BA41_b5(void) {
+void func_BC34_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BA41_b5");
+    recomp_stack_push("func_BC34_b5");
 #endif
-label_BA41:;
-    /* $BA41: 06 */ nes_cpu_instruction_boundary(0xBA41, 5); { uint16_t a=0xAD; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BA43:;
-    /* $BA43: 48 */ nes_cpu_instruction_boundary(0xBA43, 3); g_ram[0x100 + g_cpu.S] = g_cpu.A; g_cpu.S--;
-label_BA44:;
-    /* $BA44: 06 */ nes_cpu_instruction_boundary(0xBA44, 5); { uint16_t a=0x8D; uint8_t v=nes_read(a); g_cpu.C=(v>>7)&1; v=(v<<1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
-label_BA46:;
-    /* $BA46: 01 */ nes_cpu_instruction_boundary(0xBA46, 6); g_cpu.A |= nes_read(nes_read16zp((0x40 + g_cpu.X) & 0xFF)); FLAG_NZ(g_cpu.A);
-label_BA48:;
-    /* $BA48: AD */ nes_cpu_instruction_boundary(0xBA48, 4); g_cpu.A = nes_read(0x0600); FLAG_NZ(g_cpu.A);
-label_BA4B:;
-    /* $BA4B: 8D */ nes_cpu_instruction_boundary(0xBA4B, 4); nes_write(0x4002, g_cpu.A);
-label_BA4E:;
-    /* $BA4E: AD */ nes_cpu_instruction_boundary(0xBA4E, 4); g_cpu.A = nes_read(0x0601); FLAG_NZ(g_cpu.A);
-label_BA51:;
-    /* $BA51: 8D */ nes_cpu_instruction_boundary(0xBA51, 4); nes_write(0x4003, g_cpu.A);
-label_BA54:;
-    /* $BA54: AD */ nes_cpu_instruction_boundary(0xBA54, 4); g_cpu.A = nes_read(0x0649); FLAG_NZ(g_cpu.A);
-label_BA57:;
-    /* $BA57: 8D */ nes_cpu_instruction_boundary(0xBA57, 4); nes_write(0x4005, g_cpu.A);
-label_BA5A:;
-    /* $BA5A: AD */ nes_cpu_instruction_boundary(0xBA5A, 4); g_cpu.A = nes_read(0x0604); FLAG_NZ(g_cpu.A);
-label_BA5D:;
-    /* $BA5D: 8D */ nes_cpu_instruction_boundary(0xBA5D, 4); nes_write(0x4006, g_cpu.A);
-label_BA60:;
-    /* $BA60: AD */ nes_cpu_instruction_boundary(0xBA60, 4); g_cpu.A = nes_read(0x0605); FLAG_NZ(g_cpu.A);
-label_BA63:;
-    /* $BA63: 8D */ nes_cpu_instruction_boundary(0xBA63, 4); nes_write(0x4007, g_cpu.A);
-label_BA66:; /* LoadMusicSQ1SQ2Periods_RTS */
-    /* $BA66: 60 */ nes_cpu_instruction_boundary(0xBA66, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
-
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-    return;
-}
-
-void func_BC1C_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC1C_b5");
-#endif
-label_BC1C:;
-    /* $BC1C: 31 */ nes_cpu_instruction_boundary(0xBC1C, 5); g_cpu.A &= nes_read((nes_read16zp(0xB2) + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BC1E:;
-    /* $BC1E: 8D */ nes_cpu_instruction_boundary(0xBC1E, 4); nes_write(0x400E, g_cpu.A);
-label_BC21:;
-    /* $BC21: B9 */ nes_cpu_instruction_boundary(0xBC21, 4); g_cpu.A = nes_read((0xB232 + g_cpu.Y) & 0xFFFF); FLAG_NZ(g_cpu.A);
-label_BC24:;
-    /* $BC24: 8D */ nes_cpu_instruction_boundary(0xBC24, 4); nes_write(0x400F, g_cpu.A);
-label_BC27:; /* MusicChannelInstr_SongNoteNoise_endIf_A */
-    /* $BC27: 4C */ nes_cpu_instruction_boundary(0xBC27, 3); nes_cpu_instruction_boundary(0xBBD8, 2); func_BBD8_b5(); return;
-}
-
-void func_BC53_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC53_b5");
-#endif
-label_BC53:;
-    /* $BC53: B6 */ nes_cpu_instruction_boundary(0xBC53, 4); g_cpu.X = nes_read((0xD1 + g_cpu.Y) & 0xFF); FLAG_NZ(g_cpu.X);
-label_BC55:;
-    /* $BC55: B6 */ nes_cpu_instruction_boundary(0xBC55, 4); g_cpu.X = nes_read((0xB3 + g_cpu.Y) & 0xFF); FLAG_NZ(g_cpu.X);
-label_BC57:;
-    /* $BC57: BC */ nes_cpu_instruction_boundary(0xBC57, 4); g_cpu.Y = nes_read((0xBCA7 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BC5A:;
-    /* $BC5A: A7 */ nes_cpu_instruction_boundary(0xBC5A, 3); g_cpu.A = g_cpu.X = nes_read(0xBC); FLAG_NZ(g_cpu.A);
-label_BC5C:;
-    /* $BC5C: A7 */ nes_cpu_instruction_boundary(0xBC5C, 3); g_cpu.A = g_cpu.X = nes_read(0xBC); FLAG_NZ(g_cpu.A);
-label_BC5E:;
-    /* $BC5E: B0 */ nes_cpu_instruction_boundary(0xBC5E, 2); if (g_cpu.C) { maybe_trigger_vblank(1); call_by_address(0xBC1C); return; }
-label_BC60:;
-    /* $BC60: AD */ nes_cpu_instruction_boundary(0xBC60, 4); g_cpu.A = nes_read(0xA7BC); FLAG_NZ(g_cpu.A);
-label_BC63:;
-    /* $BC63: BC */ nes_cpu_instruction_boundary(0xBC63, 4); g_cpu.Y = nes_read((0xBCB0 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.Y);
-label_BC66:; /* RunMusicLoopRoutine */
-    /* $BC66: AD */ nes_cpu_instruction_boundary(0xBC66, 4); g_cpu.A = nes_read(0x065D); FLAG_NZ(g_cpu.A);
-label_BC69:;
-    /* $BC69: A2 */ nes_cpu_instruction_boundary(0xBC69, 2); g_cpu.X = 0xE6; FLAG_NZ(g_cpu.X);
-label_BC6B:;
-    /* $BC6B: D0 */ nes_cpu_instruction_boundary(0xBC6B, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC72; }
-label_BC6D:; /* RunMusicInitRoutine */
-    /* $BC6D: AD */ nes_cpu_instruction_boundary(0xBC6D, 4); g_cpu.A = nes_read(0x0685); FLAG_NZ(g_cpu.A);
-label_BC70:;
-    /* $BC70: A2 */ nes_cpu_instruction_boundary(0xBC70, 2); g_cpu.X = 0xE1; FLAG_NZ(g_cpu.X);
-label_BC72:; /* RunMusicInitRoutine_Common */
-    /* $BC72: 20 */ nes_cpu_instruction_boundary(0xBC72, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x74; g_cpu.S--; func_B4ED_b5();
+label_BC34:;
+    /* $BC34: 80 */ nes_cpu_instruction_boundary(0xBC34, 2); /* NOP */
+label_BC36:; /* RunMusicLoopRoutine */
+    /* $BC36: AD */ nes_cpu_instruction_boundary(0xBC36, 4); g_cpu.A = nes_read(0x065D); FLAG_NZ(g_cpu.A);
+label_BC39:;
+    /* $BC39: A2 */ nes_cpu_instruction_boundary(0xBC39, 2); g_cpu.X = 0xB6; FLAG_NZ(g_cpu.X);
+label_BC3B:;
+    /* $BC3B: D0 */ nes_cpu_instruction_boundary(0xBC3B, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC42; }
+label_BC3D:; /* RunMusicInitRoutine */
+    /* $BC3D: AD */ nes_cpu_instruction_boundary(0xBC3D, 4); g_cpu.A = nes_read(0x0685); FLAG_NZ(g_cpu.A);
+label_BC40:;
+    /* $BC40: A2 */ nes_cpu_instruction_boundary(0xBC40, 2); g_cpu.X = 0xB1; FLAG_NZ(g_cpu.X);
+label_BC42:; /* RunMusicInitRoutine_Common */
+    /* $BC42: 20 */ nes_cpu_instruction_boundary(0xBC42, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x44; g_cpu.S--; func_B4BD_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBC72, _cbs);
+    bail_trace(0xBC42, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BC75:;
-    /* $BC75: 20 */ nes_cpu_instruction_boundary(0xBC75, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x77; g_cpu.S--; func_BC83_b5();
+label_BC45:;
+    /* $BC45: 20 */ nes_cpu_instruction_boundary(0xBC45, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x47; g_cpu.S--; func_BC53_b5();
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBC75, _cbs);
+    bail_trace(0xBC45, _cbs);
     recomp_stack_pop();
 #endif
     return; } }
-label_BC78:;
-    /* $BC78: 6C */ nes_cpu_instruction_boundary(0xBC78, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
+label_BC48:;
+    /* $BC48: 6C */ nes_cpu_instruction_boundary(0xBC48, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
 }
 
-void func_BC64_b5(void) {
+void func_BEE9_b5(void) {
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BC64_b5");
+    recomp_stack_push("func_BEE9_b5");
 #endif
-label_BC64:;
-    /* $BC64: B0 */ nes_cpu_instruction_boundary(0xBC64, 2); if (g_cpu.C) { maybe_trigger_vblank(1); call_by_address(0xBC22); return; }
-label_BC66:; /* RunMusicLoopRoutine */
-    /* $BC66: AD */ nes_cpu_instruction_boundary(0xBC66, 4); g_cpu.A = nes_read(0x065D); FLAG_NZ(g_cpu.A);
-label_BC69:;
-    /* $BC69: A2 */ nes_cpu_instruction_boundary(0xBC69, 2); g_cpu.X = 0xE6; FLAG_NZ(g_cpu.X);
-label_BC6B:;
-    /* $BC6B: D0 */ nes_cpu_instruction_boundary(0xBC6B, 2); if (!g_cpu.Z) { maybe_trigger_vblank(1); goto label_BC72; }
-label_BC6D:; /* RunMusicInitRoutine */
-    /* $BC6D: AD */ nes_cpu_instruction_boundary(0xBC6D, 4); g_cpu.A = nes_read(0x0685); FLAG_NZ(g_cpu.A);
-label_BC70:;
-    /* $BC70: A2 */ nes_cpu_instruction_boundary(0xBC70, 2); g_cpu.X = 0xE1; FLAG_NZ(g_cpu.X);
-label_BC72:; /* RunMusicInitRoutine_Common */
-    /* $BC72: 20 */ nes_cpu_instruction_boundary(0xBC72, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x74; g_cpu.S--; func_B4ED_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBC72, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BC75:;
-    /* $BC75: 20 */ nes_cpu_instruction_boundary(0xBC75, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xBC; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x77; g_cpu.S--; func_BC83_b5();
-if (g_cpu.S != _cbs) {
-#ifdef RECOMP_STACK_TRACKING
-    bail_trace(0xBC75, _cbs);
-    recomp_stack_pop();
-#endif
-    return; } }
-label_BC78:;
-    /* $BC78: 6C */ nes_cpu_instruction_boundary(0xBC78, 5); { uint16_t _jt = nes_read16zp(0xE2); nes_cpu_instruction_boundary(_jt, 2); call_by_address_tail(_jt, -1); return; }
-}
-
-void func_BF19_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BF19_b5");
-#endif
-label_BF19:;
-    /* $BF19: 00 */ nes_cpu_instruction_boundary(0xBF19, 7); nes_brk_executed(0xBF19); return;
+label_BEE9:;
+    /* $BEE9: 00 */ nes_cpu_instruction_boundary(0xBEE9, 7); nes_brk_executed(0xBEE9); return;
 }
 
 void func_C2BF_b5_body(int _entry) { /* Adiv16 */
@@ -14554,12 +13625,12 @@ label_F751:;
     return;
 }
 
-void func_B568_b5(void) { /* ScrewAttackSFXInit_RTS */
+void func_B538_b5(void) { /* ScrewAttackSFXInit_RTS */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B568_b5");
+    recomp_stack_push("func_B538_b5");
 #endif
-label_B568:; /* ScrewAttackSFXInit_RTS */
-    /* $B568: 60 */ nes_cpu_instruction_boundary(0xB568, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
+label_B538:; /* ScrewAttackSFXInit_RTS */
+    /* $B538: 60 */ nes_cpu_instruction_boundary(0xB538, 6); { g_cpu.S++; uint8_t _rts_lo = g_ram[0x100 + g_cpu.S]; g_cpu.S++; uint8_t _rts_hi = g_ram[0x100 + g_cpu.S]; g_rts_target = (uint16_t)(((uint16_t)_rts_hi << 8) | _rts_lo); } /* pop JSR return address */
 
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();

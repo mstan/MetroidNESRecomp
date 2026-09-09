@@ -370,9 +370,9 @@ void met_render_note_room_finished(void) {
         s_cells.cell_y[0] = s_cells.cell_y[1] = -1;
     }
 
-    /* SelectRoomRAM ($EA05) stored $60 (RoomRAM A / nametable 0) or $64
-     * (RoomRAM B / nametable 3 -> physical nametable 1) as the high byte. */
-    nt = (g_ram[(MET_RoomRAMPtr + 1) & 0x7FF] == 0x64u) ? 1 : 0;
+    /* SelectRoomRAM ($EA05) stored RoomRAMA>>8 ($60, nametable 0) or
+     * RoomRAMB>>8 ($64, nametable 3 -> physical nametable 1) as the high byte. */
+    nt = (g_ram[(MET_RoomRAMPtr + 1) & 0x7FF] == (MET_RoomRAMB >> 8)) ? 1 : 0;
     cx = g_ram[MET_MapPosX];
     cy = g_ram[MET_MapPosY];
 

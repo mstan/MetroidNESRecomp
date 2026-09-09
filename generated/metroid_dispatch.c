@@ -46,7 +46,13 @@ void func_C215(void); /* ReadJoyPads */
 void func_C21F(void); /* ReadOnePad */
 void func_C24D(void); /* ReadOnePad_endIf_A */
 void func_C221(void);
-void func_FFD8(void); /* GotoSoundEngine */
+void func_B3B4_b0(void); /* SoundEngine */
+void func_B3B4_b1(void); /* SoundEngine */
+void func_B3B4_b2(void); /* SoundEngine */
+void func_B3B4_b3(void); /* SoundEngine */
+void func_B3B4_b4(void); /* SoundEngine */
+void func_B3B4_b5(void); /* SoundEngine */
+void func_B3B4_b6(void);
 void func_C158(void); /* ClearNameTables */
 void func_C175(void); /* ClearNameTable */
 void func_C184(void);
@@ -89,13 +95,73 @@ void func_8AC7_b4(void);
 void func_8AC7_b5(void);
 void func_8AC7_b6(void);
 void func_C4D9(void); /* PrepPPUMirror */
-void func_B3E4_b0(void); /* SoundEngine */
-void func_B3E4_b1(void); /* SoundEngine */
-void func_B3E4_b2(void); /* SoundEngine */
-void func_B3E4_b3(void); /* SoundEngine */
-void func_B3E4_b4(void); /* SoundEngine */
-void func_B3E4_b5(void); /* SoundEngine */
-void func_B3E4_b6(void);
+void func_B399_b0(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b0(void); /* RunSFXNoiseInitRoutine */
+void func_B322_b0(void); /* RunSFXNoiseContRoutine */
+void func_B34B_b0(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b0(void); /* RunSFXTriInitRoutine */
+void func_B344_b0(void); /* RunSFXTriContRoutine */
+void func_BC36_b0(void); /* RunMusicLoopRoutine */
+void func_BC3D_b0(void); /* RunMusicInitRoutine */
+void func_B404_b0(void); /* InitializeSoundAddresses */
+void func_B41D_b0(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b0(void);
+void func_B43E_b0(void); /* ClearSounds */
+void func_B40E_b0(void); /* ClearSpecialAddresses */
+void func_B399_b1(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b1(void); /* RunSFXNoiseInitRoutine */
+void func_B34B_b1(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b1(void); /* RunSFXTriInitRoutine */
+void func_BC36_b1(void); /* RunMusicLoopRoutine */
+void func_B404_b1(void); /* InitializeSoundAddresses */
+void func_B41D_b1(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b1(void);
+void func_B43E_b1(void); /* ClearSounds */
+void func_B40E_b1(void); /* ClearSpecialAddresses */
+void func_B399_b2(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b2(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b2(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b2(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b2(void); /* RunSFXTriInitRoutine */
+void func_BC36_b2(void); /* RunMusicLoopRoutine */
+void func_B404_b2(void); /* InitializeSoundAddresses */
+void func_B41D_b2(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b2(void);
+void func_B43E_b2(void); /* ClearSounds */
+void func_B40E_b2(void); /* ClearSpecialAddresses */
+void func_B399_b3(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b3(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b3(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b3(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b3(void); /* RunSFXTriInitRoutine */
+void func_BC36_b3(void); /* RunMusicLoopRoutine */
+void func_B404_b3(void); /* InitializeSoundAddresses */
+void func_B41D_b3(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b3(void);
+void func_B43E_b3(void); /* ClearSounds */
+void func_B40E_b3(void); /* ClearSpecialAddresses */
+void func_B399_b4(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b4(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b4(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b4(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b4(void); /* RunSFXTriInitRoutine */
+void func_BC36_b4(void); /* RunMusicLoopRoutine */
+void func_B404_b4(void); /* InitializeSoundAddresses */
+void func_B41D_b4(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b4(void);
+void func_B43E_b4(void); /* ClearSounds */
+void func_B40E_b4(void); /* ClearSpecialAddresses */
+void func_B399_b5(void); /* SoundEngine_GameIsPaused */
+void func_B31B_b5(void); /* RunSFXNoiseInitRoutine */
+void func_B329_b5(void); /* RunSFXSQ1InitRoutine */
+void func_B34B_b5(void); /* RunSFXMultiInitRoutine */
+void func_B33D_b5(void); /* RunSFXTriInitRoutine */
+void func_BC36_b5(void); /* RunMusicLoopRoutine */
+void func_B404_b5(void); /* InitializeSoundAddresses */
+void func_B41D_b5(void); /* ClearMusicAndSFXAddresses */
+void func_B422_b5(void);
+void func_B43E_b5(void); /* ClearSounds */
+void func_B40E_b5(void); /* ClearSpecialAddresses */
 void func_988A_b0(void); /* DecSpriteYCoord */
 void func_988A_b1(void);
 void func_988A_b2(void);
@@ -141,8 +207,6 @@ void func_C80F(void);
 void func_C81F(void);
 void func_C892(void);
 void func_C885(void);
-void func_C8A2(void);
-void func_C897(void);
 void func_C8D1(void); /* SamusInit */
 void func_C908(void);
 void func_C920(void);
@@ -176,73 +240,48 @@ void func_C2FF(void);
 void func_C2FD(void); /* VRAMStructWriteData_endIf_A */
 void func_C2F0(void);
 void func_C4B6(void); /* SetPPUMirror */
-void func_B3C9_b0(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b0(void); /* RunSFXNoiseInitRoutine */
-void func_B352_b0(void); /* RunSFXNoiseContRoutine */
-void func_B37B_b0(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b0(void); /* RunSFXTriInitRoutine */
-void func_B374_b0(void); /* RunSFXTriContRoutine */
-void func_BC66_b0(void); /* RunMusicLoopRoutine */
-void func_BC6D_b0(void); /* RunMusicInitRoutine */
-void func_B434_b0(void); /* InitializeSoundAddresses */
-void func_B44D_b0(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b0(void);
-void func_B46E_b0(void); /* ClearSounds */
-void func_B43E_b0(void); /* ClearSpecialAddresses */
-void func_B3C9_b1(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b1(void); /* RunSFXNoiseInitRoutine */
-void func_B37B_b1(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b1(void); /* RunSFXTriInitRoutine */
-void func_BC66_b1(void); /* RunMusicLoopRoutine */
-void func_B434_b1(void); /* InitializeSoundAddresses */
-void func_B44D_b1(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b1(void);
-void func_B46E_b1(void); /* ClearSounds */
-void func_B43E_b1(void); /* ClearSpecialAddresses */
-void func_B3C9_b2(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b2(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b2(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b2(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b2(void); /* RunSFXTriInitRoutine */
-void func_BC66_b2(void); /* RunMusicLoopRoutine */
-void func_B434_b2(void); /* InitializeSoundAddresses */
-void func_B44D_b2(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b2(void);
-void func_B46E_b2(void); /* ClearSounds */
-void func_B43E_b2(void); /* ClearSpecialAddresses */
-void func_B3C9_b3(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b3(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b3(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b3(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b3(void); /* RunSFXTriInitRoutine */
-void func_BC66_b3(void); /* RunMusicLoopRoutine */
-void func_B434_b3(void); /* InitializeSoundAddresses */
-void func_B44D_b3(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b3(void);
-void func_B46E_b3(void); /* ClearSounds */
-void func_B43E_b3(void); /* ClearSpecialAddresses */
-void func_B3C9_b4(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b4(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b4(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b4(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b4(void); /* RunSFXTriInitRoutine */
-void func_BC66_b4(void); /* RunMusicLoopRoutine */
-void func_B434_b4(void); /* InitializeSoundAddresses */
-void func_B44D_b4(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b4(void);
-void func_B46E_b4(void); /* ClearSounds */
-void func_B43E_b4(void); /* ClearSpecialAddresses */
-void func_B3C9_b5(void); /* SoundEngine_GameIsPaused */
-void func_B34B_b5(void); /* RunSFXNoiseInitRoutine */
-void func_B359_b5(void); /* RunSFXSQ1InitRoutine */
-void func_B37B_b5(void); /* RunSFXMultiInitRoutine */
-void func_B36D_b5(void); /* RunSFXTriInitRoutine */
-void func_BC66_b5(void); /* RunMusicLoopRoutine */
-void func_B434_b5(void); /* InitializeSoundAddresses */
-void func_B44D_b5(void); /* ClearMusicAndSFXAddresses */
-void func_B452_b5(void);
-void func_B46E_b5(void); /* ClearSounds */
-void func_B43E_b5(void); /* ClearSpecialAddresses */
+void func_B38F_b0(void); /* PauseSFX */
+void func_B368_b0(void); /* LoadSFXData */
+void func_B4BD_b0(void); /* GetSoundRoutine */
+void func_B4EE_b0(void); /* GetSoundRoutine_RTS */
+void func_B4EA_b0(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b0(void); /* FindMusicInitIndex */
+void func_BC64_b0(void); /* MusicInitIndexAdd8 */
+void func_B337_b0(void); /* RunSoundRoutine */
+void func_B38F_b1(void); /* PauseSFX */
+void func_B368_b1(void); /* LoadSFXData */
+void func_B4BD_b1(void); /* GetSoundRoutine */
+void func_BC53_b1(void); /* FindMusicInitIndex */
+void func_BC64_b1(void); /* MusicInitIndexAdd8 */
+void func_B337_b1(void); /* RunSoundRoutine */
+void func_B38F_b2(void); /* PauseSFX */
+void func_B368_b2(void); /* LoadSFXData */
+void func_B4BD_b2(void); /* GetSoundRoutine */
+void func_B4EA_b2(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b2(void); /* FindMusicInitIndex */
+void func_BC64_b2(void); /* MusicInitIndexAdd8 */
+void func_B337_b2(void); /* RunSoundRoutine */
+void func_B38F_b3(void); /* PauseSFX */
+void func_B368_b3(void); /* LoadSFXData */
+void func_B4BD_b3(void); /* GetSoundRoutine */
+void func_B4EA_b3(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b3(void); /* FindMusicInitIndex */
+void func_BC64_b3(void); /* MusicInitIndexAdd8 */
+void func_B337_b3(void); /* RunSoundRoutine */
+void func_B38F_b4(void); /* PauseSFX */
+void func_B368_b4(void); /* LoadSFXData */
+void func_B4BD_b4(void); /* GetSoundRoutine */
+void func_B4EA_b4(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b4(void); /* FindMusicInitIndex */
+void func_BC64_b4(void); /* MusicInitIndexAdd8 */
+void func_B337_b4(void); /* RunSoundRoutine */
+void func_B38F_b5(void); /* PauseSFX */
+void func_B368_b5(void); /* LoadSFXData */
+void func_B4BD_b5(void); /* GetSoundRoutine */
+void func_B4EA_b5(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_BC53_b5(void); /* FindMusicInitIndex */
+void func_BC64_b5(void); /* MusicInitIndexAdd8 */
+void func_B337_b5(void); /* RunSoundRoutine */
 void func_8036_b2(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
 void func_8039_b2(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
 void func_9A42_b2(void); /* StoreEnemyPositionToTemp__BANK2 */
@@ -378,9 +417,9 @@ void func_C8B0(void); /* CopyAreaPointers */
 void func_E720(void); /* GetRoomNum */
 void func_E730(void);
 void func_E731(void);
-void func_E74C(void);
 void func_EA2B(void); /* SetupRoom */
 void func_EA2D(void);
+void func_EA4C(void);
 void func_C447(void); /* ScreenOn */
 void func_CBFD(void); /* IntroMusic */
 void func_E1F1(void); /* ScrollDoor */
@@ -419,6 +458,7 @@ void func_E0B1(void);
 void func_E0AD(void);
 void func_E0C7(void); /* DisplayBar_loop */
 void func_E09D(void);
+void func_E099(void);
 void func_8058_b0(void);
 void func_8058_b1(void); /* EnemyMove */
 void func_8058_b2(void); /* EnemyMove */
@@ -432,57 +472,8 @@ void func_C2A9(void);
 void func_C318(void); /* SetPPUInc */
 void func_C319(void);
 void func_C321(void); /* SetPPUInc_endIf_A */
-void func_B3BF_b0(void); /* PauseSFX */
-void func_B398_b0(void); /* LoadSFXData */
-void func_B4ED_b0(void); /* GetSoundRoutine */
-void func_B51E_b0(void); /* GetSoundRoutine_RTS */
-void func_B51A_b0(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b0(void);
-void func_BC83_b0(void); /* FindMusicInitIndex */
-void func_BC94_b0(void); /* MusicInitIndexAdd8 */
-void func_B367_b0(void); /* RunSoundRoutine */
-void func_B3BF_b1(void); /* PauseSFX */
-void func_B398_b1(void); /* LoadSFXData */
-void func_B4ED_b1(void); /* GetSoundRoutine */
-void func_BC83_b1(void); /* FindMusicInitIndex */
-void func_BC94_b1(void); /* MusicInitIndexAdd8 */
-void func_B367_b1(void); /* RunSoundRoutine */
-void func_B3BF_b2(void); /* PauseSFX */
-void func_B398_b2(void); /* LoadSFXData */
-void func_B4ED_b2(void); /* GetSoundRoutine */
-void func_B51A_b2(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b2(void);
-void func_B51E_b2(void); /* GetSoundRoutine_RTS */
-void func_BC83_b2(void); /* FindMusicInitIndex */
-void func_BC94_b2(void); /* MusicInitIndexAdd8 */
-void func_B367_b2(void); /* RunSoundRoutine */
-void func_B3BF_b3(void); /* PauseSFX */
-void func_B398_b3(void); /* LoadSFXData */
-void func_B4ED_b3(void); /* GetSoundRoutine */
-void func_B51A_b3(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b3(void);
-void func_B51E_b3(void); /* GetSoundRoutine_RTS */
-void func_BC83_b3(void); /* FindMusicInitIndex */
-void func_BC94_b3(void); /* MusicInitIndexAdd8 */
-void func_B367_b3(void); /* RunSoundRoutine */
-void func_B3BF_b4(void); /* PauseSFX */
-void func_B398_b4(void); /* LoadSFXData */
-void func_B4ED_b4(void); /* GetSoundRoutine */
-void func_B51A_b4(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b4(void);
-void func_B51E_b4(void); /* GetSoundRoutine_RTS */
-void func_BC83_b4(void); /* FindMusicInitIndex */
-void func_BC94_b4(void); /* MusicInitIndexAdd8 */
-void func_B367_b4(void); /* RunSoundRoutine */
-void func_B3BF_b5(void); /* PauseSFX */
-void func_B398_b5(void); /* LoadSFXData */
-void func_B4ED_b5(void); /* GetSoundRoutine */
-void func_B51A_b5(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B503_b5(void);
-void func_B51E_b5(void); /* GetSoundRoutine_RTS */
-void func_BC83_b5(void); /* FindMusicInitIndex */
-void func_BC94_b5(void); /* MusicInitIndexAdd8 */
-void func_B367_b5(void); /* RunSoundRoutine */
+void func_B4EA_b1(void); /* GetSoundRoutine_RestoreSFXFlags */
+void func_B4EE_b1(void); /* GetSoundRoutine_RTS */
 void func_833F_b2(void); /* EnemyGetDeltaY_UsingAcceleration */
 void func_8395_b2(void); /* EnemyGetDeltaX_UsingAcceleration */
 void func_FD8F(void); /* ApplySpeedToPosition */
@@ -543,35 +534,40 @@ void func_AEE7_b4(void);
 void func_B03F_b4(void); /* SongKraidSQ1 */
 void func_B037_b4(void);
 void func_B084_b4(void);
-void func_B0D1_b4(void);
-void func_BB22_b4(void);
+void func_B0B8_b4(void);
+void func_B0BC_b4(void);
+void func_B09B_b4(void);
 void func_B920_b4(void);
-void func_B1AE_b4(void);
-void func_B1B2_b4(void);
-void func_B226_b4(void);
-void func_B2F5_b4(void);
-void func_B3A4_b4(void); /* LoadSFXData_SQ2 */
-void func_B39C_b4(void); /* LoadSFXData_Tri */
-void func_B3A0_b4(void); /* LoadSFXData_Noise */
-void func_B4C3_b4(void); /* UpdateContFlags */
-void func_B482_b4(void); /* InitSFXData */
-void func_B493_b4(void);
-void func_B4A2_b4(void); /* InitSFXData_Tri */
-void func_B4D9_b4(void); /* IncrementSFXFrame */
-void func_B5BF_b4(void); /* EndNoiseSFX */
-void func_B5B7_b4(void); /* GotoInitSFXData */
-void func_B4D2_b4(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b4(void); /* MultiSFXInit */
-void func_B65C_b4(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b4(void); /* EndMultiSFX */
-void func_B722_b4(void); /* EndSQ1SFX */
-void func_B8C6_b4(void); /* EndTriSFX */
-void func_B8D6_b4(void); /* EndTriSFX_RTS */
-void func_B9BC_b4(void); /* DecreaseSFXTriPeriod */
-void func_B899_b4(void); /* WriteSFXTriPeriod */
-void func_B9A8_b4(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b4(void); /* DivideSFXTriPeriod */
-void func_B8F3_b4(void); /* RndTriPeriods */
+void func_B151_b4(void);
+void func_B144_b4(void);
+void func_B154_b4(void);
+void func_B19B_b4(void);
+void func_B1A8_b4(void);
+void func_9830_b4(void);
+void func_B1E0_b4(void);
+void func_80C7_b4(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b4(void);
+void func_B374_b4(void); /* LoadSFXData_SQ2 */
+void func_B36C_b4(void); /* LoadSFXData_Tri */
+void func_B370_b4(void); /* LoadSFXData_Noise */
+void func_B493_b4(void); /* UpdateContFlags */
+void func_B452_b4(void); /* InitSFXData */
+void func_B463_b4(void);
+void func_B472_b4(void); /* InitSFXData_Tri */
+void func_B4A9_b4(void); /* IncrementSFXFrame */
+void func_B58F_b4(void); /* EndNoiseSFX */
+void func_B587_b4(void); /* GotoInitSFXData */
+void func_B4A2_b4(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b4(void); /* MultiSFXInit */
+void func_B62C_b4(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b4(void); /* EndMultiSFX */
+void func_B6F2_b4(void); /* EndSQ1SFX */
+void func_B896_b4(void); /* EndTriSFX */
+void func_B98C_b4(void); /* DecreaseSFXTriPeriod */
+void func_B869_b4(void); /* WriteSFXTriPeriod */
+void func_B978_b4(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b4(void); /* DivideSFXTriPeriod */
+void func_B8C3_b4(void); /* RndTriPeriods */
 void func_833F_b5(void); /* EnemyGetDeltaY_UsingAcceleration */
 void func_8395_b5(void); /* EnemyGetDeltaX_UsingAcceleration */
 void func_98AE_b0(void); /* LoadStarSprites */
@@ -745,7 +741,6 @@ void func_C3D4(void); /* TwosComplement */
 void func_83F5_b1(void); /* EnemyMoveOnePixelUp */
 void func_8400_b1(void);
 void func_80B8_b1(void); /* EnemyIfMoveFailedUp */
-void func_80F6_b1(void); /* EnemyIfMoveFailedUp_abortLoop */
 void func_844B_b1(void); /* EnemyMoveOnePixelDown */
 void func_80FB_b1(void); /* EnemyIfMoveFailedDown */
 void func_812F_b1(void); /* EnemyIfMoveFailedDown_abortLoop */
@@ -868,8 +863,6 @@ void func_DDB0(void); /* DrawEnemy_NotBlank */
 void func_DE07(void);
 void func_DE13(void);
 void func_DEDE(void);
-void func_B51A_b1(void); /* GetSoundRoutine_RestoreSFXFlags */
-void func_B51E_b1(void); /* GetSoundRoutine_RTS */
 void func_E449(void); /* NegateTemp00Temp01 */
 void func_E44C(void);
 void func_CE84(void); /* IsSamusDead */
@@ -896,40 +889,47 @@ void func_FA18(void); /* RemoveEnemy */
 void func_FB7B(void); /* InitEnemyFacingDirectionAxisAndDelay */
 void func_F85A(void); /* InitEnemyForceSpeedTowardsSamusDelayAndHealth */
 void func_AB7B_b4(void);
-void func_BA71_b4(void); /* UpdateVolumeEnvelope */
-void func_BA38_b4(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b4(void); /* EndOrLoopMusic */
-void func_BA67_b4(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b4(void); /* ResetVolumeIndex */
-void func_BB4C_b4(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b4(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b4(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b4(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b4(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b4(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b4(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b4(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAD5_b4(void); /* UpdateAllMusicChannels */
-void func_BCDA_b4(void); /* Music00Init */
-void func_BCD4_b4(void); /* Music01Init */
-void func_BCCA_b4(void); /* Music02Init */
-void func_BCC6_b4(void); /* Music03Init */
-void func_BCB9_b4(void); /* Music04Init */
-void func_BCCE_b4(void); /* Music05Init */
-void func_BA14_b4(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b4(void); /* InitializeMusic */
-void func_BDCF_b4(void);
-void func_BE38_b4(void); /* SongPowerUpTri */
-void func_BE6E_b4(void); /* SongFadeInSQ1 */
+void func_BA41_b4(void); /* UpdateVolumeEnvelope */
+void func_BA08_b4(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b4(void); /* EndOrLoopMusic */
+void func_BA37_b4(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b4(void); /* ResetVolumeIndex */
+void func_BB1C_b4(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b4(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b4(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b4(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b4(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b4(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b4(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b4(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b4(void); /* UpdateAllMusicChannels */
+void func_BCAA_b4(void); /* Music00Init */
+void func_BCA4_b4(void); /* Music01Init */
+void func_BC9A_b4(void); /* Music02Init */
+void func_BC96_b4(void); /* Music03Init */
+void func_BC89_b4(void); /* Music04Init */
+void func_BC9E_b4(void); /* Music05Init */
+void func_B9E4_b4(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b4(void); /* InitializeMusic */
+void func_BD77_b4(void);
+void func_BD9F_b4(void);
+void func_BE08_b4(void); /* SongPowerUpTri */
+void func_BE3E_b4(void); /* SongFadeInSQ1 */
 void func_E0FF(void);
-void func_BEE0_b4(void);
+void func_BEB0_b4(void);
 void func_AEAC_b4(void);
 void func_AEAE_b4(void);
-void func_BF47_b4(void);
-void func_B0CE_b4(void);
-void func_BDBB_b4(void);
-void func_B91C_b4(void); /* SamusDieSFXInit_RTS */
-void func_B194_b4(void);
+void func_BF1B_b4(void);
+void func_BF0B_b4(void);
+void func_BF67_b4(void);
+void func_AFFE_b4(void);
+void func_B06C_b4(void);
+void func_B17E_b4(void);
+void func_983F_b4(void); /* EnemyMovement0F_R_BANK4 */
+void func_98E7_b4(void); /* EnProjectileMovement2_BANK4 */
+void func_98F7_b4(void);
+void func_80C1_b4(void); /* EnemyIfMoveFailedUp_bounce */
+void func_856B_b4(void); /* XorEnData05 */
 void func_881A_b0(void); /* DoSparkleSpriteCoord */
 void func_887B_b0(void); /* WriteIntroSprite */
 void func_981E_b0(void); /* UpdateCrossMissileCoords */
@@ -1052,7 +1052,6 @@ void func_F852(void); /* CrawlerAIRoutine_ShouldCrawlerMove */
 void func_EB6E(void);
 void func_FB87(void); /* Exit13 */
 void func_F870(void); /* SpawnEnProjectile */
-void func_F03D(void);
 void func_F86F(void); /* InitEnemyForceSpeedTowardsSamusDelayAndHealth_RTS */
 void func_EFD0(void);
 void func_F1D1(void);
@@ -1239,6 +1238,7 @@ void func_EFAB(void);
 void func_F084(void);
 void func_FA9F(void); /* UpdateAllEnemyExplosions_loop */
 void func_EA7D(void);
+void func_F03D(void);
 void func_F0B4(void);
 void func_ED32(void); /* DeleteOffscreenRoomSprites_loop_pipeBugHoles */
 void func_F012(void); /* InitTables_loop */
@@ -1272,6 +1272,7 @@ void func_EE0D(void);
 void func_EBC6(void);
 void func_ED85(void);
 void func_EA85(void);
+void func_F7B9(void); /* AndEnData05_RTS */
 void func_EAA5(void);
 void func_F83E(void); /* GetEnemyTypeTimes2PlusFacingDirectionBit0 */
 void func_F64C(void);
@@ -1291,7 +1292,6 @@ void func_F0B9(void);
 void func_FC7D(void);
 void func_FB99(void);
 void func_F999(void);
-void func_F7B9(void); /* AndEnData05_RTS */
 void func_EFB9(void);
 void func_F8A9(void);
 void func_EB06(void); /* LoadEnemy */
@@ -1517,9 +1517,7 @@ void func_9C49_b4(void); /* AreaRoutineStub_BANK4 */
 void func_9B48_b5(void); /* RTS_Polyp_BANK5 */
 void func_D7D1(void); /* ElevatorIdle */
 void func_D80E(void); /* ElevatorScrollXToCenter */
-void func_D821(void);
 void func_D83D(void); /* ElevatorMove */
-void func_D84C(void); /* ElevatorMove_endIf_B */
 void func_D870(void); /* ElevatorScrollY */
 void func_D879(void);
 void func_D885(void);
@@ -1576,6 +1574,7 @@ void func_FE6D(void); /* SetTileAnim */
 void func_FF54(void); /* UpdateTileBlastAnim */
 void func_FF85(void);
 void func_FF69(void);
+void func_FF60(void); /* UpdateTileBlastAnim_update */
 void func_FF72(void);
 void func_FAB3(void); /* UpdateAllEnemyExplosions_RTS */
 void func_DB16(void); /* Exit0 */
@@ -1642,7 +1641,6 @@ void func_8563_b4(void); /* GetOtherNameTableIndex */
 void func_855A_b4(void); /* SwitchEnemyNameTable */
 void func_81FC_b4(void); /* EnemyIfMoveFailedVertical_Bounce */
 void func_8206_b4(void); /* EnemyIfMoveFailedVertical_Bounce_flipSpeedAndAccel */
-void func_856B_b4(void); /* XorEnData05 */
 void func_81C7_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce */
 void func_81D1_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_flipSpeedAndAccel */
 void func_81F5_b4(void); /* EnemyIfMoveFailedHorizontal_Bounce_RTS */
@@ -1667,14 +1665,14 @@ void func_E783(void); /* EnemyCheckMoveVertical */
 void func_E785(void);
 void func_E7BD(void); /* CheckMoveVertical */
 void func_81B8_b4(void); /* EnemyTriggerResting */
-void func_BB49_b4(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b4(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b4(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b4(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b4(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b4(void);
-void func_BCBB_b4(void); /* XYMusicInit */
-void func_B42C_b4(void); /* CheckMusicFlags */
+void func_BB19_b4(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b4(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b4(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b4(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b4(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b4(void);
+void func_BC8B_b4(void); /* XYMusicInit */
+void func_B3FC_b4(void); /* CheckMusicFlags */
 void func_C45D(void); /* ScreenNmiOff */
 void func_A93E_b4(void);
 void func_C5D7(void); /* InitTitleGFX */
@@ -1698,6 +1696,8 @@ void func_CBDE(void); /* SFX_SamusHit */
 void func_CE66(void); /* CheckHealthBeep */
 void func_CF4E(void);
 void func_CBF3(void); /* SFX_Beep */
+void func_AFD7_b4(void);
+void func_AFE4_b4(void);
 void func_C2C0(void); /* Adiv8 */
 void func_8871_b0(void); /* DoSparkleSpriteCoord_NibbleSubtract */
 void func_9871_b0(void); /* UpdateCrossMissileCoords_CalcDisplacement */
@@ -1740,7 +1740,6 @@ void func_E683(void);
 void func_E690(void);
 void func_E67E(void);
 void func_E685(void);
-void func_E6A2(void);
 void func_E6A0(void);
 void func_E699(void);
 void func_D088(void);
@@ -1760,7 +1759,6 @@ void func_D4A8(void); /* Door_DeleteOffscreenEnemies_deletePipeBugHole */
 void func_E564(void); /* GetNameAddrs */
 void func_E880(void); /* ObjectCheckMoveLeft */
 void func_D976(void); /* SamusCollisionWithSolidEntities */
-void func_D9B9(void); /* SamusCollisionWithSolidEntities_RTS */
 void func_D983(void); /* SamusCollisionWithSolidEntities_loop */
 void func_ED57(void);
 void func_9C6F_b3(void); /* DeleteOffscreenRoomSprites_Tourian */
@@ -1887,6 +1885,7 @@ void func_D606(void); /* GotoWeaponProjectileHitDoorOrStatue */
 void func_D651(void); /* CheckBlastTile */
 void func_E9BE(void); /* IsBlastTile */
 void func_E9F2(void);
+void func_E9CC(void);
 void func_D602(void);
 void func_9B37_b3(void); /* UpdateAllCannons */
 void func_9B44_b3(void); /* UpdateAllCannons_updateIfPossible */
@@ -2002,6 +2001,7 @@ void func_E935(void);
 void func_E98E(void); /* CalculateNextBGCollisionPoint */
 void func_E9A8(void);
 void func_E7E6(void);
+void func_AF83_b4(void);
 void func_8BD4_b0(void); /* LoadUniqueItems */
 void func_8D3D_b0(void); /* LoadTanksAndMissiles */
 void func_E7AD(void); /* ObjectCheckMoveDown */
@@ -2053,6 +2053,8 @@ void func_A8AC_b5(void);
 void func_A91F_b5(void);
 void func_A98E_b5(void);
 void func_AAA3_b5(void);
+void func_B948_b5(void);
+void func_BC23_b5(void);
 void func_AB86_b5(void);
 void func_AD21_b5(void);
 void func_AD04_b5(void);
@@ -2063,21 +2065,25 @@ void func_AEE7_b5(void);
 void func_B03F_b5(void); /* SongKraidSQ1 */
 void func_B037_b5(void);
 void func_B084_b5(void);
-void func_B0D1_b5(void);
-void func_BB22_b5(void);
+void func_B0B8_b5(void);
+void func_B0BC_b5(void);
+void func_B09B_b5(void);
 void func_B920_b5(void);
-void func_B1AE_b5(void);
-void func_B1B2_b5(void);
-void func_B226_b5(void);
+void func_B151_b5(void);
+void func_B144_b5(void);
+void func_B154_b5(void);
+void func_B19B_b5(void);
+void func_B1A8_b5(void);
+void func_9830_b5(void); /* UpdateEnemyCommon_Decide_BANK5 */
+void func_B1E0_b5(void);
+void func_80C7_b5(void); /* EnemyIfMoveFailedUp_facingHorizontal */
 void func_9B20_b3(void); /* Amul16_ */
 void func_9D88_b3(void); /* GetNameTableAtScrollDir_ */
 void func_C27C(void); /* JumpEngine */
 void func_C27D(void);
 void func_C284(void);
 void func_F56C(void);
-void func_F049(void);
-void func_F1FB(void);
-void func_F222(void);
+void func_B0D4_b2(void);
 void func_A5EB_b2(void);
 void func_A608_b2(void);
 void func_A650_b2(void);
@@ -2108,18 +2114,22 @@ void func_AEE0_b2(void);
 void func_AF59_b2(void);
 void func_AF2B_b2(void);
 void func_B03F_b2(void);
-void func_B61C_b2(void); /* BossHitSFXInit */
+void func_B61C_b2(void);
 void func_B06C_b2(void);
-void func_B2F5_b2(void);
-void func_B3A4_b2(void); /* LoadSFXData_SQ2 */
-void func_B39C_b2(void); /* LoadSFXData_Tri */
-void func_B3A0_b2(void); /* LoadSFXData_Noise */
-void func_B4C3_b2(void); /* UpdateContFlags */
-void func_B482_b2(void); /* InitSFXData */
-void func_B493_b2(void);
-void func_B4A2_b2(void); /* InitSFXData_Tri */
-void func_B4D9_b2(void); /* IncrementSFXFrame */
-void func_B5BF_b2(void); /* EndNoiseSFX */
+void func_B0A4_b2(void);
+void func_9830_b2(void);
+void func_B1E0_b2(void);
+void func_80C7_b2(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b2(void);
+void func_B374_b2(void); /* LoadSFXData_SQ2 */
+void func_B36C_b2(void); /* LoadSFXData_Tri */
+void func_B370_b2(void); /* LoadSFXData_Noise */
+void func_B493_b2(void); /* UpdateContFlags */
+void func_B452_b2(void); /* InitSFXData */
+void func_B463_b2(void);
+void func_B472_b2(void); /* InitSFXData_Tri */
+void func_B4A9_b2(void); /* IncrementSFXFrame */
+void func_B58F_b2(void); /* EndNoiseSFX */
 void func_D78B(void);
 void func_D78D(void);
 void func_D76A(void); /* BombCurrentTile */
@@ -2238,117 +2248,126 @@ void func_DFAD(void);
 void func_E7DE(void);
 void func_E95F(void);
 void func_E934(void);
+void func_AF53_b4(void);
 void func_8BF5_b0(void); /* LoadUniqueItems_loop_unused */
 void func_8C39_b0(void); /* SamusHasItem */
 void func_8C0A_b0(void); /* LoadUniqueItems_processItemBit */
 void func_8C03_b0(void); /* LoadUniqueItems_processItemByte */
 void func_8DA9_b0(void); /* LoadTanksAndMissiles_IncrementToNextItem */
 void func_D318(void);
-void func_B2F5_b5(void);
-void func_B3A4_b5(void); /* LoadSFXData_SQ2 */
-void func_B39C_b5(void); /* LoadSFXData_Tri */
-void func_B3A0_b5(void); /* LoadSFXData_Noise */
-void func_B4C3_b5(void); /* UpdateContFlags */
-void func_B482_b5(void); /* InitSFXData */
-void func_B493_b5(void);
-void func_B4A2_b5(void); /* InitSFXData_Tri */
-void func_B4D9_b5(void); /* IncrementSFXFrame */
-void func_B5BF_b5(void); /* EndNoiseSFX */
-void func_B5B7_b5(void); /* GotoInitSFXData */
-void func_B4D2_b5(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b5(void); /* MultiSFXInit */
-void func_B65C_b5(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b5(void); /* EndMultiSFX */
-void func_B722_b5(void); /* EndSQ1SFX */
-void func_B8C6_b5(void); /* EndTriSFX */
-void func_B8D6_b5(void); /* EndTriSFX_RTS */
-void func_B9BC_b5(void); /* DecreaseSFXTriPeriod */
-void func_B899_b5(void); /* WriteSFXTriPeriod */
-void func_B9A8_b5(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b5(void); /* DivideSFXTriPeriod */
-void func_B8F3_b5(void); /* RndTriPeriods */
-void func_BA71_b5(void); /* UpdateVolumeEnvelope */
-void func_BA38_b5(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b5(void); /* EndOrLoopMusic */
-void func_BA67_b5(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b5(void); /* ResetVolumeIndex */
-void func_BB4C_b5(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b5(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b5(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b5(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b5(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b5(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b5(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b5(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_B2C5_b5(void);
+void func_B374_b5(void); /* LoadSFXData_SQ2 */
+void func_B36C_b5(void); /* LoadSFXData_Tri */
+void func_B370_b5(void); /* LoadSFXData_Noise */
+void func_B493_b5(void); /* UpdateContFlags */
+void func_B452_b5(void); /* InitSFXData */
+void func_B463_b5(void);
+void func_B472_b5(void); /* InitSFXData_Tri */
+void func_B4A9_b5(void); /* IncrementSFXFrame */
+void func_B58F_b5(void); /* EndNoiseSFX */
+void func_B587_b5(void); /* GotoInitSFXData */
+void func_B4A2_b5(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b5(void); /* MultiSFXInit */
+void func_B62C_b5(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b5(void); /* EndMultiSFX */
+void func_B6F2_b5(void); /* EndSQ1SFX */
+void func_B896_b5(void); /* EndTriSFX */
+void func_B98C_b5(void); /* DecreaseSFXTriPeriod */
+void func_B869_b5(void); /* WriteSFXTriPeriod */
+void func_B978_b5(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b5(void); /* DivideSFXTriPeriod */
+void func_B8C3_b5(void); /* RndTriPeriods */
+void func_BA41_b5(void); /* UpdateVolumeEnvelope */
+void func_BA08_b5(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b5(void); /* EndOrLoopMusic */
+void func_BA37_b5(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b5(void); /* ResetVolumeIndex */
+void func_BB1C_b5(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b5(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b5(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b5(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b5(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b5(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b5(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b5(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
 void func_AB32_b5(void);
-void func_BAD5_b5(void); /* UpdateAllMusicChannels */
-void func_BCDA_b5(void); /* Music00Init */
-void func_BCD4_b5(void); /* Music01Init */
-void func_BCCA_b5(void); /* Music02Init */
-void func_BCC6_b5(void); /* Music03Init */
-void func_BCB9_b5(void); /* Music04Init */
-void func_BCCE_b5(void); /* Music05Init */
-void func_BA14_b5(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b5(void); /* InitializeMusic */
-void func_BDCF_b5(void);
-void func_BE38_b5(void); /* SongPowerUpTri */
-void func_BE6E_b5(void); /* SongFadeInSQ1 */
-void func_BEE0_b5(void);
+void func_BAA5_b5(void); /* UpdateAllMusicChannels */
+void func_BCAA_b5(void); /* Music00Init */
+void func_BCA4_b5(void); /* Music01Init */
+void func_BC9A_b5(void); /* Music02Init */
+void func_BC96_b5(void); /* Music03Init */
+void func_BC89_b5(void); /* Music04Init */
+void func_BC9E_b5(void); /* Music05Init */
+void func_B9E4_b5(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b5(void); /* InitializeMusic */
+void func_BD77_b5(void);
+void func_BD9F_b5(void);
+void func_BE08_b5(void); /* SongPowerUpTri */
+void func_BE3E_b5(void); /* SongFadeInSQ1 */
+void func_BEB0_b5(void);
 void func_AEAC_b5(void);
 void func_AEAE_b5(void);
-void func_BF47_b5(void);
-void func_B0CE_b5(void);
-void func_BDBB_b5(void);
-void func_B91C_b5(void); /* SamusDieSFXInit_RTS */
-void func_B194_b5(void);
-void func_B5B7_b2(void); /* GotoInitSFXData */
-void func_B4D2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b2(void); /* MultiSFXInit */
-void func_B65C_b2(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b2(void); /* EndMultiSFX */
-void func_B722_b2(void); /* EndSQ1SFX */
+void func_BF1B_b5(void);
+void func_BF0B_b5(void);
+void func_BF67_b5(void);
+void func_AFFE_b5(void);
+void func_B06C_b5(void);
+void func_B17E_b5(void);
+void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_80C1_b5(void); /* EnemyIfMoveFailedUp_bounce */
+void func_B0A2_b2(void);
+void func_B587_b2(void); /* GotoInitSFXData */
+void func_B4A2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b2(void); /* MultiSFXInit */
+void func_B62C_b2(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b2(void); /* EndMultiSFX */
+void func_B6F2_b2(void); /* EndSQ1SFX */
 void func_9416_b2(void);
 void func_9431_b2(void);
 void func_94EE_b2(void);
 void func_9526_b2(void);
 void func_94E2_b2(void);
 void func_9564_b2(void);
-void func_B8C6_b2(void); /* EndTriSFX */
-void func_B8D6_b2(void); /* EndTriSFX_RTS */
-void func_B9BC_b2(void); /* DecreaseSFXTriPeriod */
-void func_B899_b2(void); /* WriteSFXTriPeriod */
-void func_B9A8_b2(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b2(void); /* DivideSFXTriPeriod */
-void func_B8F3_b2(void); /* RndTriPeriods */
-void func_BA71_b2(void); /* UpdateVolumeEnvelope */
-void func_BA38_b2(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b2(void); /* EndOrLoopMusic */
-void func_BA67_b2(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b2(void); /* ResetVolumeIndex */
-void func_BB4C_b2(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b2(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b2(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b2(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b2(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b2(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b2(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b2(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAD5_b2(void); /* UpdateAllMusicChannels */
-void func_BCDA_b2(void); /* Music00Init */
-void func_BCD4_b2(void); /* Music01Init */
-void func_BCCA_b2(void); /* Music02Init */
-void func_BCC6_b2(void); /* Music03Init */
-void func_BCB9_b2(void); /* Music04Init */
-void func_BCCE_b2(void); /* Music05Init */
-void func_BA14_b2(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b2(void); /* InitializeMusic */
-void func_BDDC_b2(void);
-void func_BDCF_b2(void);
-void func_BE38_b2(void); /* SongPowerUpTri */
-void func_BE6E_b2(void); /* SongFadeInSQ1 */
-void func_BEE0_b2(void);
-void func_BF47_b2(void);
+void func_B896_b2(void); /* EndTriSFX */
+void func_B98C_b2(void); /* DecreaseSFXTriPeriod */
+void func_B869_b2(void); /* WriteSFXTriPeriod */
+void func_B978_b2(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b2(void); /* DivideSFXTriPeriod */
+void func_B8C3_b2(void); /* RndTriPeriods */
+void func_BA41_b2(void); /* UpdateVolumeEnvelope */
+void func_BA08_b2(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b2(void); /* EndOrLoopMusic */
+void func_BA37_b2(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b2(void); /* ResetVolumeIndex */
+void func_BB1C_b2(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b2(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b2(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b2(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b2(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b2(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b2(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b2(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b2(void); /* UpdateAllMusicChannels */
+void func_BCAA_b2(void); /* Music00Init */
+void func_BCA4_b2(void); /* Music01Init */
+void func_BC9A_b2(void); /* Music02Init */
+void func_BC96_b2(void); /* Music03Init */
+void func_BC89_b2(void); /* Music04Init */
+void func_BC9E_b2(void); /* Music05Init */
+void func_B9E4_b2(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b2(void); /* InitializeMusic */
+void func_BD79_b2(void);
+void func_BDAC_b2(void);
+void func_BD77_b2(void);
+void func_BD9F_b2(void);
+void func_BE08_b2(void); /* SongPowerUpTri */
+void func_BE3E_b2(void); /* SongFadeInSQ1 */
+void func_BEB0_b2(void);
+void func_BF1B_b2(void);
+void func_BF0B_b2(void);
+void func_BF67_b2(void);
 void func_AF53_b2(void);
+void func_80C1_b2(void); /* EnemyIfMoveFailedUp_bounce */
 void func_D798(void);
 void func_A0C6_b3(void); /* UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
 void func_9BAF_b3(void); /* Cannon_ShootEnProjectile */
@@ -2389,23 +2408,25 @@ void func_A44C_b6(void);
 void func_A655_b6(void);
 void func_A657_b6(void);
 void func_8D95_b0(void); /* LoadTanksAndMissiles_loop_tanks */
-void func_BB49_b5(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b5(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b5(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b5(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b5(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b5(void);
-void func_BCBB_b5(void); /* XYMusicInit */
-void func_B42C_b5(void); /* CheckMusicFlags */
+void func_BB19_b5(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b5(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b5(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b5(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b5(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b5(void);
+void func_BC8B_b5(void); /* XYMusicInit */
+void func_B3FC_b5(void); /* CheckMusicFlags */
 void func_A93E_b5(void);
-void func_BB49_b2(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b2(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b2(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b2(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b2(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b2(void);
-void func_BCBB_b2(void); /* XYMusicInit */
-void func_B42C_b2(void); /* CheckMusicFlags */
+void func_AFD7_b5(void);
+void func_AFE4_b5(void);
+void func_BB19_b2(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b2(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b2(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b2(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b2(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b2(void);
+void func_BC8B_b2(void); /* XYMusicInit */
+void func_B3FC_b2(void); /* CheckMusicFlags */
 void func_A93E_b2(void);
 void func_9EF9_b3(void); /* Xplus16 */
 void func_915E_b6(void);
@@ -2430,6 +2451,7 @@ void func_AE8D_b6(void);
 void func_A1F2_b6(void);
 void func_A1FA_b6(void);
 void func_8810_b6(void);
+void func_AF83_b5(void);
 void func_C020(void);
 void func_B039_b6(void);
 void func_B10A_b6(void);
@@ -2463,6 +2485,7 @@ void func_AC6D_b6(void);
 void func_A1AD_b6(void);
 void func_A1B5_b6(void);
 void func_87FD_b6(void);
+void func_AF53_b5(void);
 void func_84C8_b0(void);
 void func_84C8_b1(void);
 void func_84C8_b2(void);
@@ -2471,55 +2494,56 @@ void func_84C8_b4(void);
 void func_84C8_b5(void);
 void func_84C8_b6(void);
 void func_B82E_b6(void);
-void func_B4D2_b6(void);
-void func_B482_b6(void);
-void func_B8F3_b6(void);
-void func_B4D9_b6(void);
-void func_B8C6_b6(void);
-void func_B434_b6(void);
-void func_B9BC_b6(void);
-void func_B9D0_b6(void);
-void func_B9A8_b6(void);
-void func_B899_b6(void);
-void func_BA71_b6(void);
-void func_BA38_b6(void);
-void func_B420_b6(void);
-void func_BA67_b6(void);
-void func_BA23_b6(void);
-void func_BB4C_b6(void);
-void func_BB0C_b6(void);
-void func_BC0E_b6(void);
-void func_BBE7_b6(void);
-void func_BAE3_b6(void);
-void func_BBD8_b6(void);
-void func_BBFD_b6(void);
-void func_BB67_b6(void);
-void func_B4ED_b6(void);
-void func_BC83_b6(void);
-void func_BAD5_b6(void);
-void func_BCDA_b6(void);
-void func_BCD4_b6(void);
-void func_BCCA_b6(void);
-void func_BCC6_b6(void);
-void func_BCB9_b6(void);
-void func_BCCE_b6(void);
-void func_BA14_b6(void);
-void func_BF62_b6(void);
-void func_BDCF_b6(void);
-void func_BE38_b6(void);
-void func_BE6E_b6(void);
-void func_BEE0_b6(void);
-void func_BF47_b6(void);
+void func_B404_b6(void);
+void func_B452_b6(void);
+void func_B4A9_b6(void);
+void func_B98C_b6(void);
+void func_B896_b6(void);
+void func_B9A0_b6(void);
+void func_B978_b6(void);
+void func_B869_b6(void);
+void func_BA41_b6(void);
+void func_BA08_b6(void);
+void func_B3F0_b6(void); /* GFX_RidlBG */
+void func_BA37_b6(void);
+void func_B9F3_b6(void);
+void func_BB1C_b6(void);
+void func_BADC_b6(void);
+void func_BBDE_b6(void);
+void func_BBB7_b6(void);
+void func_BAB3_b6(void);
+void func_BBA8_b6(void);
+void func_BBCD_b6(void);
+void func_BB37_b6(void);
+void func_B4BD_b6(void);
+void func_BC53_b6(void);
+void func_BAA5_b6(void);
+void func_BCAA_b6(void);
+void func_BCA4_b6(void);
+void func_BC9A_b6(void);
+void func_BC96_b6(void);
+void func_BC89_b6(void);
+void func_BC9E_b6(void);
+void func_B9E4_b6(void);
+void func_BF19_b6(void);
+void func_BD77_b6(void);
+void func_BD9F_b6(void);
+void func_BE08_b6(void);
+void func_BE3E_b6(void);
+void func_BEB0_b6(void);
+void func_BF1B_b6(void);
+void func_BF0B_b6(void);
+void func_BF67_b6(void);
 void func_A93E_b6(void);
 void func_FF4F(void);
-void func_BB49_b6(void);
-void func_BB46_b6(void);
-void func_BACD_b6(void);
-void func_BAD1_b6(void);
-void func_BAE0_b6(void);
-void func_BCBD_b6(void);
-void func_BCBB_b6(void);
-void func_B42C_b6(void);
+void func_BB19_b6(void);
+void func_BB16_b6(void);
+void func_BA9D_b6(void);
+void func_BAA1_b6(void);
+void func_BAB0_b6(void);
+void func_BC8D_b6(void);
+void func_BC8B_b6(void);
+void func_B3FC_b6(void);
 void func_CA2F(void);
 void func_D0CB(void);
 void func_FA21(void);
@@ -2794,6 +2818,7 @@ void func_CCBE(void); /* RunAnimationTbl */
 void func_C0BE(void);
 void func_CCC0(void); /* RunAccelerationTbl */
 void func_CCC2(void); /* SamusRun */
+void func_CCCC(void);
 void func_CD04(void);
 void func_CD10(void);
 void func_CCF0(void);
@@ -3220,6 +3245,7 @@ void func_E44A(void);
 void func_C943(void);
 void func_C953(void);
 void func_EFC9(void);
+void func_F049(void);
 void func_C90D(void);
 void func_C61E(void);
 void func_E540(void);
@@ -3441,14 +3467,10 @@ void func_D0BC(void);
 void func_C98A(void);
 void func_D14C(void);
 void func_CA0A(void);
-void func_C980(void);
-void func_D0C3(void);
-void func_D0CD(void);
-void func_D034(void);
-void func_D06D(void);
-void func_D1B6(void);
-void func_D1B9(void); /* SamusPntUp_endIf_B */
 void func_D050(void);
+void func_C980(void);
+void func_D034(void);
+void func_D1B9(void); /* SamusPntUp_endIf_B */
 void func_D24C(void);
 void func_CCBD(void);
 void func_C9A0(void);
@@ -3676,7 +3698,10 @@ void func_C329(void);
 void func_E02A(void);
 void func_FF09(void);
 void func_C01B(void);
+void func_FFC1(void);
 void func_FDEF(void);
+void func_B3E4_b1(void);
+void func_B3E4_b6(void);
 void func_C4AD(void);
 void func_C4B2(void); /* PrepVertMirror */
 void func_CAF7(void); /* ChooseEnding_loop */
@@ -3714,6 +3739,12 @@ void func_8CCF_b0(void);
 void func_8CCF_b6(void);
 void func_EB4B(void);
 void func_ED25(void);
+void func_B503_b0(void);
+void func_B503_b1(void);
+void func_B503_b2(void);
+void func_B503_b3(void);
+void func_B503_b4(void);
+void func_B503_b5(void);
 void func_B503_b6(void);
 void func_D60A(void);
 void func_CA63(void);
@@ -3746,64 +3777,68 @@ void func_A203_b6(void);
 void func_FD33(void);
 void func_CC0A(void);
 void func_CBC3(void);
-void func_B0A0_b0(void);
-void func_B0AD_b0(void);
-void func_BB22_b3(void);
-void func_B0CE_b3(void);
+void func_B0D4_b1(void);
 void func_B920_b3(void);
-void func_B1AE_b3(void);
-void func_B1B2_b3(void);
-void func_B226_b3(void);
-void func_B2F5_b3(void);
-void func_B3A4_b3(void); /* LoadSFXData_SQ2 */
-void func_B39C_b3(void); /* LoadSFXData_Tri */
-void func_B3A0_b3(void); /* LoadSFXData_Noise */
-void func_B4C3_b3(void); /* UpdateContFlags */
-void func_B482_b3(void); /* InitSFXData */
-void func_B493_b3(void);
-void func_B4A2_b3(void); /* InitSFXData_Tri */
-void func_B4D9_b3(void); /* IncrementSFXFrame */
-void func_B5BF_b3(void); /* EndNoiseSFX */
-void func_B5B7_b3(void); /* GotoInitSFXData */
-void func_B4D2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b3(void); /* MultiSFXInit */
-void func_B65C_b3(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b3(void); /* EndMultiSFX */
-void func_B722_b3(void); /* EndSQ1SFX */
-void func_B8C6_b3(void); /* EndTriSFX */
-void func_B8D6_b3(void); /* EndTriSFX_RTS */
-void func_B9BC_b3(void); /* DecreaseSFXTriPeriod */
-void func_B899_b3(void); /* WriteSFXTriPeriod */
-void func_B9A8_b3(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b3(void); /* DivideSFXTriPeriod */
-void func_B8F3_b3(void); /* RndTriPeriods */
-void func_BA71_b3(void); /* UpdateVolumeEnvelope */
-void func_BA38_b3(void); /* LoadMusicSQ1SQ2Periods */
-void func_B420_b3(void); /* EndOrLoopMusic */
-void func_BA67_b3(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b3(void); /* ResetVolumeIndex */
-void func_BB4C_b3(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b3(void); /* LoadNextMusicChannelInstr */
-void func_BC0E_b3(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b3(void); /* UpdateMusicTriLinearCount */
-void func_BAE3_b3(void); /* IncrementToNextMusicChannel */
-void func_BBD8_b3(void); /* SetMusicInstrDelayToLength */
-void func_BBFD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAD5_b3(void); /* UpdateAllMusicChannels */
-void func_BCDA_b3(void); /* Music00Init */
-void func_BCD4_b3(void); /* Music01Init */
-void func_BCCA_b3(void); /* Music02Init */
-void func_BCC6_b3(void); /* Music03Init */
-void func_BCB9_b3(void); /* Music04Init */
-void func_BCCE_b3(void); /* Music05Init */
-void func_BA14_b3(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b3(void); /* InitializeMusic */
-void func_BDCF_b3(void);
-void func_BE38_b3(void); /* SongPowerUpTri */
-void func_BE6E_b3(void); /* SongFadeInSQ1 */
-void func_BEE0_b3(void);
-void func_BF47_b3(void);
+void func_B151_b3(void);
+void func_B144_b3(void);
+void func_B154_b3(void);
+void func_B19B_b3(void);
+void func_B1A8_b3(void);
+void func_9830_b3(void);
+void func_B1E0_b3(void);
+void func_80C7_b3(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b3(void);
+void func_B374_b3(void); /* LoadSFXData_SQ2 */
+void func_B36C_b3(void); /* LoadSFXData_Tri */
+void func_B370_b3(void); /* LoadSFXData_Noise */
+void func_B493_b3(void); /* UpdateContFlags */
+void func_B452_b3(void); /* InitSFXData */
+void func_B463_b3(void);
+void func_B472_b3(void); /* InitSFXData_Tri */
+void func_B4A9_b3(void); /* IncrementSFXFrame */
+void func_B58F_b3(void); /* EndNoiseSFX */
+void func_B587_b3(void); /* GotoInitSFXData */
+void func_B4A2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b3(void); /* MultiSFXInit */
+void func_B62C_b3(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b3(void); /* EndMultiSFX */
+void func_B6F2_b3(void); /* EndSQ1SFX */
+void func_B896_b3(void); /* EndTriSFX */
+void func_B98C_b3(void); /* DecreaseSFXTriPeriod */
+void func_B869_b3(void); /* WriteSFXTriPeriod */
+void func_B978_b3(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b3(void); /* DivideSFXTriPeriod */
+void func_B8C3_b3(void); /* RndTriPeriods */
+void func_BA41_b3(void); /* UpdateVolumeEnvelope */
+void func_BA08_b3(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b3(void); /* EndOrLoopMusic */
+void func_BA37_b3(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b3(void); /* ResetVolumeIndex */
+void func_BB1C_b3(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b3(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b3(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b3(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b3(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b3(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b3(void); /* UpdateAllMusicChannels */
+void func_BCAA_b3(void); /* Music00Init */
+void func_BCA4_b3(void); /* Music01Init */
+void func_BC9A_b3(void); /* Music02Init */
+void func_BC96_b3(void); /* Music03Init */
+void func_BC89_b3(void); /* Music04Init */
+void func_BC9E_b3(void); /* Music05Init */
+void func_B9E4_b3(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b3(void); /* InitializeMusic */
+void func_BD77_b3(void);
+void func_BD9F_b3(void);
+void func_BE08_b3(void); /* SongPowerUpTri */
+void func_BE3E_b3(void); /* SongFadeInSQ1 */
+void func_BEB0_b3(void);
+void func_BF1B_b3(void);
+void func_BF0B_b3(void);
+void func_BF67_b3(void);
 void func_E3E0(void);
 void func_A82D_b1(void);
 void func_8001_b1(void);
@@ -3814,104 +3849,108 @@ void func_A8D0_b1(void);
 void func_A8AC_b1(void);
 void func_A998_b1(void);
 void func_A9FC_b1(void);
-void func_BA71_b1(void); /* UpdateVolumeEnvelope */
-void func_BA38_b1(void); /* LoadMusicSQ1SQ2Periods */
-void func_BA67_b1(void); /* UpdateAllVolumeEnvelopes */
-void func_BA23_b1(void); /* ResetVolumeIndex */
-void func_BAE3_b1(void); /* IncrementToNextMusicChannel */
-void func_BB67_b1(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BA14_b1(void); /* SetVolumeAndDisableSweep */
-void func_BB49_b1(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b1(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BAE0_b1(void); /* MusicChannelBaseEmpty */
+void func_BA41_b1(void); /* UpdateVolumeEnvelope */
+void func_BA08_b1(void); /* LoadMusicSQ1SQ2Periods */
+void func_BA37_b1(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b1(void); /* ResetVolumeIndex */
+void func_BAB3_b1(void); /* IncrementToNextMusicChannel */
+void func_BB37_b1(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_B9E4_b1(void); /* SetVolumeAndDisableSweep */
+void func_BB19_b1(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b1(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BAB0_b1(void); /* MusicChannelBaseEmpty */
 void func_AA49_b1(void);
-void func_BC0E_b1(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBE7_b1(void); /* UpdateMusicTriLinearCount */
-void func_BBFD_b1(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BBDE_b1(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b1(void); /* UpdateMusicTriLinearCount */
+void func_BBCD_b1(void); /* UpdateMusicTriLinearCount_setToNoteLength */
 void func_AA9E_b1(void);
 void func_AAE2_b1(void);
 void func_AB00_b1(void);
 void func_AC72_b1(void);
-void func_BCD4_b1(void); /* Music01Init */
-void func_BCCE_b1(void); /* Music05Init */
-void func_BE38_b1(void); /* SongPowerUpTri */
-void func_BCBD_b1(void);
-void func_BCBB_b1(void); /* XYMusicInit */
-void func_BCAA_b1(void); /* GotoMusic01Init */
-void func_BDBB_b1(void);
+void func_BCA4_b1(void); /* Music01Init */
+void func_BC9E_b1(void); /* Music05Init */
+void func_BE08_b1(void); /* SongPowerUpTri */
+void func_BC8B_b1(void); /* XYMusicInit */
 void func_AC76_b1(void);
 void func_AC8A_b1(void);
 void func_AF5D_b1(void);
-void func_B04F_b1(void);
-void func_B0DE_b1(void);
-void func_B2F5_b1(void);
-void func_B359_b1(void); /* RunSFXSQ1InitRoutine */
-void func_B3A4_b1(void); /* LoadSFXData_SQ2 */
-void func_B39C_b1(void); /* LoadSFXData_Tri */
-void func_B3A0_b1(void); /* LoadSFXData_Noise */
-void func_B4C3_b1(void); /* UpdateContFlags */
-void func_B482_b1(void); /* InitSFXData */
-void func_B493_b1(void);
-void func_B4A2_b1(void); /* InitSFXData_Tri */
-void func_B4D9_b1(void); /* IncrementSFXFrame */
-void func_B5BF_b1(void); /* EndNoiseSFX */
-void func_B5C7_b1(void); /* EndNoiseSFX_RTS */
-void func_B5B7_b1(void); /* GotoInitSFXData */
-void func_B4D2_b1(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5D5_b1(void); /* MultiSFXInit */
-void func_B65C_b1(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5FD_b1(void); /* EndMultiSFX */
-void func_B722_b1(void); /* EndSQ1SFX */
-void func_B8C6_b1(void); /* EndTriSFX */
-void func_B9BC_b1(void); /* DecreaseSFXTriPeriod */
-void func_B899_b1(void); /* WriteSFXTriPeriod */
-void func_B9A8_b1(void); /* IncreaseSFXTriPeriod */
-void func_B9D0_b1(void); /* DivideSFXTriPeriod */
-void func_B8F3_b1(void); /* RndTriPeriods */
+void func_B04D_b1(void);
+void func_B0BA_b1(void);
+void func_B0CA_b1(void);
+void func_9830_b1(void);
+void func_B1E0_b1(void);
+void func_80C7_b1(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_80F6_b1(void); /* EnemyIfMoveFailedUp_abortLoop */
+void func_B2C5_b1(void);
+void func_B329_b1(void); /* RunSFXSQ1InitRoutine */
+void func_B374_b1(void); /* LoadSFXData_SQ2 */
+void func_B36C_b1(void); /* LoadSFXData_Tri */
+void func_B370_b1(void); /* LoadSFXData_Noise */
+void func_B493_b1(void); /* UpdateContFlags */
+void func_B452_b1(void); /* InitSFXData */
+void func_B463_b1(void);
+void func_B472_b1(void); /* InitSFXData_Tri */
+void func_B4A9_b1(void); /* IncrementSFXFrame */
+void func_B58F_b1(void); /* EndNoiseSFX */
+void func_B597_b1(void); /* EndNoiseSFX_RTS */
+void func_B587_b1(void); /* GotoInitSFXData */
+void func_B4A2_b1(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b1(void); /* MultiSFXInit */
+void func_B62C_b1(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b1(void); /* EndMultiSFX */
+void func_B6F2_b1(void); /* EndSQ1SFX */
+void func_B896_b1(void); /* EndTriSFX */
+void func_B98C_b1(void); /* DecreaseSFXTriPeriod */
+void func_B869_b1(void); /* WriteSFXTriPeriod */
+void func_B978_b1(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b1(void); /* DivideSFXTriPeriod */
+void func_B8C3_b1(void); /* RndTriPeriods */
+void func_B452_b0(void); /* InitSFXData */
+void func_B463_b0(void);
+void func_B472_b0(void); /* InitSFXData_Tri */
 void func_A1D1_b4(void);
-void func_BDBB_b3(void);
-void func_B91C_b3(void); /* SamusDieSFXInit_RTS */
-void func_B194_b3(void);
-void func_BB49_b3(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BACD_b3(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAE0_b3(void); /* MusicChannelBaseEmpty */
-void func_BCBD_b3(void);
-void func_BCBB_b3(void); /* XYMusicInit */
-void func_B42C_b3(void); /* CheckMusicFlags */
+void func_B17E_b3(void);
+void func_9A06_b3(void); /* GetMetroidAccel */
+void func_9A07_b3(void);
+void func_80C1_b3(void); /* EnemyIfMoveFailedUp_bounce */
+void func_BB19_b3(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b3(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b3(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b3(void);
+void func_BC8B_b3(void); /* XYMusicInit */
+void func_B3FC_b3(void); /* CheckMusicFlags */
 void func_A93E_b3(void);
-void func_AFD4_b1(void);
-void func_B420_b1(void); /* EndOrLoopMusic */
-void func_BB4C_b1(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BB0C_b1(void); /* LoadNextMusicChannelInstr */
-void func_BBD8_b1(void); /* SetMusicInstrDelayToLength */
-void func_BAD5_b1(void); /* UpdateAllMusicChannels */
-void func_BAD8_b1(void);
-void func_BCDA_b1(void); /* Music00Init */
-void func_BCCA_b1(void); /* Music02Init */
-void func_BCC6_b1(void); /* Music03Init */
-void func_BCB9_b1(void); /* Music04Init */
-void func_BF62_b1(void); /* InitializeMusic */
-void func_BDCF_b1(void);
-void func_BE4E_b1(void);
-void func_BF19_b1(void);
-void func_C2BF_b1(void); /* Adiv16 */
-void func_C2C0_b1(void); /* Adiv8 */
-void func_C2C5_b1(void); /* Amul16 */
-void func_C3D4_b1(void); /* TwosComplement */
-void func_CB73_b1(void); /* SelectSamusPalette */
-void func_CBDA_b1(void); /* SFX_Door */
-void func_CC03_b1(void); /* MotherBrainMusic */
-void func_CC07_b1(void); /* TourianMusic */
-void func_BE66_b1(void); /* SongFadeInTri */
-void func_BE6E_b1(void); /* SongFadeInSQ1 */
-void func_BEE0_b1(void);
-void func_BF47_b1(void);
-void func_BACD_b1(void); /* GotoEndOrLoopMusic */
-void func_BAD1_b1(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_B42C_b1(void); /* CheckMusicFlags */
-void func_BE8E_b1(void);
+void func_AFCC_b1(void);
+void func_AFDA_b1(void);
+void func_B3F0_b1(void); /* EndOrLoopMusic */
+void func_BB1C_b1(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b1(void); /* LoadNextMusicChannelInstr */
+void func_BBA8_b1(void); /* SetMusicInstrDelayToLength */
+void func_BAA5_b1(void); /* UpdateAllMusicChannels */
+void func_BAA8_b1(void);
+void func_BCAA_b1(void); /* Music00Init */
+void func_BC9A_b1(void); /* Music02Init */
+void func_BC96_b1(void); /* Music03Init */
+void func_BC89_b1(void); /* Music04Init */
+void func_BF19_b1(void); /* InitializeMusic */
+void func_BD77_b1(void);
+void func_BD9F_b1(void);
+void func_BE3E_b1(void); /* SongFadeInSQ1 */
+void func_BEB0_b1(void);
+void func_BF1B_b1(void);
+void func_BF0B_b1(void);
+void func_BF67_b1(void);
+void func_80C1_b1(void); /* EnemyIfMoveFailedUp_bounce */
+void func_B374_b0(void); /* LoadSFXData_SQ2 */
+void func_B36C_b0(void); /* LoadSFXData_Tri */
+void func_B370_b0(void); /* LoadSFXData_Noise */
+void func_B493_b0(void); /* UpdateContFlags */
+void func_BA9D_b1(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b1(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BC8D_b1(void);
+void func_B3FC_b1(void); /* CheckMusicFlags */
 void func_A93E_b1(void);
 void func_D184(void);
 void func_E6C9(void);
@@ -3976,8 +4015,6 @@ void func_D07B(void);
 void func_C97C(void);
 void func_D07C(void);
 void func_D4D0(void);
-void func_E1B7(void);
-void func_C3A2(void);
 void func_E385(void);
 void func_E2B1(void);
 void func_EE60(void);
@@ -3986,11 +4023,11 @@ void func_F08A(void);
 void func_DD06(void);
 void func_E285(void);
 void func_EEF3(void);
-void func_D04D(void);
-void func_FD4C(void);
+void func_C92D(void);
+void func_CD4C(void);
 void func_D0B6(void);
-void func_D079(void);
-void func_F34C(void);
+void func_D03D(void);
+void func_D04D(void);
 void func_EEB9(void);
 void func_EE2D(void);
 void func_ED06(void);
@@ -3998,12 +4035,13 @@ void func_C600(void);
 void func_E7D0(void);
 void func_F0E6(void);
 void func_C9C0(void);
-void func_C9B0(void);
-void func_C5B6(void); /* InitBank4 */
-void func_E1A2(void);
-void func_FA90(void);
-void func_CA4C(void);
 void func_DC4C(void);
+void func_C9B0(void);
+void func_FA90(void);
+void func_F5A2(void); /* PlaySnd2 */
+void func_D0F6(void);
+void func_E9D0(void);
+void func_CA4C(void);
 void func_F0F6(void);
 void func_FD00(void);
 void func_FEBD(void);
@@ -4052,7 +4090,6 @@ void func_D09F(void);
 void func_E09E(void);
 void func_C99E(void);
 void func_C099(void);
-void func_C92D(void);
 void func_F09E(void);
 void func_D99E(void); /* SamusCollisionWithSolidEntities_notOnEnemy */
 void func_D905(void);
@@ -4072,269 +4109,24 @@ void func_B1C8_b4(void);
 void func_B1C8_b5(void);
 void func_B1C8_b6(void);
 void func_C39B(void); /* WritePaletteStringByte */
-void func_F347(void); /* UpdateAllEnemies_loop */
 void func_FD68(void);
 void func_F274(void);
 void func_FD0B(void);
 void func_E2E3(void); /* SamusMoveVertically_loop_down */
 void func_FAF4(void); /* UpdateAllPipeBugHoles_loop */
-void func_B17F_b3(void);
-void func_B17F_b4(void);
-void func_B17F_b5(void);
-void func_B6E0_b0(void); /* MissilePickupSFXCont */
-void func_B703_b0(void); /* EnergyPickupSFXCont */
-void func_B71D_b0(void); /* SQ1SFXCont */
-void func_B77F_b0(void); /* BulletFireSFXCont */
-void func_B7B1_b0(void); /* WaveBeamSFXCont */
-void func_B902_b0(void); /* SamusDieSFXInit */
-void func_B7DC_b0(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b0(void); /* MetroidHitSFXInit */
-void func_B951_b0(void); /* StatueRaiseSFXInit */
-void func_B809_b0(void); /* BeepSFXInit */
-void func_B81F_b0(void); /* BigEnemyHitSFXInit */
-void func_B864_b0(void); /* SamusToBallSFXInit */
-void func_B8A8_b0(void); /* BombLaunchSFXInit */
-void func_B91D_b0(void); /* SamusDieSFXCont */
-void func_B7FB_b0(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b0(void); /* MetroidHitSFXCont */
-void func_B970_b0(void); /* StatueRaiseSFXCont */
-void func_B978_b0(void);
-void func_B817_b0(void); /* BeepSFXCont */
-void func_B83E_b0(void); /* BigEnemyHitSFXCont */
-void func_B87F_b0(void); /* SamusToBallSFXCont */
-void func_B8AF_b0(void); /* BombLaunchSFXCont */
-void func_BCAA_b0(void); /* GotoMusic01Init */
-void func_B6A3_b0(void); /* SamusHitSFXInit */
-void func_B61C_b0(void); /* BossHitSFXInit */
-void func_B6C5_b0(void); /* IncorrectPasswordSFXInit */
-void func_B680_b0(void); /* SamusHitSFXCont */
-void func_B626_b0(void); /* BossHitSFXCont */
-void func_B6D1_b0(void); /* IncorrectPasswordSFXCont */
-void func_B6E0_b1(void); /* MissilePickupSFXCont */
-void func_B7B1_b1(void); /* WaveBeamSFXCont */
-void func_B7D6_b1(void); /* LoadSQ1PeriodLow_RTS */
-void func_B902_b1(void); /* SamusDieSFXInit */
-void func_B7DC_b1(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b1(void); /* MetroidHitSFXInit */
-void func_B951_b1(void); /* StatueRaiseSFXInit */
-void func_B809_b1(void); /* BeepSFXInit */
-void func_B81F_b1(void); /* BigEnemyHitSFXInit */
-void func_B864_b1(void); /* SamusToBallSFXInit */
-void func_B8A8_b1(void); /* BombLaunchSFXInit */
-void func_B91D_b1(void); /* SamusDieSFXCont */
-void func_B7FB_b1(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b1(void); /* MetroidHitSFXCont */
-void func_B970_b1(void); /* StatueRaiseSFXCont */
-void func_B978_b1(void);
-void func_B817_b1(void); /* BeepSFXCont */
-void func_B83E_b1(void); /* BigEnemyHitSFXCont */
-void func_B87F_b1(void); /* SamusToBallSFXCont */
-void func_B8AF_b1(void); /* BombLaunchSFXCont */
-void func_80AD_b1(void);
-void func_B6A3_b1(void); /* SamusHitSFXInit */
-void func_B61C_b1(void); /* BossHitSFXInit */
-void func_B6C5_b1(void); /* IncorrectPasswordSFXInit */
-void func_B680_b1(void); /* SamusHitSFXCont */
-void func_B626_b1(void); /* BossHitSFXCont */
-void func_B6D1_b1(void); /* IncorrectPasswordSFXCont */
-void func_B6E0_b2(void); /* MissilePickupSFXCont */
-void func_B703_b2(void); /* EnergyPickupSFXCont */
-void func_B71D_b2(void); /* SQ1SFXCont */
-void func_B77F_b2(void); /* BulletFireSFXCont */
-void func_B7B1_b2(void); /* WaveBeamSFXCont */
-void func_B902_b2(void); /* SamusDieSFXInit */
-void func_B7DC_b2(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b2(void); /* MetroidHitSFXInit */
-void func_B951_b2(void); /* StatueRaiseSFXInit */
-void func_B809_b2(void); /* BeepSFXInit */
-void func_B81F_b2(void); /* BigEnemyHitSFXInit */
-void func_B864_b2(void); /* SamusToBallSFXInit */
-void func_B8A8_b2(void); /* BombLaunchSFXInit */
-void func_B91D_b2(void); /* SamusDieSFXCont */
-void func_B7FB_b2(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b2(void); /* MetroidHitSFXCont */
-void func_B970_b2(void); /* StatueRaiseSFXCont */
-void func_B978_b2(void);
-void func_B817_b2(void); /* BeepSFXCont */
-void func_B83E_b2(void); /* BigEnemyHitSFXCont */
-void func_B87F_b2(void); /* SamusToBallSFXCont */
-void func_B8AF_b2(void); /* BombLaunchSFXCont */
-void func_80AD_b2(void);
-void func_BCAA_b2(void); /* GotoMusic01Init */
-void func_B6A3_b2(void); /* SamusHitSFXInit */
-void func_B6C5_b2(void); /* IncorrectPasswordSFXInit */
-void func_B680_b2(void); /* SamusHitSFXCont */
-void func_B626_b2(void); /* BossHitSFXCont */
-void func_B6D1_b2(void); /* IncorrectPasswordSFXCont */
 void func_99E5_b3(void);
 void func_8009_b3(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
 void func_9B45_b3(void);
 void func_9B85_b3(void);
-void func_B6E0_b3(void); /* MissilePickupSFXCont */
-void func_B703_b3(void); /* EnergyPickupSFXCont */
-void func_B71D_b3(void); /* SQ1SFXCont */
-void func_B77F_b3(void); /* BulletFireSFXCont */
-void func_B7B1_b3(void); /* WaveBeamSFXCont */
-void func_B902_b3(void); /* SamusDieSFXInit */
-void func_B7DC_b3(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b3(void); /* MetroidHitSFXInit */
-void func_B951_b3(void); /* StatueRaiseSFXInit */
-void func_B809_b3(void); /* BeepSFXInit */
-void func_B81F_b3(void); /* BigEnemyHitSFXInit */
-void func_B864_b3(void); /* SamusToBallSFXInit */
-void func_B8A8_b3(void); /* BombLaunchSFXInit */
-void func_B91D_b3(void); /* SamusDieSFXCont */
-void func_B7FB_b3(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b3(void); /* MetroidHitSFXCont */
-void func_B970_b3(void); /* StatueRaiseSFXCont */
-void func_B978_b3(void);
-void func_B817_b3(void); /* BeepSFXCont */
-void func_B83E_b3(void); /* BigEnemyHitSFXCont */
-void func_B87F_b3(void); /* SamusToBallSFXCont */
-void func_B8AF_b3(void); /* BombLaunchSFXCont */
-void func_80AD_b3(void);
-void func_BCAA_b3(void); /* GotoMusic01Init */
-void func_B6A3_b3(void); /* SamusHitSFXInit */
-void func_B61C_b3(void); /* BossHitSFXInit */
-void func_B6C5_b3(void); /* IncorrectPasswordSFXInit */
-void func_B680_b3(void); /* SamusHitSFXCont */
-void func_B626_b3(void); /* BossHitSFXCont */
-void func_B6D1_b3(void); /* IncorrectPasswordSFXCont */
 void func_A0F1_b3(void);
 void func_847F_b3(void);
-void func_B6E0_b4(void); /* MissilePickupSFXCont */
-void func_B703_b4(void); /* EnergyPickupSFXCont */
-void func_B71D_b4(void); /* SQ1SFXCont */
-void func_B77F_b4(void); /* BulletFireSFXCont */
-void func_B7B1_b4(void); /* WaveBeamSFXCont */
-void func_B902_b4(void); /* SamusDieSFXInit */
-void func_B7DC_b4(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b4(void); /* MetroidHitSFXInit */
-void func_B951_b4(void); /* StatueRaiseSFXInit */
-void func_B809_b4(void); /* BeepSFXInit */
-void func_B81F_b4(void); /* BigEnemyHitSFXInit */
-void func_B864_b4(void); /* SamusToBallSFXInit */
-void func_B8A8_b4(void); /* BombLaunchSFXInit */
-void func_B91D_b4(void); /* SamusDieSFXCont */
-void func_B7FB_b4(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b4(void); /* MetroidHitSFXCont */
-void func_B970_b4(void); /* StatueRaiseSFXCont */
-void func_B978_b4(void);
-void func_B817_b4(void); /* BeepSFXCont */
-void func_B83E_b4(void); /* BigEnemyHitSFXCont */
-void func_B87F_b4(void); /* SamusToBallSFXCont */
-void func_B8AF_b4(void); /* BombLaunchSFXCont */
-void func_80AD_b4(void);
-void func_BCAA_b4(void); /* GotoMusic01Init */
-void func_B6A3_b4(void); /* SamusHitSFXInit */
-void func_B61C_b4(void); /* BossHitSFXInit */
-void func_B6C5_b4(void); /* IncorrectPasswordSFXInit */
-void func_B680_b4(void); /* SamusHitSFXCont */
-void func_B626_b4(void); /* BossHitSFXCont */
-void func_B6D1_b4(void); /* IncorrectPasswordSFXCont */
-void func_B6E0_b5(void); /* MissilePickupSFXCont */
-void func_B703_b5(void); /* EnergyPickupSFXCont */
-void func_B71D_b5(void); /* SQ1SFXCont */
-void func_B77F_b5(void); /* BulletFireSFXCont */
-void func_B7B1_b5(void); /* WaveBeamSFXCont */
-void func_B902_b5(void); /* SamusDieSFXInit */
-void func_B7DC_b5(void); /* DoorOpenCloseSFXInit */
-void func_B8D7_b5(void); /* MetroidHitSFXInit */
-void func_B951_b5(void); /* StatueRaiseSFXInit */
-void func_B809_b5(void); /* BeepSFXInit */
-void func_B81F_b5(void); /* BigEnemyHitSFXInit */
-void func_B864_b5(void); /* SamusToBallSFXInit */
-void func_B8A8_b5(void); /* BombLaunchSFXInit */
-void func_B91D_b5(void); /* SamusDieSFXCont */
-void func_B7FB_b5(void); /* DoorOpenCloseSFXCont */
-void func_B8E1_b5(void); /* MetroidHitSFXCont */
-void func_B970_b5(void); /* StatueRaiseSFXCont */
-void func_B978_b5(void);
-void func_B817_b5(void); /* BeepSFXCont */
-void func_B83E_b5(void); /* BigEnemyHitSFXCont */
-void func_B87F_b5(void); /* SamusToBallSFXCont */
-void func_B8AF_b5(void); /* BombLaunchSFXCont */
-void func_80AD_b5(void);
-void func_BCAA_b5(void); /* GotoMusic01Init */
-void func_B6A3_b5(void); /* SamusHitSFXInit */
-void func_B61C_b5(void); /* BossHitSFXInit */
-void func_B6C5_b5(void); /* IncorrectPasswordSFXInit */
-void func_B680_b5(void); /* SamusHitSFXCont */
-void func_B626_b5(void); /* BossHitSFXCont */
-void func_B6D1_b5(void); /* IncorrectPasswordSFXCont */
-void func_B4D9_b0(void); /* IncrementSFXFrame */
-void func_B722_b0(void); /* EndSQ1SFX */
-void func_B6FC_b0(void); /* MissilePickupSFXCont_RTS */
-void func_B4D2_b0(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B482_b0(void); /* InitSFXData */
-void func_B493_b0(void);
-void func_B4A2_b0(void); /* InitSFXData_Tri */
-void func_B8F3_b0(void); /* RndTriPeriods */
-void func_B7D6_b0(void); /* LoadSQ1PeriodLow_RTS */
-void func_B9BC_b0(void); /* DecreaseSFXTriPeriod */
-void func_B91C_b0(void); /* SamusDieSFXInit_RTS */
-void func_B8C6_b0(void); /* EndTriSFX */
-void func_B8D6_b0(void); /* EndTriSFX_RTS */
-void func_B9D0_b0(void); /* DivideSFXTriPeriod */
-void func_B9A8_b0(void); /* IncreaseSFXTriPeriod */
-void func_B899_b0(void); /* WriteSFXTriPeriod */
-void func_B39C_b0(void); /* LoadSFXData_Tri */
-void func_BCD4_b0(void); /* Music01Init */
-void func_B5D5_b0(void); /* MultiSFXInit */
-void func_B5FD_b0(void); /* EndMultiSFX */
-void func_B3A4_b0(void); /* LoadSFXData_SQ2 */
-void func_B65C_b0(void); /* WriteSQ1SQ2PeriodLow */
-void func_B6C4_b0(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b1(void); /* MissilePickupSFXCont_RTS */
-void func_80A5_b1(void); /* EnemyMove_loop_Right */
-void func_B6FC_b2(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b2(void); /* LoadSQ1PeriodLow_RTS */
-void func_B91C_b2(void); /* SamusDieSFXInit_RTS */
-void func_80A5_b2(void); /* EnemyMove_loop_Right */
-void func_B6C4_b2(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b3(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b3(void); /* LoadSQ1PeriodLow_RTS */
-void func_80A5_b3(void); /* EnemyMove_loop_Right */
-void func_B6C4_b3(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b4(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b4(void); /* LoadSQ1PeriodLow_RTS */
-void func_80A5_b4(void); /* EnemyMove_loop_Right */
-void func_B6C4_b4(void); /* SamusHitSFXInit_RTS */
-void func_B6FC_b5(void); /* MissilePickupSFXCont_RTS */
-void func_B7D6_b5(void); /* LoadSQ1PeriodLow_RTS */
-void func_80A5_b5(void); /* EnemyMove_loop_Right */
-void func_B6C4_b5(void); /* SamusHitSFXInit_RTS */
-void func_B4C3_b0(void); /* UpdateContFlags */
-void func_B3A0_b0(void); /* LoadSFXData_Noise */
-void func_BCBD_b0(void);
-void func_BA14_b0(void); /* SetVolumeAndDisableSweep */
-void func_BF62_b0(void); /* InitializeMusic */
-void func_BAD5_b0(void); /* UpdateAllMusicChannels */
-void func_BB0C_b0(void); /* LoadNextMusicChannelInstr */
-void func_BAE3_b0(void); /* IncrementToNextMusicChannel */
-void func_BAE0_b0(void); /* MusicChannelBaseEmpty */
-void func_B42C_b0(void); /* CheckMusicFlags */
-void func_BA23_b0(void); /* ResetVolumeIndex */
-void func_BAD1_b0(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BACD_b0(void); /* GotoEndOrLoopMusic */
-void func_BB4C_b0(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BA67_b0(void); /* UpdateAllVolumeEnvelopes */
-void func_B420_b0(void); /* EndOrLoopMusic */
-void func_BB49_b0(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB46_b0(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BBD8_b0(void); /* SetMusicInstrDelayToLength */
-void func_BA71_b0(void); /* UpdateVolumeEnvelope */
-void func_BBE7_b0(void); /* UpdateMusicTriLinearCount */
-void func_BC0E_b0(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BA38_b0(void); /* LoadMusicSQ1SQ2Periods */
-void func_BBFD_b0(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB67_b0(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
 void func_C531(void); /* InitBank0 */
 void func_C54A(void);
 void func_C543(void);
 void func_C552(void); /* InitBank1 */
 void func_C583(void); /* InitBank2 */
 void func_C585(void);
+void func_C5B6(void); /* InitBank4 */
 void func_C5C3(void); /* InitBank5 */
 void func_84C8_b7(void);
 void func_A0A0_b7(void);
@@ -4373,7 +4165,6 @@ void func_8042_b2(void); /* CommonJump_SubtractHealth */
 void func_8042_b4(void); /* CommonJump_SubtractHealth */
 void func_8042_b5(void); /* CommonJump_SubtractHealth */
 void func_8006_b1(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
-void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
 void func_801B_b1(void); /* CommonJump_EnemyFlipAfterDisplacement */
 void func_801B_b3(void); /* CommonJump_EnemyFlipAfterDisplacement */
 void func_801B_b5(void); /* CommonJump_EnemyFlipAfterDisplacement */
@@ -4399,16 +4190,56 @@ void func_8033_b3(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_8033_b5(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_802A_b1(void); /* CommonJump_0E */
 void func_802A_b5(void); /* CommonJump_0E */
-void func_BB22_b0(void);
-void func_BB22_b1(void);
-void func_BB22_b2(void);
 void func_B920_b0(void);
+void func_B920_b1(void);
+void func_B921_b1(void); /* StatueRaiseSFXInit */
 void func_B920_b2(void);
-void func_B359_b0(void); /* RunSFXSQ1InitRoutine */
-void func_B360_b0(void); /* RunSFXSQ1ContRoutine */
-void func_B5BF_b0(void); /* EndNoiseSFX */
-void func_B5B7_b0(void); /* GotoInitSFXData */
-void func_BF47_b0(void);
+void func_B329_b0(void); /* RunSFXSQ1InitRoutine */
+void func_B330_b0(void); /* RunSFXSQ1ContRoutine */
+void func_B4A9_b0(void); /* IncrementSFXFrame */
+void func_B58F_b0(void); /* EndNoiseSFX */
+void func_B587_b0(void); /* GotoInitSFXData */
+void func_B4A2_b0(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b0(void); /* MultiSFXInit */
+void func_B62C_b0(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b0(void); /* EndMultiSFX */
+void func_B6F2_b0(void); /* EndSQ1SFX */
+void func_B896_b0(void); /* EndTriSFX */
+void func_B98C_b0(void); /* DecreaseSFXTriPeriod */
+void func_B869_b0(void); /* WriteSFXTriPeriod */
+void func_B978_b0(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b0(void); /* DivideSFXTriPeriod */
+void func_B8C3_b0(void); /* RndTriPeriods */
+void func_BA41_b0(void); /* UpdateVolumeEnvelope */
+void func_BA08_b0(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b0(void); /* EndOrLoopMusic */
+void func_BA37_b0(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b0(void); /* ResetVolumeIndex */
+void func_BB1C_b0(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BBDE_b0(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b0(void); /* UpdateMusicTriLinearCount */
+void func_BBA8_b0(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b0(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b0(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b0(void); /* UpdateAllMusicChannels */
+void func_BADC_b0(void); /* LoadNextMusicChannelInstr */
+void func_BAB3_b0(void); /* IncrementToNextMusicChannel */
+void func_BAB0_b0(void); /* MusicChannelBaseEmpty */
+void func_BCA4_b0(void); /* Music01Init */
+void func_BCAA_b0(void); /* Music00Init */
+void func_BC9A_b0(void); /* Music02Init */
+void func_BC96_b0(void); /* Music03Init */
+void func_BC89_b0(void); /* Music04Init */
+void func_BC9E_b0(void); /* Music05Init */
+void func_B9E4_b0(void); /* SetVolumeAndDisableSweep */
+void func_BF67_b0(void);
+void func_BB19_b0(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b0(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b0(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b0(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BC8D_b0(void);
+void func_BC8B_b0(void); /* XYMusicInit */
+void func_B3FC_b0(void); /* CheckMusicFlags */
 void func_8021_b1(void); /* CommonJump_SpawnEnProjectile */
 void func_8021_b3(void); /* CommonJump_SpawnEnProjectile */
 void func_8021_b4(void); /* CommonJump_SpawnEnProjectile */
@@ -4417,6 +4248,11 @@ void func_803F_b1(void); /* CommonJump_DrawTileBlast */
 void func_803F_b2(void); /* CommonJump_DrawTileBlast */
 void func_803F_b4(void); /* CommonJump_DrawTileBlast */
 void func_803F_b5(void); /* CommonJump_DrawTileBlast */
+void func_B61C_b0(void);
+void func_B61C_b1(void);
+void func_B61C_b3(void);
+void func_B61C_b4(void);
+void func_B61C_b5(void);
 void func_8045_b1(void); /* CommonJump_Base10Subtract */
 void func_8045_b2(void); /* CommonJump_Base10Subtract */
 void func_8045_b4(void); /* CommonJump_Base10Subtract */
@@ -4433,44 +4269,42 @@ void func_847F_b1(void);
 void func_847F_b2(void);
 void func_847F_b4(void);
 void func_847F_b5(void);
-void func_BDBB_b0(void);
-void func_BF19_b0(void);
-void func_C000_b0(void); /* RandomNumbers */
-void func_BDBB_b2(void);
-void func_BDCF_b0(void);
-void func_BE38_b0(void); /* SongPowerUpTri */
-void func_BE6E_b0(void); /* SongFadeInSQ1 */
-void func_BEE0_b0(void);
+void func_BF19_b0(void); /* InitializeMusic */
 void func_80B0_b7(void);
 void func_8296_b7(void);
 void func_832F_b7(void);
 void func_8180_b0(void);
 void func_8182_b0(void); /* Crosshairs */
 void func_8988_b0(void);
-void func_B31B_b0(void); /* SFXSQ1ContRoutineTbl */
-void func_B329_b0(void);
-void func_B33D_b0(void);
-void func_B38C_b0(void); /* RunSFXMultiContRoutine */
-void func_B394_b0(void); /* GotoRunSFXSQ1InitRoutine */
-void func_B3F0_b0(void);
-void func_B3FC_b0(void);
-void func_B40E_b0(void);
-void func_B4A9_b0(void);
-void func_B4BD_b0(void);
-void func_B587_b0(void);
-void func_B5A5_b0(void);
-void func_B98C_b0(void);
-void func_B9A0_b0(void);
-void func_B9E4_b0(void);
-void func_B9E5_b0(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b0(void);
-void func_BA41_b0(void);
-void func_BC1C_b0(void);
-void func_BC53_b0(void);
-void func_BC64_b0(void);
-void func_BC7B_b0(void); /* ContinueMusic */
-void func_BA70_b1(void);
-void func_BA7B_b1(void);
+void func_B2EB_b0(void); /* SFXSQ1ContRoutineTbl */
+void func_B2F9_b0(void);
+void func_B30D_b0(void);
+void func_B35C_b0(void); /* RunSFXMultiContRoutine */
+void func_B364_b0(void); /* GotoRunSFXSQ1InitRoutine */
+void func_B3C0_b0(void);
+void func_B3E4_b0(void);
+void func_B3CC_b0(void);
+void func_B3DE_b0(void);
+void func_B479_b0(void);
+void func_B48D_b0(void);
+void func_B557_b0(void);
+void func_B575_b0(void);
+void func_B948_b0(void);
+void func_B95C_b0(void);
+void func_B970_b0(void);
+void func_B9B4_b0(void);
+void func_B9B5_b0(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b0(void);
+void func_BA11_b0(void);
+void func_BBEC_b0(void);
+void func_BC23_b0(void);
+void func_BC34_b0(void);
+void func_BC4B_b0(void); /* ContinueMusic */
+void func_BC7A_b0(void); /* GotoMusic01Init */
+void func_BEE9_b0(void);
+void func_C000_b0(void); /* RandomNumbers */
+void func_BA40_b1(void);
+void func_BA4B_b1(void);
 void func_871F_b1(void); /* ObjPlace1 */
 void func_872B_b1(void); /* ObjPlace2 */
 void func_8737_b1(void); /* ObjPlace3 */
@@ -4576,47 +4410,81 @@ void func_9C96_b1(void); /* LoadEnemyPositionFromTemp__BANK1 */
 void func_9CA8_b1(void); /* StoreEnemyPositionToTemp__BANK1 */
 void func_9CCC_b1(void); /* KraidTryToLaunchLint_BANK1 */
 void func_9D05_b1(void); /* KraidTryToLaunchNail_BANK1 */
-void func_B3F0_b1(void);
-void func_B3FC_b1(void);
-void func_B40E_b1(void);
-void func_B4A9_b1(void);
-void func_B4BD_b1(void);
-void func_B53F_b1(void); /* SpitFlameSFXInit */
-void func_B546_b1(void); /* SpitFlameSFXCont */
-void func_B55B_b1(void); /* ScrewAttackSFXInit */
-void func_B569_b1(void); /* ScrewAttackSFXCont */
-void func_B587_b1(void);
-void func_B59E_b1(void); /* MissileLaunchSFXInit */
-void func_B5A5_b1(void);
-void func_B5AB_b1(void); /* MissileLaunchSFXCont */
-void func_B5B3_b1(void); /* BombExplodeSFXInit */
-void func_B5BA_b1(void); /* NoiseSFXCont */
-void func_B5C8_b1(void); /* SamusWalkSFXInit */
-void func_B6FD_b1(void); /* MissilePickupSFXInit */
-void func_B703_b1(void); /* EnergyPickupSFXCont */
-void func_B717_b1(void); /* EnergyPickupSFXInit */
-void func_B71D_b1(void); /* SQ1SFXCont */
-void func_B733_b1(void); /* SamusJumpSFXInit */
-void func_B740_b1(void); /* EnemyHitSFXInit */
-void func_B746_b1(void); /* BulletFireSFXInit */
-void func_B765_b1(void); /* MetalSFXInit */
-void func_B76C_b1(void); /* OutOfPipeSFXInit */
-void func_B77F_b1(void); /* BulletFireSFXCont */
-void func_B7AA_b1(void); /* WaveBeamSFXInit */
-void func_B98C_b1(void);
-void func_B9A0_b1(void);
-void func_B9E4_b1(void);
-void func_B9E5_b1(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b1(void);
-void func_BA41_b1(void);
-void func_BCA7_b1(void); /* GotoMusic00Init */
-void func_BCAD_b1(void); /* GotoMusic02Init */
-void func_BCB0_b1(void); /* GotoMusic03Init */
-void func_BCB3_b1(void); /* GotoMusic04Init */
-void func_BC1C_b1(void);
-void func_BC27_b1(void); /* MusicChannelInstr_SongNoteNoise_endIf_A */
-void func_BC53_b1(void);
-void func_BC64_b1(void);
+void func_B3C0_b1(void);
+void func_B3CC_b1(void);
+void func_B3DE_b1(void);
+void func_B479_b1(void);
+void func_B48D_b1(void);
+void func_B50F_b1(void); /* SpitFlameSFXInit */
+void func_B516_b1(void); /* SpitFlameSFXCont */
+void func_B52B_b1(void); /* ScrewAttackSFXInit */
+void func_B539_b1(void); /* ScrewAttackSFXCont */
+void func_B557_b1(void);
+void func_B56E_b1(void); /* MissileLaunchSFXInit */
+void func_B575_b1(void);
+void func_B57B_b1(void); /* MissileLaunchSFXCont */
+void func_B583_b1(void); /* BombExplodeSFXInit */
+void func_B58A_b1(void); /* NoiseSFXCont */
+void func_B598_b1(void); /* SamusWalkSFXInit */
+void func_B5EC_b1(void); /* BossHitSFXInit */
+void func_B5F6_b1(void); /* BossHitSFXCont */
+void func_B650_b1(void); /* SamusHitSFXCont */
+void func_B673_b1(void); /* SamusHitSFXInit */
+void func_B695_b1(void); /* IncorrectPasswordSFXInit */
+void func_B6A1_b1(void); /* IncorrectPasswordSFXCont */
+void func_B6B0_b1(void); /* MissilePickupSFXCont */
+void func_B6CD_b1(void); /* MissilePickupSFXInit */
+void func_B6D3_b1(void); /* EnergyPickupSFXCont */
+void func_B6E7_b1(void); /* EnergyPickupSFXInit */
+void func_B6ED_b1(void); /* SQ1SFXCont */
+void func_B703_b1(void); /* SamusJumpSFXInit */
+void func_B710_b1(void); /* EnemyHitSFXInit */
+void func_B716_b1(void); /* BulletFireSFXInit */
+void func_B735_b1(void); /* MetalSFXInit */
+void func_B73C_b1(void); /* OutOfPipeSFXInit */
+void func_B74F_b1(void); /* BulletFireSFXCont */
+void func_B77A_b1(void); /* WaveBeamSFXInit */
+void func_B781_b1(void); /* WaveBeamSFXCont */
+void func_B7A6_b1(void); /* LoadSQ1PeriodLow_RTS */
+void func_B7AC_b1(void); /* DoorOpenCloseSFXInit */
+void func_B7CB_b1(void); /* DoorOpenCloseSFXCont */
+void func_B7D9_b1(void); /* BeepSFXInit */
+void func_B7E7_b1(void); /* BeepSFXCont */
+void func_B7EF_b1(void); /* BigEnemyHitSFXInit */
+void func_B80E_b1(void); /* BigEnemyHitSFXCont */
+void func_B834_b1(void); /* SamusToBallSFXInit */
+void func_B84F_b1(void); /* SamusToBallSFXCont */
+void func_B878_b1(void); /* BombLaunchSFXInit */
+void func_B87F_b1(void); /* BombLaunchSFXCont */
+void func_B8A7_b1(void); /* MetroidHitSFXInit */
+void func_B8B1_b1(void); /* MetroidHitSFXCont */
+void func_B8D2_b1(void); /* SamusDieSFXInit */
+void func_B8ED_b1(void); /* SamusDieSFXCont */
+void func_B940_b1(void); /* StatueRaiseSFXCont */
+void func_B948_b1(void);
+void func_B95C_b1(void);
+void func_B970_b1(void);
+void func_B9B4_b1(void);
+void func_B9B5_b1(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b1(void);
+void func_BA11_b1(void);
+void func_BC77_b1(void); /* GotoMusic00Init */
+void func_BC7D_b1(void); /* GotoMusic02Init */
+void func_BC80_b1(void); /* GotoMusic03Init */
+void func_BC83_b1(void); /* GotoMusic04Init */
+void func_BBEC_b1(void);
+void func_BBF7_b1(void); /* MusicChannelInstr_SongNoteNoise_endIf_A */
+void func_BC23_b1(void);
+void func_BC34_b1(void);
+void func_BEE9_b1(void);
+void func_C2BF_b1(void); /* Adiv16 */
+void func_C2C0_b1(void); /* Adiv8 */
+void func_C2C5_b1(void); /* Amul16 */
+void func_C3D4_b1(void); /* TwosComplement */
+void func_CB73_b1(void); /* SelectSamusPalette */
+void func_CBDA_b1(void); /* SFX_Door */
+void func_CC03_b1(void); /* MotherBrainMusic */
+void func_CC07_b1(void); /* TourianMusic */
 void func_D2FD_b1(void); /* SetObjAnimIndex */
 void func_DC1E_b1(void); /* MapScrollRoutine */
 void func_E449_b1(void); /* NegateTemp00Temp01 */
@@ -4627,23 +4495,25 @@ void func_E8FC_b1(void); /* EnemyCheckMoveRight */
 void func_E96A_b1(void); /* MakeRoomRAMPtr */
 void func_F744_b1(void); /* OrEnData05 */
 void func_F74B_b1(void); /* ReadTableAt968B */
-void func_B3F0_b2(void);
-void func_B3FC_b2(void);
-void func_B40E_b2(void);
-void func_B4A9_b2(void);
-void func_B4BD_b2(void);
-void func_B587_b2(void);
-void func_B5A5_b2(void);
-void func_B98C_b2(void);
-void func_B9A0_b2(void);
-void func_B9E4_b2(void);
-void func_B9E5_b2(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b2(void);
-void func_BA41_b2(void);
-void func_BC1C_b2(void);
-void func_BC53_b2(void);
-void func_BC64_b2(void);
-void func_BF19_b2(void);
+void func_B3C0_b2(void);
+void func_B3E4_b2(void);
+void func_B3CC_b2(void);
+void func_B3DE_b2(void);
+void func_B479_b2(void);
+void func_B48D_b2(void);
+void func_B557_b2(void);
+void func_B575_b2(void);
+void func_B948_b2(void);
+void func_B95C_b2(void);
+void func_B970_b2(void);
+void func_B9B4_b2(void);
+void func_B9B5_b2(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b2(void);
+void func_BA11_b2(void);
+void func_BBEC_b2(void);
+void func_BC23_b2(void);
+void func_BC34_b2(void);
+void func_BEE9_b2(void);
 void func_C2BF_b2(void); /* Adiv16 */
 void func_C2C0_b2(void); /* Adiv8 */
 void func_C2C5_b2(void); /* Amul16 */
@@ -4662,8 +4532,6 @@ void func_E8FC_b2(void); /* EnemyCheckMoveRight */
 void func_E96A_b2(void); /* MakeRoomRAMPtr */
 void func_F744_b2(void); /* OrEnData05 */
 void func_F74B_b2(void); /* ReadTableAt968B */
-void func_9A06_b3(void); /* GetMetroidAccel */
-void func_9A07_b3(void);
 void func_9AF9_b3(void); /* SetRinkaSpeed_BANK3 */
 void func_9DF2_b3(void); /* MotherBrain_Idle_CollideWithSamus */
 void func_9E43_b3(void); /* UpdateMotherBrainFlashDelay */
@@ -4675,23 +4543,26 @@ void func_A028_b3(void);
 void func_A02E_b3(void); /* MotherBrain_Idle_UpdateAnimEye */
 void func_A041_b3(void); /* MotherBrain_DrawSprites */
 void func_A072_b3(void); /* MotherBrain_Disappear_Disintegrate */
-void func_B3F0_b3(void);
-void func_B3FC_b3(void);
-void func_B40E_b3(void);
-void func_B4A9_b3(void);
-void func_B4BD_b3(void);
-void func_B587_b3(void);
-void func_B5A5_b3(void);
-void func_B98C_b3(void);
-void func_B9A0_b3(void);
-void func_B9E4_b3(void);
-void func_B9E5_b3(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b3(void);
-void func_BA41_b3(void);
-void func_BC1C_b3(void);
-void func_BC53_b3(void);
-void func_BC64_b3(void);
-void func_BF19_b3(void);
+void func_B3C0_b3(void);
+void func_B3E4_b3(void);
+void func_B3CC_b3(void);
+void func_B3DE_b3(void);
+void func_B479_b3(void);
+void func_B48D_b3(void);
+void func_B557_b3(void);
+void func_B575_b3(void);
+void func_B948_b3(void);
+void func_B95C_b3(void);
+void func_B970_b3(void);
+void func_B9B4_b3(void);
+void func_B9B5_b3(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b3(void);
+void func_BA11_b3(void);
+void func_BAF2_b3(void);
+void func_BBEC_b3(void);
+void func_BC23_b3(void);
+void func_BC34_b3(void);
+void func_BEE9_b3(void);
 void func_C2BF_b3(void); /* Adiv16 */
 void func_C2C0_b3(void); /* Adiv8 */
 void func_C2C5_b3(void); /* Amul16 */
@@ -4710,23 +4581,26 @@ void func_E8FC_b3(void); /* EnemyCheckMoveRight */
 void func_E96A_b3(void); /* MakeRoomRAMPtr */
 void func_F744_b3(void); /* OrEnData05 */
 void func_F74B_b3(void); /* ReadTableAt968B */
-void func_B3F0_b4(void);
-void func_B3FC_b4(void);
-void func_B40E_b4(void);
-void func_B4A9_b4(void);
-void func_B4BD_b4(void);
-void func_B587_b4(void);
-void func_B5A5_b4(void);
-void func_B98C_b4(void);
-void func_B9A0_b4(void);
-void func_B9E4_b4(void);
-void func_B9E5_b4(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b4(void);
-void func_BA41_b4(void);
-void func_BC1C_b4(void);
-void func_BC53_b4(void);
-void func_BC64_b4(void);
-void func_BF19_b4(void);
+void func_B3C0_b4(void);
+void func_B3E4_b4(void);
+void func_B3CC_b4(void);
+void func_B3DE_b4(void);
+void func_B479_b4(void);
+void func_B48D_b4(void);
+void func_B557_b4(void);
+void func_B575_b4(void);
+void func_B948_b4(void);
+void func_B95C_b4(void);
+void func_B970_b4(void);
+void func_B9B4_b4(void);
+void func_B9B5_b4(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b4(void);
+void func_BA11_b4(void);
+void func_BAF2_b4(void);
+void func_BBEC_b4(void);
+void func_BC23_b4(void);
+void func_BC34_b4(void);
+void func_BEE9_b4(void);
 void func_C2BF_b4(void); /* Adiv16 */
 void func_C2C0_b4(void); /* Adiv8 */
 void func_C2C5_b4(void); /* Amul16 */
@@ -4747,7 +4621,6 @@ void func_F744_b4(void); /* OrEnData05 */
 void func_F74B_b4(void); /* ReadTableAt968B */
 void func_871C_b5(void);
 void func_95C6_b5(void); /* TwosComplement_ */
-void func_9830_b5(void); /* UpdateEnemyCommon_Decide_BANK5 */
 void func_98F8_b5(void); /* UpdateSwooperAnim_BANK5 */
 void func_9958_b5(void); /* SwooperChangeEnemyType_BANK5 */
 void func_99AD_b5(void); /* CrawlerReorientSprite_BANK5 */
@@ -4758,23 +4631,24 @@ void func_99F8_b5(void); /* CrawlerOutsideCornerGetNextOrientation_BANK5 */
 void func_9A00_b5(void); /* JumpByRTSToMovementRoutine_BANK5 */
 void func_9A07_b5(void);
 void func_9A79_b5(void); /* RidleyTryToLaunchFireball_BANK5 */
-void func_B3F0_b5(void);
-void func_B3FC_b5(void);
-void func_B40E_b5(void);
-void func_B4A9_b5(void);
-void func_B4BD_b5(void);
-void func_B587_b5(void);
-void func_B5A5_b5(void);
-void func_B98C_b5(void);
-void func_B9A0_b5(void);
-void func_B9E4_b5(void);
-void func_B9E5_b5(void); /* DivideSFXTriPeriod_loop */
-void func_B9F3_b5(void);
-void func_BA41_b5(void);
-void func_BC1C_b5(void);
-void func_BC53_b5(void);
-void func_BC64_b5(void);
-void func_BF19_b5(void);
+void func_B3C0_b5(void);
+void func_B3E4_b5(void);
+void func_B3CC_b5(void);
+void func_B3DE_b5(void);
+void func_B479_b5(void);
+void func_B48D_b5(void);
+void func_B557_b5(void);
+void func_B575_b5(void);
+void func_B95C_b5(void);
+void func_B970_b5(void);
+void func_B9B4_b5(void);
+void func_B9B5_b5(void); /* DivideSFXTriPeriod_loop */
+void func_B9C3_b5(void);
+void func_BA11_b5(void);
+void func_BAF2_b5(void);
+void func_BBEC_b5(void);
+void func_BC34_b5(void);
+void func_BEE9_b5(void);
 void func_C2BF_b5(void); /* Adiv16 */
 void func_C2C0_b5(void); /* Adiv8 */
 void func_C2C5_b5(void); /* Amul16 */
@@ -4793,9 +4667,8 @@ void func_E8FC_b5(void); /* EnemyCheckMoveRight */
 void func_E96A_b5(void); /* MakeRoomRAMPtr */
 void func_F744_b5(void); /* OrEnData05 */
 void func_F74B_b5(void); /* ReadTableAt968B */
-void func_B2FC_b0(void);
-void func_B568_b0(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b0(void);
+void func_B2A3_b0(void);
+void func_B538_b0(void); /* ScrewAttackSFXInit_RTS */
 void func_86FB_b1(void);
 void func_86FD_b1(void); /* ObjPlace6 */
 void func_8701_b1(void); /* ObjPlace0 */
@@ -4833,19 +4706,18 @@ void func_87B1_b1(void); /* ObjPlaceE */
 void func_89F6_b1(void);
 void func_89FB_b1(void); /* ObjFrame_SamusRunPntUpFire2 */
 void func_99A1_b1(void); /* UpdateEnemyCommon_Decide_BANK1 */
-void func_B568_b1(void); /* ScrewAttackSFXInit_RTS */
-void func_B594_b1(void); /* IncrementNoisePeriod */
-void func_B769_b1(void); /* GotoInitSFXData2 */
-void func_BC22_b1(void);
-void func_B568_b2(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b2(void);
+void func_B538_b1(void); /* ScrewAttackSFXInit_RTS */
+void func_B564_b1(void); /* IncrementNoisePeriod */
+void func_B694_b1(void); /* SamusHitSFXInit_RTS */
+void func_B6CC_b1(void); /* MissilePickupSFXCont_RTS */
+void func_B739_b1(void); /* GotoInitSFXData2 */
+void func_B8A6_b1(void); /* EndTriSFX_RTS */
+void func_B8EC_b1(void); /* SamusDieSFXInit_RTS */
+void func_B538_b2(void); /* ScrewAttackSFXInit_RTS */
 void func_9DF1_b3(void);
-void func_B568_b3(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b3(void);
-void func_B568_b4(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b4(void);
-void func_B568_b5(void); /* ScrewAttackSFXInit_RTS */
-void func_BC22_b5(void);
+void func_B538_b3(void); /* ScrewAttackSFXInit_RTS */
+void func_B538_b4(void); /* ScrewAttackSFXInit_RTS */
+void func_B538_b5(void); /* ScrewAttackSFXInit_RTS */
 void func_913F_b1(void);
 void func_9A07_b1(void);
 void func_9F54_b1(void);
@@ -4879,16 +4751,11 @@ void func_9161_b1(void);
 void func_9173_b1(void);
 void func_A44D_b1(void);
 void func_B0E7_b1(void);
-void func_AFE5_b1(void);
+void func_B0A2_b1(void);
 void func_A470_b1(void);
 void func_A6FB_b1(void);
 void func_A6ED_b1(void);
 void func_A7AD_b1(void);
-void func_B503_b1(void);
-void func_B91C_b1(void); /* SamusDieSFXInit_RTS */
-void func_B8D6_b1(void); /* EndTriSFX_RTS */
-void func_B6C4_b1(void); /* SamusHitSFXInit_RTS */
-void func_B920_b1(void);
 void func_A7BC_b1(void);
 void func_A7FB_b1(void);
 void func_A7CE_b1(void);
@@ -4983,8 +4850,18 @@ _dispatch_retry:
             func_C24D(); break;
         case 0xC221:
             func_C221(); break;
-        case 0xFFD8:
-            func_FFD8(); break;
+        case 0xB3B4:
+            switch (g_current_bank) {
+                case 0: func_B3B4_b0(); break;
+                case 1: func_B3B4_b1(); break;
+                case 2: func_B3B4_b2(); break;
+                case 3: func_B3B4_b3(); break;
+                case 4: func_B3B4_b4(); break;
+                case 5: func_B3B4_b5(); break;
+                case 6: func_B3B4_b6(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xC158:
             func_C158(); break;
         case 0xC175:
@@ -5085,15 +4962,133 @@ _dispatch_retry:
             break;
         case 0xC4D9:
             func_C4D9(); break;
-        case 0xB3E4:
+        case 0xB399:
             switch (g_current_bank) {
-                case 0: func_B3E4_b0(); break;
-                case 1: func_B3E4_b1(); break;
-                case 2: func_B3E4_b2(); break;
-                case 3: func_B3E4_b3(); break;
-                case 4: func_B3E4_b4(); break;
-                case 5: func_B3E4_b5(); break;
-                case 6: func_B3E4_b6(); break;
+                case 0: func_B399_b0(); break;
+                case 1: func_B399_b1(); break;
+                case 2: func_B399_b2(); break;
+                case 3: func_B399_b3(); break;
+                case 4: func_B399_b4(); break;
+                case 5: func_B399_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB31B:
+            switch (g_current_bank) {
+                case 0: func_B31B_b0(); break;
+                case 1: func_B31B_b1(); break;
+                case 2: func_B31B_b2(); break;
+                case 3: func_B31B_b3(); break;
+                case 4: func_B31B_b4(); break;
+                case 5: func_B31B_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB322:
+            func_B322_b0(); break;
+        case 0xB34B:
+            switch (g_current_bank) {
+                case 0: func_B34B_b0(); break;
+                case 1: func_B34B_b1(); break;
+                case 2: func_B34B_b2(); break;
+                case 3: func_B34B_b3(); break;
+                case 4: func_B34B_b4(); break;
+                case 5: func_B34B_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB33D:
+            switch (g_current_bank) {
+                case 0: func_B33D_b0(); break;
+                case 1: func_B33D_b1(); break;
+                case 2: func_B33D_b2(); break;
+                case 3: func_B33D_b3(); break;
+                case 4: func_B33D_b4(); break;
+                case 5: func_B33D_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB344:
+            func_B344_b0(); break;
+        case 0xBC36:
+            switch (g_current_bank) {
+                case 0: func_BC36_b0(); break;
+                case 1: func_BC36_b1(); break;
+                case 2: func_BC36_b2(); break;
+                case 3: func_BC36_b3(); break;
+                case 4: func_BC36_b4(); break;
+                case 5: func_BC36_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xBC3D:
+            func_BC3D_b0(); break;
+        case 0xB404:
+            switch (g_current_bank) {
+                case 0: func_B404_b0(); break;
+                case 1: func_B404_b1(); break;
+                case 2: func_B404_b2(); break;
+                case 3: func_B404_b3(); break;
+                case 4: func_B404_b4(); break;
+                case 5: func_B404_b5(); break;
+                case 6: func_B404_b6(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB41D:
+            switch (g_current_bank) {
+                case 0: func_B41D_b0(); break;
+                case 1: func_B41D_b1(); break;
+                case 2: func_B41D_b2(); break;
+                case 3: func_B41D_b3(); break;
+                case 4: func_B41D_b4(); break;
+                case 5: func_B41D_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB422:
+            switch (g_current_bank) {
+                case 0: func_B422_b0(); break;
+                case 1: func_B422_b1(); break;
+                case 2: func_B422_b2(); break;
+                case 3: func_B422_b3(); break;
+                case 4: func_B422_b4(); break;
+                case 5: func_B422_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB43E:
+            switch (g_current_bank) {
+                case 7: func_F43E(); break;
+                case 0: func_B43E_b0(); break;
+                case 1: func_B43E_b1(); break;
+                case 2: func_B43E_b2(); break;
+                case 3: func_B43E_b3(); break;
+                case 4: func_B43E_b4(); break;
+                case 5: func_B43E_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB40E:
+            switch (g_current_bank) {
+                case 0: func_B40E_b0(); break;
+                case 1: func_B40E_b1(); break;
+                case 2: func_B40E_b2(); break;
+                case 3: func_B40E_b3(); break;
+                case 4: func_B40E_b4(); break;
+                case 5: func_B40E_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB329:
+            switch (g_current_bank) {
+                case 7: func_F329(); break;
+                case 2: func_B329_b2(); break;
+                case 3: func_B329_b3(); break;
+                case 4: func_B329_b4(); break;
+                case 5: func_B329_b5(); break;
+                case 1: func_B329_b1(); break;
+                case 0: func_B329_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -5173,10 +5168,6 @@ _dispatch_retry:
             func_C892(); break;
         case 0xC885:
             func_C885(); break;
-        case 0xC8A2:
-            func_C8A2(); break;
-        case 0xC897:
-            func_C897(); break;
         case 0xC8D1:
             func_C8D1(); break;
         case 0xC908:
@@ -5251,133 +5242,91 @@ _dispatch_retry:
             func_C2F0(); break;
         case 0xC4B6:
             func_C4B6(); break;
-        case 0xB3C9:
+        case 0xB38F:
             switch (g_current_bank) {
-                case 0: func_B3C9_b0(); break;
-                case 1: func_B3C9_b1(); break;
-                case 2: func_B3C9_b2(); break;
-                case 3: func_B3C9_b3(); break;
-                case 4: func_B3C9_b4(); break;
-                case 5: func_B3C9_b5(); break;
+                case 0: func_B38F_b0(); break;
+                case 1: func_B38F_b1(); break;
+                case 2: func_B38F_b2(); break;
+                case 3: func_B38F_b3(); break;
+                case 4: func_B38F_b4(); break;
+                case 5: func_B38F_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB34B:
+        case 0xB368:
             switch (g_current_bank) {
-                case 0: func_B34B_b0(); break;
-                case 1: func_B34B_b1(); break;
-                case 2: func_B34B_b2(); break;
-                case 3: func_B34B_b3(); break;
-                case 4: func_B34B_b4(); break;
-                case 5: func_B34B_b5(); break;
+                case 7: func_F368(); break;
+                case 0: func_B368_b0(); break;
+                case 1: func_B368_b1(); break;
+                case 2: func_B368_b2(); break;
+                case 3: func_B368_b3(); break;
+                case 4: func_B368_b4(); break;
+                case 5: func_B368_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB352:
-            func_B352_b0(); break;
-        case 0xB37B:
+        case 0xB4BD:
             switch (g_current_bank) {
-                case 0: func_B37B_b0(); break;
-                case 1: func_B37B_b1(); break;
-                case 2: func_B37B_b2(); break;
-                case 3: func_B37B_b3(); break;
-                case 4: func_B37B_b4(); break;
-                case 5: func_B37B_b5(); break;
+                case 0: func_B4BD_b0(); break;
+                case 1: func_B4BD_b1(); break;
+                case 2: func_B4BD_b2(); break;
+                case 3: func_B4BD_b3(); break;
+                case 4: func_B4BD_b4(); break;
+                case 5: func_B4BD_b5(); break;
+                case 6: func_B4BD_b6(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB36D:
+        case 0xB4EE:
             switch (g_current_bank) {
-                case 0: func_B36D_b0(); break;
-                case 1: func_B36D_b1(); break;
-                case 2: func_B36D_b2(); break;
-                case 3: func_B36D_b3(); break;
-                case 4: func_B36D_b4(); break;
-                case 5: func_B36D_b5(); break;
+                case 7: func_F4EE(); break;
+                case 0: func_B4EE_b0(); break;
+                case 1: func_B4EE_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB374:
-            func_B374_b0(); break;
-        case 0xBC66:
+        case 0xB4EA:
             switch (g_current_bank) {
-                case 7: func_FC66(); break;
-                case 0: func_BC66_b0(); break;
-                case 1: func_BC66_b1(); break;
-                case 2: func_BC66_b2(); break;
-                case 3: func_BC66_b3(); break;
-                case 4: func_BC66_b4(); break;
-                case 5: func_BC66_b5(); break;
+                case 0: func_B4EA_b0(); break;
+                case 2: func_B4EA_b2(); break;
+                case 3: func_B4EA_b3(); break;
+                case 4: func_B4EA_b4(); break;
+                case 5: func_B4EA_b5(); break;
+                case 1: func_B4EA_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBC6D:
-            func_BC6D_b0(); break;
-        case 0xB434:
+        case 0xBC53:
             switch (g_current_bank) {
-                case 0: func_B434_b0(); break;
-                case 1: func_B434_b1(); break;
-                case 2: func_B434_b2(); break;
-                case 3: func_B434_b3(); break;
-                case 4: func_B434_b4(); break;
-                case 5: func_B434_b5(); break;
-                case 6: func_B434_b6(); break;
+                case 0: func_BC53_b0(); break;
+                case 1: func_BC53_b1(); break;
+                case 2: func_BC53_b2(); break;
+                case 3: func_BC53_b3(); break;
+                case 4: func_BC53_b4(); break;
+                case 5: func_BC53_b5(); break;
+                case 6: func_BC53_b6(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB44D:
+        case 0xBC64:
             switch (g_current_bank) {
-                case 0: func_B44D_b0(); break;
-                case 1: func_B44D_b1(); break;
-                case 2: func_B44D_b2(); break;
-                case 3: func_B44D_b3(); break;
-                case 4: func_B44D_b4(); break;
-                case 5: func_B44D_b5(); break;
+                case 0: func_BC64_b0(); break;
+                case 1: func_BC64_b1(); break;
+                case 2: func_BC64_b2(); break;
+                case 3: func_BC64_b3(); break;
+                case 4: func_BC64_b4(); break;
+                case 5: func_BC64_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB452:
+        case 0xB337:
             switch (g_current_bank) {
-                case 0: func_B452_b0(); break;
-                case 1: func_B452_b1(); break;
-                case 2: func_B452_b2(); break;
-                case 3: func_B452_b3(); break;
-                case 4: func_B452_b4(); break;
-                case 5: func_B452_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB46E:
-            switch (g_current_bank) {
-                case 0: func_B46E_b0(); break;
-                case 1: func_B46E_b1(); break;
-                case 2: func_B46E_b2(); break;
-                case 3: func_B46E_b3(); break;
-                case 4: func_B46E_b4(); break;
-                case 5: func_B46E_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB43E:
-            switch (g_current_bank) {
-                case 7: func_F43E(); break;
-                case 0: func_B43E_b0(); break;
-                case 1: func_B43E_b1(); break;
-                case 2: func_B43E_b2(); break;
-                case 3: func_B43E_b3(); break;
-                case 4: func_B43E_b4(); break;
-                case 5: func_B43E_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB359:
-            switch (g_current_bank) {
-                case 2: func_B359_b2(); break;
-                case 3: func_B359_b3(); break;
-                case 4: func_B359_b4(); break;
-                case 5: func_B359_b5(); break;
-                case 1: func_B359_b1(); break;
-                case 0: func_B359_b0(); break;
+                case 0: func_B337_b0(); break;
+                case 1: func_B337_b1(); break;
+                case 2: func_B337_b2(); break;
+                case 3: func_B337_b3(); break;
+                case 4: func_B337_b4(); break;
+                case 5: func_B337_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -5496,8 +5445,8 @@ _dispatch_retry:
                 case 3: func_8006_b3(); break;
                 case 2: func_8006_b2(); break;
                 case 6: func_8006_b6(); break;
-                case 1: func_8006_b1(); break;
                 case 5: func_8006_b5(); break;
+                case 1: func_8006_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -5818,12 +5767,12 @@ _dispatch_retry:
             func_E730(); break;
         case 0xE731:
             func_E731(); break;
-        case 0xE74C:
-            func_E74C(); break;
         case 0xEA2B:
             func_EA2B(); break;
         case 0xEA2D:
             func_EA2D(); break;
+        case 0xEA4C:
+            func_EA4C(); break;
         case 0xC447:
             func_C447(); break;
         case 0xCBFD:
@@ -5908,6 +5857,8 @@ _dispatch_retry:
             func_E0C7(); break;
         case 0xE09D:
             func_E09D(); break;
+        case 0xE099:
+            func_E099(); break;
         case 0x8058:
             switch (g_current_bank) {
                 case 0: func_8058_b0(); break;
@@ -5932,109 +5883,6 @@ _dispatch_retry:
             func_C319(); break;
         case 0xC321:
             func_C321(); break;
-        case 0xB3BF:
-            switch (g_current_bank) {
-                case 0: func_B3BF_b0(); break;
-                case 1: func_B3BF_b1(); break;
-                case 2: func_B3BF_b2(); break;
-                case 3: func_B3BF_b3(); break;
-                case 4: func_B3BF_b4(); break;
-                case 5: func_B3BF_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB398:
-            switch (g_current_bank) {
-                case 0: func_B398_b0(); break;
-                case 1: func_B398_b1(); break;
-                case 2: func_B398_b2(); break;
-                case 3: func_B398_b3(); break;
-                case 4: func_B398_b4(); break;
-                case 5: func_B398_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB4ED:
-            switch (g_current_bank) {
-                case 0: func_B4ED_b0(); break;
-                case 1: func_B4ED_b1(); break;
-                case 2: func_B4ED_b2(); break;
-                case 3: func_B4ED_b3(); break;
-                case 4: func_B4ED_b4(); break;
-                case 5: func_B4ED_b5(); break;
-                case 6: func_B4ED_b6(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB51E:
-            switch (g_current_bank) {
-                case 7: func_F51E(); break;
-                case 0: func_B51E_b0(); break;
-                case 2: func_B51E_b2(); break;
-                case 3: func_B51E_b3(); break;
-                case 4: func_B51E_b4(); break;
-                case 5: func_B51E_b5(); break;
-                case 1: func_B51E_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB51A:
-            switch (g_current_bank) {
-                case 0: func_B51A_b0(); break;
-                case 2: func_B51A_b2(); break;
-                case 3: func_B51A_b3(); break;
-                case 4: func_B51A_b4(); break;
-                case 5: func_B51A_b5(); break;
-                case 1: func_B51A_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB503:
-            switch (g_current_bank) {
-                case 0: func_B503_b0(); break;
-                case 2: func_B503_b2(); break;
-                case 3: func_B503_b3(); break;
-                case 4: func_B503_b4(); break;
-                case 5: func_B503_b5(); break;
-                case 6: func_B503_b6(); break;
-                case 1: func_B503_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xBC83:
-            switch (g_current_bank) {
-                case 0: func_BC83_b0(); break;
-                case 1: func_BC83_b1(); break;
-                case 2: func_BC83_b2(); break;
-                case 3: func_BC83_b3(); break;
-                case 4: func_BC83_b4(); break;
-                case 5: func_BC83_b5(); break;
-                case 6: func_BC83_b6(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xBC94:
-            switch (g_current_bank) {
-                case 0: func_BC94_b0(); break;
-                case 1: func_BC94_b1(); break;
-                case 2: func_BC94_b2(); break;
-                case 3: func_BC94_b3(); break;
-                case 4: func_BC94_b4(); break;
-                case 5: func_BC94_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB367:
-            switch (g_current_bank) {
-                case 0: func_B367_b0(); break;
-                case 1: func_B367_b1(); break;
-                case 2: func_B367_b2(); break;
-                case 3: func_B367_b3(); break;
-                case 4: func_B367_b4(); break;
-                case 5: func_B367_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
         case 0x833F:
             switch (g_current_bank) {
                 case 2: func_833F_b2(); break;
@@ -6292,22 +6140,25 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB0D1:
+        case 0xB0B8:
             switch (g_current_bank) {
-                case 7: func_F0D1(); break;
-                case 4: func_B0D1_b4(); break;
-                case 5: func_B0D1_b5(); break;
+                case 4: func_B0B8_b4(); break;
+                case 5: func_B0B8_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBB22:
+        case 0xB0BC:
             switch (g_current_bank) {
-                case 4: func_BB22_b4(); break;
-                case 5: func_BB22_b5(); break;
-                case 3: func_BB22_b3(); break;
-                case 0: func_BB22_b0(); break;
-                case 1: func_BB22_b1(); break;
-                case 2: func_BB22_b2(); break;
+                case 7: func_F0BC(); break;
+                case 4: func_B0BC_b4(); break;
+                case 5: func_B0BC_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB09B:
+            switch (g_current_bank) {
+                case 4: func_B09B_b4(); break;
+                case 5: func_B09B_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -6317,100 +6168,127 @@ _dispatch_retry:
                 case 5: func_B920_b5(); break;
                 case 3: func_B920_b3(); break;
                 case 0: func_B920_b0(); break;
-                case 2: func_B920_b2(); break;
                 case 1: func_B920_b1(); break;
+                case 2: func_B920_b2(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB1AE:
+        case 0xB151:
             switch (g_current_bank) {
-                case 4: func_B1AE_b4(); break;
-                case 5: func_B1AE_b5(); break;
-                case 3: func_B1AE_b3(); break;
+                case 4: func_B151_b4(); break;
+                case 5: func_B151_b5(); break;
+                case 3: func_B151_b3(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB1B2:
+        case 0xB144:
             switch (g_current_bank) {
-                case 4: func_B1B2_b4(); break;
-                case 5: func_B1B2_b5(); break;
-                case 3: func_B1B2_b3(); break;
+                case 4: func_B144_b4(); break;
+                case 5: func_B144_b5(); break;
+                case 3: func_B144_b3(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB226:
+        case 0xB154:
             switch (g_current_bank) {
-                case 4: func_B226_b4(); break;
-                case 5: func_B226_b5(); break;
-                case 3: func_B226_b3(); break;
+                case 4: func_B154_b4(); break;
+                case 5: func_B154_b5(); break;
+                case 3: func_B154_b3(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB2F5:
+        case 0xB19B:
             switch (g_current_bank) {
-                case 4: func_B2F5_b4(); break;
-                case 2: func_B2F5_b2(); break;
-                case 5: func_B2F5_b5(); break;
-                case 3: func_B2F5_b3(); break;
-                case 1: func_B2F5_b1(); break;
+                case 7: func_F19B(); break;
+                case 4: func_B19B_b4(); break;
+                case 5: func_B19B_b5(); break;
+                case 3: func_B19B_b3(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB3A4:
+        case 0xB1A8:
             switch (g_current_bank) {
-                case 4: func_B3A4_b4(); break;
-                case 2: func_B3A4_b2(); break;
-                case 5: func_B3A4_b5(); break;
-                case 3: func_B3A4_b3(); break;
-                case 1: func_B3A4_b1(); break;
-                case 0: func_B3A4_b0(); break;
+                case 7: func_F1A8(); break;
+                case 4: func_B1A8_b4(); break;
+                case 5: func_B1A8_b5(); break;
+                case 3: func_B1A8_b3(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB39C:
+        case 0x9830:
             switch (g_current_bank) {
-                case 4: func_B39C_b4(); break;
-                case 2: func_B39C_b2(); break;
-                case 5: func_B39C_b5(); break;
-                case 6: func_B39C_b6(); break;
-                case 3: func_B39C_b3(); break;
-                case 1: func_B39C_b1(); break;
-                case 0: func_B39C_b0(); break;
+                case 4: func_9830_b4(); break;
+                case 5: func_9830_b5(); break;
+                case 2: func_9830_b2(); break;
+                case 6: func_9830_b6(); break;
+                case 3: func_9830_b3(); break;
+                case 1: func_9830_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB3A0:
+        case 0xB1E0:
             switch (g_current_bank) {
-                case 4: func_B3A0_b4(); break;
-                case 2: func_B3A0_b2(); break;
-                case 5: func_B3A0_b5(); break;
-                case 6: func_B3A0_b6(); break;
-                case 3: func_B3A0_b3(); break;
-                case 1: func_B3A0_b1(); break;
-                case 0: func_B3A0_b0(); break;
+                case 7: func_F1E0(); break;
+                case 4: func_B1E0_b4(); break;
+                case 5: func_B1E0_b5(); break;
+                case 2: func_B1E0_b2(); break;
+                case 6: func_B1E0_b6(); break;
+                case 3: func_B1E0_b3(); break;
+                case 1: func_B1E0_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB4C3:
+        case 0x80C7:
             switch (g_current_bank) {
-                case 4: func_B4C3_b4(); break;
-                case 2: func_B4C3_b2(); break;
-                case 5: func_B4C3_b5(); break;
-                case 3: func_B4C3_b3(); break;
-                case 1: func_B4C3_b1(); break;
-                case 0: func_B4C3_b0(); break;
+                case 4: func_80C7_b4(); break;
+                case 5: func_80C7_b5(); break;
+                case 2: func_80C7_b2(); break;
+                case 6: func_80C7_b6(); break;
+                case 3: func_80C7_b3(); break;
+                case 1: func_80C7_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB482:
+        case 0xB2C5:
             switch (g_current_bank) {
-                case 4: func_B482_b4(); break;
-                case 2: func_B482_b2(); break;
-                case 5: func_B482_b5(); break;
-                case 6: func_B482_b6(); break;
-                case 3: func_B482_b3(); break;
-                case 1: func_B482_b1(); break;
-                case 0: func_B482_b0(); break;
+                case 4: func_B2C5_b4(); break;
+                case 2: func_B2C5_b2(); break;
+                case 5: func_B2C5_b5(); break;
+                case 3: func_B2C5_b3(); break;
+                case 1: func_B2C5_b1(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB374:
+            switch (g_current_bank) {
+                case 4: func_B374_b4(); break;
+                case 2: func_B374_b2(); break;
+                case 5: func_B374_b5(); break;
+                case 3: func_B374_b3(); break;
+                case 1: func_B374_b1(); break;
+                case 0: func_B374_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB36C:
+            switch (g_current_bank) {
+                case 4: func_B36C_b4(); break;
+                case 2: func_B36C_b2(); break;
+                case 5: func_B36C_b5(); break;
+                case 3: func_B36C_b3(); break;
+                case 1: func_B36C_b1(); break;
+                case 0: func_B36C_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB370:
+            switch (g_current_bank) {
+                case 4: func_B370_b4(); break;
+                case 2: func_B370_b2(); break;
+                case 5: func_B370_b5(); break;
+                case 3: func_B370_b3(); break;
+                case 1: func_B370_b1(); break;
+                case 0: func_B370_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -6425,192 +6303,200 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
+        case 0xB452:
+            switch (g_current_bank) {
+                case 4: func_B452_b4(); break;
+                case 2: func_B452_b2(); break;
+                case 5: func_B452_b5(); break;
+                case 6: func_B452_b6(); break;
+                case 3: func_B452_b3(); break;
+                case 1: func_B452_b1(); break;
+                case 0: func_B452_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB463:
+            switch (g_current_bank) {
+                case 4: func_B463_b4(); break;
+                case 2: func_B463_b2(); break;
+                case 5: func_B463_b5(); break;
+                case 3: func_B463_b3(); break;
+                case 1: func_B463_b1(); break;
+                case 0: func_B463_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB472:
+            switch (g_current_bank) {
+                case 4: func_B472_b4(); break;
+                case 2: func_B472_b2(); break;
+                case 5: func_B472_b5(); break;
+                case 3: func_B472_b3(); break;
+                case 1: func_B472_b1(); break;
+                case 0: func_B472_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB4A9:
+            switch (g_current_bank) {
+                case 7: func_F4A9(); break;
+                case 4: func_B4A9_b4(); break;
+                case 2: func_B4A9_b2(); break;
+                case 5: func_B4A9_b5(); break;
+                case 6: func_B4A9_b6(); break;
+                case 3: func_B4A9_b3(); break;
+                case 1: func_B4A9_b1(); break;
+                case 0: func_B4A9_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB58F:
+            switch (g_current_bank) {
+                case 4: func_B58F_b4(); break;
+                case 2: func_B58F_b2(); break;
+                case 5: func_B58F_b5(); break;
+                case 3: func_B58F_b3(); break;
+                case 1: func_B58F_b1(); break;
+                case 0: func_B58F_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB587:
+            switch (g_current_bank) {
+                case 4: func_B587_b4(); break;
+                case 5: func_B587_b5(); break;
+                case 2: func_B587_b2(); break;
+                case 3: func_B587_b3(); break;
+                case 1: func_B587_b1(); break;
+                case 0: func_B587_b0(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xB4A2:
             switch (g_current_bank) {
                 case 7: func_F4A2(); break;
                 case 4: func_B4A2_b4(); break;
-                case 2: func_B4A2_b2(); break;
                 case 5: func_B4A2_b5(); break;
+                case 2: func_B4A2_b2(); break;
                 case 3: func_B4A2_b3(); break;
                 case 1: func_B4A2_b1(); break;
                 case 0: func_B4A2_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB4D9:
+        case 0xB5A5:
             switch (g_current_bank) {
-                case 4: func_B4D9_b4(); break;
-                case 2: func_B4D9_b2(); break;
-                case 5: func_B4D9_b5(); break;
-                case 6: func_B4D9_b6(); break;
-                case 3: func_B4D9_b3(); break;
-                case 1: func_B4D9_b1(); break;
-                case 0: func_B4D9_b0(); break;
+                case 4: func_B5A5_b4(); break;
+                case 5: func_B5A5_b5(); break;
+                case 2: func_B5A5_b2(); break;
+                case 3: func_B5A5_b3(); break;
+                case 1: func_B5A5_b1(); break;
+                case 0: func_B5A5_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB5BF:
+        case 0xB62C:
             switch (g_current_bank) {
-                case 4: func_B5BF_b4(); break;
-                case 2: func_B5BF_b2(); break;
-                case 5: func_B5BF_b5(); break;
-                case 3: func_B5BF_b3(); break;
-                case 1: func_B5BF_b1(); break;
-                case 0: func_B5BF_b0(); break;
+                case 4: func_B62C_b4(); break;
+                case 5: func_B62C_b5(); break;
+                case 2: func_B62C_b2(); break;
+                case 3: func_B62C_b3(); break;
+                case 1: func_B62C_b1(); break;
+                case 0: func_B62C_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB5B7:
+        case 0xB5CD:
             switch (g_current_bank) {
-                case 4: func_B5B7_b4(); break;
-                case 5: func_B5B7_b5(); break;
-                case 2: func_B5B7_b2(); break;
-                case 3: func_B5B7_b3(); break;
-                case 1: func_B5B7_b1(); break;
-                case 0: func_B5B7_b0(); break;
+                case 4: func_B5CD_b4(); break;
+                case 5: func_B5CD_b5(); break;
+                case 2: func_B5CD_b2(); break;
+                case 3: func_B5CD_b3(); break;
+                case 1: func_B5CD_b1(); break;
+                case 0: func_B5CD_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB4D2:
+        case 0xB6F2:
             switch (g_current_bank) {
-                case 4: func_B4D2_b4(); break;
-                case 5: func_B4D2_b5(); break;
-                case 2: func_B4D2_b2(); break;
-                case 6: func_B4D2_b6(); break;
-                case 3: func_B4D2_b3(); break;
-                case 1: func_B4D2_b1(); break;
-                case 0: func_B4D2_b0(); break;
+                case 4: func_B6F2_b4(); break;
+                case 5: func_B6F2_b5(); break;
+                case 2: func_B6F2_b2(); break;
+                case 3: func_B6F2_b3(); break;
+                case 1: func_B6F2_b1(); break;
+                case 0: func_B6F2_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB5D5:
+        case 0xB896:
             switch (g_current_bank) {
-                case 4: func_B5D5_b4(); break;
-                case 5: func_B5D5_b5(); break;
-                case 2: func_B5D5_b2(); break;
-                case 3: func_B5D5_b3(); break;
-                case 1: func_B5D5_b1(); break;
-                case 0: func_B5D5_b0(); break;
+                case 4: func_B896_b4(); break;
+                case 5: func_B896_b5(); break;
+                case 2: func_B896_b2(); break;
+                case 6: func_B896_b6(); break;
+                case 3: func_B896_b3(); break;
+                case 1: func_B896_b1(); break;
+                case 0: func_B896_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB65C:
+        case 0xB98C:
             switch (g_current_bank) {
-                case 4: func_B65C_b4(); break;
-                case 5: func_B65C_b5(); break;
-                case 2: func_B65C_b2(); break;
-                case 3: func_B65C_b3(); break;
-                case 1: func_B65C_b1(); break;
-                case 0: func_B65C_b0(); break;
+                case 4: func_B98C_b4(); break;
+                case 5: func_B98C_b5(); break;
+                case 2: func_B98C_b2(); break;
+                case 6: func_B98C_b6(); break;
+                case 3: func_B98C_b3(); break;
+                case 1: func_B98C_b1(); break;
+                case 0: func_B98C_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB5FD:
+        case 0xB869:
             switch (g_current_bank) {
-                case 7: func_F5FD(); break;
-                case 4: func_B5FD_b4(); break;
-                case 5: func_B5FD_b5(); break;
-                case 2: func_B5FD_b2(); break;
-                case 3: func_B5FD_b3(); break;
-                case 1: func_B5FD_b1(); break;
-                case 0: func_B5FD_b0(); break;
+                case 7: func_F869(); break;
+                case 4: func_B869_b4(); break;
+                case 5: func_B869_b5(); break;
+                case 2: func_B869_b2(); break;
+                case 6: func_B869_b6(); break;
+                case 3: func_B869_b3(); break;
+                case 1: func_B869_b1(); break;
+                case 0: func_B869_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB722:
+        case 0xB978:
             switch (g_current_bank) {
-                case 4: func_B722_b4(); break;
-                case 5: func_B722_b5(); break;
-                case 2: func_B722_b2(); break;
-                case 3: func_B722_b3(); break;
-                case 1: func_B722_b1(); break;
-                case 0: func_B722_b0(); break;
+                case 4: func_B978_b4(); break;
+                case 5: func_B978_b5(); break;
+                case 2: func_B978_b2(); break;
+                case 6: func_B978_b6(); break;
+                case 3: func_B978_b3(); break;
+                case 1: func_B978_b1(); break;
+                case 0: func_B978_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB8C6:
+        case 0xB9A0:
             switch (g_current_bank) {
-                case 4: func_B8C6_b4(); break;
-                case 5: func_B8C6_b5(); break;
-                case 2: func_B8C6_b2(); break;
-                case 6: func_B8C6_b6(); break;
-                case 3: func_B8C6_b3(); break;
-                case 1: func_B8C6_b1(); break;
-                case 0: func_B8C6_b0(); break;
+                case 4: func_B9A0_b4(); break;
+                case 5: func_B9A0_b5(); break;
+                case 2: func_B9A0_b2(); break;
+                case 6: func_B9A0_b6(); break;
+                case 3: func_B9A0_b3(); break;
+                case 1: func_B9A0_b1(); break;
+                case 0: func_B9A0_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB8D6:
+        case 0xB8C3:
             switch (g_current_bank) {
-                case 4: func_B8D6_b4(); break;
-                case 5: func_B8D6_b5(); break;
-                case 2: func_B8D6_b2(); break;
-                case 3: func_B8D6_b3(); break;
-                case 0: func_B8D6_b0(); break;
-                case 1: func_B8D6_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB9BC:
-            switch (g_current_bank) {
-                case 7: func_F9BC(); break;
-                case 4: func_B9BC_b4(); break;
-                case 5: func_B9BC_b5(); break;
-                case 2: func_B9BC_b2(); break;
-                case 6: func_B9BC_b6(); break;
-                case 3: func_B9BC_b3(); break;
-                case 1: func_B9BC_b1(); break;
-                case 0: func_B9BC_b0(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB899:
-            switch (g_current_bank) {
-                case 7: func_F899(); break;
-                case 4: func_B899_b4(); break;
-                case 5: func_B899_b5(); break;
-                case 2: func_B899_b2(); break;
-                case 6: func_B899_b6(); break;
-                case 3: func_B899_b3(); break;
-                case 1: func_B899_b1(); break;
-                case 0: func_B899_b0(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB9A8:
-            switch (g_current_bank) {
-                case 4: func_B9A8_b4(); break;
-                case 5: func_B9A8_b5(); break;
-                case 2: func_B9A8_b2(); break;
-                case 6: func_B9A8_b6(); break;
-                case 3: func_B9A8_b3(); break;
-                case 1: func_B9A8_b1(); break;
-                case 0: func_B9A8_b0(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB9D0:
-            switch (g_current_bank) {
-                case 7: func_F9D0(); break;
-                case 4: func_B9D0_b4(); break;
-                case 5: func_B9D0_b5(); break;
-                case 2: func_B9D0_b2(); break;
-                case 6: func_B9D0_b6(); break;
-                case 3: func_B9D0_b3(); break;
-                case 1: func_B9D0_b1(); break;
-                case 0: func_B9D0_b0(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB8F3:
-            switch (g_current_bank) {
-                case 4: func_B8F3_b4(); break;
-                case 5: func_B8F3_b5(); break;
-                case 2: func_B8F3_b2(); break;
-                case 6: func_B8F3_b6(); break;
-                case 3: func_B8F3_b3(); break;
-                case 1: func_B8F3_b1(); break;
-                case 0: func_B8F3_b0(); break;
+                case 4: func_B8C3_b4(); break;
+                case 5: func_B8C3_b5(); break;
+                case 2: func_B8C3_b2(); break;
+                case 3: func_B8C3_b3(); break;
+                case 1: func_B8C3_b1(); break;
+                case 0: func_B8C3_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -6990,16 +6876,6 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0x80F6:
-            switch (g_current_bank) {
-                case 1: func_80F6_b1(); break;
-                case 2: func_80F6_b2(); break;
-                case 3: func_80F6_b3(); break;
-                case 4: func_80F6_b4(); break;
-                case 5: func_80F6_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
         case 0x844B:
             switch (g_current_bank) {
                 case 1: func_844B_b1(); break;
@@ -7110,6 +6986,16 @@ _dispatch_retry:
                 case 3: func_8169_b3(); break;
                 case 4: func_8169_b4(); break;
                 case 5: func_8169_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0x80F6:
+            switch (g_current_bank) {
+                case 2: func_80F6_b2(); break;
+                case 3: func_80F6_b3(); break;
+                case 4: func_80F6_b4(); break;
+                case 5: func_80F6_b5(); break;
+                case 1: func_80F6_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -7276,318 +7162,328 @@ _dispatch_retry:
             func_F85A(); break;
         case 0xAB7B:
             func_AB7B_b4(); break;
-        case 0xBA71:
+        case 0xBA41:
             switch (g_current_bank) {
-                case 4: func_BA71_b4(); break;
-                case 5: func_BA71_b5(); break;
-                case 2: func_BA71_b2(); break;
-                case 6: func_BA71_b6(); break;
-                case 3: func_BA71_b3(); break;
-                case 1: func_BA71_b1(); break;
-                case 0: func_BA71_b0(); break;
+                case 7: func_FA41(); break;
+                case 4: func_BA41_b4(); break;
+                case 5: func_BA41_b5(); break;
+                case 2: func_BA41_b2(); break;
+                case 6: func_BA41_b6(); break;
+                case 3: func_BA41_b3(); break;
+                case 1: func_BA41_b1(); break;
+                case 0: func_BA41_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBA38:
+        case 0xBA08:
             switch (g_current_bank) {
-                case 4: func_BA38_b4(); break;
-                case 5: func_BA38_b5(); break;
-                case 2: func_BA38_b2(); break;
-                case 6: func_BA38_b6(); break;
-                case 3: func_BA38_b3(); break;
-                case 1: func_BA38_b1(); break;
-                case 0: func_BA38_b0(); break;
+                case 4: func_BA08_b4(); break;
+                case 5: func_BA08_b5(); break;
+                case 2: func_BA08_b2(); break;
+                case 6: func_BA08_b6(); break;
+                case 3: func_BA08_b3(); break;
+                case 1: func_BA08_b1(); break;
+                case 0: func_BA08_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB420:
+        case 0xB3F0:
             switch (g_current_bank) {
-                case 7: func_F420(); break;
-                case 4: func_B420_b4(); break;
-                case 5: func_B420_b5(); break;
-                case 2: func_B420_b2(); break;
-                case 6: func_B420_b6(); break;
-                case 3: func_B420_b3(); break;
-                case 1: func_B420_b1(); break;
-                case 0: func_B420_b0(); break;
+                case 4: func_B3F0_b4(); break;
+                case 5: func_B3F0_b5(); break;
+                case 2: func_B3F0_b2(); break;
+                case 6: func_B3F0_b6(); break;
+                case 3: func_B3F0_b3(); break;
+                case 1: func_B3F0_b1(); break;
+                case 0: func_B3F0_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBA67:
+        case 0xBA37:
             switch (g_current_bank) {
-                case 4: func_BA67_b4(); break;
-                case 5: func_BA67_b5(); break;
-                case 2: func_BA67_b2(); break;
-                case 6: func_BA67_b6(); break;
-                case 3: func_BA67_b3(); break;
-                case 1: func_BA67_b1(); break;
-                case 0: func_BA67_b0(); break;
+                case 4: func_BA37_b4(); break;
+                case 5: func_BA37_b5(); break;
+                case 2: func_BA37_b2(); break;
+                case 6: func_BA37_b6(); break;
+                case 3: func_BA37_b3(); break;
+                case 1: func_BA37_b1(); break;
+                case 0: func_BA37_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBA23:
+        case 0xB9F3:
             switch (g_current_bank) {
-                case 4: func_BA23_b4(); break;
-                case 5: func_BA23_b5(); break;
-                case 2: func_BA23_b2(); break;
-                case 6: func_BA23_b6(); break;
-                case 3: func_BA23_b3(); break;
-                case 1: func_BA23_b1(); break;
-                case 0: func_BA23_b0(); break;
+                case 4: func_B9F3_b4(); break;
+                case 5: func_B9F3_b5(); break;
+                case 2: func_B9F3_b2(); break;
+                case 6: func_B9F3_b6(); break;
+                case 3: func_B9F3_b3(); break;
+                case 1: func_B9F3_b1(); break;
+                case 0: func_B9F3_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBB4C:
+        case 0xBB1C:
             switch (g_current_bank) {
-                case 7: func_FB4C(); break;
-                case 4: func_BB4C_b4(); break;
-                case 5: func_BB4C_b5(); break;
-                case 2: func_BB4C_b2(); break;
-                case 6: func_BB4C_b6(); break;
-                case 3: func_BB4C_b3(); break;
-                case 1: func_BB4C_b1(); break;
-                case 0: func_BB4C_b0(); break;
+                case 4: func_BB1C_b4(); break;
+                case 5: func_BB1C_b5(); break;
+                case 2: func_BB1C_b2(); break;
+                case 6: func_BB1C_b6(); break;
+                case 3: func_BB1C_b3(); break;
+                case 1: func_BB1C_b1(); break;
+                case 0: func_BB1C_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBB0C:
+        case 0xBADC:
             switch (g_current_bank) {
-                case 4: func_BB0C_b4(); break;
-                case 5: func_BB0C_b5(); break;
-                case 2: func_BB0C_b2(); break;
-                case 6: func_BB0C_b6(); break;
-                case 3: func_BB0C_b3(); break;
-                case 1: func_BB0C_b1(); break;
-                case 0: func_BB0C_b0(); break;
+                case 4: func_BADC_b4(); break;
+                case 5: func_BADC_b5(); break;
+                case 2: func_BADC_b2(); break;
+                case 6: func_BADC_b6(); break;
+                case 3: func_BADC_b3(); break;
+                case 1: func_BADC_b1(); break;
+                case 0: func_BADC_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBC0E:
+        case 0xBBDE:
             switch (g_current_bank) {
-                case 7: func_FC0E(); break;
-                case 4: func_BC0E_b4(); break;
-                case 5: func_BC0E_b5(); break;
-                case 2: func_BC0E_b2(); break;
-                case 6: func_BC0E_b6(); break;
-                case 3: func_BC0E_b3(); break;
-                case 1: func_BC0E_b1(); break;
-                case 0: func_BC0E_b0(); break;
+                case 7: func_FBDE(); break;
+                case 4: func_BBDE_b4(); break;
+                case 5: func_BBDE_b5(); break;
+                case 2: func_BBDE_b2(); break;
+                case 6: func_BBDE_b6(); break;
+                case 3: func_BBDE_b3(); break;
+                case 1: func_BBDE_b1(); break;
+                case 0: func_BBDE_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBBE7:
+        case 0xBBB7:
             switch (g_current_bank) {
-                case 4: func_BBE7_b4(); break;
-                case 5: func_BBE7_b5(); break;
-                case 2: func_BBE7_b2(); break;
-                case 6: func_BBE7_b6(); break;
-                case 3: func_BBE7_b3(); break;
-                case 1: func_BBE7_b1(); break;
-                case 0: func_BBE7_b0(); break;
+                case 4: func_BBB7_b4(); break;
+                case 5: func_BBB7_b5(); break;
+                case 2: func_BBB7_b2(); break;
+                case 6: func_BBB7_b6(); break;
+                case 3: func_BBB7_b3(); break;
+                case 1: func_BBB7_b1(); break;
+                case 0: func_BBB7_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBAE3:
+        case 0xBAB3:
             switch (g_current_bank) {
-                case 4: func_BAE3_b4(); break;
-                case 5: func_BAE3_b5(); break;
-                case 2: func_BAE3_b2(); break;
-                case 6: func_BAE3_b6(); break;
-                case 3: func_BAE3_b3(); break;
-                case 1: func_BAE3_b1(); break;
-                case 0: func_BAE3_b0(); break;
+                case 7: func_FAB3(); break;
+                case 4: func_BAB3_b4(); break;
+                case 5: func_BAB3_b5(); break;
+                case 2: func_BAB3_b2(); break;
+                case 6: func_BAB3_b6(); break;
+                case 3: func_BAB3_b3(); break;
+                case 1: func_BAB3_b1(); break;
+                case 0: func_BAB3_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBBD8:
+        case 0xBBA8:
             switch (g_current_bank) {
-                case 4: func_BBD8_b4(); break;
-                case 5: func_BBD8_b5(); break;
-                case 2: func_BBD8_b2(); break;
-                case 6: func_BBD8_b6(); break;
-                case 3: func_BBD8_b3(); break;
-                case 1: func_BBD8_b1(); break;
-                case 0: func_BBD8_b0(); break;
+                case 4: func_BBA8_b4(); break;
+                case 5: func_BBA8_b5(); break;
+                case 2: func_BBA8_b2(); break;
+                case 6: func_BBA8_b6(); break;
+                case 3: func_BBA8_b3(); break;
+                case 1: func_BBA8_b1(); break;
+                case 0: func_BBA8_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBBFD:
+        case 0xBBCD:
             switch (g_current_bank) {
-                case 4: func_BBFD_b4(); break;
-                case 5: func_BBFD_b5(); break;
-                case 2: func_BBFD_b2(); break;
-                case 6: func_BBFD_b6(); break;
-                case 3: func_BBFD_b3(); break;
-                case 1: func_BBFD_b1(); break;
-                case 0: func_BBFD_b0(); break;
+                case 4: func_BBCD_b4(); break;
+                case 5: func_BBCD_b5(); break;
+                case 2: func_BBCD_b2(); break;
+                case 6: func_BBCD_b6(); break;
+                case 3: func_BBCD_b3(); break;
+                case 1: func_BBCD_b1(); break;
+                case 0: func_BBCD_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBB67:
+        case 0xBB37:
             switch (g_current_bank) {
-                case 4: func_BB67_b4(); break;
-                case 5: func_BB67_b5(); break;
-                case 2: func_BB67_b2(); break;
-                case 6: func_BB67_b6(); break;
-                case 3: func_BB67_b3(); break;
-                case 1: func_BB67_b1(); break;
-                case 0: func_BB67_b0(); break;
+                case 4: func_BB37_b4(); break;
+                case 5: func_BB37_b5(); break;
+                case 2: func_BB37_b2(); break;
+                case 6: func_BB37_b6(); break;
+                case 3: func_BB37_b3(); break;
+                case 1: func_BB37_b1(); break;
+                case 0: func_BB37_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBAD5:
+        case 0xBAA5:
             switch (g_current_bank) {
-                case 4: func_BAD5_b4(); break;
-                case 5: func_BAD5_b5(); break;
-                case 2: func_BAD5_b2(); break;
-                case 6: func_BAD5_b6(); break;
-                case 3: func_BAD5_b3(); break;
-                case 1: func_BAD5_b1(); break;
-                case 0: func_BAD5_b0(); break;
+                case 4: func_BAA5_b4(); break;
+                case 5: func_BAA5_b5(); break;
+                case 2: func_BAA5_b2(); break;
+                case 6: func_BAA5_b6(); break;
+                case 3: func_BAA5_b3(); break;
+                case 1: func_BAA5_b1(); break;
+                case 0: func_BAA5_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCDA:
+        case 0xBCAA:
             switch (g_current_bank) {
-                case 4: func_BCDA_b4(); break;
-                case 5: func_BCDA_b5(); break;
-                case 2: func_BCDA_b2(); break;
-                case 6: func_BCDA_b6(); break;
-                case 3: func_BCDA_b3(); break;
-                case 1: func_BCDA_b1(); break;
+                case 7: func_FCAA(); break;
+                case 4: func_BCAA_b4(); break;
+                case 5: func_BCAA_b5(); break;
+                case 2: func_BCAA_b2(); break;
+                case 6: func_BCAA_b6(); break;
+                case 3: func_BCAA_b3(); break;
+                case 1: func_BCAA_b1(); break;
+                case 0: func_BCAA_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCD4:
+        case 0xBCA4:
             switch (g_current_bank) {
-                case 4: func_BCD4_b4(); break;
-                case 5: func_BCD4_b5(); break;
-                case 2: func_BCD4_b2(); break;
-                case 6: func_BCD4_b6(); break;
-                case 3: func_BCD4_b3(); break;
-                case 1: func_BCD4_b1(); break;
-                case 0: func_BCD4_b0(); break;
+                case 4: func_BCA4_b4(); break;
+                case 5: func_BCA4_b5(); break;
+                case 2: func_BCA4_b2(); break;
+                case 6: func_BCA4_b6(); break;
+                case 3: func_BCA4_b3(); break;
+                case 1: func_BCA4_b1(); break;
+                case 0: func_BCA4_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCCA:
+        case 0xBC9A:
             switch (g_current_bank) {
-                case 7: func_FCCA(); break;
-                case 4: func_BCCA_b4(); break;
-                case 5: func_BCCA_b5(); break;
-                case 2: func_BCCA_b2(); break;
-                case 6: func_BCCA_b6(); break;
-                case 3: func_BCCA_b3(); break;
-                case 1: func_BCCA_b1(); break;
+                case 4: func_BC9A_b4(); break;
+                case 5: func_BC9A_b5(); break;
+                case 2: func_BC9A_b2(); break;
+                case 6: func_BC9A_b6(); break;
+                case 3: func_BC9A_b3(); break;
+                case 1: func_BC9A_b1(); break;
+                case 0: func_BC9A_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCC6:
+        case 0xBC96:
             switch (g_current_bank) {
-                case 4: func_BCC6_b4(); break;
-                case 5: func_BCC6_b5(); break;
-                case 2: func_BCC6_b2(); break;
-                case 6: func_BCC6_b6(); break;
-                case 3: func_BCC6_b3(); break;
-                case 1: func_BCC6_b1(); break;
+                case 4: func_BC96_b4(); break;
+                case 5: func_BC96_b5(); break;
+                case 2: func_BC96_b2(); break;
+                case 6: func_BC96_b6(); break;
+                case 3: func_BC96_b3(); break;
+                case 1: func_BC96_b1(); break;
+                case 0: func_BC96_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCB9:
+        case 0xBC89:
             switch (g_current_bank) {
-                case 7: func_FCB9(); break;
-                case 4: func_BCB9_b4(); break;
-                case 5: func_BCB9_b5(); break;
-                case 2: func_BCB9_b2(); break;
-                case 6: func_BCB9_b6(); break;
-                case 3: func_BCB9_b3(); break;
-                case 1: func_BCB9_b1(); break;
+                case 4: func_BC89_b4(); break;
+                case 5: func_BC89_b5(); break;
+                case 2: func_BC89_b2(); break;
+                case 6: func_BC89_b6(); break;
+                case 3: func_BC89_b3(); break;
+                case 1: func_BC89_b1(); break;
+                case 0: func_BC89_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCCE:
+        case 0xBC9E:
             switch (g_current_bank) {
-                case 4: func_BCCE_b4(); break;
-                case 5: func_BCCE_b5(); break;
-                case 2: func_BCCE_b2(); break;
-                case 6: func_BCCE_b6(); break;
-                case 3: func_BCCE_b3(); break;
-                case 1: func_BCCE_b1(); break;
+                case 4: func_BC9E_b4(); break;
+                case 5: func_BC9E_b5(); break;
+                case 2: func_BC9E_b2(); break;
+                case 6: func_BC9E_b6(); break;
+                case 3: func_BC9E_b3(); break;
+                case 1: func_BC9E_b1(); break;
+                case 0: func_BC9E_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBA14:
+        case 0xB9E4:
             switch (g_current_bank) {
-                case 4: func_BA14_b4(); break;
-                case 5: func_BA14_b5(); break;
-                case 2: func_BA14_b2(); break;
-                case 6: func_BA14_b6(); break;
-                case 3: func_BA14_b3(); break;
-                case 1: func_BA14_b1(); break;
-                case 0: func_BA14_b0(); break;
+                case 4: func_B9E4_b4(); break;
+                case 5: func_B9E4_b5(); break;
+                case 2: func_B9E4_b2(); break;
+                case 6: func_B9E4_b6(); break;
+                case 3: func_B9E4_b3(); break;
+                case 1: func_B9E4_b1(); break;
+                case 0: func_B9E4_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBF62:
+        case 0xBF19:
             switch (g_current_bank) {
-                case 4: func_BF62_b4(); break;
-                case 5: func_BF62_b5(); break;
-                case 2: func_BF62_b2(); break;
-                case 6: func_BF62_b6(); break;
-                case 3: func_BF62_b3(); break;
-                case 1: func_BF62_b1(); break;
-                case 0: func_BF62_b0(); break;
+                case 4: func_BF19_b4(); break;
+                case 5: func_BF19_b5(); break;
+                case 2: func_BF19_b2(); break;
+                case 6: func_BF19_b6(); break;
+                case 3: func_BF19_b3(); break;
+                case 1: func_BF19_b1(); break;
+                case 0: func_BF19_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBDCF:
+        case 0xBD77:
             switch (g_current_bank) {
-                case 4: func_BDCF_b4(); break;
-                case 5: func_BDCF_b5(); break;
-                case 2: func_BDCF_b2(); break;
-                case 6: func_BDCF_b6(); break;
-                case 3: func_BDCF_b3(); break;
-                case 1: func_BDCF_b1(); break;
-                case 0: func_BDCF_b0(); break;
+                case 4: func_BD77_b4(); break;
+                case 5: func_BD77_b5(); break;
+                case 2: func_BD77_b2(); break;
+                case 6: func_BD77_b6(); break;
+                case 3: func_BD77_b3(); break;
+                case 1: func_BD77_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBE38:
+        case 0xBD9F:
             switch (g_current_bank) {
-                case 4: func_BE38_b4(); break;
-                case 5: func_BE38_b5(); break;
-                case 2: func_BE38_b2(); break;
-                case 6: func_BE38_b6(); break;
-                case 3: func_BE38_b3(); break;
-                case 1: func_BE38_b1(); break;
-                case 0: func_BE38_b0(); break;
+                case 4: func_BD9F_b4(); break;
+                case 5: func_BD9F_b5(); break;
+                case 2: func_BD9F_b2(); break;
+                case 6: func_BD9F_b6(); break;
+                case 3: func_BD9F_b3(); break;
+                case 1: func_BD9F_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBE6E:
+        case 0xBE08:
             switch (g_current_bank) {
-                case 7: func_FE6E(); break;
-                case 4: func_BE6E_b4(); break;
-                case 5: func_BE6E_b5(); break;
-                case 2: func_BE6E_b2(); break;
-                case 6: func_BE6E_b6(); break;
-                case 3: func_BE6E_b3(); break;
-                case 1: func_BE6E_b1(); break;
-                case 0: func_BE6E_b0(); break;
+                case 4: func_BE08_b4(); break;
+                case 5: func_BE08_b5(); break;
+                case 2: func_BE08_b2(); break;
+                case 6: func_BE08_b6(); break;
+                case 3: func_BE08_b3(); break;
+                case 1: func_BE08_b1(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xBE3E:
+            switch (g_current_bank) {
+                case 4: func_BE3E_b4(); break;
+                case 5: func_BE3E_b5(); break;
+                case 2: func_BE3E_b2(); break;
+                case 6: func_BE3E_b6(); break;
+                case 3: func_BE3E_b3(); break;
+                case 1: func_BE3E_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
         case 0xE0FF:
             func_E0FF(); break;
-        case 0xBEE0:
+        case 0xBEB0:
             switch (g_current_bank) {
-                case 4: func_BEE0_b4(); break;
-                case 5: func_BEE0_b5(); break;
-                case 2: func_BEE0_b2(); break;
-                case 6: func_BEE0_b6(); break;
-                case 3: func_BEE0_b3(); break;
-                case 1: func_BEE0_b1(); break;
-                case 0: func_BEE0_b0(); break;
+                case 4: func_BEB0_b4(); break;
+                case 5: func_BEB0_b5(); break;
+                case 2: func_BEB0_b2(); break;
+                case 6: func_BEB0_b6(); break;
+                case 3: func_BEB0_b3(); break;
+                case 1: func_BEB0_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -7606,53 +7502,88 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBF47:
+        case 0xBF1B:
             switch (g_current_bank) {
-                case 4: func_BF47_b4(); break;
-                case 5: func_BF47_b5(); break;
-                case 2: func_BF47_b2(); break;
-                case 6: func_BF47_b6(); break;
-                case 3: func_BF47_b3(); break;
-                case 1: func_BF47_b1(); break;
-                case 0: func_BF47_b0(); break;
+                case 4: func_BF1B_b4(); break;
+                case 5: func_BF1B_b5(); break;
+                case 2: func_BF1B_b2(); break;
+                case 6: func_BF1B_b6(); break;
+                case 3: func_BF1B_b3(); break;
+                case 1: func_BF1B_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB0CE:
+        case 0xBF0B:
             switch (g_current_bank) {
-                case 4: func_B0CE_b4(); break;
-                case 5: func_B0CE_b5(); break;
-                case 3: func_B0CE_b3(); break;
+                case 4: func_BF0B_b4(); break;
+                case 5: func_BF0B_b5(); break;
+                case 2: func_BF0B_b2(); break;
+                case 6: func_BF0B_b6(); break;
+                case 3: func_BF0B_b3(); break;
+                case 1: func_BF0B_b1(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBDBB:
+        case 0xBF67:
             switch (g_current_bank) {
-                case 4: func_BDBB_b4(); break;
-                case 5: func_BDBB_b5(); break;
-                case 1: func_BDBB_b1(); break;
-                case 3: func_BDBB_b3(); break;
-                case 0: func_BDBB_b0(); break;
-                case 2: func_BDBB_b2(); break;
+                case 4: func_BF67_b4(); break;
+                case 5: func_BF67_b5(); break;
+                case 2: func_BF67_b2(); break;
+                case 6: func_BF67_b6(); break;
+                case 3: func_BF67_b3(); break;
+                case 1: func_BF67_b1(); break;
+                case 0: func_BF67_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB91C:
+        case 0xAFFE:
             switch (g_current_bank) {
-                case 4: func_B91C_b4(); break;
-                case 5: func_B91C_b5(); break;
-                case 3: func_B91C_b3(); break;
-                case 0: func_B91C_b0(); break;
-                case 2: func_B91C_b2(); break;
-                case 1: func_B91C_b1(); break;
+                case 4: func_AFFE_b4(); break;
+                case 5: func_AFFE_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB194:
+        case 0xB06C:
             switch (g_current_bank) {
-                case 4: func_B194_b4(); break;
-                case 5: func_B194_b5(); break;
-                case 3: func_B194_b3(); break;
+                case 7: func_F06C(); break;
+                case 4: func_B06C_b4(); break;
+                case 2: func_B06C_b2(); break;
+                case 5: func_B06C_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xB17E:
+            switch (g_current_bank) {
+                case 4: func_B17E_b4(); break;
+                case 5: func_B17E_b5(); break;
+                case 3: func_B17E_b3(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0x983F:
+            func_983F_b4(); break;
+        case 0x98E7:
+            func_98E7_b4(); break;
+        case 0x98F7:
+            func_98F7_b4(); break;
+        case 0x80C1:
+            switch (g_current_bank) {
+                case 4: func_80C1_b4(); break;
+                case 5: func_80C1_b5(); break;
+                case 2: func_80C1_b2(); break;
+                case 3: func_80C1_b3(); break;
+                case 1: func_80C1_b1(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0x856B:
+            switch (g_current_bank) {
+                case 7: func_C56B(); break;
+                case 4: func_856B_b4(); break;
+                case 1: func_856B_b1(); break;
+                case 2: func_856B_b2(); break;
+                case 3: func_856B_b3(); break;
+                case 5: func_856B_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -7908,8 +7839,6 @@ _dispatch_retry:
             func_FB87(); break;
         case 0xF870:
             func_F870(); break;
-        case 0xF03D:
-            func_F03D(); break;
         case 0xF86F:
             func_F86F(); break;
         case 0xEFD0:
@@ -8282,6 +8211,8 @@ _dispatch_retry:
             func_FA9F(); break;
         case 0xEA7D:
             func_EA7D(); break;
+        case 0xF03D:
+            func_F03D(); break;
         case 0xF0B4:
             func_F0B4(); break;
         case 0xED32:
@@ -8348,6 +8279,8 @@ _dispatch_retry:
             func_ED85(); break;
         case 0xEA85:
             func_EA85(); break;
+        case 0xF7B9:
+            func_F7B9(); break;
         case 0xEAA5:
             func_EAA5(); break;
         case 0xF83E:
@@ -8386,8 +8319,6 @@ _dispatch_retry:
             func_FB99(); break;
         case 0xF999:
             func_F999(); break;
-        case 0xF7B9:
-            func_F7B9(); break;
         case 0xEFB9:
             func_EFB9(); break;
         case 0xF8A9:
@@ -8833,12 +8764,8 @@ _dispatch_retry:
             func_D7D1(); break;
         case 0xD80E:
             func_D80E(); break;
-        case 0xD821:
-            func_D821(); break;
         case 0xD83D:
             func_D83D(); break;
-        case 0xD84C:
-            func_D84C(); break;
         case 0xD870:
             func_D870(); break;
         case 0xD879:
@@ -8956,6 +8883,8 @@ _dispatch_retry:
             func_FF85(); break;
         case 0xFF69:
             func_FF69(); break;
+        case 0xFF60:
+            func_FF60(); break;
         case 0xFF72:
             func_FF72(); break;
         case 0xFAB3:
@@ -9023,17 +8952,6 @@ _dispatch_retry:
                 case 3: func_81FC_b3(); break;
                 case 4: func_81FC_b4(); break;
                 case 5: func_81FC_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0x856B:
-            switch (g_current_bank) {
-                case 7: func_C56B(); break;
-                case 1: func_856B_b1(); break;
-                case 2: func_856B_b2(); break;
-                case 3: func_856B_b3(); break;
-                case 4: func_856B_b4(); break;
-                case 5: func_856B_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -9111,101 +9029,102 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBB49:
+        case 0xBB19:
             switch (g_current_bank) {
-                case 4: func_BB49_b4(); break;
-                case 5: func_BB49_b5(); break;
-                case 2: func_BB49_b2(); break;
-                case 6: func_BB49_b6(); break;
-                case 1: func_BB49_b1(); break;
-                case 3: func_BB49_b3(); break;
-                case 0: func_BB49_b0(); break;
+                case 4: func_BB19_b4(); break;
+                case 5: func_BB19_b5(); break;
+                case 2: func_BB19_b2(); break;
+                case 6: func_BB19_b6(); break;
+                case 1: func_BB19_b1(); break;
+                case 3: func_BB19_b3(); break;
+                case 0: func_BB19_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBB46:
+        case 0xBB16:
             switch (g_current_bank) {
-                case 4: func_BB46_b4(); break;
-                case 5: func_BB46_b5(); break;
-                case 2: func_BB46_b2(); break;
-                case 6: func_BB46_b6(); break;
-                case 1: func_BB46_b1(); break;
-                case 3: func_BB46_b3(); break;
-                case 0: func_BB46_b0(); break;
+                case 4: func_BB16_b4(); break;
+                case 5: func_BB16_b5(); break;
+                case 2: func_BB16_b2(); break;
+                case 6: func_BB16_b6(); break;
+                case 1: func_BB16_b1(); break;
+                case 3: func_BB16_b3(); break;
+                case 0: func_BB16_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBACD:
+        case 0xBA9D:
             switch (g_current_bank) {
-                case 4: func_BACD_b4(); break;
-                case 5: func_BACD_b5(); break;
-                case 2: func_BACD_b2(); break;
-                case 6: func_BACD_b6(); break;
-                case 3: func_BACD_b3(); break;
-                case 1: func_BACD_b1(); break;
-                case 0: func_BACD_b0(); break;
+                case 7: func_FA9D(); break;
+                case 4: func_BA9D_b4(); break;
+                case 5: func_BA9D_b5(); break;
+                case 2: func_BA9D_b2(); break;
+                case 6: func_BA9D_b6(); break;
+                case 3: func_BA9D_b3(); break;
+                case 1: func_BA9D_b1(); break;
+                case 0: func_BA9D_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBAD1:
+        case 0xBAA1:
             switch (g_current_bank) {
-                case 7: func_FAD1(); break;
-                case 4: func_BAD1_b4(); break;
-                case 5: func_BAD1_b5(); break;
-                case 2: func_BAD1_b2(); break;
-                case 6: func_BAD1_b6(); break;
-                case 3: func_BAD1_b3(); break;
-                case 1: func_BAD1_b1(); break;
-                case 0: func_BAD1_b0(); break;
+                case 4: func_BAA1_b4(); break;
+                case 5: func_BAA1_b5(); break;
+                case 2: func_BAA1_b2(); break;
+                case 6: func_BAA1_b6(); break;
+                case 3: func_BAA1_b3(); break;
+                case 1: func_BAA1_b1(); break;
+                case 0: func_BAA1_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBAE0:
+        case 0xBAB0:
             switch (g_current_bank) {
-                case 4: func_BAE0_b4(); break;
-                case 5: func_BAE0_b5(); break;
-                case 2: func_BAE0_b2(); break;
-                case 6: func_BAE0_b6(); break;
-                case 1: func_BAE0_b1(); break;
-                case 3: func_BAE0_b3(); break;
-                case 0: func_BAE0_b0(); break;
+                case 7: func_FAB0(); break;
+                case 4: func_BAB0_b4(); break;
+                case 5: func_BAB0_b5(); break;
+                case 2: func_BAB0_b2(); break;
+                case 6: func_BAB0_b6(); break;
+                case 1: func_BAB0_b1(); break;
+                case 3: func_BAB0_b3(); break;
+                case 0: func_BAB0_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCBD:
+        case 0xBC8D:
             switch (g_current_bank) {
-                case 7: func_FCBD(); break;
-                case 4: func_BCBD_b4(); break;
-                case 5: func_BCBD_b5(); break;
-                case 2: func_BCBD_b2(); break;
-                case 6: func_BCBD_b6(); break;
-                case 1: func_BCBD_b1(); break;
-                case 3: func_BCBD_b3(); break;
-                case 0: func_BCBD_b0(); break;
+                case 4: func_BC8D_b4(); break;
+                case 5: func_BC8D_b5(); break;
+                case 2: func_BC8D_b2(); break;
+                case 6: func_BC8D_b6(); break;
+                case 3: func_BC8D_b3(); break;
+                case 1: func_BC8D_b1(); break;
+                case 0: func_BC8D_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBCBB:
+        case 0xBC8B:
             switch (g_current_bank) {
-                case 7: func_FCBB(); break;
-                case 4: func_BCBB_b4(); break;
-                case 5: func_BCBB_b5(); break;
-                case 2: func_BCBB_b2(); break;
-                case 6: func_BCBB_b6(); break;
-                case 1: func_BCBB_b1(); break;
-                case 3: func_BCBB_b3(); break;
+                case 4: func_BC8B_b4(); break;
+                case 5: func_BC8B_b5(); break;
+                case 2: func_BC8B_b2(); break;
+                case 6: func_BC8B_b6(); break;
+                case 1: func_BC8B_b1(); break;
+                case 3: func_BC8B_b3(); break;
+                case 0: func_BC8B_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB42C:
+        case 0xB3FC:
             switch (g_current_bank) {
-                case 4: func_B42C_b4(); break;
-                case 5: func_B42C_b5(); break;
-                case 2: func_B42C_b2(); break;
-                case 6: func_B42C_b6(); break;
-                case 3: func_B42C_b3(); break;
-                case 1: func_B42C_b1(); break;
-                case 0: func_B42C_b0(); break;
+                case 7: func_F3FC(); break;
+                case 4: func_B3FC_b4(); break;
+                case 5: func_B3FC_b5(); break;
+                case 2: func_B3FC_b2(); break;
+                case 6: func_B3FC_b6(); break;
+                case 3: func_B3FC_b3(); break;
+                case 1: func_B3FC_b1(); break;
+                case 0: func_B3FC_b0(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -9265,6 +9184,20 @@ _dispatch_retry:
             func_CF4E(); break;
         case 0xCBF3:
             func_CBF3(); break;
+        case 0xAFD7:
+            switch (g_current_bank) {
+                case 4: func_AFD7_b4(); break;
+                case 5: func_AFD7_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xAFE4:
+            switch (g_current_bank) {
+                case 4: func_AFE4_b4(); break;
+                case 5: func_AFE4_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xC2C0:
             switch (g_current_bank) {
                 default: func_C2C0(); break;
@@ -9357,8 +9290,6 @@ _dispatch_retry:
             func_E67E(); break;
         case 0xE685:
             func_E685(); break;
-        case 0xE6A2:
-            func_E6A2(); break;
         case 0xE6A0:
             func_E6A0(); break;
         case 0xE699:
@@ -9397,8 +9328,6 @@ _dispatch_retry:
             func_E880(); break;
         case 0xD976:
             func_D976(); break;
-        case 0xD9B9:
-            func_D9B9(); break;
         case 0xD983:
             func_D983(); break;
         case 0xED57:
@@ -9653,6 +9582,8 @@ _dispatch_retry:
             func_E9BE(); break;
         case 0xE9F2:
             func_E9F2(); break;
+        case 0xE9CC:
+            func_E9CC(); break;
         case 0xD602:
             func_D602(); break;
         case 0x9B37:
@@ -9898,6 +9829,13 @@ _dispatch_retry:
             func_E9A8(); break;
         case 0xE7E6:
             func_E7E6(); break;
+        case 0xAF83:
+            switch (g_current_bank) {
+                case 4: func_AF83_b4(); break;
+                case 5: func_AF83_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0x8BD4:
             func_8BD4_b0(); break;
         case 0x8D3D:
@@ -10017,6 +9955,28 @@ _dispatch_retry:
             func_A98E_b5(); break;
         case 0xAAA3:
             func_AAA3_b5(); break;
+        case 0xB948:
+            switch (g_current_bank) {
+                case 5: func_B948_b5(); break;
+                case 0: func_B948_b0(); break;
+                case 1: func_B948_b1(); break;
+                case 2: func_B948_b2(); break;
+                case 3: func_B948_b3(); break;
+                case 4: func_B948_b4(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
+        case 0xBC23:
+            switch (g_current_bank) {
+                case 5: func_BC23_b5(); break;
+                case 0: func_BC23_b0(); break;
+                case 1: func_BC23_b1(); break;
+                case 2: func_BC23_b2(); break;
+                case 3: func_BC23_b3(); break;
+                case 4: func_BC23_b4(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xAB86:
             func_AB86_b5(); break;
         case 0x9B20:
@@ -10031,12 +9991,13 @@ _dispatch_retry:
             func_C284(); break;
         case 0xF56C:
             func_F56C(); break;
-        case 0xF049:
-            func_F049(); break;
-        case 0xF1FB:
-            func_F1FB(); break;
-        case 0xF222:
-            func_F222(); break;
+        case 0xB0D4:
+            switch (g_current_bank) {
+                case 2: func_B0D4_b2(); break;
+                case 1: func_B0D4_b1(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xA5EB:
             func_A5EB_b2(); break;
         case 0xA608:
@@ -10106,8 +10067,8 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB06C:
-            func_B06C_b2(); break;
+        case 0xB0A4:
+            func_B0A4_b2(); break;
         case 0xD78B:
             func_D78B(); break;
         case 0xD78D:
@@ -10346,13 +10307,6 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0x9830:
-            switch (g_current_bank) {
-                case 6: func_9830_b6(); break;
-                case 5: func_9830_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
         case 0x99A2:
             func_99A2_b6(); break;
         case 0x99AA:
@@ -10373,6 +10327,14 @@ _dispatch_retry:
             func_E95F(); break;
         case 0xE934:
             func_E934(); break;
+        case 0xAF53:
+            switch (g_current_bank) {
+                case 4: func_AF53_b4(); break;
+                case 2: func_AF53_b2(); break;
+                case 5: func_AF53_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0x8BF5:
             func_8BF5_b0(); break;
         case 0x8C39:
@@ -10387,6 +10349,14 @@ _dispatch_retry:
             func_D318(); break;
         case 0xAB32:
             func_AB32_b5(); break;
+        case 0xB0A2:
+            switch (g_current_bank) {
+                case 7: func_F0A2(); break;
+                case 2: func_B0A2_b2(); break;
+                case 1: func_B0A2_b1(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0x9416:
             func_9416_b2(); break;
         case 0x9431:
@@ -10399,10 +10369,10 @@ _dispatch_retry:
             func_94E2_b2(); break;
         case 0x9564:
             func_9564_b2(); break;
-        case 0xBDDC:
-            func_BDDC_b2(); break;
-        case 0xAF53:
-            func_AF53_b2(); break;
+        case 0xBD79:
+            func_BD79_b2(); break;
+        case 0xBDAC:
+            func_BDAC_b2(); break;
         case 0xD798:
             func_D798(); break;
         case 0xA0C6:
@@ -10546,10 +10516,6 @@ _dispatch_retry:
             func_B039_b6(); break;
         case 0xB10A:
             func_B10A_b6(); break;
-        case 0xB1E0:
-            func_B1E0_b6(); break;
-        case 0x80C7:
-            func_80C7_b6(); break;
         case 0xB25D:
             func_B25D_b6(); break;
         case 0xB295:
@@ -10568,6 +10534,10 @@ _dispatch_retry:
             func_C088(); break;
         case 0x8040:
             func_8040_b6(); break;
+        case 0xB39C:
+            func_B39C_b6(); break;
+        case 0xB3A0:
+            func_B3A0_b6(); break;
         case 0xC6CE:
             func_C6CE(); break;
         case 0xA0C7:
@@ -11181,6 +11151,8 @@ _dispatch_retry:
             func_CCC0(); break;
         case 0xCCC2:
             func_CCC2(); break;
+        case 0xCCCC:
+            func_CCCC(); break;
         case 0xCD04:
             func_CD04(); break;
         case 0xCD10:
@@ -12033,6 +12005,8 @@ _dispatch_retry:
             func_C953(); break;
         case 0xEFC9:
             func_EFC9(); break;
+        case 0xF049:
+            func_F049(); break;
         case 0xC90D:
             func_C90D(); break;
         case 0xC61E:
@@ -12475,22 +12449,14 @@ _dispatch_retry:
             func_D14C(); break;
         case 0xCA0A:
             func_CA0A(); break;
-        case 0xC980:
-            func_C980(); break;
-        case 0xD0C3:
-            func_D0C3(); break;
-        case 0xD0CD:
-            func_D0CD(); break;
-        case 0xD034:
-            func_D034(); break;
-        case 0xD06D:
-            func_D06D(); break;
-        case 0xD1B6:
-            func_D1B6(); break;
-        case 0xD1B9:
-            func_D1B9(); break;
         case 0xD050:
             func_D050(); break;
+        case 0xC980:
+            func_C980(); break;
+        case 0xD034:
+            func_D034(); break;
+        case 0xD1B9:
+            func_D1B9(); break;
         case 0xD24C:
             func_D24C(); break;
         case 0xCCBD:
@@ -12945,8 +12911,22 @@ _dispatch_retry:
             func_FF09(); break;
         case 0xC01B:
             func_C01B(); break;
+        case 0xFFC1:
+            func_FFC1(); break;
         case 0xFDEF:
             func_FDEF(); break;
+        case 0xB3E4:
+            switch (g_current_bank) {
+                case 1: func_B3E4_b1(); break;
+                case 6: func_B3E4_b6(); break;
+                case 0: func_B3E4_b0(); break;
+                case 2: func_B3E4_b2(); break;
+                case 3: func_B3E4_b3(); break;
+                case 4: func_B3E4_b4(); break;
+                case 5: func_B3E4_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xC4AD:
             func_C4AD(); break;
         case 0xC4B2:
@@ -13016,6 +12996,18 @@ _dispatch_retry:
             func_EB4B(); break;
         case 0xED25:
             func_ED25(); break;
+        case 0xB503:
+            switch (g_current_bank) {
+                case 0: func_B503_b0(); break;
+                case 1: func_B503_b1(); break;
+                case 2: func_B503_b2(); break;
+                case 3: func_B503_b3(); break;
+                case 4: func_B503_b4(); break;
+                case 5: func_B503_b5(); break;
+                case 6: func_B503_b6(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0xD60A:
             func_D60A(); break;
         case 0xCA63:
@@ -13076,10 +13068,6 @@ _dispatch_retry:
             func_CC0A(); break;
         case 0xCBC3:
             func_CBC3(); break;
-        case 0xB0A0:
-            func_B0A0_b0(); break;
-        case 0xB0AD:
-            func_B0AD_b0(); break;
         case 0xE3E0:
             func_E3E0(); break;
         case 0xA82D:
@@ -13104,53 +13092,30 @@ _dispatch_retry:
             func_AB00_b1(); break;
         case 0xAC72:
             func_AC72_b1(); break;
-        case 0xBCAA:
-            switch (g_current_bank) {
-                case 7: func_FCAA(); break;
-                case 1: func_BCAA_b1(); break;
-                case 0: func_BCAA_b0(); break;
-                case 2: func_BCAA_b2(); break;
-                case 3: func_BCAA_b3(); break;
-                case 4: func_BCAA_b4(); break;
-                case 5: func_BCAA_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
         case 0xAC76:
             func_AC76_b1(); break;
         case 0xAC8A:
             func_AC8A_b1(); break;
         case 0xAF5D:
             func_AF5D_b1(); break;
-        case 0xB04F:
-            func_B04F_b1(); break;
-        case 0xB0DE:
-            func_B0DE_b1(); break;
-        case 0xB5C7:
-            func_B5C7_b1(); break;
+        case 0xB04D:
+            func_B04D_b1(); break;
+        case 0xB0BA:
+            func_B0BA_b1(); break;
+        case 0xB0CA:
+            func_B0CA_b1(); break;
+        case 0xB597:
+            func_B597_b1(); break;
         case 0xA1D1:
             func_A1D1_b4(); break;
-        case 0xAFD4:
-            func_AFD4_b1(); break;
-        case 0xBAD8:
-            func_BAD8_b1(); break;
-        case 0xBE4E:
-            func_BE4E_b1(); break;
-        case 0xBF19:
-            switch (g_current_bank) {
-                case 1: func_BF19_b1(); break;
-                case 0: func_BF19_b0(); break;
-                case 2: func_BF19_b2(); break;
-                case 3: func_BF19_b3(); break;
-                case 4: func_BF19_b4(); break;
-                case 5: func_BF19_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xBE66:
-            func_BE66_b1(); break;
-        case 0xBE8E:
-            func_BE8E_b1(); break;
+        case 0x9A06:
+            func_9A06_b3(); break;
+        case 0xAFCC:
+            func_AFCC_b1(); break;
+        case 0xAFDA:
+            func_AFDA_b1(); break;
+        case 0xBAA8:
+            func_BAA8_b1(); break;
         case 0xD184:
             func_D184(); break;
         case 0xE6C9:
@@ -13277,10 +13242,6 @@ _dispatch_retry:
             func_D07C(); break;
         case 0xD4D0:
             func_D4D0(); break;
-        case 0xE1B7:
-            func_E1B7(); break;
-        case 0xC3A2:
-            func_C3A2(); break;
         case 0xE385:
             func_E385(); break;
         case 0xE2B1:
@@ -13297,16 +13258,16 @@ _dispatch_retry:
             func_E285(); break;
         case 0xEEF3:
             func_EEF3(); break;
-        case 0xD04D:
-            func_D04D(); break;
-        case 0xFD4C:
-            func_FD4C(); break;
+        case 0xC92D:
+            func_C92D(); break;
+        case 0xCD4C:
+            func_CD4C(); break;
         case 0xD0B6:
             func_D0B6(); break;
-        case 0xD079:
-            func_D079(); break;
-        case 0xF34C:
-            func_F34C(); break;
+        case 0xD03D:
+            func_D03D(); break;
+        case 0xD04D:
+            func_D04D(); break;
         case 0xEEB9:
             func_EEB9(); break;
         case 0xEE2D:
@@ -13321,18 +13282,20 @@ _dispatch_retry:
             func_F0E6(); break;
         case 0xC9C0:
             func_C9C0(); break;
-        case 0xC9B0:
-            func_C9B0(); break;
-        case 0xC5B6:
-            func_C5B6(); break;
-        case 0xE1A2:
-            func_E1A2(); break;
-        case 0xFA90:
-            func_FA90(); break;
-        case 0xCA4C:
-            func_CA4C(); break;
         case 0xDC4C:
             func_DC4C(); break;
+        case 0xC9B0:
+            func_C9B0(); break;
+        case 0xFA90:
+            func_FA90(); break;
+        case 0xF5A2:
+            func_F5A2(); break;
+        case 0xD0F6:
+            func_D0F6(); break;
+        case 0xE9D0:
+            func_E9D0(); break;
+        case 0xCA4C:
+            func_CA4C(); break;
         case 0xF0F6:
             func_F0F6(); break;
         case 0xFD00:
@@ -13429,8 +13392,6 @@ _dispatch_retry:
             func_C99E(); break;
         case 0xC099:
             func_C099(); break;
-        case 0xC92D:
-            func_C92D(); break;
         case 0xF09E:
             func_F09E(); break;
         case 0xD99E:
@@ -13467,8 +13428,6 @@ _dispatch_retry:
             break;
         case 0xC39B:
             func_C39B(); break;
-        case 0xF347:
-            func_F347(); break;
         case 0xFD68:
             func_FD68(); break;
         case 0xF274:
@@ -13479,338 +13438,6 @@ _dispatch_retry:
             func_E2E3(); break;
         case 0xFAF4:
             func_FAF4(); break;
-        case 0xB17F:
-            switch (g_current_bank) {
-                case 7: func_F17F(); break;
-                case 3: func_B17F_b3(); break;
-                case 4: func_B17F_b4(); break;
-                case 5: func_B17F_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB6E0:
-            switch (g_current_bank) {
-                case 0: func_B6E0_b0(); break;
-                case 1: func_B6E0_b1(); break;
-                case 2: func_B6E0_b2(); break;
-                case 3: func_B6E0_b3(); break;
-                case 4: func_B6E0_b4(); break;
-                case 5: func_B6E0_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB703:
-            switch (g_current_bank) {
-                case 0: func_B703_b0(); break;
-                case 2: func_B703_b2(); break;
-                case 3: func_B703_b3(); break;
-                case 4: func_B703_b4(); break;
-                case 5: func_B703_b5(); break;
-                case 1: func_B703_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB71D:
-            switch (g_current_bank) {
-                case 0: func_B71D_b0(); break;
-                case 2: func_B71D_b2(); break;
-                case 3: func_B71D_b3(); break;
-                case 4: func_B71D_b4(); break;
-                case 5: func_B71D_b5(); break;
-                case 1: func_B71D_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB77F:
-            switch (g_current_bank) {
-                case 0: func_B77F_b0(); break;
-                case 2: func_B77F_b2(); break;
-                case 3: func_B77F_b3(); break;
-                case 4: func_B77F_b4(); break;
-                case 5: func_B77F_b5(); break;
-                case 1: func_B77F_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB7B1:
-            switch (g_current_bank) {
-                case 7: func_F7B1(); break;
-                case 0: func_B7B1_b0(); break;
-                case 1: func_B7B1_b1(); break;
-                case 2: func_B7B1_b2(); break;
-                case 3: func_B7B1_b3(); break;
-                case 4: func_B7B1_b4(); break;
-                case 5: func_B7B1_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB902:
-            switch (g_current_bank) {
-                case 0: func_B902_b0(); break;
-                case 1: func_B902_b1(); break;
-                case 2: func_B902_b2(); break;
-                case 3: func_B902_b3(); break;
-                case 4: func_B902_b4(); break;
-                case 5: func_B902_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB7DC:
-            switch (g_current_bank) {
-                case 0: func_B7DC_b0(); break;
-                case 1: func_B7DC_b1(); break;
-                case 2: func_B7DC_b2(); break;
-                case 3: func_B7DC_b3(); break;
-                case 4: func_B7DC_b4(); break;
-                case 5: func_B7DC_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB8D7:
-            switch (g_current_bank) {
-                case 0: func_B8D7_b0(); break;
-                case 1: func_B8D7_b1(); break;
-                case 2: func_B8D7_b2(); break;
-                case 3: func_B8D7_b3(); break;
-                case 4: func_B8D7_b4(); break;
-                case 5: func_B8D7_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB951:
-            switch (g_current_bank) {
-                case 0: func_B951_b0(); break;
-                case 1: func_B951_b1(); break;
-                case 2: func_B951_b2(); break;
-                case 3: func_B951_b3(); break;
-                case 4: func_B951_b4(); break;
-                case 5: func_B951_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB809:
-            switch (g_current_bank) {
-                case 7: func_F809(); break;
-                case 0: func_B809_b0(); break;
-                case 1: func_B809_b1(); break;
-                case 2: func_B809_b2(); break;
-                case 3: func_B809_b3(); break;
-                case 4: func_B809_b4(); break;
-                case 5: func_B809_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB81F:
-            switch (g_current_bank) {
-                case 0: func_B81F_b0(); break;
-                case 1: func_B81F_b1(); break;
-                case 2: func_B81F_b2(); break;
-                case 3: func_B81F_b3(); break;
-                case 4: func_B81F_b4(); break;
-                case 5: func_B81F_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB864:
-            switch (g_current_bank) {
-                case 0: func_B864_b0(); break;
-                case 1: func_B864_b1(); break;
-                case 2: func_B864_b2(); break;
-                case 3: func_B864_b3(); break;
-                case 4: func_B864_b4(); break;
-                case 5: func_B864_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB8A8:
-            switch (g_current_bank) {
-                case 0: func_B8A8_b0(); break;
-                case 1: func_B8A8_b1(); break;
-                case 2: func_B8A8_b2(); break;
-                case 3: func_B8A8_b3(); break;
-                case 4: func_B8A8_b4(); break;
-                case 5: func_B8A8_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB91D:
-            switch (g_current_bank) {
-                case 7: func_F91D(); break;
-                case 0: func_B91D_b0(); break;
-                case 1: func_B91D_b1(); break;
-                case 2: func_B91D_b2(); break;
-                case 3: func_B91D_b3(); break;
-                case 4: func_B91D_b4(); break;
-                case 5: func_B91D_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB7FB:
-            switch (g_current_bank) {
-                case 0: func_B7FB_b0(); break;
-                case 1: func_B7FB_b1(); break;
-                case 2: func_B7FB_b2(); break;
-                case 3: func_B7FB_b3(); break;
-                case 4: func_B7FB_b4(); break;
-                case 5: func_B7FB_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB8E1:
-            switch (g_current_bank) {
-                case 0: func_B8E1_b0(); break;
-                case 1: func_B8E1_b1(); break;
-                case 2: func_B8E1_b2(); break;
-                case 3: func_B8E1_b3(); break;
-                case 4: func_B8E1_b4(); break;
-                case 5: func_B8E1_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB970:
-            switch (g_current_bank) {
-                case 0: func_B970_b0(); break;
-                case 1: func_B970_b1(); break;
-                case 2: func_B970_b2(); break;
-                case 3: func_B970_b3(); break;
-                case 4: func_B970_b4(); break;
-                case 5: func_B970_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB978:
-            switch (g_current_bank) {
-                case 0: func_B978_b0(); break;
-                case 1: func_B978_b1(); break;
-                case 2: func_B978_b2(); break;
-                case 3: func_B978_b3(); break;
-                case 4: func_B978_b4(); break;
-                case 5: func_B978_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB817:
-            switch (g_current_bank) {
-                case 0: func_B817_b0(); break;
-                case 1: func_B817_b1(); break;
-                case 2: func_B817_b2(); break;
-                case 3: func_B817_b3(); break;
-                case 4: func_B817_b4(); break;
-                case 5: func_B817_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB83E:
-            switch (g_current_bank) {
-                case 7: func_F83E(); break;
-                case 0: func_B83E_b0(); break;
-                case 1: func_B83E_b1(); break;
-                case 2: func_B83E_b2(); break;
-                case 3: func_B83E_b3(); break;
-                case 4: func_B83E_b4(); break;
-                case 5: func_B83E_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB87F:
-            switch (g_current_bank) {
-                case 0: func_B87F_b0(); break;
-                case 1: func_B87F_b1(); break;
-                case 2: func_B87F_b2(); break;
-                case 3: func_B87F_b3(); break;
-                case 4: func_B87F_b4(); break;
-                case 5: func_B87F_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB8AF:
-            switch (g_current_bank) {
-                case 0: func_B8AF_b0(); break;
-                case 1: func_B8AF_b1(); break;
-                case 2: func_B8AF_b2(); break;
-                case 3: func_B8AF_b3(); break;
-                case 4: func_B8AF_b4(); break;
-                case 5: func_B8AF_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB6A3:
-            switch (g_current_bank) {
-                case 0: func_B6A3_b0(); break;
-                case 1: func_B6A3_b1(); break;
-                case 2: func_B6A3_b2(); break;
-                case 3: func_B6A3_b3(); break;
-                case 4: func_B6A3_b4(); break;
-                case 5: func_B6A3_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB6C5:
-            switch (g_current_bank) {
-                case 0: func_B6C5_b0(); break;
-                case 1: func_B6C5_b1(); break;
-                case 2: func_B6C5_b2(); break;
-                case 3: func_B6C5_b3(); break;
-                case 4: func_B6C5_b4(); break;
-                case 5: func_B6C5_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB680:
-            switch (g_current_bank) {
-                case 0: func_B680_b0(); break;
-                case 1: func_B680_b1(); break;
-                case 2: func_B680_b2(); break;
-                case 3: func_B680_b3(); break;
-                case 4: func_B680_b4(); break;
-                case 5: func_B680_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB626:
-            switch (g_current_bank) {
-                case 0: func_B626_b0(); break;
-                case 1: func_B626_b1(); break;
-                case 2: func_B626_b2(); break;
-                case 3: func_B626_b3(); break;
-                case 4: func_B626_b4(); break;
-                case 5: func_B626_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB6D1:
-            switch (g_current_bank) {
-                case 7: func_F6D1(); break;
-                case 0: func_B6D1_b0(); break;
-                case 1: func_B6D1_b1(); break;
-                case 2: func_B6D1_b2(); break;
-                case 3: func_B6D1_b3(); break;
-                case 4: func_B6D1_b4(); break;
-                case 5: func_B6D1_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB7D6:
-            switch (g_current_bank) {
-                case 1: func_B7D6_b1(); break;
-                case 0: func_B7D6_b0(); break;
-                case 2: func_B7D6_b2(); break;
-                case 3: func_B7D6_b3(); break;
-                case 4: func_B7D6_b4(); break;
-                case 5: func_B7D6_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0x80AD:
-            switch (g_current_bank) {
-                case 1: func_80AD_b1(); break;
-                case 2: func_80AD_b2(); break;
-                case 3: func_80AD_b3(); break;
-                case 4: func_80AD_b4(); break;
-                case 5: func_80AD_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
         case 0x99E5:
             func_99E5_b3(); break;
         case 0x9B45:
@@ -13829,38 +13456,6 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB6FC:
-            switch (g_current_bank) {
-                case 0: func_B6FC_b0(); break;
-                case 1: func_B6FC_b1(); break;
-                case 2: func_B6FC_b2(); break;
-                case 3: func_B6FC_b3(); break;
-                case 4: func_B6FC_b4(); break;
-                case 5: func_B6FC_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xB6C4:
-            switch (g_current_bank) {
-                case 0: func_B6C4_b0(); break;
-                case 2: func_B6C4_b2(); break;
-                case 3: func_B6C4_b3(); break;
-                case 4: func_B6C4_b4(); break;
-                case 5: func_B6C4_b5(); break;
-                case 1: func_B6C4_b1(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0x80A5:
-            switch (g_current_bank) {
-                case 1: func_80A5_b1(); break;
-                case 2: func_80A5_b2(); break;
-                case 3: func_80A5_b3(); break;
-                case 4: func_80A5_b4(); break;
-                case 5: func_80A5_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
         case 0xC531:
             func_C531(); break;
         case 0xC54A:
@@ -13873,6 +13468,8 @@ _dispatch_retry:
             func_C583(); break;
         case 0xC585:
             func_C585(); break;
+        case 0xC5B6:
+            func_C5B6(); break;
         case 0xC5C3:
             func_C5C3(); break;
         case 0xA0A0:
@@ -13916,209 +13513,213 @@ _dispatch_retry:
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB360:
-            func_B360_b0(); break;
+        case 0xB921:
+            func_B921_b1(); break;
+        case 0xB330:
+            func_B330_b0(); break;
         case 0x8180:
             func_8180_b0(); break;
         case 0x8182:
             func_8182_b0(); break;
         case 0x8988:
             func_8988_b0(); break;
-        case 0xB31B:
-            func_B31B_b0(); break;
-        case 0xB329:
-            func_B329_b0(); break;
-        case 0xB33D:
-            func_B33D_b0(); break;
-        case 0xB38C:
-            func_B38C_b0(); break;
-        case 0xB394:
-            func_B394_b0(); break;
-        case 0xB3F0:
+        case 0xB2EB:
+            func_B2EB_b0(); break;
+        case 0xB2F9:
+            func_B2F9_b0(); break;
+        case 0xB30D:
+            func_B30D_b0(); break;
+        case 0xB35C:
+            func_B35C_b0(); break;
+        case 0xB364:
+            func_B364_b0(); break;
+        case 0xB3C0:
             switch (g_current_bank) {
-                case 0: func_B3F0_b0(); break;
-                case 1: func_B3F0_b1(); break;
-                case 2: func_B3F0_b2(); break;
-                case 3: func_B3F0_b3(); break;
-                case 4: func_B3F0_b4(); break;
-                case 5: func_B3F0_b5(); break;
+                case 0: func_B3C0_b0(); break;
+                case 1: func_B3C0_b1(); break;
+                case 2: func_B3C0_b2(); break;
+                case 3: func_B3C0_b3(); break;
+                case 4: func_B3C0_b4(); break;
+                case 5: func_B3C0_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB3FC:
+        case 0xB3CC:
             switch (g_current_bank) {
-                case 7: func_F3FC(); break;
-                case 0: func_B3FC_b0(); break;
-                case 1: func_B3FC_b1(); break;
-                case 2: func_B3FC_b2(); break;
-                case 3: func_B3FC_b3(); break;
-                case 4: func_B3FC_b4(); break;
-                case 5: func_B3FC_b5(); break;
+                case 0: func_B3CC_b0(); break;
+                case 1: func_B3CC_b1(); break;
+                case 2: func_B3CC_b2(); break;
+                case 3: func_B3CC_b3(); break;
+                case 4: func_B3CC_b4(); break;
+                case 5: func_B3CC_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB40E:
+        case 0xB3DE:
             switch (g_current_bank) {
-                case 0: func_B40E_b0(); break;
-                case 1: func_B40E_b1(); break;
-                case 2: func_B40E_b2(); break;
-                case 3: func_B40E_b3(); break;
-                case 4: func_B40E_b4(); break;
-                case 5: func_B40E_b5(); break;
+                case 0: func_B3DE_b0(); break;
+                case 1: func_B3DE_b1(); break;
+                case 2: func_B3DE_b2(); break;
+                case 3: func_B3DE_b3(); break;
+                case 4: func_B3DE_b4(); break;
+                case 5: func_B3DE_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB4A9:
+        case 0xB479:
             switch (g_current_bank) {
-                case 7: func_F4A9(); break;
-                case 0: func_B4A9_b0(); break;
-                case 1: func_B4A9_b1(); break;
-                case 2: func_B4A9_b2(); break;
-                case 3: func_B4A9_b3(); break;
-                case 4: func_B4A9_b4(); break;
-                case 5: func_B4A9_b5(); break;
+                case 0: func_B479_b0(); break;
+                case 1: func_B479_b1(); break;
+                case 2: func_B479_b2(); break;
+                case 3: func_B479_b3(); break;
+                case 4: func_B479_b4(); break;
+                case 5: func_B479_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB4BD:
+        case 0xB48D:
             switch (g_current_bank) {
-                case 0: func_B4BD_b0(); break;
-                case 1: func_B4BD_b1(); break;
-                case 2: func_B4BD_b2(); break;
-                case 3: func_B4BD_b3(); break;
-                case 4: func_B4BD_b4(); break;
-                case 5: func_B4BD_b5(); break;
+                case 0: func_B48D_b0(); break;
+                case 1: func_B48D_b1(); break;
+                case 2: func_B48D_b2(); break;
+                case 3: func_B48D_b3(); break;
+                case 4: func_B48D_b4(); break;
+                case 5: func_B48D_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB587:
+        case 0xB557:
             switch (g_current_bank) {
-                case 0: func_B587_b0(); break;
-                case 1: func_B587_b1(); break;
-                case 2: func_B587_b2(); break;
-                case 3: func_B587_b3(); break;
-                case 4: func_B587_b4(); break;
-                case 5: func_B587_b5(); break;
+                case 0: func_B557_b0(); break;
+                case 1: func_B557_b1(); break;
+                case 2: func_B557_b2(); break;
+                case 3: func_B557_b3(); break;
+                case 4: func_B557_b4(); break;
+                case 5: func_B557_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB5A5:
+        case 0xB575:
             switch (g_current_bank) {
-                case 0: func_B5A5_b0(); break;
-                case 1: func_B5A5_b1(); break;
-                case 2: func_B5A5_b2(); break;
-                case 3: func_B5A5_b3(); break;
-                case 4: func_B5A5_b4(); break;
-                case 5: func_B5A5_b5(); break;
+                case 0: func_B575_b0(); break;
+                case 1: func_B575_b1(); break;
+                case 2: func_B575_b2(); break;
+                case 3: func_B575_b3(); break;
+                case 4: func_B575_b4(); break;
+                case 5: func_B575_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB98C:
+        case 0xB95C:
             switch (g_current_bank) {
-                case 0: func_B98C_b0(); break;
-                case 1: func_B98C_b1(); break;
-                case 2: func_B98C_b2(); break;
-                case 3: func_B98C_b3(); break;
-                case 4: func_B98C_b4(); break;
-                case 5: func_B98C_b5(); break;
+                case 0: func_B95C_b0(); break;
+                case 1: func_B95C_b1(); break;
+                case 2: func_B95C_b2(); break;
+                case 3: func_B95C_b3(); break;
+                case 4: func_B95C_b4(); break;
+                case 5: func_B95C_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB9A0:
+        case 0xB970:
             switch (g_current_bank) {
-                case 0: func_B9A0_b0(); break;
-                case 1: func_B9A0_b1(); break;
-                case 2: func_B9A0_b2(); break;
-                case 3: func_B9A0_b3(); break;
-                case 4: func_B9A0_b4(); break;
-                case 5: func_B9A0_b5(); break;
+                case 0: func_B970_b0(); break;
+                case 1: func_B970_b1(); break;
+                case 2: func_B970_b2(); break;
+                case 3: func_B970_b3(); break;
+                case 4: func_B970_b4(); break;
+                case 5: func_B970_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB9E4:
+        case 0xB9B4:
             switch (g_current_bank) {
-                case 0: func_B9E4_b0(); break;
-                case 1: func_B9E4_b1(); break;
-                case 2: func_B9E4_b2(); break;
-                case 3: func_B9E4_b3(); break;
-                case 4: func_B9E4_b4(); break;
-                case 5: func_B9E4_b5(); break;
+                case 0: func_B9B4_b0(); break;
+                case 1: func_B9B4_b1(); break;
+                case 2: func_B9B4_b2(); break;
+                case 3: func_B9B4_b3(); break;
+                case 4: func_B9B4_b4(); break;
+                case 5: func_B9B4_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB9E5:
+        case 0xB9B5:
             switch (g_current_bank) {
-                case 0: func_B9E5_b0(); break;
-                case 1: func_B9E5_b1(); break;
-                case 2: func_B9E5_b2(); break;
-                case 3: func_B9E5_b3(); break;
-                case 4: func_B9E5_b4(); break;
-                case 5: func_B9E5_b5(); break;
+                case 0: func_B9B5_b0(); break;
+                case 1: func_B9B5_b1(); break;
+                case 2: func_B9B5_b2(); break;
+                case 3: func_B9B5_b3(); break;
+                case 4: func_B9B5_b4(); break;
+                case 5: func_B9B5_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xB9F3:
+        case 0xB9C3:
             switch (g_current_bank) {
-                case 0: func_B9F3_b0(); break;
-                case 1: func_B9F3_b1(); break;
-                case 2: func_B9F3_b2(); break;
-                case 3: func_B9F3_b3(); break;
-                case 4: func_B9F3_b4(); break;
-                case 5: func_B9F3_b5(); break;
+                case 0: func_B9C3_b0(); break;
+                case 1: func_B9C3_b1(); break;
+                case 2: func_B9C3_b2(); break;
+                case 3: func_B9C3_b3(); break;
+                case 4: func_B9C3_b4(); break;
+                case 5: func_B9C3_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBA41:
+        case 0xBA11:
             switch (g_current_bank) {
-                case 7: func_FA41(); break;
-                case 0: func_BA41_b0(); break;
-                case 1: func_BA41_b1(); break;
-                case 2: func_BA41_b2(); break;
-                case 3: func_BA41_b3(); break;
-                case 4: func_BA41_b4(); break;
-                case 5: func_BA41_b5(); break;
+                case 7: func_FA11(); break;
+                case 0: func_BA11_b0(); break;
+                case 1: func_BA11_b1(); break;
+                case 2: func_BA11_b2(); break;
+                case 3: func_BA11_b3(); break;
+                case 4: func_BA11_b4(); break;
+                case 5: func_BA11_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBC1C:
+        case 0xBBEC:
             switch (g_current_bank) {
-                case 0: func_BC1C_b0(); break;
-                case 1: func_BC1C_b1(); break;
-                case 2: func_BC1C_b2(); break;
-                case 3: func_BC1C_b3(); break;
-                case 4: func_BC1C_b4(); break;
-                case 5: func_BC1C_b5(); break;
+                case 7: func_FBEC(); break;
+                case 0: func_BBEC_b0(); break;
+                case 1: func_BBEC_b1(); break;
+                case 2: func_BBEC_b2(); break;
+                case 3: func_BBEC_b3(); break;
+                case 4: func_BBEC_b4(); break;
+                case 5: func_BBEC_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBC53:
+        case 0xBC34:
             switch (g_current_bank) {
-                case 0: func_BC53_b0(); break;
-                case 1: func_BC53_b1(); break;
-                case 2: func_BC53_b2(); break;
-                case 3: func_BC53_b3(); break;
-                case 4: func_BC53_b4(); break;
-                case 5: func_BC53_b5(); break;
+                case 0: func_BC34_b0(); break;
+                case 1: func_BC34_b1(); break;
+                case 2: func_BC34_b2(); break;
+                case 3: func_BC34_b3(); break;
+                case 4: func_BC34_b4(); break;
+                case 5: func_BC34_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBC64:
+        case 0xBC4B:
+            func_BC4B_b0(); break;
+        case 0xBC7A:
+            func_BC7A_b0(); break;
+        case 0xBEE9:
             switch (g_current_bank) {
-                case 0: func_BC64_b0(); break;
-                case 1: func_BC64_b1(); break;
-                case 2: func_BC64_b2(); break;
-                case 3: func_BC64_b3(); break;
-                case 4: func_BC64_b4(); break;
-                case 5: func_BC64_b5(); break;
+                case 7: func_FEE9(); break;
+                case 0: func_BEE9_b0(); break;
+                case 1: func_BEE9_b1(); break;
+                case 2: func_BEE9_b2(); break;
+                case 3: func_BEE9_b3(); break;
+                case 4: func_BEE9_b4(); break;
+                case 5: func_BEE9_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
-        case 0xBC7B:
-            func_BC7B_b0(); break;
-        case 0xBA70:
-            func_BA70_b1(); break;
-        case 0xBA7B:
-            func_BA7B_b1(); break;
+        case 0xBA40:
+            func_BA40_b1(); break;
+        case 0xBA4B:
+            func_BA4B_b1(); break;
         case 0x871F:
             func_871F_b1(); break;
         case 0x872B:
@@ -14299,52 +13900,104 @@ _dispatch_retry:
             func_9CCC_b1(); break;
         case 0x9D05:
             func_9D05_b1(); break;
-        case 0xB53F:
-            func_B53F_b1(); break;
-        case 0xB546:
-            func_B546_b1(); break;
-        case 0xB55B:
-            func_B55B_b1(); break;
-        case 0xB569:
-            func_B569_b1(); break;
-        case 0xB59E:
-            func_B59E_b1(); break;
-        case 0xB5AB:
-            func_B5AB_b1(); break;
-        case 0xB5B3:
-            func_B5B3_b1(); break;
-        case 0xB5BA:
-            func_B5BA_b1(); break;
-        case 0xB5C8:
-            func_B5C8_b1(); break;
-        case 0xB6FD:
-            func_B6FD_b1(); break;
-        case 0xB717:
-            func_B717_b1(); break;
-        case 0xB733:
-            func_B733_b1(); break;
-        case 0xB740:
-            func_B740_b1(); break;
-        case 0xB746:
-            func_B746_b1(); break;
-        case 0xB765:
-            func_B765_b1(); break;
-        case 0xB76C:
-            func_B76C_b1(); break;
-        case 0xB7AA:
-            func_B7AA_b1(); break;
-        case 0xBCA7:
-            func_BCA7_b1(); break;
-        case 0xBCAD:
-            func_BCAD_b1(); break;
-        case 0xBCB0:
-            func_BCB0_b1(); break;
-        case 0xBCB3:
-            func_BCB3_b1(); break;
-        case 0xBC27:
-            func_BC27_b1(); break;
-        case 0x9A06:
-            func_9A06_b3(); break;
+        case 0xB50F:
+            func_B50F_b1(); break;
+        case 0xB516:
+            func_B516_b1(); break;
+        case 0xB52B:
+            func_B52B_b1(); break;
+        case 0xB539:
+            func_B539_b1(); break;
+        case 0xB56E:
+            func_B56E_b1(); break;
+        case 0xB57B:
+            func_B57B_b1(); break;
+        case 0xB583:
+            func_B583_b1(); break;
+        case 0xB58A:
+            func_B58A_b1(); break;
+        case 0xB598:
+            func_B598_b1(); break;
+        case 0xB5EC:
+            func_B5EC_b1(); break;
+        case 0xB5F6:
+            func_B5F6_b1(); break;
+        case 0xB650:
+            func_B650_b1(); break;
+        case 0xB673:
+            func_B673_b1(); break;
+        case 0xB695:
+            func_B695_b1(); break;
+        case 0xB6A1:
+            func_B6A1_b1(); break;
+        case 0xB6B0:
+            func_B6B0_b1(); break;
+        case 0xB6CD:
+            func_B6CD_b1(); break;
+        case 0xB6D3:
+            func_B6D3_b1(); break;
+        case 0xB6E7:
+            func_B6E7_b1(); break;
+        case 0xB6ED:
+            func_B6ED_b1(); break;
+        case 0xB703:
+            func_B703_b1(); break;
+        case 0xB710:
+            func_B710_b1(); break;
+        case 0xB716:
+            func_B716_b1(); break;
+        case 0xB735:
+            func_B735_b1(); break;
+        case 0xB73C:
+            func_B73C_b1(); break;
+        case 0xB74F:
+            func_B74F_b1(); break;
+        case 0xB77A:
+            func_B77A_b1(); break;
+        case 0xB781:
+            func_B781_b1(); break;
+        case 0xB7A6:
+            func_B7A6_b1(); break;
+        case 0xB7AC:
+            func_B7AC_b1(); break;
+        case 0xB7CB:
+            func_B7CB_b1(); break;
+        case 0xB7D9:
+            func_B7D9_b1(); break;
+        case 0xB7E7:
+            func_B7E7_b1(); break;
+        case 0xB7EF:
+            func_B7EF_b1(); break;
+        case 0xB80E:
+            func_B80E_b1(); break;
+        case 0xB834:
+            func_B834_b1(); break;
+        case 0xB84F:
+            func_B84F_b1(); break;
+        case 0xB878:
+            func_B878_b1(); break;
+        case 0xB87F:
+            func_B87F_b1(); break;
+        case 0xB8A7:
+            func_B8A7_b1(); break;
+        case 0xB8B1:
+            func_B8B1_b1(); break;
+        case 0xB8D2:
+            func_B8D2_b1(); break;
+        case 0xB8ED:
+            func_B8ED_b1(); break;
+        case 0xB940:
+            func_B940_b1(); break;
+        case 0xBC77:
+            func_BC77_b1(); break;
+        case 0xBC7D:
+            func_BC7D_b1(); break;
+        case 0xBC80:
+            func_BC80_b1(); break;
+        case 0xBC83:
+            func_BC83_b1(); break;
+        case 0xBBF7:
+            func_BBF7_b1(); break;
         case 0x9AF9:
             func_9AF9_b3(); break;
         case 0x9DF2:
@@ -14367,33 +14020,32 @@ _dispatch_retry:
             func_A041_b3(); break;
         case 0xA072:
             func_A072_b3(); break;
+        case 0xBAF2:
+            switch (g_current_bank) {
+                case 7: func_FAF2(); break;
+                case 3: func_BAF2_b3(); break;
+                case 4: func_BAF2_b4(); break;
+                case 5: func_BAF2_b5(); break;
+                default: return nes_interp_dispatch(addr);
+            }
+            break;
         case 0x871C:
             func_871C_b5(); break;
         case 0x99C6:
             func_99C6_b5(); break;
         case 0x99DB:
             func_99DB_b5(); break;
-        case 0xB2FC:
-            func_B2FC_b0(); break;
-        case 0xB568:
+        case 0xB2A3:
+            func_B2A3_b0(); break;
+        case 0xB538:
             switch (g_current_bank) {
-                case 0: func_B568_b0(); break;
-                case 1: func_B568_b1(); break;
-                case 2: func_B568_b2(); break;
-                case 3: func_B568_b3(); break;
-                case 4: func_B568_b4(); break;
-                case 5: func_B568_b5(); break;
-                default: return nes_interp_dispatch(addr);
-            }
-            break;
-        case 0xBC22:
-            switch (g_current_bank) {
-                case 0: func_BC22_b0(); break;
-                case 1: func_BC22_b1(); break;
-                case 2: func_BC22_b2(); break;
-                case 3: func_BC22_b3(); break;
-                case 4: func_BC22_b4(); break;
-                case 5: func_BC22_b5(); break;
+                case 7: func_F538(); break;
+                case 0: func_B538_b0(); break;
+                case 1: func_B538_b1(); break;
+                case 2: func_B538_b2(); break;
+                case 3: func_B538_b3(); break;
+                case 4: func_B538_b4(); break;
+                case 5: func_B538_b5(); break;
                 default: return nes_interp_dispatch(addr);
             }
             break;
@@ -14469,10 +14121,18 @@ _dispatch_retry:
             func_89FB_b1(); break;
         case 0x99A1:
             func_99A1_b1(); break;
-        case 0xB594:
-            func_B594_b1(); break;
-        case 0xB769:
-            func_B769_b1(); break;
+        case 0xB564:
+            func_B564_b1(); break;
+        case 0xB694:
+            func_B694_b1(); break;
+        case 0xB6CC:
+            func_B6CC_b1(); break;
+        case 0xB739:
+            func_B739_b1(); break;
+        case 0xB8A6:
+            func_B8A6_b1(); break;
+        case 0xB8EC:
+            func_B8EC_b1(); break;
         case 0x9DF1:
             func_9DF1_b3(); break;
         case 0x913F:
@@ -14507,8 +14167,6 @@ _dispatch_retry:
             func_9173_b1(); break;
         case 0xA44D:
             func_A44D_b1(); break;
-        case 0xAFE5:
-            func_AFE5_b1(); break;
         case 0xA470:
             func_A470_b1(); break;
         case 0xA6FB:

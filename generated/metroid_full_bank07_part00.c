@@ -138,7 +138,7 @@ if (g_cpu.S != _cbs) {
 #endif
     return; } }
 label_C103:;
-    /* $C103: 20 */ nes_cpu_instruction_boundary(0xC103, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xC1; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x05; g_cpu.S--; func_FFD8();
+    /* $C103: 20 */ nes_cpu_instruction_boundary(0xC103, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0xC1; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x05; g_cpu.S--; if (!nes_dispatch_call(0xB3B4, -1)) g_cpu.S += 2;
 if (g_cpu.S != _cbs) {
 #ifdef RECOMP_STACK_TRACKING
     bail_trace(0xC103, _cbs);
@@ -1060,14 +1060,6 @@ void func_C221(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
-}
-
-void func_FFD8(void) { /* GotoSoundEngine */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_FFD8");
-#endif
-label_FFD8:; /* GotoSoundEngine */
-    /* $FFD8: 4C */ nes_cpu_instruction_boundary(0xFFD8, 3); nes_cpu_instruction_boundary(0xB3E4, 2); call_by_address_tail(0xB3E4, -1); return;
 }
 
 void func_C158_body(int _entry) { /* ClearNameTables */
@@ -6090,8 +6082,6 @@ void func_C801_body(int _entry) { /* AreaInit */
         case 22: goto label_C81F;
         case 23: goto label_C892;
         case 24: goto label_C885;
-        case 25: goto label_C8A2;
-        case 26: goto label_C897;
     }
 label_C801:; /* AreaInit */
     /* $C801: A9 */ nes_cpu_instruction_boundary(0xC801, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
@@ -6587,26 +6577,6 @@ void func_C885(void) {
 #endif
 }
 
-void func_C8A2(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_C8A2");
-#endif
-    func_C801_body(25);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_C897(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_C897");
-#endif
-    func_C801_body(26);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_C8D1_body(int _entry) { /* SamusInit */
     switch (_entry) {
         case 1: goto label_C908;
@@ -6637,7 +6607,7 @@ label_C8D1:; /* SamusInit */
 label_C8D3:;
     /* $C8D3: 85 */ nes_cpu_instruction_boundary(0xC8D3, 3); nes_write(0x1E, g_cpu.A);
 label_C8D5:;
-    /* $C8D5: A9 */ nes_cpu_instruction_boundary(0xC8D5, 2); g_cpu.A = 0x26; FLAG_NZ(g_cpu.A);
+    /* $C8D5: A9 */ nes_cpu_instruction_boundary(0xC8D5, 2); g_cpu.A = 0x2C; FLAG_NZ(g_cpu.A);
 label_C8D7:;
     /* $C8D7: 85 */ nes_cpu_instruction_boundary(0xC8D7, 3); nes_write(0x2C, g_cpu.A);
 label_C8D9:;
@@ -7906,7 +7876,6 @@ void func_E720_body(int _entry) { /* GetRoomNum */
     switch (_entry) {
         case 1: goto label_E730;
         case 2: goto label_E731;
-        case 3: goto label_E74C;
     }
 label_E720:; /* GetRoomNum */
     /* $E720: A5 */ nes_cpu_instruction_boundary(0xE720, 3); g_cpu.A = nes_read(0x49); FLAG_NZ(g_cpu.A);
@@ -8049,19 +8018,10 @@ void func_E731(void) {
 #endif
 }
 
-void func_E74C(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_E74C");
-#endif
-    func_E720_body(3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_EA2B_body(int _entry) { /* SetupRoom */
     switch (_entry) {
         case 1: goto label_EA2D;
+        case 2: goto label_EA4C;
     }
 label_EA2B:; /* SetupRoom */
     /* $EA2B: A5 */ nes_cpu_instruction_boundary(0xEA2B, 3); g_cpu.A = nes_read(0x5A); FLAG_NZ(g_cpu.A);
@@ -8160,6 +8120,16 @@ void func_EA2D(void) {
     recomp_stack_push("func_EA2D");
 #endif
     func_EA2B_body(1);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_EA4C(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_EA4C");
+#endif
+    func_EA2B_body(2);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9269,6 +9239,7 @@ void func_E094_body(int _entry) { /* UpdateEnemyAnim */
         case 8: goto label_E0AD;
         case 9: goto label_E0C7;
         case 10: goto label_E09D;
+        case 11: goto label_E099;
     }
 label_E094:; /* UpdateEnemyAnim */
     /* $E094: A6 */ nes_cpu_instruction_boundary(0xE094, 3); g_cpu.X = nes_read(0x4B); FLAG_NZ(g_cpu.X);
@@ -9685,6 +9656,16 @@ void func_E09D(void) {
     recomp_stack_push("func_E09D");
 #endif
     func_E094_body(10);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_E099(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_E099");
+#endif
+    func_E094_body(11);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -25831,7 +25812,7 @@ label_FFAC:;
     /* $FFAC: 08 */ nes_cpu_instruction_boundary(0xFFAC, 3); { uint8_t p = (g_cpu.N<<7)|(g_cpu.V<<6)|0x30|(g_cpu.D<<3)|(g_cpu.I<<2)|(g_cpu.Z<<1)|g_cpu.C;
   g_ram[0x100 + g_cpu.S] = p; g_cpu.S--; }
 label_FFAD:;
-    /* $FFAD: FE */ nes_cpu_instruction_boundary(0xFFAD, 7); { uint16_t a=(0x0201 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
+    /* $FFAD: FE */ nes_cpu_instruction_boundary(0xFFAD, 7); { uint16_t a=(0x0000 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_FFB0:; /* ROMFIXED_RESET */
     /* $FFB0: 78 */ nes_cpu_instruction_boundary(0xFFB0, 2); g_cpu.I = 1;
 label_FFB1:;
@@ -28213,19 +28194,16 @@ label_FFCC:; return;
 label_FFCF:; return;
 label_FFD2:; return;
 label_FFD5:; return;
-label_FFD6:; return;
-label_FFD9:; return;
+label_FFD8:; return;
 label_FFDB:; return;
-label_FFDC:; return;
-label_FFDF:; return;
-label_FFE0:; return;
-label_FFE3:; return;
-label_FFE6:; return;
-label_FFE9:; return;
+label_FFDE:; return;
+label_FFE1:; return;
+label_FFE4:; return;
+label_FFE7:; return;
+label_FFEA:; return;
 label_FFEC:; return;
 label_FFED:; return;
 label_FFF0:; return;
-label_FFF1:; return;
 label_FFF2:; return;
 label_FFF3:; return;
 label_FFF4:; return;
@@ -28233,6 +28211,7 @@ label_FFF5:; return;
 label_FFF7:; return;
 label_FFF9:; return;
 label_FFFC:; return;
+label_FFFE:; return;
 }
 
 void func_EF09(void) { /* AddToPtr00 */
@@ -30360,19 +30339,16 @@ label_FFCC:; return;
 label_FFCF:; return;
 label_FFD2:; return;
 label_FFD5:; return;
-label_FFD6:; return;
-label_FFD9:; return;
+label_FFD8:; return;
 label_FFDB:; return;
-label_FFDC:; return;
-label_FFDF:; return;
-label_FFE0:; return;
-label_FFE3:; return;
-label_FFE6:; return;
-label_FFE9:; return;
+label_FFDE:; return;
+label_FFE1:; return;
+label_FFE4:; return;
+label_FFE7:; return;
+label_FFEA:; return;
 label_FFEC:; return;
 label_FFED:; return;
 label_FFF0:; return;
-label_FFF1:; return;
 label_FFF2:; return;
 label_FFF3:; return;
 label_FFF4:; return;

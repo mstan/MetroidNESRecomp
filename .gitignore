@@ -31,7 +31,8 @@ tools/_*
 tools/*.py
 # ...except the maintained symbol/disassembly pipeline (see WIDESCREEN.md / README):
 !tools/gen_symbols.py
-!tools/gen_ram_header.py
+!tools/migrate_hints.py
+!tools/extract_metroid_data_regions.py
 !tools/multi_death.py
 !tools/nes_compare.py
 tools/*.txt

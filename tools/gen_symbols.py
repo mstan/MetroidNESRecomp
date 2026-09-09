@@ -17,12 +17,16 @@ Pipeline (offline, results are committed):
                           (extras.c, the widescreen renderer), so no bare
                           addresses appear outside the disassembly
 
-The ROM this repo targets is the one m1disasm calls NES_PAL: metroid.nes is
-byte-identical to out/M1_NES_PAL.nes (body CRC32 7751588D = No-Intro
-"Metroid (Europe)"). NTSC / "Metroid (USA)" (70080810) differs in every bank,
-so the target must match or every banked name is wrong.
+The ROM this repo targets is the one m1disasm calls NES_NTSC: metroid.nes is
+byte-identical to out/M1_NES_NTSC.nes (body CRC32 70080810 = No-Intro
+"Metroid (USA)"). The EU variant is m1disasm's NES_PAL target (7751588D =
+"Metroid (Europe)"), kept in this repo as metroid-eu.nes for reference; it
+differs from NTSC in every PRG bank, so the target must match the ROM or every
+banked name is wrong. To regenerate for the EU variant instead:
 
-Usage: python tools/gen_symbols.py [--target NES_PAL] [--rom metroid.nes] [--no-build]
+    python tools/gen_symbols.py --target NES_PAL --rom metroid-eu.nes
+
+Usage: python tools/gen_symbols.py [--target NES_NTSC] [--rom metroid.nes] [--no-build]
 """
 import argparse
 import os
@@ -92,7 +96,7 @@ def build():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--target', default='NES_PAL')
+    ap.add_argument('--target', default='NES_NTSC')
     ap.add_argument('--rom', default=os.path.join(ROOT, 'metroid.nes'))
     ap.add_argument('--no-build', action='store_true')
     a = ap.parse_args()

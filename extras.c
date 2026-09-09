@@ -12,6 +12,7 @@
 #include "recomp_stack.h"
 #include "watchdog.h"
 #include "metroid_ws.h"
+#include "metroid_ram.h"   /* MET_* RAM names, generated from disasm/m1disasm */
 #ifdef ENABLE_NESTOPIA_ORACLE
 #include "nestopia_bridge.h"
 #endif
@@ -79,27 +80,37 @@ static void get_exe_relative_path(const char *filename, char *out, int max_len) 
  *
  * Metroid has no battery — progress is a 24-char password. We give it the same
  * UX as a battery game: every ~15 s of real gameplay we run the game's OWN
- * password encoder (func_8C7A_b0, bank 0) out-of-band on the current progress,
- * read back the 24 codes it writes to $699A, and persist the resulting password
- * to a sidecar file (metroid.srm) + a timestamped history (metroid_password_log
- * .txt). On the entry screen the saved password is auto-prefilled.
+ * password encoder (func_8C7A_b0 = CalculatePassword, bank 0) out-of-band on the
+ * current progress, read back the 24 codes it writes to PasswordChar ($699A),
+ * and persist the resulting password to a sidecar file (metroid.srm) + a
+ * timestamped history (metroid_password_log.txt). On the entry screen the
+ * saved password is auto-prefilled.
  *
  * Calling the recompiled encoder out-of-band is made side-effect-free by:
  *   - bracketing in runtime_begin/end_post_nmi() (neutralises maybe_trigger_vblank
  *     -> no NMI re-entrancy), and
  *   - snapshotting/restoring everything it touches: zero page ($0000-$00FF) and
- *     the $6886-$69B1 WRAM scratch (payload/codes/list). The encoder also bumps
- *     the RNG ($002E/$002F via func_c000) — covered by the zero-page snapshot.
+ *     the NumberOfUniqueItems..NARPASSWORD ($6886-$69B1) WRAM scratch
+ *     (payload/codes/list). The encoder also bumps the RNG ($002E/$002F via
+ *     func_c000) — covered by the zero-page snapshot.
  * ==========================================================================*/
 
 extern uint8_t g_ram[];     /* 2KB work RAM ($0000-$07FF)  */
 extern uint8_t g_sram[];    /* 8KB WRAM     ($6000-$7FFF)  */
-void func_8C7A_b0(void);    /* bank-0 password encoder: live progress -> 24 codes @ $699A */
 
+/* The encoder is CalculatePassword, bank 0 $8C7A in BOTH m1disasm targets
+ * (`00:8c7a CalculatePassword` in out/M1_NES_NTSC.sym and out/M1_NES_PAL.sym),
+ * so the generated name func_8C7A_b0 is the same for the USA and EU ROMs.
+ * Every buffer it touches is WRAM named in constants_ram.asm, which the two
+ * revisions share. The addresses below therefore come from metroid_ram.h and
+ * are never typed in, so a retarget cannot leave them stale. */
+void func_8C7A_b0(void);    /* CalculatePassword: progress -> 24 codes @ PasswordChar */
+
+#define MET_WRAM_OFF(a)   ((int)(a) - 0x6000)     /* CPU address -> g_sram index */
 #define MET_PW_LEN        24
-#define MET_CODES_OFF     0x099A          /* $699A - $6000 (codes buffer in g_sram) */
-#define MET_SCRATCH_LO    0x0886          /* $6886 - $6000 */
-#define MET_SCRATCH_HI    0x09B2          /* $69B1 + 1 - $6000 (exclusive) */
+#define MET_CODES_OFF     MET_WRAM_OFF(MET_PasswordChar)          /* $699A */
+#define MET_SCRATCH_LO    MET_WRAM_OFF(MET_NumberOfUniqueItems)   /* $6886 */
+#define MET_SCRATCH_HI    MET_WRAM_OFF(MET_NARPASSWORD)           /* $69B2, exclusive */
 
 /* Metroid password char code (0-63) -> ASCII glyph.  Linear alphabet index:
  * 0-9, A-Z, a-z, then '?' (62) and '-' (63). */
@@ -156,7 +167,7 @@ static int metroid_generate_password(char *out, int out_sz) {
      * the identical password (the encoder picks the shift from RNG $002E via
      * func_c000: $2E=0 -> +0x19 -> shift 9). Restored with work RAM below; the
      * live game RNG is untouched. Any shift 1-15 is valid. */
-    g_ram[0x002E] = 0;
+    g_ram[MET_RandomNumber1] = 0;
 
     runtime_begin_post_nmi();   /* neutralise maybe_trigger_vblank during the call */
     func_8C7A_b0();             /* serialise progress -> obfuscate -> checksum -> pack -> $699A */
@@ -242,7 +253,7 @@ static int password_is_blank(const char *pw) {
 static void password_capture_tick(uint64_t frame_count) {
     if (!s_capture_enabled || s_password_from_cli) return;
     if ((frame_count % 300) != 0) return;        /* ~every 5 s */
-    if (g_ram[0x1D] != 0) return;                /* 0 = in gameplay; 1 = title/menu */
+    if (g_ram[MET_GameMode] != 0) return;        /* 0 = in gameplay; 1 = title/menu */
 
     char pw[MET_PW_LEN + 1];
     if (metroid_generate_password(pw, sizeof(pw)) <= 0) return;
@@ -272,14 +283,14 @@ static int s_prefill_press = 0;    /* 0 = press A this frame, 1 = release */
 static int s_prefill_armed = 0;    /* armed once per entry-screen visit */
 
 static void password_prefill_tick(void) {
-    int on_entry = (g_ram[0x1D] == 1 && g_ram[0x1F] == 0x18);
+    int on_entry = (g_ram[MET_GameMode] == 1 && g_ram[MET_TitleRoutine] == 0x18);
     if (!on_entry) { s_prefill_armed = 0; s_prefill_idx = -1; return; }
     if (!s_password || !s_password[0]) return;
 
     /* Arm once on arrival, only if the player hasn't started typing ($0320==0). */
     if (!s_prefill_armed) {
         s_prefill_armed = 1;
-        s_prefill_idx = (g_ram[0x0320] == 0) ? 0 : -1;
+        s_prefill_idx = (g_ram[MET_PasswordCursor] == 0) ? 0 : -1;
         s_prefill_press = 0;
     }
     int len = (int)strlen(s_password);
@@ -293,17 +304,17 @@ static void password_prefill_tick(void) {
      * accept input yet). Press A only when $0320 matches our index; advance only
      * once the entry actually registered ($0320 moved off our index). */
     if (s_prefill_press == 0) {
-        if (g_ram[0x0320] != (uint8_t)s_prefill_idx) return;   /* wait for the buffer to catch up */
+        if (g_ram[MET_PasswordCursor] != (uint8_t)s_prefill_idx) return;   /* wait for the buffer to catch up */
         int code = metroid_char_to_index(s_password[s_prefill_idx]);
         if (code < 0) { s_prefill_idx = -1; return; }
-        g_ram[0x0321] = (uint8_t)(code / 13);   /* cursor row */
-        g_ram[0x0322] = (uint8_t)(code % 13);   /* cursor col */
+        g_ram[MET_InputRow]    = (uint8_t)(code / 13);   /* cursor row */
+        g_ram[MET_InputColumn] = (uint8_t)(code % 13);   /* cursor col */
         g_controller1_buttons = 0x80;           /* press A (edge) */
         s_prefill_press = 1;
     } else {
         g_controller1_buttons = 0x00;           /* release so the next A is a fresh edge */
         s_prefill_press = 0;
-        if (g_ram[0x0320] != (uint8_t)s_prefill_idx)   /* entry registered */
+        if (g_ram[MET_PasswordCursor] != (uint8_t)s_prefill_idx)   /* entry registered */
             s_prefill_idx++;
     }
 }
@@ -335,10 +346,13 @@ static void scroll_guard_callback(uint16_t addr, uint8_t old_val, uint8_t new_va
 }
 #endif
 
-/* Metroid (USA) PRG+CHR CRC32, iNES header excluded (0x7751588D). Mod
+/* Metroid (USA) PRG+CHR CRC32, iNES header excluded (0x70080810) -- the ROM
+ * this build is recompiled from (m1disasm's NES_NTSC target). Metroid (Europe)
+ * (0x7751588D, m1disasm NES_PAL) is a DIFFERENT program: it differs in every
+ * PRG bank, so its code would not match generated/ and is rejected here. Mod
  * packages target this ROM by game_id + rom_crc32, so the launcher must
  * verify it. */
-uint32_t game_get_expected_crc32(void) { return 0x7751588Du; }
+uint32_t game_get_expected_crc32(void) { return 0x70080810u; }
 
 const char *game_get_name(void) { return "Metroid"; }
 

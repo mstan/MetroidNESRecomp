@@ -60,7 +60,7 @@ add_executable(MetroidNESRecomp
 
 target_compile_definitions(MetroidNESRecomp PRIVATE
     NESRECOMP_GAME_ID="metroid-nes"
-    NESRECOMP_GAME_ROM_CRC32="7751588d"
+    NESRECOMP_GAME_ROM_CRC32="70080810"   # Metroid (USA), header excluded
     NESRECOMP_SPLIT_PARTS_EXTERNAL
     RECOMP_STACK_TRACKING
     WATCHDOG_ENABLED

@@ -793,7 +793,8 @@ void func_FF54_body(int _entry) { /* UpdateTileBlastAnim */
     switch (_entry) {
         case 1: goto label_FF85;
         case 2: goto label_FF69;
-        case 3: goto label_FF72;
+        case 3: goto label_FF60;
+        case 4: goto label_FF72;
     }
 label_FF54:; /* UpdateTileBlastAnim */
     /* $FF54: A6 */ nes_cpu_instruction_boundary(0xFF54, 3); g_cpu.X = nes_read(0x4B); FLAG_NZ(g_cpu.X);
@@ -889,11 +890,21 @@ void func_FF69(void) {
 #endif
 }
 
+void func_FF60(void) { /* UpdateTileBlastAnim_update */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_FF60");
+#endif
+    func_FF54_body(3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
 void func_FF72(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FF72");
 #endif
-    func_FF54_body(3);
+    func_FF54_body(4);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10067,9 +10078,8 @@ void func_E668_body(int _entry) { /* MoveSamusRight */
         case 3: goto label_E690;
         case 4: goto label_E67E;
         case 5: goto label_E685;
-        case 6: goto label_E6A2;
-        case 7: goto label_E6A0;
-        case 8: goto label_E699;
+        case 6: goto label_E6A0;
+        case 7: goto label_E699;
     }
 label_E668:; /* MoveSamusRight */
     /* $E668: AD */ nes_cpu_instruction_boundary(0xE668, 4); g_cpu.A = nes_read(0x030E); FLAG_NZ(g_cpu.A);
@@ -10227,21 +10237,11 @@ void func_E685(void) {
 #endif
 }
 
-void func_E6A2(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_E6A2");
-#endif
-    func_E668_body(6);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_E6A0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_E6A0");
 #endif
-    func_E668_body(7);
+    func_E668_body(6);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10251,7 +10251,7 @@ void func_E699(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_E699");
 #endif
-    func_E668_body(8);
+    func_E668_body(7);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -11472,8 +11472,7 @@ label_E888:;
 
 void func_D976_body(int _entry) { /* SamusCollisionWithSolidEntities */
     switch (_entry) {
-        case 1: goto label_D9B9;
-        case 2: goto label_D983;
+        case 1: goto label_D983;
     }
 label_D976:; /* SamusCollisionWithSolidEntities */
     /* $D976: A9 */ nes_cpu_instruction_boundary(0xD976, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
@@ -11604,21 +11603,11 @@ void func_D976(void) { /* SamusCollisionWithSolidEntities */
 #endif
 }
 
-void func_D9B9(void) { /* SamusCollisionWithSolidEntities_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_D9B9");
-#endif
-    func_D976_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_D983(void) { /* SamusCollisionWithSolidEntities_loop */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_D983");
 #endif
-    func_D976_body(2);
+    func_D976_body(1);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -12621,7 +12610,7 @@ label_00EF:;
     /* $00EF: FF */ nes_cpu_instruction_boundary(0x00EF, 7); { uint16_t a=(0xFFFF + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
 label_00F2:;
     /* $00F2: FF */ nes_cpu_instruction_boundary(0x00F2, 7); { uint16_t a=(0xFFFF + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
-label_00F5:;
+label_00F5:; /* _sizeof_SongEndSQ1 */
     /* $00F5: FF */ nes_cpu_instruction_boundary(0x00F5, 7); { uint16_t a=(0xFFFF + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }
 label_00F8:;
     /* $00F8: FF */ nes_cpu_instruction_boundary(0x00F8, 7); { uint16_t a=(0xFFFF + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); int16_t r=g_cpu.A-v-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,v); g_cpu.A=r&0xFF; }

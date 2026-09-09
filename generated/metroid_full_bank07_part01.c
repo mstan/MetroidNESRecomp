@@ -2531,19 +2531,16 @@ label_FFCC:; return;
 label_FFCF:; return;
 label_FFD2:; return;
 label_FFD5:; return;
-label_FFD6:; return;
-label_FFD9:; return;
+label_FFD8:; return;
 label_FFDB:; return;
-label_FFDC:; return;
-label_FFDF:; return;
-label_FFE0:; return;
-label_FFE3:; return;
-label_FFE6:; return;
-label_FFE9:; return;
+label_FFDE:; return;
+label_FFE1:; return;
+label_FFE4:; return;
+label_FFE7:; return;
+label_FFEA:; return;
 label_FFEC:; return;
 label_FFED:; return;
 label_FFF0:; return;
-label_FFF1:; return;
 label_FFF2:; return;
 label_FFF3:; return;
 label_FFF4:; return;
@@ -2659,198 +2656,198 @@ void func_EA60_body(int _entry) { /* DrawObject */
         case 4: goto label_EB6E;
         case 5: goto label_FB87;
         case 6: goto label_F870;
-        case 7: goto label_F03D;
-        case 8: goto label_F86F;
-        case 9: goto label_EFD0;
-        case 10: goto label_F1D1;
-        case 11: goto label_F3B0;
-        case 12: goto label_F01E;
-        case 13: goto label_F010;
-        case 14: goto label_F004;
-        case 15: goto label_F4A9;
-        case 16: goto label_F02B;
-        case 17: goto label_F5D1;
-        case 18: goto label_F6D1;
-        case 19: goto label_F089;
-        case 20: goto label_F029;
-        case 21: goto label_F8B0;
-        case 22: goto label_F9D0;
-        case 23: goto label_F9D1;
-        case 24: goto label_EDD1;
-        case 25: goto label_EAF6;
-        case 26: goto label_F024;
-        case 27: goto label_F025;
-        case 28: goto label_EF20;
-        case 29: goto label_EF21;
-        case 30: goto label_FA10;
-        case 31: goto label_F8C4;
-        case 32: goto label_F8C5;
-        case 33: goto label_F06A;
-        case 34: goto label_EF4D;
-        case 35: goto label_EED1;
-        case 36: goto label_FC86;
-        case 37: goto label_FC29;
-        case 38: goto label_F8D1;
-        case 39: goto label_F49E;
-        case 40: goto label_FA84;
-        case 41: goto label_F00B;
-        case 42: goto label_F068;
-        case 43: goto label_F6F0;
-        case 44: goto label_F6F1;
-        case 45: goto label_EE06;
-        case 46: goto label_F4D1;
-        case 47: goto label_EFBE;
-        case 48: goto label_F0BD;
-        case 49: goto label_F0AB;
-        case 50: goto label_FC66;
-        case 51: goto label_F221;
-        case 52: goto label_F009;
-        case 53: goto label_EE20;
-        case 54: goto label_F027;
-        case 55: goto label_F020;
-        case 56: goto label_F021;
-        case 57: goto label_F064;
-        case 58: goto label_F04D;
-        case 59: goto label_EFF1;
-        case 60: goto label_ED38;
-        case 61: goto label_F0E8;
-        case 62: goto label_F7A0;
-        case 63: goto label_F7A1;
-        case 64: goto label_F321;
-        case 65: goto label_F7B1;
-        case 66: goto label_FB20;
-        case 67: goto label_F211;
-        case 68: goto label_F5AA;
-        case 69: goto label_EBBE;
-        case 70: goto label_F1EF;
-        case 71: goto label_F720;
-        case 72: goto label_FAA9;
-        case 73: goto label_F809;
-        case 74: goto label_FC05;
-        case 75: goto label_F079;
-        case 76: goto label_F04F;
-        case 77: goto label_EED5;
-        case 78: goto label_EFC0;
-        case 79: goto label_FC20;
-        case 80: goto label_F84C;
-        case 81: goto label_EB4C;
-        case 82: goto label_F7E9;
-        case 83: goto label_F9B0;
-        case 84: goto label_EBF1;
-        case 85: goto label_F014;
-        case 86: goto label_F015;
-        case 87: goto label_F4BE;
-        case 88: goto label_F421;
-        case 89: goto label_F1F5;
-        case 90: goto label_EE03;
-        case 91: goto label_FC10;
-        case 92: goto label_F05B;
-        case 93: goto label_F060;
-        case 94: goto label_F0FD;
-        case 95: goto label_F018;
-        case 96: goto label_F019;
-        case 97: goto label_F0FF;
-        case 98: goto label_EFB0;
-        case 99: goto label_F7BD;
-        case 100: goto label_F7C9;
-        case 101: goto label_F7CA;
-        case 102: goto label_EF29;
-        case 103: goto label_F0C5;
-        case 104: goto label_F080;
-        case 105: goto label_F869;
-        case 106: goto label_F4BC;
-        case 107: goto label_F8DF;
-        case 108: goto label_F89E;
-        case 109: goto label_F9BC;
-        case 110: goto label_ECB1;
-        case 111: goto label_FBB1;
-        case 112: goto label_FBF0;
-        case 113: goto label_F04B;
-        case 114: goto label_F0ED;
-        case 115: goto label_F059;
-        case 116: goto label_ED04;
-        case 117: goto label_EFCA;
-        case 118: goto label_EFE0;
-        case 119: goto label_FC87;
-        case 120: goto label_F829;
-        case 121: goto label_F82A;
-        case 122: goto label_F2C9;
-        case 123: goto label_F0F2;
-        case 124: goto label_EE51;
-        case 125: goto label_ECD0;
-        case 126: goto label_ECD1;
-        case 127: goto label_F5BD;
-        case 128: goto label_F5FD;
-        case 129: goto label_F6FD;
-        case 130: goto label_EAC1;
-        case 131: goto label_F821;
-        case 132: goto label_F0A6;
-        case 133: goto label_EF0A;
-        case 134: goto label_EB29;
-        case 135: goto label_EB4E;
-        case 136: goto label_EB25;
-        case 137: goto label_EB93;
-        case 138: goto label_ED52;
-        case 139: goto label_FB5E;
-        case 140: goto label_EF10;
-        case 141: goto label_ED8D;
-        case 142: goto label_EE30;
-        case 143: goto label_F051;
-        case 144: goto label_F611;
-        case 145: goto label_EA8D;
-        case 146: goto label_EA8E;
-        case 147: goto label_EF9A;
-        case 148: goto label_EF79;
-        case 149: goto label_EFF4;
-        case 150: goto label_F3FC;
-        case 151: goto label_F0B0;
-        case 152: goto label_F4B9;
-        case 153: goto label_ED20;
-        case 154: goto label_ED21;
-        case 155: goto label_FBB9;
-        case 156: goto label_F1E1;
-        case 157: goto label_F1DA;
-        case 158: goto label_F1E8;
-        case 159: goto label_F1CC;
-        case 160: goto label_F679;
-        case 161: goto label_F67A;
-        case 162: goto label_F579;
-        case 163: goto label_F22C;
-        case 164: goto label_F257;
-        case 165: goto label_EBD0;
-        case 166: goto label_F06C;
-        case 167: goto label_ECC9;
-        case 168: goto label_F00D;
-        case 169: goto label_F082;
-        case 170: goto label_F4FF;
-        case 171: goto label_F99D;
-        case 172: goto label_F07F;
-        case 173: goto label_FBAA;
-        case 174: goto label_EFA0;
-        case 175: goto label_F1F0;
-        case 176: goto label_F499;
-        case 177: goto label_F49A;
-        case 178: goto label_F92B;
-        case 179: goto label_F899;
-        case 180: goto label_F89A;
-        case 181: goto label_F0F7;
-        case 182: goto label_EABA;
-        case 183: goto label_EBBA;
-        case 184: goto label_EC21;
-        case 185: goto label_FC5D;
-        case 186: goto label_FB01;
-        case 187: goto label_FBFF;
-        case 188: goto label_ED10;
-        case 189: goto label_F605;
-        case 190: goto label_F18E;
-        case 191: goto label_F017;
-        case 192: goto label_ED18;
-        case 193: goto label_FB75;
-        case 194: goto label_FC81;
-        case 195: goto label_EFAB;
-        case 196: goto label_F084;
-        case 197: goto label_FA9F;
-        case 198: goto label_EA7D;
+        case 7: goto label_F86F;
+        case 8: goto label_EFD0;
+        case 9: goto label_F1D1;
+        case 10: goto label_F3B0;
+        case 11: goto label_F01E;
+        case 12: goto label_F010;
+        case 13: goto label_F004;
+        case 14: goto label_F4A9;
+        case 15: goto label_F02B;
+        case 16: goto label_F5D1;
+        case 17: goto label_F6D1;
+        case 18: goto label_F089;
+        case 19: goto label_F029;
+        case 20: goto label_F8B0;
+        case 21: goto label_F9D0;
+        case 22: goto label_F9D1;
+        case 23: goto label_EDD1;
+        case 24: goto label_EAF6;
+        case 25: goto label_F024;
+        case 26: goto label_F025;
+        case 27: goto label_EF20;
+        case 28: goto label_EF21;
+        case 29: goto label_FA10;
+        case 30: goto label_F8C4;
+        case 31: goto label_F8C5;
+        case 32: goto label_F06A;
+        case 33: goto label_EF4D;
+        case 34: goto label_EED1;
+        case 35: goto label_FC86;
+        case 36: goto label_FC29;
+        case 37: goto label_F8D1;
+        case 38: goto label_F49E;
+        case 39: goto label_FA84;
+        case 40: goto label_F00B;
+        case 41: goto label_F068;
+        case 42: goto label_F6F0;
+        case 43: goto label_F6F1;
+        case 44: goto label_EE06;
+        case 45: goto label_F4D1;
+        case 46: goto label_EFBE;
+        case 47: goto label_F0BD;
+        case 48: goto label_F0AB;
+        case 49: goto label_FC66;
+        case 50: goto label_F221;
+        case 51: goto label_F009;
+        case 52: goto label_EE20;
+        case 53: goto label_F027;
+        case 54: goto label_F020;
+        case 55: goto label_F021;
+        case 56: goto label_F064;
+        case 57: goto label_F04D;
+        case 58: goto label_EFF1;
+        case 59: goto label_ED38;
+        case 60: goto label_F0E8;
+        case 61: goto label_F7A0;
+        case 62: goto label_F7A1;
+        case 63: goto label_F321;
+        case 64: goto label_F7B1;
+        case 65: goto label_FB20;
+        case 66: goto label_F211;
+        case 67: goto label_F5AA;
+        case 68: goto label_EBBE;
+        case 69: goto label_F1EF;
+        case 70: goto label_F720;
+        case 71: goto label_FAA9;
+        case 72: goto label_F809;
+        case 73: goto label_FC05;
+        case 74: goto label_F079;
+        case 75: goto label_F04F;
+        case 76: goto label_EED5;
+        case 77: goto label_EFC0;
+        case 78: goto label_FC20;
+        case 79: goto label_F84C;
+        case 80: goto label_EB4C;
+        case 81: goto label_F7E9;
+        case 82: goto label_F9B0;
+        case 83: goto label_EBF1;
+        case 84: goto label_F014;
+        case 85: goto label_F015;
+        case 86: goto label_F4BE;
+        case 87: goto label_F421;
+        case 88: goto label_F1F5;
+        case 89: goto label_EE03;
+        case 90: goto label_FC10;
+        case 91: goto label_F05B;
+        case 92: goto label_F060;
+        case 93: goto label_F0FD;
+        case 94: goto label_F018;
+        case 95: goto label_F019;
+        case 96: goto label_F0FF;
+        case 97: goto label_EFB0;
+        case 98: goto label_F7BD;
+        case 99: goto label_F7C9;
+        case 100: goto label_F7CA;
+        case 101: goto label_EF29;
+        case 102: goto label_F0C5;
+        case 103: goto label_F080;
+        case 104: goto label_F869;
+        case 105: goto label_F4BC;
+        case 106: goto label_F8DF;
+        case 107: goto label_F89E;
+        case 108: goto label_F9BC;
+        case 109: goto label_ECB1;
+        case 110: goto label_FBB1;
+        case 111: goto label_FBF0;
+        case 112: goto label_F04B;
+        case 113: goto label_F0ED;
+        case 114: goto label_F059;
+        case 115: goto label_ED04;
+        case 116: goto label_EFCA;
+        case 117: goto label_EFE0;
+        case 118: goto label_FC87;
+        case 119: goto label_F829;
+        case 120: goto label_F82A;
+        case 121: goto label_F2C9;
+        case 122: goto label_F0F2;
+        case 123: goto label_EE51;
+        case 124: goto label_ECD0;
+        case 125: goto label_ECD1;
+        case 126: goto label_F5BD;
+        case 127: goto label_F5FD;
+        case 128: goto label_F6FD;
+        case 129: goto label_EAC1;
+        case 130: goto label_F821;
+        case 131: goto label_F0A6;
+        case 132: goto label_EF0A;
+        case 133: goto label_EB29;
+        case 134: goto label_EB4E;
+        case 135: goto label_EB25;
+        case 136: goto label_EB93;
+        case 137: goto label_ED52;
+        case 138: goto label_FB5E;
+        case 139: goto label_EF10;
+        case 140: goto label_ED8D;
+        case 141: goto label_EE30;
+        case 142: goto label_F051;
+        case 143: goto label_F611;
+        case 144: goto label_EA8D;
+        case 145: goto label_EA8E;
+        case 146: goto label_EF9A;
+        case 147: goto label_EF79;
+        case 148: goto label_EFF4;
+        case 149: goto label_F3FC;
+        case 150: goto label_F0B0;
+        case 151: goto label_F4B9;
+        case 152: goto label_ED20;
+        case 153: goto label_ED21;
+        case 154: goto label_FBB9;
+        case 155: goto label_F1E1;
+        case 156: goto label_F1DA;
+        case 157: goto label_F1E8;
+        case 158: goto label_F1CC;
+        case 159: goto label_F679;
+        case 160: goto label_F67A;
+        case 161: goto label_F579;
+        case 162: goto label_F22C;
+        case 163: goto label_F257;
+        case 164: goto label_EBD0;
+        case 165: goto label_F06C;
+        case 166: goto label_ECC9;
+        case 167: goto label_F00D;
+        case 168: goto label_F082;
+        case 169: goto label_F4FF;
+        case 170: goto label_F99D;
+        case 171: goto label_F07F;
+        case 172: goto label_FBAA;
+        case 173: goto label_EFA0;
+        case 174: goto label_F1F0;
+        case 175: goto label_F499;
+        case 176: goto label_F49A;
+        case 177: goto label_F92B;
+        case 178: goto label_F899;
+        case 179: goto label_F89A;
+        case 180: goto label_F0F7;
+        case 181: goto label_EABA;
+        case 182: goto label_EBBA;
+        case 183: goto label_EC21;
+        case 184: goto label_FC5D;
+        case 185: goto label_FB01;
+        case 186: goto label_FBFF;
+        case 187: goto label_ED10;
+        case 188: goto label_F605;
+        case 189: goto label_F18E;
+        case 190: goto label_F017;
+        case 191: goto label_ED18;
+        case 192: goto label_FB75;
+        case 193: goto label_FC81;
+        case 194: goto label_EFAB;
+        case 195: goto label_F084;
+        case 196: goto label_FA9F;
+        case 197: goto label_EA7D;
+        case 198: goto label_F03D;
         case 199: goto label_EF4B;
         case 200: goto label_EF2B;
         case 201: goto label_F0B4;
@@ -2886,26 +2883,26 @@ void func_EA60_body(int _entry) { /* DrawObject */
         case 231: goto label_EBC6;
         case 232: goto label_ED85;
         case 233: goto label_EA85;
-        case 234: goto label_EAA5;
-        case 235: goto label_F83E;
-        case 236: goto label_F64C;
-        case 237: goto label_F5F0;
-        case 238: goto label_F0FB;
-        case 239: goto label_F44C;
-        case 240: goto label_F6DD;
-        case 241: goto label_F60A;
-        case 242: goto label_F4DD;
-        case 243: goto label_EBC0;
-        case 244: goto label_EDB9;
-        case 245: goto label_F6F8;
-        case 246: goto label_F8FE;
-        case 247: goto label_FB0D;
-        case 248: goto label_F2B9;
-        case 249: goto label_F0B9;
-        case 250: goto label_FC7D;
-        case 251: goto label_FB99;
-        case 252: goto label_F999;
-        case 253: goto label_F7B9;
+        case 234: goto label_F7B9;
+        case 235: goto label_EAA5;
+        case 236: goto label_F83E;
+        case 237: goto label_F64C;
+        case 238: goto label_F5F0;
+        case 239: goto label_F0FB;
+        case 240: goto label_F44C;
+        case 241: goto label_F6DD;
+        case 242: goto label_F60A;
+        case 243: goto label_F4DD;
+        case 244: goto label_EBC0;
+        case 245: goto label_EDB9;
+        case 246: goto label_F6F8;
+        case 247: goto label_F8FE;
+        case 248: goto label_FB0D;
+        case 249: goto label_F2B9;
+        case 250: goto label_F0B9;
+        case 251: goto label_FC7D;
+        case 252: goto label_FB99;
+        case 253: goto label_F999;
         case 254: goto label_EFB9;
         case 255: goto label_F8A9;
     }
@@ -8535,21 +8532,11 @@ void func_F870(void) { /* SpawnEnProjectile */
 #endif
 }
 
-void func_F03D(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_F03D");
-#endif
-    func_EA60_body(7);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_F86F(void) { /* InitEnemyForceSpeedTowardsSamusDelayAndHealth_RTS */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F86F");
 #endif
-    func_EA60_body(8);
+    func_EA60_body(7);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8559,7 +8546,7 @@ void func_EFD0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFD0");
 #endif
-    func_EA60_body(9);
+    func_EA60_body(8);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8569,7 +8556,7 @@ void func_F1D1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1D1");
 #endif
-    func_EA60_body(10);
+    func_EA60_body(9);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8579,7 +8566,7 @@ void func_F3B0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F3B0");
 #endif
-    func_EA60_body(11);
+    func_EA60_body(10);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8589,7 +8576,7 @@ void func_F01E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F01E");
 #endif
-    func_EA60_body(12);
+    func_EA60_body(11);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8599,7 +8586,7 @@ void func_F010(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F010");
 #endif
-    func_EA60_body(13);
+    func_EA60_body(12);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8609,7 +8596,7 @@ void func_F004(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F004");
 #endif
-    func_EA60_body(14);
+    func_EA60_body(13);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8619,7 +8606,7 @@ void func_F4A9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4A9");
 #endif
-    func_EA60_body(15);
+    func_EA60_body(14);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8629,7 +8616,7 @@ void func_F02B(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F02B");
 #endif
-    func_EA60_body(16);
+    func_EA60_body(15);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8639,7 +8626,7 @@ void func_F5D1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F5D1");
 #endif
-    func_EA60_body(17);
+    func_EA60_body(16);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8649,7 +8636,7 @@ void func_F6D1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F6D1");
 #endif
-    func_EA60_body(18);
+    func_EA60_body(17);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8659,7 +8646,7 @@ void func_F089(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F089");
 #endif
-    func_EA60_body(19);
+    func_EA60_body(18);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8669,7 +8656,7 @@ void func_F029(void) { /* FillRoomRAM_loop_inner */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F029");
 #endif
-    func_EA60_body(20);
+    func_EA60_body(19);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8679,7 +8666,7 @@ void func_F8B0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F8B0");
 #endif
-    func_EA60_body(21);
+    func_EA60_body(20);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8689,7 +8676,7 @@ void func_F9D0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F9D0");
 #endif
-    func_EA60_body(22);
+    func_EA60_body(21);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8699,7 +8686,7 @@ void func_F9D1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F9D1");
 #endif
-    func_EA60_body(23);
+    func_EA60_body(22);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8709,7 +8696,7 @@ void func_EDD1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EDD1");
 #endif
-    func_EA60_body(24);
+    func_EA60_body(23);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8719,7 +8706,7 @@ void func_EAF6(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EAF6");
 #endif
-    func_EA60_body(25);
+    func_EA60_body(24);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8729,7 +8716,7 @@ void func_F024(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F024");
 #endif
-    func_EA60_body(26);
+    func_EA60_body(25);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8739,7 +8726,7 @@ void func_F025(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F025");
 #endif
-    func_EA60_body(27);
+    func_EA60_body(26);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8749,7 +8736,7 @@ void func_FA10(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FA10");
 #endif
-    func_EA60_body(30);
+    func_EA60_body(29);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8759,7 +8746,7 @@ void func_F8C4(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F8C4");
 #endif
-    func_EA60_body(31);
+    func_EA60_body(30);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8769,7 +8756,7 @@ void func_F8C5(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F8C5");
 #endif
-    func_EA60_body(32);
+    func_EA60_body(31);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8779,7 +8766,7 @@ void func_F06A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F06A");
 #endif
-    func_EA60_body(33);
+    func_EA60_body(32);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8789,7 +8776,7 @@ void func_EED1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EED1");
 #endif
-    func_EA60_body(35);
+    func_EA60_body(34);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8799,7 +8786,7 @@ void func_FC86(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC86");
 #endif
-    func_EA60_body(36);
+    func_EA60_body(35);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8809,7 +8796,7 @@ void func_FC29(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC29");
 #endif
-    func_EA60_body(37);
+    func_EA60_body(36);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8819,7 +8806,7 @@ void func_F8D1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F8D1");
 #endif
-    func_EA60_body(38);
+    func_EA60_body(37);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8829,7 +8816,7 @@ void func_F49E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F49E");
 #endif
-    func_EA60_body(39);
+    func_EA60_body(38);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8839,7 +8826,7 @@ void func_FA84(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FA84");
 #endif
-    func_EA60_body(40);
+    func_EA60_body(39);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8849,7 +8836,7 @@ void func_F00B(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F00B");
 #endif
-    func_EA60_body(41);
+    func_EA60_body(40);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8859,7 +8846,7 @@ void func_F068(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F068");
 #endif
-    func_EA60_body(42);
+    func_EA60_body(41);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8869,7 +8856,7 @@ void func_F6F0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F6F0");
 #endif
-    func_EA60_body(43);
+    func_EA60_body(42);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8879,7 +8866,7 @@ void func_F6F1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F6F1");
 #endif
-    func_EA60_body(44);
+    func_EA60_body(43);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8889,7 +8876,7 @@ void func_EE06(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EE06");
 #endif
-    func_EA60_body(45);
+    func_EA60_body(44);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8899,7 +8886,7 @@ void func_F4D1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4D1");
 #endif
-    func_EA60_body(46);
+    func_EA60_body(45);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8909,7 +8896,7 @@ void func_EFBE(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFBE");
 #endif
-    func_EA60_body(47);
+    func_EA60_body(46);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8919,7 +8906,7 @@ void func_F0BD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0BD");
 #endif
-    func_EA60_body(48);
+    func_EA60_body(47);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8929,7 +8916,7 @@ void func_F0AB(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0AB");
 #endif
-    func_EA60_body(49);
+    func_EA60_body(48);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8939,7 +8926,7 @@ void func_FC66(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC66");
 #endif
-    func_EA60_body(50);
+    func_EA60_body(49);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8949,7 +8936,7 @@ void func_F221(void) { /* CheckCollisionOfXSlotAndYSlot_endIf_A */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F221");
 #endif
-    func_EA60_body(51);
+    func_EA60_body(50);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8959,7 +8946,7 @@ void func_F009(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F009");
 #endif
-    func_EA60_body(52);
+    func_EA60_body(51);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8969,7 +8956,7 @@ void func_EE20(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EE20");
 #endif
-    func_EA60_body(53);
+    func_EA60_body(52);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8979,7 +8966,7 @@ void func_F027(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F027");
 #endif
-    func_EA60_body(54);
+    func_EA60_body(53);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8989,7 +8976,7 @@ void func_F020(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F020");
 #endif
-    func_EA60_body(55);
+    func_EA60_body(54);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -8999,7 +8986,7 @@ void func_F021(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F021");
 #endif
-    func_EA60_body(56);
+    func_EA60_body(55);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9009,7 +8996,7 @@ void func_F064(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F064");
 #endif
-    func_EA60_body(57);
+    func_EA60_body(56);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9019,7 +9006,7 @@ void func_F04D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F04D");
 #endif
-    func_EA60_body(58);
+    func_EA60_body(57);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9029,7 +9016,7 @@ void func_EFF1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFF1");
 #endif
-    func_EA60_body(59);
+    func_EA60_body(58);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9039,7 +9026,7 @@ void func_ED38(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED38");
 #endif
-    func_EA60_body(60);
+    func_EA60_body(59);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9049,7 +9036,7 @@ void func_F0E8(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0E8");
 #endif
-    func_EA60_body(61);
+    func_EA60_body(60);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9059,7 +9046,7 @@ void func_F7A0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7A0");
 #endif
-    func_EA60_body(62);
+    func_EA60_body(61);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9069,7 +9056,7 @@ void func_F7A1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7A1");
 #endif
-    func_EA60_body(63);
+    func_EA60_body(62);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9079,7 +9066,7 @@ void func_F321(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F321");
 #endif
-    func_EA60_body(64);
+    func_EA60_body(63);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9089,7 +9076,7 @@ void func_F7B1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7B1");
 #endif
-    func_EA60_body(65);
+    func_EA60_body(64);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9099,7 +9086,7 @@ void func_FB20(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FB20");
 #endif
-    func_EA60_body(66);
+    func_EA60_body(65);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9109,7 +9096,7 @@ void func_F211(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F211");
 #endif
-    func_EA60_body(67);
+    func_EA60_body(66);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9119,7 +9106,7 @@ void func_F5AA(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F5AA");
 #endif
-    func_EA60_body(68);
+    func_EA60_body(67);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9129,7 +9116,7 @@ void func_EBBE(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EBBE");
 #endif
-    func_EA60_body(69);
+    func_EA60_body(68);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9139,7 +9126,7 @@ void func_F1EF(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1EF");
 #endif
-    func_EA60_body(70);
+    func_EA60_body(69);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9149,7 +9136,7 @@ void func_F720(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F720");
 #endif
-    func_EA60_body(71);
+    func_EA60_body(70);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9159,7 +9146,7 @@ void func_FAA9(void) { /* UpdateAllEnemyExplosions_endIf */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FAA9");
 #endif
-    func_EA60_body(72);
+    func_EA60_body(71);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9169,7 +9156,7 @@ void func_F809(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F809");
 #endif
-    func_EA60_body(73);
+    func_EA60_body(72);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9179,7 +9166,7 @@ void func_FC05(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC05");
 #endif
-    func_EA60_body(74);
+    func_EA60_body(73);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9189,7 +9176,7 @@ void func_F079(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F079");
 #endif
-    func_EA60_body(75);
+    func_EA60_body(74);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9199,7 +9186,7 @@ void func_F04F(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F04F");
 #endif
-    func_EA60_body(76);
+    func_EA60_body(75);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9209,7 +9196,7 @@ void func_EED5(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EED5");
 #endif
-    func_EA60_body(77);
+    func_EA60_body(76);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9219,7 +9206,7 @@ void func_EFC0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFC0");
 #endif
-    func_EA60_body(78);
+    func_EA60_body(77);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9229,7 +9216,7 @@ void func_FC20(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC20");
 #endif
-    func_EA60_body(79);
+    func_EA60_body(78);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9239,7 +9226,7 @@ void func_F84C(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F84C");
 #endif
-    func_EA60_body(80);
+    func_EA60_body(79);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9249,7 +9236,7 @@ void func_EB4C(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EB4C");
 #endif
-    func_EA60_body(81);
+    func_EA60_body(80);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9259,7 +9246,7 @@ void func_F7E9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7E9");
 #endif
-    func_EA60_body(82);
+    func_EA60_body(81);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9269,7 +9256,7 @@ void func_F9B0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F9B0");
 #endif
-    func_EA60_body(83);
+    func_EA60_body(82);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9279,7 +9266,7 @@ void func_EBF1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EBF1");
 #endif
-    func_EA60_body(84);
+    func_EA60_body(83);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9289,7 +9276,7 @@ void func_F014(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F014");
 #endif
-    func_EA60_body(85);
+    func_EA60_body(84);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9299,7 +9286,7 @@ void func_F015(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F015");
 #endif
-    func_EA60_body(86);
+    func_EA60_body(85);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9309,7 +9296,7 @@ void func_F4BE(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4BE");
 #endif
-    func_EA60_body(87);
+    func_EA60_body(86);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9319,7 +9306,7 @@ void func_F421(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F421");
 #endif
-    func_EA60_body(88);
+    func_EA60_body(87);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9329,7 +9316,7 @@ void func_F1F5(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1F5");
 #endif
-    func_EA60_body(89);
+    func_EA60_body(88);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9339,7 +9326,7 @@ void func_EE03(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EE03");
 #endif
-    func_EA60_body(90);
+    func_EA60_body(89);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9349,7 +9336,7 @@ void func_FC10(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC10");
 #endif
-    func_EA60_body(91);
+    func_EA60_body(90);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9359,7 +9346,7 @@ void func_F05B(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F05B");
 #endif
-    func_EA60_body(92);
+    func_EA60_body(91);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9369,7 +9356,7 @@ void func_F060(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F060");
 #endif
-    func_EA60_body(93);
+    func_EA60_body(92);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9379,7 +9366,7 @@ void func_F0FD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0FD");
 #endif
-    func_EA60_body(94);
+    func_EA60_body(93);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9389,7 +9376,7 @@ void func_F018(void) { /* ATDataTable */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F018");
 #endif
-    func_EA60_body(95);
+    func_EA60_body(94);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9399,7 +9386,7 @@ void func_F019(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F019");
 #endif
-    func_EA60_body(96);
+    func_EA60_body(95);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9409,7 +9396,7 @@ void func_F0FF(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0FF");
 #endif
-    func_EA60_body(97);
+    func_EA60_body(96);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9419,7 +9406,7 @@ void func_EFB0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFB0");
 #endif
-    func_EA60_body(98);
+    func_EA60_body(97);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9429,7 +9416,7 @@ void func_F7BD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7BD");
 #endif
-    func_EA60_body(99);
+    func_EA60_body(98);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9439,7 +9426,7 @@ void func_F7C9(void) { /* UpdateEnemy_Resting_TryBecomingActive_RTS */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7C9");
 #endif
-    func_EA60_body(100);
+    func_EA60_body(99);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9449,7 +9436,7 @@ void func_F7CA(void) { /* UpdateEnemy_Resting_TryBecomingActive_becomeActive */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F7CA");
 #endif
-    func_EA60_body(101);
+    func_EA60_body(100);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9459,7 +9446,7 @@ void func_F0C5(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0C5");
 #endif
-    func_EA60_body(103);
+    func_EA60_body(102);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9469,7 +9456,7 @@ void func_F080(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F080");
 #endif
-    func_EA60_body(104);
+    func_EA60_body(103);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9479,7 +9466,7 @@ void func_F869(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F869");
 #endif
-    func_EA60_body(105);
+    func_EA60_body(104);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9489,7 +9476,7 @@ void func_F4BC(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4BC");
 #endif
-    func_EA60_body(106);
+    func_EA60_body(105);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9499,7 +9486,7 @@ void func_F8DF(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F8DF");
 #endif
-    func_EA60_body(107);
+    func_EA60_body(106);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9509,7 +9496,7 @@ void func_F89E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F89E");
 #endif
-    func_EA60_body(108);
+    func_EA60_body(107);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9519,7 +9506,7 @@ void func_F9BC(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F9BC");
 #endif
-    func_EA60_body(109);
+    func_EA60_body(108);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9529,7 +9516,7 @@ void func_ECB1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ECB1");
 #endif
-    func_EA60_body(110);
+    func_EA60_body(109);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9539,7 +9526,7 @@ void func_FBB1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FBB1");
 #endif
-    func_EA60_body(111);
+    func_EA60_body(110);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9549,7 +9536,7 @@ void func_FBF0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FBF0");
 #endif
-    func_EA60_body(112);
+    func_EA60_body(111);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9559,7 +9546,7 @@ void func_F04B(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F04B");
 #endif
-    func_EA60_body(113);
+    func_EA60_body(112);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9569,7 +9556,7 @@ void func_F0ED(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0ED");
 #endif
-    func_EA60_body(114);
+    func_EA60_body(113);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9579,7 +9566,7 @@ void func_F059(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F059");
 #endif
-    func_EA60_body(115);
+    func_EA60_body(114);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9589,7 +9576,7 @@ void func_ED04(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED04");
 #endif
-    func_EA60_body(116);
+    func_EA60_body(115);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9599,7 +9586,7 @@ void func_EFCA(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFCA");
 #endif
-    func_EA60_body(117);
+    func_EA60_body(116);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9609,7 +9596,7 @@ void func_EFE0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFE0");
 #endif
-    func_EA60_body(118);
+    func_EA60_body(117);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9619,7 +9606,7 @@ void func_FC87(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC87");
 #endif
-    func_EA60_body(119);
+    func_EA60_body(118);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9629,7 +9616,7 @@ void func_F829(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F829");
 #endif
-    func_EA60_body(120);
+    func_EA60_body(119);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9639,7 +9626,7 @@ void func_F82A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F82A");
 #endif
-    func_EA60_body(121);
+    func_EA60_body(120);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9649,7 +9636,7 @@ void func_F2C9(void) { /* RTS_X290 */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F2C9");
 #endif
-    func_EA60_body(122);
+    func_EA60_body(121);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9659,7 +9646,7 @@ void func_F0F2(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0F2");
 #endif
-    func_EA60_body(123);
+    func_EA60_body(122);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9669,7 +9656,7 @@ void func_EE51(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EE51");
 #endif
-    func_EA60_body(124);
+    func_EA60_body(123);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9679,7 +9666,7 @@ void func_ECD0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ECD0");
 #endif
-    func_EA60_body(125);
+    func_EA60_body(124);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9689,7 +9676,7 @@ void func_ECD1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ECD1");
 #endif
-    func_EA60_body(126);
+    func_EA60_body(125);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9699,7 +9686,7 @@ void func_F5BD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F5BD");
 #endif
-    func_EA60_body(127);
+    func_EA60_body(126);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9709,7 +9696,7 @@ void func_F5FD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F5FD");
 #endif
-    func_EA60_body(128);
+    func_EA60_body(127);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9719,7 +9706,7 @@ void func_F6FD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F6FD");
 #endif
-    func_EA60_body(129);
+    func_EA60_body(128);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9729,7 +9716,7 @@ void func_EAC1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EAC1");
 #endif
-    func_EA60_body(130);
+    func_EA60_body(129);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9739,7 +9726,7 @@ void func_F821(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F821");
 #endif
-    func_EA60_body(131);
+    func_EA60_body(130);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9749,7 +9736,7 @@ void func_F0A6(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0A6");
 #endif
-    func_EA60_body(132);
+    func_EA60_body(131);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9759,7 +9746,7 @@ void func_EF0A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EF0A");
 #endif
-    func_EA60_body(133);
+    func_EA60_body(132);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9769,7 +9756,7 @@ void func_EB29(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EB29");
 #endif
-    func_EA60_body(134);
+    func_EA60_body(133);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9779,7 +9766,7 @@ void func_EB4E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EB4E");
 #endif
-    func_EA60_body(135);
+    func_EA60_body(134);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9789,7 +9776,7 @@ void func_EB25(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EB25");
 #endif
-    func_EA60_body(136);
+    func_EA60_body(135);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9799,7 +9786,7 @@ void func_EB93(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EB93");
 #endif
-    func_EA60_body(137);
+    func_EA60_body(136);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9809,7 +9796,7 @@ void func_ED52(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED52");
 #endif
-    func_EA60_body(138);
+    func_EA60_body(137);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9819,7 +9806,7 @@ void func_FB5E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FB5E");
 #endif
-    func_EA60_body(139);
+    func_EA60_body(138);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9829,7 +9816,7 @@ void func_EF10(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EF10");
 #endif
-    func_EA60_body(140);
+    func_EA60_body(139);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9839,7 +9826,7 @@ void func_ED8D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED8D");
 #endif
-    func_EA60_body(141);
+    func_EA60_body(140);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9849,7 +9836,7 @@ void func_EE30(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EE30");
 #endif
-    func_EA60_body(142);
+    func_EA60_body(141);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9859,7 +9846,7 @@ void func_F051(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F051");
 #endif
-    func_EA60_body(143);
+    func_EA60_body(142);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9869,7 +9856,7 @@ void func_F611(void) { /* ExplodeEnemy */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F611");
 #endif
-    func_EA60_body(144);
+    func_EA60_body(143);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9879,7 +9866,7 @@ void func_EA8D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EA8D");
 #endif
-    func_EA60_body(145);
+    func_EA60_body(144);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9889,7 +9876,7 @@ void func_EA8E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EA8E");
 #endif
-    func_EA60_body(146);
+    func_EA60_body(145);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9899,7 +9886,7 @@ void func_EF9A(void) { /* TilePosTable */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EF9A");
 #endif
-    func_EA60_body(147);
+    func_EA60_body(146);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9909,7 +9896,7 @@ void func_EFF4(void) { /* AttribMaskTable */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFF4");
 #endif
-    func_EA60_body(149);
+    func_EA60_body(148);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9919,7 +9906,7 @@ void func_F3FC(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F3FC");
 #endif
-    func_EA60_body(150);
+    func_EA60_body(149);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9929,7 +9916,7 @@ void func_F0B0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0B0");
 #endif
-    func_EA60_body(151);
+    func_EA60_body(150);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9939,7 +9926,7 @@ void func_F4B9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4B9");
 #endif
-    func_EA60_body(152);
+    func_EA60_body(151);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9949,7 +9936,7 @@ void func_ED20(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED20");
 #endif
-    func_EA60_body(153);
+    func_EA60_body(152);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9959,7 +9946,7 @@ void func_ED21(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED21");
 #endif
-    func_EA60_body(154);
+    func_EA60_body(153);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9969,7 +9956,7 @@ void func_FBB9(void) { /* InitEnResetAnimIndex */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FBB9");
 #endif
-    func_EA60_body(155);
+    func_EA60_body(154);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9979,7 +9966,7 @@ void func_F1E1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1E1");
 #endif
-    func_EA60_body(156);
+    func_EA60_body(155);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9989,7 +9976,7 @@ void func_F1DA(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1DA");
 #endif
-    func_EA60_body(157);
+    func_EA60_body(156);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -9999,7 +9986,7 @@ void func_F1E8(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1E8");
 #endif
-    func_EA60_body(158);
+    func_EA60_body(157);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10009,7 +9996,7 @@ void func_F1CC(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1CC");
 #endif
-    func_EA60_body(159);
+    func_EA60_body(158);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10019,7 +10006,7 @@ void func_F679(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F679");
 #endif
-    func_EA60_body(160);
+    func_EA60_body(159);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10029,7 +10016,7 @@ void func_F67A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F67A");
 #endif
-    func_EA60_body(161);
+    func_EA60_body(160);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10039,7 +10026,7 @@ void func_F579(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F579");
 #endif
-    func_EA60_body(162);
+    func_EA60_body(161);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10049,7 +10036,7 @@ void func_F22C(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F22C");
 #endif
-    func_EA60_body(163);
+    func_EA60_body(162);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10059,7 +10046,7 @@ void func_F257(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F257");
 #endif
-    func_EA60_body(164);
+    func_EA60_body(163);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10069,7 +10056,7 @@ void func_EBD0(void) { /* SpawnDoorRoutine_if_B */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EBD0");
 #endif
-    func_EA60_body(165);
+    func_EA60_body(164);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10079,7 +10066,7 @@ void func_F06C(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F06C");
 #endif
-    func_EA60_body(166);
+    func_EA60_body(165);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10089,7 +10076,7 @@ void func_ECC9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ECC9");
 #endif
-    func_EA60_body(167);
+    func_EA60_body(166);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10099,7 +10086,7 @@ void func_F00D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F00D");
 #endif
-    func_EA60_body(168);
+    func_EA60_body(167);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10109,7 +10096,7 @@ void func_F082(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F082");
 #endif
-    func_EA60_body(169);
+    func_EA60_body(168);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10119,7 +10106,7 @@ void func_F4FF(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4FF");
 #endif
-    func_EA60_body(170);
+    func_EA60_body(169);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10129,7 +10116,7 @@ void func_F99D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F99D");
 #endif
-    func_EA60_body(171);
+    func_EA60_body(170);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10139,7 +10126,7 @@ void func_F07F(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F07F");
 #endif
-    func_EA60_body(172);
+    func_EA60_body(171);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10149,7 +10136,7 @@ void func_FBAA(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FBAA");
 #endif
-    func_EA60_body(173);
+    func_EA60_body(172);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10159,7 +10146,7 @@ void func_EFA0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFA0");
 #endif
-    func_EA60_body(174);
+    func_EA60_body(173);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10169,7 +10156,7 @@ void func_F1F0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F1F0");
 #endif
-    func_EA60_body(175);
+    func_EA60_body(174);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10179,7 +10166,7 @@ void func_F499(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F499");
 #endif
-    func_EA60_body(176);
+    func_EA60_body(175);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10189,7 +10176,7 @@ void func_F49A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F49A");
 #endif
-    func_EA60_body(177);
+    func_EA60_body(176);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10199,7 +10186,7 @@ void func_F92B(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F92B");
 #endif
-    func_EA60_body(178);
+    func_EA60_body(177);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10209,7 +10196,7 @@ void func_F899(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F899");
 #endif
-    func_EA60_body(179);
+    func_EA60_body(178);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10219,7 +10206,7 @@ void func_F89A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F89A");
 #endif
-    func_EA60_body(180);
+    func_EA60_body(179);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10229,7 +10216,7 @@ void func_F0F7(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0F7");
 #endif
-    func_EA60_body(181);
+    func_EA60_body(180);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10239,7 +10226,7 @@ void func_EABA(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EABA");
 #endif
-    func_EA60_body(182);
+    func_EA60_body(181);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10249,7 +10236,7 @@ void func_EBBA(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EBBA");
 #endif
-    func_EA60_body(183);
+    func_EA60_body(182);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10259,7 +10246,7 @@ void func_EC21(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EC21");
 #endif
-    func_EA60_body(184);
+    func_EA60_body(183);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10269,7 +10256,7 @@ void func_FC5D(void) { /* SkreeProjectileSpeedTable */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC5D");
 #endif
-    func_EA60_body(185);
+    func_EA60_body(184);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10279,7 +10266,7 @@ void func_FB01(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FB01");
 #endif
-    func_EA60_body(186);
+    func_EA60_body(185);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10289,7 +10276,7 @@ void func_FBFF(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FBFF");
 #endif
-    func_EA60_body(187);
+    func_EA60_body(186);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10299,7 +10286,7 @@ void func_ED10(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED10");
 #endif
-    func_EA60_body(188);
+    func_EA60_body(187);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10309,7 +10296,7 @@ void func_F605(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F605");
 #endif
-    func_EA60_body(189);
+    func_EA60_body(188);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10319,7 +10306,7 @@ void func_F18E(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F18E");
 #endif
-    func_EA60_body(190);
+    func_EA60_body(189);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10329,7 +10316,7 @@ void func_F017(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F017");
 #endif
-    func_EA60_body(191);
+    func_EA60_body(190);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10339,7 +10326,7 @@ void func_ED18(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_ED18");
 #endif
-    func_EA60_body(192);
+    func_EA60_body(191);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10349,7 +10336,7 @@ void func_FB75(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FB75");
 #endif
-    func_EA60_body(193);
+    func_EA60_body(192);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10359,7 +10346,7 @@ void func_FC81(void) { /* UpdateAllMellows_loop */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC81");
 #endif
-    func_EA60_body(194);
+    func_EA60_body(193);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10369,7 +10356,7 @@ void func_EFAB(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EFAB");
 #endif
-    func_EA60_body(195);
+    func_EA60_body(194);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10379,7 +10366,7 @@ void func_F084(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F084");
 #endif
-    func_EA60_body(196);
+    func_EA60_body(195);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10389,7 +10376,7 @@ void func_FA9F(void) { /* UpdateAllEnemyExplosions_loop */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FA9F");
 #endif
-    func_EA60_body(197);
+    func_EA60_body(196);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10398,6 +10385,16 @@ void func_FA9F(void) { /* UpdateAllEnemyExplosions_loop */
 void func_EA7D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EA7D");
+#endif
+    func_EA60_body(197);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_F03D(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_F03D");
 #endif
     func_EA60_body(198);
 #ifdef RECOMP_STACK_TRACKING
@@ -10735,11 +10732,21 @@ void func_EA85(void) {
 #endif
 }
 
+void func_F7B9(void) { /* AndEnData05_RTS */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_F7B9");
+#endif
+    func_EA60_body(234);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
 void func_EAA5(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EAA5");
 #endif
-    func_EA60_body(234);
+    func_EA60_body(235);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10749,7 +10756,7 @@ void func_F83E(void) { /* GetEnemyTypeTimes2PlusFacingDirectionBit0 */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F83E");
 #endif
-    func_EA60_body(235);
+    func_EA60_body(236);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10759,7 +10766,7 @@ void func_F64C(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F64C");
 #endif
-    func_EA60_body(236);
+    func_EA60_body(237);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10769,7 +10776,7 @@ void func_F5F0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F5F0");
 #endif
-    func_EA60_body(237);
+    func_EA60_body(238);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10779,7 +10786,7 @@ void func_F0FB(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0FB");
 #endif
-    func_EA60_body(238);
+    func_EA60_body(239);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10789,7 +10796,7 @@ void func_F44C(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F44C");
 #endif
-    func_EA60_body(239);
+    func_EA60_body(240);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10799,7 +10806,7 @@ void func_F6DD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F6DD");
 #endif
-    func_EA60_body(240);
+    func_EA60_body(241);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10809,7 +10816,7 @@ void func_F60A(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F60A");
 #endif
-    func_EA60_body(241);
+    func_EA60_body(242);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10819,7 +10826,7 @@ void func_F4DD(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F4DD");
 #endif
-    func_EA60_body(242);
+    func_EA60_body(243);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10829,7 +10836,7 @@ void func_EBC0(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EBC0");
 #endif
-    func_EA60_body(243);
+    func_EA60_body(244);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10839,7 +10846,7 @@ void func_EDB9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EDB9");
 #endif
-    func_EA60_body(244);
+    func_EA60_body(245);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10849,7 +10856,7 @@ void func_F6F8(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F6F8");
 #endif
-    func_EA60_body(245);
+    func_EA60_body(246);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10859,7 +10866,7 @@ void func_F8FE(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F8FE");
 #endif
-    func_EA60_body(246);
+    func_EA60_body(247);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10869,7 +10876,7 @@ void func_FB0D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FB0D");
 #endif
-    func_EA60_body(247);
+    func_EA60_body(248);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10879,7 +10886,7 @@ void func_F2B9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F2B9");
 #endif
-    func_EA60_body(248);
+    func_EA60_body(249);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10889,7 +10896,7 @@ void func_F0B9(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F0B9");
 #endif
-    func_EA60_body(249);
+    func_EA60_body(250);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10899,7 +10906,7 @@ void func_FC7D(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FC7D");
 #endif
-    func_EA60_body(250);
+    func_EA60_body(251);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10909,7 +10916,7 @@ void func_FB99(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_FB99");
 #endif
-    func_EA60_body(251);
+    func_EA60_body(252);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -10918,16 +10925,6 @@ void func_FB99(void) {
 void func_F999(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F999");
-#endif
-    func_EA60_body(252);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_F7B9(void) { /* AndEnData05_RTS */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_F7B9");
 #endif
     func_EA60_body(253);
 #ifdef RECOMP_STACK_TRACKING
@@ -16461,19 +16458,16 @@ label_FFCC:; return;
 label_FFCF:; return;
 label_FFD2:; return;
 label_FFD5:; return;
-label_FFD6:; return;
-label_FFD9:; return;
+label_FFD8:; return;
 label_FFDB:; return;
-label_FFDC:; return;
-label_FFDF:; return;
-label_FFE0:; return;
-label_FFE3:; return;
-label_FFE6:; return;
-label_FFE9:; return;
+label_FFDE:; return;
+label_FFE1:; return;
+label_FFE4:; return;
+label_FFE7:; return;
+label_FFEA:; return;
 label_FFEC:; return;
 label_FFED:; return;
 label_FFF0:; return;
-label_FFF1:; return;
 label_FFF2:; return;
 label_FFF3:; return;
 label_FFF4:; return;
@@ -18804,19 +18798,16 @@ label_FFCC:; return;
 label_FFCF:; return;
 label_FFD2:; return;
 label_FFD5:; return;
-label_FFD6:; return;
-label_FFD9:; return;
+label_FFD8:; return;
 label_FFDB:; return;
-label_FFDC:; return;
-label_FFDF:; return;
-label_FFE0:; return;
-label_FFE3:; return;
-label_FFE6:; return;
-label_FFE9:; return;
+label_FFDE:; return;
+label_FFE1:; return;
+label_FFE4:; return;
+label_FFE7:; return;
+label_FFEA:; return;
 label_FFEC:; return;
 label_FFED:; return;
 label_FFF0:; return;
-label_FFF1:; return;
 label_FFF2:; return;
 label_FFF3:; return;
 label_FFF4:; return;
@@ -24371,19 +24362,16 @@ label_FFCC:; return;
 label_FFCF:; return;
 label_FFD2:; return;
 label_FFD5:; return;
-label_FFD6:; return;
-label_FFD9:; return;
+label_FFD8:; return;
 label_FFDB:; return;
-label_FFDC:; return;
-label_FFDF:; return;
-label_FFE0:; return;
-label_FFE3:; return;
-label_FFE6:; return;
-label_FFE9:; return;
+label_FFDE:; return;
+label_FFE1:; return;
+label_FFE4:; return;
+label_FFE7:; return;
+label_FFEA:; return;
 label_FFEC:; return;
 label_FFED:; return;
 label_FFF0:; return;
-label_FFF1:; return;
 label_FFF2:; return;
 label_FFF3:; return;
 label_FFF4:; return;
@@ -25880,10 +25868,10 @@ label_D80B:;
     /* $D80B: 4C */ nes_cpu_instruction_boundary(0xD80B, 3); nes_cpu_instruction_boundary(0xDE4A, 2); func_DE4A(); return;
 }
 
-void func_D80E_body(int _entry) { /* ElevatorScrollXToCenter */
-    switch (_entry) {
-        case 1: goto label_D821;
-    }
+void func_D80E(void) { /* ElevatorScrollXToCenter */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_D80E");
+#endif
 label_D80E:; /* ElevatorScrollXToCenter */
     /* $D80E: A5 */ nes_cpu_instruction_boundary(0xD80E, 3); g_cpu.A = nes_read(0xFD); FLAG_NZ(g_cpu.A);
 label_D810:;
@@ -25938,30 +25926,10 @@ label_D83A:;
     /* $D83A: 4C */ nes_cpu_instruction_boundary(0xD83A, 3); nes_cpu_instruction_boundary(0xD806, 2); func_D806(); return;
 }
 
-void func_D80E(void) { /* ElevatorScrollXToCenter */
+void func_D83D(void) { /* ElevatorMove */
 #ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_D80E");
+    recomp_stack_push("func_D83D");
 #endif
-    func_D80E_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_D821(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_D821");
-#endif
-    func_D80E_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_D83D_body(int _entry) { /* ElevatorMove */
-    switch (_entry) {
-        case 1: goto label_D84C;
-    }
 label_D83D:; /* ElevatorMove */
     /* $D83D: BD */ nes_cpu_instruction_boundary(0xD83D, 4); g_cpu.A = nes_read((0x030F + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
 label_D840:;
@@ -26016,26 +25984,6 @@ label_D86A:;
     /* $D86A: FE */ nes_cpu_instruction_boundary(0xD86A, 7); { uint16_t a=(0x0300 + g_cpu.X) & 0xFFFF; uint8_t v=(nes_read(a)+1)&0xFF; nes_write(a,v); FLAG_NZ(v); }
 label_D86D:; /* ElevatorMove_endIf_D */
     /* $D86D: 4C */ nes_cpu_instruction_boundary(0xD86D, 3); nes_cpu_instruction_boundary(0xD806, 2); func_D806(); return;
-}
-
-void func_D83D(void) { /* ElevatorMove */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_D83D");
-#endif
-    func_D83D_body(0);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_D84C(void) { /* ElevatorMove_endIf_B */
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_D84C");
-#endif
-    func_D83D_body(1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
 }
 
 void func_D870_body(int _entry) { /* ElevatorScrollY */

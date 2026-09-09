@@ -8,6 +8,16 @@ license = "MIT"
 resolver = "declarative"
 save_compatibility = "stock"
 
+# Metroid (USA) -- the ROM this build is recompiled from and the only one the
+# CRC32 gate in extras.c accepts today.
+[[target]]
+game_id = "metroid-nes"
+rom_crc32 = "70080810"
+
+# Metroid (Europe). Listed because the three routines this package hooks sit at
+# the same addresses in both revisions (IsObjectVisible $DFDF, DisplayBar $E0C1,
+# RoomFinished $EA26), so an EU-targeted build of this repo could load the very
+# same package. It cannot match today: this build refuses the EU ROM.
 [[target]]
 game_id = "metroid-nes"
 rom_crc32 = "7751588d"
