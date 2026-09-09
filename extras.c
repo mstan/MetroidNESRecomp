@@ -334,7 +334,10 @@ static void scroll_guard_callback(uint16_t addr, uint8_t old_val, uint8_t new_va
 }
 #endif
 
-uint32_t game_get_expected_crc32(void) { return 0; /* no CRC check for now */ }
+/* Metroid (USA) PRG+CHR CRC32, iNES header excluded (0x7751588D). Mod
+ * packages target this ROM by game_id + rom_crc32, so the launcher must
+ * verify it. */
+uint32_t game_get_expected_crc32(void) { return 0x7751588Du; }
 
 const char *game_get_name(void) { return "Metroid"; }
 

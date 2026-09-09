@@ -10,6 +10,8 @@ set(NESRECOMP_ROOT ${CMAKE_SOURCE_DIR}/nesrecomp)
 # commit is the gitlink recorded in this repo. After cloning run setup.sh/.bat
 # (git submodule update --init) to fetch them at the recorded commits.
 
+set(NESRECOMP_ENABLE_MODS ON CACHE BOOL
+    "Enable package mods for Metroid" FORCE)
 include(${NESRECOMP_ROOT}/runner/runner.cmake)
 
 list(APPEND CMAKE_PREFIX_PATH "${NESRECOMP_ROOT}/runner/external/SDL2/cmake")
@@ -54,6 +56,8 @@ add_executable(MetroidNESRecomp
 )
 
 target_compile_definitions(MetroidNESRecomp PRIVATE
+    NESRECOMP_GAME_ID="metroid-nes"
+    NESRECOMP_GAME_ROM_CRC32="7751588d"
     NESRECOMP_SPLIT_PARTS_EXTERNAL
     RECOMP_STACK_TRACKING
     WATCHDOG_ENABLED

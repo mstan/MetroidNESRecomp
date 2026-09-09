@@ -30,6 +30,9 @@ generated/Metroid_#_NES_*
 tools/__pycache__/
 tools/_*
 tools/*.py
+# ...except the maintained symbol/disassembly pipeline (see WIDESCREEN.md / README):
+!tools/gen_symbols.py
+!tools/gen_ram_header.py
 !tools/multi_death.py
 !tools/nes_compare.py
 tools/*.txt
@@ -38,3 +41,6 @@ tools/*.txt
 build-splitgen/
 build-baseline/
 build_ui/
+
+# WLA-DX toolchain built by tools/build_wla_dx.ps1 (needed to regenerate symbols.sym)
+tools/wla-dx/
