@@ -1,17 +1,17 @@
 # NESRecomp coverage report
 # ROM: 8 PRG banks x 16KB, mapper 1
-# Analyzed functions: 3408  Reachable instructions: 288164
+# Analyzed functions: 3619  Reachable instructions: 291573
 
 ## Reachable opcode classes
-  OFFICIAL                                            count=214463    distinct_bytes=150
-  BRK (official)                                      count=21679     distinct_bytes=1
-  LAX (unofficial, implemented)                       count=2891      distinct_bytes=7
-  NOP/DOP/TOP (unofficial, implemented)               count=13772     distinct_bytes=27
+  OFFICIAL                                            count=217843    distinct_bytes=150
+  BRK (official)                                      count=21685     distinct_bytes=1
+  LAX (unofficial, implemented)                       count=2897      distinct_bytes=7
+  NOP/DOP/TOP (unofficial, implemented)               count=13777     distinct_bytes=27
   SBC #imm alias \$EB (unofficial, implemented)       count=182       distinct_bytes=1
   SAX (unofficial, implemented)                       count=518       distinct_bytes=4
   DCP (unofficial, sized-skip)                        count=956       distinct_bytes=7
-  ISC (unofficial, sized-skip)                        count=7327      distinct_bytes=7
-  SLO (unofficial, sized-skip)                        count=7995      distinct_bytes=7
+  ISC (unofficial, sized-skip)                        count=7331      distinct_bytes=7
+  SLO (unofficial, sized-skip)                        count=8003      distinct_bytes=7
   RLA (unofficial, sized-skip)                        count=2379      distinct_bytes=7
   SRE (unofficial, sized-skip)                        count=977       distinct_bytes=7
   RRA (unofficial, sized-skip)                        count=1639      distinct_bytes=7
@@ -29,9 +29,9 @@
 
 ## Unofficial opcodes seen (per byte)
   $02  KIL    5070 sites
-  $03  SLO    3377 sites
-  $04  NOP*   2968 sites
-  $07  SLO    1549 sites
+  $03  SLO    3379 sites
+  $04  NOP*   2970 sites
+  $07  SLO    1555 sites
   $0B  AAC    737 sites
   $0C  NOP*   1043 sites
   $0F  SLO    600 sites
@@ -66,7 +66,7 @@
   $53  SRE    157 sites
   $54  NOP*   198 sites
   $57  SRE    168 sites
-  $5A  NOP*   128 sites
+  $5A  NOP*   131 sites
   $5B  SRE    103 sites
   $5C  NOP*   123 sites
   $5F  SRE    204 sites
@@ -99,7 +99,7 @@
   $9E  SHX    95 sites
   $9F  SHA    158 sites
   $A3  LAX    227 sites
-  $A7  LAX    207 sites
+  $A7  LAX    213 sites
   $AB  LAX    135 sites
   $AF  LAX    122 sites
   $B2  KIL    1052 sites
@@ -132,10 +132,10 @@
   $FA  NOP*   94 sites
   $FB  ISC    157 sites
   $FC  NOP*   731 sites
-  $FF  ISC    6718 sites
+  $FF  ISC    6722 sites
 
 ## BRK ($00) reachable sites
-  count: unique=20004  (listing first 1024)
+  count: unique=20009  (listing first 1024)
     bank=7    addr=$FF11
     bank=7    addr=$F018
     bank=7    addr=$FAEA
@@ -1967,6 +1967,7 @@
     bank=5    addr=$B54A
     bank=7    addr=$A0C4
     bank=7    addr=$A005
+    bank=7    addr=$EFF4
     bank=0    addr=$8180
     bank=0    addr=$B31B
     bank=0    addr=$B329
@@ -2139,7 +2140,6 @@
     bank=7    addr=$E4AD
     bank=7    addr=$E48E
     bank=7    addr=$D0B1
-    bank=7    addr=$EFF4
     bank=7    addr=$C93A
     bank=7    addr=$F19B
     bank=7    addr=$F32B
@@ -2305,6 +2305,7 @@
     bank=5    addr=$B918
     bank=6    addr=$BFD0
     bank=7    addr=$874C
+    bank=7    addr=$FC5D
     bank=7    addr=$FF11
     bank=7    addr=$C4FB
     bank=7    addr=$FE86
@@ -2378,30 +2379,29 @@
     bank=7    addr=$FEA9
     bank=7    addr=$FA61
     bank=7    addr=$F694
-    bank=7    addr=$FC5D
     bank=7    addr=$FCBB
     bank=7    addr=$FD09
     bank=7    addr=$FF3D
     bank=7    addr=$C01B
 
 ## Full opcode histogram (non-zero buckets)
-  $00  BRK        mode=IMP   21679
-  $01  ORA        mode=INDX  4691
+  $00  BRK        mode=IMP   21685
+  $01  ORA        mode=INDX  4693
   $02  ???  KIL   mode=IMP   5070
-  $03  SLO  SLO   mode=INDX  3377
-  $04  NOP*  NOP*  mode=ZP    2968
-  $05  ORA        mode=ZP    1391
-  $06  ASL        mode=ZP    1271
-  $07  SLO  SLO   mode=ZP    1549
+  $03  SLO  SLO   mode=INDX  3379
+  $04  NOP*  NOP*  mode=ZP    2970
+  $05  ORA        mode=ZP    1398
+  $06  ASL        mode=ZP    1273
+  $07  SLO  SLO   mode=ZP    1555
   $08  PHP        mode=IMP   2249
-  $09  ORA        mode=IMM   1428
-  $0A  ASL        mode=ACC   1922
+  $09  ORA        mode=IMM   1441
+  $0A  ASL        mode=ACC   1965
   $0B  ANC  AAC   mode=IMM   737
   $0C  NOP*  NOP*  mode=ABS   1043
-  $0D  ORA        mode=ABS   1162
+  $0D  ORA        mode=ABS   1163
   $0E  ASL        mode=ABS   1188
   $0F  SLO  SLO   mode=ABS   600
-  $10  BPL        mode=REL   2402
+  $10  BPL        mode=REL   2432
   $11  ORA        mode=INDY  854
   $12  ???  KIL   mode=IMP   713
   $13  SLO  SLO   mode=INDY  733
@@ -2409,95 +2409,95 @@
   $15  ORA        mode=ZPX   442
   $16  ASL        mode=ZPX   410
   $17  SLO  SLO   mode=ZPX   809
-  $18  CLC        mode=IMP   2953
+  $18  CLC        mode=IMP   2987
   $19  ORA        mode=ABSY  523
   $1A  NOP  NOP*  mode=IMP   468
   $1B  SLO  SLO   mode=ABSY  309
   $1C  NOP*  NOP*  mode=ABSX  1339
-  $1D  ORA        mode=ABSX  617
+  $1D  ORA        mode=ABSX  622
   $1E  ASL        mode=ABSX  1061
   $1F  SLO  SLO   mode=ABSX  618
-  $20  JSR        mode=ABS   15529
+  $20  JSR        mode=ABS   16153
   $21  AND        mode=INDX  589
   $22  ???  KIL   mode=IMP   1178
   $23  RLA  RLA   mode=INDX  447
-  $24  BIT        mode=ZP    835
-  $25  AND        mode=ZP    203
-  $26  ROL        mode=ZP    1158
+  $24  BIT        mode=ZP    841
+  $25  AND        mode=ZP    204
+  $26  ROL        mode=ZP    1159
   $27  RLA  RLA   mode=ZP    317
-  $28  PLP        mode=IMP   730
-  $29  AND        mode=IMM   4186
-  $2A  ROL        mode=ACC   1644
+  $28  PLP        mode=IMP   731
+  $29  AND        mode=IMM   4256
+  $2A  ROL        mode=ACC   1660
   $2B  ANC  AAC   mode=IMM   728
   $2C  BIT        mode=ABS   640
   $2D  AND        mode=ABS   298
   $2E  ROL        mode=ABS   669
   $2F  RLA  RLA   mode=ABS   222
-  $30  BMI        mode=REL   2051
-  $31  AND        mode=INDY  326
+  $30  BMI        mode=REL   2068
+  $31  AND        mode=INDY  327
   $32  ???  KIL   mode=IMP   362
   $33  RLA  RLA   mode=INDY  171
   $34  NOP*  NOP*  mode=ZPX   1081
   $35  AND        mode=ZPX   297
   $36  ROL        mode=ZPX   216
   $37  RLA  RLA   mode=ZPX   371
-  $38  SEC        mode=IMP   1843
-  $39  AND        mode=ABSY  212
+  $38  SEC        mode=IMP   1887
+  $39  AND        mode=ABSY  213
   $3A  NOP  NOP*  mode=IMP   608
   $3B  RLA  RLA   mode=ABSY  358
   $3C  NOP*  NOP*  mode=ABSX  559
   $3D  AND        mode=ABSX  287
   $3E  ROL        mode=ABSX  550
   $3F  RLA  RLA   mode=ABSX  493
-  $40  RTI        mode=IMP   1203
+  $40  RTI        mode=IMP   1204
   $41  EOR        mode=INDX  251
   $42  ???  KIL   mode=IMP   519
   $43  SRE  SRE   mode=INDX  65
   $44  NOP*  NOP*  mode=ZP    458
-  $45  EOR        mode=ZP    302
-  $46  LSR        mode=ZP    599
+  $45  EOR        mode=ZP    307
+  $46  LSR        mode=ZP    602
   $47  SRE  SRE   mode=ZP    130
-  $48  PHA        mode=IMP   1756
-  $49  EOR        mode=IMM   436
-  $4A  LSR        mode=ACC   2170
+  $48  PHA        mode=IMP   1770
+  $49  EOR        mode=IMM   446
+  $4A  LSR        mode=ACC   2210
   $4B  ALR  ALR   mode=IMM   68
-  $4C  JMP        mode=ABS   6512
+  $4C  JMP        mode=ABS   6619
   $4D  EOR        mode=ABS   117
-  $4E  LSR        mode=ABS   166
+  $4E  LSR        mode=ABS   167
   $4F  SRE  SRE   mode=ABS   150
-  $50  BVC        mode=REL   569
+  $50  BVC        mode=REL   573
   $51  EOR        mode=INDY  260
   $52  ???  KIL   mode=IMP   158
   $53  SRE  SRE   mode=INDY  157
   $54  NOP*  NOP*  mode=ZPX   198
-  $55  EOR        mode=ZPX   360
+  $55  EOR        mode=ZPX   362
   $56  LSR        mode=ZPX   96
   $57  SRE  SRE   mode=ZPX   168
   $58  CLI        mode=IMP   452
   $59  EOR        mode=ABSY  124
-  $5A  NOP  NOP*  mode=IMP   128
+  $5A  NOP  NOP*  mode=IMP   131
   $5B  SRE  SRE   mode=ABSY  103
   $5C  NOP*  NOP*  mode=ABSX  123
-  $5D  EOR        mode=ABSX  125
+  $5D  EOR        mode=ABSX  128
   $5E  LSR        mode=ABSX  290
   $5F  SRE  SRE   mode=ABSX  204
-  $60  RTS        mode=IMP   6965
+  $60  RTS        mode=IMP   7105
   $61  ADC        mode=INDX  111
   $62  ???  KIL   mode=IMP   124
   $63  RRA  RRA   mode=INDX  206
   $64  NOP*  NOP*  mode=ZP    174
-  $65  ADC        mode=ZP    370
+  $65  ADC        mode=ZP    371
   $66  ROR        mode=ZP    252
   $67  RRA  RRA   mode=ZP    161
-  $68  PLA        mode=IMP   1408
-  $69  ADC        mode=IMM   817
-  $6A  ROR        mode=ACC   200
+  $68  PLA        mode=IMP   1422
+  $69  ADC        mode=IMM   840
+  $6A  ROR        mode=ACC   205
   $6B  ARR  ARR   mode=IMM   79
-  $6C  JMP        mode=IND   391
-  $6D  ADC        mode=ABS   365
-  $6E  ROR        mode=ABS   92
+  $6C  JMP        mode=IND   398
+  $6D  ADC        mode=ABS   367
+  $6E  ROR        mode=ABS   93
   $6F  RRA  RRA   mode=ABS   87
-  $70  BVS        mode=REL   412
+  $70  BVS        mode=REL   413
   $71  ADC        mode=INDY  59
   $72  ???  KIL   mode=IMP   164
   $73  RRA  RRA   mode=INDY  166
@@ -2517,83 +2517,83 @@
   $81  STA        mode=INDX  199
   $82  NOP  NOP*  mode=IMM   174
   $83  SAX  SAX   mode=INDX  109
-  $84  STY        mode=ZP    1515
-  $85  STA        mode=ZP    6473
-  $86  STX        mode=ZP    1119
+  $84  STY        mode=ZP    1531
+  $85  STA        mode=ZP    6571
+  $86  STX        mode=ZP    1149
   $87  SAX  SAX   mode=ZP    143
-  $88  DEY        mode=IMP   839
+  $88  DEY        mode=IMP   848
   $89  NOP  NOP*  mode=IMM   314
-  $8A  TXA        mode=IMP   1454
+  $8A  TXA        mode=IMP   1472
   $8B  ???  XAA   mode=IMM   244
-  $8C  STY        mode=ABS   763
-  $8D  STA        mode=ABS   11811
-  $8E  STX        mode=ABS   417
+  $8C  STY        mode=ABS   766
+  $8D  STA        mode=ABS   11855
+  $8E  STX        mode=ABS   426
   $8F  SAX  SAX   mode=ABS   50
-  $90  BCC        mode=REL   1976
-  $91  STA        mode=INDY  418
+  $90  BCC        mode=REL   2022
+  $91  STA        mode=INDY  420
   $92  ???  KIL   mode=IMP   202
   $93  ???  SHA   mode=INDY  239
   $94  STY        mode=ZPX   158
   $95  STA        mode=ZPX   635
   $96  STX        mode=ZPY   35
   $97  SAX  SAX   mode=ZPY   216
-  $98  TYA        mode=IMP   1531
-  $99  STA        mode=ABSY  946
+  $98  TYA        mode=IMP   1553
+  $99  STA        mode=ABSY  947
   $9A  TXS        mode=IMP   84
   $9B  ???  TAS   mode=ABSY  61
   $9C  ???  SHY   mode=ABSX  103
-  $9D  STA        mode=ABSX  3910
+  $9D  STA        mode=ABSX  4011
   $9E  ???  SHX   mode=ABSY  95
   $9F  ???  SHA   mode=ABSY  158
-  $A0  LDY        mode=IMM   6214
+  $A0  LDY        mode=IMM   6310
   $A1  LDA        mode=INDX  560
-  $A2  LDX        mode=IMM   2904
+  $A2  LDX        mode=IMM   2989
   $A3  LAX  LAX   mode=INDX  227
-  $A4  LDY        mode=ZP    817
-  $A5  LDA        mode=ZP    5351
-  $A6  LDX        mode=ZP    1181
-  $A7  LAX  LAX   mode=ZP    207
-  $A8  TAY        mode=IMP   1628
-  $A9  LDA        mode=IMM   10800
-  $AA  TAX        mode=IMP   1257
+  $A4  LDY        mode=ZP    827
+  $A5  LDA        mode=ZP    5450
+  $A6  LDX        mode=ZP    1208
+  $A7  LAX  LAX   mode=ZP    213
+  $A8  TAY        mode=IMP   1648
+  $A9  LDA        mode=IMM   10999
+  $AA  TAX        mode=IMP   1274
   $AB  LAX  LAX   mode=IMM   135
-  $AC  LDY        mode=ABS   564
-  $AD  LDA        mode=ABS   6442
-  $AE  LDX        mode=ABS   509
+  $AC  LDY        mode=ABS   571
+  $AD  LDA        mode=ABS   6530
+  $AE  LDX        mode=ABS   513
   $AF  LAX  LAX   mode=ABS   122
-  $B0  BCS        mode=REL   2203
-  $B1  LDA        mode=INDY  1786
+  $B0  BCS        mode=REL   2248
+  $B1  LDA        mode=INDY  1802
   $B2  ???  KIL   mode=IMP   1052
   $B3  LAX  LAX   mode=INDY  932
   $B4  LDY        mode=ZPX   535
   $B5  LDA        mode=ZPX   1715
-  $B6  LDX        mode=ZPY   598
+  $B6  LDX        mode=ZPY   604
   $B7  LAX  LAX   mode=ZPY   1120
   $B8  CLV        mode=IMP   480
-  $B9  LDA        mode=ABSY  2964
+  $B9  LDA        mode=ABSY  3010
   $BA  TSX        mode=IMP   92
   $BB  ???  LAS   mode=ABSY  1102
-  $BC  LDY        mode=ABSX  1159
-  $BD  LDA        mode=ABSX  4329
-  $BE  LDX        mode=ABSY  329
+  $BC  LDY        mode=ABSX  1185
+  $BD  LDA        mode=ABSX  4401
+  $BE  LDX        mode=ABSY  331
   $BF  LAX  LAX   mode=ABSY  148
-  $C0  CPY        mode=IMM   1115
+  $C0  CPY        mode=IMM   1129
   $C1  CMP        mode=INDX  109
   $C2  NOP  NOP*  mode=IMM   181
   $C3  DCP  DCP   mode=INDX  230
   $C4  CPY        mode=ZP    348
   $C5  CMP        mode=ZP    303
-  $C6  DEC        mode=ZP    895
+  $C6  DEC        mode=ZP    929
   $C7  DCP  DCP   mode=ZP    139
-  $C8  INY        mode=IMP   2099
-  $C9  CMP        mode=IMM   4716
-  $CA  DEX        mode=IMP   709
+  $C8  INY        mode=IMP   2122
+  $C9  CMP        mode=IMM   4870
+  $CA  DEX        mode=IMP   714
   $CB  AXS  AXS   mode=IMM   108
-  $CC  CPY        mode=ABS   259
-  $CD  CMP        mode=ABS   279
-  $CE  DEC        mode=ABS   482
+  $CC  CPY        mode=ABS   261
+  $CD  CMP        mode=ABS   284
+  $CE  DEC        mode=ABS   494
   $CF  DCP  DCP   mode=ABS   77
-  $D0  BNE        mode=REL   10476
+  $D0  BNE        mode=REL   10741
   $D1  CMP        mode=INDY  103
   $D2  ???  KIL   mode=IMP   75
   $D3  DCP  DCP   mode=INDY  95
@@ -2602,30 +2602,30 @@
   $D6  DEC        mode=ZPX   247
   $D7  DCP  DCP   mode=ZPX   255
   $D8  CLD        mode=IMP   372
-  $D9  CMP        mode=ABSY  195
+  $D9  CMP        mode=ABSY  198
   $DA  NOP  NOP*  mode=IMP   77
   $DB  DCP  DCP   mode=ABSY  67
   $DC  NOP*  NOP*  mode=ABSX  72
-  $DD  CMP        mode=ABSX  392
-  $DE  DEC        mode=ABSX  628
+  $DD  CMP        mode=ABSX  395
+  $DE  DEC        mode=ABSX  635
   $DF  DCP  DCP   mode=ABSX  93
-  $E0  CPX        mode=IMM   871
+  $E0  CPX        mode=IMM   879
   $E1  SBC        mode=INDX  107
   $E2  NOP  NOP*  mode=IMM   68
   $E3  ISC  ISC   mode=INDX  158
   $E4  CPX        mode=ZP    83
-  $E5  SBC        mode=ZP    329
-  $E6  INC        mode=ZP    936
+  $E5  SBC        mode=ZP    330
+  $E6  INC        mode=ZP    952
   $E7  ISC  ISC   mode=ZP    141
-  $E8  INX        mode=IMP   973
-  $E9  SBC        mode=IMM   385
-  $EA  NOP        mode=IMP   256
+  $E8  INX        mode=IMP   981
+  $E9  SBC        mode=IMM   394
+  $EA  NOP        mode=IMP   258
   $EB  SBC  SBC*  mode=IMM   182
   $EC  CPX        mode=ABS   122
-  $ED  SBC        mode=ABS   304
-  $EE  INC        mode=ABS   1421
+  $ED  SBC        mode=ABS   315
+  $EE  INC        mode=ABS   1432
   $EF  ISC  ISC   mode=ABS   60
-  $F0  BEQ        mode=REL   7182
+  $F0  BEQ        mode=REL   7366
   $F1  SBC        mode=INDY  125
   $F2  ???  KIL   mode=IMP   47
   $F3  ISC  ISC   mode=INDY  33
@@ -2638,6 +2638,6 @@
   $FA  NOP  NOP*  mode=IMP   94
   $FB  ISC  ISC   mode=ABSY  157
   $FC  NOP*  NOP*  mode=ABSX  731
-  $FD  SBC        mode=ABSX  1305
-  $FE  INC        mode=ABSX  1400
-  $FF  ISC  ISC   mode=ABSX  6718
+  $FD  SBC        mode=ABSX  1325
+  $FE  INC        mode=ABSX  1416
+  $FF  ISC  ISC   mode=ABSX  6722
