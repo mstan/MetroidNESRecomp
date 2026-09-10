@@ -42,7 +42,12 @@ enhancements, selected with:
 ```
 
 `actors` pre-spawns ordinary room enemies and retains their state beyond the
-original six slots. `sprites` captures complete object submissions before the
+original six slots. It also previews uncollected powerups in visible rooms,
+using the original art, palette cycling and buried-item rules. Morph Ball is
+visible immediately to the left of a fresh start. The preview hands off when
+the native pickup actually draws, and the game alone performs collection.
+Collected-item history prevents it returning when its room leaves live RAM.
+`sprites` captures complete object submissions before the
 64-entry OAM buffer wraps. `smooth` runs world updates without the emulated CPU
 cycle limit. These are experimental and off by default; launcher choices are
 not yet exposed. The behavior described below applies without these options.
@@ -57,13 +62,16 @@ owner's F4 Ripper previously remained tangible while its picture was omitted;
 its tiles and pixels now match stock with `sprites` alone and all PC options.
 
 The `sprites` option also draws both ordinary room-door faces, including the
-face in an unvisited terrain preview. Both bubbles disappear when either live
-face enters its open/transition state, and return together when the game closes
-the door. Missile-door previews honor the game's permanent unlock history.
+face in an unvisited terrain preview. Both faces follow the active live door's
+animation, including its narrow opening/closing frame and fully open blank
+frame. Animation ownership follows the original transition to the arriving
+face. Missile-door previews honor the game's permanent unlock history.
 This changes presentation only: original hit requirements, collision timing and
 room transitions still run. Special-item doors retain their live faces; their
-unloaded preview faces are not yet discovered. F3 shots from both sides and
-short save/load replays pass, with RAM/SRAM identical to the preceding build.
+unloaded preview faces are not yet discovered. F3 shots from both sides, the
+intermediate animation frames and short save/load replays pass, with RAM/SRAM
+identical to the preceding build. The closing regression shortens only the
+re-close delay to avoid the unrelated long-restore interpreter watchdog.
 
 The remaining description in this section applies without the PC options.
 

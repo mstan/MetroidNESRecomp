@@ -53,6 +53,7 @@ static uint8_t s_captured[64];
 static int s_enemy_batch;
 static unsigned s_enemy_tail;
 static int s_doors;
+static unsigned s_powerups_drawn;
 
 static uint8_t rom(uint16_t p) { return p >= 0x8000 ? mapper_peek_prg(p) : 0xff; }
 static uint16_t ram16(int p) { return g_ram[p] | (g_ram[p+1] << 8); }
@@ -374,9 +375,13 @@ static void capture(unsigned start,int hud) {
     }
 }
 static int draw_call(void (*fn)(void),int hud) {
-    if(!metroid_ws_enabled() || (!s_expanded && !s_virtual) || s_draw) return 0;
+    int pickup=s_residents && !s_virtual && g_ram[MET_PageIndex]==0x40 &&
+        (fn==func_DE47 || fn==func_DE4A) ? g_ram[MET_ItemIndex] : -1;
+    if(!metroid_ws_enabled() || (!s_expanded && !s_virtual && pickup<0) || s_draw) return 0;
     unsigned start=g_ram[MET_SpritePagePos];
-    s_draw=1;fn();s_draw=0;capture(start,hud);
+    s_draw=1;fn();s_draw=0;
+    if((pickup==0 || pickup==8) && start!=g_ram[MET_SpritePagePos]) s_powerups_drawn|=1u<<(pickup/8);
+    if(s_expanded || s_virtual) capture(start,hud);
     if(s_enemy_batch) s_enemy_tail=g_ram[MET_SpritePagePos];
     return 1;
 }
@@ -411,17 +416,24 @@ int met_actors_hook_doors(uint16_t addr) {
     return 1;
 }
 
-typedef struct {int cx,cy,side,type,status;} DoorFace;
-static int door_unlocked(int boundary,int cy) {
-    /* CreateItemID/CheckForItem: missile doors share the left cell's item ID. */
-    if(boundary<=0 || boundary>32) return 0;
-    int cx=boundary-1;
-    uint8_t lo=(uint8_t)((cx<<5)|cy),hi=(uint8_t)((0x0a<<2)|(cx>>3));
+static int item_collected(int cx,int cy,int type) {
+    /* CreateItemID/CheckForItem's persistent identity, independent of NT reuse. */
+    if(cx<0 || cx>=32 || cy<0 || cy>=32) return 0;
+    uint8_t lo=(uint8_t)((cx<<5)|cy),hi=(uint8_t)((type<<2)|(cx>>3));
     int bytes=g_sram[MET_NumberOfUniqueItems-0x6000];
     for(int i=0;i+1<bytes;i+=2)
         if(g_sram[MET_UniqueItemHistory-0x6000+i]==lo &&
            g_sram[MET_UniqueItemHistory-0x6000+i+1]==hi) return 1;
     return 0;
+}
+typedef struct {int cx,cy,side,type,status,frame;} DoorFace;
+static int door_animation_priority(const DoorFace *d,int closed) {
+    /* The departing face closes before the arriving face starts opening.
+     * Follow that handoff; a stale closed face must not override an animation. */
+    if(d->status==3 || d->status==6) return 4;
+    if(d->status==4 || d->status==5) return 3;
+    if(d->status==2 && d->frame!=closed) return 2;
+    return d->status?1:0;
 }
 static void draw_doors(void) {
     DoorFace faces[32];int count=0,ox,oy,horizontal;
@@ -432,7 +444,8 @@ static void draw_doors(void) {
     for(int slot=0x80;slot<=0xb0;slot+=16) {
         int p=MET_Objects_0_status+slot,nt=g_ram[p+12]&1;
         if(!g_ram[p] || g_ram[p]>6 || cells->cell_x[nt]<0 || cells->cell_y[nt]<0) continue;
-        faces[count++]=(DoorFace){cells->cell_x[nt],cells->cell_y[nt],(slot>>4)&1,g_ram[p+7]&3,g_ram[p]};
+        faces[count++]=(DoorFace){cells->cell_x[nt],cells->cell_y[nt],(slot>>4)&1,g_ram[p+7]&3,g_ram[p],
+                                 g_ram[p]==1?rom(0x85a2):g_ram[p+3]};
     }
     int left=(ox-g_widescreen_left)/256,right=(ox+255+g_widescreen_right)/256;
     for(int cy=oy/240;cy<=(oy+239)/240;cy++) for(int cx=left;cx<=right;cx++) {
@@ -443,23 +456,25 @@ static void draw_doors(void) {
             if(kind==2) {
                 int info=rom(p+1),side=(info>>4)&1,found=0;
                 for(int i=0;i<count;i++) if(faces[i].cx==cx && faces[i].cy==cy && faces[i].side==side) found=1;
-                if(!found && count<32) faces[count++]=(DoorFace){cx,cy,side,info&3,2};
+                if(!found && count<32) faces[count++]=(DoorFace){cx,cy,side,info&3,0,rom(0x85a2)};
             }
             if(!size) break;
             p+=(uint16_t)size;
         }
     }
     for(int i=0;i<count;i++) {
-        const DoorFace *d=&faces[i];int boundary=d->cx+!d->side,open=0;
+        const DoorFace *d=&faces[i],*animation=NULL;int boundary=d->cx+!d->side;
         for(int j=0;j<count;j++)
-            if(faces[j].cy==d->cy && faces[j].cx+!faces[j].side==boundary && faces[j].status>=3) open=1;
-        if(open || (!(d->type&1) && door_unlocked(boundary,d->cy))) continue;
+            if(faces[j].cy==d->cy && faces[j].cx+!faces[j].side==boundary &&
+               (!animation || door_animation_priority(&faces[j],rom(0x85a2))>door_animation_priority(animation,rom(0x85a2))))
+                animation=&faces[j];
+        if(animation->frame==0xf7 || (!(d->type&1) && item_collected(boundary-1,d->cy,0x0a))) continue;
         const uint8_t *terrain=met_render_room_terrain(d->cx,d->cy);
         if(!terrain) continue;
         Guest save;guest_begin(&save,d->cx,d->cy,terrain);
         int slot=0x80+d->side*16,p=MET_Objects_0_status+slot;
         memset(g_ram+p,0,16);
-        g_ram[p+3]=rom(0x85a2); /* ObjAnim_DoorClose_Reset's closed frame */
+        g_ram[p+3]=(uint8_t)animation->frame;
         g_ram[p+13]=0x68;g_ram[p+14]=(uint8_t)(d->side?0x10:0xf0);
         g_ram[MET_PageIndex]=(uint8_t)slot;g_ram[MET_IsSamus]=0;
         g_ram[MET_ObjectCntrl]=(uint8_t)(0xa0|(d->type==3?1:d->type)|(d->side?0:0x10));
@@ -468,10 +483,75 @@ static void draw_doors(void) {
     }
 }
 
+static void draw_powerup_preview(int cx,int cy,int type,int position) {
+    if(type>9 || item_collected(cx,cy,type)) return;
+    int x=((position&15)<<4)+8,y=(position&0xf0)+8;
+    const MetWsCells *cells=met_render_cells();
+    for(int nt=0;nt<2;nt++) if(cells->cell_x[nt]==cx && cells->cell_y[nt]==cy) {
+        /* Loading creates the native slot before widened visibility is ready.
+         * Keep the preview until that slot actually draws; merely existing is
+         * not a handoff. An absent slot in a complete room can mean a beam was
+         * collected, even though repeatable beams don't enter item history. */
+        int live=0;
+        for(int i=0;i<16;i+=8)
+            if(g_ram[MET_PowerUps+i]==type && (g_ram[MET_PowerUps+i+3]&1)==nt &&
+               g_ram[MET_PowerUps+i+1]==y && g_ram[MET_PowerUps+i+2]==x) {
+                if(s_powerups_drawn&(1u<<(i/8))) return;
+                live=1;
+            }
+        if(!live && (met_render_stats()->room_ready_mask&(1u<<nt))) return;
+    }
+    const uint8_t *terrain=met_render_room_terrain(cx,cy);
+    /* UpdateOnePowerUp hides items buried in solid tiles until uncovered. */
+    if(!terrain || y>=240 || terrain[(y/8)*32+x/8]<0xa0) return;
+    Guest save;guest_begin(&save,cx,cy,terrain);
+    memset(g_ram+MET_PowerUpDraw,0,16);
+    g_ram[MET_PowerUpDraw_animFrame]=(uint8_t)(0x50|type);
+    g_ram[MET_PowerUpDraw_y]=(uint8_t)y;g_ram[MET_PowerUpDraw_x]=(uint8_t)x;
+    g_ram[MET_PageIndex]=0x40;g_ram[MET_IsSamus]=0;
+    g_ram[MET_ObjectCntrl]=(uint8_t)(0x80|((g_ram[MET_FrameCount]>>1)&3));
+    unsigned start=s_count;
+    guest_call(func_DE4A);
+    /* UpdateOnePowerUp overrides the beam orb's palette after ObjDrawFrame. */
+    if((type==2 || type==6 || type==7) && s_count>start+1) s_build[start+1].attr=(uint8_t)(type==7);
+    guest_end(&save);
+}
+static void draw_powerup_previews(void) {
+    int ox,oy,horizontal;
+    if(!s_residents || g_current_bank<1 || g_current_bank>5 ||
+       !met_render_camera(&ox,&oy,&horizontal)) return;
+    int left=(ox-g_widescreen_left)/256,right=(ox+255+g_widescreen_right)/256;
+    /* ScanForItems' linked row list, then its offset-linked cell records.
+     * Only powerup records are drawn; no guest spawns or pickup effects run. */
+    uint16_t row=ptr16(0x9598); /* SpecItmsTblPtr, common to USA area banks */
+    static const uint8_t size[]={0,3,3,1,2,2,1,1,2,2,1};
+    for(int rows=0;rows<32 && row>=0x8000 && row!=0xffff;rows++) {
+        int cy=rom(row);
+        if(cy>=(oy/240) && cy<=(oy+239)/240 && cy<32) {
+            uint16_t cell=(uint16_t)(row+3);
+            for(int cells=0;cells<32;cells++) {
+                int cx=rom(cell),next=rom(cell+1);
+                if(cx>=left && cx<=right && cx<32) {
+                    uint16_t p=(uint16_t)(cell+2);
+                    for(int records=0;records<64;records++) {
+                        int kind=rom(p)&15;
+                        if(!kind || kind>10) break;
+                        if(kind==2) draw_powerup_preview(cx,cy,rom(p+1),rom(p+2));
+                        p+=size[kind];
+                    }
+                }
+                if(next==0xff || next<3) break;
+                cell+=(uint16_t)next;
+            }
+        }
+        row=ptr16((uint16_t)(row+1));
+    }
+}
+
 int met_actors_hook_world(uint16_t addr) {
     (void)addr;
     if(!metroid_ws_enabled() || s_world || (!s_residents && !s_expanded && !s_smooth)) return 0;
-    s_world=1;s_count=0;memset(s_captured,0,sizeof s_captured);
+    s_world=1;s_count=0;s_powerups_drawn=0;memset(s_captured,0,sizeof s_captured);
     if(s_residents) prepare_actors();
     if(s_smooth) runtime_begin_unclocked();
     func_CB29();
@@ -502,6 +582,7 @@ int met_actors_hook_world(uint16_t addr) {
         }
     }
     draw_doors();
+    draw_powerup_previews();
     memcpy(s_present,s_build,s_count*sizeof(Sprite));s_present_count=s_count;s_present_valid=1;
     s_world=0;return 1;
 }

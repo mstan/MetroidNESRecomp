@@ -94,8 +94,17 @@ the update/draw entry hooks and disappearing from the expanded sprite packet.
 
 `widescreen_doors_probe.py --exe <trace-exe> --rom metroid.nes --state-left
 <F3.sav> --out <fresh-directory>` checks both blue bubbles at the Brinstar shaft,
-a real shot opening them together, and exact save/load replay. Add
+the full opening and closing animation, and exact save/load replay. Add
 `--state-right <just-exited-shaft-door.sav>` to shoot from the opposite side and
 `--reference-exe <before-paired-doors.exe>` to compare gameplay RAM/SRAM. The
-route explicitly protects Samus from enemy damage; it does not force door hits
-or modify door state.
+route explicitly protects Samus from enemy damage and fires a real shot. It
+shortens the open door's re-close timer for the closing test; animation state
+and timing run through the original game routines.
+
+`widescreen_pickups_probe.py --exe <trace-exe> --rom metroid.nes --out
+<fresh-directory>` starts a new game, checks Morph Ball in the left margin on
+every frame of its handoff to the native pickup, and collects it normally.
+A final renderer fixture restores the opening camera with the inventory and
+history earned during that route: the collected item must stay absent while
+its room is unloaded. Add `--reference-exe <before-pickup-previews.exe>` for
+RAM/SRAM parity. The collection route uses player protection.
