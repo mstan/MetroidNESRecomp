@@ -37,6 +37,7 @@
  * game's "name table 3" onto physical 1).
  */
 #include "metroid_ws.h"
+#include "watchdog.h"
 #include "metroid_ws_zp.h"
 /*
  * metroid_ram.h (generated) also names the three room-decoder pointers that
@@ -731,6 +732,7 @@ int met_render_frame(uint32_t *out, int out_w, int out_h, int native_x0,
     if (!s_gate_wide) { s_stats.frames_fallback++; return 0; }
     if (!met_render_camera(&origin_x, &origin_y, &horiz)) { s_stats.frames_fallback++; return 0; }
     if (!ensure_bg_opaque(out_w)) { s_stats.frames_fallback++; return 0; }
+    uint64_t started = watchdog_span_begin();
 
     if (out_h > MET_CELL_PX_H) out_h = MET_CELL_PX_H;
     s_native_x0 = native_x0;
@@ -823,5 +825,6 @@ int met_render_frame(uint32_t *out, int out_w, int out_h, int native_x0,
     if (!met_actors_draw(out, out_w, native_x0, s_bg_opaque, s_hud == MET_WS_HUD_EDGES))
         ppu_renderer_draw_sprites_wide(out, out_w, native_x0, s_bg_opaque, place_sprite, NULL);
     s_stats.frames_wide++;
+    watchdog_span_end("widescreen_render", started);
     return 1;
 }

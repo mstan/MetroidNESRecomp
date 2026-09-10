@@ -7,6 +7,9 @@
  */
 #include "watchdog.h"
 #include "nes_runtime.h"
+#include "metroid_ram.h"
+#include "interp.h"
+#include <SDL.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -18,6 +21,41 @@
 
 jmp_buf g_watchdog_jmp;
 static clock_t s_frame_start = 0;
+
+uint64_t watchdog_span_begin(void) {
+    return SDL_GetPerformanceCounter();
+}
+
+void watchdog_span_end(const char *phase, uint64_t start) {
+    static unsigned count;
+    if (count >= 64) return;
+    uint64_t end = SDL_GetPerformanceCounter(), freq = SDL_GetPerformanceFrequency();
+    if (!freq || end < start || end - start < freq / 10) return;
+    count++;
+    char path[1024];
+    snprintf(path, sizeof path, "%smetroid_stalls.jsonl", g_exe_dir);
+    FILE *f = fopen(path, "a");
+    if (!f) return;
+    uint16_t pc = 0;
+    int tick = 0, valid = runtime_get_savestate_resume(&pc, &tick);
+    NesInterpStats stats;
+    nes_interp_get_stats(&stats);
+    /* phase is an internal literal, not user text. No guest memory is changed. */
+    fprintf(f, "{\"event\":\"slow_span\",\"time\":%lld,\"phase\":\"%s\","
+            "\"ms\":%.3f,\"frame\":%llu,\"cycles\":%llu,\"bank\":%d,"
+            "\"resume_pc\":%u,\"resume_valid\":%d,\"vblank_depth\":%d,"
+            "\"map_x\":%u,\"map_y\":%u,\"routine\":%u,\"nmi_status\":%u,"
+            "\"samus_x\":%u,\"samus_y\":%u,\"interp_total\":%llu,"
+            "\"interp_watchdogs\":%llu,\"record\":%u}\n",
+            (long long)time(NULL), phase, 1000.0 * (double)(end-start)/(double)freq,
+            (unsigned long long)g_frame_count, (unsigned long long)g_nes_cycles,
+            g_current_bank, pc, valid, runtime_get_vblank_depth(),
+            g_ram[MET_MapPosX], g_ram[MET_MapPosY], g_ram[MET_MainRoutine],
+            g_ram[MET_NMIStatus], g_ram[0x30e], g_ram[0x30d],
+            (unsigned long long)stats.instrs_total,
+            (unsigned long long)stats.watchdog_trips, count);
+    fclose(f);
+}
 
 void watchdog_frame_start(void) {
     s_frame_start = clock();

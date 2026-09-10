@@ -49,6 +49,7 @@ list(FILTER METROID_GEN EXCLUDE REGEX "generated/metroid_full_bank(01|07)\\.c$")
 add_executable(MetroidNESRecomp
     ${NESRECOMP_RUNNER_SOURCES}
     extras.c
+    password_writer.c
     metroid_ws.c
     metroid_ws_render.c
     metroid_ws_actors.c

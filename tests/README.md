@@ -108,3 +108,31 @@ A final renderer fixture restores the opening camera with the inventory and
 history earned during that route: the collected item must stay absent while
 its room is unloaded. Add `--reference-exe <before-pickup-previews.exe>` for
 RAM/SRAM parity. The collection route uses player protection.
+
+## Save/load crash and intermittent stalls
+
+`metroid_resume_probe.py --exe <trace-exe> --rom metroid.nes --out
+<fresh-directory>` walks right from a new game and then uses ordinary jump/fire
+inputs near the ledge. It repeats 1,200 frames after restoring the spawn save,
+comparing RAM and screenshots every 150 frames. It checks stock and all PC
+widescreen options without changing player RAM. The old interpreter watchdog
+terminated a healthy continuation after a few hundred restored frames.
+
+Slow host phases (100 ms or longer) append a JSON record to
+`metroid_stalls.jsonl` next to the executable, capped at 64 records per process.
+The phase distinguishes password encoding/submission, world/actor updates,
+widescreen rendering and debug snapshots. Records include
+the frame, map cell, guest continuation and interpreter watchdog count. Input
+pauses and frame pacing are outside these spans. No file is created unless a
+measured phase crosses the threshold. Also retain `runtime_faults.log`,
+`fallback_telemetry.jsonl` and the launch's stdout/stderr logs after a crash.
+
+Password persistence/history now use one file-writer thread. Only copied text
+and its capture timestamp leave the game thread; encoding still runs against
+the original guest snapshot. Normal exit drains queued writes. If a disk stalls
+long enough to fill the 16-entry queue, the newest pending entry is replaced
+with the latest progress. Write errors trigger a retry on a later capture.
+
+`password_writer_test.c` links with `password_writer.c` and SDL2. It blocks the
+writer callback while submitting captures, then checks nonblocking submission,
+copied inputs/timestamps, overflow policy, shutdown drain and the retry latch.

@@ -8,6 +8,7 @@
 #pragma once
 
 #include <setjmp.h>
+#include <stdint.h>
 
 #define WATCHDOG_TIMEOUT_SECS 10.0
 
@@ -20,3 +21,9 @@ void watchdog_frame_start(void);
 /* Call at loop back-edges in generated code.
  * If timeout exceeded, dumps stack and longjmps. */
 void watchdog_check(void);
+
+/* Bounded wall-time diagnostics for host work. Logs only spans >=100 ms to
+ * metroid_stalls.jsonl next to the executable (at most 64 per process).
+ * Keep input waits and deliberate frame pacing outside measured spans. */
+uint64_t watchdog_span_begin(void);
+void watchdog_span_end(const char *phase, uint64_t start);

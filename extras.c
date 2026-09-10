@@ -11,6 +11,7 @@
 #include "input_script.h"
 #include "recomp_stack.h"
 #include "watchdog.h"
+#include "password_writer.h"
 #include "metroid_ws.h"
 #include "metroid_ram.h"   /* MET_* RAM names, generated from disasm/m1disasm */
 #ifdef ENABLE_NESTOPIA_ORACLE
@@ -79,7 +80,7 @@ static void get_exe_relative_path(const char *filename, char *out, int max_len) 
  * Synthetic SRAM: password save system  (see ENHANCEMENTS.md for the full RE).
  *
  * Metroid has no battery — progress is a 24-char password. We give it the same
- * UX as a battery game: every ~15 s of real gameplay we run the game's OWN
+ * UX as a battery game: every ~5 s of real gameplay we run the game's OWN
  * password encoder (func_8C7A_b0 = CalculatePassword, bank 0) out-of-band on the
  * current progress, read back the 24 codes it writes to PasswordChar ($699A),
  * and persist the resulting password to a sidecar file (metroid.srm) + a
@@ -134,7 +135,7 @@ static int metroid_char_to_index(char ch) {
 
 /* ---- Password state ---- */
 static char s_loaded_password[MET_PW_LEN + 1];  /* current saved password (prefill source) */
-static char s_saved_password[MET_PW_LEN + 1];   /* last password written to disk (dirty check) */
+static char s_saved_password[MET_PW_LEN + 1];   /* last password queued (main thread only) */
 static const char *s_password = NULL;           /* active prefill string (loaded or --password) */
 static int  s_password_from_cli = 0;            /* 1 if --password given (dev override) */
 static int  s_capture_enabled = 1;              /* save-anywhere auto-capture on/off */
@@ -191,15 +192,15 @@ static void password_save_path(char *out, int max_len) {
     get_exe_relative_path("metroid.srm", out, max_len);
 }
 
-static void password_save_write(const char *pw) {
+static int password_save_write(const char *pw) {
     char path[512];
     password_save_path(path, sizeof(path));
     FILE *f = fopen(path, "w");
-    if (!f) return;
-    fprintf(f, "%s\n", pw);
-    fclose(f);
-    snprintf(s_saved_password, sizeof(s_saved_password), "%s", pw);
-    printf("[Password] Saved \"%s\"\n", pw);
+    if (!f) return 0;
+    int ok = fprintf(f, "%s\n", pw) > 0;
+    if (fclose(f) != 0) ok = 0;
+    if (ok) printf("[Password] Saved \"%s\"\n", pw);
+    return ok;
 }
 
 /* Load the persisted password (fills s_loaded_password). Returns 1 on success. */
@@ -223,12 +224,11 @@ static int password_save_read(void) {
 
 /* Append every distinct captured password to a timestamped history next to the
  * exe, so the player can "go back in time" by re-entering an older password. */
-static void password_log_append(const char *pw) {
+static int password_log_append(const char *pw, time_t now) {
     char path[512];
     get_exe_relative_path("metroid_password_log.txt", path, sizeof(path));
     FILE *f = fopen(path, "a");
-    if (!f) return;
-    time_t now = time(NULL);
+    if (!f) return 0;
     struct tm *lt = localtime(&now);
     char ts[32] = "????-??-?? ??:??:??";
     if (lt) strftime(ts, sizeof(ts), "%Y-%m-%d %H:%M:%S", lt);
@@ -237,7 +237,16 @@ static void password_log_append(const char *pw) {
         s_pw_session_logged = 1;
     }
     fprintf(f, "%s  %s\n", ts, pw);
-    fclose(f);
+    int ok = !ferror(f);
+    if (fclose(f) != 0) ok = 0;
+    return ok;
+}
+
+/* Worker callback: host paths and immutable captured text only. */
+static int password_persist(const char *pw, time_t captured_at) {
+    int saved = password_save_write(pw);
+    int logged = password_log_append(pw, captured_at);
+    return saved && logged;
 }
 
 /* A blank password (all '0' codes) means no progress yet — don't persist it. */
@@ -254,14 +263,27 @@ static void password_capture_tick(uint64_t frame_count) {
     if (!s_capture_enabled || s_password_from_cli) return;
     if ((frame_count % 300) != 0) return;        /* ~every 5 s */
     if (g_ram[MET_GameMode] != 0) return;        /* 0 = in gameplay; 1 = title/menu */
+    if (password_writer_failed()) s_saved_password[0] = '\0'; /* retry failed I/O */
 
     char pw[MET_PW_LEN + 1];
-    if (metroid_generate_password(pw, sizeof(pw)) <= 0) return;
+    uint64_t started = watchdog_span_begin();
+    int encoded = metroid_generate_password(pw, sizeof(pw));
+    watchdog_span_end("password_encode", started);
+    if (encoded <= 0) return;
     if (password_is_blank(pw)) return;               /* no progress yet */
     if (strcmp(pw, s_saved_password) == 0) return;   /* unchanged */
 
-    password_save_write(pw);
-    password_log_append(pw);
+    started = watchdog_span_begin();
+    if (password_writer_start(password_persist)) {
+        password_writer_submit(pw, time(NULL));
+        snprintf(s_saved_password, sizeof(s_saved_password), "%s", pw);
+    } else {
+        /* Preserve saving if the OS cannot create a worker. The span logger
+         * still diagnoses any synchronous fallback delay. */
+        if (password_persist(pw, time(NULL)))
+            snprintf(s_saved_password, sizeof(s_saved_password), "%s", pw);
+    }
+    watchdog_span_end("password_submit", started);
     /* Keep it ready for the prefill path on the next password screen. */
     snprintf(s_loaded_password, sizeof(s_loaded_password), "%s", pw);
     s_password = s_loaded_password;
@@ -442,10 +464,14 @@ void game_post_nmi(uint64_t frame_count) {
     password_capture_tick(frame_count);
 
     /* Widescreen gating must be decided before the frame is composited. */
+    uint64_t started = watchdog_span_begin();
     metroid_ws_post_nmi(frame_count);
+    watchdog_span_end("widescreen_post_nmi", started);
 
     if (s_debug_enabled) {
+        started = watchdog_span_begin();
         debug_server_record_frame();
+        watchdog_span_end("debug_snapshot", started);
     }
 }
 

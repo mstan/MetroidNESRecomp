@@ -2,6 +2,7 @@
  * its original 16+16 byte format. Offloaded actors execute the original USA
  * routines against isolated RoomRAM; live room loads adopt that same state. */
 #include "metroid_ws.h"
+#include "watchdog.h"
 #include "metroid_ws_zp.h"
 #undef MET_RoomPtr
 #undef MET_StructPtr
@@ -552,10 +553,17 @@ int met_actors_hook_world(uint16_t addr) {
     (void)addr;
     if(!metroid_ws_enabled() || s_world || (!s_residents && !s_expanded && !s_smooth)) return 0;
     s_world=1;s_count=0;s_powerups_drawn=0;memset(s_captured,0,sizeof s_captured);
+    uint64_t started = watchdog_span_begin();
     if(s_residents) prepare_actors();
+    watchdog_span_end("actor_prepare", started);
+    started = watchdog_span_begin();
     if(s_smooth) runtime_begin_unclocked();
     func_CB29();
     if(s_smooth) runtime_end_unclocked();
+    /* Clocked guest updates may legitimately enter a frame/input wait. Only
+     * the unclocked PC path is a bounded host span with no deliberate pause. */
+    if(s_smooth) watchdog_span_end("native_world", started);
+    started = watchdog_span_begin();
     if(s_residents) {
         sync_native();
         for(int i=0;i<MAX_ACTORS;i++) {
@@ -581,8 +589,11 @@ int met_actors_hook_world(uint16_t addr) {
             guest_end(&save);
         }
     }
+    watchdog_span_end("virtual_actors", started);
+    started = watchdog_span_begin();
     draw_doors();
     draw_powerup_previews();
+    watchdog_span_end("door_pickup_previews", started);
     memcpy(s_present,s_build,s_count*sizeof(Sprite));s_present_count=s_count;s_present_valid=1;
     s_world=0;return 1;
 }

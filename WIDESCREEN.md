@@ -216,9 +216,11 @@ Known limits remain tracked in the central Beads database:
 - `beads-2dw.6.9`: Mesen RAM comparison still has the pre-existing frame-5
   divergence (99.65% steady-state match over the 900-frame attract comparison).
   Deterministic recomp output is not proof of oracle parity.
-- `beads-2dw.1.23`: a long run after restoring a shaft savestate can reach an
-  interpreter watchdog. It reproduces with widescreen off in both the preserved
-  and updated executables. Short replay validation does not resolve this.
+- `beads-2dw.6.16`: synchronous password autosaving caused a measured 239 ms
+  gameplay stall. File writes now use a bounded worker queue, with normal exit
+  draining pending saves. The remaining manual check is whether any other
+  source still causes the reported buzz/freeze; `metroid_stalls.jsonl` records
+  slow game phases next to the executable.
 - Bosses, later areas, unusual enemy types, elevator/death transitions and long
   play sessions have not been comprehensively validated with widescreen enabled.
 - Preview rooms use the current area's live CHR and palette. An adjacent room
@@ -229,3 +231,10 @@ Known limits remain tracked in the central Beads database:
 This checkpoint pins the matching engine work on
 `feat/metroid-widescreen-engine`. Engine integration, source publication and
 the final re-pin remain separate owner-approved work.
+
+The save-load crash in `beads-2dw.1.23` is fixed by renewing the explicit
+continuation's interpreter watchdog only when presented frames advance.
+Non-progressing loops and ordinary fallback calls retain their limits.
+Fresh versus restored 1,200-frame routes match RAM and pixels with widescreen
+off and with all PC options enabled; the owner's F1/F2 setups also run beyond
+their former failure points. See `tests/metroid_resume_probe.py`.
