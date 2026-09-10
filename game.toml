@@ -941,3 +941,12 @@ addr = 0xE0C1           # DisplayBar
 # for the current map cell into the widescreen screen cache.
 [[mod_function_hook]]
 addr = 0xEA26           # RoomFinished
+
+# Observe UpdateNameTable's shared JSR to GetNameAddrs. An entry hook at E590
+# misses vertical scrolling's fall-through path in the generated code.
+[[mod_function_hook]]
+addr = 0xE564           # GetNameAddrs
+
+# Clear widened visibility for occupants of a room whose backing storage is reused.
+[[mod_function_hook]]
+addr = 0xEC9B           # DeleteOffscreenRoomSprites

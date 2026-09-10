@@ -1,4 +1,16 @@
-# Metroid (NESRecomp) v0.1.0 — Password Save System
+# Metroid (NESRecomp) — USA widescreen preview (unreleased)
+
+Adaptive widescreen adds Fit, 16:9, 21:9 and 32:9 with square pixels and a
+choice of HUD placement. The custom renderer uses complete logical room data
+until PPU columns/rows finish streaming. Loaded enemies remain visible in the
+wider area and retire when their room storage is reused, preserving new-room
+spawn slots. Additional rooms can appear as terrain previews.
+
+This is a local preview, not a full-game compatibility claim. See
+[WIDESCREEN.md](WIDESCREEN.md) for validation, known Mesen/savestate issues and
+the pending engine integration. EU builds remain deferred.
+
+## Password save system (v0.1.0)
 
 A native PC build of Metroid, statically recompiled from the NES ROM's 6502 code
 to C with the [NESRecomp](https://github.com/mstan/nesrecomp) framework. No ROM is

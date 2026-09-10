@@ -1,6 +1,6 @@
 /*
  * metroid_ws.c — Metroid (NES) widescreen policy: lifecycle, per-frame
- * gating, the three function-entry hooks and the debug stats block.
+ * gating, function-entry hooks and the debug stats block.
  *
  * See metroid_ws.h for the overall design and metroid_ws_render.c for the
  * world model and compositor. Nothing here does anything until
@@ -34,6 +34,8 @@ extern uint16_t g_rts_target;
 #define WS_HOOK_IS_OBJECT_VISIBLE "metroid.widescreen.is-object-visible"
 #define WS_HOOK_DISPLAY_BAR       "metroid.widescreen.display-bar"
 #define WS_HOOK_ROOM_FINISHED     "metroid.widescreen.room-finished"
+#define WS_HOOK_UPDATE_NAMETABLE  "metroid.widescreen.nametable-transfer"
+#define WS_HOOK_RETIRE_ROOM       "metroid.widescreen.retire-room"
 
 static int          s_enabled;
 static MetWsHud     s_hud = MET_WS_HUD_EDGES;
@@ -81,6 +83,8 @@ void metroid_ws_enable(NesAspectMode aspect, MetWsHud hud) {
     nes_mod_set_function_hook_enabled(WS_HOOK_IS_OBJECT_VISIBLE, 1);
     nes_mod_set_function_hook_enabled(WS_HOOK_DISPLAY_BAR, 1);
     nes_mod_set_function_hook_enabled(WS_HOOK_ROOM_FINISHED, 1);
+    nes_mod_set_function_hook_enabled(WS_HOOK_UPDATE_NAMETABLE, 1);
+    nes_mod_set_function_hook_enabled(WS_HOOK_RETIRE_ROOM, 1);
 
     s_enabled = 1;
     printf("[Widescreen] enabled: aspect=%s hud=%s\n",
@@ -99,6 +103,8 @@ void metroid_ws_disable(void) {
     nes_mod_set_function_hook_enabled(WS_HOOK_IS_OBJECT_VISIBLE, 0);
     nes_mod_set_function_hook_enabled(WS_HOOK_DISPLAY_BAR, 0);
     nes_mod_set_function_hook_enabled(WS_HOOK_ROOM_FINISHED, 0);
+    nes_mod_set_function_hook_enabled(WS_HOOK_UPDATE_NAMETABLE, 0);
+    nes_mod_set_function_hook_enabled(WS_HOOK_RETIRE_ROOM, 0);
 
     ppu_renderer_set_custom_render(NULL, NULL);
 
@@ -113,7 +119,7 @@ void metroid_ws_disable(void) {
     g_ws_oam_sidecar = 0;
     g_ws_obj_ctx_valid = 0;
 
-    if (was) printf("[Widescreen] disabled (stock 4:3)\n");
+    if (was) printf("[Widescreen] disabled (stock 256x240)\n");
 }
 
 /* ---- per-frame gating --------------------------------------------------- */
@@ -147,6 +153,7 @@ void metroid_ws_post_nmi(uint64_t frame_count) {
 
     s_gate_wide = wide;
     met_render_set_gate(wide);
+    met_render_post_nmi();
     if (!wide) g_ws_obj_ctx_valid = 0;
 }
 
@@ -174,10 +181,11 @@ static void ws_hook_rts(void) {
  * IsObjectVisible ($DFDF) — prg7_engine.asm:6444-6503.
  *
  * The routine answers "is this object inside the 256-pixel viewport?" and
- * returns X = 1/0. Its two callers are ObjDrawFrame (:6251, which stores the
+ * returns X = 1/0. Its callers are ObjDrawFrame (:6251, which stores the
  * answer in Objects.onScreen) and the enemy frame path (:6126, which stores
  * it in Ens.data05 bit 1). DeleteOffscreenRoomSprites ($EC9B) deletes
- * enemies on the opposite nametable whose bit 1 is clear.
+ * enemies on the opposite nametable whose bit 1 is clear. A third caller,
+ * UpdateEnemy_CheckIfVisible (:10456), gates resting/active enemy updates.
  *
  * DELIBERATE RAM DELTA: this hook widens the horizontal window to the
  * widescreen viewport, so Objects.onScreen and Ens.data05 bit 1 become
@@ -200,6 +208,7 @@ int metroid_ws_hook_is_object_visible(uint16_t addr) {
 
     (void)addr;
 
+    if (s_enabled) g_ws_obj_ctx_valid = 0;
     if (!s_enabled || !s_gate_wide) return 0;
     if (!met_render_camera(&origin_x, &origin_y, &horiz) || !horiz) return 0;
     if (!met_render_nt_world_x(0, &nt_x0) || !met_render_nt_world_x(1, &nt_x1)) return 0;
@@ -225,6 +234,27 @@ int metroid_ws_hook_is_object_visible(uint16_t addr) {
         vanilla_visible = (pos_x >= scroll_x) && (radius < screen_x);
     else
         vanilla_visible = (pos_x <  scroll_x) && (((int)radius + (int)screen_x) < 256);
+
+    /* Preserve the original horizontal path's accumulator and ALU flags.
+     * The callers currently consume X, but a function replacement must not
+     * silently leave the incoming A/C/V behind. SBC X sets V; CMP preserves it. */
+    g_cpu.V = ((pos_x ^ scroll_x) & (pos_x ^ screen_x) & 0x80u) != 0;
+    g_cpu.C = pos_x >= scroll_x;
+    g_cpu.A = (uint8_t)(same_nt ? 0 : 1);
+    g_cpu.N = 0; g_cpu.Z = same_nt;
+    if (same_nt && g_cpu.C) {
+        g_cpu.A = radius;
+        g_cpu.C = radius >= screen_x;
+        g_cpu.N = ((uint8_t)(radius - screen_x) >> 7) & 1;
+        g_cpu.Z = radius == screen_x;
+    } else if (!same_nt && !g_cpu.C) {
+        unsigned sum = (unsigned)radius + screen_x;
+        g_cpu.A = (uint8_t)sum;
+        g_cpu.V = ((~(radius ^ screen_x) & (radius ^ g_cpu.A)) >> 7) & 1;
+        g_cpu.N = g_cpu.A >> 7; g_cpu.Z = g_cpu.A == 0;
+        g_cpu.C = 0; /* overflow takes the explicit CLC before DEX */
+    }
+    if (!vanilla_visible) { g_cpu.N = 0; g_cpu.Z = 1; } /* DEX */
 
     /* True (unwrapped) screen X: the object's room X inside its own cell,
      * expressed relative to the camera. */
@@ -277,6 +307,32 @@ int metroid_ws_hook_room_finished(uint16_t addr) {
     if (!s_enabled) return 0;
     met_render_note_room_finished();
     return 0;
+}
+
+int metroid_ws_hook_get_name_addrs(uint16_t addr) {
+    uint16_t caller;
+    (void)addr;
+    /* Both scrolling paths JSR here from $E592. Vertical scrolling falls
+     * through $E590 in several generated functions, bypassing an entry hook
+     * there. Ignore the other caller (attribute uploads) explicitly. */
+    caller = (uint16_t)(g_ram[0x100 + (uint8_t)(g_cpu.S + 1)] |
+                       ((uint16_t)g_ram[0x100 + (uint8_t)(g_cpu.S + 2)] << 8));
+    if (s_enabled && caller == 0xE594u) met_render_note_stream();
+    return 0;
+}
+
+int metroid_ws_hook_retire_room(uint16_t addr) {
+    int nt;
+    const MetWsCells *cells;
+    (void)addr;
+    if (!s_enabled) return 0;
+    nt = (g_ram[MET_PPUCTRL_ZP] ^ g_ram[MET_ScrollDir]) & 1;
+    cells = met_render_cells();
+    if (cells->area != g_ram[MET_InArea] ||
+        cells->cell_x[nt] != g_ram[MET_MapPosX] ||
+        cells->cell_y[nt] != g_ram[MET_MapPosY])
+        met_render_retire_room(nt);
+    return 0; /* the original cleanup still runs and balances its own stack */
 }
 
 /* ---- CLI spec parsing --------------------------------------------------- */

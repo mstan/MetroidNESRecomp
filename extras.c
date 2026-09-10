@@ -712,6 +712,8 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
      * cache_mismatch is the same check for cells taken from the screen cache. */
     if (strcmp(cmd, "ws_stats") == 0) {
         uint8_t d[32];
+        const MetWsStats *st = met_render_stats();
+        const MetWsCells *cells = met_render_cells();
         memset(d, 0, sizeof(d));
         metroid_ws_fill_stats(d);
         /* Width and margins come from the live globals, not from d[16..19]:
@@ -720,18 +722,31 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
         debug_server_send_fmt(
             "{\"id\":%d,\"ok\":true,\"enabled\":%d,\"gated_wide\":%d,"
             "\"render_width\":%d,\"left\":%d,\"right\":%d,"
+            "\"aspect_mode\":%d,\"window_ready\":%d,"
             "\"nt0_cell_known\":%d,\"nt1_cell_known\":%d,"
             "\"cells_cached\":%d,\"decoded_cells\":%d,"
             "\"decoder_verified\":%d,\"decoder_mismatch\":%d,"
             "\"cache_mismatch\":%d,"
-            "\"frames_wide\":%d,\"frames_fallback\":%d}",
+            "\"frames_wide\":%d,\"frames_fallback\":%d,"
+            "\"nt_cells\":[[%d,%d],[%d,%d]],"
+            "\"streamed_columns\":[%u,%u],\"streamed_rows\":[%u,%u],"
+            "\"mismatch_cell\":[%d,%d],\"mismatch_bytes\":%u,"
+            "\"decoder_object_bytes\":%u,\"retired_enemies\":%u,"
+            "\"mismatch_offset\":%d,\"mismatch_decoded\":%u,\"mismatch_actual\":%u}",
             id,
             (d[20] & 0x08) ? 1 : 0, (d[20] & 0x04) ? 1 : 0,
             g_render_width, g_widescreen_left, g_widescreen_right,
+            (int)nes_video_aspect_mode(), nes_video_window_ready(),
             (d[20] & 0x01) ? 1 : 0, (d[20] & 0x02) ? 1 : 0,
             d[21] | (d[22] << 8), d[23] | (d[24] << 8),
             d[25], d[26], d[27],
-            d[28] | (d[29] << 8), d[30] | (d[31] << 8));
+            d[28] | (d[29] << 8), d[30] | (d[31] << 8),
+            cells->cell_x[0], cells->cell_y[0], cells->cell_x[1], cells->cell_y[1],
+            st->streamed_columns[0], st->streamed_columns[1],
+            st->streamed_rows[0], st->streamed_rows[1],
+            st->mismatch_cell_x, st->mismatch_cell_y, st->mismatch_bytes,
+            st->decoder_object_bytes, st->retired_enemies,
+            st->mismatch_offset, st->mismatch_decoded, st->mismatch_actual);
         return 1;
     }
     return 0;

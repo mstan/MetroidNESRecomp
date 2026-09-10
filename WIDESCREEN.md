@@ -1,0 +1,170 @@
+# Adaptive widescreen (USA preview)
+
+Enable **Metroid Widescreen** in the launcher's mod controls, choose an aspect
+and status-bar position, then launch. It is off by default. The command-line
+equivalent is:
+
+```powershell
+.\MetroidNESRecomp.exe .\metroid.nes --widescreen fit
+.\MetroidNESRecomp.exe .\metroid.nes --widescreen 32:9,center
+.\MetroidNESRecomp.exe .\metroid.nes --widescreen off
+```
+
+Use Metroid (USA), headerless PRG+CHR CRC32 `70080810`. The executable rejects
+the European ROM. An EU build needs separate generation and validation; this
+package currently targets USA only. No ROM is distributed.
+
+## Presentation
+
+The renderer keeps square pixels and a 240-pixel height:
+
+| Mode | Render width |
+| --- | ---: |
+| Off | 256 |
+| 16:9 | 426 |
+| 21:9 | 560 |
+| 32:9 | 854 |
+| Fit | Nearest even width for the window, clamped to 256–854 |
+
+Fit follows live window resizing. `edges` pins the energy/missile display to
+the left edge; `center` keeps its original position in the centered native
+viewport. Title, password and other non-room screens use the centered stock
+picture. The custom renderer requires the frame PPU; the experimental dot PPU
+refuses it, and HD-pack rendering is bypassed while this renderer is active.
+
+## What enemies and room previews do
+
+The game's own enemy AI, movement, attacks and fixed spawn slots still run.
+In horizontal rooms, the visibility test includes the wider view and preserves
+everything stock considered visible. Loaded enemies can remain visible and
+active beyond the original 256-pixel edge, so activation timing and trajectories
+can differ from stock. Vertical rooms retain the original vertical visibility
+test; stale horizontal sprite context is cleared before that path runs.
+
+Only the two rooms backed by the game's live RoomRAM have live objects. Wider
+margins can show additional rooms as **terrain previews**, including across a
+closed door or wall. Those previews do not independently spawn enemies or open
+collision paths. Doors and collision retain their game behavior.
+
+When the game reuses a room's backing storage, its old enemies and doors must
+retire even if a very wide view still includes that room. Keeping them would
+give them the new room's collision map and occupy its spawn slots. The mod clears
+only the outgoing room's visibility flags immediately before the game's own
+cleanup; that cleanup performs deletion. Terrain can remain visible afterward.
+This boundary can still produce an object disappearing in an outer margin.
+
+The visibility-consumer audit of `disasm/m1disasm/src` found these readers:
+
+| Visibility reader | Consequence of wider visibility |
+| --- | --- |
+| `UpdateEnemy_CheckIfVisible` | Resting/active enemies update in the margins |
+| `UpdateEnemy_EnData05DistanceToSamusThreshold` | Original distance gates can activate AI earlier; movement and attack state can consequently diverge |
+| `IsSlotTaken`, `UpdatePipeBugHole` | Visible occupants reserve their fixed spawn slots |
+| `Door_DeleteOffscreenEnemies`, `DeleteOffscreenRoomSprites` | Loaded enemies persist until their room must retire |
+| `UpdateEnProjectile`, Kraid lint/projectile AI | Projectiles persist to the wider boundary |
+| `UpdateAllRinkaSpawners`, `RidleyTryToLaunchFireball` | Visible projectiles reserve their spawn slots longer |
+| `UpdateBullet_DeleteIfOffScreen` (`Objects.onScreen`) | Samus projectiles persist to the wider boundary |
+| `Doors_RemoveIfOffScreen` (`Objects.onScreen`) | Doors persist until the room retirement hook clears visibility |
+
+`DrawEnemy_NotBlank` and `ObjDrawFrame` produce those visibility flags and gate
+drawing. Other `Ens.data05` readers use direction, timing, or distance bits;
+the mod does not replace those routines. Resting enemies may intentionally wait
+for Samus to approach. Boss/projectile consumers above were audited in source,
+but are not yet covered by the Brinstar runtime route.
+
+The earlier plan's requirement that all wide-mode RAM changes stay confined to
+visibility bytes is incompatible with earlier enemy updates: AI positions,
+timers, attacks and RNG consumption can then change. Wide-mode behavior is
+validated separately; the strict unchanged-output gate applies with the mod off.
+
+## How the compositor gets complete terrain
+
+The camera maps the native picture into a 32×32 world grid of 256×240 cells.
+Each of the two physical nametables is bound to a map cell when `RoomFinished`
+finishes constructing its complete 1 KB RoomRAM image.
+
+The PPU's other nametable is **not** immediately complete: the game streams one
+column or row as scrolling advances. Treating the whole table as authoritative
+caused floating platforms and enemies apparently walking on missing terrain.
+The compositor now selects:
+
+1. Live PPU tiles in the native viewport and in uploaded margin columns/rows.
+2. Complete logical RoomRAM for unstreamed parts of a loaded room.
+3. A cached RoomRAM snapshot for a previously loaded room.
+4. A native port of the ROM's room decoder for unvisited terrain previews.
+
+The upload masks become valid after NMI consumes the queued PPU data. Initial
+full uploads are recognized only when the complete PPU table equals RoomRAM.
+Bindings and masks reset when storage is reused or the area changes.
+
+USA hook points in `game.toml` and `mods/widescreen_plugin.c`:
+
+| Address | Purpose |
+| --- | --- |
+| `$DFDF` IsObjectVisible | Widen horizontal visibility; preserve guest return/ALU effects |
+| `$E0C1` DisplayBar | Identify the ten HUD sprite slots |
+| `$EA26` RoomFinished | Bind and snapshot complete logical terrain |
+| `$E564` GetNameAddrs | Observe transfers called from `$E592` (stack return `$E594`) |
+| `$EC9B` DeleteOffscreenRoomSprites | Retire occupants before backing storage is reused |
+
+An entry hook at `$E590` UpdateNameTable alone misses vertical scrolling:
+generated functions fall through that address. Both axes call `$E564`, where
+`$01:$00` holds the tile offset. The caller check excludes attribute uploads.
+Always regenerate after changing hooks; never edit `generated/` by hand.
+
+The decoder is checked against the game's later RoomRAM output. The measured
+start-corridor discrepancy was six `$FF → $4E` door collision tiles, written by
+`WriteDoorBGTiles_Common` after terrain construction. The verifier accepts that
+specific column/row pattern only when a matching live door exists; every other
+tile or attribute difference remains a mismatch.
+
+New savestates include the room bindings, upload masks and HUD metadata. Loaded
+RoomRAM reconstructs the cache; other entries are decoded again. Older states
+without this record cannot restore those bindings reliably. Password saves are
+the preferred way to carry progress between builds.
+
+## Validation and remaining limits
+
+The September 10, 2026 validation artifacts are under
+`build/widescreen_validation_20260910/` (local, not shipped). The maintained
+`tests/widescreen_probe.py` records screenshots, RAM, enemy slots, `ws_stats`
+and dispatch misses in an isolated output directory. It requires `TRACE=ON`.
+
+Validated paths include the Brinstar start corridor, approach/entry through the
+right door, backtracking, and a vertical descent from map row 14 through 18.
+The descent uses a declared fixture granting Morph Ball/bombs and suppressing
+player damage/knockback. Enemy AI and terrain still run in the game, but this
+fixture does not establish unmodified combat or full-game correctness.
+
+The vertical run verified seven decoded cells with zero unexpected decoder
+differences and zero dispatch misses. A short save/load replay produced
+identical screenshots. Live Fit resizing exercised client sizes 800×600,
+1280×720, 1680×720, 1708×480 and 640×720, yielding widths 320, 426, 560, 854 and
+256 respectively. Stock-off A/B verification compares 120 hashes over 1200
+frames against a preserved executable from before these fixes.
+
+The final 16:9, 21:9 (center HUD), and 32:9 routes recorded respectively 16, 35
+and 50 samples of visible enemies outside native X=0–255, with active enemies
+moving and new-room slots populated. All three had zero dispatch misses,
+unexpected decoder differences and cache mismatches. The password regression
+tests passed 2/2. The extracted USA ZIP passed both stock and 32:9 smoke runs;
+its stock hashes matched the preserved executable 120/120.
+
+Known limits remain tracked in the central Beads database:
+
+- `beads-2dw.6.9`: Mesen RAM comparison still has the pre-existing frame-5
+  divergence (99.65% steady-state match over the 900-frame attract comparison).
+  Deterministic recomp output is not proof of oracle parity.
+- `beads-2dw.1.23`: a long run after restoring a shaft savestate can reach an
+  interpreter watchdog. It reproduces with widescreen off in both the preserved
+  and updated executables. Short replay validation does not resolve this.
+- Bosses, later areas, unusual enemy types, elevator/death transitions and long
+  play sessions have not been comprehensively validated with widescreen enabled.
+- Preview rooms use the current area's live CHR and palette. An adjacent room
+  with a different palette can therefore appear with the current room's colors.
+- Window resize events are discarded while the TCP debugger pauses the engine;
+  Fit was tested during normal execution.
+
+This preview uses engine commit `86e0a8b` on
+`feat/metroid-widescreen-engine`. Engine integration, source publication and
+the final re-pin remain separate owner-approved work.

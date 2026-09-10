@@ -11081,6 +11081,7 @@ label_EA2A:;
 }
 
 void func_EC9B(void) { /* DeleteOffscreenRoomSprites */
+    if (nes_mod_function_entry(0xEC9Bu)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EC9B");
 #endif

@@ -37,6 +37,12 @@ A copy of the EU ROM is kept locally as `metroid-eu.nes` (gitignored, like
 
 ## Status
 
+An opt-in **USA adaptive widescreen preview** is available through the bundled
+Metroid Widescreen mod or `--widescreen fit|16:9|21:9|32:9`. It uses complete room
+terrain in the margins, widens loaded-room enemy visibility, and supports live
+Fit resizing. See [WIDESCREEN.md](WIDESCREEN.md) for controls, validation and the
+limits of terrain previews beyond the game's two live rooms.
+
 **v0.0.1** - Early foundation release.
 
 ### What works

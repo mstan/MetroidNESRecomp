@@ -1,7 +1,7 @@
 /*
  * metroid_ws.h — Metroid (NES) opt-in widescreen, custom-renderer edition.
  *
- * Design (see WIDESCREEN.md): the guest runs untouched at 256x240. A
+ * Design (see WIDESCREEN.md): the guest retains its 256x240 coordinate space. A
  * Metroid-specific compositor, installed through the engine's custom renderer
  * hook (nes_runtime.h: ppu_renderer_set_custom_render), re-draws the world
  * into a wider framebuffer whose width follows the window (Fit) or a preset
@@ -9,9 +9,8 @@
  *
  *   Background : per output pixel -> world (x,y) -> map cell (32x32 grid,
  *                256x240 px each) -> tile source:
- *                  (a) live PPU nametable when that cell is one of the two
- *                      loaded screens (authoritative: doors, blasted blocks,
- *                      collected items),
+ *                  (a) live PPU nametable for the native viewport/streamed
+ *                      margins, complete logical RoomRAM for unstreamed margins,
  *                  (b) the screen cache (1 KB RoomRAM snapshot captured when
  *                      the game finished drawing that cell, RoomFinished $EA26),
  *                  (c) a native C port of the game's room decoder
@@ -78,6 +77,8 @@ int  metroid_ws_parse_spec(const char *spec, NesAspectMode *aspect, MetWsHud *hu
 int  metroid_ws_hook_is_object_visible(uint16_t addr);   /* $DFDF, replaces body */
 int  metroid_ws_hook_display_bar(uint16_t addr);         /* $E0C1, observe only */
 int  metroid_ws_hook_room_finished(uint16_t addr);       /* $EA26, observe only */
+int  metroid_ws_hook_get_name_addrs(uint16_t addr);      /* $E564, observe transfer */
+int  metroid_ws_hook_retire_room(uint16_t addr);         /* $EC9B, before reuse */
 
 /* Debug/TCP frame record: writes up to 16 bytes of widescreen stats into
  * game_data[16..31] (render width, cells known, cache/decoder mismatches). */
@@ -94,6 +95,11 @@ typedef struct {
 
 void met_render_reset(void);                       /* forget cells + cache */
 void met_render_note_room_finished(void);          /* RoomFinished: snapshot RoomRAM, bind cell */
+void met_render_note_stream(void);                 /* queue row/column validity */
+void met_render_post_nmi(void);                    /* acknowledge completed PPU transfers */
+void met_render_retire_room(int nt);
+int met_render_save(uint8_t *buf, int cap);
+int met_render_load(const uint8_t *buf, int len);
 const MetWsCells *met_render_cells(void);
 
 /* Camera: world position of native column 0 / row 0, and room orientation.
@@ -122,6 +128,12 @@ typedef struct {
     uint32_t cache_mismatch;      /* re-snapshots that differed from the cached copy */
     uint32_t frames_wide;         /* frames composited wide */
     uint32_t frames_fallback;     /* frames handed back to the engine */
+    uint32_t streamed_columns[2], streamed_rows[2];
+    uint32_t mismatch_bytes;
+    uint32_t decoder_object_bytes; /* proven door collision-tile differences */
+    uint32_t retired_enemies;
+    int mismatch_cell_x, mismatch_cell_y, mismatch_offset;
+    uint8_t mismatch_decoded, mismatch_actual;
 } MetWsStats;
 const MetWsStats *met_render_stats(void);
 

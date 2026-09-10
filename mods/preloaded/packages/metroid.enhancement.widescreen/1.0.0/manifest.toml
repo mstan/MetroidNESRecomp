@@ -14,18 +14,13 @@ save_compatibility = "stock"
 game_id = "metroid-nes"
 rom_crc32 = "70080810"
 
-# Metroid (Europe). Listed because the three routines this package hooks sit at
-# the same addresses in both revisions (IsObjectVisible $DFDF, DisplayBar $E0C1,
-# RoomFinished $EA26), so an EU-targeted build of this repo could load the very
-# same package. It cannot match today: this build refuses the EU ROM.
-[[target]]
-game_id = "metroid-nes"
-rom_crc32 = "7751588d"
+# EU requires a separately generated and validated build, including all five
+# hooks and the transfer caller check. Do not advertise compatibility yet.
 
 [[feature]]
 id = "widescreen"
 name = "Widescreen"
-description = "Composites the adjacent map screens into the side margins, widens the game's own object-visibility test so enemies do not pop in at the 4:3 edge, and anchors the status bar."
+description = "Shows adjacent rooms in the side margins, keeps loaded-room enemies visible beyond the original screen edge, and anchors the status bar. Distant room previews contain terrain only."
 group = "Display"
 exclusive_group = "display-mode"
 default_enabled = false
@@ -34,7 +29,7 @@ default_enabled = false
 feature = "widescreen"
 id = "aspect"
 label = "Aspect"
-description = "Output aspect ratio. Fit follows the window, clamped between 4:3 and 32:9."
+description = "Output aspect ratio with square pixels. Fit follows the window, clamped between 16:15 and 32:9."
 type = "choice"
 default = "fit"
 

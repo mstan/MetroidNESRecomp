@@ -22,7 +22,7 @@
  *   npx vitest run password
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
-import { spawn, execFileSync, type ChildProcess } from "child_process";
+import { spawn, type ChildProcess } from "child_process";
 import { existsSync, readFileSync, writeFileSync, readdirSync } from "fs";
 import { join, resolve, dirname } from "path";
 import { createHash } from "crypto";
@@ -160,7 +160,6 @@ let dbg: Dbg | undefined;
 describe("Metroid password capture", () => {
   beforeAll(async () => {
     if (!ready) return;
-    try { execFileSync("taskkill", ["/F", "/IM", "MetroidNESRecomp.exe"], { stdio: "ignore" }); } catch {}
     // Enable the native TCP debug server on a dedicated port.
     writeFileSync(join(dirname(exe!), "debug.ini"), `port=${PORT}\n`);
     proc = spawn(exe!, [rom!], { cwd: dirname(exe!), stdio: "ignore", detached: false });
@@ -170,9 +169,8 @@ describe("Metroid password capture", () => {
   }, 60000);
 
   afterAll(async () => {
-    try { dbg?.cmd({ cmd: "quit" }); } catch {}
+    try { await dbg?.cmd({ cmd: "quit" }); } catch {}
     dbg?.close();
-    try { execFileSync("taskkill", ["/F", "/IM", "MetroidNESRecomp.exe"], { stdio: "ignore" }); } catch {}
     proc?.kill();
   });
 

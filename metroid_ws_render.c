@@ -78,6 +78,7 @@ enum { CELL_EMPTY = 0, CELL_SNAPSHOT, CELL_DECODED };
 
 static MetWsCells s_cells   = { { -1, -1 }, { -1, -1 }, -1 };
 static MetWsStats s_stats;
+static uint32_t s_pending_columns[2], s_pending_rows[2];
 
 static uint8_t *s_cache;                /* MET_CELLS * MET_CELL_BYTES */
 static uint8_t *s_state;                /* MET_CELLS */
@@ -354,6 +355,22 @@ void met_render_reset(void) {
     s_hud_slot_count = 0;
     cache_clear();
     memset(&s_stats, 0, sizeof s_stats);
+    memset(s_pending_columns, 0, sizeof s_pending_columns);
+    memset(s_pending_rows, 0, sizeof s_pending_rows);
+}
+
+/* areas_common.asm WriteDoorBGTiles_Common writes six collision tiles at
+ * y=$50..$78, x=$E8 (right) or $10 (left). Require a live door on this NT;
+ * never excuse an arbitrary $4E tile or a geometry/attribute discrepancy. */
+static int is_door_collision_delta(int nt, int off, uint8_t decoded, uint8_t actual) {
+    int slot, row = off / 32, col = off % 32;
+    if (decoded != 0xff || actual != 0x4e || row < 10 || row > 15) return 0;
+    for (slot = 0x80; slot <= 0xb0; slot += 0x10) {
+        int door_col = (slot & 0x10) ? 2 : 29;
+        if (col == door_col && g_ram[MET_Objects_0_status + slot] &&
+            (g_ram[MET_Objects_0_hi + slot] & 1) == nt) return 1;
+    }
+    return 0;
 }
 
 void met_render_note_room_finished(void) {
@@ -368,6 +385,10 @@ void met_render_note_room_finished(void) {
         s_cells.area = area;
         s_cells.cell_x[0] = s_cells.cell_x[1] = -1;
         s_cells.cell_y[0] = s_cells.cell_y[1] = -1;
+        memset(s_stats.streamed_columns, 0, sizeof s_stats.streamed_columns);
+        memset(s_stats.streamed_rows, 0, sizeof s_stats.streamed_rows);
+        memset(s_pending_columns, 0, sizeof s_pending_columns);
+        memset(s_pending_rows, 0, sizeof s_pending_rows);
     }
 
     /* SelectRoomRAM ($EA05) stored RoomRAMA>>8 ($60, nametable 0) or
@@ -392,14 +413,30 @@ void met_render_note_room_finished(void) {
             if (memcmp(s_cache + (size_t)idx * MET_CELL_BYTES, live, MET_CELL_BYTES) != 0)
                 s_stats.cache_mismatch++;
         } else if (s_state[idx] == CELL_DECODED) {
-            /* Measured delta (Brinstar start corridor): the only bytes the
-             * decoder can differ on are the $4E "door or statue" plug tiles
-             * the door objects write into RoomRAM after SetupRoom -- 6 bytes,
-             * one 1x6 tile column at the room edge. Room geometry itself
-             * matched exactly. Doors/enemies are deliberately out of scope. */
-            if (memcmp(s_cache + (size_t)idx * MET_CELL_BYTES, live, MET_CELL_BYTES) != 0)
-                s_stats.decoder_mismatch++;
-            else
+            /* Classify the measured Brinstar door collision-tile delta.
+             * Every other geometry/attribute discrepancy remains an error. */
+            if (memcmp(s_cache + (size_t)idx * MET_CELL_BYTES, live, MET_CELL_BYTES) != 0) {
+                int off;
+                s_stats.mismatch_bytes = 0;
+                s_stats.mismatch_cell_x = cx;
+                s_stats.mismatch_cell_y = cy;
+                for (off = 0; off < MET_CELL_BYTES; off++) {
+                    uint8_t decoded = s_cache[(size_t)idx * MET_CELL_BYTES + off];
+                    if (decoded == live[off]) continue;
+                    if (is_door_collision_delta(nt, off, decoded, live[off])) {
+                        s_stats.decoder_object_bytes++;
+                        continue;
+                    }
+                    if (!s_stats.mismatch_bytes) {
+                        s_stats.mismatch_offset = off;
+                        s_stats.mismatch_decoded = decoded;
+                        s_stats.mismatch_actual = live[off];
+                    }
+                    s_stats.mismatch_bytes++;
+                }
+                if (s_stats.mismatch_bytes) s_stats.decoder_mismatch++;
+                else s_stats.decoder_verified++;
+            } else
                 s_stats.decoder_verified++;
         } else {
             s_stats.cells_cached++;
@@ -411,6 +448,129 @@ void met_render_note_room_finished(void) {
 
     s_cells.cell_x[nt] = cx;
     s_cells.cell_y[nt] = cy;
+    s_stats.streamed_columns[nt] = s_stats.streamed_rows[nt] = 0;
+    s_pending_columns[nt] = s_pending_rows[nt] = 0;
+}
+
+void met_render_note_stream(void) {
+    /* At the $E592 call to GetNameAddrs, $01:$00 is the tile offset.
+     * GetNameTableAtScrollDir ($EB85) returns (PPUCTRL_ZP ^ ScrollDir) & 1.
+     * The routine only queues VRAM data. Do not publish validity until NMI. */
+    int nt = (g_ram[MET_PPUCTRL_ZP] ^ g_ram[MET_ScrollDir]) & 1;
+    unsigned offset = ((unsigned)g_ram[0x01] << 8) | g_ram[0x00];
+    if (g_ram[MET_ScrollDir] & 2) {
+        if (offset < 32) s_pending_columns[nt] |= 1u << offset;
+    } else if (offset < 960 && !(offset & 31)) {
+        s_pending_rows[nt] |= 1u << (offset >> 5);
+    }
+}
+
+void met_render_post_nmi(void) {
+    int nt;
+    if (g_ram[MET_PPUDataPending]) return;
+    for (nt = 0; nt < 2; nt++) {
+        s_stats.streamed_columns[nt] |= s_pending_columns[nt];
+        s_stats.streamed_rows[nt] |= s_pending_rows[nt];
+        s_pending_columns[nt] = s_pending_rows[nt] = 0;
+        /* Area initialization copies a whole RoomRAM directly, bypassing
+         * UpdateNameTable. Recognize only a complete byte-identical upload. */
+        if (s_cells.cell_x[nt] >= 0 &&
+            memcmp(g_ppu_nt + nt * 1024, g_sram + ROOMRAM_A_OFF + nt * 1024, 1024) == 0) {
+            s_stats.streamed_columns[nt] = 0xffffffffu;
+            s_stats.streamed_rows[nt] = 0x3fffffffu;
+        }
+    }
+}
+
+void met_render_retire_room(int nt) {
+    int slot, cx = s_cells.cell_x[nt], cy = s_cells.cell_y[nt];
+    if (cx >= 0 && cy >= 0 && s_cells.area == g_ram[MET_InArea] && ensure_cache()) {
+        int idx = cy * MET_MAP_W + cx;
+        memcpy(s_cache + (size_t)idx * MET_CELL_BYTES,
+               g_sram + ROOMRAM_A_OFF + nt * MET_CELL_BYTES, MET_CELL_BYTES);
+        s_state[idx] = CELL_SNAPSHOT;
+    }
+    /* The guest is about to overwrite this room's collision storage. Keeping
+     * its enemies alive would reassign them to the new room and prevent that
+     * room's fixed-slot spawns. Clear only its visibility bit; stock cleanup
+     * at $EC9B performs the actual deletion immediately after this hook. */
+    for (slot = 0; slot < 0x60; slot += 0x10) {
+        if ((g_sram[SRAM_OFF(MET_EnsExtra_0_hi) + slot] & 1) == nt) {
+            if (g_sram[SRAM_OFF(MET_EnsExtra_0_status) + slot] &&
+                (g_ram[MET_Ens_0_data05 + slot] & 2)) s_stats.retired_enemies++;
+            g_ram[MET_Ens_0_data05 + slot] &= (uint8_t)~2u;
+        }
+    }
+    for (slot = 0x80; slot <= 0xb0; slot += 0x10)
+        if ((g_ram[MET_Objects_0_hi + slot] & 1) == nt)
+            g_ram[MET_Objects_0_onScreen + slot] = 0;
+    s_cells.cell_x[nt] = s_cells.cell_y[nt] = -1;
+    s_stats.streamed_columns[nt] = s_stats.streamed_rows[nt] = 0;
+    s_pending_columns[nt] = s_pending_rows[nt] = 0;
+    g_ws_obj_ctx_valid = 0;
+}
+
+/* Versioned fixed-width host state, kept below the engine's 512-byte mod
+ * payload limit. RoomRAM and PPU bytes are already in the engine savestate.
+ * Other cache entries are discarded and decoded afresh after restoration. */
+typedef struct {
+    uint32_t version;
+    int32_t area, cell_x[2], cell_y[2];
+    uint32_t columns[2], rows[2], pending_columns[2], pending_rows[2];
+    int32_t bank, bank_valid, gate, hud_start, hud_count;
+} MetWsSave;
+
+int met_render_save(uint8_t *buf, int cap) {
+    MetWsSave save;
+    int nt;
+    if (cap < (int)sizeof save) return -1;
+    memset(&save, 0, sizeof save);
+    save.version = 1;
+    save.area = s_cells.area;
+    for (nt = 0; nt < 2; nt++) {
+        save.cell_x[nt] = s_cells.cell_x[nt]; save.cell_y[nt] = s_cells.cell_y[nt];
+        save.columns[nt] = s_stats.streamed_columns[nt];
+        save.rows[nt] = s_stats.streamed_rows[nt];
+        save.pending_columns[nt] = s_pending_columns[nt];
+        save.pending_rows[nt] = s_pending_rows[nt];
+    }
+    save.bank = s_area_bank; save.bank_valid = s_area_bank_valid;
+    save.gate = s_gate_wide;
+    save.hud_start = s_hud_slot_start; save.hud_count = s_hud_slot_count;
+    memcpy(buf, &save, sizeof save);
+    return (int)sizeof save;
+}
+
+int met_render_load(const uint8_t *buf, int len) {
+    MetWsSave save;
+    int nt;
+    if (len != (int)sizeof save) return 0;
+    memcpy(&save, buf, sizeof save);
+    if (save.version != 1) return 0;
+    for (nt = 0; nt < 2; nt++)
+        if (save.cell_x[nt] < -1 || save.cell_x[nt] >= MET_MAP_W ||
+            save.cell_y[nt] < -1 || save.cell_y[nt] >= MET_MAP_H) return 0;
+    met_render_reset();
+    s_cells.area = save.area;
+    s_area_bank = (uint8_t)save.bank; s_area_bank_valid = save.bank_valid;
+    s_gate_wide = save.gate;
+    s_hud_slot_start = save.hud_start; s_hud_slot_count = save.hud_count;
+    for (nt = 0; nt < 2; nt++) {
+        s_cells.cell_x[nt] = save.cell_x[nt]; s_cells.cell_y[nt] = save.cell_y[nt];
+        s_stats.streamed_columns[nt] = save.columns[nt];
+        s_stats.streamed_rows[nt] = save.rows[nt];
+        s_pending_columns[nt] = save.pending_columns[nt];
+        s_pending_rows[nt] = save.pending_rows[nt];
+        if (save.cell_x[nt] >= 0 && save.cell_y[nt] >= 0 && ensure_cache()) {
+            int idx = save.cell_y[nt] * MET_MAP_W + save.cell_x[nt];
+            memcpy(s_cache + (size_t)idx * MET_CELL_BYTES,
+                   g_sram + ROOMRAM_A_OFF + nt * MET_CELL_BYTES, MET_CELL_BYTES);
+            s_state[idx] = CELL_SNAPSHOT;
+            s_stats.cells_cached++;
+        }
+    }
+    g_ws_obj_ctx_valid = 0;
+    return 1;
 }
 
 const MetWsCells *met_render_cells(void) { return &s_cells; }
@@ -451,18 +611,25 @@ void met_render_set_hud(MetWsHud hud, int hud_slot_start, int hud_slot_count) {
 
 /* ---- tile source selection ---------------------------------------------- */
 /*
- * Priority: the live nametable for the two bound cells (authoritative — it
- * carries opened doors, blasted blocks and collected items), then the cache,
- * then a fresh decode which is stored in the cache.
+ * Bound cells use live PPU bytes in the native viewport and streamed margins;
+ * unstreamed margins use complete logical RoomRAM. Other cells use a cached
+ * snapshot or a fresh decode. No unstreamed PPU column/row is authoritative.
  */
-static const uint8_t *cell_source(int cx, int cy) {
+static const uint8_t *cell_source(int cx, int cy, int tx, int ty, int native_pixel) {
     int nt, idx;
 
     if (cx < 0 || cx >= MET_MAP_W || cy < 0 || cy >= MET_MAP_H) return NULL;
 
     for (nt = 0; nt < 2; nt++)
-        if (s_cells.cell_x[nt] == cx && s_cells.cell_y[nt] == cy)
-            return &g_ppu_nt[nt * 0x400];
+        if (s_cells.cell_x[nt] == cx && s_cells.cell_y[nt] == cy) {
+            uint32_t mask = (g_ram[MET_ScrollDir] & 2)
+                ? s_stats.streamed_columns[nt] : s_stats.streamed_rows[nt];
+            int bit = (g_ram[MET_ScrollDir] & 2) ? tx : ty;
+            if (native_pixel || (mask & (1u << bit))) return &g_ppu_nt[nt * 0x400];
+            /* The full logical room exists in RoomRAM before it is streamed
+             * to the PPU. It also includes current door/block modifications. */
+            return &g_sram[ROOMRAM_A_OFF + nt * 0x400];
+        }
 
     if (g_sram[WORLDMAP_OFF + cy * MET_MAP_W + cx] >= 0xF0u) return NULL;
     if (!ensure_cache()) return NULL;
@@ -558,7 +725,12 @@ int met_render_frame(uint32_t *out, int out_w, int out_h, int native_x0,
             int i;
 
             if (span > out_w - ox) span = out_w - ox;
-            src = cell_source(cx, cy);
+            /* Split spans at the native viewport boundaries as well as tiles. */
+            if (ox < native_x0 && ox + span > native_x0) span = native_x0 - ox;
+            if (ox < native_x0 + 256 && ox + span > native_x0 + 256)
+                span = native_x0 + 256 - ox;
+            src = cell_source(cx, cy, rx >> 3, ty,
+                              ox >= native_x0 && ox < native_x0 + 256);
 
             if (!src) {
                 /* Off-map or an unknown/undecodable cell: universal

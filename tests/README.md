@@ -31,13 +31,35 @@ cmake -S . -B build_trace -G Ninja -DCMAKE_BUILD_TYPE=Release `
 cmake --build build_trace
 
 cd tests
-$env:NESRECOMP_TEST_EXE = "..\build_trace\MetroidNESRecomp.exe"
+$env:NESRECOMP_TEST_EXE = "build_trace\MetroidNESRecomp.exe" # relative to repo root
 npx vitest run password.test.ts
 ```
 
 Without `NESRECOMP_TEST_EXE` the tests keep their old behaviour: `build_release/`
 first, then `build/Release/`.
 
-The same trace build is what exposes the frame-record ring buffer that carries
-the widescreen compositor's stats (`metroid_ws_fill_stats` → `game_data[16..31]`,
-read back with `get_frame` / `frame_range`).
+## Widescreen routes
+
+Run from the repository root with Windows Python:
+
+```powershell
+python tests\widescreen_probe.py --exe build_trace\MetroidNESRecomp.exe `
+  --rom metroid.nes --out build\ws_32_9 --aspect 32:9 --protect-player --extended
+python tests\widescreen_probe.py --exe build_trace\MetroidNESRecomp.exe `
+  --rom metroid.nes --out build\ws_shaft --aspect 32:9 --protect-player --shaft
+python tests\widescreen_probe.py --exe build_trace\MetroidNESRecomp.exe `
+  --rom metroid.nes --out build\ws_fit --aspect fit --window --protect-player
+```
+
+Use a fresh output directory. The probe copies the executable/SDL2 there and
+owns only that process; logs, saves, RAM and PNG captures stay there. Routes run
+sequentially on TCP port 5396. `--protect-player` is an explicit renderer fixture
+writing the invincibility/knockback bytes; `--shaft` also grants bombs/Morph Ball.
+Omit these flags for unmodified-player exploration. `--extended` checks a short
+save/load screenshot replay. `--window` tests live Fit resizing during normal
+execution. See [WIDESCREEN.md](../WIDESCREEN.md) for coverage and limitations.
+
+Use the trace build's `ws_stats` command for full renderer counters, room
+bindings, row/column masks and decoder mismatch location/bytes. The frame-record
+ring buffer also stores summary bytes at `game_data[16..31]`, but the current
+engine TCP serializer only returns `[0..15]`; do not use it to read these stats.

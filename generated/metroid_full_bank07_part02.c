@@ -11426,6 +11426,7 @@ label_D4B3:; /* Door_DeleteOffscreenEnemies_deletePipeBugHole_RTS */
 }
 
 void func_E564(void) { /* GetNameAddrs */
+    if (nes_mod_function_entry(0xE564u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_E564");
 #endif

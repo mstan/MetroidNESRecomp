@@ -14,6 +14,7 @@
  */
 #include "mod_runtime.h"
 #include "mod_function_hooks.h"
+#include "mod_savestate.h"
 #include "metroid_ws.h"
 
 #include <stdio.h>
@@ -23,10 +24,12 @@
 #define WS_FEATURE_ID "widescreen"
 #define WS_PLUGIN_ID  "metroid.widescreen"
 
-/* 6502 entry addresses; all three routines live in the fixed bank 7. */
+/* USA 6502 entry addresses; all routines live in fixed bank 7. */
 #define WS_ADDR_IS_OBJECT_VISIBLE 0xDFDFu   /* IsObjectVisible */
 #define WS_ADDR_DISPLAY_BAR       0xE0C1u   /* DisplayBar */
 #define WS_ADDR_ROOM_FINISHED     0xEA26u   /* RoomFinished */
+#define WS_ADDR_GET_NAME_ADDRS    0xE564u   /* GetNameAddrs */
+#define WS_ADDR_RETIRE_ROOM       0xEC9Bu   /* DeleteOffscreenRoomSprites */
 
 static void reset_widescreen(void) {
     metroid_ws_disable();
@@ -71,6 +74,13 @@ NES_MOD_CONSTRUCTOR(register_metroid_widescreen_plugin) {
     ok &= nes_mod_register_function_entry_plugin(
               "metroid.widescreen.room-finished",
               WS_ADDR_ROOM_FINISHED, metroid_ws_hook_room_finished);
+    ok &= nes_mod_register_function_entry_plugin(
+              "metroid.widescreen.nametable-transfer",
+              WS_ADDR_GET_NAME_ADDRS, metroid_ws_hook_get_name_addrs);
+    ok &= nes_mod_register_function_entry_plugin(
+              "metroid.widescreen.retire-room", WS_ADDR_RETIRE_ROOM, metroid_ws_hook_retire_room);
+    ok &= nes_mod_register_savestate_hook("metroid.widescreen.renderer.v1",
+                                         met_render_save, met_render_load);
     if (!ok)
         fprintf(stderr, "[Mods] Failed to register Metroid widescreen plugin\n");
 }
