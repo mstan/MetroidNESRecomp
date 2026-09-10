@@ -8564,6 +8564,7 @@ label_CB72:;
 }
 
 void func_CB29(void) { /* UpdateWorld */
+    if (nes_mod_function_entry(0xCB29u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_CB29");
 #endif
@@ -9128,6 +9129,7 @@ label_DEE3:;
 }
 
 void func_DE47(void) { /* AnimDrawObject */
+    if (nes_mod_function_entry(0xDE47u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_DE47");
 #endif
@@ -9138,6 +9140,7 @@ void func_DE47(void) { /* AnimDrawObject */
 }
 
 void func_DE4A(void) { /* ObjDrawFrame */
+    if (nes_mod_function_entry(0xDE4Au)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_DE4A");
 #endif
@@ -9672,6 +9675,7 @@ void func_E099(void) {
 }
 
 void func_DD8B(void) { /* DrawEnemy */
+    if (nes_mod_function_entry(0xDD8Bu)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_DD8B");
 #endif

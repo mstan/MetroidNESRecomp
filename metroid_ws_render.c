@@ -55,7 +55,6 @@
 #include "mapper.h"
 
 #include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 
 /* ---- geometry ----------------------------------------------------------- */
@@ -347,6 +346,7 @@ static int dec_decode_cell(int cx, int cy, uint8_t *buf) {
 /* ---- world model -------------------------------------------------------- */
 
 void met_render_reset(void) {
+    met_actors_reset();
     s_cells.cell_x[0] = s_cells.cell_x[1] = -1;
     s_cells.cell_y[0] = s_cells.cell_y[1] = -1;
     s_cells.area = -1;
@@ -496,6 +496,7 @@ void met_render_post_nmi(void) {
 }
 
 void met_render_begin_room(int nt) {
+    met_actors_retire_room(nt);
     int slot, cx = s_cells.cell_x[nt], cy = s_cells.cell_y[nt];
     int replace = s_cells.area != g_ram[MET_InArea] ||
                   cx != g_ram[MET_MapPosX] || cy != g_ram[MET_MapPosY];
@@ -546,7 +547,7 @@ typedef struct {
     int32_t area, cell_x[2], cell_y[2];
     uint32_t columns[2], rows[2], pending_columns[2], pending_rows[2];
     int32_t bank, bank_valid, gate, hud_start, hud_count;
-    uint32_t room_ready_mask;   /* version 2; version 1 ends before this field */
+    uint32_t room_ready_mask;
 } MetWsSave;
 
 int met_render_save(uint8_t *buf, int cap) {
@@ -574,11 +575,9 @@ int met_render_save(uint8_t *buf, int cap) {
 int met_render_load(const uint8_t *buf, int len) {
     MetWsSave save;
     int nt;
-    if (len != (int)sizeof save && len != (int)offsetof(MetWsSave, room_ready_mask)) return 0;
-    memset(&save, 0, sizeof save);
-    memcpy(&save, buf, (size_t)len);
-    if (!((save.version == 1 && len == (int)offsetof(MetWsSave, room_ready_mask)) ||
-          (save.version == 2 && len == (int)sizeof save))) return 0;
+    if (len != (int)sizeof save) return 0;
+    memcpy(&save, buf, sizeof save);
+    if (save.version != 2) return 0;
     for (nt = 0; nt < 2; nt++)
         if (save.cell_x[nt] < -1 || save.cell_x[nt] >= MET_MAP_W ||
             save.cell_y[nt] < -1 || save.cell_y[nt] >= MET_MAP_H) return 0;
@@ -594,8 +593,6 @@ int met_render_load(const uint8_t *buf, int len) {
         s_stats.streamed_rows[nt] = save.rows[nt];
         s_pending_columns[nt] = save.pending_columns[nt];
         s_pending_rows[nt] = save.pending_rows[nt];
-        if (save.version == 1 && save.cell_x[nt] >= 0 && save.cell_y[nt] >= 0)
-            s_stats.room_ready_mask |= 1u << nt;
         if ((s_stats.room_ready_mask & (1u << nt)) &&
             save.cell_x[nt] >= 0 && save.cell_y[nt] >= 0 && ensure_cache()) {
             int idx = save.cell_y[nt] * MET_MAP_W + save.cell_x[nt];
@@ -603,19 +600,6 @@ int met_render_load(const uint8_t *buf, int len) {
                    g_sram + ROOMRAM_A_OFF + nt * MET_CELL_BYTES, MET_CELL_BYTES);
             s_state[idx] = CELL_SNAPSHOT;
             s_stats.cells_cached++;
-        }
-    }
-    /* Recover version-1 saves taken in the old invalid-binding gap. The
-     * guest's active RoomRAM pointer identifies the room under construction;
-     * its MapPos is still the load target. Never infer an idle ($FF) room. */
-    if (save.version == 1 && g_ram[MET_GameMode] == 0 &&
-        g_ram[MET_RoomNumber] != 0xff && g_ram[MET_MapPosX] < MET_MAP_W &&
-        g_ram[MET_MapPosY] < MET_MAP_H &&
-        (g_ram[MET_RoomRAMPtr + 1] == 0x60 || g_ram[MET_RoomRAMPtr + 1] == 0x64)) {
-        nt = (g_ram[MET_RoomRAMPtr + 1] == 0x64);
-        if (s_cells.cell_x[nt] < 0) {
-            s_cells.cell_x[nt] = g_ram[MET_MapPosX];
-            s_cells.cell_y[nt] = g_ram[MET_MapPosY];
         }
     }
     g_ws_obj_ctx_valid = 0;
@@ -706,6 +690,16 @@ static const uint8_t *cell_source(int cx, int cy, int tx, int ty, int native_pix
 }
 
 /* ---- sprite placement --------------------------------------------------- */
+
+const uint8_t *met_render_room_terrain(int cx, int cy) {
+    /* Actor physics needs a complete logical room. Choosing the PPU image
+     * based on tile (0,0) alone can return stale, unstreamed columns. */
+    for(int nt=0;nt<2;nt++)
+        if(s_cells.cell_x[nt]==cx && s_cells.cell_y[nt]==cy &&
+           (s_stats.room_ready_mask & (1u<<nt)))
+            return g_sram+ROOMRAM_A_OFF+nt*MET_CELL_BYTES;
+    return cell_source(cx, cy, 0, 0, 0);
+}
 
 static int place_sprite(int oam_slot, int screen_x, int screen_y, int *out_x, void *user) {
     (void)screen_y; (void)user;
@@ -826,7 +820,8 @@ int met_render_frame(uint32_t *out, int out_w, int out_h, int native_x0,
         }
     }
 
-    ppu_renderer_draw_sprites_wide(out, out_w, native_x0, s_bg_opaque, place_sprite, NULL);
+    if (!met_actors_draw(out, out_w, native_x0, s_bg_opaque, s_hud == MET_WS_HUD_EDGES))
+        ppu_renderer_draw_sprites_wide(out, out_w, native_x0, s_bg_opaque, place_sprite, NULL);
     s_stats.frames_wide++;
     return 1;
 }

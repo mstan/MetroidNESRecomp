@@ -85,6 +85,11 @@ void metroid_ws_enable(NesAspectMode aspect, MetWsHud hud) {
     nes_mod_set_function_hook_enabled(WS_HOOK_ROOM_FINISHED, 1);
     nes_mod_set_function_hook_enabled(WS_HOOK_UPDATE_NAMETABLE, 1);
     nes_mod_set_function_hook_enabled(WS_HOOK_RETIRE_ROOM, 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.world", 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.spawn", 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.draw-enemy", 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.draw-object", 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.draw-frame", 1);
 
     s_enabled = 1;
     printf("[Widescreen] enabled: aspect=%s hud=%s\n",
@@ -105,6 +110,11 @@ void metroid_ws_disable(void) {
     nes_mod_set_function_hook_enabled(WS_HOOK_ROOM_FINISHED, 0);
     nes_mod_set_function_hook_enabled(WS_HOOK_UPDATE_NAMETABLE, 0);
     nes_mod_set_function_hook_enabled(WS_HOOK_RETIRE_ROOM, 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.world", 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.spawn", 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.draw-enemy", 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.draw-object", 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.draw-frame", 0);
 
     ppu_renderer_set_custom_render(NULL, NULL);
 
@@ -210,6 +220,15 @@ int metroid_ws_hook_is_object_visible(uint16_t addr) {
 
     if (s_enabled) g_ws_obj_ctx_valid = 0;
     if (!s_enabled || !s_gate_wide) return 0;
+    if (met_actors_virtual_position(&wx, &origin_y)) {
+        g_ram[MET_Temp10_ScreenY]=g_ram[MET_Temp0A_PositionY];
+        g_ram[MET_Temp0E_ScreenX]=g_ram[MET_Temp0B_PositionX];
+        g_cpu.Y=g_ram[MET_Temp0A_PositionY];g_cpu.X=1;
+        g_cpu.Z=0;g_cpu.N=0;
+        g_ws_obj_true_rel=(int16_t)met_actors_virtual_screen_x(wx);
+        g_ws_obj_rel8=g_ram[MET_Temp0B_PositionX];g_ws_obj_ctx_valid=1;
+        ws_hook_rts();return 1;
+    }
     if (!met_render_camera(&origin_x, &origin_y, &horiz) || !horiz) return 0;
     if (!met_render_nt_world_x(0, &nt_x0) || !met_render_nt_world_x(1, &nt_x1)) return 0;
 
@@ -294,7 +313,7 @@ int metroid_ws_hook_display_bar(uint16_t addr) {
     met_render_set_hud(s_hud, g_ram[MET_SpritePagePos] >> 2, 10);
     /* HUD sprites carry no object context; a stale one would displace them. */
     g_ws_obj_ctx_valid = 0;
-    return 0;
+    return met_actors_hook_draw_hud(addr);
 }
 
 /*

@@ -70,3 +70,18 @@ Morph Ball, asserts no in-room fallback, and verifies a save/load screenshot
 replay while room construction is incomplete. The fresh route uses player
 protection but grants no gear. Add `--state <path>` to check an existing save
 through 121 idle frames without modifying that file or player RAM.
+
+For misplaced Brinstar crawlers with the PC actor options, use current v7
+horizontal-room states with the focused coordinate regression:
+
+```powershell
+python tests\widescreen_actor_probe.py --exe build_trace\MetroidNESRecomp.exe `
+  --rom metroid.nes --state path\to\morph-ball.sav --state path\to\shaft.sav `
+  --out build\ws_actor_coordinates
+```
+
+It checks captured crawler tiles against actor world positions, including tiles
+outside the viewport. The original 32:9 sidecar wrap bug failed this check with
+16 misplaced tiles in the F2 fixture; the corrected build passes both fixtures.
+The binary-state reader intentionally follows the current build only. This
+checks placement, not full enemy behavior or every object type.

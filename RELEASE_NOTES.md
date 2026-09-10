@@ -9,7 +9,13 @@ spawn slots. Additional rooms can appear as terrain previews.
 Fixed stock-picture flicker during room loading and persistent pillarboxing
 near Morph Ball. Room locations stay bound during construction, and complete
 terrain becomes usable before scrolling finishes the PPU-upload bookkeeping.
-Existing preview saves containing this invalid binding are recovered on load.
+Savestates now use a new build-specific format; older formats are rejected.
+Password saves remain the way to carry progress between builds.
+
+The development checkpoint also includes opt-in viewport enemy residency,
+expanded sprite output and reduced emulated slowdown via `--widescreen-pc
+actors,sprites,smooth`. These remain experimental; see WIDESCREEN.md for the
+current coverage and known failures.
 
 This is a local preview, not a full-game compatibility claim. See
 [WIDESCREEN.md](WIDESCREEN.md) for validation, known Mesen/savestate issues and

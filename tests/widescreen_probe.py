@@ -17,7 +17,7 @@ import time
 
 
 class Probe:
-    def __init__(self, exe, rom, out, aspect, port=5396, window=False):
+    def __init__(self, exe, rom, out, aspect, port=5396, window=False, extra_args=()):
         self.out = Path(out).resolve()
         self.out.mkdir(parents=True, exist_ok=False)
         exe = Path(exe).resolve()
@@ -28,6 +28,7 @@ class Probe:
         env = dict(os.environ, NESRECOMP_NO_LAUNCHER="1", NESRECOMP_START_PAUSED="1")
         self.log = (self.out / "runner.log").open("w")
         args = [str(self.exe), str(Path(rom).resolve()), "--widescreen", aspect]
+        args.extend(extra_args)
         if not window:
             args += ["--smoke", "1000000", "--smoke-output", str(self.out / "smoke.json")]
         startup = subprocess.STARTUPINFO()

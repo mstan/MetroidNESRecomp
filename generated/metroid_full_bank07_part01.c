@@ -435,6 +435,7 @@ label_EF12:; /* AddToPtr00_RTS */
 }
 
 void func_EB0C(void) { /* GetEnemyData */
+    if (nes_mod_function_entry(0xEB0Cu)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_EB0C");
 #endif

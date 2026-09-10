@@ -489,6 +489,10 @@ int game_handle_arg(const char *key, const char *val) {
         else                            metroid_ws_enable(aspect, hud);
         return 1;
     }
+    if (strcmp(key, "--widescreen-pc") == 0 && val) {
+        met_actors_configure(strstr(val,"actors")!=NULL,strstr(val,"sprites")!=NULL,strstr(val,"smooth")!=NULL);
+        return 1;
+    }
     (void)val;
     return 0;
 }
@@ -710,8 +714,17 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
      * RoomRAM image once the game finally draws that cell, so a non-zero
      * decoder_mismatch means the native room decoder disagrees with the ROM.
      * cache_mismatch is the same check for cells taken from the screen cache. */
+    if (strcmp(cmd, "ws_actors") == 0) {
+        char actors[14500];
+        if(met_actors_debug_json(actors,sizeof actors))
+            debug_server_send_fmt("{\"id\":%d,\"ok\":true,\"actors\":%s}",id,actors);
+        else debug_server_send_fmt("{\"id\":%d,\"ok\":false,\"error\":\"actor report overflow\"}",id);
+        return 1;
+    }
     if (strcmp(cmd, "ws_stats") == 0) {
         uint8_t d[32];
+        unsigned residents, virtuals, sprites, updates;
+        met_actors_stats(&residents,&virtuals,&sprites,&updates);
         const MetWsStats *st = met_render_stats();
         const MetWsCells *cells = met_render_cells();
         memset(d, 0, sizeof(d));
@@ -730,6 +743,7 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
             "\"frames_wide\":%d,\"frames_fallback\":%d,"
             "\"nt_cells\":[[%d,%d],[%d,%d]],"
             "\"room_ready_mask\":%u,"
+            "\"resident_actors\":%u,\"virtual_actors\":%u,\"pc_sprites\":%u,\"virtual_updates\":%u,"
             "\"streamed_columns\":[%u,%u],\"streamed_rows\":[%u,%u],"
             "\"mismatch_cell\":[%d,%d],\"mismatch_bytes\":%u,"
             "\"decoder_object_bytes\":%u,\"retired_enemies\":%u,"
@@ -744,6 +758,7 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
             d[28] | (d[29] << 8), d[30] | (d[31] << 8),
             cells->cell_x[0], cells->cell_y[0], cells->cell_x[1], cells->cell_y[1],
             st->room_ready_mask,
+            residents,virtuals,sprites,updates,
             st->streamed_columns[0], st->streamed_columns[1],
             st->streamed_rows[0], st->streamed_rows[1],
             st->mismatch_cell_x, st->mismatch_cell_y, st->mismatch_bytes,

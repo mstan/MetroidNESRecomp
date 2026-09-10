@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define WS_PACKAGE_ID "metroid.enhancement.widescreen"
 #define WS_FEATURE_ID "widescreen"
@@ -60,10 +61,20 @@ static void activate_widescreen(void) {
     }
 
     metroid_ws_enable(aspect, hud);
+    int actors=0,sprites=0,smooth=0;
+    if(nes_mod_option_value(WS_PACKAGE_ID,WS_FEATURE_ID,"actors",value,sizeof value)) actors=!strcmp(value,"viewport");
+    if(nes_mod_option_value(WS_PACKAGE_ID,WS_FEATURE_ID,"sprites",value,sizeof value)) sprites=!strcmp(value,"expanded");
+    if(nes_mod_option_value(WS_PACKAGE_ID,WS_FEATURE_ID,"timing",value,sizeof value)) smooth=!strcmp(value,"smooth");
+    met_actors_configure(actors,sprites,smooth);
 }
 
 NES_MOD_CONSTRUCTOR(register_metroid_widescreen_plugin) {
     int ok = nes_mod_register_reset_callback(reset_widescreen);
+    ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.world",0xCB29,met_actors_hook_world);
+    ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.spawn",0xEB0C,met_actors_hook_spawn);
+    ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.draw-enemy",0xDD8B,met_actors_hook_draw_enemy);
+    ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.draw-object",0xDE47,met_actors_hook_draw_object);
+    ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.draw-frame",0xDE4A,met_actors_hook_draw_object);
     ok &= nes_mod_register_activation_plugin(WS_PLUGIN_ID, activate_widescreen);
     ok &= nes_mod_register_function_entry_plugin(
               "metroid.widescreen.is-object-visible",
@@ -81,6 +92,8 @@ NES_MOD_CONSTRUCTOR(register_metroid_widescreen_plugin) {
               "metroid.widescreen.retire-room", WS_ADDR_RETIRE_ROOM, metroid_ws_hook_retire_room);
     ok &= nes_mod_register_savestate_hook("metroid.widescreen.renderer.v1",
                                          met_render_save, met_render_load);
+    ok &= nes_mod_register_savestate_hook("metroid.widescreen.actors.v1",
+                                         met_actors_save, met_actors_load);
     if (!ok)
         fprintf(stderr, "[Mods] Failed to register Metroid widescreen plugin\n");
 }

@@ -34,6 +34,26 @@ refuses it, and HD-pack rendering is bypassed while this renderer is active.
 
 ## What enemies and room previews do
 
+The current development checkpoint adds optional PC actor, sprite and timing
+enhancements, selected with:
+
+```powershell
+.\MetroidNESRecomp.exe .\metroid.nes --widescreen 32:9 --widescreen-pc actors,sprites,smooth
+```
+
+`actors` pre-spawns ordinary room enemies and retains their state beyond the
+original six slots. `sprites` captures complete object submissions before the
+64-entry OAM buffer wraps. `smooth` runs world updates without the emulated CPU
+cycle limit. These are experimental and off by default; launcher choices are
+not yet exposed. The behavior described below applies without these options.
+
+The PC checkpoint passes the F1/F2 crawler-position regression, targeted
+contact/shot tests, short save/load replays, and 120/120 stock-mode frame hashes
+against the previous build. Full object coverage, vertical behavior, room
+handoffs and shared-engine validation remain incomplete. Owner playtesting also
+identified an invisible enemy in F4 and inconsistent door bubbles across rooms;
+those are follow-up work, not fixed by this checkpoint.
+
 The game's own enemy AI, movement, attacks and fixed spawn slots still run.
 In horizontal rooms, the visibility test includes the wider view and preserves
 everything stock considered visible. Loaded enemies can remain visible and
@@ -129,10 +149,11 @@ tile or attribute difference remains a mismatch.
 
 New savestates include room bindings, logical readiness, upload masks and HUD
 metadata. Complete RoomRAM reconstructs the cache; incomplete rooms and other
-entries are decoded again. Version-1 renderer records remain readable, including
-the invalid binding in the reported Morph Ball save. Older states without a
-renderer record cannot restore bindings reliably. Password saves are preferred
-for carrying progress between builds.
+entries are decoded again. Savestates are specific to the build: the engine now
+writes version 7 with size-delimited mod records, and rejects older engine and
+renderer formats. There is no migration or backwards-compatibility promise.
+Use password saves to carry progress between builds. Existing save files are
+not converted or deleted automatically.
 
 ## Validation and remaining limits
 
@@ -184,6 +205,6 @@ Known limits remain tracked in the central Beads database:
 - Window resize events are discarded while the TCP debugger pauses the engine;
   Fit was tested during normal execution.
 
-This preview uses engine commit `86e0a8b` on
+This checkpoint pins the matching engine work on
 `feat/metroid-widescreen-engine`. Engine integration, source publication and
 the final re-pin remain separate owner-approved work.

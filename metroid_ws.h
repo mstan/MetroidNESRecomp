@@ -98,6 +98,24 @@ void met_render_note_room_finished(void);          /* logical completion: snapsh
 void met_render_note_stream(void);                 /* queue row/column validity */
 void met_render_post_nmi(void);                    /* acknowledge completed PPU transfers */
 void met_render_begin_room(int nt);                /* bind incoming location, mark incomplete */
+const uint8_t *met_render_room_terrain(int cx, int cy);
+
+/* Optional PC actor/sprite scheduling. Off unless explicitly selected. */
+void met_actors_configure(int residents, int expanded_sprites, int smooth);
+void met_actors_reset(void);
+void met_actors_retire_room(int nt);
+int met_actors_hook_world(uint16_t addr);
+int met_actors_hook_spawn(uint16_t addr);
+int met_actors_hook_draw_enemy(uint16_t addr);
+int met_actors_hook_draw_object(uint16_t addr);
+int met_actors_hook_draw_hud(uint16_t addr);
+int met_actors_virtual_position(int *wx, int *wy);
+int met_actors_virtual_screen_x(int world_x);
+int met_actors_draw(uint32_t *out, int width, int native_x0, const uint8_t *opaque, int hud_edges);
+void met_actors_stats(unsigned *resident, unsigned *virtual_count, unsigned *sprites, unsigned *updates);
+int met_actors_save(uint8_t *buf, int cap);
+int met_actors_load(const uint8_t *buf, int len);
+int met_actors_debug_json(char *buf, int cap);
 int met_render_save(uint8_t *buf, int cap);
 int met_render_load(const uint8_t *buf, int len);
 const MetWsCells *met_render_cells(void);

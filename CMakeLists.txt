@@ -4,7 +4,7 @@ project(MetroidNESRecomp C CXX)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-set(NESRECOMP_ROOT ${CMAKE_SOURCE_DIR}/nesrecomp)
+set(NESRECOMP_ROOT ${CMAKE_SOURCE_DIR}/nesrecomp CACHE PATH "NESRecomp engine checkout")
 
 # nesrecomp/ and recomp-ui/ are git submodules (see .gitmodules); the pinned
 # commit is the gitlink recorded in this repo. After cloning run setup.sh/.bat
@@ -51,6 +51,7 @@ add_executable(MetroidNESRecomp
     extras.c
     metroid_ws.c
     metroid_ws_render.c
+    metroid_ws_actors.c
     mods/widescreen_plugin.c
     nes_snapshot.c
     verify_mode.c
