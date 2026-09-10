@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern void func_CB29(void), func_EB0C(void), func_F351(void);
+extern void func_CB29(void), func_EB0C(void), func_F345(void), func_F351(void);
 extern void func_DD8B(void), func_DE47(void), func_DE4A(void), func_E0C1(void);
 extern void func_F93B(void), func_FA9D(void);
 extern void func_F152(void), func_F140(void), func_F282(void), func_F2CA(void), func_CE92(void);
@@ -48,6 +48,8 @@ static Sprite s_build[MAX_SPRITES], s_present[MAX_SPRITES];
 static unsigned s_count, s_present_count, s_updates;
 static int s_present_valid;
 static uint8_t s_captured[64];
+static int s_enemy_batch;
+static unsigned s_enemy_tail;
 
 static uint8_t rom(uint16_t p) { return p >= 0x8000 ? mapper_peek_prg(p) : 0xff; }
 static uint16_t ram16(int p) { return g_ram[p] | (g_ram[p+1] << 8); }
@@ -362,9 +364,26 @@ static void capture(unsigned start,int hud) {
 static int draw_call(void (*fn)(void),int hud) {
     if(!metroid_ws_enabled() || (!s_expanded && !s_virtual) || s_draw) return 0;
     unsigned start=g_ram[MET_SpritePagePos];
-    s_draw=1;fn();s_draw=0;capture(start,hud);return 1;
+    s_draw=1;fn();s_draw=0;capture(start,hud);
+    if(s_enemy_batch) s_enemy_tail=g_ram[MET_SpritePagePos];
+    return 1;
 }
-int met_actors_hook_draw_enemy(uint16_t addr) {(void)addr;return draw_call(func_DD8B,0);}
+int met_actors_hook_draw_enemy(uint16_t addr) {
+    if(addr==0xF345) {
+        if(!metroid_ws_enabled() || !s_expanded || s_enemy_batch) return 0;
+        /* UpdateAllEnemies JSRs slots $50..$10, then falls through UpdateEnemy
+         * for slot zero. That final update can also tail-enter DrawEnemy.
+         * Nested captures advance the cursor; collect only the remaining
+         * tail while its signed object coordinate context is still current. */
+        s_enemy_batch=1;s_enemy_tail=g_ram[MET_SpritePagePos];
+        func_F345();capture(s_enemy_tail,0);s_enemy_batch=0;
+        return 1;
+    }
+    /* Some generated AI paths tail-enter the drawing body without calling
+     * the DrawEnemy entry. Capturing the full update includes those sprites;
+     * the draw guard prevents duplicate capture by the nested DrawEnemy hook. */
+    return draw_call(addr==0xF351?func_F351:func_DD8B,0);
+}
 int met_actors_hook_draw_object(uint16_t addr) {return draw_call(addr==0xDE47?func_DE47:func_DE4A,0);}
 int met_actors_hook_draw_hud(uint16_t addr) {(void)addr;return draw_call(func_E0C1,1);}
 

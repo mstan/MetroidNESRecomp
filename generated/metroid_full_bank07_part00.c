@@ -14677,6 +14677,7 @@ label_E25C:;
 }
 
 void func_F345(void) { /* UpdateAllEnemies */
+    if (nes_mod_function_entry(0xF345u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F345");
 #endif

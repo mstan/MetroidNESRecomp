@@ -19702,6 +19702,7 @@ label_F281:; /* Exit17 */
 }
 
 void func_F351(void) { /* UpdateEnemy */
+    if (nes_mod_function_entry(0xF351u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F351");
 #endif

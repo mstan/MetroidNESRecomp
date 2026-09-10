@@ -959,6 +959,10 @@ addr = 0xEB0C           # GetEnemyData
 [[mod_function_hook]]
 addr = 0xDD8B           # DrawEnemy
 [[mod_function_hook]]
+addr = 0xF351           # UpdateEnemy: also captures inlined/tail-entered drawing
+[[mod_function_hook]]
+addr = 0xF345           # UpdateAllEnemies: slot zero falls through UpdateEnemy
+[[mod_function_hook]]
 addr = 0xDE47           # AnimDrawObject
 [[mod_function_hook]]
 addr = 0xDE4A           # ObjDrawFrame (also has direct callers)

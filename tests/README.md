@@ -85,3 +85,9 @@ outside the viewport. The original 32:9 sidecar wrap bug failed this check with
 16 misplaced tiles in the F2 fixture; the corrected build passes both fixtures.
 The binary-state reader intentionally follows the current build only. This
 checks placement, not full enemy behavior or every object type.
+
+`widescreen_ripper_probe.py --exe <trace-exe> --rom metroid.nes --state <F4.sav>
+--out <fresh-directory>` compares the visible Brinstar Ripper's sprite entries
+and pixels against stock across four samples, with expanded sprites alone and
+all PC options. It requires Pillow. This catches enemy slot zero falling through
+the update/draw entry hooks and disappearing from the expanded sprite packet.

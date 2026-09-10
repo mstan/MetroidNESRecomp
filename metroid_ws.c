@@ -88,6 +88,8 @@ void metroid_ws_enable(NesAspectMode aspect, MetWsHud hud) {
     nes_mod_set_function_hook_enabled("metroid.widescreen.world", 1);
     nes_mod_set_function_hook_enabled("metroid.widescreen.spawn", 1);
     nes_mod_set_function_hook_enabled("metroid.widescreen.draw-enemy", 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.update-enemy", 1);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.update-enemies", 1);
     nes_mod_set_function_hook_enabled("metroid.widescreen.draw-object", 1);
     nes_mod_set_function_hook_enabled("metroid.widescreen.draw-frame", 1);
 
@@ -113,6 +115,8 @@ void metroid_ws_disable(void) {
     nes_mod_set_function_hook_enabled("metroid.widescreen.world", 0);
     nes_mod_set_function_hook_enabled("metroid.widescreen.spawn", 0);
     nes_mod_set_function_hook_enabled("metroid.widescreen.draw-enemy", 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.update-enemy", 0);
+    nes_mod_set_function_hook_enabled("metroid.widescreen.update-enemies", 0);
     nes_mod_set_function_hook_enabled("metroid.widescreen.draw-object", 0);
     nes_mod_set_function_hook_enabled("metroid.widescreen.draw-frame", 0);
 
