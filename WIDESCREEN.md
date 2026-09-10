@@ -50,9 +50,22 @@ not yet exposed. The behavior described below applies without these options.
 The PC checkpoint passes the F1/F2 crawler-position regression, targeted
 contact/shot tests, short save/load replays, and 120/120 stock-mode frame hashes
 against the previous build. Full object coverage, vertical behavior, room
-handoffs and shared-engine validation remain incomplete. Owner playtesting also
-identified an invisible enemy in F4 and inconsistent door bubbles across rooms;
-those are follow-up work, not fixed by this checkpoint.
+handoffs and shared-engine validation remain incomplete.
+
+Expanded sprites now include enemy slot zero's fall-through drawing path. The
+owner's F4 Ripper previously remained tangible while its picture was omitted;
+its tiles and pixels now match stock with `sprites` alone and all PC options.
+
+The `sprites` option also draws both ordinary room-door faces, including the
+face in an unvisited terrain preview. Both bubbles disappear when either live
+face enters its open/transition state, and return together when the game closes
+the door. Missile-door previews honor the game's permanent unlock history.
+This changes presentation only: original hit requirements, collision timing and
+room transitions still run. Special-item doors retain their live faces; their
+unloaded preview faces are not yet discovered. F3 shots from both sides and
+short save/load replays pass, with RAM/SRAM identical to the preceding build.
+
+The remaining description in this section applies without the PC options.
 
 The game's own enemy AI, movement, attacks and fixed spawn slots still run.
 In horizontal rooms, the visibility test includes the wider view and preserves

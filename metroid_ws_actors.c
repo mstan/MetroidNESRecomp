@@ -17,6 +17,8 @@ extern void func_CB29(void), func_EB0C(void), func_F345(void), func_F351(void);
 extern void func_DD8B(void), func_DE47(void), func_DE4A(void), func_E0C1(void);
 extern void func_F93B(void), func_FA9D(void);
 extern void func_F152(void), func_F140(void), func_F282(void), func_F2CA(void), func_CE92(void);
+extern void func_8B79_b1(void), func_8B79_b2(void), func_8B79_b3(void);
+extern void func_8B79_b4(void), func_8B79_b5(void);
 extern uint16_t g_rts_target;
 
 #define EXTRA (MET_EnsExtra_0_status - 0x6000)
@@ -50,6 +52,7 @@ static int s_present_valid;
 static uint8_t s_captured[64];
 static int s_enemy_batch;
 static unsigned s_enemy_tail;
+static int s_doors;
 
 static uint8_t rom(uint16_t p) { return p >= 0x8000 ? mapper_peek_prg(p) : 0xff; }
 static uint16_t ram16(int p) { return g_ram[p] | (g_ram[p+1] << 8); }
@@ -255,21 +258,30 @@ static void commit_effects(Guest *live) {
     for(int off=0xc0;off<=0xf0;off+=16) live->ram[MET_Samus+off+10]=g_ram[MET_Samus+off+10];
 }
 
-static void seed_cell(int cx,int cy) {
+static uint16_t room_objects(int cx,int cy) {
     uint8_t room=g_sram[0x1000+cy*32+cx];
     uint16_t table=ram16(MET_AreaPointers_RAM_RoomPtrTable), p;
-    const uint8_t *terrain;
-    if(room>=0xf0 || table<0x8000) return;
+    if(room>=0xf0 || table<0x8000) return 0;
     p=ptr16((uint16_t)(table+(uint8_t)(room*2)));
-    if(p<0x8000) return;
+    if(p<0x8000) return 0;
     ++p;
     for(int guard=0;guard<1024;guard++) {
         uint8_t b=rom(p);
-        if(b==0xff) return;
-        if(b==0xfd) {++p;break;}
+        if(b==0xff) return 0;
+        if(b==0xfd) return (uint16_t)(p+1);
         p+=(b==0xfe)?1:3;
-        if(guard==1023) return;
     }
+    return 0;
+}
+static int room_object_size(int kind) {
+    if(kind==1 || kind==7) return 3;
+    if(kind==2 || kind==4 || kind==6) return 2;
+    return 0;
+}
+static void seed_cell(int cx,int cy) {
+    uint16_t p=room_objects(cx,cy);
+    const uint8_t *terrain;
+    if(!p) return;
     terrain=met_render_room_terrain(cx,cy); if(!terrain) return;
     for(int guard=0;guard<64;guard++) {
         int kind=rom(p)&15,slot=rom(p)&0xf0;
@@ -284,9 +296,9 @@ static void seed_cell(int cx,int cy) {
                 guest_end(&save);
             }
         }
-        if(kind==1 || kind==7) p+=3;
-        else if(kind==2 || kind==4 || kind==6) p+=2;
-        else break; /* refuse unknown room records */
+        int size=room_object_size(kind);
+        if(!size) break; /* refuse unknown room records */
+        p+=(uint16_t)size;
     }
 }
 static void prepare_actors(void) {
@@ -387,6 +399,75 @@ int met_actors_hook_draw_enemy(uint16_t addr) {
 int met_actors_hook_draw_object(uint16_t addr) {return draw_call(addr==0xDE47?func_DE47:func_DE4A,0);}
 int met_actors_hook_draw_hud(uint16_t addr) {(void)addr;return draw_call(func_E0C1,1);}
 
+int met_actors_hook_doors(uint16_t addr) {
+    static void (*const update[])(void)={func_8B79_b1,func_8B79_b2,func_8B79_b3,func_8B79_b4,func_8B79_b5};
+    (void)addr;
+    if(!metroid_ws_enabled() || !s_expanded || !s_world || s_doors || g_current_bank<1 || g_current_bank>5)
+        return 0;
+    /* Keep the original updates, hit testing and collision tiles. Replace only
+     * their captured pictures with the paired presentation after UpdateWorld. */
+    unsigned start=s_count;
+    s_doors=1;update[g_current_bank-1]();s_doors=0;s_count=start;
+    return 1;
+}
+
+typedef struct {int cx,cy,side,type,status;} DoorFace;
+static int door_unlocked(int boundary,int cy) {
+    /* CreateItemID/CheckForItem: missile doors share the left cell's item ID. */
+    if(boundary<=0 || boundary>32) return 0;
+    int cx=boundary-1;
+    uint8_t lo=(uint8_t)((cx<<5)|cy),hi=(uint8_t)((0x0a<<2)|(cx>>3));
+    int bytes=g_sram[MET_NumberOfUniqueItems-0x6000];
+    for(int i=0;i+1<bytes;i+=2)
+        if(g_sram[MET_UniqueItemHistory-0x6000+i]==lo &&
+           g_sram[MET_UniqueItemHistory-0x6000+i+1]==hi) return 1;
+    return 0;
+}
+static void draw_doors(void) {
+    DoorFace faces[32];int count=0,ox,oy,horizontal;
+    if(!s_expanded || g_current_bank<1 || g_current_bank>5 ||
+       !met_render_camera(&ox,&oy,&horizontal)) return;
+    const MetWsCells *cells=met_render_cells();
+    /* Live faces include special-item doors that aren't in room definitions. */
+    for(int slot=0x80;slot<=0xb0;slot+=16) {
+        int p=MET_Objects_0_status+slot,nt=g_ram[p+12]&1;
+        if(!g_ram[p] || g_ram[p]>6 || cells->cell_x[nt]<0 || cells->cell_y[nt]<0) continue;
+        faces[count++]=(DoorFace){cells->cell_x[nt],cells->cell_y[nt],(slot>>4)&1,g_ram[p+7]&3,g_ram[p]};
+    }
+    int left=(ox-g_widescreen_left)/256,right=(ox+255+g_widescreen_right)/256;
+    for(int cy=oy/240;cy<=(oy+239)/240;cy++) for(int cx=left;cx<=right;cx++) {
+        if(cx<0 || cx>=32 || cy<0 || cy>=32) continue;
+        uint16_t p=room_objects(cx,cy);
+        for(int guard=0;p && guard<64 && rom(p)!=0xff;guard++) {
+            int kind=rom(p)&15,size=room_object_size(kind);
+            if(kind==2) {
+                int info=rom(p+1),side=(info>>4)&1,found=0;
+                for(int i=0;i<count;i++) if(faces[i].cx==cx && faces[i].cy==cy && faces[i].side==side) found=1;
+                if(!found && count<32) faces[count++]=(DoorFace){cx,cy,side,info&3,2};
+            }
+            if(!size) break;
+            p+=(uint16_t)size;
+        }
+    }
+    for(int i=0;i<count;i++) {
+        const DoorFace *d=&faces[i];int boundary=d->cx+!d->side,open=0;
+        for(int j=0;j<count;j++)
+            if(faces[j].cy==d->cy && faces[j].cx+!faces[j].side==boundary && faces[j].status>=3) open=1;
+        if(open || (!(d->type&1) && door_unlocked(boundary,d->cy))) continue;
+        const uint8_t *terrain=met_render_room_terrain(d->cx,d->cy);
+        if(!terrain) continue;
+        Guest save;guest_begin(&save,d->cx,d->cy,terrain);
+        int slot=0x80+d->side*16,p=MET_Objects_0_status+slot;
+        memset(g_ram+p,0,16);
+        g_ram[p+3]=rom(0x85a2); /* ObjAnim_DoorClose_Reset's closed frame */
+        g_ram[p+13]=0x68;g_ram[p+14]=(uint8_t)(d->side?0x10:0xf0);
+        g_ram[MET_PageIndex]=(uint8_t)slot;g_ram[MET_IsSamus]=0;
+        g_ram[MET_ObjectCntrl]=(uint8_t)(0xa0|(d->type==3?1:d->type)|(d->side?0:0x10));
+        guest_call(func_DE4A);
+        guest_end(&save);
+    }
+}
+
 int met_actors_hook_world(uint16_t addr) {
     (void)addr;
     if(!metroid_ws_enabled() || s_world || (!s_residents && !s_expanded && !s_smooth)) return 0;
@@ -420,6 +501,7 @@ int met_actors_hook_world(uint16_t addr) {
             guest_end(&save);
         }
     }
+    draw_doors();
     memcpy(s_present,s_build,s_count*sizeof(Sprite));s_present_count=s_count;s_present_valid=1;
     s_world=0;return 1;
 }

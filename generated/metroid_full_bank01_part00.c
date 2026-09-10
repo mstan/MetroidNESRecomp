@@ -17498,6 +17498,7 @@ void func_8AC7_b1(void) {
 }
 
 void func_8B79_b1(void) { /* UpdateAllDoors */
+    if (nes_mod_function_entry(0x8B79u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_8B79_b1");
 #endif

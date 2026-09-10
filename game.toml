@@ -963,6 +963,8 @@ addr = 0xF351           # UpdateEnemy: also captures inlined/tail-entered drawin
 [[mod_function_hook]]
 addr = 0xF345           # UpdateAllEnemies: slot zero falls through UpdateEnemy
 [[mod_function_hook]]
+addr = 0x8B79           # UpdateAllDoors in area banks 1..5 (callback checks bank)
+[[mod_function_hook]]
 addr = 0xDE47           # AnimDrawObject
 [[mod_function_hook]]
 addr = 0xDE4A           # ObjDrawFrame (also has direct callers)

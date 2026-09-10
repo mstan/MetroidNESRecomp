@@ -91,3 +91,11 @@ checks placement, not full enemy behavior or every object type.
 and pixels against stock across four samples, with expanded sprites alone and
 all PC options. It requires Pillow. This catches enemy slot zero falling through
 the update/draw entry hooks and disappearing from the expanded sprite packet.
+
+`widescreen_doors_probe.py --exe <trace-exe> --rom metroid.nes --state-left
+<F3.sav> --out <fresh-directory>` checks both blue bubbles at the Brinstar shaft,
+a real shot opening them together, and exact save/load replay. Add
+`--state-right <just-exited-shaft-door.sav>` to shoot from the opposite side and
+`--reference-exe <before-paired-doors.exe>` to compare gameplay RAM/SRAM. The
+route explicitly protects Samus from enemy damage; it does not force door hits
+or modify door state.

@@ -1912,6 +1912,7 @@ void func_8B53_b3(void) { /* SamusEnterDoor_endIf_A_noDex */
 }
 
 void func_8B79_b3(void) { /* UpdateAllDoors */
+    if (nes_mod_function_entry(0x8B79u)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_8B79_b3");
 #endif

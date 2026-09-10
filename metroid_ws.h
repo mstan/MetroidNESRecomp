@@ -109,6 +109,7 @@ int met_actors_hook_spawn(uint16_t addr);
 int met_actors_hook_draw_enemy(uint16_t addr);
 int met_actors_hook_draw_object(uint16_t addr);
 int met_actors_hook_draw_hud(uint16_t addr);
+int met_actors_hook_doors(uint16_t addr);
 int met_actors_virtual_position(int *wx, int *wy);
 int met_actors_virtual_screen_x(int world_x);
 int met_actors_draw(uint32_t *out, int width, int native_x0, const uint8_t *opaque, int hud_edges);
