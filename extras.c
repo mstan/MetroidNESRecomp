@@ -729,6 +729,7 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
             "\"cache_mismatch\":%d,"
             "\"frames_wide\":%d,\"frames_fallback\":%d,"
             "\"nt_cells\":[[%d,%d],[%d,%d]],"
+            "\"room_ready_mask\":%u,"
             "\"streamed_columns\":[%u,%u],\"streamed_rows\":[%u,%u],"
             "\"mismatch_cell\":[%d,%d],\"mismatch_bytes\":%u,"
             "\"decoder_object_bytes\":%u,\"retired_enemies\":%u,"
@@ -742,6 +743,7 @@ int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
             d[25], d[26], d[27],
             d[28] | (d[29] << 8), d[30] | (d[31] << 8),
             cells->cell_x[0], cells->cell_y[0], cells->cell_x[1], cells->cell_y[1],
+            st->room_ready_mask,
             st->streamed_columns[0], st->streamed_columns[1],
             st->streamed_rows[0], st->streamed_rows[1],
             st->mismatch_cell_x, st->mismatch_cell_y, st->mismatch_bytes,

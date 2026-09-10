@@ -12,7 +12,7 @@
  *                  (a) live PPU nametable for the native viewport/streamed
  *                      margins, complete logical RoomRAM for unstreamed margins,
  *                  (b) the screen cache (1 KB RoomRAM snapshot captured when
- *                      the game finished drawing that cell, RoomFinished $EA26),
+ *                      the game finished logical terrain construction),
  *                  (c) a native C port of the game's room decoder
  *                      (SetupRoom/DrawRoom/DrawStruct, prg7_engine.asm) run
  *                      on ROM data for cells never visited, result cached.
@@ -94,10 +94,10 @@ typedef struct {
 } MetWsCells;
 
 void met_render_reset(void);                       /* forget cells + cache */
-void met_render_note_room_finished(void);          /* RoomFinished: snapshot RoomRAM, bind cell */
+void met_render_note_room_finished(void);          /* logical completion: snapshot RoomRAM once */
 void met_render_note_stream(void);                 /* queue row/column validity */
 void met_render_post_nmi(void);                    /* acknowledge completed PPU transfers */
-void met_render_retire_room(int nt);
+void met_render_begin_room(int nt);                /* bind incoming location, mark incomplete */
 int met_render_save(uint8_t *buf, int cap);
 int met_render_load(const uint8_t *buf, int len);
 const MetWsCells *met_render_cells(void);
@@ -107,7 +107,7 @@ const MetWsCells *met_render_cells(void);
  * to stock behavior). horizontal = ScrollDir & 2. */
 int  met_render_camera(int *origin_x, int *origin_y, int *horizontal);
 
-/* World X of a physical nametable's cell (cell_x * 256); 0 if unknown. */
+/* World X for object activation; 0 if the cell is unknown or still building. */
 int  met_render_nt_world_x(int nt, int *world_x);
 
 /* NesCustomRenderFn implementation. `user` is unused. Returns 0 (pillarbox
@@ -129,6 +129,7 @@ typedef struct {
     uint32_t frames_wide;         /* frames composited wide */
     uint32_t frames_fallback;     /* frames handed back to the engine */
     uint32_t streamed_columns[2], streamed_rows[2];
+    uint32_t room_ready_mask;     /* logical RoomRAM complete; independent of uploads */
     uint32_t mismatch_bytes;
     uint32_t decoder_object_bytes; /* proven door collision-tile differences */
     uint32_t retired_enemies;

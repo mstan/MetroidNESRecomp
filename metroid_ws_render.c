@@ -8,8 +8,8 @@
  *   1. World model    — which map cell each physical nametable currently
  *                       holds, and where the camera sits in world space.
  *   2. Screen cache   — a 1 KB RoomRAM snapshot per (area, cell), taken when
- *                       the game finished drawing that cell (RoomFinished
- *                       $EA26). 32x32 cells, heap, dropped on area change.
+ *                       the game finished logical terrain construction.
+ *                       32x32 cells, heap, dropped on area change.
  *   3. Room decoder   — a C port of the game's own SetupRoom/InitTables/
  *                       DrawRoom/DrawObject/DrawStruct/DrawStructRow/
  *                       DrawMetatile/UpdateAttrib (prg7_engine.asm) reading
@@ -55,6 +55,7 @@
 #include "mapper.h"
 
 #include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
 
 /* ---- geometry ----------------------------------------------------------- */
@@ -373,13 +374,7 @@ static int is_door_collision_delta(int nt, int off, uint8_t decoded, uint8_t act
     return 0;
 }
 
-void met_render_note_room_finished(void) {
-    int area = g_ram[MET_InArea];
-    int nt, cx, cy, idx;
-    const uint8_t *live;
-
-    if (!ensure_cache()) return;
-
+static void select_area(int area) {
     if (s_cells.area != area) {
         cache_clear();
         s_cells.area = area;
@@ -389,13 +384,26 @@ void met_render_note_room_finished(void) {
         memset(s_stats.streamed_rows, 0, sizeof s_stats.streamed_rows);
         memset(s_pending_columns, 0, sizeof s_pending_columns);
         memset(s_pending_rows, 0, sizeof s_pending_rows);
+        s_stats.room_ready_mask = 0;
     }
+}
+
+void met_render_note_room_finished(void) {
+    int nt, cx, cy, idx;
+    const uint8_t *live;
+
+    if (!ensure_cache()) return;
+    select_area(g_ram[MET_InArea]);
 
     /* SelectRoomRAM ($EA05) stored RoomRAMA>>8 ($60, nametable 0) or
      * RoomRAMB>>8 ($64, nametable 3 -> physical nametable 1) as the high byte. */
     nt = (g_ram[(MET_RoomRAMPtr + 1) & 0x7FF] == (MET_RoomRAMB >> 8)) ? 1 : 0;
-    cx = g_ram[MET_MapPosX];
-    cy = g_ram[MET_MapPosY];
+    /* RoomFinished can arrive several frames after logical completion.
+     * Keep the location captured when construction began (MapPos can change
+     * if the player reverses direction), and snapshot each load only once. */
+    if (s_stats.room_ready_mask & (1u << nt)) return;
+    cx = s_cells.cell_x[nt] >= 0 ? s_cells.cell_x[nt] : g_ram[MET_MapPosX];
+    cy = s_cells.cell_y[nt] >= 0 ? s_cells.cell_y[nt] : g_ram[MET_MapPosY];
 
     /* The area's PRG bank is live while the game is decoding its rooms; the
      * native decoder refuses to run against any other bank. */
@@ -448,8 +456,7 @@ void met_render_note_room_finished(void) {
 
     s_cells.cell_x[nt] = cx;
     s_cells.cell_y[nt] = cy;
-    s_stats.streamed_columns[nt] = s_stats.streamed_rows[nt] = 0;
-    s_pending_columns[nt] = s_pending_rows[nt] = 0;
+    s_stats.room_ready_mask |= 1u << nt;
 }
 
 void met_render_note_stream(void) {
@@ -467,6 +474,12 @@ void met_render_note_stream(void) {
 
 void met_render_post_nmi(void) {
     int nt;
+    /* EndOfRoom marks complete logical RoomRAM as $F0. The four attribute
+     * bookkeeping steps through RoomFinished only advance with scrolling;
+     * a stationary player may stay at $F1 indefinitely. */
+    if (g_ram[MET_GameMode] == 0 && g_ram[MET_RoomNumber] >= 0xf0 &&
+        g_ram[MET_RoomNumber] <= 0xf4)
+        met_render_note_room_finished();
     if (g_ram[MET_PPUDataPending]) return;
     for (nt = 0; nt < 2; nt++) {
         s_stats.streamed_columns[nt] |= s_pending_columns[nt];
@@ -474,7 +487,7 @@ void met_render_post_nmi(void) {
         s_pending_columns[nt] = s_pending_rows[nt] = 0;
         /* Area initialization copies a whole RoomRAM directly, bypassing
          * UpdateNameTable. Recognize only a complete byte-identical upload. */
-        if (s_cells.cell_x[nt] >= 0 &&
+        if ((s_stats.room_ready_mask & (1u << nt)) &&
             memcmp(g_ppu_nt + nt * 1024, g_sram + ROOMRAM_A_OFF + nt * 1024, 1024) == 0) {
             s_stats.streamed_columns[nt] = 0xffffffffu;
             s_stats.streamed_rows[nt] = 0x3fffffffu;
@@ -482,9 +495,12 @@ void met_render_post_nmi(void) {
     }
 }
 
-void met_render_retire_room(int nt) {
+void met_render_begin_room(int nt) {
     int slot, cx = s_cells.cell_x[nt], cy = s_cells.cell_y[nt];
-    if (cx >= 0 && cy >= 0 && s_cells.area == g_ram[MET_InArea] && ensure_cache()) {
+    int replace = s_cells.area != g_ram[MET_InArea] ||
+                  cx != g_ram[MET_MapPosX] || cy != g_ram[MET_MapPosY];
+    if (cx >= 0 && cy >= 0 && (s_stats.room_ready_mask & (1u << nt)) &&
+        s_cells.area == g_ram[MET_InArea] && ensure_cache()) {
         int idx = cy * MET_MAP_W + cx;
         memcpy(s_cache + (size_t)idx * MET_CELL_BYTES,
                g_sram + ROOMRAM_A_OFF + nt * MET_CELL_BYTES, MET_CELL_BYTES);
@@ -494,17 +510,29 @@ void met_render_retire_room(int nt) {
      * its enemies alive would reassign them to the new room and prevent that
      * room's fixed-slot spawns. Clear only its visibility bit; stock cleanup
      * at $EC9B performs the actual deletion immediately after this hook. */
-    for (slot = 0; slot < 0x60; slot += 0x10) {
-        if ((g_sram[SRAM_OFF(MET_EnsExtra_0_hi) + slot] & 1) == nt) {
-            if (g_sram[SRAM_OFF(MET_EnsExtra_0_status) + slot] &&
-                (g_ram[MET_Ens_0_data05 + slot] & 2)) s_stats.retired_enemies++;
-            g_ram[MET_Ens_0_data05 + slot] &= (uint8_t)~2u;
+    if (replace) {
+        for (slot = 0; slot < 0x60; slot += 0x10) {
+            if ((g_sram[SRAM_OFF(MET_EnsExtra_0_hi) + slot] & 1) == nt) {
+                if (g_sram[SRAM_OFF(MET_EnsExtra_0_status) + slot] &&
+                    (g_ram[MET_Ens_0_data05 + slot] & 2)) s_stats.retired_enemies++;
+                g_ram[MET_Ens_0_data05 + slot] &= (uint8_t)~2u;
+            }
         }
+        for (slot = 0x80; slot <= 0xb0; slot += 0x10)
+            if ((g_ram[MET_Objects_0_hi + slot] & 1) == nt)
+                g_ram[MET_Objects_0_onScreen + slot] = 0;
     }
-    for (slot = 0x80; slot <= 0xb0; slot += 0x10)
-        if ((g_ram[MET_Objects_0_hi + slot] & 1) == nt)
-            g_ram[MET_Objects_0_onScreen + slot] = 0;
-    s_cells.cell_x[nt] = s_cells.cell_y[nt] = -1;
+    /* The incoming room location is known before its terrain is complete.
+     * Left/up scrolling already points the camera into it at this moment.
+     * Keep that location usable, but hide partial RoomRAM from the margins
+     * and from widened enemy activation until EndOfRoom. A reload of the
+     * same cell also rebuilds RoomRAM, but retains its existing occupants. */
+    select_area(g_ram[MET_InArea]);
+    s_cells.cell_x[nt] = g_ram[MET_MapPosX];
+    s_cells.cell_y[nt] = g_ram[MET_MapPosY];
+    s_stats.room_ready_mask &= ~(1u << nt);
+    s_area_bank = g_ram[MET_CurrentBank];
+    s_area_bank_valid = 1;
     s_stats.streamed_columns[nt] = s_stats.streamed_rows[nt] = 0;
     s_pending_columns[nt] = s_pending_rows[nt] = 0;
     g_ws_obj_ctx_valid = 0;
@@ -518,6 +546,7 @@ typedef struct {
     int32_t area, cell_x[2], cell_y[2];
     uint32_t columns[2], rows[2], pending_columns[2], pending_rows[2];
     int32_t bank, bank_valid, gate, hud_start, hud_count;
+    uint32_t room_ready_mask;   /* version 2; version 1 ends before this field */
 } MetWsSave;
 
 int met_render_save(uint8_t *buf, int cap) {
@@ -525,7 +554,7 @@ int met_render_save(uint8_t *buf, int cap) {
     int nt;
     if (cap < (int)sizeof save) return -1;
     memset(&save, 0, sizeof save);
-    save.version = 1;
+    save.version = 2;
     save.area = s_cells.area;
     for (nt = 0; nt < 2; nt++) {
         save.cell_x[nt] = s_cells.cell_x[nt]; save.cell_y[nt] = s_cells.cell_y[nt];
@@ -537,6 +566,7 @@ int met_render_save(uint8_t *buf, int cap) {
     save.bank = s_area_bank; save.bank_valid = s_area_bank_valid;
     save.gate = s_gate_wide;
     save.hud_start = s_hud_slot_start; save.hud_count = s_hud_slot_count;
+    save.room_ready_mask = s_stats.room_ready_mask;
     memcpy(buf, &save, sizeof save);
     return (int)sizeof save;
 }
@@ -544,9 +574,11 @@ int met_render_save(uint8_t *buf, int cap) {
 int met_render_load(const uint8_t *buf, int len) {
     MetWsSave save;
     int nt;
-    if (len != (int)sizeof save) return 0;
-    memcpy(&save, buf, sizeof save);
-    if (save.version != 1) return 0;
+    if (len != (int)sizeof save && len != (int)offsetof(MetWsSave, room_ready_mask)) return 0;
+    memset(&save, 0, sizeof save);
+    memcpy(&save, buf, (size_t)len);
+    if (!((save.version == 1 && len == (int)offsetof(MetWsSave, room_ready_mask)) ||
+          (save.version == 2 && len == (int)sizeof save))) return 0;
     for (nt = 0; nt < 2; nt++)
         if (save.cell_x[nt] < -1 || save.cell_x[nt] >= MET_MAP_W ||
             save.cell_y[nt] < -1 || save.cell_y[nt] >= MET_MAP_H) return 0;
@@ -555,18 +587,35 @@ int met_render_load(const uint8_t *buf, int len) {
     s_area_bank = (uint8_t)save.bank; s_area_bank_valid = save.bank_valid;
     s_gate_wide = save.gate;
     s_hud_slot_start = save.hud_start; s_hud_slot_count = save.hud_count;
+    s_stats.room_ready_mask = save.room_ready_mask & 3u;
     for (nt = 0; nt < 2; nt++) {
         s_cells.cell_x[nt] = save.cell_x[nt]; s_cells.cell_y[nt] = save.cell_y[nt];
         s_stats.streamed_columns[nt] = save.columns[nt];
         s_stats.streamed_rows[nt] = save.rows[nt];
         s_pending_columns[nt] = save.pending_columns[nt];
         s_pending_rows[nt] = save.pending_rows[nt];
-        if (save.cell_x[nt] >= 0 && save.cell_y[nt] >= 0 && ensure_cache()) {
+        if (save.version == 1 && save.cell_x[nt] >= 0 && save.cell_y[nt] >= 0)
+            s_stats.room_ready_mask |= 1u << nt;
+        if ((s_stats.room_ready_mask & (1u << nt)) &&
+            save.cell_x[nt] >= 0 && save.cell_y[nt] >= 0 && ensure_cache()) {
             int idx = save.cell_y[nt] * MET_MAP_W + save.cell_x[nt];
             memcpy(s_cache + (size_t)idx * MET_CELL_BYTES,
                    g_sram + ROOMRAM_A_OFF + nt * MET_CELL_BYTES, MET_CELL_BYTES);
             s_state[idx] = CELL_SNAPSHOT;
             s_stats.cells_cached++;
+        }
+    }
+    /* Recover version-1 saves taken in the old invalid-binding gap. The
+     * guest's active RoomRAM pointer identifies the room under construction;
+     * its MapPos is still the load target. Never infer an idle ($FF) room. */
+    if (save.version == 1 && g_ram[MET_GameMode] == 0 &&
+        g_ram[MET_RoomNumber] != 0xff && g_ram[MET_MapPosX] < MET_MAP_W &&
+        g_ram[MET_MapPosY] < MET_MAP_H &&
+        (g_ram[MET_RoomRAMPtr + 1] == 0x60 || g_ram[MET_RoomRAMPtr + 1] == 0x64)) {
+        nt = (g_ram[MET_RoomRAMPtr + 1] == 0x64);
+        if (s_cells.cell_x[nt] < 0) {
+            s_cells.cell_x[nt] = g_ram[MET_MapPosX];
+            s_cells.cell_y[nt] = g_ram[MET_MapPosY];
         }
     }
     g_ws_obj_ctx_valid = 0;
@@ -593,7 +642,8 @@ int met_render_camera(int *origin_x, int *origin_y, int *horizontal) {
 }
 
 int met_render_nt_world_x(int nt, int *world_x) {
-    if (nt < 0 || nt > 1 || s_cells.cell_x[nt] < 0) {
+    if (nt < 0 || nt > 1 || s_cells.cell_x[nt] < 0 ||
+        !(s_stats.room_ready_mask & (1u << nt))) {
         if (world_x) *world_x = 0;
         return 0;
     }
@@ -625,7 +675,14 @@ static const uint8_t *cell_source(int cx, int cy, int tx, int ty, int native_pix
             uint32_t mask = (g_ram[MET_ScrollDir] & 2)
                 ? s_stats.streamed_columns[nt] : s_stats.streamed_rows[nt];
             int bit = (g_ram[MET_ScrollDir] & 2) ? tx : ty;
-            if (native_pixel || (mask & (1u << bit))) return &g_ppu_nt[nt * 0x400];
+            if (native_pixel) return &g_ppu_nt[nt * 0x400];
+            if (!(s_stats.room_ready_mask & (1u << nt))) break; /* use cache/decoder */
+            /* The first streamed row/column can precede attribute uploads.
+             * Until those finish, use the complete logical room in margins. */
+            if ((mask & (1u << bit)) &&
+                !(g_ram[MET_RoomNumber] >= 0xf0 && g_ram[MET_RoomNumber] <= 0xf4 &&
+                  g_ram[MET_RoomRAMPtr + 1] == (0x60 + nt * 4)))
+                return &g_ppu_nt[nt * 0x400];
             /* The full logical room exists in RoomRAM before it is streamed
              * to the PPU. It also includes current door/block modifications. */
             return &g_sram[ROOMRAM_A_OFF + nt * 0x400];

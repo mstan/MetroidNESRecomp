@@ -80,8 +80,9 @@ validated separately; the strict unchanged-output gate applies with the mod off.
 ## How the compositor gets complete terrain
 
 The camera maps the native picture into a 32×32 world grid of 256×240 cells.
-Each of the two physical nametables is bound to a map cell when `RoomFinished`
-finishes constructing its complete 1 KB RoomRAM image.
+Each physical nametable is bound to its incoming map cell when construction
+starts. Logical terrain readiness and PPU upload completion are tracked
+separately from that location, so the camera stays valid while a room loads.
 
 The PPU's other nametable is **not** immediately complete: the game streams one
 column or row as scrolling advances. Treating the whole table as authoritative
@@ -89,7 +90,8 @@ caused floating platforms and enemies apparently walking on missing terrain.
 The compositor now selects:
 
 1. Live PPU tiles in the native viewport and in uploaded margin columns/rows.
-2. Complete logical RoomRAM for unstreamed parts of a loaded room.
+2. Complete logical RoomRAM for unstreamed parts of a loaded room, and while
+   its attribute uploads remain pending.
 3. A cached RoomRAM snapshot for a previously loaded room.
 4. A native port of the ROM's room decoder for unvisited terrain previews.
 
@@ -97,15 +99,22 @@ The upload masks become valid after NMI consumes the queued PPU data. Initial
 full uploads are recognized only when the complete PPU table equals RoomRAM.
 Bindings and masks reset when storage is reused or the area changes.
 
+`EndOfRoom` marks logical RoomRAM complete (`RoomNumber=$F0..$F4`). Waiting for
+the later `RoomFinished` callback caused stock-picture flicker when moving left
+or up, and permanent pillarboxing if the player stopped near Morph Ball while
+upload bookkeeping was at `$F1`. That bookkeeping advances with scrolling.
+The renderer now recognizes logical completion after NMI; until then the
+margins use cached/decoded terrain and widened enemy activation stays gated.
+
 USA hook points in `game.toml` and `mods/widescreen_plugin.c`:
 
 | Address | Purpose |
 | --- | --- |
 | `$DFDF` IsObjectVisible | Widen horizontal visibility; preserve guest return/ALU effects |
 | `$E0C1` DisplayBar | Identify the ten HUD sprite slots |
-| `$EA26` RoomFinished | Bind and snapshot complete logical terrain |
+| `$EA26` RoomFinished | Confirm logical completion if not already observed |
 | `$E564` GetNameAddrs | Observe transfers called from `$E592` (stack return `$E594`) |
-| `$EC9B` DeleteOffscreenRoomSprites | Retire occupants before backing storage is reused |
+| `$EC9B` DeleteOffscreenRoomSprites | Retire occupants and bind the incoming room before storage reuse |
 
 An entry hook at `$E590` UpdateNameTable alone misses vertical scrolling:
 generated functions fall through that address. Both axes call `$E564`, where
@@ -118,10 +127,12 @@ start-corridor discrepancy was six `$FF → $4E` door collision tiles, written b
 specific column/row pattern only when a matching live door exists; every other
 tile or attribute difference remains a mismatch.
 
-New savestates include the room bindings, upload masks and HUD metadata. Loaded
-RoomRAM reconstructs the cache; other entries are decoded again. Older states
-without this record cannot restore those bindings reliably. Password saves are
-the preferred way to carry progress between builds.
+New savestates include room bindings, logical readiness, upload masks and HUD
+metadata. Complete RoomRAM reconstructs the cache; incomplete rooms and other
+entries are decoded again. Version-1 renderer records remain readable, including
+the invalid binding in the reported Morph Ball save. Older states without a
+renderer record cannot restore bindings reliably. Password saves are preferred
+for carrying progress between builds.
 
 ## Validation and remaining limits
 
@@ -129,6 +140,14 @@ The September 10, 2026 validation artifacts are under
 `build/widescreen_validation_20260910/` (local, not shipped). The maintained
 `tests/widescreen_probe.py` records screenshots, RAM, enemy slots, `ws_stats`
 and dispatch misses in an isolated output directory. It requires `TRACE=ON`.
+
+The follow-up `tests/widescreen_fallback_probe.py` covers a fresh leftward route
+that collects Morph Ball, including its item-get pause, and a save/load replay
+during incomplete room construction. The replay screenshots match exactly.
+An owner-provided Morph Ball save also remained wide for 121 idle frames with
+its native gameplay pixels preserved (HUD intentionally moves). A separate
+570-frame leftward/backtracking trace changed from five fallback frames to
+zero. These artifacts are in `build/widescreen_fallback_20260910/`.
 
 Validated paths include the Brinstar start corridor, approach/entry through the
 right door, backtracking, and a vertical descent from map row 14 through 18.

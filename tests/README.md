@@ -63,3 +63,10 @@ Use the trace build's `ws_stats` command for full renderer counters, room
 bindings, row/column masks and decoder mismatch location/bytes. The frame-record
 ring buffer also stores summary bytes at `game_data[16..31]`, but the current
 engine TCP serializer only returns `[0..15]`; do not use it to read these stats.
+
+To regress room-loading flicker, run `widescreen_fallback_probe.py` with the same
+`--exe`, `--rom`, `--out` and `--aspect` arguments. Its fresh-game route collects
+Morph Ball, asserts no in-room fallback, and verifies a save/load screenshot
+replay while room construction is incomplete. The fresh route uses player
+protection but grants no gear. Add `--state <path>` to check an existing save
+through 121 idle frames without modifying that file or player RAM.

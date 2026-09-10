@@ -6,6 +6,11 @@ until PPU columns/rows finish streaming. Loaded enemies remain visible in the
 wider area and retire when their room storage is reused, preserving new-room
 spawn slots. Additional rooms can appear as terrain previews.
 
+Fixed stock-picture flicker during room loading and persistent pillarboxing
+near Morph Ball. Room locations stay bound during construction, and complete
+terrain becomes usable before scrolling finishes the PPU-upload bookkeeping.
+Existing preview saves containing this invalid binding are recovered on load.
+
 This is a local preview, not a full-game compatibility claim. See
 [WIDESCREEN.md](WIDESCREEN.md) for validation, known Mesen/savestate issues and
 the pending engine integration. EU builds remain deferred.

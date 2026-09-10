@@ -323,15 +323,10 @@ int metroid_ws_hook_get_name_addrs(uint16_t addr) {
 
 int metroid_ws_hook_retire_room(uint16_t addr) {
     int nt;
-    const MetWsCells *cells;
     (void)addr;
     if (!s_enabled) return 0;
     nt = (g_ram[MET_PPUCTRL_ZP] ^ g_ram[MET_ScrollDir]) & 1;
-    cells = met_render_cells();
-    if (cells->area != g_ram[MET_InArea] ||
-        cells->cell_x[nt] != g_ram[MET_MapPosX] ||
-        cells->cell_y[nt] != g_ram[MET_MapPosY])
-        met_render_retire_room(nt);
+    met_render_begin_room(nt);
     return 0; /* the original cleanup still runs and balances its own stack */
 }
 
