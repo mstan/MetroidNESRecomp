@@ -1,9 +1,9 @@
 # NESRecomp coverage report
 # ROM: 8 PRG banks x 16KB, mapper 1
-# Analyzed functions: 3516  Reachable instructions: 308750
+# Analyzed functions: 3517  Reachable instructions: 308776
 
 ## Reachable opcode classes
-  OFFICIAL                                            count=228756    distinct_bytes=150
+  OFFICIAL                                            count=228782    distinct_bytes=150
   BRK (official)                                      count=24961     distinct_bytes=1
   LAX (unofficial, implemented)                       count=2690      distinct_bytes=7
   NOP/DOP/TOP (unofficial, implemented)               count=14774     distinct_bytes=27
@@ -2395,7 +2395,7 @@
   $0D  ORA        mode=ABS   1249
   $0E  ASL        mode=ABS   1375
   $0F  SLO  SLO   mode=ABS   649
-  $10  BPL        mode=REL   2575
+  $10  BPL        mode=REL   2576
   $11  ORA        mode=INDY  888
   $12  ???  KIL   mode=IMP   783
   $13  SLO  SLO   mode=INDY  847
@@ -2411,7 +2411,7 @@
   $1D  ORA        mode=ABSX  578
   $1E  ASL        mode=ABSX  1041
   $1F  SLO  SLO   mode=ABSX  560
-  $20  JSR        mode=ABS   16808
+  $20  JSR        mode=ABS   16809
   $21  AND        mode=INDX  735
   $22  ???  KIL   mode=IMP   1166
   $23  RLA  RLA   mode=INDX  451
@@ -2420,14 +2420,14 @@
   $26  ROL        mode=ZP    1215
   $27  RLA  RLA   mode=ZP    297
   $28  PLP        mode=IMP   757
-  $29  AND        mode=IMM   4312
+  $29  AND        mode=IMM   4313
   $2A  ROL        mode=ACC   1512
   $2B  ANC  AAC   mode=IMM   735
   $2C  BIT        mode=ABS   741
   $2D  AND        mode=ABS   304
   $2E  ROL        mode=ABS   872
   $2F  RLA  RLA   mode=ABS   221
-  $30  BMI        mode=REL   2432
+  $30  BMI        mode=REL   2433
   $31  AND        mode=INDY  336
   $32  ???  KIL   mode=IMP   214
   $33  RLA  RLA   mode=INDY  172
@@ -2435,7 +2435,7 @@
   $35  AND        mode=ZPX   301
   $36  ROL        mode=ZPX   254
   $37  RLA  RLA   mode=ZPX   386
-  $38  SEC        mode=IMP   1981
+  $38  SEC        mode=IMP   1982
   $39  AND        mode=ABSY  226
   $3A  NOP  NOP*  mode=IMP   668
   $3B  RLA  RLA   mode=ABSY  460
@@ -2455,7 +2455,7 @@
   $49  EOR        mode=IMM   456
   $4A  LSR        mode=ACC   1936
   $4B  ALR  ALR   mode=IMM   76
-  $4C  JMP        mode=ABS   6702
+  $4C  JMP        mode=ABS   6705
   $4D  EOR        mode=ABS   172
   $4E  LSR        mode=ABS   194
   $4F  SRE  SRE   mode=ABS   159
@@ -2536,7 +2536,7 @@
   $9A  TXS        mode=IMP   92
   $9B  ???  TAS   mode=ABSY  67
   $9C  ???  SHY   mode=ABSX  111
-  $9D  STA        mode=ABSX  4280
+  $9D  STA        mode=ABSX  4282
   $9E  ???  SHX   mode=ABSY  127
   $9F  ???  SHA   mode=ABSY  177
   $A0  LDY        mode=IMM   6712
@@ -2544,18 +2544,18 @@
   $A2  LDX        mode=IMM   3191
   $A3  LAX  LAX   mode=INDX  197
   $A4  LDY        mode=ZP    837
-  $A5  LDA        mode=ZP    5390
+  $A5  LDA        mode=ZP    5391
   $A6  LDX        mode=ZP    1209
   $A7  LAX  LAX   mode=ZP    164
   $A8  TAY        mode=IMP   1731
-  $A9  LDA        mode=IMM   11605
+  $A9  LDA        mode=IMM   11609
   $AA  TAX        mode=IMP   1144
   $AB  LAX  LAX   mode=IMM   177
   $AC  LDY        mode=ABS   664
   $AD  LDA        mode=ABS   6848
   $AE  LDX        mode=ABS   540
   $AF  LAX  LAX   mode=ABS   83
-  $B0  BCS        mode=REL   2318
+  $B0  BCS        mode=REL   2319
   $B1  LDA        mode=INDY  1714
   $B2  ???  KIL   mode=IMP   1494
   $B3  LAX  LAX   mode=INDY  1075
@@ -2568,7 +2568,7 @@
   $BA  TSX        mode=IMP   185
   $BB  ???  LAS   mode=ABSY  258
   $BC  LDY        mode=ABSX  1351
-  $BD  LDA        mode=ABSX  4073
+  $BD  LDA        mode=ABSX  4076
   $BE  LDX        mode=ABSY  331
   $BF  LAX  LAX   mode=ABSY  156
   $C0  CPY        mode=IMM   1650
@@ -2580,7 +2580,7 @@
   $C6  DEC        mode=ZP    890
   $C7  DCP  DCP   mode=ZP    186
   $C8  INY        mode=IMP   2259
-  $C9  CMP        mode=IMM   5179
+  $C9  CMP        mode=IMM   5182
   $CA  DEX        mode=IMP   641
   $CB  AXS  AXS   mode=IMM   190
   $CC  CPY        mode=ABS   331
@@ -2616,10 +2616,10 @@
   $EA  NOP        mode=IMP   188
   $EB  SBC  SBC*  mode=IMM   245
   $EC  CPX        mode=ABS   173
-  $ED  SBC        mode=ABS   423
+  $ED  SBC        mode=ABS   424
   $EE  INC        mode=ABS   1792
   $EF  ISC  ISC   mode=ABS   60
-  $F0  BEQ        mode=REL   7852
+  $F0  BEQ        mode=REL   7855
   $F1  SBC        mode=INDY  133
   $F2  ???  KIL   mode=IMP   64
   $F3  ISC  ISC   mode=INDY  40

@@ -1490,6 +1490,70 @@ label_9AF4:;
     return;
 }
 
+void func_9AF5_b1(void) { /* RioAIRoutine_BANK1 */
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_9AF5_b1");
+#endif
+label_9AF5:; /* RioAIRoutine_BANK1 */
+    /* $9AF5: A5 */ nes_cpu_instruction_boundary(0x9AF5, 3); g_cpu.A = nes_read(0x81); FLAG_NZ(g_cpu.A);
+label_9AF7:;
+    /* $9AF7: C9 */ nes_cpu_instruction_boundary(0x9AF7, 2); { int r=g_cpu.A-0x01; g_cpu.C=(g_cpu.A>=0x01)?1:0; FLAG_NZ(r&0xFF); }
+label_9AF9:;
+    /* $9AF9: F0 */ nes_cpu_instruction_boundary(0x9AF9, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_9B2D; }
+label_9AFB:;
+    /* $9AFB: C9 */ nes_cpu_instruction_boundary(0x9AFB, 2); { int r=g_cpu.A-0x03; g_cpu.C=(g_cpu.A>=0x03)?1:0; FLAG_NZ(r&0xFF); }
+label_9AFD:;
+    /* $9AFD: F0 */ nes_cpu_instruction_boundary(0x9AFD, 2); if (g_cpu.Z) { maybe_trigger_vblank(2); goto label_9B2A; }
+label_9AFF:;
+    /* $9AFF: A9 */ nes_cpu_instruction_boundary(0x9AFF, 2); g_cpu.A = 0x80; FLAG_NZ(g_cpu.A);
+label_9B01:;
+    /* $9B01: 9D */ nes_cpu_instruction_boundary(0x9B01, 5); nes_write((0x6AFE + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_9B04:;
+    /* $9B04: BD */ nes_cpu_instruction_boundary(0x9B04, 4); g_cpu.A = nes_read((0x0402 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_9B07:;
+    /* $9B07: 30 */ nes_cpu_instruction_boundary(0x9B07, 2); if (g_cpu.N) { maybe_trigger_vblank(1); goto label_9B25; }
+label_9B09:;
+    /* $9B09: BD */ nes_cpu_instruction_boundary(0x9B09, 4); g_cpu.A = nes_read((0x0405 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_9B0C:;
+    /* $9B0C: 29 */ nes_cpu_instruction_boundary(0x9B0C, 2); g_cpu.A &= 0x10; FLAG_NZ(g_cpu.A);
+label_9B0E:;
+    /* $9B0E: F0 */ nes_cpu_instruction_boundary(0x9B0E, 2); if (g_cpu.Z) { maybe_trigger_vblank(1); goto label_9B25; }
+label_9B10:;
+    /* $9B10: BD */ nes_cpu_instruction_boundary(0x9B10, 4); g_cpu.A = nes_read((0x0400 + g_cpu.X) & 0xFFFF); FLAG_NZ(g_cpu.A);
+label_9B13:;
+    /* $9B13: 38 */ nes_cpu_instruction_boundary(0x9B13, 2); g_cpu.C = 1;
+label_9B14:;
+    /* $9B14: ED */ nes_cpu_instruction_boundary(0x9B14, 4); { uint8_t m=nes_read(0x030D); int16_t r=g_cpu.A-m-(1-g_cpu.C); FLAG_NZC_SUB(r,g_cpu.A,m); g_cpu.A=r&0xFF; }
+label_9B17:;
+    /* $9B17: 10 */ nes_cpu_instruction_boundary(0x9B17, 2); if (!g_cpu.N) { maybe_trigger_vblank(1); goto label_9B1C; }
+label_9B19:;
+    /* $9B19: 20 */ nes_cpu_instruction_boundary(0x9B19, 6); { uint8_t _cbs = g_cpu.S; g_ram[0x100 + g_cpu.S] = 0x9B; g_cpu.S--; g_ram[0x100 + g_cpu.S] = 0x1B; g_cpu.S--; func_95C6_b1();
+if (g_cpu.S != _cbs) {
+#ifdef RECOMP_STACK_TRACKING
+    bail_trace(0x9B19, _cbs);
+    recomp_stack_pop();
+#endif
+    return; } }
+label_9B1C:; /* RioAIRoutine_BANK1_endIf_A */
+    /* $9B1C: C9 */ nes_cpu_instruction_boundary(0x9B1C, 2); { int r=g_cpu.A-0x10; g_cpu.C=(g_cpu.A>=0x10)?1:0; FLAG_NZ(r&0xFF); }
+label_9B1E:;
+    /* $9B1E: B0 */ nes_cpu_instruction_boundary(0x9B1E, 2); if (g_cpu.C) { maybe_trigger_vblank(1); goto label_9B25; }
+label_9B20:;
+    /* $9B20: A9 */ nes_cpu_instruction_boundary(0x9B20, 2); g_cpu.A = 0x00; FLAG_NZ(g_cpu.A);
+label_9B22:;
+    /* $9B22: 9D */ nes_cpu_instruction_boundary(0x9B22, 5); nes_write((0x6AFE + g_cpu.X) & 0xFFFF, g_cpu.A);
+label_9B25:; /* RioExit_Active_BANK1 */
+    /* $9B25: A9 */ nes_cpu_instruction_boundary(0x9B25, 2); g_cpu.A = 0x03; FLAG_NZ(g_cpu.A);
+label_9B27:;
+    /* $9B27: 4C */ nes_cpu_instruction_boundary(0x9B27, 3); nes_cpu_instruction_boundary(0x8000, 2); func_8000_b1(); return;
+label_9B2A:; /* RioExit_Explode_BANK1 */
+    /* $9B2A: 4C */ nes_cpu_instruction_boundary(0x9B2A, 3); nes_cpu_instruction_boundary(0x8006, 2); func_8006_b1(); return;
+label_9B2D:; /* RioExit_Resting_BANK1 */
+    /* $9B2D: A9 */ nes_cpu_instruction_boundary(0x9B2D, 2); g_cpu.A = 0x08; FLAG_NZ(g_cpu.A);
+label_9B2F:;
+    /* $9B2F: 4C */ nes_cpu_instruction_boundary(0x9B2F, 3); nes_cpu_instruction_boundary(0x8003, 2); func_8003_b1(); return;
+}
+
 void func_9C1D_b1(void) { /* KraidUpdateAllProjectiles_BANK1 */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_9C1D_b1");

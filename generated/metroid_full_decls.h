@@ -2095,6 +2095,7 @@ extern uint16_t g_rts_target;
 #define CrawlerOutsideCornerCheck_BANK1 func_9AC6_b1
 #define CrawlerOutsideCornerGetNextOrientation_BANK1 func_9ADA_b1
 #define JumpByRTSToMovementRoutine_BANK1 func_9AE2_b1
+#define RioAIRoutine_BANK1 func_9AF5_b1
 #define KraidUpdateAllProjectiles_BANK1 func_9C1D_b1
 #define KraidUpdateProjectile_BANK1 func_9C2A_b1
 #define LoadEnemyPositionFromTemp__BANK1 func_9C96_b1
@@ -17036,6 +17037,7 @@ void func_9ABD_b1(void); /* CrawlerFlipDirection_BANK1 */
 void func_9AC6_b1(void); /* CrawlerOutsideCornerCheck_BANK1 */
 void func_9ADA_b1(void); /* CrawlerOutsideCornerGetNextOrientation_BANK1 */
 void func_9AE2_b1(void); /* JumpByRTSToMovementRoutine_BANK1 */
+void func_9AF5_b1(void); /* RioAIRoutine_BANK1 */
 void func_9C1D_b1(void); /* KraidUpdateAllProjectiles_BANK1 */
 void func_9C2A_b1(void); /* KraidUpdateProjectile_BANK1 */
 void func_9C96_b1(void); /* LoadEnemyPositionFromTemp__BANK1 */

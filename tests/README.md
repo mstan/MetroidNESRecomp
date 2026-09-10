@@ -86,6 +86,13 @@ outside the viewport. The original 32:9 sidecar wrap bug failed this check with
 The binary-state reader intentionally follows the current build only. This
 checks placement, not full enemy behavior or every object type.
 
+`widescreen_rio_probe.py --exe <trace-exe> --rom metroid.nes --state <F3.sav>
+--out <fresh-directory>` follows the Brinstar Rio from cell (9,14) through its
+complete dive and return, checking all five sprite tiles against its world
+position at 40 samples. It also captures an approach using ordinary rightward
+input. No player or enemy RAM is changed. The missing Rio function seed caused
+interpreted drawing to bypass widescreen hooks and misplace or omit its tiles.
+
 `widescreen_ripper_probe.py --exe <trace-exe> --rom metroid.nes --state <F4.sav>
 --out <fresh-directory>` compares the visible Brinstar Ripper's sprite entries
 and pixels against stock across four samples, with expanded sprites alone and
