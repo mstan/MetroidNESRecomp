@@ -34,8 +34,11 @@ refuses it, and HD-pack rendering is bypassed while this renderer is active.
 
 ## What enemies and room previews do
 
-The current development checkpoint adds optional PC actor, sprite and timing
-enhancements, selected with:
+The mod's **Enemy and item range**, **Sprite capacity**, and **Gameplay slowdown**
+choices independently enable the PC enhancements below. All three default to
+**Original**, and the widescreen mod itself is off by default. For the expanded
+experience, select **Viewport**, **Expanded**, and **Reduced slowdown**. The
+command-line equivalent is:
 
 ```powershell
 .\MetroidNESRecomp.exe .\metroid.nes --widescreen 32:9 --widescreen-pc actors,sprites,smooth
@@ -53,8 +56,10 @@ Rio waits at its ceiling spawn until Samus is about 128 pixels away horizontally
 the original coordinate rounding and dive routine still apply.
 `sprites` captures complete object submissions before the
 64-entry OAM buffer wraps. `smooth` runs world updates without the emulated CPU
-cycle limit. These are experimental and off by default; launcher choices are
-not yet exposed. The behavior described below applies without these options.
+cycle limit. These are experimental and opt-in. Use any comma-separated subset
+of `actors,sprites,smooth`, or `--widescreen-pc off` to restore all three original
+policies. The flags require widescreen to be enabled; disabling the widescreen
+mod also disables these enhancements. Invalid lists are rejected as a whole.
 
 The PC checkpoint passes the F1/F2 crawler-position regression, targeted
 contact/shot tests, short save/load replays, and 120/120 stock-mode frame hashes

@@ -3,8 +3,8 @@
  * widescreen package.
  *
  * The package (mods/preloaded/packages/metroid.enhancement.widescreen) is
- * declarative: it names this plugin id and two choice options. Everything the
- * feature actually does lives in metroid_ws.c / metroid_ws_render.c; this
+ * declarative: it names this plugin id and its presentation/PC options. The
+ * feature lives in metroid_ws.c, metroid_ws_render.c and metroid_ws_actors.c; this
  * file only wires the mod runtime to it.
  *
  * Registration is by stable id, before main(). Function-entry hooks start
@@ -61,11 +61,16 @@ static void activate_widescreen(void) {
     }
 
     metroid_ws_enable(aspect, hud);
-    int actors=0,sprites=0,smooth=0;
-    if(nes_mod_option_value(WS_PACKAGE_ID,WS_FEATURE_ID,"actors",value,sizeof value)) actors=!strcmp(value,"viewport");
-    if(nes_mod_option_value(WS_PACKAGE_ID,WS_FEATURE_ID,"sprites",value,sizeof value)) sprites=!strcmp(value,"expanded");
-    if(nes_mod_option_value(WS_PACKAGE_ID,WS_FEATURE_ID,"timing",value,sizeof value)) smooth=!strcmp(value,"smooth");
-    met_actors_configure(actors,sprites,smooth);
+    /* Each enhancement requires its own explicit selection. Missing or
+     * unrecognized values preserve the original policy. */
+    int actors = 0, sprites = 0, smooth = 0;
+    if (nes_mod_option_value(WS_PACKAGE_ID, WS_FEATURE_ID, "actors", value, sizeof value))
+        actors = !strcmp(value, "viewport");
+    if (nes_mod_option_value(WS_PACKAGE_ID, WS_FEATURE_ID, "sprites", value, sizeof value))
+        sprites = !strcmp(value, "expanded");
+    if (nes_mod_option_value(WS_PACKAGE_ID, WS_FEATURE_ID, "timing", value, sizeof value))
+        smooth = !strcmp(value, "smooth");
+    met_actors_configure(actors, sprites, smooth);
 }
 
 NES_MOD_CONSTRUCTOR(register_metroid_widescreen_plugin) {

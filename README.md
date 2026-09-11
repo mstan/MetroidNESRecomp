@@ -37,11 +37,21 @@ A copy of the EU ROM is kept locally as `metroid-eu.nes` (gitignored, like
 
 ## Status
 
-An opt-in **USA adaptive widescreen preview** is available through the bundled
-Metroid Widescreen mod or `--widescreen fit|16:9|21:9|32:9`. It uses complete room
-terrain in the margins, widens loaded-room enemy visibility, and supports live
-Fit resizing. See [WIDESCREEN.md](WIDESCREEN.md) for controls, validation and the
-limits of terrain previews beyond the game's two live rooms.
+**Experimental adaptive widescreen support (USA)** is available through the
+bundled **Metroid Widescreen** mod. Enable it in the launcher's mod controls and
+choose **Fit window**, **16:9**, **21:9**, or **32:9**. The custom renderer shows
+adjacent room terrain and follows live window resizing in Fit mode.
+
+Optional mod choices add **Viewport** enemies and item previews, **Expanded**
+sprite capacity, and **Reduced slowdown**. Viewport enemies retain their original
+distance-based attack triggers. Widescreen is off by default, and each additional
+enhancement defaults to **Original**. These features are still experimental;
+enemy, projectile, and room-transition coverage remains incomplete.
+
+![Experimental 32:9 widescreen showing Samus, enemies and the Morph Ball in the expanded viewport](docs/screenshots/metroid-widescreen.png)
+
+For the command-line options, tested behavior and remaining limitations, see
+[WIDESCREEN.md](WIDESCREEN.md).
 
 **v0.0.1** - Early foundation release.
 

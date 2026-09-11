@@ -14,13 +14,13 @@ save_compatibility = "stock"
 game_id = "metroid-nes"
 rom_crc32 = "70080810"
 
-# EU requires a separately generated and validated build, including all five
+# EU requires a separately generated and validated build, including the game
 # hooks and the transfer caller check. Do not advertise compatibility yet.
 
 [[feature]]
 id = "widescreen"
 name = "Widescreen"
-description = "Shows adjacent rooms in the side margins, keeps loaded-room enemies visible beyond the original screen edge, and anchors the status bar. Distant room previews contain terrain only."
+description = "Shows adjacent rooms in the side margins, keeps loaded-room enemies visible beyond the original screen edge, and anchors the status bar. Optional enhancements add viewport enemies, expanded sprites and reduced slowdown."
 group = "Display"
 exclusive_group = "display-mode"
 default_enabled = false
@@ -68,3 +68,51 @@ label = "Centered (stock position)"
 [[plugin]]
 feature = "widescreen"
 id = "metroid.widescreen"
+
+[[option]]
+feature = "widescreen"
+id = "actors"
+label = "Enemy and item range"
+description = "Viewport mode pre-spawns ordinary enemies and previews uncollected items in visible rooms. Enemies retain their original attack distances. Original uses the game's loaded-room spawn limits."
+type = "choice"
+default = "stock"
+
+[[option.choice]]
+value = "stock"
+label = "Original"
+
+[[option.choice]]
+value = "viewport"
+label = "Viewport (experimental)"
+
+[[option]]
+feature = "widescreen"
+id = "sprites"
+label = "Sprite capacity"
+description = "Expanded captures object sprites before the NES sprite buffer wraps, reducing missing or flickering objects. It also shows both room-door faces with synchronized animations."
+type = "choice"
+default = "stock"
+
+[[option.choice]]
+value = "stock"
+label = "Original"
+
+[[option.choice]]
+value = "expanded"
+label = "Expanded (experimental)"
+
+[[option]]
+feature = "widescreen"
+id = "timing"
+label = "Gameplay slowdown"
+description = "Reduced slowdown removes the emulated CPU budget from world updates while retaining the game's movement routines. This can change timing; Original keeps the original world-update budget."
+type = "choice"
+default = "stock"
+
+[[option.choice]]
+value = "stock"
+label = "Original"
+
+[[option.choice]]
+value = "smooth"
+label = "Reduced slowdown (experimental)"

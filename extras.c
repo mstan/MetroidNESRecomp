@@ -516,7 +516,25 @@ int game_handle_arg(const char *key, const char *val) {
         return 1;
     }
     if (strcmp(key, "--widescreen-pc") == 0 && val) {
-        met_actors_configure(strstr(val,"actors")!=NULL,strstr(val,"sprites")!=NULL,strstr(val,"smooth")!=NULL);
+        int actors = 0, sprites = 0, smooth = 0;
+        const char *next = val;
+        if (strcmp(val, "off")) {
+            for (;;) {
+                const char *end = strchr(next, ',');
+                size_t len = end ? (size_t)(end - next) : strlen(next);
+                if (len == 6 && !strncmp(next, "actors", len)) actors = 1;
+                else if (len == 7 && !strncmp(next, "sprites", len)) sprites = 1;
+                else if (len == 6 && !strncmp(next, "smooth", len)) smooth = 1;
+                else {
+                    fprintf(stderr, "[Widescreen] bad --widescreen-pc spec \"%s\"; "
+                            "use actors,sprites,smooth (any subset) or off\n", val);
+                    return 1;
+                }
+                if (!end) break;
+                next = end + 1;
+            }
+        }
+        met_actors_configure(actors, sprites, smooth);
         return 1;
     }
     (void)val;
@@ -530,6 +548,8 @@ const char *game_arg_usage(void) {
            "  --emulated          Run purely via Nestopia emulator (no recompiled code)\n"
            "  --widescreen SPEC   Widescreen: \"fit\", \"16:9\", \"21:9\", \"32:9\" or \"off\",\n"
            "                      optionally \",edges\" or \",center\" for the status bar\n"
+           "  --widescreen-pc SPEC  Opt-in enhancements: actors,sprites,smooth (any subset),\n"
+           "                       or off; requires widescreen to be enabled\n"
            "  TCP port set via debug.ini (port=XXXX) in the exe directory\n";
 }
 

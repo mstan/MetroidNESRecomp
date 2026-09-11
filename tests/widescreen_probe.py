@@ -17,17 +17,25 @@ import time
 
 
 class Probe:
-    def __init__(self, exe, rom, out, aspect, port=5396, window=False, extra_args=()):
+    def __init__(self, exe, rom, out, aspect, port=5396, window=False, extra_args=(),
+                 mods=None, mod_state=None):
         self.out = Path(out).resolve()
         self.out.mkdir(parents=True, exist_ok=False)
         exe = Path(exe).resolve()
         self.exe = self.out / exe.name
         shutil.copy2(exe, self.exe)
         shutil.copy2(exe.parent / "SDL2.dll", self.out / "SDL2.dll")
+        if mods is not None:
+            shutil.copytree(mods, self.out / "mods")
+        if mod_state is not None:
+            (self.out / "mods").mkdir(exist_ok=True)
+            (self.out / "mods/state.toml").write_text(mod_state, encoding="utf-8")
         (self.out / "debug.ini").write_text(f"port={port}\n")
         env = dict(os.environ, NESRECOMP_NO_LAUNCHER="1", NESRECOMP_START_PAUSED="1")
         self.log = (self.out / "runner.log").open("w")
-        args = [str(self.exe), str(Path(rom).resolve()), "--widescreen", aspect]
+        args = [str(self.exe), str(Path(rom).resolve())]
+        if aspect is not None:
+            args += ["--widescreen", aspect]
         args.extend(extra_args)
         if not window:
             args += ["--smoke", "1000000", "--smoke-output", str(self.out / "smoke.json")]

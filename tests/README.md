@@ -64,6 +64,15 @@ bindings, row/column masks and decoder mismatch location/bytes. The frame-record
 ring buffer also stores summary bytes at `game_data[16..31]`, but the current
 engine TCP serializer only returns `[0..15]`; do not use it to read these stats.
 
+`widescreen_options_probe.py --exe <trace-exe> --rom metroid.nes --out
+<fresh-directory>` installs the bundled package in isolated runs and exercises
+all eight actor/sprite/timing combinations through persisted mod settings. It
+compares gameplay RAM, screenshots and renderer counters with each CLI
+equivalent after starting and walking in a fresh game. It also checks original
+defaults, disabled features with saved enhancement choices, omitted choices,
+and CLI rejection/reset behavior. This verifies mod activation and option
+independence on the opening route, not full-game behavior.
+
 To regress room-loading flicker, run `widescreen_fallback_probe.py` with the same
 `--exe`, `--rom`, `--out` and `--aspect` arguments. Its fresh-game route collects
 Morph Ball, asserts no in-room fallback, and verifies a save/load screenshot

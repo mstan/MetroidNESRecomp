@@ -106,6 +106,7 @@ void metroid_ws_disable(void) {
 
     s_enabled = 0;
     s_gate_wide = 0;
+    met_actors_configure(0, 0, 0);
     met_render_set_gate(0);
     met_render_set_hud(s_hud, -1, 0);
 
