@@ -16,7 +16,8 @@ from widescreen_probe import Probe
 def run(args, pc):
     out = Path(args.out) / ("pc" if pc else "stock")
     probe = Probe(args.exe, args.rom, out, "32:9" if pc else "off",
-                  extra_args=["--widescreen-pc", "actors,sprites,smooth"] if pc else [])
+                  extra_args=["--widescreen-pc", "actors,sprites,smooth"] if pc else [],
+                  extra_env={"NESRECOMP_FALLBACK_LOG": "fallback_telemetry.jsonl"})
     timings = []
     try:
         probe.advance(600); probe.advance(2, 0x10); probe.advance(120)

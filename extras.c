@@ -445,6 +445,7 @@ void game_on_init(void) {
 }
 
 void game_on_frame(uint64_t frame_count) {
+    watchdog_render_start();
     game_voxel_update();
 #ifdef WATCHDOG_ENABLED
     watchdog_frame_start();
@@ -459,6 +460,7 @@ void game_on_frame(uint64_t frame_count) {
 
     /* Auto-prefill the saved password on the entry screen (after any debug
      * override, so it drives the entry screen). */
+    watchdog_render_resume();
     password_prefill_tick();
 }
 
@@ -733,6 +735,7 @@ void game_fill_frame_record(void *record) {
 
 void game_post_render(uint32_t *framebuf) {
     game_voxel_post_render(framebuf);
+    watchdog_render_end();
 }
 
 int game_handle_debug_cmd(const char *cmd, int id, const char *json) {

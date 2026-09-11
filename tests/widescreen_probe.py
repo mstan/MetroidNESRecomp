@@ -18,7 +18,7 @@ import time
 
 class Probe:
     def __init__(self, exe, rom, out, aspect, port=5396, window=False, extra_args=(),
-                 mods=None, mod_state=None):
+                 mods=None, mod_state=None, extra_env=None):
         self.out = Path(out).resolve()
         self.out.mkdir(parents=True, exist_ok=False)
         exe = Path(exe).resolve()
@@ -32,6 +32,8 @@ class Probe:
             (self.out / "mods/state.toml").write_text(mod_state, encoding="utf-8")
         (self.out / "debug.ini").write_text(f"port={port}\n")
         env = dict(os.environ, NESRECOMP_NO_LAUNCHER="1", NESRECOMP_START_PAUSED="1")
+        if extra_env:
+            env.update(extra_env)
         self.log = (self.out / "runner.log").open("w")
         args = [str(self.exe), str(Path(rom).resolve())]
         if aspect is not None:
