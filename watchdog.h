@@ -22,8 +22,12 @@ void watchdog_frame_start(void);
  * If timeout exceeded, dumps stack and longjmps. */
 void watchdog_check(void);
 
-/* Bounded wall-time diagnostics for host work. Logs only spans >=100 ms to
- * metroid_stalls.jsonl next to the executable (at most 64 per process).
- * Keep input waits and deliberate frame pacing outside measured spans. */
+/* Bounded wall-time diagnostics for host work. Buffer spans >=100 ms (64 max)
+ * and write metroid_stalls.jsonl at normal exit, with no gameplay file I/O.
+ * METROID_STALL_TRACE=1 records spans >=8 ms (2048 max) and frame gaps >=25 ms.
+ * phase must be a static literal. Debug pauses are excluded from render spans. */
 uint64_t watchdog_span_begin(void);
 void watchdog_span_end(const char *phase, uint64_t start);
+void watchdog_render_start(void);
+void watchdog_render_resume(void);
+void watchdog_render_end(void);

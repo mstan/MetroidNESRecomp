@@ -227,9 +227,13 @@ Known limits remain tracked in the central Beads database:
   Deterministic recomp output is not proof of oracle parity.
 - `beads-2dw.6.16`: synchronous password autosaving caused a measured 239 ms
   gameplay stall. File writes now use a bounded worker queue, with normal exit
-  draining pending saves. The remaining manual check is whether any other
-  source still causes the reported buzz/freeze; `metroid_stalls.jsonl` records
-  slow game phases next to the executable.
+  draining pending saves. Subsequent idle comparisons found 83–462 ms stalls
+  from synchronous engine fallback telemetry, including with saving disabled.
+  Telemetry file logging now requires `NESRECOMP_FALLBACK_LOG=<path>`; leave it
+  unset for normal play. Slow-phase evidence is buffered and written to
+  `metroid_stalls.jsonl` on normal exit. `METROID_STALL_TRACE=1` also captures
+  shorter phases and late frames; see `tests/README.md`. Broader manual play
+  still needs to confirm whether any other source causes the reported buzz.
 - Bosses, later areas, unusual enemy types, elevator/death transitions and long
   play sessions have not been comprehensively validated with widescreen enabled.
 - Preview rooms use the current area's live CHR and palette. An adjacent room

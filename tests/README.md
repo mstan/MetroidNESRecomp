@@ -138,14 +138,27 @@ comparing RAM and screenshots every 150 frames. It checks stock and all PC
 widescreen options without changing player RAM. The old interpreter watchdog
 terminated a healthy continuation after a few hundred restored frames.
 
-Slow host phases (100 ms or longer) append a JSON record to
-`metroid_stalls.jsonl` next to the executable, capped at 64 records per process.
+Slow host phases (100 ms or longer) buffer up to 64 records per process, then
+append them to `metroid_stalls.jsonl` next to the executable on normal exit.
 The phase distinguishes password encoding/submission, world/actor updates,
 widescreen rendering and debug snapshots. Records include
 the frame, map cell, guest continuation and interpreter watchdog count. Input
-pauses and frame pacing are outside these spans. No file is created unless a
-measured phase crosses the threshold. Also retain `runtime_faults.log`,
-`fallback_telemetry.jsonl` and the launch's stdout/stderr logs after a crash.
+pauses and frame pacing are outside these spans. Set `METROID_STALL_TRACE=1`
+for 8 ms phase timing and gaps of at least 25 ms between rendering and the next
+game callback (including frame pacing), capped at 2,048 records. Debug input
+waits and save-state frame jumps are excluded. Close the game normally to flush
+the buffered evidence; no file is created without an event.
+
+Fallback telemetry is now explicitly opt-in: set `NESRECOMP_FALLBACK_LOG` to
+an output path to collect it. Its synchronous writes can themselves cause
+stutters, so leave it unset for normal gameplay and timing measurements.
+`metroid_resume_probe.py` explicitly enables it to check interpreter counters.
+Also retain `runtime_faults.log` and launch stdout/stderr after a crash.
+
+`watchdog_diagnostics_test.c` links with `watchdog.c` and SDL2. In separate fresh
+directories, run with the trace variable unset and then set to `1`. It verifies
+that synthetic slow phases create no file during gameplay or mutate guest
+state; after exit the JSON should contain 64 and 2,048 records respectively.
 
 Password persistence/history now use one file-writer thread. Only copied text
 and its capture timestamp leave the game thread; encoding still runs against

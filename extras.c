@@ -443,6 +443,7 @@ void game_on_init(void) {
 }
 
 void game_on_frame(uint64_t frame_count) {
+    watchdog_render_start();
 #ifdef WATCHDOG_ENABLED
     watchdog_frame_start();
 #endif
@@ -456,6 +457,7 @@ void game_on_frame(uint64_t frame_count) {
 
     /* Auto-prefill the saved password on the entry screen (after any debug
      * override, so it drives the entry screen). */
+    watchdog_render_resume();
     password_prefill_tick();
 }
 
@@ -728,7 +730,10 @@ void game_fill_frame_record(void *record) {
     metroid_ws_fill_stats(r->game_data);
 }
 
-void game_post_render(uint32_t *framebuf) { (void)framebuf; }
+void game_post_render(uint32_t *framebuf) {
+    (void)framebuf;
+    watchdog_render_end();
+}
 
 int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
     (void)json;
