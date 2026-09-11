@@ -47,6 +47,10 @@ using the original art, palette cycling and buried-item rules. Morph Ball is
 visible immediately to the left of a fresh start. The preview hands off when
 the native pickup actually draws, and the game alone performs collection.
 Collected-item history prevents it returning when its room leaves live RAM.
+Distance-based attack triggers retain the ROM's thresholds, computed using world
+positions so distant residents cannot wrap into a nearby target. The Brinstar
+Rio waits at its ceiling spawn until Samus is about 128 pixels away horizontally;
+the original coordinate rounding and dive routine still apply.
 `sprites` captures complete object submissions before the
 64-entry OAM buffer wraps. `smooth` runs world updates without the emulated CPU
 cycle limit. These are experimental and off by default; launcher choices are

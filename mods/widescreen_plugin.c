@@ -72,6 +72,7 @@ NES_MOD_CONSTRUCTOR(register_metroid_widescreen_plugin) {
     int ok = nes_mod_register_reset_callback(reset_widescreen);
     ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.world",0xCB29,met_actors_hook_world);
     ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.spawn",0xEB0C,met_actors_hook_spawn);
+    ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.proximity",0xF75B,met_actors_hook_proximity);
     ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.draw-enemy",0xDD8B,met_actors_hook_draw_enemy);
     ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.update-enemy",0xF351,met_actors_hook_draw_enemy);
     ok &= nes_mod_register_function_entry_plugin("metroid.widescreen.update-enemies",0xF345,met_actors_hook_draw_enemy);

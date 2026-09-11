@@ -17,6 +17,7 @@
 extern void func_CB29(void), func_EB0C(void), func_F345(void), func_F351(void);
 extern void func_DD8B(void), func_DE47(void), func_DE4A(void), func_E0C1(void);
 extern void func_F93B(void), func_FA9D(void);
+extern void func_F75B(void);
 extern void func_F152(void), func_F140(void), func_F282(void), func_F2CA(void), func_CE92(void);
 extern void func_8B79_b1(void), func_8B79_b2(void), func_8B79_b3(void);
 extern void func_8B79_b4(void), func_8B79_b5(void);
@@ -47,6 +48,7 @@ static int s_native[6], s_area = -1;
 static int s_residents, s_expanded, s_smooth;
 static int s_world, s_spawn, s_draw, s_virtual, s_vcx, s_vcy, s_other_x, s_other_y;
 static int s_camera_x, s_camera_y, s_object_y, s_object_local_y;
+static int s_player_x, s_player_y, s_proximity;
 static Sprite s_build[MAX_SPRITES], s_present[MAX_SPRITES];
 static unsigned s_count, s_present_count, s_updates;
 static int s_present_valid;
@@ -146,8 +148,10 @@ static void guest_begin(Guest *save, int cx, int cy, const uint8_t *terrain) {
     /* Keep target-facing AI relative to the real player's world position. */
     {
         const MetWsCells *cells=met_render_cells(); int nt=save->ram[MET_Samus_hi]&1;
-        int sx=cells->cell_x[nt]*256+save->ram[MET_Samus_x]-cx*256;
-        int sy=cells->cell_y[nt]*240+save->ram[MET_Samus_y]-cy*240;
+        s_player_x=cells->cell_x[nt]*256+save->ram[MET_Samus_x];
+        s_player_y=cells->cell_y[nt]*240+save->ram[MET_Samus_y];
+        int sx=s_player_x-cx*256;
+        int sy=s_player_y-cy*240;
         g_ram[MET_Samus_x]=(uint8_t)sx;
         g_ram[MET_Samus_hi]=(uint8_t)(sx<0 || sx>=256);
         g_ram[MET_Samus_y]=(uint8_t)(sy<0?0:sy>239?239:sy);
@@ -173,6 +177,50 @@ int met_actors_virtual_position(int *wx, int *wy) {
 int met_actors_virtual_screen_x(int world_x) {return world_x-s_camera_x;}
 
 static void guest_call(void (*fn)(void)) {g_cpu.S=0xfd;fn();}
+
+int met_actors_hook_proximity(uint16_t addr) {
+    (void)addr;
+    if(!s_residents || !s_world || s_proximity || g_cpu.X>=0x60) return 0;
+    int off=g_cpu.X, nt=g_sram[EXTRA+off+7]&1;
+    int vertical=(g_ram[MET_Ens_0+off+5]&0x80)!=0;
+    int enemy,player;
+    if(s_virtual) {
+        enemy=vertical ? (nt?s_other_y:s_vcy)*240+g_ram[MET_Ens_0+off] :
+                         (nt?s_other_x:s_vcx)*256+g_ram[MET_Ens_0+off+1];
+        player=vertical?s_player_y:s_player_x;
+    } else {
+        const MetWsCells *cells=met_render_cells();int pn=g_ram[MET_Samus_hi]&1;
+        if(cells->cell_x[nt]<0 || cells->cell_y[nt]<0 ||
+           cells->cell_x[pn]<0 || cells->cell_y[pn]<0) return 0;
+        enemy=vertical ? cells->cell_y[nt]*240+g_ram[MET_Ens_0+off] :
+                         cells->cell_x[nt]*256+g_ram[MET_Ens_0+off+1];
+        player=vertical ? cells->cell_y[pn]*240+g_ram[MET_Samus_y] :
+                          cells->cell_x[pn]*256+g_ram[MET_Samus_x];
+    }
+    int visible=g_ram[MET_Ens_0+off+5]&2;
+    uint8_t threshold=rom((uint16_t)(0x96ab+g_sram[EXTRA+off+14]));
+    /* F75B computes a circular 9-bit distance. A resident several cells away
+     * can otherwise look close enough to attack. Keep the original routine,
+     * including its zero-threshold/invisible cases, scratch writes and RTS.
+     * Replace its distance comparison with the same coordinate rounding in
+     * world space. Never temporarily move live actors: a clocked call can
+     * cross NMI and present a frame before it returns. */
+    s_proximity=1;func_F75B();s_proximity=0;
+    if(threshold && visible) {
+        int distance=(enemy>>1)-(player>>1);
+        if(distance<0) distance=-distance;
+        distance>>=3;
+        uint8_t bit=(threshold&0x80)?8:16;
+        int near=distance<(threshold&0x7f);
+        uint8_t flags=g_ram[MET_Ens_0+off+5];
+        flags=near?(uint8_t)(flags|bit):(uint8_t)(flags&~bit);
+        g_ram[MET_Ens_0+off+5]=flags;
+        /* Near returns from CMP; far returns from AND. Both preserve V. */
+        g_cpu.A=near?(uint8_t)distance:flags;g_cpu.C=(uint8_t)!near;
+        g_cpu.N=near?1:(flags>>7);g_cpu.Z=near?0:(flags==0);
+    }
+    return 1;
+}
 
 static void guest_room_pair(const Actor *a,const Guest *live) {
     /* Give the original movement routines both sides of the nearest cell

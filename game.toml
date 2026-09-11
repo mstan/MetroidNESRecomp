@@ -958,6 +958,8 @@ addr = 0xCB29           # UpdateWorld
 [[mod_function_hook]]
 addr = 0xEB0C           # GetEnemyData
 [[mod_function_hook]]
+addr = 0xF75B           # Enemy proximity: retain ROM thresholds without 9-bit world wrap
+[[mod_function_hook]]
 addr = 0xDD8B           # DrawEnemy
 [[mod_function_hook]]
 addr = 0xF351           # UpdateEnemy: also captures inlined/tail-entered drawing

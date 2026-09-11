@@ -20450,6 +20450,7 @@ label_F74A:; /* OrEnData05_RTS */
 }
 
 void func_F75B(void) { /* UpdateEnemy_EnData05DistanceToSamusThreshold */
+    if (nes_mod_function_entry(0xF75Bu)) return;  /* trusted opt-in game-mod hook */
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_F75B");
 #endif

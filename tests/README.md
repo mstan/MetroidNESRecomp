@@ -88,10 +88,14 @@ checks placement, not full enemy behavior or every object type.
 
 `widescreen_rio_probe.py --exe <trace-exe> --rom metroid.nes --state <F3.sav>
 --out <fresh-directory>` follows the Brinstar Rio from cell (9,14) through its
-complete dive and return, checking all five sprite tiles against its world
-position at 40 samples. It also captures an approach using ordinary rightward
-input. No player or enemy RAM is changed. The missing Rio function seed caused
-interpreted drawing to bypass widescreen hooks and misplace or omit its tiles.
+approach and adoption into a native slot, asserting that it stays at its ceiling
+spawn until Samus is close. Boundary and full-flight fixtures then hold Samus
+still in that room; enemy state and terrain are unchanged. All five sprite tiles
+are checked through the dive and return. Add `--nesref <nesref.exe> --core
+<mesen_libretro.dll>` to execute the unchanged ROM proximity routine in Mesen
+against 14 boundary cases. Add `--clocked` to retain original world timing.
+The missing Rio function seed bypassed drawing hooks; circular guest coordinates
+also caused premature dives while Samus was several rooms away.
 
 `widescreen_ripper_probe.py --exe <trace-exe> --rom metroid.nes --state <F4.sav>
 --out <fresh-directory>` compares the visible Brinstar Ripper's sprite entries

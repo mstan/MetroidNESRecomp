@@ -106,6 +106,7 @@ void met_actors_reset(void);
 void met_actors_retire_room(int nt);
 int met_actors_hook_world(uint16_t addr);
 int met_actors_hook_spawn(uint16_t addr);
+int met_actors_hook_proximity(uint16_t addr);
 int met_actors_hook_draw_enemy(uint16_t addr);
 int met_actors_hook_draw_object(uint16_t addr);
 int met_actors_hook_draw_hud(uint16_t addr);
