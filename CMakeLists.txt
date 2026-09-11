@@ -54,6 +54,8 @@ add_executable(MetroidNESRecomp
     metroid_ws_render.c
     metroid_ws_actors.c
     mods/widescreen_plugin.c
+    game_voxel.c
+    mods/voxel_plugin.c
     nes_snapshot.c
     verify_mode.c
     watchdog.c
@@ -66,6 +68,7 @@ target_compile_definitions(MetroidNESRecomp PRIVATE
     NESRECOMP_SPLIT_PARTS_EXTERNAL
     RECOMP_STACK_TRACKING
     WATCHDOG_ENABLED
+    NESRECOMP_GAME_SDL_EVENT_HOOK=game_voxel_handle_event
 )
 
 target_include_directories(MetroidNESRecomp PRIVATE
@@ -105,6 +108,10 @@ recomp_target_launcher_ui(MetroidNESRecomp
 
 # Declarative mod packages shipped with the build (mirrors SMB's staging step).
 add_custom_command(TARGET MetroidNESRecomp POST_BUILD
+    # copy_directory is additive. Explicitly remove the formerly preloaded
+    # diorama package so an incremental build hides the parked experiment too.
+    COMMAND ${CMAKE_COMMAND} -E remove_directory
+        "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods/packages/metroid.enhancement.voxel-diorama"
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/mods/preloaded"
         "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods"

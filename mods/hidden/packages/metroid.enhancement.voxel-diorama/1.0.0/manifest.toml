@@ -1,0 +1,81 @@
+format_version = 1
+# Parked experiment: retained in source, intentionally not staged by CMake.
+id = "metroid.enhancement.voxel-diorama"
+version = "1.0.0"
+name = "3D Voxel Diorama"
+author = "NESRecomp"
+description = "Presents Metroid rooms as a depth-buffered stage without modifying the stock ROM or password data."
+license = "MIT"
+resolver = "declarative"
+save_compatibility = "stock"
+
+[[target]]
+game_id = "metroid-nes"
+rom_crc32 = "70080810"
+
+[[feature]]
+id = "voxel-diorama"
+name = "3D Voxel Diorama"
+description = "Raises room architecture as geometry and reconstructs actors as oriented sprite cards."
+group = "Display"
+default_enabled = false
+exclusive_group = "display-mode"
+
+[[plugin]]
+feature = "voxel-diorama"
+id = "metroid.voxel-diorama"
+
+[[option]]
+feature = "voxel-diorama"
+id = "pitch"
+label = "Camera pitch"
+group = "Camera"
+type = "integer"
+default = 30
+min = 5
+max = 85
+step = 5
+
+[[option]]
+feature = "voxel-diorama"
+id = "yaw"
+label = "Camera yaw"
+group = "Camera"
+type = "integer"
+default = -20
+min = -180
+max = 180
+step = 5
+
+[[option]]
+feature = "voxel-diorama"
+id = "roll"
+label = "Camera roll"
+group = "Camera"
+type = "integer"
+default = 0
+min = -45
+max = 45
+step = 5
+
+[[option]]
+feature = "voxel-diorama"
+id = "zoom"
+label = "Zoom"
+group = "Camera"
+type = "integer"
+default = 100
+min = 50
+max = 200
+step = 5
+
+[[option]]
+feature = "voxel-diorama"
+id = "sprite-scale"
+label = "Sprite scale"
+group = "Sprites"
+type = "integer"
+default = 125
+min = 75
+max = 250
+step = 5
