@@ -27,8 +27,8 @@ interpreter, including later areas absent from the profiling route.
 
 ## Feature ports
 
-Passwords use the original guest encoder in a fully restored isolated
-scope. The existing asynchronous writer keeps `metroid.srm` and timestamped
+Passwords use the original guest encoder in a fully restored isolated scope.
+The existing asynchronous writer keeps `metroid.srm` and timestamped
 `metroid_password_log.txt` beside the executable. Existing password text and
 launcher editing remain compatible. Prefill drives the original input and
 entry routines. `--no-save` suppresses sidecar loading and all automatic or
@@ -58,36 +58,39 @@ creating a legacy settings file.
 
 The USA and Europe builds each passed a real 1,800-frame start-and-corridor
 route. Stock native, game interpreter and standalone cycle interpreter
-machine hashes matched exactly. Widescreen, actors, sprites, smooth and the
-combined mode matched between native and interpreter in both machine hashes
-and final presentation.
+machine hashes matched exactly. Widescreen, actors, sprites, smooth, their
+individual pairs and the combined mode matched between native and interpreter
+in both machine hashes and final presentation.
 
-Loading frame 899 in a fresh process reproduced frames 900Ã¢â‚¬â€œ1799, the final
-whole save state and the final widescreen picture for stock and every tested
-enhancement mode, on both regions. Password capture preserved whole machine
-state; saved passwords prefilled on restart and were accepted by the ROM.
-Autosave preserved machine hashes. A controlled offloaded-enemy contact
+Loading frame 899 in a fresh process reproduced frames 900 through 1799, the
+final whole save state and the final widescreen picture for stock and every
+tested enhancement mode, in both regions. Password capture preserved whole
+machine state; saved passwords prefilled on restart and were accepted by the
+ROM. Autosave preserved machine hashes. A controlled offloaded-enemy contact
 regression confirms damage and invincibility survive scope restoration, with
-identical native/interpreter results in both regions. A controlled offloaded-enemy contact
-regression confirms damage and invincibility survive scope restoration, with
-identical native/interpreter results in both regions. The voxel path matched native/interpreter
-presentation and hidden-window rendering, with SDL camera/menu checks.
-The explicit legacy build compiled successfully. USA stock also matched the
-independent TriCNES trace, RAM and CPU at alignments 0/1/2. PAL native and
-interpreter runs matched at all five master-clock phases. Bundled mod
-activation and all enhancement option pairs passed in both regions; corrupt
-state records and incompatible options were refused without changing the
-running state. The maintained `tests/cycle_backend_probe.py --case all`
-regression also passed. USA stock also matched the
-independent TriCNES trace, RAM and CPU at alignments 0/1/2. PAL native and
-interpreter runs matched at all five master-clock phases. Bundled mod
-activation and all enhancement option pairs passed in both regions; corrupt
-state records and incompatible options were refused without changing the
-running state. The maintained `tests/cycle_backend_probe.py --case all`
-regression also passed.
+identical native/interpreter results in both regions. The voxel path matched
+native/interpreter presentation and hidden-window rendering, with SDL camera
+and menu checks. The explicit legacy build compiled successfully.
+
+USA stock also matched the independent TriCNES trace, RAM and CPU at
+alignments 0/1/2. PAL native/interpreter runs matched at all five master-clock
+phases. Bundled mod activation passed in both regions; corrupt state records
+and incompatible options were refused without changing the running state.
+The maintained `tests/cycle_backend_probe.py --case all` regression passed.
+The owner briefly played and accepted USA widescreen with all enhancements,
+Europe/PAL widescreen with all enhancements, and USA first-person on 2026-10-04.
 
 This route does not cover every area, boss, ending or password. Existing
 widescreen/viewport-actor experiments retain their documented coverage limits
-in WIDESCREEN.md. Legacy binary save states are a different format; existing
-password sidecars are the progress migration path. Owner playtests are still
-required before this branch is integrated.
+in WIDESCREEN.md. Legacy binary save states use a different format; existing
+password sidecars are the progress migration path. The branches remain
+unmerged until the migration's remaining title playtests and integration.
+
+## Regional archives
+
+`tools/make_release.ps1` builds and stages both regional cycle previews by
+default. `-SkipBuild` packages existing `build-cycle-usa` and
+`build-cycle-europe` Release outputs. It verifies backend/region cache values
+and package CRCs, copies built launcher assets and regional packages, and
+excludes ROMs, settings, mod selections and player progress. It creates local
+archives under `release/`; it never publishes them.

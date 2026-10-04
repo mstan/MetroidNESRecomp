@@ -52,3 +52,4 @@ build-legacy/
 cycle-evidence/
 __pycache__/
 !tools/stage_cycle_mods.py
+release/

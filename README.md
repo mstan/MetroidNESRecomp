@@ -118,6 +118,13 @@ An explicit `-DNESRECOMP_BACKEND=legacy` build uses the checked-in USA
 function-level sources. The remaining symbol/hint instructions below describe
 that legacy generator workflow.
 
+To create separate local Windows archives for both regions, run
+`powershell -File tools/make_release.ps1 -UsaRom F:/ROMs/metroid.nes -EuropeRom F:/ROMs/metroid-eu.nes`.
+Existing regional build caches retain their ROM paths. Use `-SkipBuild` to
+package already-built cycle executables, or `-Variant usa|europe` to select
+one region. Archives contain the selected region's mod packages and no ROM,
+settings or player saves. This script does not publish releases.
+
 ### Symbols and hints come from the disassembly
 
 `disasm/m1disasm` is a submodule of [metroidret/m1disasm](https://github.com/metroidret/m1disasm),
