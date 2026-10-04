@@ -45,3 +45,10 @@ build_ui/
 
 # WLA-DX toolchain built by tools/build_wla_dx.ps1 (needed to regenerate symbols.sym)
 tools/wla-dx/
+
+# Cycle builds and local validation artifacts
+build-cycle-*/
+build-legacy/
+cycle-evidence/
+__pycache__/
+!tools/stage_cycle_mods.py

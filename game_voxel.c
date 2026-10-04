@@ -6,7 +6,11 @@
 
 #include "config.h"
 #include "controller.h"
+#ifdef METROID_CYCLE
+#include "cycle_bridge.h"
+#else
 #include "nes_runtime.h"
+#endif
 #include "voxel_screen_profile.h"
 
 #include <math.h>

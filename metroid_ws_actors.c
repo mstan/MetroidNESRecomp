@@ -8,11 +8,26 @@
 #undef MET_StructPtr
 #undef MET_RoomRAMWorkPtr
 #include "metroid_ram.h"
+#ifdef METROID_CYCLE
+#include "cycle_bridge.h"
+#else
 #include "nes_runtime.h"
+#endif
+#ifndef METROID_CYCLE
 #include "mapper.h"
+#endif
+#ifndef METROID_CYCLE
 #include "recomp_stack.h"
+#endif
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#ifdef METROID_CYCLE
+#define MET_AREA_ADDR(a) met_cycle_address(a)
+static void cycle_world_finished(void);
+#else
+#define MET_AREA_ADDR(a) (a)
+#endif
 
 extern void func_CB29(void), func_EB0C(void), func_F345(void), func_F351(void);
 extern void func_DD8B(void), func_DE47(void), func_DE4A(void), func_E0C1(void);
@@ -51,6 +66,9 @@ static int s_camera_x, s_camera_y, s_object_y, s_object_local_y;
 static int s_player_x, s_player_y, s_proximity;
 static Sprite s_build[MAX_SPRITES], s_present[MAX_SPRITES];
 static unsigned s_count, s_present_count, s_updates;
+#ifdef METROID_CYCLE
+static Sprite s_visible[MAX_SPRITES];static unsigned s_visible_count;static int s_visible_valid;
+#endif
 static int s_present_valid;
 static uint8_t s_captured[64];
 static int s_enemy_batch;
@@ -67,6 +85,10 @@ void met_actors_reset(void) {
     for (int i=0; i<6; i++) s_native[i] = -1;
     s_area = -1; s_count = s_present_count = s_updates = 0;
     s_present_valid = 0;
+#ifdef METROID_CYCLE
+    s_visible_count=0;s_visible_valid=0;
+    s_world=s_spawn=s_draw=s_virtual=s_proximity=s_enemy_batch=s_doors=0;s_enemy_tail=s_powerups_drawn=0;
+#endif
 }
 void met_actors_configure(int residents, int expanded_sprites, int smooth) {
     s_residents = residents; s_expanded = expanded_sprites; s_smooth = smooth;
@@ -159,11 +181,19 @@ static void guest_begin(Guest *save, int cx, int cy, const uint8_t *terrain) {
     g_cpu.S=0xfd; g_bail_active=0;
 }
 static void guest_end(const Guest *save) {
+#ifdef METROID_CYCLE
+    /* Restore the scratch machine before applying the caller's saved data:
+     * commit_effects may have updated that data with health/pickup/SFX changes. */
+    runtime_end_unclocked();
+#endif
     memcpy(g_ram,save->ram,sizeof save->ram); memcpy(g_sram,save->sram,sizeof save->sram);
     memcpy(g_ws_shadow_x16,save->shadow,sizeof save->shadow);
     g_cpu=save->cpu; g_bail_active=save->bail; g_recomp_stack_top=save->stack; g_rts_target=save->rts;
     g_ws_obj_true_rel=save->rel; g_ws_obj_rel8=save->rel8; g_ws_obj_ctx_valid=save->valid;
-    s_virtual=0; runtime_end_unclocked();
+    s_virtual=0;
+#ifndef METROID_CYCLE
+    runtime_end_unclocked();
+#endif
 }
 int met_actors_virtual_position(int *wx, int *wy) {
     if(!s_virtual) return 0;
@@ -178,6 +208,27 @@ int met_actors_virtual_screen_x(int world_x) {return world_x-s_camera_x;}
 
 static void guest_call(void (*fn)(void)) {g_cpu.S=0xfd;fn();}
 
+#ifdef METROID_CYCLE
+int met_actors_hook_proximity(uint16_t addr) {
+    (void)addr;
+    if(!s_residents || !s_world || s_proximity || g_cpu.X>=0x60)return 0;
+    int off=g_cpu.X,nt=g_sram[EXTRA+off+7]&1;
+    int vertical=(g_ram[MET_Ens_0+off+5]&0x80)!=0,enemy,player;
+    if(s_virtual){
+        enemy=vertical?(nt?s_other_y:s_vcy)*240+g_ram[MET_Ens_0+off]:(nt?s_other_x:s_vcx)*256+g_ram[MET_Ens_0+off+1];
+        player=vertical?s_player_y:s_player_x;
+    }else{
+        const MetWsCells *cells=met_render_cells();int pn=g_ram[MET_Samus_hi]&1;
+        if(cells->cell_x[nt]<0 || cells->cell_y[nt]<0 || cells->cell_x[pn]<0 || cells->cell_y[pn]<0)return 0;
+        enemy=vertical?cells->cell_y[nt]*240+g_ram[MET_Ens_0+off]:cells->cell_x[nt]*256+g_ram[MET_Ens_0+off+1];
+        player=vertical?cells->cell_y[pn]*240+g_ram[MET_Samus_y]:cells->cell_x[pn]*256+g_ram[MET_Samus_x];
+    }
+    uint8_t threshold=rom((uint16_t)(met_cycle_address(0x96ab)+g_sram[EXTRA+off+14]));
+    int distance=(enemy>>1)-(player>>1);if(distance<0)distance=-distance;distance>>=3;
+    s_proximity=1;
+    met_cycle_after(MET_AFTER_PROXIMITY,(uint64_t)off|((uint64_t)threshold<<8)|((uint64_t)(g_ram[MET_Ens_0+off+5]&2)<<16)|((uint64_t)distance<<24));return 0;
+}
+#else
 int met_actors_hook_proximity(uint16_t addr) {
     (void)addr;
     if(!s_residents || !s_world || s_proximity || g_cpu.X>=0x60) return 0;
@@ -221,6 +272,7 @@ int met_actors_hook_proximity(uint16_t addr) {
     }
     return 1;
 }
+#endif
 
 static void guest_room_pair(const Actor *a,const Guest *live) {
     /* Give the original movement routines both sides of the nearest cell
@@ -377,6 +429,21 @@ static void prepare_actors(void) {
         if(cx>=0 && cx<32 && cy>=0 && cy<32) seed_cell(cx,cy);
 }
 
+#ifdef METROID_CYCLE
+int met_actors_hook_spawn(uint16_t addr) {
+    (void)addr;
+    if(!s_residents || !metroid_ws_enabled() || s_spawn || s_virtual)return 0;
+    uint16_t p=ram16(0);int off=rom(p)&0xf0;
+    if(off>=0x60)return 0;
+    int slot=off/16,cx=g_ram[MET_MapPosX],cy=g_ram[MET_MapPosY];
+    int i=find_actor(cx,cy,off),old=s_native[slot],existing=i>=0;
+    if(old>=0 && old!=i){pull_actor(&s_actors[old],off);s_actors[old].native_slot=-1;}
+    if(i<0)i=allocate_actor(cx,cy,off,p);
+    g_sram[EXTRA+off]=0;s_spawn=1;
+    met_cycle_after(MET_AFTER_SPAWN,(uint64_t)off|((uint64_t)(i+1)<<8)|((uint64_t)slot<<16)|((uint64_t)existing<<24)|((uint64_t)p<<32));
+    return 0;
+}
+#else
 int met_actors_hook_spawn(uint16_t addr) {
     (void)addr;
     if(!s_residents || !metroid_ws_enabled() || s_spawn || s_virtual) return 0;
@@ -400,12 +467,16 @@ int met_actors_hook_spawn(uint16_t addr) {
     }
     return 1;
 }
+#endif
 
 static void capture(unsigned start,int hud) {
     unsigned end=g_ram[MET_SpritePagePos];
     for(unsigned pos=start;pos!=end;pos=(pos+4)&255) {
         if(s_count>=MAX_SPRITES) break;
         int y=g_ram[0x200+pos]+1,x=g_ws_shadow_x16[pos/4];
+#ifdef METROID_CYCLE
+        if(hud)x=g_ram[0x203+pos];
+#endif
         /* The legacy OAM sidecar accepts only [-256,512). A resident actor
          * can be farther away, and even the visible 32:9 edges exceed that
          * range. Its fallback byte would wrap distant sprites into the
@@ -423,6 +494,14 @@ static void capture(unsigned start,int hud) {
         s->attr=g_ram[0x202+pos];s->hud=(uint8_t)hud;
     }
 }
+#ifdef METROID_CYCLE
+static int draw_call(void (*fn)(void),int hud) {
+    int pickup=s_residents && !s_virtual && g_ram[MET_PageIndex]==0x40 && (fn==func_DE47 || fn==func_DE4A)?g_ram[MET_ItemIndex]:-1;
+    if(!metroid_ws_enabled() || (!s_expanded && !s_virtual && pickup<0) || s_draw)return 0;
+    unsigned start=g_ram[MET_SpritePagePos];s_draw=1;
+    met_cycle_after(MET_AFTER_DRAW,(uint64_t)start|((uint64_t)hud<<8)|((uint64_t)(pickup+1)<<16));return 0;
+}
+#else
 static int draw_call(void (*fn)(void),int hud) {
     int pickup=s_residents && !s_virtual && g_ram[MET_PageIndex]==0x40 &&
         (fn==func_DE47 || fn==func_DE4A) ? g_ram[MET_ItemIndex] : -1;
@@ -434,6 +513,16 @@ static int draw_call(void (*fn)(void),int hud) {
     if(s_enemy_batch) s_enemy_tail=g_ram[MET_SpritePagePos];
     return 1;
 }
+#endif
+#ifdef METROID_CYCLE
+int met_actors_hook_draw_enemy(uint16_t addr) {
+    if(addr==0xf345){
+        if(!metroid_ws_enabled() || !s_expanded || s_enemy_batch)return 0;
+        s_enemy_batch=1;s_enemy_tail=g_ram[MET_SpritePagePos];met_cycle_after(MET_AFTER_BATCH,0);return 0;
+    }
+    return draw_call(addr==0xf351?func_F351:func_DD8B,0);
+}
+#else
 int met_actors_hook_draw_enemy(uint16_t addr) {
     if(addr==0xF345) {
         if(!metroid_ws_enabled() || !s_expanded || s_enemy_batch) return 0;
@@ -450,9 +539,17 @@ int met_actors_hook_draw_enemy(uint16_t addr) {
      * the draw guard prevents duplicate capture by the nested DrawEnemy hook. */
     return draw_call(addr==0xF351?func_F351:func_DD8B,0);
 }
+#endif
 int met_actors_hook_draw_object(uint16_t addr) {return draw_call(addr==0xDE47?func_DE47:func_DE4A,0);}
 int met_actors_hook_draw_hud(uint16_t addr) {(void)addr;return draw_call(func_E0C1,1);}
 
+#ifdef METROID_CYCLE
+int met_actors_hook_doors(uint16_t addr) {
+    (void)addr;
+    if(!metroid_ws_enabled() || !s_expanded || !s_world || s_doors || g_current_bank<1 || g_current_bank>5)return 0;
+    s_doors=1;met_cycle_after(MET_AFTER_DOORS,s_count);return 0;
+}
+#else
 int met_actors_hook_doors(uint16_t addr) {
     static void (*const update[])(void)={func_8B79_b1,func_8B79_b2,func_8B79_b3,func_8B79_b4,func_8B79_b5};
     (void)addr;
@@ -464,6 +561,7 @@ int met_actors_hook_doors(uint16_t addr) {
     s_doors=1;update[g_current_bank-1]();s_doors=0;s_count=start;
     return 1;
 }
+#endif
 
 static int item_collected(int cx,int cy,int type) {
     /* CreateItemID/CheckForItem's persistent identity, independent of NT reuse. */
@@ -494,7 +592,7 @@ static void draw_doors(void) {
         int p=MET_Objects_0_status+slot,nt=g_ram[p+12]&1;
         if(!g_ram[p] || g_ram[p]>6 || cells->cell_x[nt]<0 || cells->cell_y[nt]<0) continue;
         faces[count++]=(DoorFace){cells->cell_x[nt],cells->cell_y[nt],(slot>>4)&1,g_ram[p+7]&3,g_ram[p],
-                                 g_ram[p]==1?rom(0x85a2):g_ram[p+3]};
+                                 g_ram[p]==1?rom(MET_AREA_ADDR(0x85a2)):g_ram[p+3]};
     }
     int left=(ox-g_widescreen_left)/256,right=(ox+255+g_widescreen_right)/256;
     for(int cy=oy/240;cy<=(oy+239)/240;cy++) for(int cx=left;cx<=right;cx++) {
@@ -505,7 +603,7 @@ static void draw_doors(void) {
             if(kind==2) {
                 int info=rom(p+1),side=(info>>4)&1,found=0;
                 for(int i=0;i<count;i++) if(faces[i].cx==cx && faces[i].cy==cy && faces[i].side==side) found=1;
-                if(!found && count<32) faces[count++]=(DoorFace){cx,cy,side,info&3,0,rom(0x85a2)};
+                if(!found && count<32) faces[count++]=(DoorFace){cx,cy,side,info&3,0,rom(MET_AREA_ADDR(0x85a2))};
             }
             if(!size) break;
             p+=(uint16_t)size;
@@ -515,7 +613,7 @@ static void draw_doors(void) {
         const DoorFace *d=&faces[i],*animation=NULL;int boundary=d->cx+!d->side;
         for(int j=0;j<count;j++)
             if(faces[j].cy==d->cy && faces[j].cx+!faces[j].side==boundary &&
-               (!animation || door_animation_priority(&faces[j],rom(0x85a2))>door_animation_priority(animation,rom(0x85a2))))
+               (!animation || door_animation_priority(&faces[j],rom(MET_AREA_ADDR(0x85a2)))>door_animation_priority(animation,rom(MET_AREA_ADDR(0x85a2)))))
                 animation=&faces[j];
         if(animation->frame==0xf7 || (!(d->type&1) && item_collected(boundary-1,d->cy,0x0a))) continue;
         const uint8_t *terrain=met_render_room_terrain(d->cx,d->cy);
@@ -572,7 +670,7 @@ static void draw_powerup_previews(void) {
     int left=(ox-g_widescreen_left)/256,right=(ox+255+g_widescreen_right)/256;
     /* ScanForItems' linked row list, then its offset-linked cell records.
      * Only powerup records are drawn; no guest spawns or pickup effects run. */
-    uint16_t row=ptr16(0x9598); /* SpecItmsTblPtr, common to USA area banks */
+    uint16_t row=ptr16(MET_AREA_ADDR(0x9598)); /* SpecItmsTblPtr, common to USA area banks */
     static const uint8_t size[]={0,3,3,1,2,2,1,1,2,2,1};
     for(int rows=0;rows<32 && row>=0x8000 && row!=0xffff;rows++) {
         int cy=rom(row);
@@ -597,6 +695,22 @@ static void draw_powerup_previews(void) {
     }
 }
 
+#ifdef METROID_CYCLE
+int met_actors_hook_world(uint16_t addr) {
+    (void)addr;
+    if(!metroid_ws_enabled() || s_world || (!s_residents && !s_expanded && !s_smooth))return 0;
+    s_world=1;s_count=0;s_powerups_drawn=0;memset(s_captured,0,sizeof s_captured);
+    if(s_residents)prepare_actors();
+    /* A new area resets actor bookkeeping, including s_world. Keep the
+     * entry guard set while the smooth path calls this guest routine. */
+    s_world=1;
+    if(s_smooth && !cyc_mod_isolated()) {
+        if(!met_cycle_world_commit()){fprintf(stderr,"[Metroid cycle] smooth world is not a memory-only routine\n");exit(2);}
+        cycle_world_finished();return 1;
+    }
+    met_cycle_after(MET_AFTER_WORLD,0);return 0;
+}
+#else
 int met_actors_hook_world(uint16_t addr) {
     (void)addr;
     if(!metroid_ws_enabled() || s_world || (!s_residents && !s_expanded && !s_smooth)) return 0;
@@ -645,13 +759,19 @@ int met_actors_hook_world(uint16_t addr) {
     memcpy(s_present,s_build,s_count*sizeof(Sprite));s_present_count=s_count;s_present_valid=1;
     s_world=0;return 1;
 }
+#endif
 
 int met_actors_draw(uint32_t *out,int width,int native_x0,const uint8_t *opaque,int hud_edges) {
-    if(!s_present_valid || (!s_expanded && !s_residents)) return 0;
+#ifdef METROID_CYCLE
+    const Sprite *present=s_visible;unsigned present_count=s_visible_count;int present_valid=s_visible_valid;
+#else
+    const Sprite *present=s_present;unsigned present_count=s_present_count;int present_valid=s_present_valid;
+#endif
+    if(!present_valid || (!s_expanded && !s_residents)) return 0;
     if(!(g_ppumask&0x10)) return s_expanded;
     int tall=(g_ppuctrl&0x20)!=0,height=tall?16:8;
-    for(int n=(int)s_present_count-1;n>=0;n--) {
-        const Sprite *s=&s_present[n];int x=s->x+((s->hud && hud_edges)?0:native_x0);
+    for(int n=(int)present_count-1;n>=0;n--) {
+        const Sprite *s=&present[n];int x=s->x+((s->hud && hud_edges)?0:native_x0);
         int base=tall?((s->tile&1)?0x1000:0):((g_ppuctrl&8)?0x1000:0);
         for(int row=0;row<height;row++) {
             int y=s->y+row;if(y<0 || y>=240) continue;
@@ -682,31 +802,103 @@ typedef struct {
     int32_t area, native[6];
     Actor actors[MAX_ACTORS];
     Sprite sprites[MAX_SPRITES];
+#ifdef METROID_CYCLE
+    int32_t transient[24], options[3];
+    uint32_t build_count,visible_count,visible_valid;
+    Sprite build[MAX_SPRITES],visible[MAX_SPRITES];
+    uint8_t captured[64];
+#endif
 } ActorSave;
 int met_actors_save(uint8_t *buf,int cap) {
+#ifdef METROID_CYCLE
+    if(!s_residents && !s_expanded && !s_smooth)return 0;
+#else
     if(!s_residents && !s_expanded) return 0;
+#endif
     if(cap<(int)sizeof(ActorSave)) return -1;
     ActorSave save;memset(&save,0,sizeof save);
     save.version=1;save.count=s_present_count;save.valid=s_present_valid;save.updates=s_updates;save.area=s_area;
     for(int i=0;i<6;i++) save.native[i]=s_native[i];
     memcpy(save.actors,s_actors,sizeof s_actors);memcpy(save.sprites,s_present,sizeof s_present);
+#ifdef METROID_CYCLE
+    save.version=2;save.options[0]=s_residents;save.options[1]=s_expanded;save.options[2]=s_smooth;
+    save.build_count=s_count;save.visible_count=s_visible_count;save.visible_valid=s_visible_valid;
+    memcpy(save.build,s_build,sizeof s_build);memcpy(save.visible,s_visible,sizeof s_visible);memcpy(save.captured,s_captured,sizeof s_captured);
+    save.transient[0]=s_world;
+    save.transient[1]=s_spawn;
+    save.transient[2]=s_draw;
+    save.transient[3]=s_virtual;
+    save.transient[4]=s_vcx;
+    save.transient[5]=s_vcy;
+    save.transient[6]=s_other_x;
+    save.transient[7]=s_other_y;
+    save.transient[8]=s_camera_x;
+    save.transient[9]=s_camera_y;
+    save.transient[10]=s_object_y;
+    save.transient[11]=s_object_local_y;
+    save.transient[12]=s_player_x;
+    save.transient[13]=s_player_y;
+    save.transient[14]=s_proximity;
+    save.transient[15]=s_enemy_batch;
+    save.transient[16]=s_enemy_tail;
+    save.transient[17]=s_doors;
+    save.transient[18]=s_powerups_drawn;
+#endif
     memcpy(buf,&save,sizeof save);return sizeof save;
 }
-int met_actors_load(const uint8_t *buf,int len) {
-    if(len==0) {met_actors_reset();return 1;}
+static int actors_read(const uint8_t *buf,int len,int apply) {
+    if(len==0) {if(apply)met_actors_reset();return 1;}
     if(len!=(int)sizeof(ActorSave)) return 0;
     ActorSave save;memcpy(&save,buf,sizeof save);
-    if(save.version!=1 || save.count>MAX_SPRITES || save.valid>1) return 0;
+#ifdef METROID_CYCLE
+    if(save.version!=2 || save.options[0]!=s_residents || save.options[1]!=s_expanded || save.options[2]!=s_smooth ||
+       save.build_count>MAX_SPRITES || save.visible_count>MAX_SPRITES || save.visible_valid>1)return 0;
+#else
+    if(save.version!=1)return 0;
+#endif
+    if(save.count>MAX_SPRITES || save.valid>1)return 0;
     for(int i=0;i<6;i++) if(save.native[i]<-1 || save.native[i]>=MAX_ACTORS) return 0;
     for(int i=0;i<MAX_ACTORS;i++) if(save.actors[i].used &&
         (save.actors[i].cx>=32 || save.actors[i].cy>=32 || save.actors[i].spawn_x>=32 ||
          save.actors[i].spawn_y>=32 || save.actors[i].slot>=0x60 ||
          (save.actors[i].slot&15) || save.actors[i].native_slot < -1 || save.actors[i].native_slot>=6)) return 0;
+#ifdef METROID_CYCLE
+    for(int k=0;k<19;k++)
+        if((k==0 || k==1 || k==2 || k==3 || k==14 || k==15 || k==17) &&
+           (save.transient[k]<0 || save.transient[k]>1))return 0;
+    if(save.transient[16]<0 || save.transient[16]>255 || save.transient[18]<0 || save.transient[18]>3)return 0;
+#endif
+    if(!apply)return 1;
     s_area=save.area;s_present_count=save.count;s_present_valid=save.valid;s_updates=save.updates;
     for(int i=0;i<6;i++) s_native[i]=save.native[i];
     memcpy(s_actors,save.actors,sizeof s_actors);memcpy(s_present,save.sprites,sizeof s_present);
+#ifdef METROID_CYCLE
+    s_count=save.build_count;s_visible_count=save.visible_count;s_visible_valid=save.visible_valid;
+    memcpy(s_build,save.build,sizeof s_build);memcpy(s_visible,save.visible,sizeof s_visible);memcpy(s_captured,save.captured,sizeof s_captured);
+    s_world=save.transient[0];
+    s_spawn=save.transient[1];
+    s_draw=save.transient[2];
+    s_virtual=save.transient[3];
+    s_vcx=save.transient[4];
+    s_vcy=save.transient[5];
+    s_other_x=save.transient[6];
+    s_other_y=save.transient[7];
+    s_camera_x=save.transient[8];
+    s_camera_y=save.transient[9];
+    s_object_y=save.transient[10];
+    s_object_local_y=save.transient[11];
+    s_player_x=save.transient[12];
+    s_player_y=save.transient[13];
+    s_proximity=save.transient[14];
+    s_enemy_batch=save.transient[15];
+    s_enemy_tail=save.transient[16];
+    s_doors=save.transient[17];
+    s_powerups_drawn=save.transient[18];
+#endif
     return 1;
 }
+int met_actors_load(const uint8_t *buf,int len) {return actors_read(buf,len,1);}
+int met_actors_validate(const uint8_t *buf,int len) {return actors_read(buf,len,0);}
 int met_actors_debug_json(char *buf,int cap) {
     int n=snprintf(buf,cap,"[");
     for(int i=0,first=1;i<MAX_ACTORS;i++) if(s_actors[i].used) {
@@ -718,3 +910,72 @@ int met_actors_debug_json(char *buf,int cap) {
     }
     if(n+2>cap) return 0;buf[n++]=']';buf[n]=0;return 1;
 }
+
+#ifdef METROID_CYCLE
+static void cycle_world_finished(void) {
+    uint64_t started=watchdog_span_begin();
+    if(s_residents) {
+        sync_native();
+        for(int i=0;i<MAX_ACTORS;i++) {
+            Actor *a=&s_actors[i];
+            if(!a->used) continue;
+            int children=0;for(int j=0;j<128;j+=16) children|=a->child_extra[j];
+            if(!children && (a->native_slot>=0 || !a->extra[0])) continue;
+            const uint8_t *terrain=met_render_room_terrain(a->cx,a->cy);if(!terrain) continue;
+            Guest save;guest_begin(&save,a->cx,a->cy,terrain);
+            guest_room_pair(a,&save);
+            memcpy(g_ram+MET_EnProjectiles,a->child_base,128);
+            memcpy(g_sram+EXTRA+0x60,a->child_extra,128);
+            if(a->native_slot<0 && a->extra[0]) {
+                push_actor(a,a->slot,0);g_cpu.X=a->slot;
+                func_F351();collide_actor(a,&save);pull_actor(a,a->slot);s_updates++;
+                if(a->extra[7]&1) {a->cx=(uint8_t)s_other_x;a->cy=(uint8_t)s_other_y;}
+            }
+            g_cpu.S=0xfd;func_FA9D();
+            g_cpu.S=0xfd;func_F93B();
+            memcpy(a->child_base,g_ram+MET_EnProjectiles,128);
+            memcpy(a->child_extra,g_sram+EXTRA+0x60,128);
+            commit_effects(&save);
+            guest_end(&save);
+        }
+    }
+    watchdog_span_end("virtual_actors", started);
+    started = watchdog_span_begin();
+    draw_doors();
+    draw_powerup_previews();
+    watchdog_span_end("door_pickup_previews", started);
+    memcpy(s_present,s_build,s_count*sizeof(Sprite));s_present_count=s_count;s_present_valid=1;
+    s_world=0;
+}
+void met_actors_cycle_return(int kind,uint64_t data) {
+    if(kind==MET_AFTER_WORLD){cycle_world_finished();return;}
+    if(kind==MET_AFTER_DRAW){
+        unsigned start=(unsigned)(data&255);int hud=(int)((data>>8)&1),pickup=(int)((data>>16)&255)-1;
+        s_draw=0;if((pickup==0 || pickup==8) && start!=g_ram[MET_SpritePagePos])s_powerups_drawn|=1u<<(pickup/8);
+        if(s_expanded || s_virtual)capture(start,hud);if(s_enemy_batch)s_enemy_tail=g_ram[MET_SpritePagePos];return;
+    }
+    if(kind==MET_AFTER_BATCH){capture(s_enemy_tail,0);s_enemy_batch=0;return;}
+    if(kind==MET_AFTER_DOORS){s_count=(unsigned)data;s_doors=0;return;}
+    if(kind==MET_AFTER_PROXIMITY){
+        int off=(int)(data&255),threshold=(int)((data>>8)&255),visible=(int)((data>>16)&255),distance=(int)(data>>24);s_proximity=0;
+        if(threshold && visible){
+            uint8_t bit=(threshold&0x80)?8:16;int near=distance<(threshold&0x7f);
+            uint8_t flags=g_ram[MET_Ens_0+off+5];flags=near?(uint8_t)(flags|bit):(uint8_t)(flags&~bit);g_ram[MET_Ens_0+off+5]=flags;
+            g_cpu.A=near?(uint8_t)distance:flags;g_cpu.C=(uint8_t)!near;g_cpu.N=near?1:(flags>>7);g_cpu.Z=near?0:(flags==0);
+        }return;
+    }
+    if(kind==MET_AFTER_SPAWN){
+        int off=(int)(data&255),i=(int)((data>>8)&255)-1,slot=(int)((data>>16)&255),existing=(int)((data>>24)&1);uint16_t p=(uint16_t)(data>>32);s_spawn=0;
+        if(i>=0){
+            if(existing){const MetWsCells *cells=met_render_cells();int nt=-1;
+                for(int n=0;n<2;n++)if(cells->cell_x[n]==s_actors[i].cx && cells->cell_y[n]==s_actors[i].cy)nt=n;
+                if(nt>=0)push_actor(&s_actors[i],off,nt);else{g_sram[EXTRA+off]=0;s_native[slot]=-1;return;}
+            }else pull_actor(&s_actors[i],off);
+            s_actors[i].definition=p;s_actors[i].native_slot=slot;s_native[slot]=i;
+        }return;
+    }
+}
+void met_actors_cycle_publish(void) {
+    memcpy(s_visible,s_present,sizeof s_visible);s_visible_count=s_present_count;s_visible_valid=s_present_valid;
+}
+#endif

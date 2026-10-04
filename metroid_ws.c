@@ -20,7 +20,11 @@
 #undef MET_RoomRAMWorkPtr
 #include "metroid_ram.h"
 
+#ifdef METROID_CYCLE
+#include "cycle_bridge.h"
+#else
 #include "nes_runtime.h"
+#endif
 #include "nes_video.h"
 #include "mod_function_hooks.h"
 
@@ -58,6 +62,9 @@ void metroid_ws_init(void) {
 }
 
 int metroid_ws_enabled(void) { return s_enabled; }
+#ifdef METROID_CYCLE
+void metroid_ws_restore_gate(int wide) { s_gate_wide = wide != 0; }
+#endif
 
 void metroid_ws_enable(NesAspectMode aspect, MetWsHud hud) {
     s_hud = hud;
@@ -190,10 +197,15 @@ void metroid_ws_post_nmi(uint64_t frame_count) {
  * publishing g_rts_target.
  */
 static void ws_hook_rts(void) {
+#ifdef METROID_CYCLE
+    /* A handled cycle hook's scheduler performs the RTS. */
+    return;
+#else
     uint8_t lo, hi;
     g_cpu.S++; lo = g_ram[0x100 + g_cpu.S];
     g_cpu.S++; hi = g_ram[0x100 + g_cpu.S];
     g_rts_target = (uint16_t)(((uint16_t)hi << 8) | lo);
+#endif
 }
 
 /*

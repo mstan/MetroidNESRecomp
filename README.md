@@ -17,27 +17,21 @@ A static recompilation of Metroid (NES) using [nesrecomp](https://github.com/mst
 
 ### Which ROM
 
-This build targets **Metroid (USA)** and nothing else:
+The default cycle backend has separate **USA/NTSC** and **Europe/PAL** builds:
 
-| | CRC32 (headerless PRG+CHR) | CRC32 (whole `.nes` file) | m1disasm target |
+| Variant | CRC32 (headerless PRG+CHR) | CRC32 (whole `.nes`) | m1disasm target |
 |---|---|---|---|
-| **Metroid (USA)** — required | `70080810` | `A2C89CB9` | `NES_NTSC` |
-| Metroid (Europe) — **rejected** | `7751588D` | `A591CC24` | `NES_PAL` |
+| USA / NTSC | `70080810` | `A2C89CB9` | `NES_NTSC` |
+| Europe / PAL | `7751588D` | `A591CC24` | `NES_PAL` |
 
-The recompiled C in `generated/` *is* the USA program, so the runner gates on the
-headerless CRC32 (`extras.c: game_get_expected_crc32`, `NESRECOMP_GAME_ROM_CRC32`
-in `CMakeLists.txt`, and `rom_crc32` in the mod package manifests). The European
-ROM differs from the USA one in **every PRG bank** (25394 bytes over 1309 ranges;
-its bank-0 sound engine sits 0x30 higher), so it is a different program and this
-build will not run it.
-
-A copy of the EU ROM is kept locally as `metroid-eu.nes` (gitignored, like
-`metroid.nes`) purely as the reference for a future EU variant of this port — see
-[Retargeting to another ROM revision](#retargeting-to-another-rom-revision).
+Choose the variant at build time. Each executable accepts only its matching
+ROM. The builds use separate generated cycle sources and content keys;
+European packages are staged with the European CRC. The legacy backend
+retains its USA-only generated sources and hints.
 
 ## Status
 
-**Experimental adaptive widescreen support (USA)** is available through the
+**Experimental adaptive widescreen support (USA and Europe)** is available through the
 bundled **Metroid Widescreen** mod. Enable it in the launcher's mod controls and
 choose **Fit window**, **16:9**, **21:9**, or **32:9**. The custom renderer shows
 adjacent room terrain and follows live window resizing in Fit mode.
@@ -53,30 +47,20 @@ enemy, projectile, and room-transition coverage remains incomplete.
 For the command-line options, tested behavior and remaining limitations, see
 [WIDESCREEN.md](WIDESCREEN.md).
 
-**v0.0.1** - Early foundation release.
+The cycle migration preserves password saves, widescreen, viewport actors,
+expanded sprites, optional slowdown reduction and first-person voxel rendering.
+Stock gameplay and the tested enhancements agree between native cycle code
+and the cycle interpreter in both regions. See [CYCLE-MIGRATION.md](CYCLE-MIGRATION.md)
+for build commands, validation and progress migration.
 
-### What works
-
-- Boot to title screen, start game
-- Spawn into the starting area
-- Walk, jump, shoot
-- Pick up Morph Ball power-up
-- Enemy spawning and combat
-- Death, Game Over, password screen, and restart cycle (stable across unlimited cycles)
-- Long runtime stability (tested 115,000+ frames with no crashes)
-
-### What doesn't work (yet)
-
-- Many areas beyond the starting region are likely missing dispatch table entries, causing enemies, doors, or items to silently not function
-- Accuracy against the Mesen oracle is measured but not yet converged: `nes_cosim.py gate1` (recomp determinism) passes byte-identical, and `abram` (RAM vs Mesen over 900 attract frames) reaches 99.65% stack-masked with a residual centred on `NMIStatus`/`FrameCount` and the `FrameCount`-derived RNG. Gameplay may still have subtle behavioral differences
-- Some bank-switched code paths may not be discovered by the recompiler's static analysis
-
-This is a foundation for future work. The recompiler and runner are under active development. Each new area explored may require additional `extra_func` entries in `game.toml` or fixes in nesrecomp itself.
+These are still development previews. The short regression route does not
+establish compatibility across every area, boss or ending. The function-level
+backend remains available for explicit legacy builds.
 
 ## Experimental Voxel 3D (first person)
 
 Open **Mods** in the launcher and enable **Voxel 3D (first person)**. The
-bundled feature is disabled by default and targets the verified US ROM. It
+bundled feature is disabled by default and targets the selected USA or European ROM. It
 does not patch the ROM or alter password data.
 
 The camera follows Samus's live screen position; Right and Left directly own
@@ -105,8 +89,7 @@ development reference but is intentionally not shown in release launchers.
 - Windows 10/11
 - Visual Studio 2022 Build Tools (or full VS 2022)
 - CMake 3.20+
-- A Metroid (NES) ROM — **USA**, file CRC32 `A2C89CB9` (headerless `70080810`). The
-  European ROM is not accepted; see [Which ROM](#which-rom).
+- A matching USA or European Metroid ROM; see [Which ROM](#which-rom).
 
 ### Steps
 
@@ -121,30 +104,19 @@ setup.bat
 chmod +x setup.sh && ./setup.sh
 ```
 
-This initializes the pinned [nesrecomp](https://github.com/mstan/nesrecomp)
-submodule and links the Nestopia oracle core.
+This initializes the pinned engine and UI submodules. Cycle code generation
+runs as part of the CMake build from your supplied ROM:
 
-The generated C files in `generated/` are checked into the repo, so you can
-go straight to building the game:
-
-```bash
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64
-cmake --build build --config Release
+```powershell
+cmake -S . -B build-cycle-usa -G "Visual Studio 17 2022" -A x64 -DNESRECOMP_ROM=F:/ROMs/metroid.nes -DMETROID_VARIANT=usa
+cmake --build build-cycle-usa --config Release
 ```
 
-To regenerate from ROM (optional):
-
-```bash
-# Build the recompiler (only needed once, or when nesrecomp changes)
-cmake -S nesrecomp/recompiler -B nesrecomp/build/recompiler -G "Visual Studio 17 2022" -A x64
-cmake --build nesrecomp/build/recompiler --config Release
-
-# Generate recompiled C code from your Metroid (USA) ROM
-nesrecomp/build/recompiler/Release/NESRecomp.exe metroid.nes --game game.toml
-
-# Rebuild the game
-cmake --build build --config Release
-```
+For Europe, use a separate build directory, `-DMETROID_VARIANT=europe` and
+the European ROM path. See [CYCLE-MIGRATION.md](CYCLE-MIGRATION.md) for details.
+An explicit `-DNESRECOMP_BACKEND=legacy` build uses the checked-in USA
+function-level sources. The remaining symbol/hint instructions below describe
+that legacy generator workflow.
 
 ### Symbols and hints come from the disassembly
 
@@ -163,7 +135,7 @@ via `wlalink -S`, a `.sym` file of labelled addresses for each. Two tools consum
   emits the `[[data_region]]` blocks that keep the recompiler from mistaking
   tables for code. `--target` selects which `.if BUILDTARGET` branch applies.
 
-### Retargeting to another ROM revision
+### Retargeting legacy hints to another ROM revision
 
 `game.toml`'s hints are raw addresses, so they are revision-specific.
 **`tools/migrate_hints.py`** moves them by *label name* rather than by hand: it

@@ -51,9 +51,15 @@
 #undef MET_RoomRAMWorkPtr
 #include "metroid_ram.h"
 
+#ifdef METROID_CYCLE
+#include "cycle_bridge.h"
+#else
 #include "nes_runtime.h"
+#endif
 #include "nes_video.h"
+#ifndef METROID_CYCLE
 #include "mapper.h"
+#endif
 
 #include <stdlib.h>
 #include <string.h>
@@ -91,6 +97,10 @@ static int      s_gate_wide;
 static MetWsHud s_hud = MET_WS_HUD_EDGES;
 static int      s_hud_slot_start = -1;
 static int      s_hud_slot_count = 0;
+#ifdef METROID_CYCLE
+static int s_display_hud_start=-1,s_display_hud_count;
+void met_render_cycle_publish(void) {s_display_hud_start=s_hud_slot_start;s_display_hud_count=s_hud_slot_count;}
+#endif
 
 static uint8_t *s_bg_opaque;            /* out_w * 240, 1 = opaque BG pixel */
 static int      s_bg_opaque_w;
@@ -540,14 +550,16 @@ void met_render_begin_room(int nt) {
     g_ws_obj_ctx_valid = 0;
 }
 
-/* Versioned fixed-width host state, kept below the engine's 512-byte mod
- * payload limit. RoomRAM and PPU bytes are already in the engine savestate.
+/* Versioned host metadata. RoomRAM and PPU bytes are in the machine state.
  * Other cache entries are discarded and decoded afresh after restoration. */
 typedef struct {
     uint32_t version;
     int32_t area, cell_x[2], cell_y[2];
     uint32_t columns[2], rows[2], pending_columns[2], pending_rows[2];
     int32_t bank, bank_valid, gate, hud_start, hud_count;
+#ifdef METROID_CYCLE
+    int32_t display_hud_start,display_hud_count;
+#endif
     uint32_t room_ready_mask;
 } MetWsSave;
 
@@ -568,25 +580,40 @@ int met_render_save(uint8_t *buf, int cap) {
     save.bank = s_area_bank; save.bank_valid = s_area_bank_valid;
     save.gate = s_gate_wide;
     save.hud_start = s_hud_slot_start; save.hud_count = s_hud_slot_count;
+#ifdef METROID_CYCLE
+    save.display_hud_start=s_display_hud_start;save.display_hud_count=s_display_hud_count;
+#endif
     save.room_ready_mask = s_stats.room_ready_mask;
     memcpy(buf, &save, sizeof save);
     return (int)sizeof save;
 }
 
-int met_render_load(const uint8_t *buf, int len) {
+static int renderer_read(const uint8_t *buf, int len, int apply) {
     MetWsSave save;
     int nt;
     if (len != (int)sizeof save) return 0;
     memcpy(&save, buf, sizeof save);
-    if (save.version != 2) return 0;
+    if (save.version != 2 || save.bank<0 || save.bank>7 || save.bank_valid<0 || save.bank_valid>1 ||
+        save.gate<0 || save.gate>1 || save.hud_start<-1 || save.hud_start>63 ||
+        save.hud_count<0 || save.hud_count>64 || save.room_ready_mask>3)return 0;
+#ifdef METROID_CYCLE
+    if(save.display_hud_start<-1 || save.display_hud_start>63 || save.display_hud_count<0 || save.display_hud_count>64)return 0;
+#endif
     for (nt = 0; nt < 2; nt++)
         if (save.cell_x[nt] < -1 || save.cell_x[nt] >= MET_MAP_W ||
             save.cell_y[nt] < -1 || save.cell_y[nt] >= MET_MAP_H) return 0;
+    if(!apply)return 1;
     met_render_reset();
     s_cells.area = save.area;
     s_area_bank = (uint8_t)save.bank; s_area_bank_valid = save.bank_valid;
     s_gate_wide = save.gate;
+#ifdef METROID_CYCLE
+    metroid_ws_restore_gate(save.gate);
+#endif
     s_hud_slot_start = save.hud_start; s_hud_slot_count = save.hud_count;
+#ifdef METROID_CYCLE
+    s_display_hud_start=save.display_hud_start;s_display_hud_count=save.display_hud_count;
+#endif
     s_stats.room_ready_mask = save.room_ready_mask & 3u;
     for (nt = 0; nt < 2; nt++) {
         s_cells.cell_x[nt] = save.cell_x[nt]; s_cells.cell_y[nt] = save.cell_y[nt];
@@ -607,6 +634,8 @@ int met_render_load(const uint8_t *buf, int len) {
     return 1;
 }
 
+int met_render_load(const uint8_t *buf,int len) {return renderer_read(buf,len,1);}
+int met_render_validate(const uint8_t *buf,int len) {return renderer_read(buf,len,0);}
 const MetWsCells *met_render_cells(void) { return &s_cells; }
 const MetWsStats *met_render_stats(void) { return &s_stats; }
 
@@ -704,9 +733,15 @@ const uint8_t *met_render_room_terrain(int cx, int cy) {
 
 static int place_sprite(int oam_slot, int screen_x, int screen_y, int *out_x, void *user) {
     (void)screen_y; (void)user;
-    if (s_hud_slot_count > 0 &&
-        oam_slot >= s_hud_slot_start &&
-        oam_slot < s_hud_slot_start + s_hud_slot_count) {
+#ifdef METROID_CYCLE
+    int start=s_display_hud_start,count=s_display_hud_count;
+#else
+    int start=s_hud_slot_start,count=s_hud_slot_count;
+#endif
+    if (count > 0 && oam_slot >= start && oam_slot < start + count) {
+#ifdef METROID_CYCLE
+        screen_x=g_ppu_oam[oam_slot*4+3];
+#endif
         /* Edges: the status bar is pinned to the left edge of the widened
          * output. Center: it stays where the stock picture puts it. */
         *out_x = (s_hud == MET_WS_HUD_EDGES) ? screen_x : screen_x + s_native_x0;
@@ -733,6 +768,16 @@ int met_render_frame(uint32_t *out, int out_w, int out_h, int native_x0,
     if (!met_render_camera(&origin_x, &origin_y, &horiz)) { s_stats.frames_fallback++; return 0; }
     if (!ensure_bg_opaque(out_w)) { s_stats.frames_fallback++; return 0; }
     uint64_t started = watchdog_span_begin();
+#ifdef METROID_CYCLE
+    /* The CPU camera already describes the next update. Draw against the
+     * scroll actually used by the cycle PPU for this picture. */
+    int sx=cyc_render_line_scroll_x(0),sy=cyc_render_line_scroll_y(0);
+    int current=horiz?((sx/256)&1):((sy/240)&1);
+    if(s_cells.cell_x[current]>=0 && s_cells.cell_y[current]>=0){
+        origin_x=s_cells.cell_x[current]*256+(sx&255);
+        origin_y=s_cells.cell_y[current]*240+(sy%240);
+    }
+#endif
 
     if (out_h > MET_CELL_PX_H) out_h = MET_CELL_PX_H;
     s_native_x0 = native_x0;

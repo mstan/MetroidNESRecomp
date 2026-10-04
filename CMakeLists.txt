@@ -12,6 +12,46 @@ set(NESRECOMP_ROOT ${CMAKE_SOURCE_DIR}/nesrecomp CACHE PATH "NESRecomp engine ch
 
 set(NESRECOMP_ENABLE_MODS ON CACHE BOOL
     "Enable package mods for Metroid" FORCE)
+set(NESRECOMP_BACKEND "cycle" CACHE STRING "CPU backend: cycle or legacy")
+set_property(CACHE NESRECOMP_BACKEND PROPERTY STRINGS cycle legacy)
+if(NESRECOMP_BACKEND STREQUAL "cycle")
+    set(METROID_VARIANT "usa" CACHE STRING "usa (NTSC) or europe (PAL)")
+    set_property(CACHE METROID_VARIANT PROPERTY STRINGS usa europe)
+    if(METROID_VARIANT STREQUAL "usa")
+        set(met_region NTSC)
+    elseif(METROID_VARIANT STREQUAL "europe")
+        set(met_region PAL)
+    else()
+        message(FATAL_ERROR "METROID_VARIANT must be usa or europe")
+    endif()
+    set(NESRECOMP_ROM "" CACHE FILEPATH "Original ROM, not distributed")
+    set(NESRECOMP_HOST_COMPILER "" CACHE FILEPATH "Optional prebuilt compiler")
+    include("${NESRECOMP_ROOT}/runner/cyc/project.cmake")
+    nesrecomp_add_cycle_game(MetroidNESRecomp
+        ROM "${NESRECOMP_ROM}" GAME_CONFIG "${CMAKE_CURRENT_SOURCE_DIR}/game-cycle-${METROID_VARIANT}.toml"
+        RECOMPILER "${NESRECOMP_HOST_COMPILER}" SEED_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cyc_seeds_${METROID_VARIANT}.txt"
+        MODS GAME_ID "metroid-nes" PLAYERS 1 REGION ${met_region}
+        PASSWORD_SAVE "metroid.srm" PASSWORD_SAVE_LABEL "Password"
+        BOXART "${CMAKE_CURRENT_SOURCE_DIR}/boxart.tga"
+        HOST_EXTRAS cyc_extras.c cycle_bridge.c password_writer.c metroid_ws.c metroid_ws_render.c metroid_ws_actors.c
+            mods/widescreen_plugin.c game_voxel.c mods/voxel_plugin.c
+            "${NESRECOMP_ROOT}/runner/cyc/cyc_presentation.c"
+            "${NESRECOMP_ROOT}/runner/src/voxel_renderer.c"
+            "${NESRECOMP_ROOT}/runner/src/voxel_screen_profile.c"
+            "${NESRECOMP_ROOT}/runner/src/keybinds.c")
+    target_include_directories(MetroidNESRecomp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+    target_compile_definitions(MetroidNESRecomp PRIVATE METROID_CYCLE NESRECOMP_CYCLE_PRESENTATION)
+    if(METROID_VARIANT STREQUAL "europe")
+        target_compile_definitions(MetroidNESRecomp PRIVATE METROID_CYCLE_PAL)
+    endif()
+    add_custom_command(TARGET MetroidNESRecomp POST_BUILD
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/stage_cycle_mods.py"
+            "${CMAKE_CURRENT_SOURCE_DIR}/mods/preloaded" "$<TARGET_FILE_DIR:MetroidNESRecomp>/mods" "${METROID_VARIANT}")
+    return()
+elseif(NOT NESRECOMP_BACKEND STREQUAL "legacy")
+    message(FATAL_ERROR "NESRECOMP_BACKEND must be cycle or legacy")
+endif()
+
 include(${NESRECOMP_ROOT}/runner/runner.cmake)
 
 list(APPEND CMAKE_PREFIX_PATH "${NESRECOMP_ROOT}/runner/external/SDL2/cmake")
@@ -101,7 +141,8 @@ if(MSVC)
 endif()
 
 # ---- Pre-boot GUI launcher (recomp-ui / Dear ImGui) ----
-include(${CMAKE_SOURCE_DIR}/recomp-ui/recomp_ui.cmake)
+set(NESRECOMP_RECOMP_UI "${CMAKE_CURRENT_SOURCE_DIR}/recomp-ui" CACHE PATH "recomp-ui checkout")
+include("${NESRECOMP_RECOMP_UI}/recomp_ui.cmake")
 recomp_target_launcher_ui(MetroidNESRecomp
     CONSOLE nes
     BOXART ${CMAKE_SOURCE_DIR}/boxart.tga)

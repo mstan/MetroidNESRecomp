@@ -1,0 +1,84 @@
+[game]
+name = "Metroid (USA)"
+output_prefix = "metroid_usa"
+console = "nes"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.world"
+addr = 0xCB29
+bytes = "A2 00 86 5B 20 45 F3 20 BF D4 20 0D CC 20 C3 95"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.spawn"
+addr = 0xEB0C
+bytes = "B1 00 29 F0 AA 20 7A EB D0 0F C8 B1 00 20 28 EB"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.proximity"
+addr = 0xF75B
+bytes = "A9 E7 85 06 A9 18 20 44 F7 BC 02 6B B9 AB 96 F0"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.draw-enemy"
+addr = 0xDD8B
+bytes = "A6 4B BD F7 6A C9 F7 D0 1C 4C 2D DF 48 18 6D 79"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.update-enemy"
+addr = 0xF351
+bytes = "86 4B BC F4 6A F0 07 C0 03 B0 03 20 7F F3 20 AA"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.update-enemies"
+addr = 0xF345
+bytes = "A2 50 20 51 F3 A6 4B 20 F4 F1 D0 F6 86 4B BC F4"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.doors"
+addr = 0x8B79
+bytes = "A2 B0 20 87 8B A5 4B 38 E9 10 AA 30 F5 60 86 4B"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.draw-object"
+addr = 0xDE47
+bytes = "20 8F DC A6 4B BD 03 03 C9 F7 D0 03 4C 2D DF C9"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.draw-frame"
+addr = 0xDE4A
+bytes = "A6 4B BD 03 03 C9 F7 D0 03 4C 2D DF C9 07 D0 06"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.is-object-visible"
+addr = 0xDFDF
+bytes = "A2 01 A5 0A A8 38 E5 FC 85 10 A5 0B 38 E5 FD 85"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.display-bar"
+addr = 0xE0C1
+bytes = "A0 00 A5 5B 48 AA B9 B9 E1 9D 00 02 E8 C8 C0 28"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.room-finished"
+addr = 0xEA26
+bytes = "A9 FF 85 5A 60 A5 5A C9 FF F0 F9 C9 FE F0 28 C9"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.nametable-transfer"
+addr = 0xE564
+bytes = "20 85 EB 29 01 A8 B9 60 E5 BE 62 E5 60 A6 49 A5"
+
+[[mod_function_hook]]
+id = "metroid.widescreen.retire-room"
+addr = 0xEC9B
+bytes = "A6 49 CA A0 00 20 51 ED C8 20 51 ED A2 50 20 85"
+
+[[mod_function_hook]]
+id = "metroid.cycle.sprite-x"
+addr = 0xDF10
+bytes = "9D 03 02 E6 0F E8 E8 E8 E8 A4 11 B1 00 C9 FC 90"
+
+[[mod_function_hook]]
+id = "metroid.cycle.nmi"
+addr = 0xC0D9
+bytes = "08 48 8A 48 98 48 A9 00 8D 03 20 A9 02 8D 14 40"

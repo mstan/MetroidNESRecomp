@@ -1,5 +1,22 @@
 # Tests
 
+# Cycle backend
+
+The default build uses the cycle host. Run this real-ROM regression separately
+for each region, with the matching executable and ROM:
+
+```powershell
+python tests/cycle_backend_probe.py --exe build-cycle-usa/Release/MetroidNESRecomp.exe --rom metroid.nes --out build-cycle-usa/probe
+```
+
+It checks native/interpreter machine hashes and presentation, plus exact fresh
+process state replay, for stock, widescreen, actor, sprite, smooth, combined and
+voxel modes. `--case all` selects only the combined enhancement case.
+It uses `--no-save`; password sidecars are not loaded or written.
+The older TCP/v7-state harnesses below target explicit legacy builds.
+
+## Legacy backend harnesses
+
 ```bash
 cd tests
 npm install          # once
@@ -169,3 +186,5 @@ with the latest progress. Write errors trigger a retry on a later capture.
 `password_writer_test.c` links with `password_writer.c` and SDL2. It blocks the
 writer callback while submitting captures, then checks nonblocking submission,
 copied inputs/timestamps, overflow policy, shutdown drain and the retry latch.
+
+## Legacy backend harnesses
