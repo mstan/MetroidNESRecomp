@@ -91,7 +91,14 @@ cleanup() {
 }
 trap cleanup EXIT
 
-BUILD="$REPO/build-linux-$CONFIG"
+FLAGS+=( -DNESRECOMP_BACKEND=cycle )
+ROM="${NESRECOMP_ROM:-}"
+FLAGS+=( "-DMETROID_VARIANT=${METROID_VARIANT:-usa}" )
+[ -n "$ROM" ] || { echo "Supply the original region ROM with NESRECOMP_ROM." >&2; exit 2; }
+FLAGS+=( "-DNESRECOMP_ROM=$ROM" )
+
+BUILD="$REPO/build-linux-$CONFIG-${METROID_VARIANT:-usa}"
+APP_NAME="Metroid-${METROID_VARIANT:-usa}"
 echo "==================== $APP_NAME ($CONFIG) ===================="
 cd "$REPO"
 
@@ -171,6 +178,10 @@ $LINUXDEPLOY --appdir "$APPDIR" --executable "$BIN" \
 
 # Custom AppRun: bundle libs, read the controller natively on a Steam Deck, find
 # the ROM next to the .AppImage, run from the ROM's folder so saves land there.
+[ -d "$(dirname "$BIN")/assets" ] || { echo "ERROR: launcher assets missing" >&2; exit 1; }
+cp -R "$(dirname "$BIN")/assets" "$APPDIR/usr/bin/assets"
+mkdir -p "$APPDIR/usr/bin/mods"
+cp -R "$(dirname "$BIN")/mods/packages" "$APPDIR/usr/bin/mods/packages"
 rm -f "$APPDIR/AppRun"   # linuxdeploy leaves it a symlink to the real exe
 cat > "$APPDIR/AppRun" <<EOF
 #!/bin/sh

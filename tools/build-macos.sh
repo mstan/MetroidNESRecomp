@@ -61,7 +61,14 @@ case "$ARCH" in
   *) echo "--arch must be arm64, x86_64, or universal" >&2; exit 2;;
 esac
 
-BUILD="$REPO/build-macos-$CONFIG"
+FLAGS+=( -DNESRECOMP_BACKEND=cycle )
+ROM="${NESRECOMP_ROM:-}"
+FLAGS+=( "-DMETROID_VARIANT=${METROID_VARIANT:-usa}" )
+[ -n "$ROM" ] || { echo "Supply the original region ROM with NESRECOMP_ROM." >&2; exit 2; }
+FLAGS+=( "-DNESRECOMP_ROM=$ROM" )
+
+BUILD="$REPO/build-macos-$CONFIG-${METROID_VARIANT:-usa}"
+APP_NAME="Metroid-${METROID_VARIANT:-usa}"
 echo "==================== $APP_NAME ($CONFIG, $ARCH) ===================="
 cd "$REPO"
 
@@ -90,6 +97,10 @@ mkdir -p "$APPDIR/Contents/MacOS" "$APPDIR/Contents/Resources" "$APPDIR/Contents
 # The real game binary lives next to a launcher that finds the ROM in the same
 # folder as the .app and runs from there (so saves land beside the .app).
 cp "$BIN" "$APPDIR/Contents/MacOS/$CMAKE_TARGET"
+[ -d "$(dirname "$BIN")/assets" ] || { echo "ERROR: launcher assets missing" >&2; exit 1; }
+cp -R "$(dirname "$BIN")/assets" "$APPDIR/Contents/MacOS/assets"
+mkdir -p "$APPDIR/Contents/MacOS/mods"
+cp -R "$(dirname "$BIN")/mods/packages" "$APPDIR/Contents/MacOS/mods/packages"
 cat > "$APPDIR/Contents/MacOS/$APP_NAME" <<EOF
 #!/bin/sh
 DIR="\$(cd "\$(dirname "\$0")" && pwd)"
