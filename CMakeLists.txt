@@ -25,6 +25,18 @@ if(NESRECOMP_BACKEND STREQUAL "cycle")
         message(FATAL_ERROR "METROID_VARIANT must be usa or europe")
     endif()
     set(NESRECOMP_ROM "" CACHE FILEPATH "Original ROM, not distributed")
+    if(NOT NESRECOMP_ROM AND METROID_VARIANT STREQUAL "usa" AND
+       EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/metroid.nes")
+        set(NESRECOMP_ROM "${CMAKE_CURRENT_SOURCE_DIR}/metroid.nes" CACHE FILEPATH "Original USA Metroid ROM" FORCE)
+    endif()
+    find_package(Python3 3.11 REQUIRED COMPONENTS Interpreter)
+    execute_process(COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/rom_profile.py"
+        "${NESRECOMP_ROM}" "${METROID_VARIANT}" RESULT_VARIABLE profile_result)
+    if(NOT profile_result EQUAL 0)
+        message(FATAL_ERROR "Metroid ROM must match METROID_VARIANT (USA/NTSC by default; explicit Europe/PAL supported)")
+    endif()
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/rom_profile.py" "${NESRECOMP_ROM}")
     set(NESRECOMP_HOST_COMPILER "" CACHE FILEPATH "Optional prebuilt compiler")
     include("${NESRECOMP_ROOT}/runner/cyc/project.cmake")
     nesrecomp_add_cycle_game(MetroidNESRecomp
@@ -66,9 +78,11 @@ find_package(SDL2 REQUIRED)
 # header, not a TU, so it isn't matched/compiled directly. CONFIGURE_DEPENDS
 # re-globs on reconfigure so a regen that changes the bank count (add/remove
 # banks) doesn't require manually editing this list.
+set(METROID_GENERATED_ROOT "${CMAKE_SOURCE_DIR}/generated" CACHE PATH
+    "Generated Metroid sources (a separate directory permits coverage comparisons)")
 file(GLOB METROID_GEN CONFIGURE_DEPENDS
-    "${CMAKE_SOURCE_DIR}/generated/metroid_full*.c"
-    "${CMAKE_SOURCE_DIR}/generated/metroid_dispatch.c"
+    "${METROID_GENERATED_ROOT}/metroid_full*.c"
+    "${METROID_GENERATED_ROOT}/metroid_dispatch.c"
 )
 list(FILTER METROID_GEN EXCLUDE REGEX "generated/metroid_full_bank(01|07)\\.c$")
 
@@ -110,6 +124,14 @@ target_compile_definitions(MetroidNESRecomp PRIVATE
     WATCHDOG_ENABLED
     NESRECOMP_GAME_SDL_EVENT_HOOK=game_voxel_handle_event
 )
+
+option(METROID_PROGRESSION_QA "Enable explicit debug-only room-loader fixtures" OFF)
+if(METROID_PROGRESSION_QA)
+    if(NOT NESRECOMP_ENABLE_TRACE)
+        message(FATAL_ERROR "METROID_PROGRESSION_QA requires NESRECOMP_ENABLE_TRACE")
+    endif()
+    target_compile_definitions(MetroidNESRecomp PRIVATE METROID_PROGRESSION_QA=1)
+endif()
 
 target_include_directories(MetroidNESRecomp PRIVATE
     ${NESRECOMP_RUNNER_INCLUDE_DIRS}

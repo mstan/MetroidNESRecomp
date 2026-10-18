@@ -4,6 +4,7 @@ Run separately on the USA and Europe executables with their matching ROM.
 All files go under --out; --no-save preserves existing password progress.
 """
 import argparse
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -42,7 +43,8 @@ def main():
             kwargs = {"startupinfo": startup, "creationflags": subprocess.CREATE_NO_WINDOW}
         with (out / f"{tag}.log").open("w", encoding="utf-8") as log:
             result = subprocess.run(base + list(map(str, extra)), cwd=out,
-                                    stdout=log, stderr=subprocess.STDOUT, timeout=300, **kwargs)
+                                    stdout=log, stderr=subprocess.STDOUT, timeout=300,
+                                    env=dict(os.environ, SDL_AUDIODRIVER="dummy", LNG_TEST_HIDDEN="1"), **kwargs)
         if result.returncode:
             raise AssertionError(f"{tag}: exit {result.returncode}; see {out / (tag + '.log')}")
 

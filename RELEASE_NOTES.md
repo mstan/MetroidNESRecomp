@@ -13,6 +13,14 @@ HUD placement, viewport actors, expanded sprites and reduced slowdown in
 both regions. Voxel 3D (first person) is also available in both builds. Both
 packages start disabled; the earlier diorama experiment remains parked.
 
+The October 2026 USA pass adds native coverage across five areas and 74
+original-loader checkpoints, with stock and 32:9 native/interpreter comparisons.
+Assisted original Kraid/Ridley and Mother Brain combat, the escape timer,
+ending-elevator collision, visible ending and credits are also checked in both
+aspect ratios. The fixtures assist player position/protection and supplies;
+they do not write enemy damage or progression outcomes. See CYCLE-MIGRATION.md
+for the qualification scope, including the separate retained legacy fixes.
+
 Stock gameplay, enhancement combinations, password persistence and cycle
 state replay passed short regression routes in both regions. The owner
 accepted brief USA and PAL enhanced widescreen playtests and USA first-person.

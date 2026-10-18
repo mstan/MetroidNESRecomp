@@ -188,3 +188,28 @@ writer callback while submitting captures, then checks nonblocking submission,
 copied inputs/timestamps, overflow policy, shutdown drain and the retry latch.
 
 ## Legacy backend harnesses
+
+These progression probes target `-DNESRECOMP_BACKEND=legacy` with tracing.
+The cycle default uses `cycle_backend_probe.py`; its states are a separate format.
+
+The progression probes require the USA payload (CRC32 `70080810`) and put all
+checkpoints, screenshots, assisted writes and fault evidence under `--out`.
+`progression_qa.py --item-rooms` uses a separate build with
+`METROID_PROGRESSION_QA=ON` to request original room initialization. Keep that
+build private; normal builds omit the command and coordinate-read override.
+Replay the resulting checkpoints with the normal executable for qualification.
+
+`progression_boss_victories.py` exercises original Kraid/Ridley damage and
+victory flags. `progression_mother_brain.py` exercises original Zebetite/glass
+destruction, Mother Brain damage/death and the escape timer. Their reports
+record player protection, supplies and positioning assistance; they do not
+write enemy health, victory flags or timers.
+
+`progression_ending_elevator.py --exe <trace-exe> --rom metroid.nes --states
+<item-room-output> --out <fresh-directory> --aspect 32:9` takes the live ending
+elevator in the original Tourian `(1,3)` checkpoint. It assists Samus's position,
+then requires original collision, Up input, the ending flag and a visible native
+ending picture with clean margins. Repeat with `--aspect off` for stock output.
+This covers assisted elevator entry and the ending sequence; escape-shaft
+traversal is separate. The route caught stale native tail ancestry surviving a
+save-state load and incorrectly absorbing the ending bank initialization.

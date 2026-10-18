@@ -25,11 +25,24 @@ output_prefix = "metroid"
 # subroutine calls leave the stack unbalanced.
 push_all_jsr = true
 
+# Observed by the USA progression route: the bank-1 audio channel branch at
+# $BB85 enters this continuation. Keep it native when reached by dispatch,
+# as well as through its containing music routine.
+[[extra_func]]
+bank = 1
+addr = 0xBB8C
+
 # ── Inline dispatch ─────────────────────────────────────────────────────────
 # ChooseRoutine at $C27C: PLA-based inline dispatch.
 # JSR $C27C is followed by a pointer table; A selects the entry.
 [[inline_dispatch]]
 addr = 0xC27C
+
+# The shared area-bank veneer at $8024 jumps to ChooseRoutine. Enemy AI
+# selectors call the veneer with an inline pointer table; interpreting those
+# table bytes as instructions demotes valid selectors in Norfair/Kraid/Ridley.
+[[inline_dispatch]]
+addr = 0x8024
 
 # ── Stack bail functions ────────────────────────────────────────────────────
 # $C376 uses PLA PLA + RTS to bail two levels up.

@@ -17,7 +17,8 @@
 #include "metroid_full_bank01_part00.c"
 #include "metroid_full_bank01_part01.c"
 #include "metroid_full_bank02.c"
-#include "metroid_full_bank03.c"
+#include "metroid_full_bank03_part00.c"
+#include "metroid_full_bank03_part01.c"
 #include "metroid_full_bank05.c"
 #endif
 
@@ -992,36 +993,6 @@ void func_95E5_b0(void) {
 #endif
 }
 
-void func_95E5_b2(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_95E5_b2");
-#endif
-    (void)nes_interp_force_generated(0x95E5, 2);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_95E5_b4(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_95E5_b4");
-#endif
-    (void)nes_interp_force_generated(0x95E5, 4);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_95E5_b5(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_95E5_b5");
-#endif
-    (void)nes_interp_force_generated(0x95E5, 5);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_95E5_b6(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_95E5_b6");
@@ -1317,6 +1288,26 @@ void func_A57E_b2(void) {
     recomp_stack_push("func_A57E_b2");
 #endif
     (void)nes_interp_force_generated(0xA57E, 2);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A5EB_b2(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A5EB_b2");
+#endif
+    (void)nes_interp_force_generated(0xA5EB, 2);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A608_b2(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A608_b2");
+#endif
+    (void)nes_interp_force_generated(0xA608, 2);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -1812,26 +1803,6 @@ void func_B0D4_b2(void) {
 #endif
 }
 
-void func_A5EB_b2(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_A5EB_b2");
-#endif
-    (void)nes_interp_force_generated(0xA5EB, 2);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_A608_b2(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_A608_b2");
-#endif
-    (void)nes_interp_force_generated(0xA608, 2);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_A650_b2(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_A650_b2");
@@ -2157,6 +2128,116 @@ void func_95BD_b6(void) {
     recomp_stack_push("func_95BD_b6");
 #endif
     (void)nes_interp_force_generated(0x95BD, 6);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A5B8_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A5B8_b3");
+#endif
+    (void)nes_interp_force_generated(0xA5B8, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A631_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A631_b3");
+#endif
+    (void)nes_interp_force_generated(0xA631, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A747_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A747_b3");
+#endif
+    (void)nes_interp_force_generated(0xA747, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A8BB_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A8BB_b3");
+#endif
+    (void)nes_interp_force_generated(0xA8BB, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A96B_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A96B_b3");
+#endif
+    (void)nes_interp_force_generated(0xA96B, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A984_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A984_b3");
+#endif
+    (void)nes_interp_force_generated(0xA984, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A9AE_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A9AE_b3");
+#endif
+    (void)nes_interp_force_generated(0xA9AE, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A9ED_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A9ED_b3");
+#endif
+    (void)nes_interp_force_generated(0xA9ED, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_AA5B_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AA5B_b3");
+#endif
+    (void)nes_interp_force_generated(0xAA5B, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_AD95_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AD95_b3");
+#endif
+    (void)nes_interp_force_generated(0xAD95, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_AE0D_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AE0D_b3");
+#endif
+    (void)nes_interp_force_generated(0xAE0D, 3);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -2842,6 +2923,186 @@ void func_AF53_b2(void) {
 #endif
 }
 
+void func_AEE7_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AEE7_b3");
+#endif
+    (void)nes_interp_force_generated(0xAEE7, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B079_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B079_b3");
+#endif
+    (void)nes_interp_force_generated(0xB079, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B0C6_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B0C6_b3");
+#endif
+    (void)nes_interp_force_generated(0xB0C6, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B0CA_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B0CA_b3");
+#endif
+    (void)nes_interp_force_generated(0xB0CA, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B151_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B151_b3");
+#endif
+    (void)nes_interp_force_generated(0xB151, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B144_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B144_b3");
+#endif
+    (void)nes_interp_force_generated(0xB144, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B154_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B154_b3");
+#endif
+    (void)nes_interp_force_generated(0xB154, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B19B_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B19B_b3");
+#endif
+    (void)nes_interp_force_generated(0xB19B, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B1A8_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B1A8_b3");
+#endif
+    (void)nes_interp_force_generated(0xB1A8, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B1E0_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B1E0_b3");
+#endif
+    (void)nes_interp_force_generated(0xB1E0, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B2C5_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B2C5_b3");
+#endif
+    (void)nes_interp_force_generated(0xB2C5, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BCAA_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BCAA_b3");
+#endif
+    (void)nes_interp_force_generated(0xBCAA, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BD77_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BD77_b3");
+#endif
+    (void)nes_interp_force_generated(0xBD77, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BD9F_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BD9F_b3");
+#endif
+    (void)nes_interp_force_generated(0xBD9F, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BE08_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BE08_b3");
+#endif
+    (void)nes_interp_force_generated(0xBE08, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BE3E_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BE3E_b3");
+#endif
+    (void)nes_interp_force_generated(0xBE3E, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BEB0_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BEB0_b3");
+#endif
+    (void)nes_interp_force_generated(0xBEB0, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_A63B_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_A63B_b3");
+#endif
+    (void)nes_interp_force_generated(0xA63B, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
 void func_8DF7_b6(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_8DF7_b6");
@@ -3147,6 +3408,56 @@ void func_A93E_b2(void) {
     recomp_stack_push("func_A93E_b2");
 #endif
     (void)nes_interp_force_generated(0xA93E, 2);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_AEAC_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AEAC_b3");
+#endif
+    (void)nes_interp_force_generated(0xAEAC, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_AEAE_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_AEAE_b3");
+#endif
+    (void)nes_interp_force_generated(0xAEAE, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_BF0B_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_BF0B_b3");
+#endif
+    (void)nes_interp_force_generated(0xBF0B, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B05B_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B05B_b3");
+#endif
+    (void)nes_interp_force_generated(0xB05B, 3);
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_pop();
+#endif
+}
+
+void func_B061_b3(void) {
+#ifdef RECOMP_STACK_TRACKING
+    recomp_stack_push("func_B061_b3");
+#endif
+    (void)nes_interp_force_generated(0xB061, 3);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif
@@ -4192,146 +4503,6 @@ void func_B0D4_b1(void) {
 #endif
 }
 
-void func_B151_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B151_b3");
-#endif
-    (void)nes_interp_force_generated(0xB151, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B144_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B144_b3");
-#endif
-    (void)nes_interp_force_generated(0xB144, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B154_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B154_b3");
-#endif
-    (void)nes_interp_force_generated(0xB154, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B19B_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B19B_b3");
-#endif
-    (void)nes_interp_force_generated(0xB19B, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B1A8_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B1A8_b3");
-#endif
-    (void)nes_interp_force_generated(0xB1A8, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B1E0_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B1E0_b3");
-#endif
-    (void)nes_interp_force_generated(0xB1E0, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_B2C5_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_B2C5_b3");
-#endif
-    (void)nes_interp_force_generated(0xB2C5, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BCAA_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BCAA_b3");
-#endif
-    (void)nes_interp_force_generated(0xBCAA, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BD77_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BD77_b3");
-#endif
-    (void)nes_interp_force_generated(0xBD77, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BD9F_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BD9F_b3");
-#endif
-    (void)nes_interp_force_generated(0xBD9F, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BE08_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BE08_b3");
-#endif
-    (void)nes_interp_force_generated(0xBE08, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BE3E_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BE3E_b3");
-#endif
-    (void)nes_interp_force_generated(0xBE3E, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BEB0_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BEB0_b3");
-#endif
-    (void)nes_interp_force_generated(0xBEB0, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_BF0B_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_BF0B_b3");
-#endif
-    (void)nes_interp_force_generated(0xBF0B, 3);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
 void func_A82D_b1(void) {
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_push("func_A82D_b1");
@@ -4527,16 +4698,6 @@ void func_B2C5_b1(void) {
     recomp_stack_push("func_B2C5_b1");
 #endif
     (void)nes_interp_force_generated(0xB2C5, 1);
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_pop();
-#endif
-}
-
-void func_A93E_b3(void) {
-#ifdef RECOMP_STACK_TRACKING
-    recomp_stack_push("func_A93E_b3");
-#endif
-    (void)nes_interp_force_generated(0xA93E, 3);
 #ifdef RECOMP_STACK_TRACKING
     recomp_stack_pop();
 #endif

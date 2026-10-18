@@ -30,6 +30,7 @@ generated/Metroid_#_NES_*
 tools/__pycache__/
 tools/_*
 tools/*.py
+!tools/rom_profile.py
 # ...except the maintained symbol/disassembly pipeline (see WIDESCREEN.md / README):
 !tools/gen_symbols.py
 !tools/migrate_hints.py

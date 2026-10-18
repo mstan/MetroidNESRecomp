@@ -1,20 +1,24 @@
 <#
-Build local Windows cycle preview archives for USA/NTSC and Europe/PAL.
+Build a local USA/NTSC Windows cycle preview archive by default.
 No ROM or player data ships. This script does not publish releases.
 
   powershell -File tools\make_release.ps1 -UsaRom F:\ROMs\metroid.nes -EuropeRom F:\ROMs\metroid-eu.nes
   powershell -File tools\make_release.ps1 -SkipBuild
 
 Existing regional CMake caches retain engine/compiler overrides and ROM paths.
-Use -Variant usa or europe to package only one region.
+Use -Variant europe or both to include explicit Europe/PAL builds.
 #>
 param(
-    [ValidateSet('both', 'usa', 'europe')][string]$Variant = 'both',
+    [ValidateSet('both', 'usa', 'europe')][string]$Variant = 'usa',
     [string]$UsaRom,
     [string]$EuropeRom,
+    [string]$BuildDir,
+    [string]$ArchiveName,
     [switch]$SkipBuild
 )
 $ErrorActionPreference = 'Stop'
+if ($Variant -eq 'both' -and ($BuildDir -or $ArchiveName)) { throw 'Custom BuildDir/ArchiveName requires one explicit variant.' }
+if ($ArchiveName -and ([IO.Path]::GetFileName($ArchiveName) -cne $ArchiveName -or -not $ArchiveName.EndsWith('.zip'))) { throw 'ArchiveName must be a ZIP filename.' }
 $root = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 $out = Join-Path $root 'release'
 New-Item -ItemType Directory -Force -Path $out | Out-Null
@@ -62,7 +66,7 @@ if (-not $SkipBuild) {
 }
 $variants = if ($Variant -eq 'both') { @('usa', 'europe') } else { @($Variant) }
 foreach ($region in $variants) {
-    $build = Join-Path $root "build-cycle-$region"
+    $build = if($BuildDir) { [IO.Path]::GetFullPath($(if([IO.Path]::IsPathRooted($BuildDir)){$BuildDir}else{Join-Path $root $BuildDir})) } else { Join-Path $root "build-cycle-$region" }
     $cachePath = Join-Path $build 'CMakeCache.txt'
     $cache = if (Test-Path -LiteralPath $cachePath) { Get-Content -LiteralPath $cachePath -Raw } else { '' }
     if (-not $SkipBuild) {
@@ -71,14 +75,20 @@ foreach ($region in $variants) {
         if (-not $rom) { $rom = Join-Path $root $(if ($region -eq 'usa') { 'metroid.nes' } else { 'metroid-eu.nes' }) }
         if (-not (Test-Path -LiteralPath $rom -PathType Leaf)) { throw "Missing $region ROM: $rom. Supply -UsaRom/-EuropeRom." }
         $rom = (Resolve-Path -LiteralPath $rom).Path
-        Invoke-HiddenBuild $cmake @('-S', $root, '-B', $build, '-DNESRECOMP_BACKEND=cycle', "-DMETROID_VARIANT=$region", "-DNESRECOMP_ROM=$rom")
+        Invoke-HiddenBuild $cmake @('-S', $root, '-B', $build, '-DNESRECOMP_BACKEND=cycle', "-DMETROID_VARIANT=$region", "-DNESRECOMP_ROM=$rom", '-DNESRECOMP_ENABLE_TRACE:BOOL=OFF')
         Invoke-HiddenBuild $cmake @('--build', $build, '--config', 'Release')
         $cache = Get-Content -LiteralPath $cachePath -Raw
     }
     if ((Get-CacheValue $cache 'NESRECOMP_BACKEND') -ne 'cycle' -or (Get-CacheValue $cache 'METROID_VARIANT') -ne $region) {
         throw "Expected a cycle $region build in $build; refusing legacy or mismatched artifacts."
     }
-    $bin = Join-Path $build 'Release'
+    $configuredSource = Get-CacheValue $cache 'CMAKE_HOME_DIRECTORY'
+    if (-not $configuredSource -or [IO.Path]::GetFullPath($configuredSource).TrimEnd('\') -ine $root.TrimEnd('\')) {
+        throw 'Release packaging requires the normal game project, not a private wrapper source.'
+    }
+    if ((Get-CacheValue $cache 'NESRECOMP_ENABLE_TRACE') -notin @('OFF','FALSE','0') -or
+        (Get-CacheValue $cache 'METROID_PROGRESSION_QA') -in @('ON','TRUE','1')) { throw 'Release packaging requires tracing and progression QA disabled.' }
+    $bin = if(Test-Path -LiteralPath (Join-Path $build 'Release\MetroidNESRecomp.exe')) {Join-Path $build 'Release'} else {$build}
     $exe = Join-Path $bin 'MetroidNESRecomp.exe'
     $packages = Join-Path $bin 'mods\packages'
     foreach ($dependency in @($exe, (Join-Path $bin 'SDL2.dll'), (Join-Path $bin 'assets'), $packages)) {
@@ -100,11 +110,30 @@ foreach ($region in $variants) {
     try {
         Copy-Item -LiteralPath $exe -Destination $stage
         Copy-Item -LiteralPath (Join-Path $bin 'SDL2.dll') -Destination $stage
+        foreach ($runtime in 'msvcp140.dll', 'vcruntime140.dll', 'vcruntime140_1.dll') {
+            $runtimePath = Join-Path $bin $runtime
+            if (Test-Path -LiteralPath $runtimePath) { Copy-Item -LiteralPath $runtimePath -Destination $stage }
+        }
         Copy-Item -LiteralPath (Join-Path $bin 'assets') -Recurse -Destination (Join-Path $stage 'assets')
         New-Item -ItemType Directory -Path (Join-Path $stage 'mods') | Out-Null
         Copy-Item -LiteralPath $packages -Recurse -Destination (Join-Path $stage 'mods\packages')
         foreach ($doc in 'WIDESCREEN.md', 'RELEASE_NOTES.md', 'CYCLE-MIGRATION.md') {
             Copy-Item -LiteralPath (Join-Path $root $doc) -Destination $stage
+        }
+        $engineRoot = Get-CacheValue $cache 'NESRECOMP_ROOT'
+        $uiRoot = Get-CacheValue $cache 'NESRECOMP_RECOMP_UI'
+        if (-not $engineRoot) { $engineRoot = Join-Path $root 'nesrecomp' }
+        if (-not $uiRoot) { $uiRoot = Join-Path $root 'recomp-ui' }
+        $licenses = @{
+            'Game-LICENSE.txt' = (Join-Path $root 'LICENSE')
+            'NESRecomp-LICENSE.txt' = (Join-Path $engineRoot 'LICENSE')
+            'SDL2-COPYING.txt' = (Join-Path $engineRoot 'runner/external/SDL2/COPYING.txt')
+            'ImGui-LICENSE.txt' = (Join-Path $uiRoot 'src/third_party/imgui/LICENSE.txt')
+        }
+        New-Item -ItemType Directory -Path (Join-Path $stage 'licenses') | Out-Null
+        foreach ($name in $licenses.Keys) {
+            if (-not (Test-Path -LiteralPath $licenses[$name])) { throw "Missing license: $($licenses[$name])" }
+            Copy-Item -LiteralPath $licenses[$name] -Destination (Join-Path $stage "licenses/$name")
         }
         $readme = @"
 Metroid - $label cycle preview
@@ -135,11 +164,11 @@ cover every room, boss or ending. See CYCLE-MIGRATION.md and RELEASE_NOTES.md.
 "@
         [IO.File]::WriteAllText((Join-Path $stage 'README.txt'), $readme, [Text.Encoding]::UTF8)
         $forbidden = @(Get-ChildItem -LiteralPath $stage -File -Recurse | Where-Object {
-            $_.Extension -in '.nes', '.srm', '.sav', '.state', '.cycstate', '.log' -or
+            $_.Extension -in '.nes', '.fds', '.rom', '.srm', '.sav', '.state', '.cycstate', '.log', '.pdb' -or
             $_.Name -in 'debug.ini', 'config.ini', 'keybinds.ini', 'rom.cfg', 'state.toml', 'metroid_password_log.txt'
         })
         if ($forbidden.Count) { throw 'Player/debug data found in release staging.' }
-        $zip = Join-Path $out "MetroidNESRecomp-$label-cycle-preview-windows-x64.zip"
+        $zip = Join-Path $out $(if($ArchiveName){$ArchiveName}else{"MetroidNESRecomp-$label-cycle-preview-windows-x64.zip"})
         if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip }
         Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $zip
         Write-Host "Created local preview: $zip"
