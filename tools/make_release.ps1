@@ -5,7 +5,7 @@ Ships ONE windows zip (never a bare exe -- the exe needs SDL2.dll and the
 launcher/ assets):
 
   MetroidNESRecomp-USA-widescreen-preview-windows-x64.zip
-      MetroidNESRecomp.exe + SDL2.dll + keybinds.ini + launcher/ + mods/
+      MetroidNESRecomp.exe + SDL2.dll + launcher/ + mods/
       + README.txt + WIDESCREEN.md + RELEASE_NOTES.md
 
 Builds build_release\ via build_all.bat (regen, oracle OFF), then stages and
@@ -28,15 +28,19 @@ Publish AFTER smoke-testing the zip from a scratch directory:
 Usage: powershell -File tools\make_release.ps1 [-SkipBuild]
 #>
 param(
-  [switch]$SkipBuild
+  [switch]$SkipBuild,
+  [string]$BuildDir = 'build_release',
+  [string]$ArchiveName = 'MetroidNESRecomp-USA-widescreen-preview-windows-x64.zip'
 )
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
-$bin  = Join-Path $root 'build_release'
+$bin  = if ([IO.Path]::IsPathRooted($BuildDir)) { $BuildDir } else { Join-Path $root $BuildDir }
 $out  = Join-Path $root 'release'
+if ([IO.Path]::GetFileName($ArchiveName) -ne $ArchiveName) { throw 'ArchiveName must be a filename.' }
 New-Item -ItemType Directory -Force $out | Out-Null
 
 if (-not $SkipBuild) {
+  if ($BuildDir -ne 'build_release') { throw 'For an alternate production build directory, use -SkipBuild -BuildDir <path>.' }
   & cmd /c (Join-Path $root 'build_all.bat')
   if ($LASTEXITCODE -ne 0) { throw "build_all.bat failed ($LASTEXITCODE)" }
 }
@@ -46,6 +50,9 @@ if (-not (Test-Path $exe)) { throw "missing $exe -- run build_all.bat first" }
 $cache = Get-Content -LiteralPath (Join-Path $bin 'CMakeCache.txt') -Raw
 if ($cache -notmatch '(?m)^NESRECOMP_ENABLE_TRACE:BOOL=OFF\s*$') {
   throw 'Release packaging requires NESRECOMP_ENABLE_TRACE=OFF'
+}
+if ($cache -match '(?m)^METROID_PROGRESSION_QA:[^=]+=ON\s*$') {
+  throw 'Release packaging refuses the private progression QA build'
 }
 
 $readme = @'
@@ -71,7 +78,7 @@ it (or paste an older one, with a confirmation step) to roll back to an earlier
 point. A rolling history of captured passwords is also kept in
 metroid_password_log.txt.
 
-Controls: arrow keys = D-Pad, Z = A, X = B, Enter = Start, Tab = Select.
+Controls: arrow keys = D-Pad, Z = A, X = B, Enter = Start, Backslash = Select.
 F5 turbo, F6 save state, F7 load state. Gamepads are supported; all bindings
 are configurable in keybinds.ini.
 
@@ -80,26 +87,27 @@ ADAPTIVE WIDESCREEN (USA PREVIEW)
 Enable Metroid Widescreen in the launcher mod controls, or run:
   MetroidNESRecomp.exe metroid.nes --widescreen fit
 Presets: 16:9, 21:9, 32:9. Append ,center to keep the HUD in its stock position.
-Use --widescreen off for the stock picture. Additional rooms can appear as
-terrain previews; only the game's two loaded rooms have live objects.
-Read WIDESCREEN.md for behavior, validation and known limitations. In particular,
-long runs after loading a savestate can encounter an existing engine watchdog;
-password saves are preferred for carrying progress between builds.
+Use --widescreen off for the stock picture. Additional rooms use the original
+map; enemy activation depends on the selected widescreen options.
+Read WIDESCREEN.md for presets, enemy activation options and known limitations.
+Passwords carry progress between builds. Experimental binary save states require
+a matching build. Key bindings are created with normal defaults on first launch.
 '@
 
 $stage = Join-Path $out ('stage-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Force $stage | Out-Null
 
 Copy-Item -LiteralPath $exe -Destination $stage
-foreach ($extra in 'SDL2.dll', 'keybinds.ini') {
+foreach ($extra in 'SDL2.dll') {
   $p = Join-Path $bin $extra
   if (-not (Test-Path -LiteralPath $p)) { throw "missing release dependency: $p" }
   Copy-Item -LiteralPath $p -Destination $stage
 }
-# The pre-boot GUI launcher (and its SAVE/password panel) needs its assets.
-$launcher = Join-Path $bin 'launcher'
-if (-not (Test-Path -LiteralPath $launcher)) { throw "missing launcher: $launcher" }
-Copy-Item -LiteralPath $launcher -Recurse -Destination (Join-Path $stage 'launcher')
+# The current launcher stages assets/; older production builds used launcher/.
+$assetName = if (Test-Path -LiteralPath (Join-Path $bin 'assets')) { 'assets' } else { 'launcher' }
+$launcher = Join-Path $bin $assetName
+if (-not (Test-Path -LiteralPath $launcher)) { throw "missing launcher assets: $launcher" }
+Copy-Item -LiteralPath $launcher -Recurse -Destination (Join-Path $stage $assetName)
 # Runtime scans mods/packages, matching CMake's staging layout.
 Copy-Item -LiteralPath (Join-Path $root 'mods\preloaded') -Recurse -Destination (Join-Path $stage 'mods')
 foreach ($doc in 'WIDESCREEN.md', 'RELEASE_NOTES.md') {
@@ -110,12 +118,12 @@ $readme | Out-File -Encoding ascii (Join-Path $stage 'README.txt')
 
 # Only staged allowlisted inputs ship; fail if assets accidentally contain user data.
 $forbidden = Get-ChildItem -LiteralPath $stage -File -Recurse | Where-Object {
-  $_.Extension -in '.nes', '.srm', '.state', '.log' -or
-  $_.Name -in 'debug.ini', 'config.ini', 'rom.cfg', 'metroid_password_log.txt'
+  $_.Extension -in '.nes', '.fds', '.sav', '.srm', '.state', '.cycstate', '.log' -or
+  $_.Name -in 'debug.ini', 'config.ini', 'keybinds.ini', 'rom.cfg', 'state.toml', 'metroid_password_log.txt'
 }
 if ($forbidden) { throw 'Forbidden user/debug data found in release staging' }
 
-$zip = Join-Path $out 'MetroidNESRecomp-USA-widescreen-preview-windows-x64.zip'
+$zip = Join-Path $out $ArchiveName
 if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip }
 Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $zip
 $stageAbsolute = [IO.Path]::GetFullPath($stage)
