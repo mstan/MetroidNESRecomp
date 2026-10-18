@@ -64,6 +64,9 @@ void metroid_ws_enable(NesAspectMode aspect, MetWsHud hud);
 void metroid_ws_disable(void);
 
 int  metroid_ws_enabled(void);
+#ifdef METROID_CYCLE
+void metroid_ws_restore_gate(int wide);
+#endif
 
 /* game_post_nmi(): per-frame gating (wide vs pillarbox) and sidecar context
  * housekeeping. Must run before the frame is rendered. */
@@ -120,6 +123,8 @@ int met_actors_load(const uint8_t *buf, int len);
 int met_actors_debug_json(char *buf, int cap);
 int met_render_save(uint8_t *buf, int cap);
 int met_render_load(const uint8_t *buf, int len);
+int met_render_validate(const uint8_t *buf, int len);
+int met_actors_validate(const uint8_t *buf, int len);
 const MetWsCells *met_render_cells(void);
 
 /* Camera: world position of native column 0 / row 0, and room orientation.

@@ -1,4 +1,4 @@
-# Adaptive widescreen (USA preview)
+# Adaptive widescreen (USA/NTSC and Europe/PAL previews)
 
 Enable **Metroid Widescreen** in the launcher's mod controls, choose an aspect
 and status-bar position, then launch. It is off by default. The command-line
@@ -10,9 +10,10 @@ equivalent is:
 .\MetroidNESRecomp.exe .\metroid.nes --widescreen off
 ```
 
-Use Metroid (USA), headerless PRG+CHR CRC32 `70080810`. The executable rejects
-the European ROM. An EU build needs separate generation and validation; this
-package currently targets USA only. No ROM is distributed.
+Use the package matching your ROM: USA/NTSC, headerless PRG+CHR CRC32
+`70080810`, or Europe/PAL, `7751588D`. Each executable accepts only its own
+region. No ROM is distributed. Both cycle variants preserve the features
+described here; [CYCLE-MIGRATION.md](CYCLE-MIGRATION.md) records their checks.
 
 ## Presentation
 
@@ -29,8 +30,10 @@ The renderer keeps square pixels and a 240-pixel height:
 Fit follows live window resizing. `edges` pins the energy/missile display to
 the left edge; `center` keeps its original position in the centered native
 viewport. Title, password and other non-room screens use the centered stock
-picture. The custom renderer requires the frame PPU; the experimental dot PPU
-refuses it, and HD-pack rendering is bypassed while this renderer is active.
+picture. Cycle builds compose from the displayed OAM, palette and actual PPU
+scroll without replacing the cycle PPU. The explicit legacy backend requires
+its frame PPU; its experimental dot PPU refuses this renderer. HD-pack rendering
+is bypassed while this renderer is active.
 
 ## What enemies and room previews do
 

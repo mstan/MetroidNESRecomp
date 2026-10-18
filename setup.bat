@@ -6,10 +6,5 @@ setlocal enabledelayedexpansion
 git submodule update --init --recursive nesrecomp recomp-ui
 if errorlevel 1 ( echo Error: submodule update failed & exit /b 1 )
 
-:: Junction nestopia-core from nesrecomp's copy (no admin required).
-if not exist "nestopia-core" (
-    mklink /J nestopia-core nesrecomp\runner\nestopia-core
-    echo Created junction: nestopia-core -^> nesrecomp\runner\nestopia-core
-)
-
-echo Ready - nesrecomp + recomp-ui checked out at their pinned commits.
+echo Ready - engine and UI checked out at their pinned commits.
+echo Supply your ROM with -DNESRECOMP_ROM and choose -DMETROID_VARIANT=usa or europe.

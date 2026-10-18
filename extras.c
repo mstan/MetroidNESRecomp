@@ -14,6 +14,7 @@
 #include "password_writer.h"
 #include "metroid_ws.h"
 #include "metroid_ram.h"   /* MET_* RAM names, generated from disasm/m1disasm */
+#include "game_voxel.h"
 #ifdef ENABLE_NESTOPIA_ORACLE
 #include "nestopia_bridge.h"
 #endif
@@ -379,6 +380,7 @@ uint32_t game_get_expected_crc32(void) { return 0x70080810u; }
 const char *game_get_name(void) { return "Metroid"; }
 
 void game_on_init(void) {
+    game_voxel_init();
 #if 0  /* Scroll corruption guard disabled: depends on legacy write_bp API.
         * See note above scroll_guard_callback. */
     g_write_bp_addr = 0xFD;
@@ -444,6 +446,7 @@ void game_on_init(void) {
 
 void game_on_frame(uint64_t frame_count) {
     watchdog_render_start();
+    game_voxel_update();
 #ifdef WATCHDOG_ENABLED
     watchdog_frame_start();
 #endif
@@ -751,7 +754,7 @@ void game_fill_frame_record(void *record) {
 }
 
 void game_post_render(uint32_t *framebuf) {
-    (void)framebuf;
+    game_voxel_post_render(framebuf);
     watchdog_render_end();
 }
 

@@ -16,6 +16,10 @@
 #include "mod_function_hooks.h"
 #include "mod_savestate.h"
 #include "metroid_ws.h"
+#ifdef METROID_CYCLE
+#include "cycle_bridge.h"
+#define nes_mod_register_function_entry_plugin met_cycle_register_hook
+#endif
 
 #include <stdio.h>
 #include <string.h>
@@ -103,6 +107,12 @@ NES_MOD_CONSTRUCTOR(register_metroid_widescreen_plugin) {
                                          met_render_save, met_render_load);
     ok &= nes_mod_register_savestate_hook("metroid.widescreen.actors.v1",
                                          met_actors_save, met_actors_load);
+#ifdef METROID_CYCLE
+    ok &= nes_mod_register_savestate_hook("metroid.cycle.bridge.v1",met_cycle_save,met_cycle_load);
+    ok &= nes_mod_register_savestate_validator("metroid.widescreen.renderer.v1",met_render_validate);
+    ok &= nes_mod_register_savestate_validator("metroid.widescreen.actors.v1",met_actors_validate);
+    ok &= nes_mod_register_savestate_validator("metroid.cycle.bridge.v1",met_cycle_validate);
+#endif
     if (!ok)
         fprintf(stderr, "[Mods] Failed to register Metroid widescreen plugin\n");
 }
