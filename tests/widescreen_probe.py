@@ -31,7 +31,8 @@ class Probe:
             (self.out / "mods").mkdir(exist_ok=True)
             (self.out / "mods/state.toml").write_text(mod_state, encoding="utf-8")
         (self.out / "debug.ini").write_text(f"port={port}\n")
-        env = dict(os.environ, NESRECOMP_NO_LAUNCHER="1", NESRECOMP_START_PAUSED="1")
+        env = dict(os.environ, NESRECOMP_NO_LAUNCHER="1", NESRECOMP_START_PAUSED="1",
+                   SDL_AUDIODRIVER="dummy", LNG_TEST_HIDDEN="1")
         if extra_env:
             env.update(extra_env)
         self.log = (self.out / "runner.log").open("w")
@@ -45,7 +46,8 @@ class Probe:
         startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         startup.wShowWindow = 0
         self.proc = subprocess.Popen(args, cwd=self.out, env=env, stdout=self.log,
-                                     stderr=subprocess.STDOUT, startupinfo=startup)
+                                     stderr=subprocess.STDOUT, startupinfo=startup,
+                                     creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         self.sock = None
         deadline = time.monotonic() + 20
         while time.monotonic() < deadline:

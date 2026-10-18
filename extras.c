@@ -684,7 +684,27 @@ int game_dispatch_override(uint16_t addr) {
     return 0;
 }
 
+#ifdef METROID_PROGRESSION_QA
+/* Used only by a separate trace build whose private generation config hooks
+ * the two MoreInit reads. The original area/room/item/enemy loaders still run;
+ * no ROM bytes, inventory or boss flags are patched. */
+static int s_qa_position_reads;
+static uint8_t s_qa_map_x, s_qa_map_y;
+
+static int qa_json_uint(const char *json, const char *key, unsigned *value) {
+    const char *p = strstr(json, key);
+    return p && (p = strchr(p, ':')) && sscanf(p + 1, "%u", value) == 1;
+}
+#endif
+
 uint8_t game_ram_read_hook(uint16_t pc, uint16_t addr, uint8_t val) {
+#ifdef METROID_PROGRESSION_QA
+    if (s_qa_position_reads && ((pc == 0xC856 && addr == 0x95D7) ||
+                               (pc == 0xC85B && addr == 0x95D8))) {
+        --s_qa_position_reads;
+        return addr == 0x95D7 ? s_qa_map_x : s_qa_map_y;
+    }
+#endif
     (void)pc; (void)addr; return val;
 }
 
@@ -736,6 +756,26 @@ void game_post_render(uint32_t *framebuf) {
 }
 
 int game_handle_debug_cmd(const char *cmd, int id, const char *json) {
+#ifdef METROID_PROGRESSION_QA
+    if (strcmp(cmd, "qa_load_room") == 0) {
+        static const uint8_t banks[5] = { 1, 2, 4, 3, 5 };
+        unsigned area, x, y;
+        if (!qa_json_uint(json, "\"area\"", &area) ||
+            !qa_json_uint(json, "\"x\"", &x) || !qa_json_uint(json, "\"y\"", &y) ||
+            area >= 5 || x >= 32 || y >= 32 || g_sram[0x1000 + y * 32 + x] == 0xFF) {
+            debug_server_send_fmt("{\"id\":%d,\"ok\":false,\"error\":\"valid area and occupied map cell required\"}", id);
+            return 1;
+        }
+        s_qa_map_x = (uint8_t)x; s_qa_map_y = (uint8_t)y;
+        s_qa_position_reads = 2;
+        g_ram[MET_MainRoutine] = 1;
+        g_ram[MET_InArea] = (uint8_t)(0x10 + area);
+        g_ram[MET_BankSwitchPending] = (uint8_t)(banks[area] + 1);
+        debug_server_send_fmt("{\"id\":%d,\"ok\":true,\"area\":%u,\"x\":%u,\"y\":%u,\"room\":%u}",
+                              id, area, x, y, g_sram[0x1000 + y * 32 + x]);
+        return 1;
+    }
+#endif
     (void)json;
     if (strcmp(cmd, "echo_cmd") == 0) {
         debug_server_send_fmt("{\"id\":%d,\"echo\":\"%s\"}\n", id, cmd);

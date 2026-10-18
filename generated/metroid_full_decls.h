@@ -73,7 +73,6 @@ extern uint16_t g_rts_target;
 #define CommonJump_UpdateEnemyCommon__b4 func_8000_b4
 #define CommonJump_UpdateEnemyCommon__b5 func_8000_b5
 #define GFX_Samus func_8000_b6
-#define CrawlerReorientSprite_BANK2 func_99DC_b2
 #define EndGamePaletteWrite func_9F54_b0
 #define StarPaletteSwitch func_8AC7_b0
 #define PrepPPUMirror func_C4D9
@@ -159,12 +158,12 @@ extern uint16_t g_rts_target;
 #define AreaInit func_C801
 #define SamusInit func_C8D1
 #define UpdateEnemyCommon func_F410
-/* CommonJump_InitEnAnimIndex: 0x800F is standalone-emitted in 5 banks (b2,b4,b1,b3,b5) -- no unsuffixed alias emitted; use CommonJump_InitEnAnimIndex__bN explicitly */
+/* CommonJump_InitEnAnimIndex: 0x800F is standalone-emitted in 5 banks (b2,b4,b1,b5,b3) -- no unsuffixed alias emitted; use CommonJump_InitEnAnimIndex__bN explicitly */
 #define CommonJump_InitEnAnimIndex__b2 func_800F_b2
 #define CommonJump_InitEnAnimIndex__b4 func_800F_b4
 #define CommonJump_InitEnAnimIndex__b1 func_800F_b1
-#define CommonJump_InitEnAnimIndex__b3 func_800F_b3
 #define CommonJump_InitEnAnimIndex__b5 func_800F_b5
+#define CommonJump_InitEnAnimIndex__b3 func_800F_b3
 #define PrepPPUPaletteString func_C37E
 #define AddYToPtr02 func_C2B3
 #define VRAMStructWriteData func_C2E4
@@ -259,10 +258,12 @@ extern uint16_t g_rts_target;
 #define TwosComplement___b2 func_95C6_b2
 #define TwosComplement___b1 func_95C6_b1
 #define TwosComplement___b5 func_95C6_b5
+#define Exit__ func_95CB_b3
 #define StoreSamusPositionToTemp func_99E4_b3
 #define CrawlerOutsideCornerCheck_BANK5 func_99E4_b5
 #define LoadEnemyPositionFromTemp_ func_99F4_b3
 #define MetroidAIRoutine_BANK3_metroidOnSamus func_9967_b3
+#define CrawlerAIRoutine_BANK5 func_9967_b5
 #define ClearCurrentMetroidLatch func_99AE_b3
 #define ClearMetroidLatch func_99B1_b3
 /* CommonJump_SubtractHealth: 0x8042 is standalone-emitted in 5 banks (b3,b1,b2,b4,b5) -- no unsuffixed alias emitted; use CommonJump_SubtractHealth__bN explicitly */
@@ -272,43 +273,43 @@ extern uint16_t g_rts_target;
 #define CommonJump_SubtractHealth__b4 func_8042_b4
 #define CommonJump_SubtractHealth__b5 func_8042_b5
 #define UpdateEnemyCommon_Decide_BANK3 func_97E2_b3
-/* CommonJump_UpdateEnemyCommon_noMoveNoAnim: 0x8006 is standalone-emitted in 5 banks (b4,b3,b2,b5,b1) -- no unsuffixed alias emitted; use CommonJump_UpdateEnemyCommon_noMoveNoAnim__bN explicitly */
+/* CommonJump_UpdateEnemyCommon_noMoveNoAnim: 0x8006 is standalone-emitted in 5 banks (b4,b3,b2,b1,b5) -- no unsuffixed alias emitted; use CommonJump_UpdateEnemyCommon_noMoveNoAnim__bN explicitly */
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b4 func_8006_b4
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b3 func_8006_b3
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b2 func_8006_b2
-#define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b5 func_8006_b5
 #define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b1 func_8006_b1
-/* CommonJump_EnemyFlipAfterDisplacement: 0x801B is standalone-emitted in 5 banks (b4,b2,b1,b3,b5) -- no unsuffixed alias emitted; use CommonJump_EnemyFlipAfterDisplacement__bN explicitly */
+#define CommonJump_UpdateEnemyCommon_noMoveNoAnim__b5 func_8006_b5
+/* CommonJump_EnemyFlipAfterDisplacement: 0x801B is standalone-emitted in 5 banks (b4,b2,b1,b5,b3) -- no unsuffixed alias emitted; use CommonJump_EnemyFlipAfterDisplacement__bN explicitly */
 #define CommonJump_EnemyFlipAfterDisplacement__b4 func_801B_b4
 #define CommonJump_EnemyFlipAfterDisplacement__b2 func_801B_b2
 #define CommonJump_EnemyFlipAfterDisplacement__b1 func_801B_b1
-#define CommonJump_EnemyFlipAfterDisplacement__b3 func_801B_b3
 #define CommonJump_EnemyFlipAfterDisplacement__b5 func_801B_b5
+#define CommonJump_EnemyFlipAfterDisplacement__b3 func_801B_b3
 #define UpdateEnemyCommon_Decide_BANK4 func_9905_b4
 #define Sidehopper_Common_BANK4 func_991E_b4
-/* CommonJump_InitEnActiveAnimIndex_NoInitOffset: 0x801E is standalone-emitted in 5 banks (b4,b2,b1,b3,b5) -- no unsuffixed alias emitted; use CommonJump_InitEnActiveAnimIndex_NoInitOffset__bN explicitly */
+/* CommonJump_InitEnActiveAnimIndex_NoInitOffset: 0x801E is standalone-emitted in 5 banks (b4,b2,b1,b5,b3) -- no unsuffixed alias emitted; use CommonJump_InitEnActiveAnimIndex_NoInitOffset__bN explicitly */
 #define CommonJump_InitEnActiveAnimIndex_NoInitOffset__b4 func_801E_b4
 #define CommonJump_InitEnActiveAnimIndex_NoInitOffset__b2 func_801E_b2
 #define CommonJump_InitEnActiveAnimIndex_NoInitOffset__b1 func_801E_b1
-#define CommonJump_InitEnActiveAnimIndex_NoInitOffset__b3 func_801E_b3
 #define CommonJump_InitEnActiveAnimIndex_NoInitOffset__b5 func_801E_b5
+#define CommonJump_InitEnActiveAnimIndex_NoInitOffset__b3 func_801E_b3
 #define CommonEnemyStub2_BANK4 func_992C_b4
-/* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove: 0x8009 is standalone-emitted in 5 banks (b4,b2,b3,b1,b5) -- no unsuffixed alias emitted; use CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__bN explicitly */
+/* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove: 0x8009 is standalone-emitted in 5 banks (b4,b2,b1,b5,b3) -- no unsuffixed alias emitted; use CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__bN explicitly */
 #define CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__b4 func_8009_b4
 #define CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__b2 func_8009_b2
-#define CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__b3 func_8009_b3
 #define CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__b1 func_8009_b1
 #define CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__b5 func_8009_b5
+#define CommonJump_CrawlerAIRoutine_ShouldCrawlerMove__b3 func_8009_b3
 #define JumpByRTSToMovementRoutine_BANK4 func_9A31_b4
 #define CrawlerInsideCornerCheck_BANK4 func_99F7_b4
 #define CrawlerFlipDirection_BANK4 func_9A0C_b4
 #define CrawlerOutsideCornerCheck_BANK4 func_9A15_b4
-/* CommonJump_UpdateEnemyAnim: 0x800C is standalone-emitted in 5 banks (b4,b2,b1,b3,b5) -- no unsuffixed alias emitted; use CommonJump_UpdateEnemyAnim__bN explicitly */
+/* CommonJump_UpdateEnemyAnim: 0x800C is standalone-emitted in 5 banks (b4,b2,b1,b5,b3) -- no unsuffixed alias emitted; use CommonJump_UpdateEnemyAnim__bN explicitly */
 #define CommonJump_UpdateEnemyAnim__b4 func_800C_b4
 #define CommonJump_UpdateEnemyAnim__b2 func_800C_b2
 #define CommonJump_UpdateEnemyAnim__b1 func_800C_b1
-#define CommonJump_UpdateEnemyAnim__b3 func_800C_b3
 #define CommonJump_UpdateEnemyAnim__b5 func_800C_b5
+#define CommonJump_UpdateEnemyAnim__b3 func_800C_b3
 #define CrawlerReorientSprite_BANK4 func_99DE_b4
 #define CrawlerOutsideCornerGetNextOrientation_BANK4 func_9A29_b4
 #define StoreEnemyPositionToTemp__BANK4 func_9BBC_b4
@@ -337,12 +338,12 @@ extern uint16_t g_rts_target;
 #define KraidLintAIRoutine_BANK4 func_9AE4_b4
 #define KraidUpdateProjectile_BANK4 func_9B3C_b4
 #define LoadEnemyPositionFromTemp__BANK4 func_9BAA_b4
-/* CommonJump_0E: 0x802A is standalone-emitted in 5 banks (b4,b2,b3,b1,b5) -- no unsuffixed alias emitted; use CommonJump_0E__bN explicitly */
+/* CommonJump_0E: 0x802A is standalone-emitted in 5 banks (b4,b2,b3,b5,b1) -- no unsuffixed alias emitted; use CommonJump_0E__bN explicitly */
 #define CommonJump_0E__b4 func_802A_b4
 #define CommonJump_0E__b2 func_802A_b2
 #define CommonJump_0E__b3 func_802A_b3
-#define CommonJump_0E__b1 func_802A_b1
 #define CommonJump_0E__b5 func_802A_b5
+#define CommonJump_0E__b1 func_802A_b1
 #define ClearCurrentMetroidLatchAndMetroidOnSamus func_A320_b3
 #define Room1D_BANK4 func_A8C7_b4
 #define StoreEnemyPositionToTemp__BANK5 func_9AE1_b5
@@ -567,38 +568,38 @@ extern uint16_t g_rts_target;
 #define EndNoiseSFX__b3 func_B58F_b3
 #define EndNoiseSFX__b1 func_B58F_b1
 #define EndNoiseSFX__b0 func_B58F_b0
-/* GotoInitSFXData: 0xB587 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoInitSFXData__bN explicitly */
+/* GotoInitSFXData: 0xB587 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use GotoInitSFXData__bN explicitly */
 #define GotoInitSFXData__b4 func_B587_b4
-#define GotoInitSFXData__b5 func_B587_b5
 #define GotoInitSFXData__b2 func_B587_b2
+#define GotoInitSFXData__b5 func_B587_b5
 #define GotoInitSFXData__b3 func_B587_b3
 #define GotoInitSFXData__b1 func_B587_b1
 #define GotoInitSFXData__b0 func_B587_b0
-/* ClearCurrentSoundFlagsAndContFlags: 0xB4A2 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use ClearCurrentSoundFlagsAndContFlags__bN explicitly */
+/* ClearCurrentSoundFlagsAndContFlags: 0xB4A2 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use ClearCurrentSoundFlagsAndContFlags__bN explicitly */
 #define ClearCurrentSoundFlagsAndContFlags__b4 func_B4A2_b4
-#define ClearCurrentSoundFlagsAndContFlags__b5 func_B4A2_b5
 #define ClearCurrentSoundFlagsAndContFlags__b2 func_B4A2_b2
+#define ClearCurrentSoundFlagsAndContFlags__b5 func_B4A2_b5
 #define ClearCurrentSoundFlagsAndContFlags__b3 func_B4A2_b3
 #define ClearCurrentSoundFlagsAndContFlags__b1 func_B4A2_b1
 #define ClearCurrentSoundFlagsAndContFlags__b0 func_B4A2_b0
-/* MultiSFXInit: 0xB5A5 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use MultiSFXInit__bN explicitly */
+/* MultiSFXInit: 0xB5A5 is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use MultiSFXInit__bN explicitly */
 #define MultiSFXInit__b4 func_B5A5_b4
-#define MultiSFXInit__b5 func_B5A5_b5
 #define MultiSFXInit__b2 func_B5A5_b2
+#define MultiSFXInit__b5 func_B5A5_b5
 #define MultiSFXInit__b3 func_B5A5_b3
 #define MultiSFXInit__b1 func_B5A5_b1
 #define MultiSFXInit__b0 func_B5A5_b0
-/* WriteSQ1SQ2PeriodLow: 0xB62C is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use WriteSQ1SQ2PeriodLow__bN explicitly */
+/* WriteSQ1SQ2PeriodLow: 0xB62C is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use WriteSQ1SQ2PeriodLow__bN explicitly */
 #define WriteSQ1SQ2PeriodLow__b4 func_B62C_b4
-#define WriteSQ1SQ2PeriodLow__b5 func_B62C_b5
 #define WriteSQ1SQ2PeriodLow__b2 func_B62C_b2
+#define WriteSQ1SQ2PeriodLow__b5 func_B62C_b5
 #define WriteSQ1SQ2PeriodLow__b3 func_B62C_b3
 #define WriteSQ1SQ2PeriodLow__b1 func_B62C_b1
 #define WriteSQ1SQ2PeriodLow__b0 func_B62C_b0
-/* EndMultiSFX: 0xB5CD is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use EndMultiSFX__bN explicitly */
+/* EndMultiSFX: 0xB5CD is standalone-emitted in 6 banks (b4,b2,b5,b3,b1,b0) -- no unsuffixed alias emitted; use EndMultiSFX__bN explicitly */
 #define EndMultiSFX__b4 func_B5CD_b4
-#define EndMultiSFX__b5 func_B5CD_b5
 #define EndMultiSFX__b2 func_B5CD_b2
+#define EndMultiSFX__b5 func_B5CD_b5
 #define EndMultiSFX__b3 func_B5CD_b3
 #define EndMultiSFX__b1 func_B5CD_b1
 #define EndMultiSFX__b0 func_B5CD_b0
@@ -936,8 +937,8 @@ extern uint16_t g_rts_target;
 #define EndOrLoopMusic__b4 func_B3F0_b4
 #define EndOrLoopMusic__b5 func_B3F0_b5
 #define EndOrLoopMusic__b2 func_B3F0_b2
-#define GFX_RidlBG func_B3F0_b6
 #define EndOrLoopMusic__b3 func_B3F0_b3
+#define GFX_RidlBG func_B3F0_b6
 #define EndOrLoopMusic__b1 func_B3F0_b1
 #define EndOrLoopMusic__b0 func_B3F0_b0
 /* UpdateAllVolumeEnvelopes: 0xBA37 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use UpdateAllVolumeEnvelopes__bN explicitly */
@@ -1295,6 +1296,13 @@ extern uint16_t g_rts_target;
 #define ChooseEnemyAIRoutine__b3 func_95E5_b3
 #define ChooseEnemyAIRoutine__b4 func_95E5_b4
 #define ChooseEnemyAIRoutine__b5 func_95E5_b5
+#define CrawlerReorientSprite_BANK2 func_99DC_b2
+#define SwooperChangeEnemyType_BANK2 func_9954_b2
+#define UpdateSwooperAnim_BANK2 func_98F4_b2
+#define JumpByRTSToMovementRoutine_BANK2 func_9A2F_b2
+#define CrawlerOutsideCornerCheck_BANK2 func_9A13_b2
+#define RidleyAIRoutine_BANK5 func_9A13_b5
+#define CrawlerOutsideCornerGetNextOrientation_BANK2 func_9A27_b2
 #define AddHealth func_CEF9
 #define SFX_EnergyPickup func_CBBC
 #define SFX_MissilePickup func_CBC0
@@ -1496,19 +1504,19 @@ extern uint16_t g_rts_target;
 #define EnemyTriggerResting__b2 func_81B8_b2
 #define EnemyTriggerResting__b3 func_81B8_b3
 #define EnemyTriggerResting__b5 func_81B8_b5
-/* GotoUpdateMusicTriLinearCount: 0xBB19 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use GotoUpdateMusicTriLinearCount__bN explicitly */
+/* GotoUpdateMusicTriLinearCount: 0xBB19 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoUpdateMusicTriLinearCount__bN explicitly */
 #define GotoUpdateMusicTriLinearCount__b4 func_BB19_b4
 #define GotoUpdateMusicTriLinearCount__b5 func_BB19_b5
 #define GotoUpdateMusicTriLinearCount__b2 func_BB19_b2
-#define GotoUpdateMusicTriLinearCount__b1 func_BB19_b1
 #define GotoUpdateMusicTriLinearCount__b3 func_BB19_b3
+#define GotoUpdateMusicTriLinearCount__b1 func_BB19_b1
 #define GotoUpdateMusicTriLinearCount__b0 func_BB19_b0
-/* GotoMusicChannelInstr_SongNoteNoise: 0xBB16 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use GotoMusicChannelInstr_SongNoteNoise__bN explicitly */
+/* GotoMusicChannelInstr_SongNoteNoise: 0xBB16 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoMusicChannelInstr_SongNoteNoise__bN explicitly */
 #define GotoMusicChannelInstr_SongNoteNoise__b4 func_BB16_b4
 #define GotoMusicChannelInstr_SongNoteNoise__b5 func_BB16_b5
 #define GotoMusicChannelInstr_SongNoteNoise__b2 func_BB16_b2
-#define GotoMusicChannelInstr_SongNoteNoise__b1 func_BB16_b1
 #define GotoMusicChannelInstr_SongNoteNoise__b3 func_BB16_b3
+#define GotoMusicChannelInstr_SongNoteNoise__b1 func_BB16_b1
 #define GotoMusicChannelInstr_SongNoteNoise__b0 func_BB16_b0
 /* GotoEndOrLoopMusic: 0xBA9D is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use GotoEndOrLoopMusic__bN explicitly */
 #define GotoEndOrLoopMusic__b4 func_BA9D_b4
@@ -1524,19 +1532,19 @@ extern uint16_t g_rts_target;
 #define GotoUpdateAllVolumeEnvelopes__b3 func_BAA1_b3
 #define GotoUpdateAllVolumeEnvelopes__b1 func_BAA1_b1
 #define GotoUpdateAllVolumeEnvelopes__b0 func_BAA1_b0
-/* MusicChannelBaseEmpty: 0xBAB0 is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use MusicChannelBaseEmpty__bN explicitly */
+/* MusicChannelBaseEmpty: 0xBAB0 is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use MusicChannelBaseEmpty__bN explicitly */
 #define MusicChannelBaseEmpty__b4 func_BAB0_b4
 #define MusicChannelBaseEmpty__b5 func_BAB0_b5
 #define MusicChannelBaseEmpty__b2 func_BAB0_b2
-#define MusicChannelBaseEmpty__b1 func_BAB0_b1
 #define MusicChannelBaseEmpty__b3 func_BAB0_b3
+#define MusicChannelBaseEmpty__b1 func_BAB0_b1
 #define MusicChannelBaseEmpty__b0 func_BAB0_b0
-/* XYMusicInit: 0xBC8B is standalone-emitted in 6 banks (b4,b5,b2,b1,b3,b0) -- no unsuffixed alias emitted; use XYMusicInit__bN explicitly */
+/* XYMusicInit: 0xBC8B is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use XYMusicInit__bN explicitly */
 #define XYMusicInit__b4 func_BC8B_b4
 #define XYMusicInit__b5 func_BC8B_b5
 #define XYMusicInit__b2 func_BC8B_b2
-#define XYMusicInit__b1 func_BC8B_b1
 #define XYMusicInit__b3 func_BC8B_b3
+#define XYMusicInit__b1 func_BC8B_b1
 #define XYMusicInit__b0 func_BC8B_b0
 /* CheckMusicFlags: 0xB3FC is standalone-emitted in 6 banks (b4,b5,b2,b3,b1,b0) -- no unsuffixed alias emitted; use CheckMusicFlags__bN explicitly */
 #define CheckMusicFlags__b4 func_B3FC_b4
@@ -1632,30 +1640,59 @@ extern uint16_t g_rts_target;
 #define ClearHealthChange_RTS func_F329
 #define Exit17 func_F281
 #define InitEnActiveAnimIndex_RTS func_F6B8
-/* CommonJump_JumpEngine: 0x8024 is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use CommonJump_JumpEngine__bN explicitly */
-#define CommonJump_JumpEngine__b1 func_8024_b1
-#define CommonJump_JumpEngine__b2 func_8024_b2
-#define CommonJump_JumpEngine__b3 func_8024_b3
-#define CommonJump_JumpEngine__b4 func_8024_b4
-#define CommonJump_JumpEngine__b5 func_8024_b5
+#define SidehopperFloorAIRoutine_BANK1 func_99B8_b1
+#define SidehopperCeilingAIRoutine_BANK1 func_99D3_b1
+#define WaverAIRoutine_BANK1 func_99E5_b1
+#define RipperAIRoutine_BANK1 func_99D8_b1
+#define SkreeAIRoutine_BANK1 func_99FA_b1
+#define SkreeExit_Resting_BANK1 func_9A44_b1
+#define PipeBugAIRoutine_BANK4 func_9A44_b4
+#define SkreeExit_Explode_BANK1 func_9A49_b1
+#define CrawlerAIRoutine_BANK1 func_9A4C_b1
+#define RioAIRoutine_BANK1 func_9AF5_b1
+#define KraidLintAIRoutine_BANK1 func_9BD2_b1
+#define SwooperAIRoutine00_BANK2 func_98D3_b2
+#define SwooperAIRoutine01_BANK2 func_9908_b2
+#define RipperAIRoutine_BANK2 func_98C0_b2
+#define RemoveEnemy__BANK2 func_9833_b2
+#define CrawlerAIRoutine_BANK2 func_9996_b2
+#define PipeBugAIRoutine_BANK2 func_9850_b2
+#define SqueeptAIRoutine_BANK2 func_9A64_b2
+#define MultiviolaAIRoutine_BANK2 func_9AD6_b2
+#define DragonAIRoutine_BANK2 func_9AE9_b2
+#define PolypAIRoutine_BANK2 func_9B64_b2
 #define UpdateEnemyCommon_Decide_BANK2 func_9839_b2
-#define SwooperChangeEnemyType_BANK2 func_9954_b2
-#define UpdateSwooperAnim_BANK2 func_98F4_b2
 #define UpdateEnemyCommon_Decide_BANK2_explode func_984D_b2
-#define JumpByRTSToMovementRoutine_BANK2 func_9A2F_b2
 #define CrawlerInsideCornerCheck_BANK2 func_99F5_b2
 #define CrawlerFlipDirection_BANK2 func_9A0A_b2
-#define CrawlerOutsideCornerCheck_BANK2 func_9A13_b2
-#define CrawlerOutsideCornerGetNextOrientation_BANK2 func_9A27_b2
-/* CommonJump_SpawnEnProjectile: 0x8021 is standalone-emitted in 5 banks (b2,b1,b3,b4,b5) -- no unsuffixed alias emitted; use CommonJump_SpawnEnProjectile__bN explicitly */
+/* CommonJump_SpawnEnProjectile: 0x8021 is standalone-emitted in 5 banks (b2,b5,b1,b3,b4) -- no unsuffixed alias emitted; use CommonJump_SpawnEnProjectile__bN explicitly */
 #define CommonJump_SpawnEnProjectile__b2 func_8021_b2
+#define CommonJump_SpawnEnProjectile__b5 func_8021_b5
 #define CommonJump_SpawnEnProjectile__b1 func_8021_b1
 #define CommonJump_SpawnEnProjectile__b3 func_8021_b3
 #define CommonJump_SpawnEnProjectile__b4 func_8021_b4
-#define CommonJump_SpawnEnProjectile__b5 func_8021_b5
 #define DragonAIRoutine_BANK2_endIf_C func_9B59_b2
 #define Room07_BANK2 func_A4F5_b2
 #define Room08_BANK2 func_A527_b2
+#define MetroidAIRoutine_BANK3 func_97F9_b3
+#define RemoveEnemy__BANK3 func_97DC_b3
+#define RinkaAIRoutine_BANK3 func_9A2C_b3
+#define SidehopperFloorAIRoutine_BANK4 func_991C_b4
+#define SidehopperCeilingAIRoutine_BANK4 func_9937_b4
+#define RipperAIRoutine_BANK4 func_993C_b4
+#define SkreeAIRoutine_BANK4 func_9949_b4
+#define CrawlerAIRoutine_BANK4 func_999B_b4
+#define KraidAIRoutine_BANK4 func_9AB4_b4
+#define KraidNailAIRoutine_BANK4 func_9B2C_b4
+#define SwooperAIRoutine00_BANK5 func_98D7_b5
+#define SwooperAIRoutine01_BANK5 func_990C_b5
+#define SidehopperFloorAIRoutine_BANK5 func_9847_b5
+#define SidehopperCeilingAIRoutine_BANK5 func_9862_b5
+#define RemoveEnemy__BANK5 func_982A_b5
+#define PipeBugAIRoutine_BANK5 func_9867_b5
+#define RidleyFireballAIRoutine_BANK5 func_9A4A_b5
+#define MultiviolaAIRoutine_BANK5 func_9B03_b5
+#define PolypAIRoutine_BANK5 func_9B16_b5
 /* LoadBit5ofTableAt968B: 0x81F6 is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use LoadBit5ofTableAt968B__bN explicitly */
 #define LoadBit5ofTableAt968B__b1 func_81F6_b1
 #define LoadBit5ofTableAt968B__b2 func_81F6_b2
@@ -1685,11 +1722,25 @@ extern uint16_t g_rts_target;
 #define MotherBrainStatusHandler func_9DD4_b3
 #define UpdateEndTimer func_A1E7_b3
 #define DrawEndTimerEnemy func_A238_b3
-#define DrawEndTimerEnemy_RTS func_A28A_b3
 #define UpdateAllZebetites func_A28B_b3
+#define MotherBrain_Idle_HandleBeingHit func_9FED_b3
+#define MotherBrain_Idle_UpdateAnimBrain func_A01B_b3
+#define MotherBrain_Idle_UpdateAnimEye func_A02E_b3
+#define MotherBrain_DrawSprites func_A041_b3
+#define Xplus16 func_9EF9_b3
+#define MotherBrain_SpawnDoor func_9F69_b3
+#define UpdateAllRinkaSpawners_subroutine func_A16B_b3
+#define SpawnRinka_InitPositionXY func_9EE7_b3
 #define UpdateZebetite func_A29B_b3
 #define UpdateAllRinkaSpawners func_A15E_b3
-#define UpdateAllRinkaSpawners_subroutine func_A16B_b3
+#define DrawEndTimerEnemy_RTS func_A28A_b3
+#define UpdateBullet_CollisionWithMotherBrain func_A142_b3
+#define MotherBrain_Disappear func_9E86_b3
+#define MotherBrain_TimeBombMessage func_9F02_b3
+#define MotherBrain_TimeBombExploded func_9FC0_b3
+#define ClearMotherBrainIsHit func_9E31_b3
+#define MotherBrain_Disappear_endIf_D func_9ED6_b3
+#define UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass func_A0C6_b3
 #define DrawElevator func_D806
 #define ToggleObjHi func_D648
 #define ElevatorMove_endIf_A func_D866
@@ -1785,32 +1836,62 @@ extern uint16_t g_rts_target;
 #define CommonJump_DrawTileBlast__b5 func_803F_b5
 #define Amul16_ func_9B20_b3
 #define GetNameTableAtScrollDir_ func_9D88_b3
-#define JumpEngine func_C27C
+#define UpdateEnemyCommon_Decide_BANK1 func_99A1_b1
+#define Sidehopper_Common_BANK1 func_99BA_b1
+#define CommonEnemyStub2_BANK1 func_99C8_b1
+#define JumpByRTSToMovementRoutine_BANK1 func_9AE2_b1
+#define CrawlerInsideCornerCheck_BANK1 func_9AA8_b1
+#define CrawlerFlipDirection_BANK1 func_9ABD_b1
+#define CrawlerOutsideCornerCheck_BANK1 func_9AC6_b1
+#define StoreEnemyPositionToTemp__BANK1 func_9CA8_b1
+#define KraidUpdateAllProjectiles_BANK1 func_9C1D_b1
+#define KraidTryToLaunchLint_BANK1 func_9CCC_b1
+#define KraidTryToLaunchNail_BANK1 func_9D05_b1
+#define CommonEnemyStub_BANK1 func_99CC_b1
 #define Room29_BANK2 func_ABDA_b2
 #define Structure20_BANK2 func_AE2F_b2
 #define Structure21_BANK2 func_AE3A_b2
+#define MetroidAIRoutine_BANK3_endIf_G func_9899_b3
+#define GetMetroidAccel func_9A06_b3
+#define SetRinkaSpeed_BANK3 func_9AF9_b3
+#define SkreeExit_Resting_BANK4 func_9993_b4
+#define SkreeExit_Explode_BANK4 func_9998_b4
+#define SwooperChangeEnemyType_BANK5 func_9958_b5
+#define UpdateSwooperAnim_BANK5 func_98F8_b5
+#define Sidehopper_Common_BANK5 func_9849_b5
+#define JumpByRTSToMovementRoutine_BANK5 func_9A00_b5
+#define CrawlerInsideCornerCheck_BANK5 func_99C6_b5
+#define CrawlerFlipDirection_BANK5 func_99DB_b5
+#define RidleyTryToLaunchFireball_BANK5 func_9A79_b5
 #define BombCurrentTile func_D76A
 #define IsBlastTile_SkipCheckUpdatingWeaponProjectile func_E9C2
-#define UpdateBullet_CollisionWithMotherBrain func_A142_b3
 #define GotoUpdateBullet_CollisionWithZebetiteAndMotherBrainGlass func_95BD_b3
 #define UpdateCannon_CheckIfOnScreen func_9C4D_b3
 #define UpdateCannon_RunInstructions func_9B70_b3
 #define UpdateCannon_RunInstructions_getInstruction func_9B84_b3
 #define DrawCannon_Normal func_9C2B_b3
 #define DrawCannon_Escape func_9C31_b3
-/* CommonJump_Base10Subtract: 0x8045 is standalone-emitted in 5 banks (b3,b1,b2,b4,b5) -- no unsuffixed alias emitted; use CommonJump_Base10Subtract__bN explicitly */
-#define CommonJump_Base10Subtract__b3 func_8045_b3
-#define CommonJump_Base10Subtract__b1 func_8045_b1
-#define CommonJump_Base10Subtract__b2 func_8045_b2
-#define CommonJump_Base10Subtract__b4 func_8045_b4
-#define CommonJump_Base10Subtract__b5 func_8045_b5
+#define MotherBrain_Idle func_9E22_b3
+#define MotherBrain_Hurt func_9E36_b3
+#define MotherBrain_Killed func_9E52_b3
+#define MotherBrain_SetTimeBomb func_9F49_b3
+#define MotherBrain_SetTimeBomb_ScrollBackOnScreen func_9FDA_b3
+#define MotherBrain_Idle_CollideWithSamus func_9DF2_b3
+#define UpdateMotherBrainFlashDelay func_9E43_b3
+#define MotherBrain_Disappear_Disintegrate func_A072_b3
 /* CommonJump_DrawEnemy: 0x803C is standalone-emitted in 5 banks (b3,b1,b2,b4,b5) -- no unsuffixed alias emitted; use CommonJump_DrawEnemy__bN explicitly */
 #define CommonJump_DrawEnemy__b3 func_803C_b3
 #define CommonJump_DrawEnemy__b1 func_803C_b1
 #define CommonJump_DrawEnemy__b2 func_803C_b2
 #define CommonJump_DrawEnemy__b4 func_803C_b4
 #define CommonJump_DrawEnemy__b5 func_803C_b5
-#define SpawnRinka_InitPositionXY func_9EE7_b3
+/* CommonJump_Base10Subtract: 0x8045 is standalone-emitted in 5 banks (b3,b1,b2,b4,b5) -- no unsuffixed alias emitted; use CommonJump_Base10Subtract__bN explicitly */
+#define CommonJump_Base10Subtract__b3 func_8045_b3
+#define CommonJump_Base10Subtract__b1 func_8045_b1
+#define CommonJump_Base10Subtract__b2 func_8045_b2
+#define CommonJump_Base10Subtract__b4 func_8045_b4
+#define CommonJump_Base10Subtract__b5 func_8045_b5
+#define Palette03_BANK3_VRAMStructData2_end func_A747_b3
 #define GetVRAMStringPtr_RTS func_FEDB
 #define GetVRAMStringPtr func_FECC
 #define UpdateMellow_FD84 func_FD84
@@ -1864,26 +1945,25 @@ extern uint16_t g_rts_target;
 #define DoorSubRoutine8C76__b4 func_8C76_b4
 #define DoorSubRoutine8C76__b5 func_8C76_b5
 #define DoorSubRoutine8C76__b1 func_8C76_b1
-#define SwooperChangeEnemyType_BANK5 func_9958_b5
-#define UpdateSwooperAnim_BANK5 func_98F8_b5
 #define LoadUniqueItems_loop_unused func_8BF5_b0
 #define SamusHasItem func_8C39_b0
 #define LoadUniqueItems_processItemBit func_8C0A_b0
 #define LoadUniqueItems_processItemByte func_8C03_b0
 #define LoadTanksAndMissiles_IncrementToNextItem func_8DA9_b0
-#define UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass func_A0C6_b3
+#define CrawlerReorientSprite_BANK1 func_9A8F_b1
+#define CrawlerOutsideCornerGetNextOrientation_BANK1 func_9ADA_b1
+#define KraidUpdateProjectile_BANK1 func_9C2A_b1
+#define LoadEnemyPositionFromTemp__BANK1 func_9C96_b1
+#define CrawlerReorientSprite_BANK5 func_99AD_b5
+#define CrawlerOutsideCornerGetNextOrientation_BANK5 func_99F8_b5
 #define Cannon_ShootEnProjectile func_9BAF_b3
 #define UpdateMellow_StorePositionToTemp func_FD5F
 #define UpdateMellow_LoadPositionFromTemp func_FD6C
-#define CrawlerReorientSprite_BANK5 func_99AD_b5
-#define CrawlerOutsideCornerGetNextOrientation_BANK5 func_99F8_b5
-#define JumpByRTSToMovementRoutine_BANK5 func_9A00_b5
-#define RidleyTryToLaunchFireball_BANK5 func_9A79_b5
 #define LoadTanksAndMissiles_loop_tanks func_8D95_b0
-#define Xplus16 func_9EF9_b3
 #define CopyGFXBlock_RTS func_C800
 #define ClearNameTables_nameTable0 func_C16D
 #define TileBlastAnim func_FF86
+#define JumpEngine func_C27C
 #define HiPPUTable func_C19F
 #define InitBrinstarGFX func_C604
 #define EndVRAMStruct func_C376
@@ -1977,7 +2057,7 @@ extern uint16_t g_rts_target;
 #define UpdateTourianItems_loop func_FDFB
 #define Palette19_BANK2 func_A203_b2
 #define EndNoiseSFX_RTS func_B597_b1
-#define GetMetroidAccel func_9A06_b3
+#define LoadNextMusicChannelInstr_Continued_if_Cntrl0Data func_BB8C_b1
 #define GetItemXYPos func_DC1C
 #define MMCWritePrgBank func_C4FA
 #define SeparateControlBits func_C3C6
@@ -2011,6 +2091,12 @@ extern uint16_t g_rts_target;
 #define DivideSFXTriPeriod_loop__b5 func_B9B5_b5
 #define ContinueMusic func_BC4B_b0
 #define GotoMusic01Init func_BC7A_b0
+/* CommonJump_JumpEngine: 0x8024 is standalone-emitted in 5 banks (b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use CommonJump_JumpEngine__bN explicitly */
+#define CommonJump_JumpEngine__b1 func_8024_b1
+#define CommonJump_JumpEngine__b2 func_8024_b2
+#define CommonJump_JumpEngine__b3 func_8024_b3
+#define CommonJump_JumpEngine__b4 func_8024_b4
+#define CommonJump_JumpEngine__b5 func_8024_b5
 #define ObjPlace1 func_871F_b1
 #define ObjPlace2 func_872B_b1
 #define ObjPlace3 func_8737_b1
@@ -2084,24 +2170,6 @@ extern uint16_t g_rts_target;
 #define ObjFrame_MissileExplode0 func_8AE9_b1
 #define ObjFrame_MissileExplode1 func_8AF3_b1
 #define ObjFrame_MissileExplode2 func_8B03_b1
-#define SidehopperFloorAIRoutine_BANK1 func_99B8_b1
-#define SkreeAIRoutine_BANK1 func_99FA_b1
-#define SkreeExit_Resting_BANK1 func_9A44_b1
-#define SkreeExit_Explode_BANK1 func_9A49_b1
-#define CrawlerAIRoutine_BANK1 func_9A4C_b1
-#define CrawlerReorientSprite_BANK1 func_9A8F_b1
-#define CrawlerInsideCornerCheck_BANK1 func_9AA8_b1
-#define CrawlerFlipDirection_BANK1 func_9ABD_b1
-#define CrawlerOutsideCornerCheck_BANK1 func_9AC6_b1
-#define CrawlerOutsideCornerGetNextOrientation_BANK1 func_9ADA_b1
-#define JumpByRTSToMovementRoutine_BANK1 func_9AE2_b1
-#define RioAIRoutine_BANK1 func_9AF5_b1
-#define KraidUpdateAllProjectiles_BANK1 func_9C1D_b1
-#define KraidUpdateProjectile_BANK1 func_9C2A_b1
-#define LoadEnemyPositionFromTemp__BANK1 func_9C96_b1
-#define StoreEnemyPositionToTemp__BANK1 func_9CA8_b1
-#define KraidTryToLaunchLint_BANK1 func_9CCC_b1
-#define KraidTryToLaunchNail_BANK1 func_9D05_b1
 #define SpitFlameSFXInit func_B50F_b1
 #define SpitFlameSFXCont func_B516_b1
 #define ScrewAttackSFXInit func_B52B_b1
@@ -2151,17 +2219,6 @@ extern uint16_t g_rts_target;
 #define GotoMusic03Init func_BC80_b1
 #define GotoMusic04Init func_BC83_b1
 #define MusicChannelInstr_SongNoteNoise_endIf_A func_BBF7_b1
-#define SetRinkaSpeed_BANK3 func_9AF9_b3
-#define MotherBrain_Idle_CollideWithSamus func_9DF2_b3
-#define UpdateMotherBrainFlashDelay func_9E43_b3
-#define MotherBrain_SpawnDoor func_9F69_b3
-#define MotherBrain_Idle_HandleBeingHit func_9FED_b3
-#define MotherBrain_Idle_UpdateAnimBrain func_A01B_b3
-#define MotherBrain_Idle_UpdateAnimEye func_A02E_b3
-#define MotherBrain_DrawSprites func_A041_b3
-#define MotherBrain_Disappear_Disintegrate func_A072_b3
-#define CrawlerInsideCornerCheck_BANK5 func_99C6_b5
-#define CrawlerFlipDirection_BANK5 func_99DB_b5
 /* ScrewAttackSFXInit_RTS: 0xB538 is standalone-emitted in 6 banks (b0,b1,b2,b3,b4,b5) -- no unsuffixed alias emitted; use ScrewAttackSFXInit_RTS__bN explicitly */
 #define ScrewAttackSFXInit_RTS__b0 func_B538_b0
 #define ScrewAttackSFXInit_RTS__b1 func_B538_b1
@@ -2176,18 +2233,16 @@ extern uint16_t g_rts_target;
 #define ObjPlaceC func_87A5_b1
 #define ObjPlaceE func_87B1_b1
 #define ObjFrame_SamusRunPntUpFire2 func_89FB_b1
-#define UpdateEnemyCommon_Decide_BANK1 func_99A1_b1
 #define IncrementNoisePeriod func_B564_b1
 #define SamusHitSFXInit_RTS func_B694_b1
 #define MissilePickupSFXCont_RTS func_B6CC_b1
 #define GotoInitSFXData2 func_B739_b1
 #define EndTriSFX_RTS func_B8A6_b1
 #define SamusDieSFXInit_RTS func_B8EC_b1
+#define PipeBugAIRoutine_BANK1 func_9B32_b1
+#define KraidAIRoutine_BANK1 func_9BA2_b1
+#define KraidNailAIRoutine_BANK1 func_9C1A_b1
 #define EnemyMovement0F_R_BANK1 func_98DB_b1
-#define Sidehopper_Common_BANK1 func_99BA_b1
-#define CommonEnemyStub2_BANK1 func_99C8_b1
-#define CommonEnemyStub_BANK1 func_99CC_b1
-#define KraidLintAIRoutine_BANK1 func_9BD2_b1
 
 /* RAM/MMIO symbol addresses (from .sym file).
  * Several names on one address are aliases of the same byte,
@@ -12714,10 +12769,8 @@ void func_C006(void);
 void func_C0BC(void); /* MainLoop */
 void func_9C45_b0(void); /* LoadCredits */
 void func_8000_b1(void); /* CommonJump_UpdateEnemyCommon */
-void func_99DC_b2(void); /* CrawlerReorientSprite_BANK2 */
 void func_9F54_b0(void); /* EndGamePaletteWrite */
 void func_9F54_b2(void);
-void func_9F54_b3(void);
 void func_9F54_b4(void);
 void func_9F54_b5(void);
 void func_9F54_b6(void);
@@ -12927,6 +12980,7 @@ void func_99C3_b3(void); /* ClearMetroidSpeed */
 void func_99D1_b3(void); /* ClearRinkaAcceleration */
 void func_99BD_b3(void); /* LoadEnemySlotIDIntoX */
 void func_95C6_b3(void); /* TwosComplement_ */
+void func_95CB_b3(void); /* Exit__ */
 void func_99E4_b3(void); /* StoreSamusPositionToTemp */
 void func_8027_b3(void); /* CommonJump_ApplySpeedToPosition */
 void func_99F4_b3(void); /* LoadEnemyPositionFromTemp_ */
@@ -14037,6 +14091,12 @@ void func_F539(void);
 void func_95E5_b0(void);
 void func_95E5_b1(void); /* ChooseEnemyAIRoutine */
 void func_95E5_b2(void); /* ChooseEnemyAIRoutine */
+void func_99DC_b2(void); /* CrawlerReorientSprite_BANK2 */
+void func_9954_b2(void); /* SwooperChangeEnemyType_BANK2 */
+void func_98F4_b2(void); /* UpdateSwooperAnim_BANK2 */
+void func_9A2F_b2(void); /* JumpByRTSToMovementRoutine_BANK2 */
+void func_9A13_b2(void); /* CrawlerOutsideCornerCheck_BANK2 */
+void func_9A27_b2(void); /* CrawlerOutsideCornerGetNextOrientation_BANK2 */
 void func_95E5_b3(void); /* ChooseEnemyAIRoutine */
 void func_95E5_b4(void); /* ChooseEnemyAIRoutine */
 void func_95E5_b5(void); /* ChooseEnemyAIRoutine */
@@ -14422,10 +14482,26 @@ void func_F281(void); /* Exit17 */
 void func_F2D8(void);
 void func_F6B8(void); /* InitEnActiveAnimIndex_RTS */
 void func_F530(void);
-void func_8024_b1(void); /* CommonJump_JumpEngine */
-void func_F59A(void);
-void func_8024_b2(void); /* CommonJump_JumpEngine */
-void func_9593_b2(void);
+void func_99B8_b1(void); /* SidehopperFloorAIRoutine_BANK1 */
+void func_99D3_b1(void); /* SidehopperCeilingAIRoutine_BANK1 */
+void func_99E5_b1(void); /* WaverAIRoutine_BANK1 */
+void func_99D8_b1(void); /* RipperAIRoutine_BANK1 */
+void func_99FA_b1(void); /* SkreeAIRoutine_BANK1 */
+void func_9A44_b1(void); /* SkreeExit_Resting_BANK1 */
+void func_9A49_b1(void); /* SkreeExit_Explode_BANK1 */
+void func_9A4C_b1(void); /* CrawlerAIRoutine_BANK1 */
+void func_9AF5_b1(void); /* RioAIRoutine_BANK1 */
+void func_9BD2_b1(void); /* KraidLintAIRoutine_BANK1 */
+void func_98D3_b2(void); /* SwooperAIRoutine00_BANK2 */
+void func_9908_b2(void); /* SwooperAIRoutine01_BANK2 */
+void func_98C0_b2(void); /* RipperAIRoutine_BANK2 */
+void func_9833_b2(void); /* RemoveEnemy__BANK2 */
+void func_9996_b2(void); /* CrawlerAIRoutine_BANK2 */
+void func_9850_b2(void); /* PipeBugAIRoutine_BANK2 */
+void func_9A64_b2(void); /* SqueeptAIRoutine_BANK2 */
+void func_9AD6_b2(void); /* MultiviolaAIRoutine_BANK2 */
+void func_9AE9_b2(void); /* DragonAIRoutine_BANK2 */
+void func_9B64_b2(void); /* PolypAIRoutine_BANK2 */
 void func_9641_b2(void);
 void func_FFFF(void);
 void func_96BE_b2(void);
@@ -14433,21 +14509,16 @@ void func_98A4_b2(void);
 void func_8006_b2(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
 void func_801E_b2(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
 void func_9839_b2(void); /* UpdateEnemyCommon_Decide_BANK2 */
-void func_9954_b2(void); /* SwooperChangeEnemyType_BANK2 */
-void func_98F4_b2(void); /* UpdateSwooperAnim_BANK2 */
 void func_95C6_b2(void); /* TwosComplement_ */
 void func_802A_b2(void); /* CommonJump_0E */
 void func_801B_b2(void); /* CommonJump_EnemyFlipAfterDisplacement */
 void func_8009_b2(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
 void func_984D_b2(void); /* UpdateEnemyCommon_Decide_BANK2_explode */
-void func_9A2F_b2(void); /* JumpByRTSToMovementRoutine_BANK2 */
 void func_99F5_b2(void); /* CrawlerInsideCornerCheck_BANK2 */
 void func_9A0A_b2(void); /* CrawlerFlipDirection_BANK2 */
 void func_9A07_b2(void);
-void func_9A13_b2(void); /* CrawlerOutsideCornerCheck_BANK2 */
 void func_800C_b2(void); /* CommonJump_UpdateEnemyAnim */
 void func_B102_b2(void);
-void func_9A27_b2(void); /* CrawlerOutsideCornerGetNextOrientation_BANK2 */
 void func_8021_b2(void); /* CommonJump_SpawnEnProjectile */
 void func_9B59_b2(void); /* DragonAIRoutine_BANK2_endIf_C */
 void func_9DEC_b2(void);
@@ -14460,10 +14531,32 @@ void func_A527_b2(void); /* Room08_BANK2 */
 void func_A540_b2(void);
 void func_A54D_b2(void);
 void func_A57E_b2(void);
-void func_8024_b3(void); /* CommonJump_JumpEngine */
-void func_8024_b4(void); /* CommonJump_JumpEngine */
-void func_8024_b5(void); /* CommonJump_JumpEngine */
-void func_A320_b3(void); /* ClearCurrentMetroidLatchAndMetroidOnSamus */
+void func_A5EB_b2(void);
+void func_A608_b2(void);
+void func_97F9_b3(void); /* MetroidAIRoutine_BANK3 */
+void func_9A27_b3(void);
+void func_97DC_b3(void); /* RemoveEnemy__BANK3 */
+void func_9A2C_b3(void); /* RinkaAIRoutine_BANK3 */
+void func_991C_b4(void); /* SidehopperFloorAIRoutine_BANK4 */
+void func_9937_b4(void); /* SidehopperCeilingAIRoutine_BANK4 */
+void func_95CB_b4(void);
+void func_993C_b4(void); /* RipperAIRoutine_BANK4 */
+void func_9949_b4(void); /* SkreeAIRoutine_BANK4 */
+void func_999B_b4(void); /* CrawlerAIRoutine_BANK4 */
+void func_9A44_b4(void); /* PipeBugAIRoutine_BANK4 */
+void func_9AB4_b4(void); /* KraidAIRoutine_BANK4 */
+void func_9B2C_b4(void); /* KraidNailAIRoutine_BANK4 */
+void func_98D7_b5(void); /* SwooperAIRoutine00_BANK5 */
+void func_990C_b5(void); /* SwooperAIRoutine01_BANK5 */
+void func_9847_b5(void); /* SidehopperFloorAIRoutine_BANK5 */
+void func_9862_b5(void); /* SidehopperCeilingAIRoutine_BANK5 */
+void func_982A_b5(void); /* RemoveEnemy__BANK5 */
+void func_9967_b5(void); /* CrawlerAIRoutine_BANK5 */
+void func_9867_b5(void); /* PipeBugAIRoutine_BANK5 */
+void func_9A13_b5(void); /* RidleyAIRoutine_BANK5 */
+void func_9A4A_b5(void); /* RidleyFireballAIRoutine_BANK5 */
+void func_9B03_b5(void); /* MultiviolaAIRoutine_BANK5 */
+void func_9B16_b5(void); /* PolypAIRoutine_BANK5 */
 void func_81F6_b1(void); /* LoadBit5ofTableAt968B */
 void func_81F6_b2(void); /* LoadBit5ofTableAt968B */
 void func_81F6_b3(void); /* LoadBit5ofTableAt968B */
@@ -14525,12 +14618,34 @@ void func_9B44_b3(void); /* UpdateAllCannons_updateIfPossible */
 void func_9DD4_b3(void); /* MotherBrainStatusHandler */
 void func_A1E7_b3(void); /* UpdateEndTimer */
 void func_A238_b3(void); /* DrawEndTimerEnemy */
-void func_A28A_b3(void); /* DrawEndTimerEnemy_RTS */
 void func_A28B_b3(void); /* UpdateAllZebetites */
-void func_A29B_b3(void); /* UpdateZebetite */
-void func_A29E_b3(void);
-void func_A15E_b3(void); /* UpdateAllRinkaSpawners */
+void func_9FED_b3(void); /* MotherBrain_Idle_HandleBeingHit */
+void func_A01B_b3(void); /* MotherBrain_Idle_UpdateAnimBrain */
+void func_A02E_b3(void); /* MotherBrain_Idle_UpdateAnimEye */
+void func_A041_b3(void); /* MotherBrain_DrawSprites */
+void func_9EF9_b3(void); /* Xplus16 */
+void func_9F69_b3(void); /* MotherBrain_SpawnDoor */
 void func_A16B_b3(void); /* UpdateAllRinkaSpawners_subroutine */
+void func_9EE7_b3(void); /* SpawnRinka_InitPositionXY */
+void func_A29B_b3(void); /* UpdateZebetite */
+void func_9F54_b3(void);
+void func_A29E_b3(void);
+void func_A320_b3(void); /* ClearCurrentMetroidLatchAndMetroidOnSamus */
+void func_A15E_b3(void); /* UpdateAllRinkaSpawners */
+void func_A28A_b3(void); /* DrawEndTimerEnemy_RTS */
+void func_A142_b3(void); /* UpdateBullet_CollisionWithMotherBrain */
+void func_9E86_b3(void); /* MotherBrain_Disappear */
+void func_9F02_b3(void); /* MotherBrain_TimeBombMessage */
+void func_9FC0_b3(void); /* MotherBrain_TimeBombExploded */
+void func_AD60_b3(void);
+void func_9E31_b3(void); /* ClearMotherBrainIsHit */
+void func_9ED6_b3(void); /* MotherBrain_Disappear_endIf_D */
+void func_A15D_b3(void);
+void func_A0C6_b3(void); /* UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
+void func_A93E_b3(void);
+void func_A0F1_b3(void);
+void func_A001_b3(void);
+void func_A028_b3(void);
 void func_D806(void); /* DrawElevator */
 void func_D648(void); /* ToggleObjHi */
 void func_D866(void); /* ElevatorMove_endIf_A */
@@ -14712,13 +14827,32 @@ void func_B1E0_b5(void);
 void func_80C7_b5(void); /* EnemyIfMoveFailedUp_facingHorizontal */
 void func_9B20_b3(void); /* Amul16_ */
 void func_9D88_b3(void); /* GetNameTableAtScrollDir_ */
-void func_C27C(void); /* JumpEngine */
-void func_C27D(void);
-void func_C284(void);
-void func_F56C(void);
+void func_801B_b1(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_99A1_b1(void); /* UpdateEnemyCommon_Decide_BANK1 */
+void func_99BA_b1(void); /* Sidehopper_Common_BANK1 */
+void func_99C8_b1(void); /* CommonEnemyStub2_BANK1 */
+void func_801E_b1(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_8003_b1(void); /* CommonJump_UpdateEnemyCommon_noMove */
+void func_8006_b1(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_8009_b1(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
+void func_9AE2_b1(void); /* JumpByRTSToMovementRoutine_BANK1 */
+void func_9AA8_b1(void); /* CrawlerInsideCornerCheck_BANK1 */
+void func_9ABD_b1(void); /* CrawlerFlipDirection_BANK1 */
+void func_9AC6_b1(void); /* CrawlerOutsideCornerCheck_BANK1 */
+void func_800C_b1(void); /* CommonJump_UpdateEnemyAnim */
+void func_95C6_b1(void); /* TwosComplement_ */
+void func_8036_b1(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
+void func_8039_b1(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
+void func_9CA8_b1(void); /* StoreEnemyPositionToTemp__BANK1 */
+void func_8027_b1(void); /* CommonJump_ApplySpeedToPosition */
+void func_9C1D_b1(void); /* KraidUpdateAllProjectiles_BANK1 */
+void func_9CCC_b1(void); /* KraidTryToLaunchLint_BANK1 */
+void func_9D05_b1(void); /* KraidTryToLaunchNail_BANK1 */
+void func_99CC_b1(void); /* CommonEnemyStub_BANK1 */
+void func_802D_b1(void); /* CommonJump_EnemyGetDeltaY */
+void func_8030_b1(void); /* CommonJump_EnemyGetDeltaX */
+void func_8033_b1(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_B0D4_b2(void);
-void func_A5EB_b2(void);
-void func_A608_b2(void);
 void func_A650_b2(void);
 void func_A68D_b2(void);
 void func_A720_b2(void);
@@ -14763,6 +14897,33 @@ void func_B463_b2(void);
 void func_B472_b2(void); /* InitSFXData_Tri */
 void func_B4A9_b2(void); /* IncrementSFXFrame */
 void func_B58F_b2(void); /* EndNoiseSFX */
+void func_B587_b2(void); /* GotoInitSFXData */
+void func_B4A2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b2(void); /* MultiSFXInit */
+void func_B62C_b2(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b2(void); /* EndMultiSFX */
+void func_9899_b3(void); /* MetroidAIRoutine_BANK3_endIf_G */
+void func_9A06_b3(void); /* GetMetroidAccel */
+void func_9A07_b3(void);
+void func_9AF9_b3(void); /* SetRinkaSpeed_BANK3 */
+void func_9993_b4(void); /* SkreeExit_Resting_BANK4 */
+void func_9998_b4(void); /* SkreeExit_Explode_BANK4 */
+void func_9958_b5(void); /* SwooperChangeEnemyType_BANK5 */
+void func_98F8_b5(void); /* UpdateSwooperAnim_BANK5 */
+void func_95C6_b5(void); /* TwosComplement_ */
+void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
+void func_801B_b5(void); /* CommonJump_EnemyFlipAfterDisplacement */
+void func_9849_b5(void); /* Sidehopper_Common_BANK5 */
+void func_8009_b5(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
+void func_9A00_b5(void); /* JumpByRTSToMovementRoutine_BANK5 */
+void func_9A07_b5(void);
+void func_99C6_b5(void); /* CrawlerInsideCornerCheck_BANK5 */
+void func_99DB_b5(void); /* CrawlerFlipDirection_BANK5 */
+void func_99E4_b5(void); /* CrawlerOutsideCornerCheck_BANK5 */
+void func_800C_b5(void); /* CommonJump_UpdateEnemyAnim */
+void func_9A79_b5(void); /* RidleyTryToLaunchFireball_BANK5 */
+void func_801E_b5(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
+void func_8021_b5(void); /* CommonJump_SpawnEnProjectile */
 void func_D78B(void);
 void func_D78D(void);
 void func_D76A(void); /* BombCurrentTile */
@@ -14770,7 +14931,6 @@ void func_D77F(void);
 void func_D780(void);
 void func_D784(void);
 void func_E9C2(void); /* IsBlastTile_SkipCheckUpdatingWeaponProjectile */
-void func_A142_b3(void); /* UpdateBullet_CollisionWithMotherBrain */
 void func_95BD_b0(void);
 void func_95BD_b2(void);
 void func_95BD_b3(void); /* GotoUpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
@@ -14782,11 +14942,31 @@ void func_9B70_b3(void); /* UpdateCannon_RunInstructions */
 void func_9B84_b3(void); /* UpdateCannon_RunInstructions_getInstruction */
 void func_9C2B_b3(void); /* DrawCannon_Normal */
 void func_9C31_b3(void); /* DrawCannon_Escape */
-void func_8045_b3(void); /* CommonJump_Base10Subtract */
+void func_9E22_b3(void); /* MotherBrain_Idle */
+void func_9E36_b3(void); /* MotherBrain_Hurt */
+void func_9E52_b3(void); /* MotherBrain_Killed */
+void func_9F49_b3(void); /* MotherBrain_SetTimeBomb */
+void func_9FDA_b3(void); /* MotherBrain_SetTimeBomb_ScrollBackOnScreen */
+void func_9DF2_b3(void); /* MotherBrain_Idle_CollideWithSamus */
+void func_9E43_b3(void); /* UpdateMotherBrainFlashDelay */
+void func_9E2E_b3(void);
+void func_A072_b3(void); /* MotherBrain_Disappear_Disintegrate */
 void func_803C_b3(void); /* CommonJump_DrawEnemy */
-void func_A15D_b3(void);
 void func_802A_b3(void); /* CommonJump_0E */
-void func_9EE7_b3(void); /* SpawnRinka_InitPositionXY */
+void func_8045_b3(void); /* CommonJump_Base10Subtract */
+void func_A5B8_b3(void);
+void func_A631_b3(void);
+void func_A747_b3(void); /* Palette03_BANK3_VRAMStructData2_end */
+void func_A8BB_b3(void);
+void func_A96B_b3(void);
+void func_A984_b3(void);
+void func_A9AE_b3(void);
+void func_A9ED_b3(void);
+void func_AA5B_b3(void);
+void func_AD04_b3(void);
+void func_AD95_b3(void);
+void func_ADFC_b3(void);
+void func_AE0D_b3(void);
 void func_FEDB(void); /* GetVRAMStringPtr_RTS */
 void func_FECC(void); /* GetVRAMStringPtr */
 void func_FED6(void);
@@ -14946,14 +15126,12 @@ void func_BF67_b5(void);
 void func_AFFE_b5(void);
 void func_B06C_b5(void);
 void func_B17E_b5(void);
-void func_8006_b5(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
 void func_80C1_b5(void); /* EnemyIfMoveFailedUp_bounce */
+void func_9A8F_b1(void); /* CrawlerReorientSprite_BANK1 */
+void func_9ADA_b1(void); /* CrawlerOutsideCornerGetNextOrientation_BANK1 */
+void func_9C2A_b1(void); /* KraidUpdateProjectile_BANK1 */
+void func_9C96_b1(void); /* LoadEnemyPositionFromTemp__BANK1 */
 void func_B0A2_b2(void);
-void func_B587_b2(void); /* GotoInitSFXData */
-void func_B4A2_b2(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5A5_b2(void); /* MultiSFXInit */
-void func_B62C_b2(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5CD_b2(void); /* EndMultiSFX */
 void func_B6F2_b2(void); /* EndSQ1SFX */
 void func_9416_b2(void);
 void func_9431_b2(void);
@@ -15001,9 +15179,75 @@ void func_BF0B_b2(void);
 void func_BF67_b2(void);
 void func_AF53_b2(void);
 void func_80C1_b2(void); /* EnemyIfMoveFailedUp_bounce */
+void func_802A_b5(void); /* CommonJump_0E */
+void func_99AD_b5(void); /* CrawlerReorientSprite_BANK5 */
+void func_99F8_b5(void); /* CrawlerOutsideCornerGetNextOrientation_BANK5 */
 void func_D798(void);
-void func_A0C6_b3(void); /* UpdateBullet_CollisionWithZebetiteAndMotherBrainGlass */
 void func_9BAF_b3(void); /* Cannon_ShootEnProjectile */
+void func_AEE7_b3(void);
+void func_B079_b3(void);
+void func_B0C6_b3(void);
+void func_B0CA_b3(void);
+void func_B920_b3(void);
+void func_B151_b3(void);
+void func_B144_b3(void);
+void func_B154_b3(void);
+void func_B19B_b3(void);
+void func_B1A8_b3(void);
+void func_9830_b3(void);
+void func_B1E0_b3(void);
+void func_80C7_b3(void); /* EnemyIfMoveFailedUp_facingHorizontal */
+void func_B2C5_b3(void);
+void func_B374_b3(void); /* LoadSFXData_SQ2 */
+void func_B36C_b3(void); /* LoadSFXData_Tri */
+void func_B370_b3(void); /* LoadSFXData_Noise */
+void func_B493_b3(void); /* UpdateContFlags */
+void func_B452_b3(void); /* InitSFXData */
+void func_B463_b3(void);
+void func_B472_b3(void); /* InitSFXData_Tri */
+void func_B4A9_b3(void); /* IncrementSFXFrame */
+void func_B58F_b3(void); /* EndNoiseSFX */
+void func_B587_b3(void); /* GotoInitSFXData */
+void func_B4A2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
+void func_B5A5_b3(void); /* MultiSFXInit */
+void func_B62C_b3(void); /* WriteSQ1SQ2PeriodLow */
+void func_B5CD_b3(void); /* EndMultiSFX */
+void func_B6F2_b3(void); /* EndSQ1SFX */
+void func_B896_b3(void); /* EndTriSFX */
+void func_B98C_b3(void); /* DecreaseSFXTriPeriod */
+void func_B869_b3(void); /* WriteSFXTriPeriod */
+void func_B978_b3(void); /* IncreaseSFXTriPeriod */
+void func_B9A0_b3(void); /* DivideSFXTriPeriod */
+void func_B8C3_b3(void); /* RndTriPeriods */
+void func_BA41_b3(void); /* UpdateVolumeEnvelope */
+void func_BA08_b3(void); /* LoadMusicSQ1SQ2Periods */
+void func_B3F0_b3(void); /* EndOrLoopMusic */
+void func_BA37_b3(void); /* UpdateAllVolumeEnvelopes */
+void func_B9F3_b3(void); /* ResetVolumeIndex */
+void func_BB1C_b3(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BADC_b3(void); /* LoadNextMusicChannelInstr */
+void func_BBDE_b3(void); /* MusicChannelInstr_SongNoteNoise */
+void func_BBB7_b3(void); /* UpdateMusicTriLinearCount */
+void func_BAB3_b3(void); /* IncrementToNextMusicChannel */
+void func_BBA8_b3(void); /* SetMusicInstrDelayToLength */
+void func_BBCD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
+void func_BB37_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
+void func_BAA5_b3(void); /* UpdateAllMusicChannels */
+void func_BCAA_b3(void); /* Music00Init */
+void func_BCA4_b3(void); /* Music01Init */
+void func_BC9A_b3(void); /* Music02Init */
+void func_BC96_b3(void); /* Music03Init */
+void func_BC89_b3(void); /* Music04Init */
+void func_BC9E_b3(void); /* Music05Init */
+void func_B9E4_b3(void); /* SetVolumeAndDisableSweep */
+void func_BF19_b3(void); /* InitializeMusic */
+void func_BD77_b3(void);
+void func_BD9F_b3(void);
+void func_BE08_b3(void); /* SongPowerUpTri */
+void func_BE3E_b3(void); /* SongFadeInSQ1 */
+void func_BEB0_b3(void);
+void func_9DF1_b3(void);
+void func_A63B_b3(void);
 void func_FD5F(void); /* UpdateMellow_StorePositionToTemp */
 void func_FD6C(void); /* UpdateMellow_LoadPositionFromTemp */
 void func_8DF7_b6(void);
@@ -15052,6 +15296,8 @@ void func_B3FC_b5(void); /* CheckMusicFlags */
 void func_A93E_b5(void);
 void func_AFD7_b5(void);
 void func_AFE4_b5(void);
+void func_800F_b1(void); /* CommonJump_InitEnAnimIndex */
+void func_802A_b1(void); /* CommonJump_0E */
 void func_BB19_b2(void); /* GotoUpdateMusicTriLinearCount */
 void func_BB16_b2(void); /* GotoMusicChannelInstr_SongNoteNoise */
 void func_BA9D_b2(void); /* GotoEndOrLoopMusic */
@@ -15061,7 +15307,24 @@ void func_BC8D_b2(void);
 void func_BC8B_b2(void); /* XYMusicInit */
 void func_B3FC_b2(void); /* CheckMusicFlags */
 void func_A93E_b2(void);
-void func_9EF9_b3(void); /* Xplus16 */
+void func_800F_b5(void); /* CommonJump_InitEnAnimIndex */
+void func_AEAC_b3(void);
+void func_AEAE_b3(void);
+void func_BF1B_b3(void);
+void func_BF0B_b3(void);
+void func_BF67_b3(void);
+void func_B05B_b3(void);
+void func_B061_b3(void);
+void func_B17E_b3(void);
+void func_80C1_b3(void); /* EnemyIfMoveFailedUp_bounce */
+void func_BB19_b3(void); /* GotoUpdateMusicTriLinearCount */
+void func_BB16_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
+void func_BA9D_b3(void); /* GotoEndOrLoopMusic */
+void func_BAA1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
+void func_BAB0_b3(void); /* MusicChannelBaseEmpty */
+void func_BC8D_b3(void);
+void func_BC8B_b3(void); /* XYMusicInit */
+void func_B3FC_b3(void); /* CheckMusicFlags */
 void func_915E_b6(void);
 void func_A76F_b6(void);
 void func_A508_b6(void);
@@ -15212,6 +15475,9 @@ void func_C91E(void);
 void func_F003(void);
 void func_C909(void);
 void func_D006(void);
+void func_C27C(void); /* JumpEngine */
+void func_C27D(void);
+void func_C284(void);
 void func_C16E(void);
 void func_FB29(void);
 void func_FB2A(void);
@@ -16370,6 +16636,7 @@ void func_A820_b6(void);
 void func_CC92(void);
 void func_8CCF_b0(void);
 void func_8CCF_b6(void);
+void func_F56C(void);
 void func_EB4B(void);
 void func_ED25(void);
 void func_B503_b0(void);
@@ -16411,67 +16678,6 @@ void func_FD33(void);
 void func_CC0A(void);
 void func_CBC3(void);
 void func_B0D4_b1(void);
-void func_B920_b3(void);
-void func_B151_b3(void);
-void func_B144_b3(void);
-void func_B154_b3(void);
-void func_B19B_b3(void);
-void func_B1A8_b3(void);
-void func_9830_b3(void);
-void func_B1E0_b3(void);
-void func_80C7_b3(void); /* EnemyIfMoveFailedUp_facingHorizontal */
-void func_B2C5_b3(void);
-void func_B374_b3(void); /* LoadSFXData_SQ2 */
-void func_B36C_b3(void); /* LoadSFXData_Tri */
-void func_B370_b3(void); /* LoadSFXData_Noise */
-void func_B493_b3(void); /* UpdateContFlags */
-void func_B452_b3(void); /* InitSFXData */
-void func_B463_b3(void);
-void func_B472_b3(void); /* InitSFXData_Tri */
-void func_B4A9_b3(void); /* IncrementSFXFrame */
-void func_B58F_b3(void); /* EndNoiseSFX */
-void func_B587_b3(void); /* GotoInitSFXData */
-void func_B4A2_b3(void); /* ClearCurrentSoundFlagsAndContFlags */
-void func_B5A5_b3(void); /* MultiSFXInit */
-void func_B62C_b3(void); /* WriteSQ1SQ2PeriodLow */
-void func_B5CD_b3(void); /* EndMultiSFX */
-void func_B6F2_b3(void); /* EndSQ1SFX */
-void func_B896_b3(void); /* EndTriSFX */
-void func_B98C_b3(void); /* DecreaseSFXTriPeriod */
-void func_B869_b3(void); /* WriteSFXTriPeriod */
-void func_B978_b3(void); /* IncreaseSFXTriPeriod */
-void func_B9A0_b3(void); /* DivideSFXTriPeriod */
-void func_B8C3_b3(void); /* RndTriPeriods */
-void func_BA41_b3(void); /* UpdateVolumeEnvelope */
-void func_BA08_b3(void); /* LoadMusicSQ1SQ2Periods */
-void func_B3F0_b3(void); /* EndOrLoopMusic */
-void func_BA37_b3(void); /* UpdateAllVolumeEnvelopes */
-void func_B9F3_b3(void); /* ResetVolumeIndex */
-void func_BB1C_b3(void); /* LoadNextMusicChannelInstr_Continued */
-void func_BADC_b3(void); /* LoadNextMusicChannelInstr */
-void func_BBDE_b3(void); /* MusicChannelInstr_SongNoteNoise */
-void func_BBB7_b3(void); /* UpdateMusicTriLinearCount */
-void func_BAB3_b3(void); /* IncrementToNextMusicChannel */
-void func_BBA8_b3(void); /* SetMusicInstrDelayToLength */
-void func_BBCD_b3(void); /* UpdateMusicTriLinearCount_setToNoteLength */
-void func_BB37_b3(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
-void func_BAA5_b3(void); /* UpdateAllMusicChannels */
-void func_BCAA_b3(void); /* Music00Init */
-void func_BCA4_b3(void); /* Music01Init */
-void func_BC9A_b3(void); /* Music02Init */
-void func_BC96_b3(void); /* Music03Init */
-void func_BC89_b3(void); /* Music04Init */
-void func_BC9E_b3(void); /* Music05Init */
-void func_B9E4_b3(void); /* SetVolumeAndDisableSweep */
-void func_BF19_b3(void); /* InitializeMusic */
-void func_BD77_b3(void);
-void func_BD9F_b3(void);
-void func_BE08_b3(void); /* SongPowerUpTri */
-void func_BE3E_b3(void); /* SongFadeInSQ1 */
-void func_BEB0_b3(void);
-void func_BF1B_b3(void);
-void func_BF0B_b3(void);
-void func_BF67_b3(void);
 void func_E3E0(void);
 void func_A82D_b1(void);
 void func_8001_b1(void);
@@ -16486,7 +16692,6 @@ void func_BA41_b1(void); /* UpdateVolumeEnvelope */
 void func_BA08_b1(void); /* LoadMusicSQ1SQ2Periods */
 void func_BA37_b1(void); /* UpdateAllVolumeEnvelopes */
 void func_B9F3_b1(void); /* ResetVolumeIndex */
-void func_BAB3_b1(void); /* IncrementToNextMusicChannel */
 void func_BB37_b1(void); /* LoadNextMusicChannelInstr_Continued_ReturnFromUpdateMusicTriLinearCount */
 void func_B9E4_b1(void); /* SetVolumeAndDisableSweep */
 void func_BB19_b1(void); /* GotoUpdateMusicTriLinearCount */
@@ -16542,24 +16747,13 @@ void func_B452_b0(void); /* InitSFXData */
 void func_B463_b0(void);
 void func_B472_b0(void); /* InitSFXData_Tri */
 void func_A1D1_b4(void);
-void func_B17E_b3(void);
-void func_9A06_b3(void); /* GetMetroidAccel */
-void func_9A07_b3(void);
-void func_80C1_b3(void); /* EnemyIfMoveFailedUp_bounce */
-void func_BB19_b3(void); /* GotoUpdateMusicTriLinearCount */
-void func_BB16_b3(void); /* GotoMusicChannelInstr_SongNoteNoise */
-void func_BA9D_b3(void); /* GotoEndOrLoopMusic */
-void func_BAA1_b3(void); /* GotoUpdateAllVolumeEnvelopes */
-void func_BAB0_b3(void); /* MusicChannelBaseEmpty */
-void func_BC8D_b3(void);
-void func_BC8B_b3(void); /* XYMusicInit */
-void func_B3FC_b3(void); /* CheckMusicFlags */
-void func_A93E_b3(void);
 void func_AFCC_b1(void);
 void func_AFDA_b1(void);
 void func_B3F0_b1(void); /* EndOrLoopMusic */
 void func_BB1C_b1(void); /* LoadNextMusicChannelInstr_Continued */
+void func_BB8C_b1(void); /* LoadNextMusicChannelInstr_Continued_if_Cntrl0Data */
 void func_BADC_b1(void); /* LoadNextMusicChannelInstr */
+void func_BAB3_b1(void); /* IncrementToNextMusicChannel */
 void func_BBA8_b1(void); /* SetMusicInstrDelayToLength */
 void func_BAA5_b1(void); /* UpdateAllMusicChannels */
 void func_BAA8_b1(void);
@@ -16751,7 +16945,6 @@ void func_99E5_b3(void);
 void func_8009_b3(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
 void func_9B45_b3(void);
 void func_9B85_b3(void);
-void func_A0F1_b3(void);
 void func_847F_b3(void);
 void func_C531(void); /* InitBank0 */
 void func_C54A(void);
@@ -16784,45 +16977,25 @@ void func_9160_b7(void);
 void func_A950_b7(void);
 void func_A93E_b0(void); /* CopyMap */
 void func_9983_b7(void);
-void func_800F_b1(void); /* CommonJump_InitEnAnimIndex */
 void func_800F_b3(void); /* CommonJump_InitEnAnimIndex */
-void func_800F_b5(void); /* CommonJump_InitEnAnimIndex */
-void func_8036_b1(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
 void func_8036_b3(void); /* CommonJump_EnemyGetDeltaY_UsingAcceleration */
-void func_8039_b1(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
 void func_8039_b3(void); /* CommonJump_EnemyGetDeltaX_UsingAcceleration */
-void func_8027_b1(void); /* CommonJump_ApplySpeedToPosition */
-void func_8003_b1(void); /* CommonJump_UpdateEnemyCommon_noMove */
 void func_8042_b1(void); /* CommonJump_SubtractHealth */
 void func_8042_b2(void); /* CommonJump_SubtractHealth */
 void func_8042_b4(void); /* CommonJump_SubtractHealth */
 void func_8042_b5(void); /* CommonJump_SubtractHealth */
-void func_8006_b1(void); /* CommonJump_UpdateEnemyCommon_noMoveNoAnim */
-void func_801B_b1(void); /* CommonJump_EnemyFlipAfterDisplacement */
 void func_801B_b3(void); /* CommonJump_EnemyFlipAfterDisplacement */
-void func_801B_b5(void); /* CommonJump_EnemyFlipAfterDisplacement */
-void func_801E_b1(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
 void func_801E_b3(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
-void func_801E_b5(void); /* CommonJump_InitEnActiveAnimIndex_NoInitOffset */
-void func_8009_b1(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
-void func_8009_b5(void); /* CommonJump_CrawlerAIRoutine_ShouldCrawlerMove */
-void func_800C_b1(void); /* CommonJump_UpdateEnemyAnim */
 void func_800C_b3(void); /* CommonJump_UpdateEnemyAnim */
-void func_800C_b5(void); /* CommonJump_UpdateEnemyAnim */
-void func_802D_b1(void); /* CommonJump_EnemyGetDeltaY */
 void func_802D_b2(void); /* CommonJump_EnemyGetDeltaY */
 void func_802D_b3(void); /* CommonJump_EnemyGetDeltaY */
 void func_802D_b5(void); /* CommonJump_EnemyGetDeltaY */
-void func_8030_b1(void); /* CommonJump_EnemyGetDeltaX */
 void func_8030_b2(void); /* CommonJump_EnemyGetDeltaX */
 void func_8030_b3(void); /* CommonJump_EnemyGetDeltaX */
 void func_8030_b5(void); /* CommonJump_EnemyGetDeltaX */
-void func_8033_b1(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_8033_b2(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_8033_b3(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
 void func_8033_b5(void); /* CommonJump_EnemyBGCollideOrApplySpeed */
-void func_802A_b1(void); /* CommonJump_0E */
-void func_802A_b5(void); /* CommonJump_0E */
 void func_B920_b0(void);
 void func_B920_b1(void);
 void func_B921_b1(void); /* StatueRaiseSFXInit */
@@ -16876,7 +17049,6 @@ void func_B3FC_b0(void); /* CheckMusicFlags */
 void func_8021_b1(void); /* CommonJump_SpawnEnProjectile */
 void func_8021_b3(void); /* CommonJump_SpawnEnProjectile */
 void func_8021_b4(void); /* CommonJump_SpawnEnProjectile */
-void func_8021_b5(void); /* CommonJump_SpawnEnProjectile */
 void func_803F_b1(void); /* CommonJump_DrawTileBlast */
 void func_803F_b2(void); /* CommonJump_DrawTileBlast */
 void func_803F_b4(void); /* CommonJump_DrawTileBlast */
@@ -16886,14 +17058,14 @@ void func_B61C_b1(void);
 void func_B61C_b3(void);
 void func_B61C_b4(void);
 void func_B61C_b5(void);
-void func_8045_b1(void); /* CommonJump_Base10Subtract */
-void func_8045_b2(void); /* CommonJump_Base10Subtract */
-void func_8045_b4(void); /* CommonJump_Base10Subtract */
-void func_8045_b5(void); /* CommonJump_Base10Subtract */
 void func_803C_b1(void); /* CommonJump_DrawEnemy */
 void func_803C_b2(void); /* CommonJump_DrawEnemy */
 void func_803C_b4(void); /* CommonJump_DrawEnemy */
 void func_803C_b5(void); /* CommonJump_DrawEnemy */
+void func_8045_b1(void); /* CommonJump_Base10Subtract */
+void func_8045_b2(void); /* CommonJump_Base10Subtract */
+void func_8045_b4(void); /* CommonJump_Base10Subtract */
+void func_8045_b5(void); /* CommonJump_Base10Subtract */
 void func_8001_b2(void);
 void func_8001_b3(void);
 void func_8001_b4(void);
@@ -16938,6 +17110,7 @@ void func_BEE9_b0(void);
 void func_C000_b0(void); /* RandomNumbers */
 void func_BA40_b1(void);
 void func_BA4B_b1(void);
+void func_8024_b1(void); /* CommonJump_JumpEngine */
 void func_871F_b1(void); /* ObjPlace1 */
 void func_872B_b1(void); /* ObjPlace2 */
 void func_8737_b1(void); /* ObjPlace3 */
@@ -17025,25 +17198,6 @@ void func_8AD8_b1(void); /* ObjFrame_RidleyStatue */
 void func_8AE9_b1(void); /* ObjFrame_MissileExplode0 */
 void func_8AF3_b1(void); /* ObjFrame_MissileExplode1 */
 void func_8B03_b1(void); /* ObjFrame_MissileExplode2 */
-void func_95C6_b1(void); /* TwosComplement_ */
-void func_99B8_b1(void); /* SidehopperFloorAIRoutine_BANK1 */
-void func_99FA_b1(void); /* SkreeAIRoutine_BANK1 */
-void func_9A44_b1(void); /* SkreeExit_Resting_BANK1 */
-void func_9A49_b1(void); /* SkreeExit_Explode_BANK1 */
-void func_9A4C_b1(void); /* CrawlerAIRoutine_BANK1 */
-void func_9A8F_b1(void); /* CrawlerReorientSprite_BANK1 */
-void func_9AA8_b1(void); /* CrawlerInsideCornerCheck_BANK1 */
-void func_9ABD_b1(void); /* CrawlerFlipDirection_BANK1 */
-void func_9AC6_b1(void); /* CrawlerOutsideCornerCheck_BANK1 */
-void func_9ADA_b1(void); /* CrawlerOutsideCornerGetNextOrientation_BANK1 */
-void func_9AE2_b1(void); /* JumpByRTSToMovementRoutine_BANK1 */
-void func_9AF5_b1(void); /* RioAIRoutine_BANK1 */
-void func_9C1D_b1(void); /* KraidUpdateAllProjectiles_BANK1 */
-void func_9C2A_b1(void); /* KraidUpdateProjectile_BANK1 */
-void func_9C96_b1(void); /* LoadEnemyPositionFromTemp__BANK1 */
-void func_9CA8_b1(void); /* StoreEnemyPositionToTemp__BANK1 */
-void func_9CCC_b1(void); /* KraidTryToLaunchLint_BANK1 */
-void func_9D05_b1(void); /* KraidTryToLaunchNail_BANK1 */
 void func_B3C0_b1(void);
 void func_B3CC_b1(void);
 void func_B3DE_b1(void);
@@ -17129,6 +17283,7 @@ void func_E8FC_b1(void); /* EnemyCheckMoveRight */
 void func_E96A_b1(void); /* MakeRoomRAMPtr */
 void func_F744_b1(void); /* OrEnData05 */
 void func_F74B_b1(void); /* ReadTableAt968B */
+void func_8024_b2(void); /* CommonJump_JumpEngine */
 void func_B3C0_b2(void);
 void func_B3E4_b2(void);
 void func_B3CC_b2(void);
@@ -17166,17 +17321,7 @@ void func_E8FC_b2(void); /* EnemyCheckMoveRight */
 void func_E96A_b2(void); /* MakeRoomRAMPtr */
 void func_F744_b2(void); /* OrEnData05 */
 void func_F74B_b2(void); /* ReadTableAt968B */
-void func_9AF9_b3(void); /* SetRinkaSpeed_BANK3 */
-void func_9DF2_b3(void); /* MotherBrain_Idle_CollideWithSamus */
-void func_9E43_b3(void); /* UpdateMotherBrainFlashDelay */
-void func_9F69_b3(void); /* MotherBrain_SpawnDoor */
-void func_9FED_b3(void); /* MotherBrain_Idle_HandleBeingHit */
-void func_A001_b3(void);
-void func_A01B_b3(void); /* MotherBrain_Idle_UpdateAnimBrain */
-void func_A028_b3(void);
-void func_A02E_b3(void); /* MotherBrain_Idle_UpdateAnimEye */
-void func_A041_b3(void); /* MotherBrain_DrawSprites */
-void func_A072_b3(void); /* MotherBrain_Disappear_Disintegrate */
+void func_8024_b3(void); /* CommonJump_JumpEngine */
 void func_B3C0_b3(void);
 void func_B3E4_b3(void);
 void func_B3CC_b3(void);
@@ -17215,6 +17360,7 @@ void func_E8FC_b3(void); /* EnemyCheckMoveRight */
 void func_E96A_b3(void); /* MakeRoomRAMPtr */
 void func_F744_b3(void); /* OrEnData05 */
 void func_F74B_b3(void); /* ReadTableAt968B */
+void func_8024_b4(void); /* CommonJump_JumpEngine */
 void func_B3C0_b4(void);
 void func_B3E4_b4(void);
 void func_B3CC_b4(void);
@@ -17253,18 +17399,8 @@ void func_E8FC_b4(void); /* EnemyCheckMoveRight */
 void func_E96A_b4(void); /* MakeRoomRAMPtr */
 void func_F744_b4(void); /* OrEnData05 */
 void func_F74B_b4(void); /* ReadTableAt968B */
+void func_8024_b5(void); /* CommonJump_JumpEngine */
 void func_871C_b5(void);
-void func_95C6_b5(void); /* TwosComplement_ */
-void func_98F8_b5(void); /* UpdateSwooperAnim_BANK5 */
-void func_9958_b5(void); /* SwooperChangeEnemyType_BANK5 */
-void func_99AD_b5(void); /* CrawlerReorientSprite_BANK5 */
-void func_99C6_b5(void); /* CrawlerInsideCornerCheck_BANK5 */
-void func_99DB_b5(void); /* CrawlerFlipDirection_BANK5 */
-void func_99E4_b5(void); /* CrawlerOutsideCornerCheck_BANK5 */
-void func_99F8_b5(void); /* CrawlerOutsideCornerGetNextOrientation_BANK5 */
-void func_9A00_b5(void); /* JumpByRTSToMovementRoutine_BANK5 */
-void func_9A07_b5(void);
-void func_9A79_b5(void); /* RidleyTryToLaunchFireball_BANK5 */
 void func_B3C0_b5(void);
 void func_B3E4_b5(void);
 void func_B3CC_b5(void);
@@ -17337,9 +17473,9 @@ void func_8796_b1(void);
 void func_8799_b1(void); /* ObjPlaceB */
 void func_87A5_b1(void); /* ObjPlaceC */
 void func_87B1_b1(void); /* ObjPlaceE */
+void func_F59A(void);
 void func_89F6_b1(void);
 void func_89FB_b1(void); /* ObjFrame_SamusRunPntUpFire2 */
-void func_99A1_b1(void); /* UpdateEnemyCommon_Decide_BANK1 */
 void func_B538_b1(void); /* ScrewAttackSFXInit_RTS */
 void func_B564_b1(void); /* IncrementNoisePeriod */
 void func_B694_b1(void); /* SamusHitSFXInit_RTS */
@@ -17348,7 +17484,6 @@ void func_B739_b1(void); /* GotoInitSFXData2 */
 void func_B8A6_b1(void); /* EndTriSFX_RTS */
 void func_B8EC_b1(void); /* SamusDieSFXInit_RTS */
 void func_B538_b2(void); /* ScrewAttackSFXInit_RTS */
-void func_9DF1_b3(void);
 void func_B538_b3(void); /* ScrewAttackSFXInit_RTS */
 void func_B538_b4(void); /* ScrewAttackSFXInit_RTS */
 void func_B538_b5(void); /* ScrewAttackSFXInit_RTS */
@@ -17362,6 +17497,9 @@ void func_95B1_b1(void);
 void func_95B4_b1(void);
 void func_95B7_b1(void);
 void func_95BA_b1(void);
+void func_9B32_b1(void); /* PipeBugAIRoutine_BANK1 */
+void func_9BA2_b1(void); /* KraidAIRoutine_BANK1 */
+void func_9C1A_b1(void); /* KraidNailAIRoutine_BANK1 */
 void func_95C0_b1(void);
 void func_95BD_b1(void);
 void func_98DB_b1(void); /* EnemyMovement0F_R_BANK1 */
@@ -17375,10 +17513,6 @@ void func_99DE_b1(void);
 void func_99A6_b1(void);
 void func_9A03_b1(void);
 void func_9A12_b1(void);
-void func_99BA_b1(void); /* Sidehopper_Common_BANK1 */
-void func_99C8_b1(void); /* CommonEnemyStub2_BANK1 */
-void func_99CC_b1(void); /* CommonEnemyStub_BANK1 */
-void func_9BD2_b1(void); /* KraidLintAIRoutine_BANK1 */
 void func_9F52_b1(void);
 void func_9FA4_b1(void);
 void func_9161_b1(void);
@@ -17511,7 +17645,6 @@ void func_E98E_body(int _entry);
 void func_E7AD_body(int _entry);
 void func_E88B_body(int _entry);
 void func_D9BA_body(int _entry);
-void func_C27C_body(int _entry);
 void func_D78B_body(int _entry);
 void func_D77F_body(int _entry);
 void func_FECC_body(int _entry);
@@ -17521,6 +17654,7 @@ void func_FD25_body(int _entry);
 void func_DF20_body(int _entry);
 void func_C080_body(int _entry);
 void func_C159_body(int _entry);
+void func_C27C_body(int _entry);
 void func_C602_body(int _entry);
 void func_C36C_body(int _entry);
 void func_C620_body(int _entry);
@@ -17611,10 +17745,14 @@ void func_84FE_b1_body(int _entry);
 void func_8134_b1_body(int _entry);
 void func_81FC_b1_body(int _entry);
 void func_81C7_b1_body(int _entry);
+void func_99FA_b1_body(int _entry);
+void func_9AA8_b1_body(int _entry);
+void func_9C2A_b1_body(int _entry);
 void func_A9FC_b1_body(int _entry);
 void func_80C7_b1_body(int _entry);
 void func_B452_b1_body(int _entry);
 void func_B58F_b1_body(int _entry);
+void func_BB1C_b1_body(int _entry);
 void func_BAA5_b1_body(int _entry);
 void func_B920_b1_body(int _entry);
 void func_8737_b1_body(int _entry);
@@ -17627,9 +17765,6 @@ void func_8A26_b1_body(int _entry);
 void func_8A41_b1_body(int _entry);
 void func_8A6E_b1_body(int _entry);
 void func_8AC4_b1_body(int _entry);
-void func_99FA_b1_body(int _entry);
-void func_9AA8_b1_body(int _entry);
-void func_9C2A_b1_body(int _entry);
 void func_B3CC_b1_body(int _entry);
 void func_B539_b1_body(int _entry);
 void func_B56E_b1_body(int _entry);
@@ -17659,6 +17794,7 @@ void func_84A7_b2_body(int _entry);
 void func_816E_b2_body(int _entry);
 void func_84FE_b2_body(int _entry);
 void func_8134_b2_body(int _entry);
+void func_95E5_b2_body(int _entry);
 void func_8B87_b2_body(int _entry);
 void func_81FC_b2_body(int _entry);
 void func_81C7_b2_body(int _entry);
@@ -17676,6 +17812,7 @@ void func_B31B_b3_body(int _entry);
 void func_B41D_b3_body(int _entry);
 void func_B4BD_b3_body(int _entry);
 void func_99C3_b3_body(int _entry);
+void func_95C6_b3_body(int _entry);
 void func_99AE_b3_body(int _entry);
 void func_8B13_b3_body(int _entry);
 void func_8244_b3_body(int _entry);
@@ -17692,17 +17829,13 @@ void func_81FC_b3_body(int _entry);
 void func_81C7_b3_body(int _entry);
 void func_9D6C_b3_body(int _entry);
 void func_9B37_b3_body(int _entry);
-void func_A238_b3_body(int _entry);
-void func_A28B_b3_body(int _entry);
-void func_A15E_b3_body(int _entry);
+void func_9DD4_b3_body(int _entry);
 void func_8C01_b3_body(int _entry);
 void func_8CC6_b3_body(int _entry);
+void func_9A06_b3_body(int _entry);
 void func_9B70_b3_body(int _entry);
 void func_8CF7_b3_body(int _entry);
 void func_B452_b3_body(int _entry);
-void func_9A06_b3_body(int _entry);
-void func_9FED_b3_body(int _entry);
-void func_A01B_b3_body(int _entry);
 void func_B3C0_b3_body(int _entry);
 void func_B3CC_b3_body(int _entry);
 void func_B9B5_b3_body(int _entry);
@@ -17727,10 +17860,10 @@ void func_81C7_b5_body(int _entry);
 void func_8C01_b5_body(int _entry);
 void func_8CC6_b5_body(int _entry);
 void func_AAA3_b5_body(int _entry);
+void func_9A00_b5_body(int _entry);
+void func_99C6_b5_body(int _entry);
 void func_8CF7_b5_body(int _entry);
 void func_B452_b5_body(int _entry);
-void func_99C6_b5_body(int _entry);
-void func_9A00_b5_body(int _entry);
 void func_B3C0_b5_body(int _entry);
 void func_B3CC_b5_body(int _entry);
 void func_B9B5_b5_body(int _entry);

@@ -26,9 +26,11 @@ find_package(SDL2 REQUIRED)
 # header, not a TU, so it isn't matched/compiled directly. CONFIGURE_DEPENDS
 # re-globs on reconfigure so a regen that changes the bank count (add/remove
 # banks) doesn't require manually editing this list.
+set(METROID_GENERATED_ROOT "${CMAKE_SOURCE_DIR}/generated" CACHE PATH
+    "Generated Metroid sources (a separate directory permits coverage comparisons)")
 file(GLOB METROID_GEN CONFIGURE_DEPENDS
-    "${CMAKE_SOURCE_DIR}/generated/metroid_full*.c"
-    "${CMAKE_SOURCE_DIR}/generated/metroid_dispatch.c"
+    "${METROID_GENERATED_ROOT}/metroid_full*.c"
+    "${METROID_GENERATED_ROOT}/metroid_dispatch.c"
 )
 list(FILTER METROID_GEN EXCLUDE REGEX "generated/metroid_full_bank(01|07)\\.c$")
 
@@ -67,6 +69,14 @@ target_compile_definitions(MetroidNESRecomp PRIVATE
     RECOMP_STACK_TRACKING
     WATCHDOG_ENABLED
 )
+
+option(METROID_PROGRESSION_QA "Enable explicit debug-only room-loader fixtures" OFF)
+if(METROID_PROGRESSION_QA)
+    if(NOT NESRECOMP_ENABLE_TRACE)
+        message(FATAL_ERROR "METROID_PROGRESSION_QA requires NESRECOMP_ENABLE_TRACE")
+    endif()
+    target_compile_definitions(MetroidNESRecomp PRIVATE METROID_PROGRESSION_QA=1)
+endif()
 
 target_include_directories(MetroidNESRecomp PRIVATE
     ${NESRECOMP_RUNNER_INCLUDE_DIRS}
