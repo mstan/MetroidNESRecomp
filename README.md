@@ -15,6 +15,11 @@ A static recompilation of Metroid (NES) using [nesrecomp](https://github.com/mst
 
 **You must supply your own Metroid ROM.** No copyrighted game data is included in this repository.
 
+Windows builds record startup diagnostics automatically. After a failed launch,
+send the `diagnostics` folder beside the executable. See
+[collecting startup diagnostics](DIAGNOSTICS.md), including the helper for
+Windows loader failures before the launcher appears.
+
 ### Which ROM
 
 The default cycle backend has separate **USA/NTSC** and **Europe/PAL** builds:
