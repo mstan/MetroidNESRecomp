@@ -110,7 +110,9 @@ foreach ($region in $variants) {
     try {
         Copy-Item -LiteralPath $exe -Destination $stage
         Copy-Item -LiteralPath (Join-Path $bin 'SDL2.dll') -Destination $stage
-        foreach ($runtime in 'msvcp140.dll', 'vcruntime140.dll', 'vcruntime140_1.dll') {
+        foreach ($runtime in 'msvcp140.dll', 'vcruntime140.dll', 'vcruntime140_1.dll',
+                             'msvcp140_1.dll','msvcp140_2.dll','concrt140.dll','vccorlib140.dll',
+                             'msvcp140_atomic_wait.dll','msvcp140_codecvt_ids.dll') {
             $runtimePath = Join-Path $bin $runtime
             if (Test-Path -LiteralPath $runtimePath) { Copy-Item -LiteralPath $runtimePath -Destination $stage }
         }
@@ -124,6 +126,11 @@ foreach ($region in $variants) {
         $uiRoot = Get-CacheValue $cache 'NESRECOMP_RECOMP_UI'
         if (-not $engineRoot) { $engineRoot = Join-Path $root 'nesrecomp' }
         if (-not $uiRoot) { $uiRoot = Join-Path $root 'recomp-ui' }
+        if ((Get-CacheValue $cache 'NESRECOMP_STARTUP_DIAGNOSTICS') -eq 'ON') {
+            Copy-Item -LiteralPath (Join-Path $root 'DIAGNOSTICS.md') -Destination $stage
+            Copy-Item -LiteralPath (Join-Path $root 'tools/Collect-Diagnostics.cmd') -Destination $stage
+            Copy-Item -LiteralPath (Join-Path $engineRoot 'tools/Collect-Diagnostics.ps1') -Destination $stage
+        }
         $licenses = @{
             'Game-LICENSE.txt' = (Join-Path $root 'LICENSE')
             'NESRecomp-LICENSE.txt' = (Join-Path $engineRoot 'LICENSE')
@@ -161,6 +168,10 @@ First-person camera: numpad 8/2 pitch, 4/6 yaw, 7/9 roll, +/- field of view,
 
 This is a development preview. Brief regression routes and playtests do not
 cover every room, boss or ending. See CYCLE-MIGRATION.md and RELEASE_NOTES.md.
+
+Startup logs and crash dumps are automatic. After a failure, send the diagnostics
+folder beside the executable. See DIAGNOSTICS.md; Collect-Diagnostics.cmd also
+captures Windows loader failures.
 "@
         [IO.File]::WriteAllText((Join-Path $stage 'README.txt'), $readme, [Text.Encoding]::UTF8)
         $forbidden = @(Get-ChildItem -LiteralPath $stage -File -Recurse | Where-Object {

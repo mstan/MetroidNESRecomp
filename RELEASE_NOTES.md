@@ -1,4 +1,21 @@
-# Metroid cycle previews (unreleased)
+# v0.2.2 - Windows startup diagnostics
+
+Startup logs now begin before the launcher opens. Unhandled Windows crashes
+attempt a matching minidump, and the release's optimized symbols are retained
+for analysis. Send the `diagnostics` folder after reproducing a failure; see
+`DIAGNOSTICS.md`. `Collect-Diagnostics.cmd` also records Windows loader failures
+that occur before the executable can write its own log.
+
+The Windows package now includes the Microsoft C++ runtime DLLs required by
+the executable. The previous ZIP omitted them and relied on an existing
+redistributable installation.
+
+The reported crash was not reproduced locally. Extracted launcher/Play checks
+pass; the short 900-frame gameplay route retains exact earlier-release and
+interpreter hashes and its final picture. This release adds evidence collection
+and corrects the missing runtime packaging.
+
+# Metroid cycle previews
 
 Separate USA/NTSC and Europe/PAL builds now use the cycle CPU backend by
 default. Choose the executable matching your ROM. No ROM is included.

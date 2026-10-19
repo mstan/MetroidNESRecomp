@@ -5,6 +5,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 set(NESRECOMP_ROOT ${CMAKE_SOURCE_DIR}/nesrecomp CACHE PATH "NESRecomp engine checkout")
+option(NESRECOMP_STARTUP_DIAGNOSTICS "Record startup logs and Windows crash dumps" ON)
+set(NESRECOMP_GAME_VERSION "0.2.2" CACHE STRING "Game release version")
 
 # nesrecomp/ and recomp-ui/ are git submodules (see .gitmodules); the pinned
 # commit is the gitlink recorded in this repo. After cloning run setup.sh/.bat
