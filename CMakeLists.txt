@@ -16,6 +16,11 @@ set(NESRECOMP_ENABLE_MODS ON CACHE BOOL
     "Enable package mods for Metroid" FORCE)
 set(NESRECOMP_BACKEND "cycle" CACHE STRING "CPU backend: cycle or legacy")
 set_property(CACHE NESRECOMP_BACKEND PROPERTY STRINGS cycle legacy)
+# Qualified Windows x64 renderer default; explicit cache choices remain honored.
+if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND
+   CMAKE_SYSTEM_PROCESSOR MATCHES "^(AMD64|amd64|x86_64|X86_64)$")
+    set(NESRECOMP_PPU_IMPL "HLE" CACHE STRING "PPU implementation: LLE or HLE")
+endif()
 if(NESRECOMP_BACKEND STREQUAL "cycle")
     set(METROID_VARIANT "usa" CACHE STRING "usa (NTSC) or europe (PAL)")
     set_property(CACHE METROID_VARIANT PROPERTY STRINGS usa europe)
