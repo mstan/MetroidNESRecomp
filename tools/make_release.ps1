@@ -29,6 +29,48 @@ function Get-CacheValue([string]$Cache, [string]$Name) {
     return ''
 }
 
+function Remove-ReleaseStage([string]$stage) {
+    $full = [IO.Path]::GetFullPath($stage)
+    $outAbsolute = [IO.Path]::GetFullPath($out).TrimEnd('\', '/')
+    if ([IO.Path]::GetDirectoryName($full) -ine $outAbsolute -or
+        [IO.Path]::GetFileName($full) -notmatch '^stage-[0-9a-f]{32}$') {
+        throw "Refusing cleanup of an unexpected release stage: $full"
+    }
+    foreach ($ancestor in @($root, $outAbsolute)) {
+        if ([IO.File]::GetAttributes($ancestor) -band [IO.FileAttributes]::ReparsePoint) {
+            throw "Refusing release cleanup through a reparse point: $ancestor"
+        }
+    }
+    try { $attributes = [IO.File]::GetAttributes($full) }
+    catch [IO.FileNotFoundException] { return }
+    catch [IO.DirectoryNotFoundException] { return }
+    if (($attributes -band [IO.FileAttributes]::ReparsePoint) -or
+        -not ($attributes -band [IO.FileAttributes]::Directory)) {
+        throw "Refusing release cleanup of a reparse point or non-directory: $full"
+    }
+    $pending = New-Object 'System.Collections.Generic.Stack[string]'
+    $pending.Push($full)
+    while ($pending.Count) {
+        $directory = $pending.Pop()
+        if ([IO.File]::Exists((Join-Path $directory 'HEAD')) -and
+            [IO.Directory]::Exists((Join-Path $directory 'objects'))) {
+            throw "Refusing release cleanup of a nested repository: $directory"
+        }
+        foreach ($entry in [IO.Directory]::EnumerateFileSystemEntries($directory)) {
+            if ([IO.Path]::GetFileName($entry) -ieq '.git') {
+                throw "Refusing release cleanup of a nested repository: $entry"
+            }
+            $attributes = [IO.File]::GetAttributes($entry)
+            if ($attributes -band [IO.FileAttributes]::ReparsePoint) {
+                throw "Refusing release cleanup of a reparse point: $entry"
+            }
+            if ($attributes -band [IO.FileAttributes]::Directory) { $pending.Push($entry) }
+        }
+    }
+    Remove-Item -LiteralPath $full -Recurse -ErrorAction Stop
+    if (Test-Path -LiteralPath $full) { throw "Release stage was not removed: $full" }
+}
+
 function Invoke-HiddenBuild([string]$Executable, [string[]]$ToolArguments) {
     # Quote Windows argv without ShellExecute, terminal windows or shell shims.
     $quoted = foreach ($value in $ToolArguments) {
@@ -116,6 +158,15 @@ foreach ($region in $variants) {
             $runtimePath = Join-Path $bin $runtime
             if (Test-Path -LiteralPath $runtimePath) { Copy-Item -LiteralPath $runtimePath -Destination $stage }
         }
+        foreach ($runtime in 'libgcc_s_seh-1.dll', 'libstdc++-6.dll', 'libwinpthread-1.dll') {
+            $runtimePath = Join-Path $bin $runtime
+            if (-not (Test-Path -LiteralPath $runtimePath -PathType Leaf)) {
+                $runtimePath = Join-Path $build $runtime
+            }
+            if (Test-Path -LiteralPath $runtimePath -PathType Leaf) {
+                Copy-Item -LiteralPath $runtimePath -Destination $stage
+            }
+        }
         Copy-Item -LiteralPath (Join-Path $bin 'assets') -Recurse -Destination (Join-Path $stage 'assets')
         New-Item -ItemType Directory -Path (Join-Path $stage 'mods') | Out-Null
         Copy-Item -LiteralPath $packages -Recurse -Destination (Join-Path $stage 'mods\packages')
@@ -185,9 +236,6 @@ captures Windows loader failures.
         Write-Host "Created local preview: $zip"
         Write-Host "SHA256: $((Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash)"
     } finally {
-        $stageAbsolute = [IO.Path]::GetFullPath($stage)
-        $outPrefix = [IO.Path]::GetFullPath($out).TrimEnd('\') + '\'
-        if (-not $stageAbsolute.StartsWith($outPrefix, [StringComparison]::OrdinalIgnoreCase)) { throw "Refusing cleanup outside release directory: $stageAbsolute" }
-        Remove-Item -LiteralPath $stageAbsolute -Recurse -Force
+        Remove-ReleaseStage $stage
     }
 }
