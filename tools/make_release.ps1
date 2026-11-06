@@ -184,6 +184,7 @@ foreach ($region in $variants) {
         }
         $licenses = @{
             'Game-LICENSE.txt' = (Join-Path $root 'LICENSE')
+            'Game-PERMISSIONS.md' = (Join-Path $root 'PERMISSIONS.md')
             'NESRecomp-LICENSE.txt' = (Join-Path $engineRoot 'LICENSE')
             'SDL2-COPYING.txt' = (Join-Path $engineRoot 'runner/external/SDL2/COPYING.txt')
             'ImGui-LICENSE.txt' = (Join-Path $uiRoot 'src/third_party/imgui/LICENSE.txt')
