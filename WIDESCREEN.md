@@ -1,8 +1,8 @@
 # Adaptive widescreen (USA/NTSC and Europe/PAL previews)
 
-Enable **Metroid Widescreen** in the launcher's mod controls, choose an aspect
-and status-bar position, then launch. It is off by default. The command-line
-equivalent is:
+Fresh settings enable **Metroid Widescreen** with **Fit window**. Choose an
+aspect and status-bar position in the launcher's mod controls; saved choices
+are preserved. The command-line equivalent is:
 
 ```powershell
 .\MetroidNESRecomp.exe .\metroid.nes --widescreen fit
@@ -39,7 +39,7 @@ is bypassed while this renderer is active.
 
 The mod's **Enemy and item range**, **Sprite capacity**, and **Gameplay slowdown**
 choices independently enable the PC enhancements below. All three default to
-**Original**, and the widescreen mod itself is off by default. For the expanded
+**Original**. For the expanded
 experience, select **Viewport**, **Expanded**, and **Reduced slowdown**. The
 command-line equivalent is:
 

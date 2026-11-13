@@ -46,11 +46,30 @@ if(NESRECOMP_BACKEND STREQUAL "cycle")
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/rom_profile.py" "${NESRECOMP_ROM}")
     set(NESRECOMP_HOST_COMPILER "" CACHE FILEPATH "Optional prebuilt compiler")
     include("${NESRECOMP_ROOT}/runner/cyc/project.cmake")
+    set(METROID_HD_PACK_DIR "" CACHE PATH "Local 2.1.2 HD pack for compiling its optional cartridge profile")
+    set(met_namespace_args)
+    if(METROID_HD_PACK_DIR)
+        if(NOT METROID_VARIANT STREQUAL "usa")
+            message(FATAL_ERROR "The supported HD patch requires the USA cartridge")
+        endif()
+        set(met_hd_rom "${CMAKE_CURRENT_BINARY_DIR}/metroid-hd-usa.nes")
+        execute_process(COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/hd_profile.py"
+            --rom "${NESRECOMP_ROM}" --pack "${METROID_HD_PACK_DIR}"
+            --sdk "${NESRECOMP_ROOT}" --out "${met_hd_rom}" RESULT_VARIABLE hd_result)
+        if(NOT hd_result EQUAL 0)
+            message(FATAL_ERROR "The supplied HD pack does not match the supported cartridge profile")
+        endif()
+        set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+            "${CMAKE_CURRENT_SOURCE_DIR}/tools/hd_profile.py"
+            "${METROID_HD_PACK_DIR}/hires.txt" "${METROID_HD_PACK_DIR}/mmm.ips")
+        set(met_namespace_args NAMESPACE metroid_stock)
+    endif()
     nesrecomp_add_cycle_game(MetroidNESRecomp
         ROM "${NESRECOMP_ROM}" GAME_CONFIG "${CMAKE_CURRENT_SOURCE_DIR}/game-cycle-${METROID_VARIANT}.toml"
         RECOMPILER "${NESRECOMP_HOST_COMPILER}" SEED_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cyc_seeds_${METROID_VARIANT}.txt"
-        MODS GAME_ID "metroid-nes" PLAYERS 1 REGION ${met_region}
-        PASSWORD_SAVE "metroid.srm" PASSWORD_SAVE_LABEL "Password"
+        MODS HD_PACKS GAME_ID "metroid-nes" PLAYERS 1 REGION ${met_region}
+        ${met_namespace_args}
+        PASSWORD_SAVE "metroid.srm" PASSWORD_SAVE_LABEL "Original game password"
         BOXART "${CMAKE_CURRENT_SOURCE_DIR}/boxart.tga"
         HOST_EXTRAS cyc_extras.c cycle_bridge.c password_writer.c metroid_ws.c metroid_ws_render.c metroid_ws_actors.c
             mods/widescreen_plugin.c game_voxel.c mods/voxel_plugin.c
@@ -58,6 +77,13 @@ if(NESRECOMP_BACKEND STREQUAL "cycle")
             "${NESRECOMP_ROOT}/runner/src/voxel_renderer.c"
             "${NESRECOMP_ROOT}/runner/src/voxel_screen_profile.c"
             "${NESRECOMP_ROOT}/runner/src/keybinds.c")
+    if(METROID_HD_PACK_DIR)
+        nesrecomp_add_cycle_program(MetroidNESRecomp ROM "${met_hd_rom}"
+            GAME_CONFIG "${CMAKE_CURRENT_SOURCE_DIR}/game-cycle-hd-usa.toml"
+            SEED_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cyc_seeds_hd_usa.txt" NAMESPACE metroid_hd)
+        nesrecomp_enable_native_programs(MetroidNESRecomp)
+        target_compile_definitions(MetroidNESRecomp PRIVATE METROID_CYCLE_HD_PROGRAMS)
+    endif()
     target_include_directories(MetroidNESRecomp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
     target_compile_definitions(MetroidNESRecomp PRIVATE METROID_CYCLE NESRECOMP_CYCLE_PRESENTATION)
     if(METROID_VARIANT STREQUAL "europe")

@@ -11,6 +11,7 @@ typedef struct {uint8_t A,X,Y,S,C,Z,I,D,V,N;uint16_t PC;} CPU6502State;
 extern CPU6502State met_cycle_cpu;
 #define g_cpu met_cycle_cpu
 uint8_t *met_cycle_work_ram(void);
+int met_cycle_stock_profile(void);
 #define g_sram (met_cycle_work_ram())
 #define g_current_bank (g_ram[MET_CurrentBank])
 extern int g_ws_oam_sidecar, g_ws_obj_delta_min,g_ws_obj_delta_max;

@@ -13,8 +13,9 @@ cmake --build build-cycle-europe --config Release
 ```
 
 Keep separate build and release directories for the regions. `mods/` packages
-are staged with the selected region's CRC. Widescreen and first-person voxel
-packages remain disabled by default. The earlier diorama experiment stays
+are staged with the selected region's CRC. Fresh settings use adaptive Fit
+widescreen; saved display choices are preserved. First-person voxel stays
+disabled by default. The earlier diorama experiment stays
 parked. Developer flags include `--widescreen 32:9`,
 `--widescreen-pc actors,sprites,smooth` and `--voxel-first-person`.
 

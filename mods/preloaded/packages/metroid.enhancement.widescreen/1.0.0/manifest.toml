@@ -23,7 +23,7 @@ name = "Widescreen"
 description = "Shows adjacent rooms in the side margins, keeps loaded-room enemies visible beyond the original screen edge, and anchors the status bar. Optional enhancements add viewport enemies, expanded sprites and reduced slowdown."
 group = "Display"
 exclusive_group = "display-mode"
-default_enabled = false
+default_enabled = true
 
 [[option]]
 feature = "widescreen"

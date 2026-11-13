@@ -4,6 +4,9 @@
 #include "hw_internal.h"
 #include "cpu6502.h"
 #include "mod_runtime.h"
+#ifdef METROID_CYCLE_HD_PROGRAMS
+#include "cyc_program.h"
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,6 +29,14 @@ static void regs_write(void) {
     cpu.c=g_cpu.C;cpu.z=g_cpu.Z;cpu.i=g_cpu.I;cpu.d=g_cpu.D;cpu.v=g_cpu.V;cpu.n=g_cpu.N;
 }
 uint8_t *met_cycle_work_ram(void) {return hw_cart.wram;}
+int met_cycle_stock_profile(void) {
+#ifdef METROID_CYCLE_HD_PROGRAMS
+    const CycProgram *program=cyc_program_current();
+    return program && !strcmp(program->id,"metroid_stock");
+#else
+    return 1;
+#endif
+}
 uint8_t mapper_peek_prg(uint16_t addr) {return cyc_mod_peek(addr);}
 uint16_t met_cycle_address(uint16_t usa) {
 #ifdef METROID_CYCLE_PAL
@@ -73,6 +84,7 @@ static void returned(void) {
     }
 }
 bool met_cycle_world_commit(void) {
+    if(!met_cycle_stock_profile())return false;
     CycModRegs r=call_regs();
     bool ok=cyc_mod_call_commit_hooked(met_cycle_address(0xcb29),&r);
     regs_read();return ok;
@@ -80,6 +92,7 @@ bool met_cycle_world_commit(void) {
 typedef struct {NESModFunctionEntryCallback cb;uint16_t usa;} Entry;
 static Entry s_entries[24];static unsigned s_entry_count;
 static int hook(unsigned i,uint16_t addr) {
+    if(!met_cycle_stock_profile())return 0;
     (void)addr;regs_read();int result=s_entries[i].cb(s_entries[i].usa);regs_write();return result;
 }
 #define HOOK(n) static int hook##n(uint16_t addr){return hook(n,addr);}
@@ -109,6 +122,7 @@ static int nmi(uint16_t addr) {
     met_actors_cycle_publish();met_render_cycle_publish();return 0;
 }
 static int compositor(uint32_t *out,int w,int h,int x0,const uint32_t *native,void *user) {
+    if(!met_cycle_stock_profile())return 0;
     (void)user;cyc_presentation_sync();return s_compositor?s_compositor(out,w,h,x0,native,s_compositor_user):0;
 }
 int ppu_renderer_set_custom_render(CycCompositorFn fn,void *user) {
@@ -122,6 +136,13 @@ void ppu_renderer_draw_sprites_wide(uint32_t *out,int w,int x0,const uint8_t *op
     Placement p={place,user};cyc_render_sprites(out,w,240,x0,opaque,place_sprite,&p);
 }
 void met_cycle_init(void) {
+    s_after_count=0;
+    if(!met_cycle_stock_profile()) {
+        cyc_mod_set_return_hook(NULL);
+        nes_mod_set_function_hook_enabled("metroid.cycle.sprite-x",0);
+        nes_mod_set_function_hook_enabled("metroid.cycle.nmi",0);
+        return;
+    }
     cyc_presentation_sync();regs_read();s_after_count=0;
     for(int i=0;i<64;i++)g_ws_shadow_x16[i]=s_display_shadow[i]=g_ppu_oam[i*4+3];
     cyc_mod_set_return_hook(returned);
