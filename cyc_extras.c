@@ -1,8 +1,10 @@
 /* Metroid's cycle host: original guest password encoder and input path,
  * existing asynchronous writer, widescreen/actor adapters and voxel profile. */
 #include "cyc_host_extras.h"
+#include "cyc_core.h"
 #include "cyc_ring.h"
 #include "cyc_tcp.h"
+#include "cyc_hdpack.h"
 #include "cycle_bridge.h"
 #include "cycle_regions.h"
 #include "metroid_ws.h"
@@ -59,6 +61,7 @@ static int  s_pw_session_logged = 0;            /* lazy session header in the lo
  * NUL-terminated ASCII password to `out`. Returns its length (0 on failure).
  * Leaves live game state untouched (snapshot/restore). */
 static int metroid_generate_password(char *out,int out_sz) {
+    if(!met_cycle_stock_profile())return 0;
     if(out_sz<25 || !cyc_mod_isolate_begin())return 0;
     cyc_mod_poke(MET_RandomNumber1,0);
     CycModRegs regs;cyc_mod_regs(&regs);regs.s=0xfd;regs.y=0;
@@ -142,6 +145,7 @@ static int password_is_blank(const char *pw) {
  * capture the empty title-screen state). Skips the blank/no-progress password
  * and persists only on change. */
 static void password_capture_tick(uint64_t frame_count) {
+    if(!met_cycle_stock_profile())return;
     if (!cyc_host_saves_enabled() || !s_capture_enabled || s_password_from_cli) return;
     if ((frame_count % 300) != 0) return;        /* ~every 5 s */
     if (g_ram[MET_GameMode] != 0) return;        /* 0 = in gameplay; 1 = title/menu */
@@ -187,6 +191,7 @@ static int s_prefill_press = 0;    /* 0 = press A this frame, 1 = release */
 static int s_prefill_armed = 0;    /* armed once per entry-screen visit */
 
 static void password_prefill_tick(void) {
+    if(!met_cycle_stock_profile())return;
     int on_entry = (g_ram[MET_GameMode] == 1 && g_ram[MET_TitleRoutine] == 0x18);
     if (!on_entry) { s_prefill_armed = 0; s_prefill_idx = -1; return; }
     if (!s_password || !s_password[0]) return;
@@ -225,23 +230,34 @@ static void password_prefill_tick(void) {
 
 
 static void power_on(void *ctx) {
-    (void)ctx;met_cycle_init();metroid_ws_init();game_voxel_init();
+    (void)ctx;met_cycle_init();atexit(password_writer_shutdown);
+    if(!met_cycle_stock_profile()) {
+        printf("[Metroid] HD pack: use its in-game save slots; original password helpers are inactive\n");
+        return;
+    }
+    metroid_ws_init();game_voxel_init();
     char exe[1024];get_exe_relative_path("MetroidNESRecomp.exe",exe,sizeof exe);keybinds_init_readonly(exe);
     if(cyc_host_saves_enabled() && !s_password_from_cli && password_save_read())s_password=s_loaded_password;
-    atexit(password_writer_shutdown);
 }
 static void input(void *ctx,uint8_t buttons[2]) {
     (void)ctx;g_controller1_buttons=buttons[0];password_prefill_tick();buttons[0]=g_controller1_buttons;
 }
 static void frame_end(void *ctx) {
+    if(!met_cycle_stock_profile())return;
     (void)ctx;cyc_presentation_sync();metroid_ws_post_nmi(cyc_ring_frame);password_capture_tick(cyc_ring_frame);game_voxel_update();
 }
 static uint32_t s_picture[CYC_VIDEO_MAX_WIDTH*240];
 static const uint32_t *present(void *ctx,int *w,int *h) {
+    if(!met_cycle_stock_profile()) {
+        const uint32_t *hd=cyc_hdpack_mod_present(w,h);
+        if(hd)return hd;
+        *w=256;*h=240;return cyc_frame_argb();
+    }
     (void)ctx;cyc_presentation_sync();const uint32_t *native=cyc_render_present(w,h);
     memcpy(s_picture,native,(size_t)(*w)*(*h)*sizeof *s_picture);game_voxel_post_render(s_picture);return s_picture;
 }
 static void event(void *ctx,const void *ev,int player) {
+    if(!met_cycle_stock_profile())return;
     (void)ctx;cyc_presentation_event(ev,player);game_voxel_handle_event(ev);
 }
 static bool option(void *ctx,const char *name,const char *value) {
@@ -268,10 +284,12 @@ static bool option(void *ctx,const char *name,const char *value) {
     return false;
 }
 static void tcp_password(int id,const char *line) {
+    if(!met_cycle_stock_profile()){cyc_tcp_err(id,"HD pack uses in-game save slots");return;}
     (void)line;char pw[25],quoted[64],fields[128];if(!metroid_generate_password(pw,sizeof pw)){cyc_tcp_err(id,"encoder failed");return;}
     cyc_tcp_quote(pw,quoted,sizeof quoted);snprintf(fields,sizeof fields,"\"password\":%s",quoted);cyc_tcp_ok(id,fields);
 }
 static void tcp_save(int id,const char *line) {
+    if(!met_cycle_stock_profile()){cyc_tcp_err(id,"HD pack uses in-game save slots");return;}
     (void)line;if(!cyc_host_saves_enabled()){cyc_tcp_err(id,"--no-save is active");return;}
     char pw[25];if(!metroid_generate_password(pw,sizeof pw)){cyc_tcp_err(id,"password save failed");return;}
     if(password_writer_failed())s_saved_password[0]=0;
@@ -283,6 +301,7 @@ static void tcp_save(int id,const char *line) {
     snprintf(s_loaded_password,sizeof s_loaded_password,"%s",pw);s_password=s_loaded_password;cyc_tcp_ok(id,NULL);
 }
 static void tcp_actors(int id,const char *line) {
+    if(!met_cycle_stock_profile()){cyc_tcp_err(id,"Actor view supports the original game");return;}
     (void)line;char actors[32768],fields[33000];if(!met_actors_debug_json(actors,sizeof actors)){cyc_tcp_err(id,"actor output overflow");return;}
     snprintf(fields,sizeof fields,"\"actors\":%s",actors);cyc_tcp_ok(id,fields);
 }

@@ -37,14 +37,14 @@ retains its USA-only generated sources and hints.
 ## Status
 
 **Experimental adaptive widescreen support (USA and Europe)** is available through the
-bundled **Metroid Widescreen** mod. Enable it in the launcher's mod controls and
-choose **Fit window**, **16:9**, **21:9**, or **32:9**. The custom renderer shows
+bundled **Metroid Widescreen** mod. Fresh settings use **Fit window**; the
+launcher's mod controls also offer **16:9**, **21:9**, or **32:9**. The custom renderer shows
 adjacent room terrain and follows live window resizing in Fit mode.
 
 Optional mod choices add **Viewport** enemies and item previews, **Expanded**
 sprite capacity, and **Reduced slowdown**. Viewport enemies retain their original
-distance-based attack triggers. Widescreen is off by default, and each additional
-enhancement defaults to **Original**. These features are still experimental;
+distance-based attack triggers. Saved display choices are preserved, and each
+additional enhancement defaults to **Original**. These features are still experimental;
 enemy, projectile, and room-transition coverage remains incomplete.
 
 ![Experimental 32:9 widescreen showing Samus, enemies and the Morph Ball in the expanded viewport](docs/screenshots/metroid-widescreen.png)
@@ -122,6 +122,32 @@ the European ROM path. See [CYCLE-MIGRATION.md](CYCLE-MIGRATION.md) for details.
 An explicit `-DNESRECOMP_BACKEND=legacy` build uses the checked-in USA
 function-level sources. The remaining symbol/hint instructions below describe
 that legacy generator workflow.
+
+### Optional Metroid HD 2.1.2 program
+
+The USA build can compile the cartridge profile required by the full HD pack.
+Supply your original USA ROM and extracted local pack when configuring:
+
+```powershell
+cmake -S . -B build-cycle-hd -G "Visual Studio 17 2022" -A x64 -DNESRECOMP_ROM=F:/ROMs/metroid.nes -DMETROID_HD_PACK_DIR=F:/Mods/MetroidHD
+cmake --build build-cycle-hd --config Release
+```
+
+The build verifies the original cartridge, pack patch and resulting image. It
+creates the patched compilation input inside the build directory and leaves
+the original ROM untouched. Players continue to select the original ROM.
+Create a local mod archive with the engine's importer, preserving the pack's
+original readme and terms:
+
+```powershell
+python nesrecomp/tools/package_hdpack.py --pack F:/Mods/MetroidHD --rom F:/ROMs/metroid.nes --game-id metroid-nes --id metroid.hd --version 2.1.2 --name "Metroid HD 2.1.2" --author "Metroid HD contributors" --license "Original pack terms; see included notices" --notice F:/Mods/MetroidHD-readme.txt --patched-sha1 5f0b6083a79235c3acc76f2b2fdb3d65c44f1163 --out metroid-hd.nesmod
+```
+
+Install that archive through **Mods** and enable its display feature before
+starting. HD, widescreen and voxel modes are exclusive choices. The HD patch
+uses its own in-game save slots; **Original game password** remains the stock
+game's separate progress file. No ROM or pack artwork/audio is included in
+this repository or its normal release archive.
 
 To create separate local Windows archives for both regions, run
 `powershell -File tools/make_release.ps1 -UsaRom F:/ROMs/metroid.nes -EuropeRom F:/ROMs/metroid-eu.nes`.
