@@ -1,8 +1,8 @@
 # Adaptive widescreen (USA/NTSC and Europe/PAL previews)
 
-Enable **Metroid Widescreen** in the launcher's mod controls, choose an aspect
-and status-bar position, then launch. It is off by default. The command-line
-equivalent is:
+Fresh profiles start with **Metroid Widescreen** enabled and adaptive **Fit**.
+Saved player choices are preserved. Choose an aspect and status-bar position in
+the launcher's mod controls. The command-line equivalents are:
 
 ```powershell
 .\MetroidNESRecomp.exe .\metroid.nes --widescreen fit

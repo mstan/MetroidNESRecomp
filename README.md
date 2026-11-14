@@ -37,14 +37,15 @@ retains its USA-only generated sources and hints.
 ## Status
 
 **Experimental adaptive widescreen support (USA and Europe)** is available through the
-bundled **Metroid Widescreen** mod. Enable it in the launcher's mod controls and
-choose **Fit window**, **16:9**, **21:9**, or **32:9**. The custom renderer shows
+bundled **Metroid Widescreen** mod. Fresh profiles start enabled with **Fit window**;
+saved choices are preserved. The launcher's mod controls also offer **16:9**,
+**21:9**, and **32:9**. The custom renderer shows
 adjacent room terrain and follows live window resizing in Fit mode.
 
 Optional mod choices add **Viewport** enemies and item previews, **Expanded**
 sprite capacity, and **Reduced slowdown**. Viewport enemies retain their original
-distance-based attack triggers. Widescreen is off by default, and each additional
-enhancement defaults to **Original**. These features are still experimental;
+distance-based attack triggers. Each additional enhancement defaults to
+**Original**. These features are still experimental;
 enemy, projectile, and room-transition coverage remains incomplete.
 
 ![Experimental 32:9 widescreen showing Samus, enemies and the Morph Ball in the expanded viewport](docs/screenshots/metroid-widescreen.png)
