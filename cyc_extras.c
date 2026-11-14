@@ -299,5 +299,5 @@ static const CycHostOption options[]={
 };
 const CycHostExtras *cyc_host_extras(void) {
     static const CycHostExtras extras={.present=present,.power_on=power_on,.frame_end=frame_end,
-        .options=options,.option_count=sizeof options/sizeof options[0],.option=option,.tcp_setup=tcp_setup,.input=input,.event=event};return &extras;
+        .options=options,.option_count=sizeof options/sizeof options[0],.option=option,.tcp_setup=tcp_setup,.input=input,.event=event,.initial_fit_width=426};return &extras;
 }

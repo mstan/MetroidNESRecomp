@@ -140,7 +140,14 @@ foreach ($region in $variants) {
     $label = if ($region -eq 'usa') { 'USA-NTSC' } else { 'Europe-PAL' }
     $wholeCrc = if ($region -eq 'usa') { 'A2C89CB9' } else { 'A591CC24' }
     $manifests = @(Get-ChildItem -LiteralPath $packages -Filter manifest.toml -File -Recurse)
-    if ($manifests.Count -ne 2) { throw 'Expected only the widescreen and first-person packages.' }
+    $expectedPackages = @('metroid.enhancement.widescreen', 'metroid.enhancement.voxel-first-person',
+                          'nesrecomp.developer.replay', 'nesrecomp.twitch-chat')
+    $packageIds = @($manifests | ForEach-Object {
+        $id = [regex]::Match((Get-Content -LiteralPath $_.FullName -Raw), '(?m)^id\s*=\s*"([^"]+)"')
+        if (-not $id.Success) { throw "Missing package identity: $($_.FullName)" }
+        $id.Groups[1].Value
+    })
+    if (@(Compare-Object $expectedPackages $packageIds).Count) { throw 'Expected the two game packages and generated replay/chat packages.' }
     foreach ($manifest in $manifests) {
         $text = Get-Content -LiteralPath $manifest.FullName -Raw
         $targets = [regex]::Matches($text, '(?m)^rom_crc32\s*=\s*"([^"]+)"')
@@ -188,6 +195,24 @@ foreach ($region in $variants) {
             'NESRecomp-LICENSE.txt' = (Join-Path $engineRoot 'LICENSE')
             'SDL2-COPYING.txt' = (Join-Path $engineRoot 'runner/external/SDL2/COPYING.txt')
             'ImGui-LICENSE.txt' = (Join-Path $uiRoot 'src/third_party/imgui/LICENSE.txt')
+            'RecompUI-LICENSE.txt' = (Join-Path $uiRoot 'LICENSE')
+            'LatoLatin-OFL.txt' = (Join-Path $engineRoot 'tools/release-licenses/LatoLatin-OFL.txt')
+            'NotoSansSymbols2-OFL.txt' = (Join-Path $engineRoot 'tools/release-licenses/NotoSansSymbols2-OFL.txt')
+            'OpenMoji-LICENSE.txt' = (Join-Path $engineRoot 'tools/release-licenses/OpenMoji-LICENSE.txt')
+        }
+        foreach ($dependency in @(
+            @{ Cache = 'recomp_net_SOURCE_DIR'; Notice = 'RecompNet-LICENSE.txt' },
+            @{ Cache = 'retcomm_rbengine_SOURCE_DIR'; Notice = 'RBEngine-LICENSE.txt' }
+        )) {
+            $configured = Get-CacheValue $cache $dependency.Cache
+            if ($configured) { $licenses[$dependency.Notice] = Join-Path $configured 'LICENSE' }
+        }
+        if (Test-Path -LiteralPath (Join-Path $stage 'libstdc++-6.dll')) {
+            $compilerPrefix = Split-Path -Parent (Split-Path -Parent (Get-CacheValue $cache 'CMAKE_CXX_COMPILER'))
+            foreach ($name in 'COPYING.LIB', 'COPYING.RUNTIME', 'COPYING3', 'README') {
+                $licenses["GCC-$name.txt"] = Join-Path $compilerPrefix "share/licenses/gcc-libs/$name"
+            }
+            $licenses['libwinpthread-COPYING.txt'] = Join-Path $compilerPrefix 'share/licenses/libwinpthread/COPYING'
         }
         New-Item -ItemType Directory -Path (Join-Path $stage 'licenses') | Out-Null
         foreach ($name in $licenses.Keys) {
@@ -211,8 +236,9 @@ launcher SAVE panel lets you review/edit your password, and CONTINUE prefills
 it in the game. Legacy binary states cannot be loaded by this cycle build;
 passwords carry progress between backends. --no-save disables persistence.
 
-Enable Metroid Widescreen or Voxel 3D (first person) in the launcher Mods panel.
-Both start disabled. Widescreen offers Fit, 16:9, 21:9 and 32:9, plus optional
+Metroid Widescreen starts enabled with adaptive Fit for fresh profiles.
+Saved player choices are preserved. Voxel 3D (first person) remains optional
+and starts disabled. Widescreen offers Fit, 16:9, 21:9 and 32:9, plus optional
 viewport actors, expanded sprites and reduced slowdown. These enhancements
 remain experimental; see WIDESCREEN.md for their coverage and limitations.
 First-person camera: numpad 8/2 pitch, 4/6 yaw, 7/9 roll, +/- field of view,
