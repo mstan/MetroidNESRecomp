@@ -1,3 +1,9 @@
+# v0.2.6 - Windows USA cycle preview
+
+Widescreen starts enabled with adaptive Fit for fresh profiles. Saved mod and
+aspect choices are preserved, and Voxel 3D remains optional and disabled by
+default. The package includes the required UI, font and native runtime notices.
+
 # v0.2.2 - Windows startup diagnostics
 
 Startup logs now begin before the launcher opens. Unhandled Windows crashes
