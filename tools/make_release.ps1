@@ -211,8 +211,9 @@ launcher SAVE panel lets you review/edit your password, and CONTINUE prefills
 it in the game. Legacy binary states cannot be loaded by this cycle build;
 passwords carry progress between backends. --no-save disables persistence.
 
-Enable Metroid Widescreen or Voxel 3D (first person) in the launcher Mods panel.
-Both start disabled. Widescreen offers Fit, 16:9, 21:9 and 32:9, plus optional
+Metroid Widescreen starts enabled with adaptive Fit for fresh profiles.
+Saved player choices are preserved. Voxel 3D (first person) remains optional
+and starts disabled. Widescreen offers Fit, 16:9, 21:9 and 32:9, plus optional
 viewport actors, expanded sprites and reduced slowdown. These enhancements
 remain experimental; see WIDESCREEN.md for their coverage and limitations.
 First-person camera: numpad 8/2 pitch, 4/6 yaw, 7/9 roll, +/- field of view,
