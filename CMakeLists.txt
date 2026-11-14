@@ -19,7 +19,9 @@ set_property(CACHE NESRECOMP_BACKEND PROPERTY STRINGS cycle legacy)
 # Qualified Windows x64 renderer default; explicit cache choices remain honored.
 if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND
    CMAKE_SYSTEM_PROCESSOR MATCHES "^(AMD64|amd64|x86_64|X86_64)$")
-    set(NESRECOMP_PPU_IMPL "HLE" CACHE STRING "PPU implementation: LLE or HLE")
+    set(NESRECOMP_PPU_IMPL "FRAME" CACHE STRING "PPU implementation: LLE, HLE or FRAME")
+    option(NESRECOMP_APU_OPERATION "Use the native APU operation profile" OFF)
+    option(NESRECOMP_NATIVE_WAIT_LOOPS "Use qualified native wait operations" ON)
 endif()
 if(NESRECOMP_BACKEND STREQUAL "cycle")
     set(METROID_VARIANT "usa" CACHE STRING "usa (NTSC) or europe (PAL)")
